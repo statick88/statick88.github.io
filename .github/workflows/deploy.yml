@@ -3,21 +3,30 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # O la rama que quieras monitorizar
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16" # Asegúrate de usar una versión compatible
+
+      - name: Install dependencies
+        run: npm install # Esto instalará Astro y las demás dependencias listadas en package.json
+
       - name: Build project
-        run: npm run build
+        run: npm run build # Ahora podrá encontrar el comando `astro`
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }} # Aquí se usa el secreto que configuraste
-          publish_dir: ./dist
+          github_token: ${{ secrets.GH_TOKEN }} # Agrega tu secreto con el token personal
+          publish_dir: ./dist # Asegúrate de que el directorio de build es correcto
 
