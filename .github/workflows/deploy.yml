@@ -3,35 +3,21 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # o la rama desde la que quieres desplegar
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          npm install -g pnpm
-          pnpm install
-
-      - name: Build
-        run: pnpm build
-        env:
-          CI: false  # Evita cancelaciones automáticas por tiempo de espera
+      - name: Build project
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_PAT }}  # Asegúrate de que este secreto esté configurado correctamente
+          github_token: ${{ secrets.GH_TOKEN }} # Aquí se usa el secreto que configuraste
           publish_dir: ./dist
-          publish_branch: gh-pages
-          force_orphan: true
-          enable_jekyll: false
-          allow_empty_commit: false
-          keep_files: false
-          disable_nojekyll: true  # Configura como true para agregar un archivo .nojekyll
-          exclude_assets: .github
+
