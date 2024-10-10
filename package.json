@@ -7,10 +7,12 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && git add dist -f && git commit -m 'deploy' && git push origin `git subtree split --prefix dist main`:gh-pages --force"
   },
   "dependencies": {
     "@astrojs/check": "0.4.1",
+    "@astrojs/netlify": "^5.5.3",
     "astro": "4.3.2",
     "hotkeypad": "0.1.0",
     "typescript": "5.3.3"
