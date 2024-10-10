@@ -3,26 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@cv": [
+        "./cv.json"
+      ],
       "@/*": [
         "src/*"
       ]
-    },
-    "strict": true, // Asegura que todas las opciones estrictas estén habilitadas
-    "noImplicitAny": true, // Evita el uso implícito de 'any'
-    "strictNullChecks": true, // Requiere chequear valores nulos y no definidos
-    "strictFunctionTypes": true, // Habilita una verificación más rigurosa de los tipos de funciones
-    "strictPropertyInitialization": true, // Asegura que todas las propiedades de clase sean inicializadas
-    "noImplicitThis": true, // Evita el uso implícito de 'this'
-    "esModuleInterop": true, // Permite importar módulos CommonJS en un estilo compatible con ES6
-    "skipLibCheck": true, // Omite la verificación de tipos de las bibliotecas para una compilación más rápida
-    "forceConsistentCasingInFileNames": true // Requiere el uso consistente de mayúsculas y minúsculas en nombres de archivos
-  },
-  "include": [
-    "src/**/*", // Incluye todos los archivos en el directorio 'src'
-    "types/**/*.d.ts" // Incluye archivos de declaración de tipos si los tienes
-  ],
-  "exclude": [
-    "node_modules", // Excluye el directorio 'node_modules'
-    "dist" // Excluye el directorio de salida 'dist'
-  ]
+    }
+  }
 }
