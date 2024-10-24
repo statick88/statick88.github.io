@@ -298,7 +298,15 @@
       "keywords": [
         "Desarrollo Web", "Frontend", "React Framework", "SSR", "Static Generation"
       ]
-    }],
+    },
+    {
+      "name": "Flutter",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Móvil", "Frontend", "Dart Framework", "Android", "iOS"
+      ]
+    }
+  ],
   "languages": [
     {
       "language": "Spanish",
