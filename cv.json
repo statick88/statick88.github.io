@@ -6,7 +6,7 @@
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 992018216",
     "url": "https://statick88.github.io",
-    "summary": "+8 años de experiencia como Desarrollador Web Fullstack. Actualmente soy facilitador de Bootcamps de Desarrollo Web Fullstack en Codings Academy. Vivo en Quito, Ecuador. He trabajado en diferentes instituciones de educación superior como Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, tambien en empresas de capacitación como Abacom, Codings Academy.",
+    "summary": "+8 años de experiencia como Desarrollador Web Fullstack. Actualmente soy facilitador de Bootcamps de Desarrollo Web Fullstack en Codings Academy. Vivo en Quito, Ecuador. He trabajado en diferentes instituciones de educación superior como Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, tambien en empresas de capacitación como Abacom.",
     "location": {
       "address": "",
       "postalCode": "171102",
@@ -176,6 +176,13 @@
       ]
     },
     {
+      "name": "React",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
+      ]
+    },
+    {
       "name": "Node",
       "level": "Avanzado",
       "keywords": [
@@ -187,6 +194,55 @@
       "level": "Avanzado",
       "keywords": [
         "Bases de Datos", "SQL", "Almacenamiento de Datos", "Backend"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "level": "Avanzado",
+      "keywords": [
+        "Bases de Datos", "NoSQL", "Almacenamiento de Datos", "Backend"
+      ]
+    },
+    {
+      "name": "Python",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Backend", "Data Science", "Machine Learning"
+      ]
+    },
+    {
+      "name": "Django",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Backend", "Python Framework"
+      ]
+    },
+    {
+      "name": "FastAPI",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Backend", "Python Framework", "API REST"
+      ]
+    },
+    {
+      "name": "Ruby",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Backend", "Ruby on Rails"
+      ]
+    },
+    {
+      "name": "Docker",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Backend", "Contenedores", "DevOps"
+      ]
+    },
+    {
+      "name": "Kubernetes",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web", "Backend", "Orquestación de Contenedores", "DevOps"
       ]
     },
     {
@@ -209,15 +265,7 @@
       "keywords": [
         "Desarrollo Web", "Frontend", "React Framework", "SSR", "Static Generation"
       ]
-    },
-    {
-      "name": "React",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
-      ]
-    }
-  ],
+    }],
   "languages": [
     {
       "language": "Spanish",
