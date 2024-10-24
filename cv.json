@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Diego Medardo Saavedra García",
-    "label": "Full Stack Developer con más de 5 años de experiencia & Facilitador de Cursod de Desarrollo Fullstack, Data Science y Movil.",
+    "label": "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Movil.",
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 992018216",
     "url": "https://statick88.github.io",
-    "summary": "+8 años de experiencia como Desarrollador Web. Actualmente soy Docente en la Universidad de las Fuerzas Armadas ESPE, facilitador de Bootcamps de Desarrollo Web Fullstack en Codings Academy. Vivo en Quito, Ecuador. He trabajado en diferentes instituciones de educación superior.",
+    "summary": "+8 años de experiencia como Desarrollador Web Fullstack. Actualmente soy facilitador de Bootcamps de Desarrollo Web Fullstack en Codings Academy. Vivo en Quito, Ecuador. He trabajado en diferentes instituciones de educación superior como Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, tambien en empresas de capacitación como Abacom, Codings Academy.",
     "location": {
       "address": "",
       "postalCode": "171102",
@@ -79,19 +79,20 @@
       "Awarded 'Volunteer of the Month'"
     ]
   }],
-  "education": [{
-    "institution": "Universidad Nacional de Loja",
-    "url": "https://unl.edu.ec/",
-    "area": "Licenciatura en Ciencias de la Educación Mención Informática Educativa",
-    "studyType": "Bachelor",
-    "startDate": "2006-09-01",
-    "endDate": "2011-02-28",
-    "score": "4.0",
-    "courses": [
+  "education": [
+{
+      "institution": "Universidad Americana de Europa",
+      "url": "https://unade.edu.mx/",
+      "area": "Doctorado en Informática",
+      "studyType": "Doctorado",
+      "startDate": "2023-09-01",
+      "endDate": null,
+      "score": "4.0",
+      "courses": [
       "DB1101 - Basic SQL"
-    ]
-  },
-    {
+      ]
+    },
+        {
       "institution": "Universidad Técnica Particular de Loja",
       "url": "https://utpl.edu.ec/",
       "area": "Maestría en Ciencias y Tecnologías de la Computación",
@@ -103,19 +104,20 @@
       "DB1101 - Basic SQL"
       ]
     },
-    {
-      "institution": "Universidad Americana de Europa",
-      "url": "https://unade.edu.mx/",
-      "area": "Doctorado en Informática",
-      "studyType": "Doctorado",
-      "startDate": "2023-09-01",
-      "endDate": null,
-      "score": "4.0",
-      "courses": [
+{
+    "institution": "Universidad Nacional de Loja",
+    "url": "https://unl.edu.ec/",
+    "area": "Licenciatura en Ciencias de la Educación Mención Informática Educativa",
+    "studyType": "Bachelor",
+    "startDate": "2006-09-01",
+    "endDate": "2011-02-28",
+    "score": "4.0",
+    "courses": [
       "DB1101 - Basic SQL"
-      ]
-    }
-  ],
+    ]
+  }
+
+      ],
   "awards": [{
     "title": "Award",
     "date": "2014-11-01",
@@ -239,66 +241,65 @@
   }],
   "projects": [
     {
-      "name": "mars.codes",
+      "name": "Facilitador del Curso de Django and React 2024",
       "isActive": true,
-      "description": "Historia interactiva con retos de programación para viajar a Marte",
+      "description": "Facilitador de curso de Programación Web Fullstack con Django y React",
       "highlights": [
-        "Elige tu propia aventura",
-        "En desarrollo"
+        "Formación de desarrolladores web fullstack",
+        "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
       ],
-      "url": "https://mars.codes"
+      "url": "https://statick88.github.io/course_of_django_and_react"
     },
     {
-      "name": "AdventJS",
+      "name": "Creador del ebook de Fast API",
       "isActive": true,
-      "description": "Retos de programación en JavaScript para cada día de diciembre hasta Navidad",
+      "description": "Ebook de Fast API para aprender a crear APIs REST con Python",
       "highlights": [
-        "+1 millón de visitas",
-        "Multidioma",
-        "JavaScript & TypeScript"
+        "Uso de herramienta de Quarto para escritura científica",
+        "Python, Fast API, REST"
       ],
-      "url": "https://adventjs.dev"
+      "url": "https://statick88.github.io/course_of_FastAPI/"
     },
     {
-      "name": "Codember",
+      "name": "Creador del Ebook de Ruby on Rails",
       "isActive": true,
-      "description": "Juego interactivo de programación con retos y secretos",
+      "description": "Ebook de Ruby on Rails para aprender a crear aplicaciones web con Ruby",
       "highlights": [
-        "+2000 usuarios activos",
-        "Retos para cualquier lenguaje"
+        "Uso de herramienta de Quarto para escritura científica",
+        "Ruby, Ruby on Rails"
       ],
-      "url": "https://codember.dev"
+      "url": "https://statick88.github.io/course_of_ruby_on_rails/"
     },
     {
-      "name": "codi.link",
+      "name": "Creador del Ebook de Docker",
       "isActive": true,
-      "description": "Playground de código HTML, CSS y JavaScript para compartir",
+      "description": "Ebook de Docker para aprender a crear contenedores de aplicaciones",
       "highlights": [
-        "100k visitas al mes",
-        "Desarrollado por la comunidad"
+        "Uso de herramienta de Quarto para escritura científica",
+        "Docker"
       ],
       "url": "https://codi.link",
-      "github": "https://github.com/midudev/codi.link"
+      "github": "https://statick88.github.io/course_docker/"
     },
     {
-      "name": "Pruebas Técnicas",
+      "name": "Creador del Ebook de TypeScript",
       "isActive": true,
-      "description": "Lista de pruebas técnicas de empresas para practicar programación",
+      "description": "Ebook de TypeScript para aprender a crear aplicaciones web con TypeScript hasta Angular",
       "highlights": [
-        "100% gratuito",
-        "+500 soluciones de la comunidad"
+        "Uso de herramienta de Quarto para escritura científica",
+        "TypeScript, Angular"
       ],
       "url": "https://pruebastecnicas.com",
       "github": "https://github.com/midudev/pruebas-tecnicas"
     },
     {
-      "name": "miduConf",
-      "description": "Conferencia de programación en streaming para la comunidad hispanohablante con charlas top",
+      "name": "Creador del Ebook de Nextjs",
+      "description": "Ebook de Nextjs para aprender a crear aplicaciones web con Nextjs",
       "highlights": [
-        "+15k tickets repartidos",
-        "+50k espectadores en directo"
+        "Uso de herramienta de Quarto para escritura científica",
+        "JavaScript, TypeScript, React, Nextjs"
       ],
-      "url": "https://miduconf.com"
+      "url": "hhttps://statick88.github.io/course_of_next/"
     }
   ]
 }
