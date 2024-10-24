@@ -37,7 +37,7 @@
         {
       "name": "Codings Academy",
       "position": "Facilitador de Bootcamps",
-      "url": "https://codings.academy",
+      "url": "http://codingsacademy.com",
       "startDate": "2024-09-01",
       "endDate": null,
       "summary": "Facilitador de Bootcamps de Desarrollo Web Fullstack, Data Science y Movil.",
@@ -48,7 +48,7 @@
     {
       "name": "Universidad de las Fuerzas Armadas ESPE",
       "position": "Docente Ocasional 1 Tiempo Completo",
-      "url": "https://espe.edu.ec/",
+      "url": "https://www.espe.edu.ec",
       "startDate": "2023-04-26",
       "endDate": "2024-10-31",
       "summary": "Docente del Departamento de Ciencias de la Computación en las carreras de Ingeniería en Desarrollo de Software y Tecnologías de la Computación.",
@@ -59,7 +59,7 @@
     {
       "name": "Abacom",
       "position": "Facilitador",
-      "url": "https://abacom.com",
+      "url": "https://abacom.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2023-04-26",
       "summary": "Facilitador de cursos de Desarrollo Web Fullstack.",
