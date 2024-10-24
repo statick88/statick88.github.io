@@ -296,7 +296,8 @@
         "Formación de desarrolladores web fullstack",
         "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
       ],
-      "url": "https://statick88.github.io/course_of_django_and_react"
+      "url": "https://statick88.github.io/course_of_django_and_react",
+      "github": "https://statick88.github.io/course_of_django_and_react"
     },
     {
       "name": "Creador del ebook de Fast API",
@@ -306,7 +307,8 @@
         "Uso de herramienta de Quarto para escritura científica",
         "Python, Fast API, REST"
       ],
-      "url": "https://statick88.github.io/course_of_FastAPI/"
+      "url": "https://statick88.github.io/course_of_FastAPI/",
+      "github": "https://statick88.github.io/course_of_FastAPI/"
     },
     {
       "name": "Creador del Ebook de Ruby on Rails",
@@ -316,7 +318,9 @@
         "Uso de herramienta de Quarto para escritura científica",
         "Ruby, Ruby on Rails"
       ],
-      "url": "https://statick88.github.io/course_of_ruby_on_rails/"
+      "url": "https://statick88.github.io/course_of_ruby_on_rails/",
+      "github": "https://statick88.github.io/course_of_ruby_on_rails/"
+
     },
     {
       "name": "Creador del Ebook de Docker",
@@ -326,7 +330,7 @@
         "Uso de herramienta de Quarto para escritura científica",
         "Docker"
       ],
-      "url": "https://codi.link",
+      "url": "https://statick88.github.io/course_docker/",
       "github": "https://statick88.github.io/course_docker/"
     },
     {
@@ -347,7 +351,8 @@
         "Uso de herramienta de Quarto para escritura científica",
         "JavaScript, TypeScript, React, Nextjs"
       ],
-      "url": "hhttps://statick88.github.io/course_of_next/"
+      "url": "https://statick88.github.io/course_of_next/",
+      "github": "https://statick88.github.io/course_of_next/"
     }
   ]
 }
