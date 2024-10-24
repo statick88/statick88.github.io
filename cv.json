@@ -46,6 +46,17 @@
       ]
     },
     {
+      "name": "Universidad de Zulia en Venezuela",
+      "position": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación",
+      "url": "https://www.luz.edu.ve/",
+      "startDate": "2024-10-19",
+      "endDate": null,
+      "summary": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación.",
+      "highlights": [
+        "Started the company"
+      ]
+    },
+    {
       "name": "Universidad de las Fuerzas Armadas ESPE",
       "position": "Docente Ocasional 1 Tiempo Completo",
       "url": "https://www.espe.edu.ec",
@@ -61,8 +72,30 @@
       "position": "Facilitador",
       "url": "https://abacom.edu.ec/",
       "startDate": "2022-10-31",
-      "endDate": "2023-04-26",
+      "endDate": "2024-12-31",
       "summary": "Facilitador de cursos de Desarrollo Web Fullstack.",
+      "highlights": [
+        "Started the company"
+      ]
+    },
+    {
+      "name": "Universidad Internacional del Ecuador",
+      "position": "Docente Ocasional Tiempo Completo",
+      "url": "https://www.uide.edu.ec/",
+      "startDate": "2022-10-31",
+      "endDate": "2022-12-31",
+      "summary": "Docente de la carrera de Tecnologías de la Información y Comunicación.",
+      "highlights": [
+        "Started the company"
+      ]
+    },
+    {
+      "name": "Instituto Superior Tecnológico Juan Montalvo",
+      "position": "Docente Ocasional Tiempo Completo",
+      "url": "https://istjm.edu.ec/",
+      "startDate": "2019-10-31",
+      "endDate": "2022-10-31",
+      "summary": "Docente de la carrera de Tecnología en Mantenimiento de Computadoras.",
       "highlights": [
         "Started the company"
       ]
