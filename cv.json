@@ -330,6 +330,17 @@
   }],
   "projects": [
     {
+      "name": "Facilitador del Bootcamp de Desarrollo Fullstack",
+      "isActive": true,
+      "description": "Facilitador de bootcamp de Desarrollo Web Fullstack con Python, Django, FastAPI y React",
+      "highlights": [
+        "Formación de desarrolladores web fullstack durante 3 meses",
+        "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React, TypeScript, Git, Github, Docker, Bootstrap, Tailwind"
+      ],
+      "url": "https://statick88.github.io/bootcamp_fullstack/",
+      "github": "https://statick88.github.io/bootcamp_fullstack/"
+    },
+    {
       "name": "Facilitador del Curso de Django and React 2024",
       "isActive": true,
       "description": "Facilitador de curso de Programación Web Fullstack con Django y React",
@@ -340,6 +351,7 @@
       "url": "https://statick88.github.io/course_of_django_and_react",
       "github": "https://statick88.github.io/course_of_django_and_react"
     },
+
     {
       "name": "Creador del ebook de Fast API",
       "isActive": true,
@@ -394,6 +406,16 @@
       ],
       "url": "https://statick88.github.io/course_of_next/",
       "github": "https://statick88.github.io/course_of_next/"
+    },
+    {
+      "name": "Diplomado de IA orientado a la Educación",
+      "description": "Facilitador del Diplomado de Inteligencia Artificial orientado a Educadores",
+      "highlights": [
+        "Enseñanza/Aprendizaje de herramientas de IA orientadas a la Educación en diferentes áreas",
+        ""
+      ],
+      "url": "https://statick88.github.io/diplomado_ia/",
+      "github": "https://statick88.github.io/diplomado_ia/"
     }
   ]
 }
