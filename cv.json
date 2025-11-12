@@ -101,16 +101,6 @@
   ],
   "education": [
     {
-      "institution": "Universidad Americana de Europa",
-      "url": "https://unade.edu.mx/",
-      "area": "Doctorado en Informática",
-      "studyType": "Doctorado",
-      "startDate": "2023-09-01",
-      "endDate": null,
-      "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
-    },
-    {
       "institution": "Universidad Técnica Particular de Loja",
       "url": "https://utpl.edu.ec/",
       "area": "Maestría en Ciencias y Tecnologías de la Computación",
