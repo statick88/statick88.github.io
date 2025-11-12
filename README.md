@@ -98,7 +98,7 @@ pnpm dev
 
 ## 🔑 Licencia
 
-[MIT](LICENSE.txt) - Creado por [**midudev**](https://midu.dev).
+[MIT](LICENSE.txt) - Creado por [**Diego Saavedra**](https://statick88.github.io).
 
 
 
