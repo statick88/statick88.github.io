@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",     // ← Cambiar de 0.4.1 a ^0.9.4
-    "astro": "^5.0.3",               // ← Cambiar de 4.3.2 a ^5.0.3
-    "hotkeypad": "^0.1.0",           // ← Agregar el ^ (mantener 0.1.0)
-    "typescript": "^5.7.2"           // ← Cambiar de 5.3.3 a ^5.7.2
+    "@astrojs/check": "0.4.1",
+    "astro": "4.3.2",
+    "hotkeypad": "0.1.0",
+    "typescript": "5.3.3"
   }
 }
