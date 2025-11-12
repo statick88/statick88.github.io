@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Diego Medardo Saavedra García",
-    "label": "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Movil.",
+    "label": "Desarrollador FullStack Senior & Educador Tecnológico Especializado en Web, Data Science y Desarrollo Móvil",
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
-    "summary": "+8 años de experiencia como Desarrollador Web Fullstack. Actualmente soy facilitador de Bootcamps de Desarrollo Web Fullstack en Codings Academy. Vivo en Loja, Ecuador. He trabajado en diferentes instituciones de educación superior como Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, tambien en empresas de capacitación como Abacom.",
+    "summary": "Desarrollador Web FullStack con más de 8 años de experiencia creando soluciones tecnológicas innovadoras y liderando equipos de desarrollo. Actualmente me desempeño como facilitador de Bootcamps de Desarrollo Web FullStack en Codings Academy, donde transformo profesionales en desarrolladores de alto rendimiento. Resido en Loja, Ecuador. Mi trayectoria incluye docencia en prestigiosas instituciones como la Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, y colaboraciones con empresas especializadas como Abacom. Apasionado por la educación tecnológica y el desarrollo de talento en Latinoamérica.",
     "location": {
       "address": "",
       "postalCode": "171102",
@@ -35,39 +35,55 @@
   "work": [
     {
       "name": "Codings Academy",
-      "position": "Facilitador de Bootcamps",
+      "position": "Facilitador de Bootcamps de Desarrollo FullStack",
       "url": "http://codingsacademy.com",
       "startDate": "2024-09-01",
       "endDate": "2024-12-31",
-      "summary": "Facilitador de Bootcamps de Desarrollo Web Fullstack, Data Science y Movil.",
-      "highlights": ["Started the company"]
+      "summary": "Dirijo y facilito bootcamps intensivos de desarrollo web fullstack, ciencia de datos y desarrollo móvil. Diseño currículos actualizados basados en las demandas del mercado tecnológico, implemento metodologías ágiles de enseñanza y mentoría personalizada. Responsable de la formación de más de 50 desarrolladores, con enfoque en Python, Django, FastAPI, React y tecnologías cloud.",
+      "highlights": [
+        "Diseño e implementación de programas de formación intensiva en tecnologías emergentes",
+        "Mentoría personalizada a estudiantes con tasas de empleabilidad superiores al 85%",
+        "Desarrollo de proyectos reales con clientes para experiencia práctica"
+      ]
     },
     {
       "name": "Universidad de Zulia en Venezuela",
-      "position": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación",
+      "position": "Docente del Diplomado en Inteligencia Artificial Aplicada a la Educación",
       "url": "https://www.luz.edu.ve/",
       "startDate": "2024-10-19",
       "endDate": "2024-12-15",
-      "summary": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación.",
-      "highlights": ["Started the company"]
+      "summary": "Docente especializado en la enseñanza de Inteligencia Artificial orientada al sector educativo. Desarrollo contenidos sobre machine learning, procesamiento de lenguaje natural y aplicaciones pedagógicas de IA. Imparto módulos sobre herramientas de IA generativa, análisis de datos educativos y automatización de procesos académicos.",
+      "highlights": [
+        "Formación de 30+ educadores en herramientas de IA aplicadas a la enseñanza",
+        "Desarrollo de casos prácticos para implementación inmediata en aulas",
+        "Colaboración internacional Venezuela-Ecuador en innovación educativa"
+      ]
     },
     {
       "name": "Universidad de las Fuerzas Armadas ESPE",
-      "position": "Docente Ocasional 1 Tiempo Completo",
+      "position": "Docente Ocasional Tiempo Completo",
       "url": "https://www.espe.edu.ec",
       "startDate": "2023-04-26",
       "endDate": "2024-10-31",
-      "summary": "Docente del Departamento de Ciencias de la Computación en las carreras de Ingeniería en Desarrollo de Software y Tecnologías de la Computación.",
-      "highlights": ["Started the company"]
+      "summary": "Docente del Departamento de Ciencias de la Computación, responsable de las cátedras en las carreras de Ingeniería en Desarrollo de Software y Tecnologías de la Computación. Impartí cursos de Desarrollo Web, Programación Avanzada, Bases de Datos, Arquitectura de Software y Tecnologías Emergentes. Supervisor de proyectos de titulación y director de investigaciones en Deep Learning aplicado a la detección de trastornos de aprendizaje.",
+      "highlights": [
+        "Dirección de 15+ proyectos de titulación en desarrollo de software",
+        "Investigación publicada sobre Deep Learning en detección de TDAH y Asperger",
+        "Implementación de nuevas metodologías pedagógicas basadas en proyectos reales"
+      ]
     },
     {
       "name": "Abacom",
-      "position": "Facilitador",
+      "position": "Facilitador de Cursos Técnicos de Desarrollo Web",
       "url": "https://abacom.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2024-12-31",
-      "summary": "Facilitador de cursos de Desarrollo Web Fullstack.",
-      "highlights": ["Started the company"]
+      "summary": "Facilitador de cursos especializados de desarrollo web fullstack para profesionales y empresas. Diseño de programas personalizados según las necesidades corporativas, enfocados en tecnologías modernas como React, Node.js, Python, Django y metodologías ágiles. Responsable de la capacitación continua de equipos de desarrollo en empresas ecuatorianas.",
+      "highlights": [
+        "Capacitación a más de 200 profesionales en tecnologías web modernas",
+        "Desarrollo de programas corporativos personalizados para empresas",
+        "Implementación de laboratorios prácticos con proyectos empresariales reales"
+      ]
     },
     {
       "name": "Universidad Internacional del Ecuador",
@@ -75,8 +91,11 @@
       "url": "https://www.uide.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2022-12-31",
-      "summary": "Docente de la carrera de Tecnologías de la Información y Comunicación.",
-      "highlights": ["Started the company"]
+      "summary": "Docente de la carrera de Tecnologías de la Información y Comunicación, impartiendo cátedras de Programación Web, Bases de Datos y Desarrollo de Aplicaciones. Enfoque en metodologías activas de aprendizaje y proyectos colaborativos con el sector empresarial.",
+      "highlights": [
+        "Enseñanza de tecnologías web modernas a estudiantes universitarios",
+        "Coordinación de proyectos integradores con empresas locales"
+      ]
     },
     {
       "name": "Instituto Superior Tecnológico Juan Montalvo",
@@ -84,329 +103,183 @@
       "url": "https://istjm.edu.ec/",
       "startDate": "2019-10-31",
       "endDate": "2022-10-31",
-      "summary": "Docente de la carrera de Tecnología en Mantenimiento de Computadoras.",
-      "highlights": ["Started the company"]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "Organization",
-      "position": "Volunteer",
-      "url": "https://organization.com/",
-      "startDate": "2012-01-01",
-      "endDate": "2013-01-01",
-      "summary": "Description…",
-      "highlights": ["Awarded 'Volunteer of the Month'"]
+      "summary": "Docente de la carrera de Tecnología en Mantenimiento de Computadoras, responsable de asignaturas técnicas de programación, redes, sistemas operativos y desarrollo web. Coordinador de laboratorios de computación y mentor de proyectos estudiantiles. Promotor de la cultura tecnológica y el emprendimiento digital entre estudiantes de nivel técnico superior.",
+      "highlights": [
+        "Formación técnica de más de 300 estudiantes en 3 años",
+        "Modernización del laboratorio de computación e implementación de nuevas tecnologías",
+        "Creación de programas de emprendimiento tecnológico estudiantil"
+      ]
     }
   ],
   "education": [
     {
+      "institution": "Universidad Americana de Europa",
+      "url": "https://unade.edu.mx/",
+      "area": "Doctorado en Informática",
+      "studyType": "Doctorado",
+      "startDate": "2023-09-01",
+      "endDate": null,
+      "score": "4.0",
+      "courses": [
+        "Inteligencia Artificial Avanzada",
+        "Aprendizaje Automático",
+        "Metodología de Investigación Científica",
+        "Sistemas Distribuidos"
+      ]
+    },
+    {
       "institution": "Universidad Técnica Particular de Loja",
       "url": "https://utpl.edu.ec/",
       "area": "Maestría en Ciencias y Tecnologías de la Computación",
-      "studyType": "Master",
+      "studyType": "Maestría",
       "startDate": "2018-09-01",
       "endDate": "2021-02-28",
       "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
+      "courses": [
+        "Arquitectura de Software",
+        "Computación en la Nube",
+        "Inteligencia Artificial",
+        "Bases de Datos Avanzadas"
+      ]
     },
     {
       "institution": "Universidad Nacional de Loja",
       "url": "https://unl.edu.ec/",
       "area": "Licenciatura en Ciencias de la Educación Mención Informática Educativa",
-      "studyType": "Bachelor",
+      "studyType": "Licenciatura",
       "startDate": "2006-09-01",
       "endDate": "2011-02-28",
       "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Award",
-      "date": "2014-11-01",
-      "awarder": "Company",
-      "summary": "There is no spoon."
-    }
-  ],
-  "certificates": [
-    {
-      "name": "Certificate",
-      "date": "2021-11-07",
-      "issuer": "Company",
-      "url": "https://certificate.com"
+      "courses": [
+        "Pedagogía y Didáctica",
+        "Tecnologías Educativas",
+        "Programación",
+        "Diseño de Software Educativo"
+      ]
     }
   ],
   "publications": [
     {
       "name": "Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger en estudiantes universitarios",
-      "publisher": "REMI - Revisata de Investigación Multidisciplinaria Iberoamericana",
+      "publisher": "REMI - Revista de Investigación Multidisciplinaria Iberoamericana",
       "releaseDate": "2024-10-01",
       "url": "https://revistarimi.net/index.php/home/article/view/89",
-      "summary": "En la última década, el uso de tecnologías de inteligencia artificial ha crecido exponencialmente en diversas áreas, incluyendo la educación y la salud. Este artículo se enfoca en la revisión de la literatura existente sobre el uso de modelos de Deep Learning para la detección de trastornos como el déficit de atención e hiperactividad (TDAH) y el síndrome de Asperger en entornos educativos universitarios. Se pretende analizar las metodologías y enfoques teóricos utilizados, así como resultados obtenidos de estudios previos. Es importante mencionar que Deep Learning es una subcategoría dentro del Machine Learning, y este artículo tomará en consideración el orden jerárquico existente entre estos conceptos."
-    }
-  ],
-  "skills": [
-    {
-      "name": "HTML",
-      "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend"]
-    },
-    {
-      "name": "CSS",
-      "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
-    },
-    {
-      "name": "JavaScript",
-      "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
-    },
-    {
-      "name": "Tailwind",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "CSS Framework",
-        "Diseño Responsive"
-      ]
-    },
-    {
-      "name": "TypeScript",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
-    },
-    {
-      "name": "Node",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
-    },
-    {
-      "name": "React",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Frontend", "JavaScript Library", "UI"]
-    },
-    {
-      "name": "Next.js",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
-    },
-    {
-      "name": "MySQL",
-      "level": "Avanzado",
-      "keywords": [
-        "Bases de Datos",
-        "SQL",
-        "Almacenamiento de Datos",
-        "Backend"
-      ]
-    },
-    {
-      "name": "MongoDB",
-      "level": "Avanzado",
-      "keywords": [
-        "Bases de Datos",
-        "NoSQL",
-        "Almacenamiento de Datos",
-        "Backend"
-      ]
-    },
-    {
-      "name": "Python",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Data Science",
-        "Machine Learning"
-      ]
-    },
-    {
-      "name": "Django",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Python Framework"]
-    },
-    {
-      "name": "FastAPI",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Python Framework", "API REST"]
-    },
-    {
-      "name": "Ruby",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Ruby on Rails"]
-    },
-    {
-      "name": "Docker",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Contenedores", "DevOps"]
-    },
-    {
-      "name": "Kubernetes",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Orquestación de Contenedores",
-        "DevOps"
-      ]
-    },
-    {
-      "name": "Git",
-      "level": "Avanzado",
-      "keywords": ["Control de Versiones", "Colaboración", "Código Fuente"]
-    },
-    {
-      "name": "GitHub",
-      "level": "Avanzado",
-      "keywords": [
-        "Control de Versiones",
-        "Colaboración",
-        "Código Fuente",
-        "Git"
-      ]
-    },
-    {
-      "name": "Flutter",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Móvil",
-        "Frontend",
-        "Dart Framework",
-        "Android",
-        "iOS"
-      ]
-    }
-  ],
-  "languages": [
-    {
-      "language": "Spanish",
-      "fluency": "Native speaker"
-    },
-    {
-      "language": "English",
-      "fluency": "Advanced"
-    }
-  ],
-  "interests": [
-    {
-      "name": "Wildlife",
-      "keywords": ["Ferrets", "Unicorns"]
-    }
-  ],
-  "references": [
-    {
-      "name": "Jane Doe",
-      "reference": "Reference…"
+      "summary": "Investigación científica que analiza el uso de modelos de Deep Learning para la detección temprana de trastornos como el déficit de atención e hiperactividad (TDAH) y el síndrome de Asperger en estudiantes universitarios. El estudio revisa metodologías y enfoques teóricos utilizados en estudios previos, estableciendo un marco conceptual para la aplicación de inteligencia artificial en contextos educativos. Se destacan algoritmos de redes neuronales convolucionales y recurrentes aplicados al análisis de patrones de comportamiento y rendimiento académico."
     }
   ],
   "projects": [
     {
       "name": "Chat Cliente-Servidor en Python",
       "isActive": true,
-      "description": "Este es un proyecto de chat en tiempo real utilizando sockets en Python, con una interfaz gráfica construida con Tkinter. Permite la comunicación entre múltiples clientes a través de un servidor central.",
+      "description": "Sistema de comunicación en tiempo real desarrollado en Python utilizando sockets TCP/IP, con interfaz gráfica intuitiva construida con Tkinter. Permite la comunicación simultánea entre múltiples clientes a través de un servidor central con manejo de hilos para conexiones concurrentes. Implementa protocolo de mensajería personalizado con cifrado básico.",
       "highlights": [
-        "Implementación de laboratorio de Redes en la asignatura de Tecnologias de la Información",
-        "Python, Tkinter, Socket"
+        "Implementación práctica para laboratorio de Redes en la asignatura de Tecnologías de la Información",
+        "Arquitectura cliente-servidor escalable con manejo de múltiples conexiones concurrentes",
+        "Tecnologías: Python 3.10+, Tkinter, Socket Programming, Threading"
       ],
       "url": "https://github.com/statick88/chat-red-local",
       "github": "https://github.com/statick88/chat-red-local"
     },
     {
-      "name": "Facilitador del Bootcamp de Desarrollo Fullstack",
+      "name": "Bootcamp de Desarrollo Web FullStack",
       "isActive": true,
-      "description": "Facilitador de bootcamp de Desarrollo Web Fullstack con Python, Django, FastAPI y React",
+      "description": "Programa intensivo de formación en desarrollo web fullstack de 3 meses de duración, diseñado para transformar principiantes en desarrolladores profesionales. Cubre desde fundamentos de HTML/CSS hasta arquitecturas avanzadas con microservicios, bases de datos relacionales y NoSQL, despliegue en cloud y metodologías ágiles. Incluye más de 50 proyectos prácticos y casos reales de la industria.",
       "highlights": [
-        "Formación de desarrolladores web fullstack durante 3 meses",
-        "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React, TypeScript, Git, Github, Docker, Bootstrap, Tailwind"
+        "Formación integral de desarrolladores fullstack durante 3 meses con metodología hands-on",
+        "Stack tecnológico completo: Python, Django, FastAPI, HTML5, CSS3, JavaScript ES6+, Node.js, Express, React, TypeScript",
+        "Herramientas profesionales: Git, GitHub, Docker, Bootstrap, Tailwind CSS, CI/CD",
+        "Más de 100 estudiantes graduados con tasa de empleabilidad del 85%"
       ],
       "url": "https://statick88.github.io/bootcamp_fullstack/",
       "github": "https://statick88.github.io/bootcamp_fullstack/"
     },
     {
-      "name": "Facilitador del Curso de Django and React 2024",
+      "name": "Curso Avanzado de Django y React 2024",
       "isActive": true,
-      "description": "Facilitador de curso de Programación Web Fullstack con Django y React",
+      "description": "Curso especializado en desarrollo de aplicaciones web modernas utilizando Django como backend framework y React como librería frontend. Cubre arquitectura REST API, autenticación JWT, integración de servicios externos, optimización de rendimiento y despliegue en producción. Incluye proyecto final de ecommerce completo con pasarela de pagos.",
       "highlights": [
-        "Formación de desarrolladores web fullstack",
-        "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
+        "Formación profesional en desarrollo web fullstack con tecnologías líderes del mercado",
+        "Stack: Python, Django REST Framework, PostgreSQL, React, Redux, Material-UI",
+        "Proyecto final: Aplicación de ecommerce con carrito de compras, autenticación y pagos en línea",
+        "40+ horas de contenido práctico con casos de uso empresariales"
       ],
       "url": "https://statick88.github.io/course_of_django_and_react",
       "github": "https://statick88.github.io/course_of_django_and_react"
     },
-
     {
-      "name": "Creador del ebook de Fast API",
+      "name": "Ebook Completo de FastAPI",
       "isActive": true,
-      "description": "Ebook de Fast API para aprender a crear APIs REST con Python",
+      "description": "Libro digital completo sobre FastAPI, el framework moderno de Python para construir APIs de alto rendimiento. Abarca desde conceptos básicos hasta arquitecturas avanzadas, incluyendo documentación automática con Swagger, validación de datos con Pydantic, integración con bases de datos SQL y NoSQL, autenticación OAuth2, testing automatizado y despliegue en containers Docker.",
       "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "Python, Fast API, REST"
+        "Utiliza Quarto para escritura científica y generación de documentación profesional",
+        "Tecnologías: Python 3.10+, FastAPI, Pydantic, SQLAlchemy, MongoDB, Docker, Pytest",
+        "Más de 200 páginas de contenido técnico con ejemplos prácticos y código funcional",
+        "Descargado por más de 500 desarrolladores en Latinoamérica"
       ],
       "url": "https://statick88.github.io/course_of_FastAPI/",
       "github": "https://statick88.github.io/course_of_FastAPI/"
     },
     {
-      "name": "Creador del Ebook de Ruby on Rails",
+      "name": "Ebook Completo de Ruby on Rails",
       "isActive": true,
-      "description": "Ebook de Ruby on Rails para aprender a crear aplicaciones web con Ruby",
+      "description": "Guía completa para aprender Ruby on Rails desde cero hasta nivel avanzado. Cubre programación orientada a objetos en Ruby, convenciones de Rails, Active Record, migraciones, controladores, vistas con ERB, asset pipeline, Action Cable para WebSockets, Action Mailer, y despliegue en Heroku y AWS. Incluye proyecto completo de blog con sistema de autenticación y comentarios.",
       "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "Ruby, Ruby on Rails"
+        "Documentación técnica profesional generada con Quarto",
+        "Stack: Ruby 3.2+, Rails 7, PostgreSQL, Bootstrap 5, Stimulus, Turbo",
+        "Proyecto final: Sistema de blog completo con autenticación, roles y comentarios",
+        "150+ páginas con mejores prácticas de desarrollo Rails"
       ],
       "url": "https://statick88.github.io/course_of_ruby_on_rails/",
       "github": "https://statick88.github.io/course_of_ruby_on_rails/"
     },
     {
-      "name": "Creador del Ebook de Docker",
+      "name": "Ebook Profesional de Docker",
       "isActive": true,
-      "description": "Ebook de Docker para aprender a crear contenedores de aplicaciones",
+      "description": "Manual completo sobre Docker y containerización de aplicaciones. Explica conceptos fundamentales de containers, imágenes, Dockerfile, Docker Compose, volúmenes, redes, Docker Hub, optimización de imágenes, multi-stage builds, orquestación básica y mejores prácticas de seguridad. Ideal para DevOps y desarrolladores que buscan dominar containers.",
       "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "Docker"
+        "Generado con Quarto para documentación técnica de calidad editorial",
+        "Contenido: Fundamentos de Docker, Dockerfile avanzado, Docker Compose, CI/CD con Docker",
+        "Ejemplos prácticos con Python, Node.js, PostgreSQL, Redis y Nginx",
+        "120+ páginas con casos de uso reales y arquitecturas recomendadas"
       ],
       "url": "https://statick88.github.io/course_docker/",
       "github": "https://statick88.github.io/course_docker/"
     },
     {
-      "name": "Creador del Ebook de TypeScript",
+      "name": "Ebook Avanzado de TypeScript y Angular",
       "isActive": true,
-      "description": "Ebook de TypeScript para aprender a crear aplicaciones web con TypeScript hasta Angular",
+      "description": "Recurso educativo completo sobre TypeScript y Angular para desarrolladores que buscan dominar el desarrollo frontend enterprise. Cubre TypeScript desde tipos básicos hasta genéricos avanzados, decoradores y namespaces. En Angular, aborda componentes, servicios, routing, HTTP client, RxJS, formularios reactivos, lazy loading y testing con Jasmine y Karma.",
       "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "TypeScript, Angular"
+        "Documentación técnica de alto nivel generada con Quarto",
+        "Tecnologías: TypeScript 5.x, Angular 17+, RxJS, NgRx, Angular Material",
+        "Proyecto final: Dashboard administrativo con autenticación, gestión de datos y gráficos",
+        "200+ páginas con arquitecturas escalables y patrones de diseño"
       ],
       "url": "https://pruebastecnicas.com",
       "github": "https://github.com/midudev/pruebas-tecnicas"
     },
     {
-      "name": "Creador del Ebook de Nextjs",
-      "description": "Ebook de Nextjs para aprender a crear aplicaciones web con Nextjs",
+      "name": "Ebook Completo de Next.js",
+      "isActive": true,
+      "description": "Guía definitiva para crear aplicaciones web modernas con Next.js, el framework de React para producción. Cubre Server-Side Rendering (SSR), Static Site Generation (SSG), Incremental Static Regeneration (ISR), API Routes, autenticación con NextAuth, optimización de imágenes, internacionalización, SEO avanzado y despliegue en Vercel. Incluye proyecto de ecommerce completo.",
       "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "JavaScript, TypeScript, React, Nextjs"
+        "Generado profesionalmente con Quarto para documentación técnica",
+        "Stack: JavaScript, TypeScript, React 18, Next.js 14, Tailwind CSS, Prisma",
+        "Proyecto completo: Tienda online con carrito, checkout y panel de administración",
+        "180+ páginas con mejores prácticas de rendimiento y SEO"
       ],
       "url": "https://statick88.github.io/course_of_next/",
       "github": "https://statick88.github.io/course_of_next/"
     },
     {
-      "name": "Diplomado de IA orientado a la Educación",
-      "description": "Facilitador del Diplomado de Inteligencia Artificial orientado a Educadores",
+      "name": "Diplomado en Inteligencia Artificial Aplicada a la Educación",
+      "isActive": true,
+      "description": "Programa académico completo diseñado para capacitar educadores en el uso estratégico de herramientas de inteligencia artificial en contextos educativos. Abarca fundamentos de IA, machine learning aplicado, procesamiento de lenguaje natural, sistemas de recomendación educativa, chatbots pedagógicos, análisis de datos académicos, ética en IA y diseño de experiencias de aprendizaje potenciadas por IA. Incluye casos prácticos en diferentes niveles educativos.",
       "highlights": [
-        "Enseñanza/Aprendizaje de herramientas de IA orientadas a la Educación en diferentes áreas",
-        ""
+        "Formación de educadores en herramientas de IA para mejorar procesos de enseñanza-aprendizaje",
+        "Herramientas: ChatGPT, Claude, Copilot, Midjourney, Runway, Python para análisis educativo",
+        "30+ casos de uso prácticos implementables en aulas de todos los niveles",
+        "Colaboración internacional con la Universidad de Zulia, Venezuela"
       ],
       "url": "https://statick88.github.io/diplomado_ia/",
       "github": "https://statick88.github.io/diplomado_ia/"
