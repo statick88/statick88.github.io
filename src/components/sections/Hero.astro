@@ -7,7 +7,8 @@ import X from "@/icons/X.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
 import GitHub from "@/icons/GitHub.astro"
 import WorldMap from "@/icons/WorldMap.astro"
-// Importamos los nuevos iconos
+
+// Importamos los nuevos iconos (Asegúrate de haber creado estos archivos en src/icons/)
 import Duolingo from "@/icons/Duolingo.astro"
 import Chess from "@/icons/Chess.astro"
 import Game from "@/icons/Game.astro"
@@ -17,7 +18,7 @@ import type { SocialIcon } from "@/types"
 const { name, label, image, location, profiles, phone, email } = basics
 const { city, region } = location
 
-// Aquí está la magia: Mapeamos el nombre EXACTO del JSON al componente
+// Mapeamos las redes sociales a sus componentes de ícono
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
   LinkedIn,
@@ -73,8 +74,8 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
         {
           profiles.map(({ network, url, username }) => {
             const Icon = SOCIAL_ICONS[network]
-
-            // Protección: Si el icono no existe, no renderizamos nada para evitar que falle el deploy
+            
+            // Si no hay ícono mapeado, no renderizamos nada (para evitar el error de deploy)
             if (!Icon) return null
 
             return (
@@ -118,7 +119,8 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
   }
 
   h2 {
-    color: #444;
+    /* Usamos la variable para adaptarlo al tema */
+    color: var(--color-text-secondary);
     font-weight: 500;
     font-size: 1.1rem;
     text-wrap: balance;
@@ -132,7 +134,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
   }
 
   span {
-    color: #666;
+    color: var(--color-text-secondary);
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -141,7 +143,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
   }
 
   footer {
-    color: #555;
+    color: var(--color-text-secondary);
     font-size: 0.65rem;
     display: flex;
     gap: 4px;
@@ -149,11 +151,12 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
   }
 
   footer a {
-    color: #777;
+    color: var(--color-text-secondary);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #eee;
+    /* Usamos las variables para adaptarlo al tema */
+    border: 1px solid var(--color-border);
     padding: 4px;
     height: 32px;
     width: 32px;
@@ -162,8 +165,9 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
   }
 
   footer a:hover {
-    background: #eee;
-    border: 1px solid #ddd;
+    /* Usamos las variables para adaptarlo al tema */
+    background: var(--color-bg-hover);
+    border: 1px solid var(--color-border);
   }
 
   @media (width <= 700px) {
