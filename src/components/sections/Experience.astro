@@ -4,15 +4,15 @@ import { work } from "@cv"
 
 // LÓGICA DE ORDENAMIENTO: Ordena los trabajos por año de finalización (Descendente)
 const sortedWork = [...work].sort((a, b) => {
-    // Función auxiliar para obtener el año final (maneja 'null' como el año actual)
-    const getEndYear = (dateString: string | null) => {
+    // Función auxiliar para obtener el año final (maneja 'null', 'Actual', 'present' como el año actual)
+    const getEndYear = (dateString: string | null | undefined) => {
         if (!dateString || dateString.toLowerCase() === 'actual' || dateString.toLowerCase() === 'present') {
-            // Usamos el año actual para que las experiencias 'actuales' aparezcan primero
+            // Usa el año actual para que las experiencias 'actuales' aparezcan al principio
             return new Date().getFullYear(); 
         }
-        // Usamos parseInt o new Date().getFullYear() si la fecha es completa
-        // Asegúrate de que tu JSON use formatos de fecha válidos si no solo es el año
-        return new Date(dateString).getFullYear();
+        // Devuelve el año de la fecha o 0 si hay error de parsing
+        const date = new Date(dateString);
+        return isNaN(date.getFullYear()) ? 0 : date.getFullYear();
     };
 
     const endDateA = getEndYear(a.endDate);
@@ -29,8 +29,6 @@ const sortedWork = [...work].sort((a, b) => {
     
     return startDateB - startDateA;
 });
-
-// Nota: El tipo 'endDate' en el CV JSON debe ser una fecha completa o una cadena como "2024" o "Actual"
 ---
 
 <Section title="Experiencia laboral">
@@ -40,11 +38,12 @@ const sortedWork = [...work].sort((a, b) => {
         ({ name, startDate, endDate, position, summary, url }) => {
           // Aseguramos que solo mostramos el año para que el formato sea limpio
           const startYear = new Date(startDate).getFullYear()
-          const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : "Actual"
-            
-          // Si el endDate es inválido (ej: la cadena "Actual"), usamos la versión original
-          const displayEndYear = isNaN(endYear) ? (endDate?.toLowerCase() === 'present' ? 'Actual' : endDate) : endYear;
+          
+          let displayEndYear: string | number = "Actual";
+          if (endDate && endDate.toLowerCase() !== 'actual' && endDate.toLowerCase() !== 'present') {
+              const endYear = new Date(endDate).getFullYear();
+              displayEndYear = isNaN(endYear) ? endDate : endYear;
+          }
 
           return (
             <li>
@@ -93,16 +92,14 @@ const sortedWork = [...work].sort((a, b) => {
     gap: 32px;
   }
 
-  /* --- APLICACIÓN DEL TEMA OSCURO --- */
+  /* --- APLICACIÓN DEL TEMA OSCURO Y COLORES --- */
 
   article h3 {
     font-weight: 500;
-    /* Antes: color: #111; */
     color: var(--color-text); 
   }
 
   article a {
-    /* Antes: color: #111; */
     color: var(--color-text); 
   }
 
@@ -111,7 +108,6 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   article h4 {
-    /* Antes: color: #222; */
     color: var(--color-text); 
     font-weight: 400;
   }
@@ -124,14 +120,13 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   time {
-    /* Antes: color: #555; */
     color: var(--color-text-secondary);
     font-size: 0.85rem;
     min-width: 102px;
     cursor: default;
   }
   
-  /* ESTILOS DEL TOOLTIP (Se adaptan al tema oscuro) */
+  /* ESTILOS DEL TOOLTIP */
 
   [data-title]:hover:after {
     opacity: 1;
@@ -141,7 +136,6 @@ const sortedWork = [...work].sort((a, b) => {
 
   [data-title]:after {
     content: attr(data-title);
-    /* Fondo y texto del tooltip usan variables oscuras */
     background-color: var(--color-bg-hover); 
     color: var(--color-text);
     font-size: .75rem;
@@ -153,7 +147,6 @@ const sortedWork = [...work].sort((a, b) => {
     white-space: nowrap;
     box-shadow: 1px 1px 1px #222222;
     opacity: 0;
-    /* Borde usa variable */
     border: 1px solid var(--color-border);
     z-index: 99999;
     visibility: hidden;
