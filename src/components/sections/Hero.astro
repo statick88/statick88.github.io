@@ -15,8 +15,8 @@ import Game from "@/icons/Game.astro"
 
 import type { SocialIcon } from "@/types"
 
-// REMOVIDA LA IMPORTACIÓN DE 'image' DE basics
-const { name, label, location, profiles, phone, email } = basics 
+// RE-AÑADIMOS la importación de 'image'
+const { name, label, image, location, profiles, phone, email } = basics 
 const { city, region } = location
 
 // Mapeamos las redes sociales a sus componentes de ícono
@@ -75,7 +75,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
         {
           profiles.map(({ network, url, username }) => {
             const Icon = SOCIAL_ICONS[network]
-            
+
             if (!Icon) return null
 
             return (
@@ -92,16 +92,19 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
         }
       </footer>
     </div>
-    </div>
+    <figure>
+      <img src={image} alt={name} />
+    </figure>
+  </div>
 </Section>
 
 <style>
   .container {
-    /* Centramos el único elemento (el bloque de texto) */
+    /* Usamos flex para posicionar texto e imagen */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; 
+    justify-content: space-between; 
     gap: 1rem;
     padding-top: 2rem; 
   }
@@ -110,9 +113,25 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    text-align: center;
-    padding-right: 0;
+    /* 🎯 CENTRADO EN ESCRITORIO (como en el diseño original) */
+    text-align: center; 
+    padding-right: 32px;
+    flex: 1; 
   }
+
+  /* ESTILOS DE IMAGEN */
+  figure {
+      display: block;
+  }
+  
+  img { 
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      width: 128px;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+  }
+  /* FIN ESTILOS DE IMAGEN */
 
   /* 🎯 TAMAÑO GRANDE Y COLOR DE TEMA PARA EL NOMBRE */
   h1 {
@@ -131,6 +150,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     color: var(--color-text-secondary);
     display: flex;
     align-items: center;
+    /* 🎯 CENTRADO PARA EL ICONO DE UBICACIÓN */
     justify-content: center; 
     gap: 0.25rem;
     font-size: 0.85rem;
@@ -143,7 +163,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     display: flex;
     gap: 4px;
     margin-top: 8px;
-    /* Centramos los íconos */
+    /* 🎯 CENTRADO PARA LOS ÍCONOS SOCIALES */
     justify-content: center; 
   }
 
@@ -168,20 +188,23 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
   /* MEDIA QUERY PARA MOVIL */
   @media (width <= 700px) {
     .container {
-      flex-direction: column;
+      /* Imagen encima del texto en móvil */
+      flex-direction: column-reverse; 
       padding-top: 1rem;
+      justify-content: center;
     }
 
     .info {
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding-right: 0;
     }
-    
+
     h1 {
         font-size: 1.8rem; 
     }
-    
+
     span, footer {
       justify-content: center;
     }
