@@ -7,15 +7,24 @@ import X from "@/icons/X.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
 import GitHub from "@/icons/GitHub.astro"
 import WorldMap from "@/icons/WorldMap.astro"
+// Importamos los nuevos iconos
+import Duolingo from "@/icons/Duolingo.astro"
+import Chess from "@/icons/Chess.astro"
+import Game from "@/icons/Game.astro"
+
 import type { SocialIcon } from "@/types"
 
 const { name, label, image, location, profiles, phone, email } = basics
 const { city, region } = location
 
+// Aquí está la magia: Mapeamos el nombre EXACTO del JSON al componente
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
   LinkedIn,
   X,
+  Duolingo,
+  "Chess.com": Chess,
+  "Chess Universe": Game,
 }
 
 const linkedInfo = profiles.find(({ network }) => network === "LinkedIn")
@@ -64,6 +73,9 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
         {
           profiles.map(({ network, url, username }) => {
             const Icon = SOCIAL_ICONS[network]
+
+            // Protección: Si el icono no existe, no renderizamos nada para evitar que falle el deploy
+            if (!Icon) return null
 
             return (
               <a
