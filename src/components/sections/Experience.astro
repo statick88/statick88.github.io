@@ -36,14 +36,26 @@ const sortedWork = [...work].sort((a, b) => {
     {
       sortedWork.map(
         ({ name, startDate, endDate, position, summary, url }) => {
-          // Aseguramos que solo mostramos el año para que el formato sea limpio
+          // 1. Obtiene el año de inicio
           const startYear = new Date(startDate).getFullYear()
-          
+
+          // 2. Determina el año de finalización a mostrar
           let displayEndYear: string | number = "Actual";
+          let endYear: number | null = null;
+
           if (endDate && endDate.toLowerCase() !== 'actual' && endDate.toLowerCase() !== 'present') {
-              const endYear = new Date(endDate).getFullYear();
-              displayEndYear = isNaN(endYear) ? endDate : endYear;
+              const date = new Date(endDate);
+              if (!isNaN(date.getFullYear())) {
+                  endYear = date.getFullYear();
+                  displayEndYear = endYear;
+              } else {
+                  displayEndYear = endDate; // Si es inválido, muestra la cadena original (ej: "Actual")
+              }
           }
+
+          // 3. 🎯 LÓGICA DE CORRECCIÓN DE REDUNDANCIA: 
+          // Si el año de inicio es igual al año de fin, mostramos solo el año de inicio.
+          const isSameYear = endYear && startYear === endYear;
 
           return (
             <li>
@@ -64,12 +76,15 @@ const sortedWork = [...work].sort((a, b) => {
                       data-title={startDate}>
                         {startYear}
                     </time>
-                    {" - "}
-                    <time 
-                      datetime={endDate}
-                      data-title={endDate}>
-                        {displayEndYear}
-                    </time>
+                    {/* MOSTRAMOS EL GUION Y EL AÑO FINAL SOLO SI NO SON EL MISMO AÑO */}
+                    { !isSameYear && " - " }
+                    { !isSameYear && (
+                        <time 
+                            datetime={endDate}
+                            data-title={endDate}>
+                            {displayEndYear}
+                        </time>
+                    )}
                   </div>
                 </header>
 
@@ -125,7 +140,7 @@ const sortedWork = [...work].sort((a, b) => {
     min-width: 102px;
     cursor: default;
   }
-  
+
   /* ESTILOS DEL TOOLTIP */
 
   [data-title]:hover:after {
