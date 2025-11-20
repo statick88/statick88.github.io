@@ -106,8 +106,13 @@ const sortedWork = [...work].sort((a, b) => {
     flex-direction: column;
     gap: 32px;
   }
-
-  /* --- APLICACIÓN DEL TEMA OSCURO Y COLORES --- */
+  
+  /* Aseguramos que el texto dentro del artículo use el color correcto */
+  article p {
+    color: var(--color-text-secondary); 
+    line-height: 1.4; /* Mejora la legibilidad del resumen */
+    margin-top: 8px; /* Agregamos un poco de espacio sobre el resumen */
+  }
 
   article h3 {
     font-weight: 500;
@@ -115,9 +120,8 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   article a {
-    /* 🎯 CORRECCIÓN: Usar el color principal para el nombre de la empresa/puesto */
     color: var(--color-text); 
-    text-decoration: none; /* Quitamos la decoración por defecto */
+    text-decoration: none;
   }
 
   article a:hover {
@@ -125,31 +129,36 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   article h4 {
-    /* Usar color secundario o principal, pero el principal es común para la posición */
     color: var(--color-text); 
     font-weight: 400;
-  }
-  
-  article p {
-    /* Aseguramos que el resumen use el color de texto secundario para contraste con el título */
-    color: var(--color-text-secondary); 
+    font-size: 0.95rem;
+    margin-top: 2px; /* Espacio sutil entre nombre y posición */
   }
 
   header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 4px;
+    gap: 16px; /* Asegura un espacio mínimo entre el título y la fecha */
+  }
+
+  header > div:first-child {
+    flex-shrink: 1; /* Permite que el texto se comprima si es necesario */
+  }
+  
+  header > div:last-child {
+    flex-shrink: 0; /* Asegura que el bloque de tiempo no se comprima */
+    text-align: right;
   }
 
   time {
     color: var(--color-text-secondary);
     font-size: 0.85rem;
-    min-width: 102px;
+    white-space: nowrap; /* Evita que el año se parta en dos líneas */
     cursor: default;
   }
 
-  /* ESTILOS DEL TOOLTIP (Ya usan variables, lo cual es correcto) */
+  /* ESTILOS DEL TOOLTIP (Se mantienen adaptables al tema) */
 
   [data-title]:hover:after {
     opacity: 1;
@@ -159,7 +168,6 @@ const sortedWork = [...work].sort((a, b) => {
 
   [data-title]:after {
     content: attr(data-title);
-    /* 🎯 CORRECCIÓN: El box-shadow debe adaptarse al tema claro/oscuro */
     background-color: var(--color-bg-hover); 
     color: var(--color-text);
     font-size: .75rem;
@@ -168,8 +176,8 @@ const sortedWork = [...work].sort((a, b) => {
     padding: .2rem .5rem;
     bottom: -1.4rem;
     left: 50%;
+    transform: translateX(-50%); /* Centra el tooltip */
     white-space: nowrap;
-    /* Usamos una sombra sutil que se ve bien en ambos temas */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
     opacity: 0;
     border: 1px solid var(--color-border);
@@ -183,17 +191,16 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   @media (width <= 700px) {
-    /* Aseguramos que las fechas se muestren apiladas en móvil */
     header {
         flex-direction: column;
-        gap: 4px;
+        align-items: flex-start; /* Alinea todo a la izquierda en móvil */
+    }
+    header > div:last-child {
+        text-align: left; /* Alinea las fechas a la izquierda en móvil */
+        margin-top: 4px; /* Espacio entre el puesto y la fecha */
     }
     time {
-      text-align: left; /* Alineamos a la izquierda en móvil */
       min-width: auto;
-    }
-    div:last-child {
-        margin-top: 4px;
     }
   }
 </style>
