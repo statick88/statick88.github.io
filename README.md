@@ -1,9 +1,7 @@
-
-
 <div align="center">
 <img src="logo.png" height="90px" width="auto" /> 
 <h2>
-    <em>Résumé</em> minimalista maquetado para web y pdf
+    <em>Currículum Vitae (CV)</em> minimalista maquetado para web y pdf
 </h2>
 <p>
 Esquema del JSON de CV de <a href="https://jsonresume.org/schema/">jsonresume.org</a>
@@ -30,7 +28,7 @@ Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz J
         Licencia
     </a>
     <span>&nbsp;✦&nbsp;</span>
-    <a href="https://midu.dev">
+    <a href="https://statick88.github.io">
         Personal
     </a>
    
@@ -41,10 +39,10 @@ Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz J
 <div align="center">
 
 ![Astro Badge](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff&style=flat)
-![GitHub stars](https://img.shields.io/github/stars/midudev/minimalist-portfolio-json)
-![GitHub issues](https://img.shields.io/github/issues/midudev/minimalist-portfolio-json)
-![GitHub forks](https://img.shields.io/github/forks/midudev/minimalist-portfolio-json)
-![GitHub PRs](https://img.shields.io/github/issues-pr/midudev/minimalist-portfolio-json)
+![GitHub stars](https://img.shields.io/github/stars/statick88/statick88.github.io)
+![GitHub issues](https://img.shields.io/github/issues/statick88/statick88.github.io)
+![GitHub forks](https://img.shields.io/github/forks/statick88/statick88.github.io)
+![GitHub PRs](https://img.shields.io/github/issues-pr/statick88/statick88.github.io)
 
 </div>
 
@@ -59,46 +57,16 @@ Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz J
 
 ## 🚀 Empezar
 
-### 1. Usa este [repo](https://github.com/midudev/minimalist-portfolio-json) como _template_ de un proyecto de Astro
-
+### 1. Clona este [repositorio](https://github.com/statick88/statick88.github.io)
+Este proyecto está listo para ser desplegado. Simplemente clona el repositorio y usa tus propias dependencias.
 
 - Yo uso [pnpm](https://pnpm.io/installation) como gestor de dependencias y empaquetador.
 
 ```bash
-# Activa pnpm en MacOS, WSL & Linux:
+# Clona el repositorio
+git clone [https://github.com/statick88/statick88.github.io.git](https://github.com/statick88/statick88.github.io.git)
+cd statick88.github.io
+
+# Instala las dependencias
 corepack enable
-corepack prepare pnpm@latest --activate
-
-# Inicializa el proyecto
-pnpm create astro@latest -- --template midudev/minimalist-portfolio-json
-```
-
-### 2. Añade tu contenido:
-Edita el archivo `cv.json` para crear tu propio Portafolio/CV imprimible.
-### 3. Lanza el servidor de desarrollo:
-
-```bash
-# Disfruta del resultado
-pnpm dev
-```
-
-
-1. Abre [**http://localhost:4321**](http://localhost:4321/) en tu navegador para ver el resultado 🚀
-
-
-## 🧞 Comandos
-
-|     | Comando          | Acción                                        |
-| :-- | :--------------- | :-------------------------------------------- |
-| ⚙️  | `dev` o `start` | Lanza un servidor de desarrollo local en  `localhost:4321`.  |
-| ⚙️  | `build`          | Comprueba posibles errores y hace un empaquetado de producción en `./dist/`.      |
-| ⚙️  | `preview`        | Vista previa en local `localhost:4321` |
-
-
-
-## 🔑 Licencia
-
-[MIT](LICENSE.txt) - Creado por [**Diego Saavedra**](https://statick88.github.io).
-
-
-
+pnpm install
