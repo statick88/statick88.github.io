@@ -56,14 +56,26 @@ import { projects } from "@cv"
 
   article {
     border-radius: 8px;
-    border: 1px solid #f2f2f2;
+    /* Antes: border: 1px solid #f2f2f2; */
+    /* USAR VARIABLE DE BORDE DEL TEMA */
+    border: 1px solid var(--color-border);
+    /* Antes: color: #fff (implícito por el fondo blanco) */
+    /* USAR VARIABLE DE FONDO LIGERAMENTE MÁS CLARO PARA EL BOX */
+    background: var(--color-bg-hover); 
     gap: 16px;
     display: flex;
     flex-direction: column;
     padding: 16px;
     height: 100%;
+    transition: all 0.3s ease;
   }
 
+  article:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Oscurecer un poco más al hacer hover */
+    background: #232e4d; 
+  }
+  
   article header {
     flex: 1;
   }
@@ -73,7 +85,9 @@ import { projects } from "@cv"
   }
 
   article a {
-    color: #111;
+    /* Antes: color: #111; */
+    /* USAR COLOR DE TEXTO PRINCIPAL */
+    color: var(--color-text);
   }
 
   article a:hover {
@@ -84,6 +98,8 @@ import { projects } from "@cv"
     font-size: 0.75rem;
     line-height: 1.2rem;
     margin-bottom: 4px;
+    /* USAR COLOR DE TEXTO SECUNDARIO */
+    color: var(--color-text-secondary);
   }
 
   article h3 span {
@@ -103,8 +119,10 @@ import { projects } from "@cv"
 
   footer span {
     border-radius: 6px;
-    background: #eee;
-    color: #444;
+    /* Antes: background: #eee; color: #444; */
+    /* AJUSTAR TAGS: FONDO OSCURO, TEXTO CLARO */
+    background: #3c4b69; /* Un azul intermedio oscuro */
+    color: var(--color-text); /* Texto principal para los tags */
     font-size: 0.6rem;
     font-weight: 500;
     padding: 0.2rem 0.6rem;
@@ -133,7 +151,9 @@ import { projects } from "@cv"
 
     article {
       border: none;
-      box-shadow: 0 1px 1px #f2f2f2;
+      /* Antes: box-shadow: 0 1px 1px #f2f2f2; */
+      /* SOMBRA EN MODO OSCURO (sutil) */
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
       padding: 0 0 16px 0;
     }
   }
