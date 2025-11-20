@@ -1,17 +1,50 @@
 ---
 import Section from "../Section.astro"
-
 import { work } from "@cv"
+
+// LÓGICA DE ORDENAMIENTO: Ordena los trabajos por año de finalización (Descendente)
+const sortedWork = [...work].sort((a, b) => {
+    // Función auxiliar para obtener el año final (maneja 'null' como el año actual)
+    const getEndYear = (dateString: string | null) => {
+        if (!dateString || dateString.toLowerCase() === 'actual' || dateString.toLowerCase() === 'present') {
+            // Usamos el año actual para que las experiencias 'actuales' aparezcan primero
+            return new Date().getFullYear(); 
+        }
+        // Usamos parseInt o new Date().getFullYear() si la fecha es completa
+        // Asegúrate de que tu JSON use formatos de fecha válidos si no solo es el año
+        return new Date(dateString).getFullYear();
+    };
+
+    const endDateA = getEndYear(a.endDate);
+    const endDateB = getEndYear(b.endDate);
+    
+    // 1. Criterio Principal: Ordenar por año de finalización (b - a = descendente)
+    if (endDateB !== endDateA) {
+        return endDateB - endDateA;
+    }
+    
+    // 2. Criterio Secundario: Si los años de fin son iguales, ordenar por año de inicio
+    const startDateA = new Date(a.startDate).getFullYear();
+    const startDateB = new Date(b.startDate).getFullYear();
+    
+    return startDateB - startDateA;
+});
+
+// Nota: El tipo 'endDate' en el CV JSON debe ser una fecha completa o una cadena como "2024" o "Actual"
 ---
 
 <Section title="Experiencia laboral">
   <ul>
     {
-      work.map(
-        ({ name, startDate, endDate, position, summary, highlights, url }) => {
+      sortedWork.map(
+        ({ name, startDate, endDate, position, summary, url }) => {
+          // Aseguramos que solo mostramos el año para que el formato sea limpio
           const startYear = new Date(startDate).getFullYear()
           const endYear =
             endDate != null ? new Date(endDate).getFullYear() : "Actual"
+            
+          // Si el endDate es inválido (ej: la cadena "Actual"), usamos la versión original
+          const displayEndYear = isNaN(endYear) ? (endDate?.toLowerCase() === 'present' ? 'Actual' : endDate) : endYear;
 
           return (
             <li>
@@ -36,7 +69,7 @@ import { work } from "@cv"
                     <time 
                       datetime={endDate}
                       data-title={endDate}>
-                        {endYear}
+                        {displayEndYear}
                     </time>
                   </div>
                 </header>
@@ -60,13 +93,17 @@ import { work } from "@cv"
     gap: 32px;
   }
 
+  /* --- APLICACIÓN DEL TEMA OSCURO --- */
+
   article h3 {
     font-weight: 500;
-    color: #111;
+    /* Antes: color: #111; */
+    color: var(--color-text); 
   }
 
   article a {
-    color: #111;
+    /* Antes: color: #111; */
+    color: var(--color-text); 
   }
 
   article a:hover {
@@ -74,7 +111,8 @@ import { work } from "@cv"
   }
 
   article h4 {
-    color: #222;
+    /* Antes: color: #222; */
+    color: var(--color-text); 
     font-weight: 400;
   }
 
@@ -86,11 +124,14 @@ import { work } from "@cv"
   }
 
   time {
-    color: #555;
+    /* Antes: color: #555; */
+    color: var(--color-text-secondary);
     font-size: 0.85rem;
     min-width: 102px;
     cursor: default;
   }
+  
+  /* ESTILOS DEL TOOLTIP (Se adaptan al tema oscuro) */
 
   [data-title]:hover:after {
     opacity: 1;
@@ -100,8 +141,9 @@ import { work } from "@cv"
 
   [data-title]:after {
     content: attr(data-title);
-    background-color: #333;
-    color: #fff;
+    /* Fondo y texto del tooltip usan variables oscuras */
+    background-color: var(--color-bg-hover); 
+    color: var(--color-text);
     font-size: .75rem;
     font-family: Menlo, Monaco, Lucida Console, "Courier New", monospace;;
     position: absolute;
@@ -111,7 +153,8 @@ import { work } from "@cv"
     white-space: nowrap;
     box-shadow: 1px 1px 1px #222222;
     opacity: 0;
-    border: 1px solid #111111;
+    /* Borde usa variable */
+    border: 1px solid var(--color-border);
     z-index: 99999;
     visibility: hidden;
     border-radius: 6px;
