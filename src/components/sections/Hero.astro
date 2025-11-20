@@ -35,14 +35,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
 ---
 <Section>
   <div class="container">
-    <div class="info">
-      <h1>{name}</h1>
-      <h2>{label}</h2>
-      {/* ... Tu span de localización y footers ... */}
-    </div>
-    <figure>
-      <img src={image} alt={name} />
-    </figure>
+    {/* ... contenido ... */}
   </div>
 </Section>
 
@@ -62,10 +55,10 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     padding-right: 32px;
   }
 
-  /* 🎯 REGRESA EL TAMAÑO DE FUENTE GRANDE PARA EL NOMBRE */
+  /* 🎯 APLICACIÓN DEFINITIVA DEL TAMAÑO GRANDE EN ESCRITORIO */
   h1 {
     font-size: 2rem; 
-    color: var(--color-text); /* Aseguramos que el color sea del tema */
+    color: var(--color-text);
   }
 
   h2 {
@@ -75,20 +68,19 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     text-wrap: balance;
   }
 
-  /* ... El resto de tus estilos (img, span, footer) ... */
+  /* ... El resto de tus estilos ... */
 
   @media (width <= 700px) {
     .container {
-      /* Mantiene la columna-inversa, pero añade un poco de espacio si es necesario */
       flex-direction: column-reverse;
-      gap: 1.5rem; /* Pequeño ajuste en el espaciado móvil */
+      gap: 1.5rem;
     }
 
     .info {
       justify-content: center;
       align-items: center;
       padding-right: 0;
-      /* 🎯 RE-CENTRA EL TEXTO EN MÓVIL */
+      /* 🎯 FORZAR CENTRADO EN MÓVIL (Como en la versión 1000678831.jpg) */
       text-align: center; 
     }
 
@@ -100,7 +92,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     }
 
     h1 {
-        /* Asegura que el nombre sea legible en móvil */
+        /* Tamaño legible en móvil */
         font-size: 1.8rem; 
     }
     
