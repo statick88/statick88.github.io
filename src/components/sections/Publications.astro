@@ -40,18 +40,18 @@ import { publications } from "@cv"
   }
   
   li {
-    list-style: none; /* Limpieza */
+    list-style: none;
     margin-bottom: 0;
   }
 
   article h3 {
-    font-weight: 600; /* Ligeramente más negrita para títulos */
-    /* 🎯 CORRECCIÓN TEMA OSCURO: Usar variable de texto principal */
+    font-weight: 600;
+    /* 🎯 CORRECCIÓN: Usar variable para el color de texto principal */
     color: var(--color-text); 
   }
   
   article p {
-    /* Color secundario para el editor (publisher) */
+    /* Usar variable para el color de texto secundario */
     color: var(--color-text-secondary);
     font-size: 0.9rem;
     margin-top: 4px;
@@ -65,7 +65,7 @@ import { publications } from "@cv"
   }
 
   time {
-    /* 🎯 CORRECCIÓN TEMA OSCURO: Usar variable de texto secundario */
+    /* 🎯 CORRECCIÓN: Usar variable para el color de texto secundario */
     color: var(--color-text-secondary);
     font-size: 0.85rem;
     min-width: 102px;
@@ -73,7 +73,7 @@ import { publications } from "@cv"
   }
 
   footer a {
-    /* 🎯 CORRECCIÓN TEMA OSCURO: Usar variable de acento */
+    /* 🎯 CORRECCIÓN: Usar variable para el color de acento (azul/enlaces) */
     color: var(--color-accent); 
     text-decoration: none;
     font-size: 0.9rem;
@@ -83,14 +83,13 @@ import { publications } from "@cv"
     text-decoration: underline;
   }
 
-  /* Media query movida fuera de header para mejor organización */
   @media (width <= 700px) {
     header {
         flex-direction: column;
         gap: 4px;
     }
     time {
-        text-align: left; /* Alineación del año a la izquierda en móvil */
+        text-align: left;
         min-width: auto;
     }
   }
