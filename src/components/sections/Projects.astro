@@ -1,166 +1,134 @@
 ---
-import GitHub from "@/icons/GitHub.astro"
 import Section from "../Section.astro"
-
 import { projects } from "@cv"
+
+// Componente para los chips de tecnología
+const Tag = ({ content }) => (
+  <span class="tag">
+    {content}
+  </span>
+)
 ---
 
 <Section title="Portafolio">
   <ul>
     {
       projects.map(
-        ({ url, description, highlights, name, isActive, github }) => {
-          return (
-            <li>
-              <article>
+        ({ title, description, link, github, tags }) => (
+          <li>
+            <article>
                 <header>
-                  <h3>
-                    <a href={url} target="_blank" title={`Ver el proyecto ${name}`}>
-                      {name}
+                    <a href={link} title={`Ver proyecto ${title}`} target="_blank" rel="noopener noreferrer">
+                        {title}
                     </a>
-                    {isActive && <span>•</span>}
-                    {github && (
-                      <a
-                        class="github-code-link"
-                        href={github}
-                        target="_blank"
-                        title={`Ver código fuente del proyecto ${name}`}
-                      >
-                        <GitHub />
-                      </a>
-                    )}
-                  </h3>
-                  <p>{description}</p>
+                    {
+                        github && (
+                            <a href={github} title="Ver en GitHub" target="_blank" rel="noopener noreferrer" class="github-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 19c-4.3 1.4 -4.3 -2.3 -4.3 -2.3s-.1 -.2 .1 -.4c.2 -.4 .6 -.7 .9 -.8c1.5 -1.4 1.5 -.7 2.1 1.7c.3 1.1 .9 2.1 2.1 2.1c.6 0 1.1 -.2 1.4 -.4c.1 -.9 .5 -1.7 1.4 -2.5c-3.5 -.2 -7.1 -1.7 -7.1 -7.5c0 -1.8 .6 -3.2 1.7 -4.4c-.1 -.2 -.4 -1.2 .1 -2.5c0 0 1.4 -.5 4.5 1.7c1.3 -.4 2.7 -.6 4.1 -.6c1.4 0 2.8 .2 4.1 .6c3.1 -2.2 4.5 -1.7 4.5 -1.7c.5 1.3 .2 2.3 .1 2.5c1.1 1.2 1.7 2.6 1.7 4.4c0 5.8 -3.6 7.3 -7.2 7.5c.6 .5 1.1 1.2 1.1 2.4v3.5"></path>
+                                </svg>
+                            </a>
+                        )
+                    }
                 </header>
-                <footer>
-                  {highlights.map((highlight) => {
-                    return <span>{highlight}</span>
-                  })}
-                </footer>
-              </article>
-            </li>
-          )
-        }
+                <p>{description}</p>
+                <div class="tags-container">
+                    {tags.map(tag => <Tag content={tag} />)}
+                </div>
+            </article>
+          </li>
+        )
       )
     }
   </ul>
 </Section>
 
 <style>
-  ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-inline: -16px;
-  }
-
-  article {
-    border-radius: 8px;
-    /* Antes: border: 1px solid #f2f2f2; */
-    /* USAR VARIABLE DE BORDE DEL TEMA */
-    border: 1px solid var(--color-border);
-    /* Antes: color: #fff (implícito por el fondo blanco) */
-    /* USAR VARIABLE DE FONDO LIGERAMENTE MÁS CLARO PARA EL BOX */
-    background: var(--color-bg-hover); 
-    gap: 16px;
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    height: 100%;
-    transition: all 0.3s ease;
-  }
-
-  article:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Oscurecer un poco más al hacer hover */
-    background: #232e4d; 
-  }
-  
-  article header {
-    flex: 1;
-  }
-
-  article h3 {
-    margin-bottom: 4px;
-  }
-
-  article a {
-    /* Antes: color: #111; */
-    /* USAR COLOR DE TEXTO PRINCIPAL */
-    color: var(--color-text);
-  }
-
-  article a:hover {
-    text-decoration: underline;
-  }
-
-  article p {
-    font-size: 0.75rem;
-    line-height: 1.2rem;
-    margin-bottom: 4px;
-    /* USAR COLOR DE TEXTO SECUNDARIO */
-    color: var(--color-text-secondary);
-  }
-
-  article h3 span {
-    color: rgb(0, 188, 47);
-    animation-name: flicker;
-    animation-duration: 3s;
-    animation-timing-function: ease-in;
-    animation-iteration-count: infinite;
-  }
-
-  footer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    font-size: 0.6rem;
-  }
-
-  footer span {
-    border-radius: 6px;
-    /* Antes: background: #eee; color: #444; */
-    /* AJUSTAR TAGS: FONDO OSCURO, TEXTO CLARO */
-    background: #3c4b69; /* Un azul intermedio oscuro */
-    color: var(--color-text); /* Texto principal para los tags */
-    font-size: 0.6rem;
-    font-weight: 500;
-    padding: 0.2rem 0.6rem;
-  }
-
-  .github-code-link {
-    margin-left: 5px;
-  }
-
-  @keyframes flicker {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.25;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @media (width <= 700px) {
+    /* Estructura principal */
     ul {
-      margin-inline: 0px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columnas en escritorio, 1 en móvil */
+        gap: 16px;
     }
 
+    /* Estilo de la tarjeta (article) */
     article {
-      border: none;
-      /* Antes: box-shadow: 0 1px 1px #f2f2f2; */
-      /* SOMBRA EN MODO OSCURO (sutil) */
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-      padding: 0 0 16px 0;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 16px;
+        background-color: var(--color-bg-tertiary); /* Fondo sutil para tarjetas */
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
-  }
+    
+    article:hover {
+        background-color: var(--color-bg-hover);
+        transform: translateY(-2px);
+    }
+    
+    /* Encabezado: Título y link de GitHub */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
 
-  @media print {
-    article h3 span {
-      animation-name: none;
+    header a:first-child {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--color-text); /* Título principal */
+        text-decoration: none;
     }
-  }
+    
+    header a.github-link {
+        display: flex;
+        align-items: center;
+        color: var(--color-text-secondary); /* Icono de GitHub */
+        opacity: 0.8;
+        transition: opacity 0.2s;
+    }
+
+    header a.github-link:hover {
+        opacity: 1;
+    }
+
+    /* Descripción */
+    article p {
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
+        flex-grow: 1; /* Para que ocupen todo el espacio disponible */
+        margin-top: 0;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+    
+    /* Contenedor de Tags */
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 4px; /* Espacio entre filas y columnas de chips */
+        margin-top: auto; /* Empuja los tags al final de la tarjeta */
+    }
+
+    /* Estilo del chip/tag individual */
+    .tag {
+        background-color: var(--color-bg-secondary);
+        color: var(--color-text-secondary);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 400;
+        border: 1px solid var(--color-border);
+        white-space: nowrap;
+    }
+    
+    @media (width <= 700px) {
+        ul {
+            grid-template-columns: 1fr; /* Una sola columna en móvil */
+        }
+    }
 </style>
