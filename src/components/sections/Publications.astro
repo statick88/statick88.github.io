@@ -38,10 +38,23 @@ import { publications } from "@cv"
     flex-direction: column;
     gap: 32px;
   }
+  
+  li {
+    list-style: none; /* Limpieza */
+    margin-bottom: 0;
+  }
 
   article h3 {
-    font-weight: 500;
-    color: #111;
+    font-weight: 600; /* Ligeramente más negrita para títulos */
+    /* 🎯 CORRECCIÓN TEMA OSCURO: Usar variable de texto principal */
+    color: var(--color-text); 
+  }
+  
+  article p {
+    /* Color secundario para el editor (publisher) */
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-top: 4px;
   }
 
   header {
@@ -52,24 +65,33 @@ import { publications } from "@cv"
   }
 
   time {
-    color: #555;
+    /* 🎯 CORRECCIÓN TEMA OSCURO: Usar variable de texto secundario */
+    color: var(--color-text-secondary);
     font-size: 0.85rem;
     min-width: 102px;
+    text-align: right;
   }
 
   footer a {
-    color: #0070f3;
+    /* 🎯 CORRECCIÓN TEMA OSCURO: Usar variable de acento */
+    color: var(--color-accent); 
     text-decoration: none;
+    font-size: 0.9rem;
   }
 
   footer a:hover {
     text-decoration: underline;
   }
 
+  /* Media query movida fuera de header para mejor organización */
   @media (width <= 700px) {
+    header {
+        flex-direction: column;
+        gap: 4px;
+    }
     time {
-      text-align: right;
+        text-align: left; /* Alineación del año a la izquierda en móvil */
+        min-width: auto;
     }
   }
 </style>
-
