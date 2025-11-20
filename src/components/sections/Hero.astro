@@ -8,14 +8,15 @@ import LinkedIn from "@/icons/LinkedIn.astro"
 import GitHub from "@/icons/GitHub.astro"
 import WorldMap from "@/icons/WorldMap.astro"
 
-// Importamos los nuevos iconos (Asegúrate de haber creado estos archivos en src/icons/)
+// Importamos los nuevos iconos (Asegúrate de tenerlos en src/icons/)
 import Duolingo from "@/icons/Duolingo.astro"
 import Chess from "@/icons/Chess.astro"
 import Game from "@/icons/Game.astro"
 
 import type { SocialIcon } from "@/types"
 
-const { name, label, image, location, profiles, phone, email } = basics
+// REMOVIDA LA IMPORTACIÓN DE 'image' DE basics
+const { name, label, location, profiles, phone, email } = basics 
 const { city, region } = location
 
 // Mapeamos las redes sociales a sus componentes de ícono
@@ -33,31 +34,91 @@ const linkedUrl = linkedInfo?.url
 
 const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
 ---
+
 <Section>
   <div class="container">
-    {/* ... contenido ... */}
-  </div>
+    <div class="info">
+      <h1>{name}</h1>
+      <h2>{label}</h2>
+      <span>
+        <WorldMap />
+        {city}, {region}
+      </span>
+      <footer class="print">
+        {printInfo}
+      </footer>
+      <footer class="no-print">
+        {
+          email && (
+            <a
+              href={`mailto:${email}`}
+              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Mail />
+            </a>
+          )
+        }
+        {
+          phone && (
+            <a
+              href={`tel:${phone}`}
+              title={`Llamar por teléfono a ${name} al número ${phone}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Phone />
+            </a>
+          )
+        }
+        {
+          profiles.map(({ network, url, username }) => {
+            const Icon = SOCIAL_ICONS[network]
+            
+            if (!Icon) return null
+
+            return (
+              <a
+                href={url}
+                title={`Visitar el perfil de ${name} en ${network}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon />
+              </a>
+            )
+          })
+        }
+      </footer>
+    </div>
+    </div>
 </Section>
 
 <style>
   .container {
+    /* Eliminamos justify-content: space-between ya que no hay foto */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Centramos el contenido restante */
     gap: 1rem;
+    padding-top: 2rem; /* Añadimos padding superior ya que la foto ya no está */
   }
 
   .info {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    padding-right: 32px;
+    /* Centramos el texto dentro del contenedor info */
+    text-align: center;
+    /* Ajustamos el padding ya que no hay foto al lado */
+    padding-right: 0;
   }
 
-  /* 🎯 APLICACIÓN DEFINITIVA DEL TAMAÑO GRANDE EN ESCRITORIO */
+  /* 🎯 TAMAÑO GRANDE Y COLOR DE TEMA PARA EL NOMBRE */
   h1 {
-    font-size: 2rem; 
+    font-size: 2rem;
     color: var(--color-text);
   }
 
@@ -68,36 +129,77 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     text-wrap: balance;
   }
 
-  /* ... El resto de tus estilos ... */
+  /* ELIMINADOS LOS ESTILOS DE IMG, YA QUE SE ELIMINÓ LA FOTO */
+  /* img { 
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      width: 128px;
+      border-radius: 16px;
+  } */
+
+  span {
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centramos el icono de ubicación */
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    letter-spacing: -0.05rem;
+  }
+
+  footer {
+    color: var(--color-text-secondary);
+    font-size: 0.65rem;
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    /* Centramos los íconos */
+    justify-content: center; 
+  }
+
+  footer a {
+    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    padding: 4px;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  footer a:hover {
+    background: var(--color-bg-hover);
+    border: 1px solid var(--color-border);
+  }
 
   @media (width <= 700px) {
     .container {
-      flex-direction: column-reverse;
-      gap: 1.5rem;
+      flex-direction: column; /* Ya no es column-reverse */
+      padding-top: 1rem;
     }
 
     .info {
       justify-content: center;
       align-items: center;
       padding-right: 0;
-      /* 🎯 FORZAR CENTRADO EN MÓVIL (Como en la versión 1000678831.jpg) */
-      text-align: center; 
+      text-align: center;
+    }
+    
+    h1 {
+        font-size: 1.8rem; 
     }
 
     figure {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-    }
-
-    h1 {
-        /* Tamaño legible en móvil */
-        font-size: 1.8rem; 
+      /* Eliminados los estilos de figura/foto en móvil */
+      display: none; 
     }
     
-    h2 {
-      text-wrap: balance;
+    span, footer {
+      /* Aseguramos que se centren */
+      justify-content: center;
     }
   }
 </style>
