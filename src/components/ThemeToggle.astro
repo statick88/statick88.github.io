@@ -16,14 +16,14 @@
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }
 
-  document.getElementById("theme-toggle").addEventListener("click", handleToggleClick);
+  document.getElementById("theme-toggle")?.addEventListener("click", handleToggleClick);
 </script>
 
 <style>
   button {
     position: fixed;
     top: 1rem;
-    right: 1rem;
+    right: 1rem; 
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     color: var(--color-text);
@@ -44,12 +44,14 @@
     background: var(--color-bg-hover);
   }
 
+  /* Lógica para mostrar/ocultar iconos según el tema */
   .sun-icon { display: none; }
   .moon-icon { display: block; }
 
+  /* :global() es necesario porque la clase 'dark' está en el tag <html> */
   :global(.dark) .sun-icon { display: block; }
   :global(.dark) .moon-icon { display: none; }
-
+  
   @media print {
     button { display: none; }
   }
