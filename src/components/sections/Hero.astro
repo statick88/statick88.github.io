@@ -33,64 +33,12 @@ const linkedUrl = linkedInfo?.url
 
 const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
 ---
-
 <Section>
   <div class="container">
     <div class="info">
       <h1>{name}</h1>
       <h2>{label}</h2>
-      <span>
-        <WorldMap />
-        {city}, {region}
-      </span>
-      <footer class="print">
-        {printInfo}
-      </footer>
-      <footer class="no-print">
-        {
-          email && (
-            <a
-              href={`mailto:${email}`}
-              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Mail />
-            </a>
-          )
-        }
-        {
-          phone && (
-            <a
-              href={`tel:${phone}`}
-              title={`Llamar por teléfono a ${name} al número ${phone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Phone />
-            </a>
-          )
-        }
-        {
-          profiles.map(({ network, url, username }) => {
-            const Icon = SOCIAL_ICONS[network]
-            
-            // Si no hay ícono mapeado, no renderizamos nada (para evitar el error de deploy)
-            if (!Icon) return null
-
-            return (
-              <a
-                href={url}
-                title={`Visitar el perfil de ${name} en ${network}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon />
-              </a>
-            )
-          })
-        }
-      </footer>
+      {/* ... Tu span de localización y footers ... */}
     </div>
     <figure>
       <img src={image} alt={name} />
@@ -114,86 +62,50 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     padding-right: 32px;
   }
 
+  /* 🎯 REGRESA EL TAMAÑO DE FUENTE GRANDE PARA EL NOMBRE */
   h1 {
-    font-size: 2rem;
+    font-size: 2rem; 
+    color: var(--color-text); /* Aseguramos que el color sea del tema */
   }
 
   h2 {
-    /* Usamos la variable para adaptarlo al tema */
     color: var(--color-text-secondary);
     font-weight: 500;
     font-size: 1.1rem;
     text-wrap: balance;
   }
 
-  img {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    width: 128px;
-    border-radius: 16px;
-  }
-
-  span {
-    color: var(--color-text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.85rem;
-    letter-spacing: -0.05rem;
-  }
-
-  footer {
-    color: var(--color-text-secondary);
-    font-size: 0.65rem;
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-  }
-
-  footer a {
-    color: var(--color-text-secondary);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    /* Usamos las variables para adaptarlo al tema */
-    border: 1px solid var(--color-border);
-    padding: 4px;
-    height: 32px;
-    width: 32px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-
-  footer a:hover {
-    /* Usamos las variables para adaptarlo al tema */
-    background: var(--color-bg-hover);
-    border: 1px solid var(--color-border);
-  }
+  /* ... El resto de tus estilos (img, span, footer) ... */
 
   @media (width <= 700px) {
     .container {
+      /* Mantiene la columna-inversa, pero añade un poco de espacio si es necesario */
       flex-direction: column-reverse;
+      gap: 1.5rem; /* Pequeño ajuste en el espaciado móvil */
     }
 
     .info {
       justify-content: center;
       align-items: center;
       padding-right: 0;
-      text-align: center;
+      /* 🎯 RE-CENTRA EL TEXTO EN MÓVIL */
+      text-align: center; 
     }
 
     figure {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0 auto;
     }
 
+    h1 {
+        /* Asegura que el nombre sea legible en móvil */
+        font-size: 1.8rem; 
+    }
+    
     h2 {
       text-wrap: balance;
-    }
-
-    figure {
-      margin: 0 auto;
     }
   }
 </style>
