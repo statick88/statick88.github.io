@@ -1,134 +1,205 @@
 ---
 import Section from "../Section.astro"
-import { projects } from "@cv"
+import { work } from "@cv"
 
-// Componente para los chips de tecnología
-const Tag = ({ content }) => (
-  <span class="tag">
-    {content}
-  </span>
-)
+// LÓGICA DE ORDENAMIENTO: Ordena los trabajos por año de finalización (Descendente)
+const sortedWork = [...work].sort((a, b) => {
+    // Función auxiliar para obtener el año final (maneja 'null', 'Actual', 'present' como el año actual)
+    const getEndYear = (dateString: string | null | undefined) => {
+        if (!dateString || dateString.toLowerCase() === 'actual' || dateString.toLowerCase() === 'present') {
+            // Usa el año actual para que las experiencias 'actuales' aparezcan al principio
+            return new Date().getFullYear(); 
+        }
+        // Devuelve el año de la fecha o 0 si hay error de parsing
+        const date = new Date(dateString);
+        return isNaN(date.getFullYear()) ? 0 : date.getFullYear();
+    };
+
+    const endDateA = getEndYear(a.endDate);
+    const endDateB = getEndYear(b.endDate);
+    
+    // 1. Criterio Principal: Ordenar por año de finalización (b - a = descendente)
+    if (endDateB !== endDateA) {
+        return endDateB - endDateA;
+    }
+    
+    // 2. Criterio Secundario: Si los años de fin son iguales, ordenar por año de inicio
+    const startDateA = new Date(a.startDate).getFullYear();
+    const startDateB = new Date(b.startDate).getFullYear();
+    
+    return startDateB - startDateA;
+});
 ---
 
-<Section title="Portafolio">
+<Section title="Experiencia laboral">
   <ul>
     {
-      projects.map(
-        ({ title, description, link, github, tags }) => (
-          <li>
-            <article>
+      sortedWork.map(
+        ({ name, startDate, endDate, position, summary, url }) => {
+          // 1. Obtiene el año de inicio
+          const startYear = new Date(startDate).getFullYear()
+
+          // 2. Determina el año de finalización a mostrar
+          let displayEndYear: string | number = "Actual";
+          let endYear: number | null = null;
+
+          if (endDate && endDate.toLowerCase() !== 'actual' && endDate.toLowerCase() !== 'present') {
+              const date = new Date(endDate);
+              if (!isNaN(date.getFullYear())) {
+                  endYear = date.getFullYear();
+                  displayEndYear = endYear;
+              } else {
+                  displayEndYear = endDate; // Si es inválido, muestra la cadena original (ej: "Actual")
+              }
+          }
+
+          // 3. LÓGICA DE CORRECCIÓN DE REDUNDANCIA: 
+          const isSameYear = endYear && startYear === endYear;
+
+          return (
+            <li>
+              <article>
                 <header>
-                    <a href={link} title={`Ver proyecto ${title}`} target="_blank" rel="noopener noreferrer">
-                        {title}
-                    </a>
-                    {
-                        github && (
-                            <a href={github} title="Ver en GitHub" target="_blank" rel="noopener noreferrer" class="github-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M9 19c-4.3 1.4 -4.3 -2.3 -4.3 -2.3s-.1 -.2 .1 -.4c.2 -.4 .6 -.7 .9 -.8c1.5 -1.4 1.5 -.7 2.1 1.7c.3 1.1 .9 2.1 2.1 2.1c.6 0 1.1 -.2 1.4 -.4c.1 -.9 .5 -1.7 1.4 -2.5c-3.5 -.2 -7.1 -1.7 -7.1 -7.5c0 -1.8 .6 -3.2 1.7 -4.4c-.1 -.2 -.4 -1.2 .1 -2.5c0 0 1.4 -.5 4.5 1.7c1.3 -.4 2.7 -.6 4.1 -.6c1.4 0 2.8 .2 4.1 .6c3.1 -2.2 4.5 -1.7 4.5 -1.7c.5 1.3 .2 2.3 .1 2.5c1.1 1.2 1.7 2.6 1.7 4.4c0 5.8 -3.6 7.3 -7.2 7.5c.6 .5 1.1 1.2 1.1 2.4v3.5"></path>
-                                </svg>
-                            </a>
-                        )
-                    }
+                  <div>
+                    <h3>
+                      <a href={url} title={`Ver ${name}`} target="_blank" rel="noopener noreferrer">
+                        {name}
+                      </a>
+                    </h3>
+                    <h4>{position}</h4>
+                  </div>
+
+                  <div>
+                    <time 
+                      datetime={startDate}
+                      data-title={startDate}>
+                        {startYear}
+                    </time>
+                    {/* MOSTRAMOS EL GUION Y EL AÑO FINAL SOLO SI NO SON EL MISMO AÑO */}
+                    { !isSameYear && " - " }
+                    { !isSameYear && (
+                        <time 
+                            datetime={endDate}
+                            data-title={endDate}>
+                            {displayEndYear}
+                        </time>
+                    )}
+                  </div>
                 </header>
-                <p>{description}</p>
-                <div class="tags-container">
-                    {tags.map(tag => <Tag content={tag} />)}
-                </div>
-            </article>
-          </li>
-        )
+
+                <footer>
+                  <p>{summary}</p>
+                </footer>
+              </article>
+            </li>
+          )
+        }
       )
     }
   </ul>
 </Section>
 
 <style>
-    /* Estructura principal */
-    ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columnas en escritorio, 1 en móvil */
-        gap: 16px;
-    }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  /* Aseguramos que el texto dentro del artículo use el color correcto */
+  article p {
+    color: var(--color-text-secondary); 
+    line-height: 1.4; 
+    margin-top: 8px; 
+  }
 
-    /* Estilo de la tarjeta (article) */
-    article {
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 16px;
-        background-color: var(--color-bg-tertiary); /* Fondo sutil para tarjetas */
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    
-    article:hover {
-        background-color: var(--color-bg-hover);
-        transform: translateY(-2px);
-    }
-    
-    /* Encabezado: Título y link de GitHub */
+  article h3 {
+    font-weight: 500;
+    color: var(--color-text); 
+  }
+
+  article a {
+    color: var(--color-text); 
+    text-decoration: none;
+  }
+
+  article a:hover {
+    text-decoration: underline;
+  }
+
+  article h4 {
+    color: var(--color-text); 
+    font-weight: 400;
+    font-size: 0.95rem;
+    margin-top: 2px; 
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px; 
+  }
+
+  header > div:first-child {
+    flex-shrink: 1; 
+  }
+  
+  header > div:last-child {
+    flex-shrink: 0; 
+    text-align: right;
+  }
+
+  time {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    white-space: nowrap; 
+    cursor: default;
+  }
+
+  /* ESTILOS DEL TOOLTIP */
+
+  [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease-in-out 0.5s;
+    visibility: visible;
+  }
+
+  [data-title]:after {
+    content: attr(data-title);
+    background-color: var(--color-bg-hover); 
+    color: var(--color-text);
+    font-size: .75rem;
+    font-family: Menlo, Monaco, Lucida Console, "Courier New", monospace;;
+    position: absolute;
+    padding: .2rem .5rem;
+    bottom: -1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
+    opacity: 0;
+    border: 1px solid var(--color-border);
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 6px;
+  }
+
+  [data-title] {
+    position: relative;
+  }
+
+  @media (width <= 700px) {
     header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 8px;
+        flex-direction: column;
+        align-items: flex-start; 
     }
-
-    header a:first-child {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--color-text); /* Título principal */
-        text-decoration: none;
+    header > div:last-child {
+        text-align: left; 
+        margin-top: 4px; 
     }
-    
-    header a.github-link {
-        display: flex;
-        align-items: center;
-        color: var(--color-text-secondary); /* Icono de GitHub */
-        opacity: 0.8;
-        transition: opacity 0.2s;
+    time {
+      min-width: auto;
     }
-
-    header a.github-link:hover {
-        opacity: 1;
-    }
-
-    /* Descripción */
-    article p {
-        color: var(--color-text-secondary);
-        font-size: 0.95rem;
-        flex-grow: 1; /* Para que ocupen todo el espacio disponible */
-        margin-top: 0;
-        margin-bottom: 12px;
-        line-height: 1.4;
-    }
-    
-    /* Contenedor de Tags */
-    .tags-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 4px; /* Espacio entre filas y columnas de chips */
-        margin-top: auto; /* Empuja los tags al final de la tarjeta */
-    }
-
-    /* Estilo del chip/tag individual */
-    .tag {
-        background-color: var(--color-bg-secondary);
-        color: var(--color-text-secondary);
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 400;
-        border: 1px solid var(--color-border);
-        white-space: nowrap;
-    }
-    
-    @media (width <= 700px) {
-        ul {
-            grid-template-columns: 1fr; /* Una sola columna en móvil */
-        }
-    }
+  }
 </style>
