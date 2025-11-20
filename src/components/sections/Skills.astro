@@ -69,7 +69,6 @@ const SKILLS_ICONS: Record<string, any> = {
 
 <style>
   ul {
-    /* CORRECCIÓN: Usar 'display: flex' asegura que la lista se muestre correctamente y respete el espacio de la sección. */
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
@@ -77,11 +76,12 @@ const SKILLS_ICONS: Record<string, any> = {
 
   li {
     align-items: center;
-    /* ESTILO UNIFICADO (Fondo oscuro de Projects.astro) */
-    background: #3c4b69; 
+    /* 🎯 CORRECCIÓN TEMA: Usamos el fondo de hover (var(--color-bg-hover)) como color base. 
+       Esto asegura que el fondo cambie correctamente entre temas (oscuro en modo oscuro, claro en modo claro). */
+    background: var(--color-bg-hover); 
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    /* Color de Texto: Usa la variable de texto principal para contraste */
+    /* Color de Texto: Se mantiene la variable principal, lo cual es correcto. */
     color: var(--color-text);
     display: flex;
     font-size: 0.8rem;
@@ -90,9 +90,12 @@ const SKILLS_ICONS: Record<string, any> = {
     padding: 0.2rem 0.6rem;
     transition: all 0.3s ease;
   }
-  
+
   li:hover {
-    background: var(--color-bg-hover); 
+    /* Mantenemos el hover, que hace el color aún más evidente */
+    /* Aquí podríamos usar #3c4b69 o un color más oscuro si lo deseas, 
+       pero mantener la variable es más seguro para ambos temas. */
+    background: var(--color-border); 
   }
 
   /* Asegura que el ícono tenga el mismo color que el texto del tema */
