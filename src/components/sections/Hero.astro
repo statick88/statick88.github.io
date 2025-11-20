@@ -97,22 +97,20 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
 
 <style>
   .container {
-    /* Eliminamos justify-content: space-between ya que no hay foto */
+    /* Centramos el único elemento (el bloque de texto) */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; /* Centramos el contenido restante */
+    justify-content: center; 
     gap: 1rem;
-    padding-top: 2rem; /* Añadimos padding superior ya que la foto ya no está */
+    padding-top: 2rem; 
   }
 
   .info {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    /* Centramos el texto dentro del contenedor info */
     text-align: center;
-    /* Ajustamos el padding ya que no hay foto al lado */
     padding-right: 0;
   }
 
@@ -129,19 +127,11 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     text-wrap: balance;
   }
 
-  /* ELIMINADOS LOS ESTILOS DE IMG, YA QUE SE ELIMINÓ LA FOTO */
-  /* img { 
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      width: 128px;
-      border-radius: 16px;
-  } */
-
   span {
     color: var(--color-text-secondary);
     display: flex;
     align-items: center;
-    justify-content: center; /* Centramos el icono de ubicación */
+    justify-content: center; 
     gap: 0.25rem;
     font-size: 0.85rem;
     letter-spacing: -0.05rem;
@@ -175,30 +165,24 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     border: 1px solid var(--color-border);
   }
 
+  /* MEDIA QUERY PARA MOVIL */
   @media (width <= 700px) {
     .container {
-      flex-direction: column; /* Ya no es column-reverse */
+      flex-direction: column;
       padding-top: 1rem;
     }
 
     .info {
       justify-content: center;
       align-items: center;
-      padding-right: 0;
       text-align: center;
     }
     
     h1 {
         font-size: 1.8rem; 
     }
-
-    figure {
-      /* Eliminados los estilos de figura/foto en móvil */
-      display: none; 
-    }
     
     span, footer {
-      /* Aseguramos que se centren */
       justify-content: center;
     }
   }
