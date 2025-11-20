@@ -63,7 +63,7 @@ const sortedWork = [...work].sort((a, b) => {
                 <header>
                   <div>
                     <h3>
-                      <a href={url} title={`Ver ${name}`} target="_blank">
+                      <a href={url} title={`Ver ${name}`} target="_blank" rel="noopener noreferrer">
                         {name}
                       </a>
                     </h3>
@@ -115,7 +115,9 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   article a {
+    /* 🎯 CORRECCIÓN: Usar el color principal para el nombre de la empresa/puesto */
     color: var(--color-text); 
+    text-decoration: none; /* Quitamos la decoración por defecto */
   }
 
   article a:hover {
@@ -123,8 +125,14 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   article h4 {
+    /* Usar color secundario o principal, pero el principal es común para la posición */
     color: var(--color-text); 
     font-weight: 400;
+  }
+  
+  article p {
+    /* Aseguramos que el resumen use el color de texto secundario para contraste con el título */
+    color: var(--color-text-secondary); 
   }
 
   header {
@@ -141,7 +149,7 @@ const sortedWork = [...work].sort((a, b) => {
     cursor: default;
   }
 
-  /* ESTILOS DEL TOOLTIP */
+  /* ESTILOS DEL TOOLTIP (Ya usan variables, lo cual es correcto) */
 
   [data-title]:hover:after {
     opacity: 1;
@@ -151,6 +159,7 @@ const sortedWork = [...work].sort((a, b) => {
 
   [data-title]:after {
     content: attr(data-title);
+    /* 🎯 CORRECCIÓN: El box-shadow debe adaptarse al tema claro/oscuro */
     background-color: var(--color-bg-hover); 
     color: var(--color-text);
     font-size: .75rem;
@@ -160,7 +169,8 @@ const sortedWork = [...work].sort((a, b) => {
     bottom: -1.4rem;
     left: 50%;
     white-space: nowrap;
-    box-shadow: 1px 1px 1px #222222;
+    /* Usamos una sombra sutil que se ve bien en ambos temas */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); 
     opacity: 0;
     border: 1px solid var(--color-border);
     z-index: 99999;
@@ -173,8 +183,17 @@ const sortedWork = [...work].sort((a, b) => {
   }
 
   @media (width <= 700px) {
+    /* Aseguramos que las fechas se muestren apiladas en móvil */
+    header {
+        flex-direction: column;
+        gap: 4px;
+    }
     time {
-      text-align: right;
+      text-align: left; /* Alineamos a la izquierda en móvil */
+      min-width: auto;
+    }
+    div:last-child {
+        margin-top: 4px;
     }
   }
 </style>
