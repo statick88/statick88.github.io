@@ -1,5 +1,7 @@
 ---
 import { basics } from "@cv"
+// Importamos el nuevo componente
+import ThemeToggle from "@/components/ThemeToggle.astro"
 
 interface Props {
   title: string
@@ -32,13 +34,49 @@ const { image, summary, url } = basics
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={summary} />
     <meta name="twitter:image" content="" />
+
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+    
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   </head>
   <body>
     <slot />
+    <ThemeToggle />
   </body>
 </html>
 
 <style is:global>
+  /* Definimos las variables de color para ambos temas */
+  :root {
+    --color-bg: #fff;
+    --color-bg-hover: #f4f4f4;
+    --color-text: #111;
+    --color-text-secondary: #666;
+    --color-border: #eee;
+  }
+
+  html.dark {
+    --color-bg: #0a0a0a;
+    --color-bg-hover: #1f1f1f;
+    --color-text: #ededed;
+    --color-text-secondary: #a1a1a1;
+    --color-border: #333;
+  }
+
   html {
     font-family:
       Menlo,
@@ -47,8 +85,11 @@ const { image, summary, url } = basics
       "Courier New",
       Courier,
       monospace;
-    background: #fff;
+    /* Usamos la variable en lugar del color fijo */
+    background: var(--color-bg);
+    color: var(--color-text);
     letter-spacing: -0.025rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   body,
@@ -78,6 +119,7 @@ const { image, summary, url } = basics
   h3,
   h4 {
     margin: 0;
+    color: var(--color-text); /* Asegura que los títulos usen la variable */
     font-family:
       system-ui,
       -apple-system,
@@ -93,7 +135,7 @@ const { image, summary, url } = basics
   }
 
   p {
-    color: #666;
+    color: var(--color-text-secondary); /* Usamos la variable */
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
@@ -105,6 +147,18 @@ const { image, summary, url } = basics
   }
 
   @media print {
+    /* Forzamos modo claro al imprimir */
+    :root {
+      --color-bg: #fff !important;
+      --color-text: #000 !important;
+      --color-text-secondary: #555 !important;
+    }
+    
+    html {
+      background: #fff !important;
+      color: #000 !important;
+    }
+
     .no-print {
       display: none !important;
     }
