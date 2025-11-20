@@ -15,22 +15,37 @@
       "region": "Ecuador"
     },
     "profiles": [
-      {
-        "network": "LinkedIn",
-        "username": "Diego Saavedra",
-        "url": "https://www.linkedin.com/in/diego-saavedra-developer/"
-      },
-      {
-        "network": "X",
-        "username": "statick_ds",
-        "url": "https://x.com/statick_ds"
-      },
-      {
-        "network": "GitHub",
-        "username": "statick88",
-        "url": "https://github.com/statick88"
-      }
-    ]
+  {
+    "network": "LinkedIn",
+    "username": "Diego Saavedra",
+    "url": "https://www.linkedin.com/in/diego-saavedra-developer/"
+  },
+  {
+    "network": "X",
+    "username": "statick_ds",
+    "url": "https://x.com/statick_ds"
+  },
+  {
+    "network": "GitHub",
+    "username": "statick88",
+    "url": "https://github.com/statick88"
+  },
+  {
+    "network": "Duolingo",
+    "username": "statick_ds",
+    "url": "https://www.duolingo.com/profile/statick_ds"
+  },
+  {
+    "network": "Chess Universe",
+    "username": "Statick",
+    "url": "https://chess-universe.sng.link/Dqw52/j86j/uusd"
+  },
+  {
+    "network": "Chess.com",
+    "username": "Diego Saavedra",
+    "url": "https://link.chess.com/friend/yHjp4u"
+  }
+]
   },
   "work": [
     {
