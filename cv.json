@@ -29,6 +29,21 @@
         "network": "GitHub",
         "username": "statick88",
         "url": "https://github.com/statick88"
+      },
+      {
+        "network": "Duolingo",
+        "username": "statick_ds",
+        "url": "https://www.duolingo.com/profile/statick_ds"
+      },
+      {
+        "network": "Chess Universe",
+        "username": "Statick",
+        "url": "https://chess-universe.sng.link/Dqw52/j86j/uusd"
+      },
+      {
+        "network": "Chess.com",
+        "username": "Diego Saavedra",
+        "url": "https://link.chess.com/friend/yHjp4u"
       }
     ]
   },
@@ -40,7 +55,9 @@
       "startDate": "2024-09-01",
       "endDate": "2024-12-31",
       "summary": "Facilitador de Bootcamps de Desarrollo Web Fullstack, Data Science y Movil.",
-      "highlights": ["Started the company"]
+      "highlights": [
+        "Started the company"
+      ]
     },
     {
       "name": "Universidad de Zulia en Venezuela",
@@ -49,7 +66,9 @@
       "startDate": "2024-10-19",
       "endDate": "2024-12-15",
       "summary": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación.",
-      "highlights": ["Started the company"]
+      "highlights": [
+        "Started the company"
+      ]
     },
     {
       "name": "Universidad de las Fuerzas Armadas ESPE",
@@ -58,7 +77,9 @@
       "startDate": "2023-04-26",
       "endDate": "2024-10-31",
       "summary": "Docente del Departamento de Ciencias de la Computación en las carreras de Ingeniería en Desarrollo de Software y Tecnologías de la Computación.",
-      "highlights": ["Started the company"]
+      "highlights": [
+        "Started the company"
+      ]
     },
     {
       "name": "Abacom",
@@ -67,7 +88,9 @@
       "startDate": "2022-10-31",
       "endDate": "2024-12-31",
       "summary": "Facilitador de cursos de Desarrollo Web Fullstack.",
-      "highlights": ["Started the company"]
+      "highlights": [
+        "Started the company"
+      ]
     },
     {
       "name": "Universidad Internacional del Ecuador",
@@ -76,7 +99,9 @@
       "startDate": "2022-10-31",
       "endDate": "2022-12-31",
       "summary": "Docente de la carrera de Tecnologías de la Información y Comunicación.",
-      "highlights": ["Started the company"]
+      "highlights": [
+        "Started the company"
+      ]
     },
     {
       "name": "Instituto Superior Tecnológico Juan Montalvo",
@@ -85,7 +110,9 @@
       "startDate": "2019-10-31",
       "endDate": "2022-10-31",
       "summary": "Docente de la carrera de Tecnología en Mantenimiento de Computadoras.",
-      "highlights": ["Started the company"]
+      "highlights": [
+        "Started the company"
+      ]
     }
   ],
   "volunteer": [
@@ -96,7 +123,9 @@
       "startDate": "2012-01-01",
       "endDate": "2013-01-01",
       "summary": "Description…",
-      "highlights": ["Awarded 'Volunteer of the Month'"]
+      "highlights": [
+        "Awarded 'Volunteer of the Month'"
+      ]
     }
   ],
   "education": [
@@ -108,7 +137,9 @@
       "startDate": "2018-09-01",
       "endDate": "2021-02-28",
       "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
+      "courses": [
+        "DB1101 - Basic SQL"
+      ]
     },
     {
       "institution": "Universidad Nacional de Loja",
@@ -118,7 +149,9 @@
       "startDate": "2006-09-01",
       "endDate": "2011-02-28",
       "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
+      "courses": [
+        "DB1101 - Basic SQL"
+      ]
     }
   ],
   "awards": [
@@ -150,17 +183,29 @@
     {
       "name": "HTML",
       "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend"
+      ]
     },
     {
       "name": "CSS",
       "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Diseño Responsive"
+      ]
     },
     {
       "name": "JavaScript",
       "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
     },
     {
       "name": "Tailwind",
@@ -185,12 +230,22 @@
     {
       "name": "Node",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "JavaScript",
+        "Servidor"
+      ]
     },
     {
       "name": "React",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Frontend", "JavaScript Library", "UI"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
     },
     {
       "name": "Next.js",
@@ -236,22 +291,40 @@
     {
       "name": "Django",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Python Framework"]
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Python Framework"
+      ]
     },
     {
       "name": "FastAPI",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Python Framework", "API REST"]
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Python Framework",
+        "API REST"
+      ]
     },
     {
       "name": "Ruby",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Ruby on Rails"]
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Ruby on Rails"
+      ]
     },
     {
       "name": "Docker",
       "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Contenedores", "DevOps"]
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Contenedores",
+        "DevOps"
+      ]
     },
     {
       "name": "Kubernetes",
@@ -266,7 +339,11 @@
     {
       "name": "Git",
       "level": "Avanzado",
-      "keywords": ["Control de Versiones", "Colaboración", "Código Fuente"]
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente"
+      ]
     },
     {
       "name": "GitHub",
@@ -303,7 +380,10 @@
   "interests": [
     {
       "name": "Wildlife",
-      "keywords": ["Ferrets", "Unicorns"]
+      "keywords": [
+        "Ferrets",
+        "Unicorns"
+      ]
     }
   ],
   "references": [
@@ -346,7 +426,6 @@
       "url": "https://statick88.github.io/course_of_django_and_react",
       "github": "https://statick88.github.io/course_of_django_and_react"
     },
-
     {
       "name": "Creador del ebook de Fast API",
       "isActive": true,
