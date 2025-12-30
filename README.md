@@ -74,21 +74,41 @@ corepack enable
 pnpm install
 ```
 
-### 2. Configuración de Firebase
+### 2. Configuración de Variables de Entorno
 
-Este proyecto incluye un sistema de administración para gestionar capacitaciones y certificaciones. Para usarlo:
+Este proyecto incluye un sistema de administración para gestionar capacitaciones y certificaciones. Para configurarlo:
 
-1. **Crear proyecto en Firebase Console**
+1. **Crear archivo `.env`**
+   ```bash
+   # Copia el archivo de ejemplo
+   cp .env.example .env
+   
+   # Edita el archivo .env con tus credenciales de Firebase
+   ```
+   
+2. **Configurar credenciales de Firebase**
+   ```bash
+   # Variables requeridas en .env
+   PUBLIC_FIREBASE_API_KEY=tu_api_key
+   PUBLIC_FIREBASE_AUTH_DOMAIN=tu_project_id.firebaseapp.com
+   PUBLIC_FIREBASE_PROJECT_ID=tu_project_id
+   PUBLIC_FIREBASE_STORAGE_BUCKET=tu_project_id.appspot.com
+   PUBLIC_FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
+   PUBLIC_FIREBASE_APP_ID=tu_app_id
+   PUBLIC_FIREBASE_MEASUREMENT_ID=tu_measurement_id
+   ```
+
+3. **Configurar Firebase Console**
    - Ve a [Firebase Console](https://console.firebase.google.com/)
-   - Crea un nuevo proyecto o selecciona uno existente
-
-2. **Configurar Authentication**
-   - Habilita el método de autenticación "Email/Password"
-   - Agrega al menos un usuario administrador
-
-3. **Configurar Firestore Database**
+   - Crea un nuevo proyecto o usa uno existente
+   
+4. **Configurar Authentication**
+   - Habilita el método "Email/Password"
+   - Crea al menos un usuario administrador
+   
+5. **Configurar Firestore Database**
    - Crea una base de datos Firestore
-   - En modo de producción, reglas de seguridad:
+   - En modo de producción, agrega estas reglas de seguridad:
    ```javascript
    rules_version = '2';
    service cloud.firestore {
@@ -100,10 +120,10 @@ Este proyecto incluye un sistema de administración para gestionar capacitacione
      }
    }
    ```
-
-4. **Configurar Storage**
+   
+6. **Configurar Storage**
    - Habilita Firebase Storage
-   - Reglas de seguridad:
+   - Agrega estas reglas de seguridad:
    ```javascript
    rules_version = '2';
    service firebase.storage {
@@ -116,26 +136,45 @@ Este proyecto incluye un sistema de administración para gestionar capacitacione
    }
    ```
 
-5. **Actualizar archivo `src/firebase.js`**
-   ```javascript
-   const firebaseConfig = {
-     apiKey: "TU_API_KEY",
-     authDomain: "TU_PROJECT_ID.firebaseapp.com",
-     projectId: "TU_PROJECT_ID",
-     storageBucket: "TU_PROJECT_ID.appspot.com",
-     messagingSenderId: "TU_SENDER_ID",
-     appId: "TU_APP_ID"
-   };
-   ```
+### 3. Cómo Agregar Certificados
 
-### 3. Uso del Sistema de Administración
+Una vez configurado Firebase, puedes agregar tus certificados al portafolio:
 
-- Accede a `/admin/login` para iniciar sesión
-- En el dashboard (`/admin/dashboard`) puedes:
-  - Subir nuevos certificados en PDF
-  - Verificar capacitaciones
-  - Eliminar certificados
-- Las capacitaciones verificadas aparecerán automáticamente en la sección de capacitaciones del portafolio
+#### **3.1. Acceso al Panel de Administración**
+1. Inicia sesión en `/admin/login` con tus credenciales de administrador
+2. Serás redirigido automáticamente al dashboard en `/admin/dashboard`
+
+#### **3.2. Subir Nuevo Certificado**
+En el panel de administración:
+1. **Título**: Nombre del curso o certificación (ej: "Certificación AWS Cloud Practitioner")
+2. **Fecha de obtención**: Cuándo recibiste el certificado
+3. **Descripción**: Breve descripción del curso (opcional)
+4. **Archivo PDF**: Sube el certificado en formato PDF (máximo 10MB)
+5. **Institución**: Nombre de la organización que emitió el certificado (ej: "AWS", "Coursera")
+
+#### **3.3. Proceso de Verificación**
+- Los certificados subidos aparecen como **"Pendientes de verificación"**
+- Solo el administrador puede verificar los certificados válidos
+- Los certificados **verificados** aparecen automáticamente en el portafolio público
+- Los certificados **no verificados** solo son visibles en el panel admin
+
+#### **3.4. Gestión de Certificados**
+En el dashboard puedes:
+- **Verificar**: Marcar un certificado como válido para mostrarlo públicamente
+- **Eliminar**: Borrar certificados (se elimina el PDF y los metadatos)
+- **Descargar**: Ver el PDF del certificado en una nueva pestaña
+
+#### **3.5. Visualización en el Portafolio**
+- Los certificados verificados aparecen en la sección "Capacitaciones" del portafolio
+- Se ordenan por fecha (más recientes primero)
+- Cada tarjeta muestra: título, institución, fecha y enlace al PDF
+- Solo los usuarios autenticados pueden acceder al panel de administración
+
+#### **3.6. Recomendaciones**
+- **Formato PDF**: Asegúrate de que los certificados sean PDFs claros y legibles
+- **Tamaño**: Mantén los archivos por debajo de 10MB para mejor rendimiento
+- **Consistencia**: Usa nombres descriptivos para identificar fácilmente cada certificado
+- **Seguridad**: Solo verifica certificados que puedas confirmar como auténticos
 
 ### 4. Testing
 

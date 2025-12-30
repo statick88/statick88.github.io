@@ -3,15 +3,15 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Configuración de Firebase para el portfolio
+// Configuración de Firebase desde variables de entorno
 const firebaseConfig = {
-  apiKey: "AIzaSyAMbcKbMMAvASsqgrTBWDLgsHpNS_EV4BI",
-  authDomain: "curriculum-4accf.firebaseapp.com",
-  projectId: "curriculum-4accf",
-  storageBucket: "curriculum-4accf.firebasestorage.app",
-  messagingSenderId: "706348410038",
-  appId: "1:706348410038:web:ba65b73b1778b82fafb217",
-  measurementId: "G-ERTFC8RLNR"
+  apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
+  authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
+  measurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 // Inicializar Firebase

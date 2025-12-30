@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { validatePDFFile, validateFileSize, sanitizeInput, createRateLimiter } from './admin-helpers.js';
 
 // Mock de Firebase para testing
@@ -196,11 +196,15 @@ describe('Integration Tests', () => {
     });
     
     // Mock file upload
-    mockFirebase.storage().ref().put.mockResolvedValue({});
-    mockFirebase.storage().ref().getDownloadURL.mockResolvedValue('https://example.com/pdf.pdf');
+    mockFirebase.storage().ref.mockReturnValue({
+      put: vi.fn().mockResolvedValue({}),
+      getDownloadURL: vi.fn().mockResolvedValue('https://example.com/pdf.pdf')
+    });
     
     // Mock database save
-    mockFirebase.firestore().collection().add.mockResolvedValue({ id: '123' });
+    mockFirebase.firestore().collection.mockReturnValue({
+      add: vi.fn().mockResolvedValue({ id: '123' })
+    });
     
     const formData = {
       title: 'Integration Test Training',

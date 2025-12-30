@@ -1,17 +1,17 @@
 // Helper functions para testing
-function validatePDFFile(file) {
+export function validatePDFFile(file) {
   return file.type === 'application/pdf';
 }
 
-function validateFileSize(file, maxSize) {
+export function validateFileSize(file, maxSize) {
   return file.size <= maxSize;
 }
 
-function sanitizeInput(input) {
+export function sanitizeInput(input) {
   return input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
 }
 
-function createRateLimiter(maxRequests, windowMs) {
+export function createRateLimiter(maxRequests, windowMs) {
   const requests = [];
   
   return {
@@ -32,35 +32,4 @@ function createRateLimiter(maxRequests, windowMs) {
       return true;
     }
   };
-}
-
-async function signInWithEmailAndPassword(auth, email, password) {
-  return auth.signInWithEmailAndPassword(email, password);
-}
-
-async function signOut(auth) {
-  return auth.signOut();
-}
-
-async function addTraining(training, file) {
-  // Mock implementation
-  return { id: '123', ...training };
-}
-
-async function uploadTraining(formData) {
-  // Mock implementation
-  return { success: true, id: '123' };
-}
-
-// Component mock
-function TrainingComponent({ trainings }) {
-  // Mock component implementation
-  return {
-    getByText: (text) => ({ textContent: text }),
-    queryByText: (text) => text === 'Test Training' ? { textContent: text } : null
-  };
-}
-
-function render(component, props) {
-  return component(props);
 }
