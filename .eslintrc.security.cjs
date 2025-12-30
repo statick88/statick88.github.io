@@ -70,7 +70,7 @@ module.exports = [
     }
   },
   {
-    files: ['**/*.astro', '**/*.ts', '**/*.d.ts', '**/tests/**/*.js'],
+    files: ['**/*.astro', '**/*.ts', '**/*.d.ts', 'src/tests/security.test.js', 'src/tests/services.test.js'],
     languageOptions: {
       parserOptions: {
         ecmaVersion: 2022,
