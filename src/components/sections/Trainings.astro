@@ -1,0 +1,240 @@
+---
+// Componente para mostrar capacitaciones certificadas en el portafolio
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
+import { db } from "@/firebase.js";
+
+// Obtener capacitaciones verificadas de Firebase
+async function getVerifiedTrainings() {
+  try {
+    const trainingsQuery = query(
+      collection(db, 'trainings'),
+      where('verified', '==', true),
+      orderBy('date', 'desc')
+    );
+    
+    const querySnapshot = await getDocs(trainingsQuery);
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (error) {
+    console.error('Error al obtener capacitaciones:', error);
+    return [];
+  }
+}
+
+const trainings = await getVerifiedTrainings();
+---
+
+<section id="trainings" class="section">
+  <div class="section-header">
+    <h2 class="section-title">Capacitaciones</h2>
+    <p class="section-subtitle">Certificaciones y formación continua</p>
+  </div>
+  
+  {trainings.length === 0 ? (
+    <div class="no-trainings">
+      <p>No hay capacitaciones verificadas disponibles.</p>
+    </div>
+  ) : (
+    <div class="trainings-grid">
+      {trainings.map(training => (
+        <article class="training-card">
+          <div class="training-content">
+            <h3 class="training-title">{training.title}</h3>
+            <div class="training-meta">
+              <span class="training-institution">{training.institution}</span>
+              <span class="training-date">
+                {new Date(training.date.toDate ? training.date.toDate() : training.date).toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: 'long'
+                })}
+              </span>
+            </div>
+            {training.description && (
+              <p class="training-description">{training.description}</p>
+            )}
+            <a 
+              href={training.pdfUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="training-link"
+            >
+              <span>Ver certificado</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="training-status">
+            <span class="verified-badge">✓ Verificado</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  /* Contenedor principal de la sección */
+  .section {
+    margin-bottom: 3rem;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+  }
+  
+  /* Mensaje cuando no hay capacitaciones */
+  .no-trainings {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: var(--color-bg-hover);
+    border-radius: 8px;
+    color: var(--color-text-secondary);
+  }
+  
+  /* Grid de capacitaciones */
+  .trainings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  /* Tarjeta de capacitación */
+  .training-card {
+    background: var(--color-bg-hover);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .training-card:hover {
+    transform: translateY(-2px);
+    border-color: #007acc;
+  }
+  
+  .training-content {
+    margin-bottom: 1rem;
+  }
+  
+  .training-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  
+  .training-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .training-institution {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .training-date {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+  }
+  
+  .training-description {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .training-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #007acc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .training-link:hover {
+    color: #005a9e;
+    text-decoration: underline;
+  }
+  
+  .training-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .verified-badge {
+    background: #28a745;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  
+  /* Responsive */
+  @media (width <= 768px) {
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .trainings-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .training-card {
+      padding: 1rem;
+    }
+    
+    .training-status {
+      position: static;
+      margin-top: 1rem;
+      text-align: right;
+    }
+  }
+  
+  @media print {
+    .training-link {
+      display: none;
+    }
+    
+    .verified-badge {
+      background: #28a745;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>

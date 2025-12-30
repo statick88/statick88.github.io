@@ -1,0 +1,230 @@
+---
+// Página de login para administrador
+import Layout from "@/layouts/Layout.astro"
+
+
+interface Props {
+  error?: string
+}
+
+const { error } = Astro.props
+---
+
+<Layout title="Administración - Login">
+  <div class="login-container">
+    <div class="login-card">
+      <h1 class="login-title">Panel de Administración</h1>
+      <p class="login-subtitle">Accede para gestionar capacitaciones</p>
+      
+      {error && (
+        <div class="error-message">
+          {error}
+        </div>
+      )}
+      
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            autocomplete="email"
+            placeholder="admin@ejemplo.com"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            required 
+            autocomplete="current-password"
+            placeholder="Tu contraseña"
+          />
+        </div>
+        
+        <button type="submit" class="login-btn" disabled>
+          <span class="btn-text">Iniciar sesión</span>
+          <span class="btn-loading" style="display: none;">Procesando...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Gestión del formulario de login con Firebase Auth
+  import { signInWithEmailAndPassword } from "firebase/auth";
+  import { auth } from "@/firebase.js";
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('login-form') as HTMLFormElement;
+    const submitBtn = form.querySelector('.login-btn') as HTMLButtonElement;
+    const btnText = form.querySelector('.btn-text') as HTMLElement;
+    const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
+    
+    // Verificar si ya está autenticado
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        window.location.href = '/admin/dashboard';
+      }
+    });
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+      const password = (form.elements.namedItem('password') as HTMLInputElement).value;
+      
+      // Estado de carga
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        // Redirección automática al dashboard
+        window.location.href = '/admin/dashboard';
+      } catch (error: any) {
+        console.error('Error de autenticación:', error);
+        
+        // Mostrar mensaje de error específico
+        let errorMessage = 'Error al iniciar sesión';
+        switch (error.code) {
+          case 'auth/user-not-found':
+            errorMessage = 'Usuario no encontrado';
+            break;
+          case 'auth/wrong-password':
+            errorMessage = 'Contraseña incorrecta';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'Correo electrónico inválido';
+            break;
+          case 'auth/user-disabled':
+            errorMessage = 'Usuario deshabilitado';
+            break;
+          case 'auth/too-many-requests':
+            errorMessage = 'Demasiados intentos. Inténtalo más tarde';
+            break;
+        }
+        
+        // Recargar página con error
+        window.location.href = `/admin/login?error=${encodeURIComponent(errorMessage)}`;
+      } finally {
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Estilos del contenedor principal */
+  .login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--color-bg);
+  }
+  
+  /* Tarjeta de login */
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Títulos */
+  .login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    text-align: center;
+  }
+  
+  .login-subtitle {
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  /* Mensaje de error */
+  .error-message {
+    background: #fee;
+    color: #c33;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #fcc;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Formulario */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: 0.9rem;
+  }
+  
+  .form-group input {
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+  }
+  
+  /* Botón de login */
+  .login-btn {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
+  }
+  
+  .login-btn:hover:not(:disabled) {
+    background: #005a9e;
+  }
+  
+  .login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+</style>

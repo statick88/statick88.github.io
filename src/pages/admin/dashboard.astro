@@ -1,0 +1,711 @@
+---
+// Dashboard de administración para gestión de capacitaciones
+import Layout from "@/layouts/Layout.astro"
+
+
+// Verificar autenticación del lado del servidor (simplificado para demostración)
+// En producción, esto debería verificar cookies/tokens válidos
+---
+
+<Layout title="Administración - Dashboard">
+  <div class="admin-container">
+    <header class="admin-header">
+      <h1 class="admin-title">Panel de Administración</h1>
+      <div class="admin-actions">
+        <button id="logout-btn" class="logout-btn">Cerrar sesión</button>
+      </div>
+    </header>
+    
+    <main class="admin-main">
+      <!-- Sección de gestión de capacitaciones -->
+      <section class="admin-section">
+        <h2 class="section-title">Gestión de Capacitaciones</h2>
+        
+        <!-- Formulario para subir nueva capacitación -->
+        <div class="upload-card">
+          <h3 class="card-title">Subir Nueva Capacitación</h3>
+          
+          <form id="training-form" class="training-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="title">Título de la capacitación *</label>
+                <input 
+                  type="text" 
+                  id="title" 
+                  name="title" 
+                  required
+                  placeholder="Ej: Certificación en Seguridad Cloud"
+                />
+              </div>
+              
+              <div class="form-group">
+                <label for="date">Fecha de obtención *</label>
+                <input 
+                  type="date" 
+                  id="date" 
+                  name="date" 
+                  required
+                />
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="description">Descripción</label>
+              <textarea 
+                id="description" 
+                name="description" 
+                rows="3"
+                placeholder="Descripción breve de la capacitación..."
+              ></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="pdf-file">Archivo PDF *</label>
+              <input 
+                type="file" 
+                id="pdf-file" 
+                name="pdfFile" 
+                accept=".pdf"
+                required
+              />
+              <small>Solo se permiten archivos PDF (máximo 10MB)</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="institution">Institución emisora *</label>
+              <input 
+                type="text" 
+                id="institution" 
+                name="institution" 
+                required
+                placeholder="Ej: AWS, Coursera, etc."
+              />
+            </div>
+            
+            <button type="submit" class="submit-btn" disabled>
+              <span class="btn-text">Subir Capacitación</span>
+              <span class="btn-loading" style="display: none;">Procesando...</span>
+            </button>
+          </form>
+        </div>
+        
+        <!-- Lista de capacitaciones existentes -->
+        <div class="trainings-list">
+          <h3 class="card-title">Capacitaciones Existentes</h3>
+          <div id="trainings-container" class="trainings-grid">
+            <!-- Las capacitaciones se cargarán dinámicamente -->
+            <div class="loading-message">Cargando capacitaciones...</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  // Gestión del dashboard de administración
+  import { 
+    signOut, 
+    onAuthStateChanged 
+  } from "firebase/auth";
+  import { 
+    collection, 
+    addDoc, 
+    getDocs, 
+    deleteDoc, 
+    doc,
+    updateDoc,
+    query,
+    orderBy 
+  } from "firebase/firestore";
+  import { 
+    ref, 
+    uploadBytes, 
+    getDownloadURL,
+    deleteObject 
+  } from "firebase/storage";
+  import { auth, db, storage } from "@/firebase.js";
+  
+  // Estado de la aplicación
+  let currentTrainingDocs: any[] = [];
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Verificar autenticación
+    await checkAuth();
+    
+    // Configurar event listeners
+    setupEventListeners();
+    
+    // Cargar capacitaciones existentes
+    await loadTrainings();
+  });
+  
+  // Verificar si el usuario está autenticado
+  async function checkAuth() {
+    return new Promise((resolve, reject) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        unsubscribe();
+        if (!user) {
+          window.location.href = '/admin/login';
+          reject(new Error('Usuario no autenticado'));
+        } else {
+          resolve(user);
+        }
+      });
+    });
+  }
+  
+  // Configurar event listeners
+  function setupEventListeners() {
+    // Logout
+    document.getElementById('logout-btn')?.addEventListener('click', async () => {
+      try {
+        await signOut(auth);
+        window.location.href = '/admin/login';
+      } catch (error) {
+        console.error('Error al cerrar sesión:', error);
+        alert('Error al cerrar sesión');
+      }
+    });
+    
+    // Formulario de capacitación
+    const form = document.getElementById('training-form') as HTMLFormElement;
+    form.addEventListener('submit', handleTrainingSubmit);
+    
+    // Validación del formulario
+    const fileInput = document.getElementById('pdf-file') as HTMLInputElement;
+    fileInput.addEventListener('change', validateForm);
+    
+    // Validar otros campos
+    const inputs = form.querySelectorAll('input[type="text"], input[type="date"], textarea');
+    inputs.forEach(input => {
+      input.addEventListener('input', validateForm);
+    });
+  }
+  
+  // Validar formulario
+  function validateForm() {
+    const form = document.getElementById('training-form') as HTMLFormElement;
+    const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+    const title = (form.elements.namedItem('title') as HTMLInputElement).value.trim();
+    const date = (form.elements.namedItem('date') as HTMLInputElement).value;
+    const institution = (form.elements.namedItem('institution') as HTMLInputElement).value.trim();
+    const fileInput = (form.elements.namedItem('pdfFile') as HTMLInputElement);
+    const file = fileInput.files?.[0];
+    
+    const isValid = title && date && institution && file && file.type === 'application/pdf' && file.size <= 10 * 1024 * 1024;
+    
+    submitBtn.disabled = !isValid;
+  }
+  
+  // Manejar envío del formulario
+  async function handleTrainingSubmit(e: Event) {
+    e.preventDefault();
+    
+    const form = e.target as HTMLFormElement;
+    const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+    const btnText = form.querySelector('.btn-text') as HTMLElement;
+    const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
+    
+    // Obtener datos del formulario
+    const title = (form.elements.namedItem('title') as HTMLInputElement).value.trim();
+    const date = (form.elements.namedItem('date') as HTMLInputElement).value;
+    const description = (form.elements.namedItem('description') as HTMLTextAreaElement).value.trim();
+    const institution = (form.elements.namedItem('institution') as HTMLInputElement).value.trim();
+    const fileInput = (form.elements.namedItem('pdfFile') as HTMLInputElement);
+    const file = fileInput.files?.[0];
+    
+    if (!file || file.type !== 'application/pdf') {
+      alert('Por favor selecciona un archivo PDF válido');
+      return;
+    }
+    
+    // Estado de carga
+    submitBtn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    
+    try {
+      // Subir PDF a Firebase Storage
+      const fileName = `trainings/${Date.now()}_${file.name}`;
+      const storageRef = ref(storage, fileName);
+      
+      await uploadBytes(storageRef, file);
+      const pdfUrl = await getDownloadURL(storageRef);
+      
+      // Guardar metadatos en Firestore
+      const trainingData = {
+        title,
+        date: new Date(date),
+        description,
+        institution,
+        pdfUrl,
+        fileName,
+        createdAt: new Date(),
+        verified: false // Requiere verificación manual
+      };
+      
+      const docRef = await addDoc(collection(db, 'trainings'), trainingData);
+      
+      // Recargar lista de capacitaciones
+      await loadTrainings();
+      
+      // Resetear formulario
+      form.reset();
+      validateForm();
+      
+      alert('Capacitación subida exitosamente. Pendiente de verificación.');
+      
+    } catch (error: any) {
+      console.error('Error al subir capacitación:', error);
+      alert(`Error al subir capacitación: ${error.message}`);
+    } finally {
+      submitBtn.disabled = false;
+      btnText.style.display = 'inline';
+      btnLoading.style.display = 'none';
+    }
+  }
+  
+  // Cargar capacitaciones existentes
+  async function loadTrainings() {
+    try {
+      const trainingsQuery = query(
+        collection(db, 'trainings'),
+        orderBy('createdAt', 'desc')
+      );
+      
+      const querySnapshot = await getDocs(trainingsQuery);
+      currentTrainingDocs = querySnapshot.docs;
+      
+      const container = document.getElementById('trainings-container');
+      
+      if (querySnapshot.empty) {
+        container!.innerHTML = '<div class="empty-message">No hay capacitaciones registradas</div>';
+        return;
+      }
+      
+      const trainingsHtml = querySnapshot.docs.map(doc => {
+        const data = doc.data();
+        const verifiedClass = data.verified ? 'verified' : 'pending';
+        const verifiedText = data.verified ? 'Verificado' : 'Pendiente de verificación';
+        const verifiedIcon = data.verified ? '✓' : '⏳';
+        
+        return `
+          <div class="training-card ${verifiedClass}">
+            <div class="training-header">
+              <h4 class="training-title">${data.title}</h4>
+              <span class="training-status" title="${verifiedText}">
+                ${verifiedIcon}
+              </span>
+            </div>
+            
+            <div class="training-details">
+              <p class="training-institution">${data.institution}</p>
+              <p class="training-date">${formatDate(data.date.toDate())}</p>
+              ${data.description ? `<p class="training-description">${data.description}</p>` : ''}
+            </div>
+            
+            <div class="training-actions">
+              <a href="${data.pdfUrl}" target="_blank" class="view-btn">
+                Ver PDF
+              </a>
+              
+              <div class="action-buttons">
+                ${!data.verified ? `
+                  <button class="verify-btn" data-id="${doc.id}">
+                    Verificar
+                  </button>
+                ` : ''}
+                
+                <button class="delete-btn" data-id="${doc.id}" data-filename="${data.fileName}">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      container!.innerHTML = trainingsHtml;
+      
+      // Agregar event listeners a los botones de acción
+      setupActionButtons();
+      
+    } catch (error: any) {
+      console.error('Error al cargar capacitaciones:', error);
+      document.getElementById('trainings-container')!.innerHTML = 
+        '<div class="error-message">Error al cargar capacitaciones</div>';
+    }
+  }
+  
+  // Configurar botones de acción
+  function setupActionButtons() {
+    // Botones de verificación
+    document.querySelectorAll('.verify-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const target = e.target as HTMLElement;
+        const docId = target.dataset.id;
+        
+        if (!docId) return;
+        
+        if (confirm('¿Verificar esta capacitación?')) {
+          await verifyTraining(docId);
+        }
+      });
+    });
+    
+    // Botones de eliminación
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const target = e.target as HTMLElement;
+        const docId = target.dataset.id;
+        const fileName = target.dataset.filename;
+        
+        if (!docId || !fileName) return;
+        
+        if (confirm('¿Eliminar esta capacitación? Esta acción no se puede deshacer.')) {
+          await deleteTraining(docId, fileName);
+        }
+      });
+    });
+  }
+  
+  // Verificar capacitación
+  async function verifyTraining(docId: string) {
+    try {
+      const docRef = doc(db, 'trainings', docId);
+      await updateDoc(docRef, { verified: true });
+      await loadTrainings();
+      alert('Capacitación verificada exitosamente');
+    } catch (error: any) {
+      console.error('Error al verificar capacitación:', error);
+      alert('Error al verificar capacitación');
+    }
+  }
+  
+  // Eliminar capacitación
+  async function deleteTraining(docId: string, fileName: string) {
+    try {
+      // Eliminar de Firestore
+      await deleteDoc(doc(db, 'trainings', docId));
+      
+      // Eliminar PDF de Storage
+      const storageRef = ref(storage, fileName);
+      await deleteObject(storageRef);
+      
+      // Recargar lista
+      await loadTrainings();
+      
+      alert('Capacitación eliminada exitosamente');
+    } catch (error: any) {
+      console.error('Error al eliminar capacitación:', error);
+      alert('Error al eliminar capacitación');
+    }
+  }
+  
+  // Formatear fecha
+  function formatDate(date: Date): string {
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+</script>
+
+<style>
+  /* Contenedor principal */
+  .admin-container {
+    min-height: 100vh;
+    background: var(--color-bg);
+  }
+  
+  /* Header */
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+  
+  .admin-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+  }
+  
+  .logout-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .logout-btn:hover {
+    background: #c82333;
+  }
+  
+  /* Contenido principal */
+  .admin-main {
+    padding: 2rem 4rem;
+  }
+  
+  .admin-section {
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Tarjetas */
+  .upload-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    background: var(--color-bg);
+  }
+  
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  
+  /* Formulario */
+  .training-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+  }
+  
+  .form-group small {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+  }
+  
+  .submit-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    background: #218838;
+  }
+  
+  .submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Grid de capacitaciones */
+  .trainings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .training-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+    background: var(--color-bg);
+    transition: border-color 0.2s ease;
+  }
+  
+  .training-card.verified {
+    border-color: #28a745;
+  }
+  
+  .training-card.pending {
+    border-color: #ffc107;
+  }
+  
+  .training-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+  
+  .training-title {
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  
+  .training-status {
+    font-size: 1.2rem;
+    cursor: default;
+  }
+  
+  .training-details {
+    margin-bottom: 1rem;
+  }
+  
+  .training-institution {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  
+  .training-date {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+  }
+  
+  .training-description {
+    color: var(--color-text);
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+  }
+  
+  .training-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .view-btn {
+    background: #007acc;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .view-btn:hover {
+    background: #005a9e;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .verify-btn {
+    background: #ffc107;
+    color: #212529;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .verify-btn:hover {
+    background: #e0a800;
+  }
+  
+  .delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .delete-btn:hover {
+    background: #c82333;
+  }
+  
+  /* Estados especiales */
+  .loading-message,
+  .empty-message,
+  .error-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+  
+  .error-message {
+    color: #dc3545;
+  }
+  
+  /* Responsive */
+  @media (width <= 768px) {
+    .admin-header,
+    .admin-main {
+      padding: 1rem;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .trainings-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .training-actions {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: stretch;
+    }
+  }
+</style>
