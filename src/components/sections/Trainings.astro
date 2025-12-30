@@ -1,7 +1,36 @@
 ---
 // Componente para mostrar capacitaciones certificadas en el portafolio
-// Datos de ejemplo para build (sin conexión a Firebase)
-const trainings = [];
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
+import { db } from "@/firebase.js";
+
+// Obtener capacitaciones verificadas de Firebase
+async function getVerifiedTrainings() {
+  try {
+    const trainingsQuery = query(
+      collection(db, 'trainings'),
+      where('verified', '==', true),
+      orderBy('date', 'desc')
+    );
+    
+    const querySnapshot = await getDocs(trainingsQuery);
+    return querySnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        title: data.title || '',
+        institution: data.institution || '',
+        date: data.date,
+        description: data.description || '',
+        pdfUrl: data.pdfUrl || ''
+      };
+    });
+  } catch (error) {
+    console.error('Error al obtener capacitaciones:', error);
+    return [];
+  }
+}
+
+const trainings = await getVerifiedTrainings();
 ---
 
 <section id="trainings" class="section">
