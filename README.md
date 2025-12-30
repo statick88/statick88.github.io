@@ -80,15 +80,18 @@ Este proyecto incluye un sistema de administración para gestionar capacitacione
 
 1. **Crear archivo `.env`**
    ```bash
-   # Copia el archivo de ejemplo
-   cp .env.example .env
+   # Crea el archivo .env en la raíz del proyecto
+   touch .env
    
-   # Edita el archivo .env con tus credenciales de Firebase
+   # Agrega tus credenciales de Firebase
    ```
    
 2. **Configurar credenciales de Firebase**
+   - Ve a `FIREBASE_SETUP.md` para instrucciones detalladas
+   - O sigue la guía en: [Firebase Console](https://console.firebase.google.com/)
+   
+   **Variables requeridas en .env:**
    ```bash
-   # Variables requeridas en .env
    PUBLIC_FIREBASE_API_KEY=tu_api_key
    PUBLIC_FIREBASE_AUTH_DOMAIN=tu_project_id.firebaseapp.com
    PUBLIC_FIREBASE_PROJECT_ID=tu_project_id
