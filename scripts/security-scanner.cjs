@@ -7,7 +7,7 @@
 
 const { execSync } = require('child_process');
 const fs = require('fs');
-const path = require('path');
+
 
 class SecurityScanner {
   constructor() {
@@ -27,7 +27,7 @@ class SecurityScanner {
       'scan': '🔍'
     }[type] || '🔵';
 
-    console.log(`${prefix} [${timestamp}] ${message}`);
+    console.info(`${prefix} [${timestamp}] ${message}`);
   }
 
   async runCommand(command, description, continueOnError = true) {
@@ -48,10 +48,7 @@ class SecurityScanner {
     }
   }
 
-  async runSASTScans() {
-    this.log('🔒 Starting SAST (Static Application Security Testing) scans', 'scan');
-
-    // 1. ESLint Security Scan
+  async runESLintScan() {
     const eslintResult = await this.runCommand(
       'npx eslint src/ --ext .js,.ts,.astro --config .eslintrc.security.js --format=json',
       'ESLint Security Scan',
@@ -75,12 +72,13 @@ class SecurityScanner {
             });
           });
         });
-      } catch (e) {
+      } catch {
         this.warnings.push('Could not parse ESLint output');
       }
     }
+  }
 
-    // 2. npm audit for dependencies
+  async runDependencyAudit() {
     const auditResult = await this.runCommand(
       'npm audit --json',
       'Dependency Security Audit',
@@ -100,99 +98,116 @@ class SecurityScanner {
             url: vuln.url
           });
         });
-      } catch (e) {
+      } catch {
         this.warnings.push('Could not parse npm audit output');
       }
     }
+  }
 
-    // 3. Check for hardcoded secrets
-    const secretPatterns = [
+  async runSecretScan() {
+    const secretPatterns = this._getSecretPatterns();
+    const filesToScan = ['src/**/*.js', 'src/**/*.ts', 'src/**/*.astro'];
+    
+    for (const filePattern of filesToScan) {
+      await this._scanFilesForPattern(filePattern, secretPatterns);
+    }
+  }
+
+  _getSecretPatterns() {
+    return [
       { pattern: /password\s*=\s*["'][^"']+["']/, description: 'Hardcoded password' },
       { pattern: /api[_-]?key\s*=\s*["'][^"']+["']/, description: 'Hardcoded API key' },
       { pattern: /token\s*=\s*["'][^"']+["']/, description: 'Hardcoded token' },
       { pattern: /secret\s*=\s*["'][^"']+["']/, description: 'Hardcoded secret' },
       { pattern: /sk_[a-zA-Z0-9]{32,}/, description: 'Potential API key' }
     ];
+  }
 
-    const filesToScan = ['src/**/*.js', 'src/**/*.ts', 'src/**/*.astro'];
-    for (const filePattern of filesToScan) {
-      try {
-        const files = execSync(`find . -name "${filePattern.replace('**/', '*').replace('.*', '')}"`, { encoding: 'utf8' })
-          .split('\n')
-          .filter(f => f && !f.includes('node_modules') && !f.includes('dist'));
+  async _scanFilesForPattern(filePattern, secretPatterns) {
+    try {
+      const files = execSync(`find . -name "${filePattern.replace('**/', '*').replace('.*', '')}"`, { encoding: 'utf8' })
+        .split('\n')
+        .filter(f => f && !f.includes('node_modules') && !f.includes('dist'));
 
-        files.forEach(file => {
-          const content = fs.readFileSync(file.trim(), 'utf8');
-          const lines = content.split('\n');
+      files.forEach(file => {
+        const content = fs.readFileSync(file.trim(), 'utf8');
+        const lines = content.split('\n');
 
-          secretPatterns.forEach(({ pattern, description }) => {
-            lines.forEach((line, index) => {
-              if (pattern.test(line)) {
-                this.vulnerabilities.push({
-                  type: 'Secret',
-                  tool: 'Secret Scanner',
-                  file: file.trim(),
-                  line: index + 1,
-                  message: description,
-                  severity: 'critical',
-                  content: line.trim()
-                });
-              }
-            });
+        secretPatterns.forEach(({ pattern, description }) => {
+          lines.forEach((line, index) => {
+            if (pattern.test(line)) {
+              this.vulnerabilities.push({
+                type: 'Secret',
+                tool: 'Secret Scanner',
+                file: file.trim(),
+                line: index + 1,
+                message: description,
+                severity: 'critical',
+                content: line.trim()
+              });
+            }
           });
         });
-      } catch (e) {
-        this.warnings.push(`Could not scan files for pattern ${filePattern}`);
-      }
+      });
+    } catch {
+      this.warnings.push(`Could not scan files for pattern ${filePattern}`);
+    }
+  }
+
+  async runSASTScans() {
+    this.log('🔒 Starting SAST (Static Application Security Testing) scans', 'scan');
+    await this.runESLintScan();
+    await this.runDependencyAudit();
+    await this.runSecretScan();
+  }
+
+  async checkSecurityHeaders(endpoint) {
+    const curlResult = await this.runCommand(
+      `curl -s -I "${endpoint}"`,
+      `Security headers check for ${endpoint}`,
+      true
+    );
+
+    if (curlResult.success) {
+      const headers = curlResult.output;
+      
+      const securityHeaders = [
+        { header: 'content-security-policy', status: headers.toLowerCase().includes('content-security-policy') },
+        { header: 'x-frame-options', status: headers.toLowerCase().includes('x-frame-options') },
+        { header: 'x-content-type-options', status: headers.toLowerCase().includes('x-content-type-options') },
+        { header: 'strict-transport-security', status: headers.toLowerCase().includes('strict-transport-security') },
+        { header: 'x-xss-protection', status: headers.toLowerCase().includes('x-xss-protection') }
+      ];
+
+      securityHeaders.forEach(({ header, status }) => {
+        if (!status) {
+          this.warnings.push({
+            type: 'Security Header',
+            tool: 'DAST',
+            endpoint,
+            message: `Missing security header: ${header}`,
+            severity: 'medium'
+          });
+        } else {
+          this.info.push(`✅ Security header present: ${header} on ${endpoint}`);
+        }
+      });
     }
   }
 
   async runDASTSimulation() {
     this.log('🎯 Starting DAST (Dynamic Application Security Testing) simulation', 'scan');
 
-    // Simulate security tests on known endpoints
     const endpoints = [
       'https://statick88.github.io/',
       'https://statick88.github.io/admin/login'
     ];
 
     for (const endpoint of endpoints) {
-      const curlResult = await this.runCommand(
-        `curl -s -I "${endpoint}"`,
-        `Security headers check for ${endpoint}`,
-        true
-      );
-
-      if (curlResult.success) {
-        const headers = curlResult.output;
-        
-        // Check security headers
-        const securityHeaders = [
-          { header: 'content-security-policy', status: headers.toLowerCase().includes('content-security-policy') },
-          { header: 'x-frame-options', status: headers.toLowerCase().includes('x-frame-options') },
-          { header: 'x-content-type-options', status: headers.toLowerCase().includes('x-content-type-options') },
-          { header: 'strict-transport-security', status: headers.toLowerCase().includes('strict-transport-security') },
-          { header: 'x-xss-protection', status: headers.toLowerCase().includes('x-xss-protection') }
-        ];
-
-        securityHeaders.forEach(({ header, status }) => {
-          if (!status) {
-            this.warnings.push({
-              type: 'Security Header',
-              tool: 'DAST',
-              endpoint,
-              message: `Missing security header: ${header}`,
-              severity: 'medium'
-            });
-          } else {
-            this.info.push(`✅ Security header present: ${header} on ${endpoint}`);
-          }
-        });
-      }
+      await this.checkSecurityHeaders(endpoint);
     }
 
-    // Simulate common attack patterns
-    const attackPatterns = [
+    const _attackPatterns = [
       { pattern: '<script>alert("xss")</script>', type: 'XSS' },
       { pattern: '../../../etc/passwd', type: 'Path Traversal' },
       { pattern: "' OR '1'='1", type: 'SQL Injection' },
@@ -202,9 +217,9 @@ class SecurityScanner {
     this.info.push('DAST simulation completed - attack patterns validated');
   }
 
-  generateSecurityReport() {
+  createReportSummary() {
     const duration = Date.now() - this.startTime;
-    const report = {
+    return {
       scanTime: new Date().toISOString(),
       duration: `${Math.round(duration / 1000)}s`,
       summary: {
@@ -220,37 +235,43 @@ class SecurityScanner {
       warnings: this.warnings,
       info: this.info
     };
+  }
 
-    // Write report to file
+  printReportSummary(report) {
+    console.info('\n' + '='.repeat(80));
+    console.info('🔒 SECURITY SCAN REPORT');
+    console.info('='.repeat(80));
+    console.info(`⏱️  Duration: ${report.duration}`);
+    console.info(`🚨 Total Vulnerabilities: ${report.summary.totalVulnerabilities}`);
+    console.info(`   Critical: ${report.summary.critical}`);
+    console.info(`   High: ${report.summary.high}`);
+    console.info(`   Medium: ${report.summary.medium}`);
+    console.info(`   Low: ${report.summary.low}`);
+    console.info(`⚠️  Warnings: ${report.summary.warnings}`);
+    console.info(`ℹ️  Info: ${report.summary.info}`);
+    console.info('='.repeat(80));
+  }
+
+  printCriticalVulnerabilities() {
+    const criticalVulns = this.vulnerabilities.filter(v => v.severity === 'critical' || v.severity === 'high');
+    if (criticalVulns.length > 0) {
+      console.warn('\n🚨 CRITICAL & HIGH VULNERABILITIES:');
+      criticalVulns.forEach(v => {
+        console.warn(`   ${v.severity.toUpperCase()} - ${v.type} in ${v.file || v.package || v.endpoint}`);
+        console.warn(`      ${v.message || v.title}`);
+        if (v.line) console.warn(`      Line: ${v.line}`);
+      });
+    }
+  }
+
+  generateSecurityReport() {
+    const report = this.createReportSummary();
+
     fs.writeFileSync('security-report.json', JSON.stringify(report, null, 2));
     
-    // Print summary
-    console.log('\n' + '='.repeat(80));
-    console.log('🔒 SECURITY SCAN REPORT');
-    console.log('='.repeat(80));
-    console.log(`⏱️  Duration: ${report.duration}`);
-    console.log(`🚨 Total Vulnerabilities: ${report.summary.totalVulnerabilities}`);
-    console.log(`   Critical: ${report.summary.critical}`);
-    console.log(`   High: ${report.summary.high}`);
-    console.log(`   Medium: ${report.summary.medium}`);
-    console.log(`   Low: ${report.summary.low}`);
-    console.log(`⚠️  Warnings: ${report.summary.warnings}`);
-    console.log(`ℹ️  Info: ${report.summary.info}`);
-    console.log('='.repeat(80));
+    this.printReportSummary(report);
+    this.printCriticalVulnerabilities();
 
-    // Print critical and high vulnerabilities
-    if (report.summary.critical > 0 || report.summary.high > 0) {
-      console.log('\n🚨 CRITICAL & HIGH VULNERABILITIES:');
-      this.vulnerabilities
-        .filter(v => v.severity === 'critical' || v.severity === 'high')
-        .forEach(v => {
-          console.log(`   ${v.severity.toUpperCase()} - ${v.type} in ${v.file || v.package || v.endpoint}`);
-          console.log(`      ${v.message || v.title}`);
-          if (v.line) console.log(`      Line: ${v.line}`);
-        });
-    }
-
-    // Save detailed report
     this.log('📄 Detailed security report saved to security-report.json', 'success');
     
     return report;

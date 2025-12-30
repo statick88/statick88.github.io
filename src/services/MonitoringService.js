@@ -26,7 +26,7 @@ export class ILogger {
    * @param {string} message - Mensaje
    * @param {Object} metadata - Metadatos adicionales
    */
-  log(level, message, metadata = {}) {
+  log(_level, _message, _metadata = {}) {
     throw new Error('Method log must be implemented');
   }
 
@@ -35,7 +35,7 @@ export class ILogger {
    * @param {string} message - Mensaje de error
    * @param {Error|Object} error - Error o datos
    */
-  error(message, error = {}) {
+  error(_message, _error = {}) {
     throw new Error('Method error must be implemented');
   }
 
@@ -44,7 +44,7 @@ export class ILogger {
    * @param {string} message - Mensaje de advertencia
    * @param {Object} metadata - Metadatos adicionales
    */
-  warn(message, metadata = {}) {
+  warn(_message, _metadata = {}) {
     throw new Error('Method warn must be implemented');
   }
 
@@ -53,7 +53,7 @@ export class ILogger {
    * @param {string} message - Mensaje informativo
    * @param {Object} metadata - Metadatos adicionales
    */
-  info(message, metadata = {}) {
+  info(_message, _metadata = {}) {
     throw new Error('Method info must be implemented');
   }
 
@@ -62,7 +62,7 @@ export class ILogger {
    * @param {string} message - Mensaje de debug
    * @param {Object} metadata - Metadatos adicionales
    */
-  debug(message, metadata = {}) {
+  debug(_message, _metadata = {}) {
     throw new Error('Method debug must be implemented');
   }
 }
@@ -124,7 +124,7 @@ export class ConsoleLogger extends ILogger {
           console.debug('🟢', formattedMessage);
           break;
         default:
-          console.log(formattedMessage);
+          console.info(formattedMessage);
       }
     }
   }
@@ -349,7 +349,7 @@ export class MonitoringService {
    * @param {Error} error - Error ocurrido
    * @param {Object} context - Contexto adicional
    */
-  logApplicationError(operation, error, context = {}) {
+  logApplicationError(operation, error, _context = {}) {
     this.logger.error(`Application Error in ${operation}`, error);
     this.metrics.incrementCounter('application_errors', 1, { 
       operation, 
@@ -363,11 +363,11 @@ export class MonitoringService {
    * @param {number} duration - Duración en ms
    * @param {Object} context - Contexto
    */
-  logPerformanceMetric(operation, duration, context = {}) {
-    this.logger.debug(`Performance: ${operation}`, { duration, ...context });
+  logPerformanceMetric(operation, duration, _context = {}) {
+    this.logger.debug(`Performance: ${operation}`, { duration, ..._context });
     this.metrics.recordMetric('operation_duration', duration, { 
       operation, 
-      ...context 
+      ..._context 
     });
   }
 

@@ -37,7 +37,7 @@ export class APIRoutes {
     // Middleware de logging
     this.app.use((req, res, next) => {
       const timestamp = new Date().toISOString();
-      console.log(`[${timestamp}] ${req.method} ${req.path} - IP: ${req.ip}`);
+      console.info(`[${timestamp}] ${req.method} ${req.path} - IP: ${req.ip}`);
       next();
     });
 
@@ -131,7 +131,7 @@ export class APIRoutes {
       const user = JSON.parse(decoded);
       req.user = user;
       next();
-    } catch (error) {
+    } catch {
       return res.status(401).json({
         success: false,
         error: 'Invalid token',
@@ -144,9 +144,9 @@ export class APIRoutes {
    * Middleware de autorización de administrador
    * @private
    */
-  requireAdmin(req, res, next) {
+   requireAdmin(req, res, next) {
     this.requireAuth(req, res, () => {
-      if (req.user.role !== 'admin') {
+      if (req.user && req.user.role !== 'admin') {
         return res.status(403).json({
           success: false,
           error: 'Admin access required',
@@ -173,7 +173,7 @@ export class APIRoutes {
     });
 
     // Manejo de errores globales
-    this.app.use((error, req, res, next) => {
+    this.app.use((error, req, res, _next) => {
       console.error('Unhandled error:', error);
       
       res.status(500).json({
@@ -196,38 +196,45 @@ export class APIRoutes {
       title: 'Portfolio API',
       description: 'RESTful API for portfolio management',
       baseUrl: '/api',
-      authentication: {
-        type: 'Bearer Token',
-        description: 'JWT token required for protected routes'
+      authentication: this._getAuthDocs(),
+      endpoints: this._getEndpointsDocs()
+    };
+  }
+
+  _getAuthDocs() {
+    return {
+      type: 'Bearer Token',
+      description: 'JWT token required for protected routes'
+    };
+  }
+
+  _getEndpointsDocs() {
+    return {
+      auth: {
+        register: 'POST /api/auth/register',
+        login: 'POST /api/auth/login',
+        profile: {
+          get: 'GET /api/auth/profile',
+          update: 'PUT /api/auth/profile'
+        }
       },
-      endpoints: {
-        auth: {
-          register: 'POST /api/auth/register',
-          login: 'POST /api/auth/login',
-          profile: {
-            get: 'GET /api/auth/profile',
-            update: 'PUT /api/auth/profile'
-          }
+      trainings: {
+        public: {
+          verified: 'GET /api/trainings/verified',
+          details: 'GET /api/trainings/:id'
         },
-        trainings: {
-          public: {
-            verified: 'GET /api/trainings/verified',
-            details: 'GET /api/trainings/:id'
-          },
-          protected: {
-            create: 'POST /api/trainings',
-            update: 'PUT /api/trainings/:id',
-            delete: 'DELETE /api/trainings/:id',
-            verify: 'POST /api/trainings/:id/verify',
-            statistics: 'GET /api/trainings/statistics'
-          }
+        protected: {
+          create: 'POST /api/trainings',
+          update: 'PUT /api/trainings/:id',
+          delete: 'DELETE /api/trainings/:id',
+          verify: 'POST /api/trainings/:id/verify',
+          statistics: 'GET /api/trainings/statistics'
         },
         health: {
           check: 'GET /api/health',
           detailed: 'GET /api/health/detailed',
           statistics: 'GET /api/statistics'
-        }
-      },
+        },
       responseFormat: {
         success: {
           success: true,
@@ -240,6 +247,7 @@ export class APIRoutes {
           error: 'error_message',
           code: 'http_status_code',
           timestamp: 'ISO_8601_timestamp'
+        }
         }
       }
     };

@@ -64,58 +64,60 @@ describe('Authentication Service', () => {
   });
 });
 
-// Tests para el servicio de capacitaciones
-describe('Training Service', () => {
-  let mockDb;
-  let mockStorage;
+  // Tests para el servicio de capacitaciones
+  describe('Training Service - Basic Operations', () => {
+    let mockDb;
+    let _mockStorage;
   
-  beforeEach(() => {
-    mockDb = mockFirebase.firestore();
-    mockStorage = mockFirebase.storage();
-    vi.clearAllMocks();
-  });
-  
-  it('should add new training with PDF', async () => {
-    const mockTraining = {
-      title: 'Test Training',
-      date: new Date(),
-      institution: 'Test Institution',
-      pdfUrl: 'https://example.com/pdf.pdf',
-      verified: false
-    };
-    
-    mockDb.collection.mockReturnValue({
-      add: vi.fn().mockResolvedValue({ id: '123' })
+    beforeEach(() => {
+      mockDb = mockFirebase.firestore();
+      _mockStorage = mockFirebase.storage();
+      vi.clearAllMocks();
     });
-    
-    mockStorage.ref.mockReturnValue({
-      put: vi.fn().mockResolvedValue({}),
-      getDownloadURL: vi.fn().mockResolvedValue('https://example.com/pdf.pdf')
+  
+    it('should add new training with PDF', async () => {
+      const _mockTraining = {
+        title: 'Test Training',
+        date: new Date(),
+        institution: 'Test Institution',
+        pdfUrl: 'https://example.com/pdf.pdf',
+        verified: false
+      };
+      
+      mockDb.collection.mockReturnValue({
+        add: vi.fn().mockResolvedValue({ id: '123' })
+      });
+      
+      _mockStorage.ref.mockReturnValue({
+        put: vi.fn().mockResolvedValue({}),
+        getDownloadURL: vi.fn().mockResolvedValue('https://example.com/pdf.pdf')
+      });
+      
+      const result = await { id: '123' };
+      expect(result).toBeTruthy();
     });
-    
-    const result = await { id: '123' };
-    expect(result).toBeTruthy();
   });
+
+  describe('Training Service - Validation', () => {
+    it('should validate file type before upload', () => {
+      const validFile = new File([''], 'test.pdf', { type: 'application/pdf' });
+      const invalidFile = new File([''], 'test.txt', { type: 'text/plain' });
+      
+      expect(validatePDFFile(validFile)).toBe(true);
+      expect(validatePDFFile(invalidFile)).toBe(false);
+    });
   
-  it('should validate file type before upload', () => {
-    const validFile = new File([''], 'test.pdf', { type: 'application/pdf' });
-    const invalidFile = new File([''], 'test.txt', { type: 'text/plain' });
-    
-    expect(validatePDFFile(validFile)).toBe(true);
-    expect(validatePDFFile(invalidFile)).toBe(false);
+    it('should validate file size limit', () => {
+      const smallFile = new File([''], 'small.pdf', { type: 'application/pdf' });
+      Object.defineProperty(smallFile, 'size', { value: 1024 * 1024 }); // 1MB
+      
+      const largeFile = new File([''], 'large.pdf', { type: 'application/pdf' });
+      Object.defineProperty(largeFile, 'size', { value: 15 * 1024 * 1024 }); // 15MB
+      
+      expect(validateFileSize(smallFile, 10 * 1024 * 1024)).toBe(true);
+      expect(validateFileSize(largeFile, 10 * 1024 * 1024)).toBe(false);
+    });
   });
-  
-  it('should validate file size limit', () => {
-    const smallFile = new File([''], 'small.pdf', { type: 'application/pdf' });
-    Object.defineProperty(smallFile, 'size', { value: 1024 * 1024 }); // 1MB
-    
-    const largeFile = new File([''], 'large.pdf', { type: 'application/pdf' });
-    Object.defineProperty(largeFile, 'size', { value: 15 * 1024 * 1024 }); // 15MB
-    
-    expect(validateFileSize(smallFile, 10 * 1024 * 1024)).toBe(true);
-    expect(validateFileSize(largeFile, 10 * 1024 * 1024)).toBe(false);
-  });
-});
 
 // Tests para el componente de capacitaciones
 describe('Training Component', () => {
@@ -206,7 +208,7 @@ describe('Integration Tests', () => {
       add: vi.fn().mockResolvedValue({ id: '123' })
     });
     
-    const formData = {
+    const _formData = {
       title: 'Integration Test Training',
       institution: 'Test University',
       date: '2023-01-01',

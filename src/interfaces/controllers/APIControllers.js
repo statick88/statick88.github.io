@@ -183,32 +183,41 @@ export class UserController extends BaseController {
    * @param {Object} data - Datos a validar
    * @throws {Error} Si los datos no son válidos
    */
-  _validateCreateUserData(data) {
-    const { email, displayName, password } = data;
-
+  _validateEmail(email) {
     if (!email || typeof email !== 'string') {
       throw new Error('Email is required and must be a string');
     }
 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      throw new Error('Email format is invalid');
+    }
+  }
+
+  _validateDisplayName(displayName) {
     if (!displayName || typeof displayName !== 'string') {
       throw new Error('Display name is required and must be a string');
     }
 
+    if (displayName.length < 2 || displayName.length > 100) {
+      throw new Error('Display name must be between 2 and 100 characters');
+    }
+  }
+
+  _validateCreateUserData(data) {
+    const { email, displayName, password } = data;
+    
+    this._validateEmail(email);
+    this._validateDisplayName(displayName);
+    this._validatePassword(password);
+  }
+
+  _validatePassword(password) {
     if (!password || typeof password !== 'string') {
       throw new Error('Password is required and must be a string');
     }
 
     if (password.length < 8) {
       throw new Error('Password must be at least 8 characters long');
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      throw new Error('Email format is invalid');
-    }
-
-    if (displayName.length < 2 || displayName.length > 100) {
-      throw new Error('Display name must be between 2 and 100 characters');
     }
   }
 

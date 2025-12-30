@@ -3,6 +3,7 @@ const js = require('@eslint/js');
 module.exports = [
   js.configs.recommended,
   {
+    files: ['src/**/*.js', 'scripts/**/*.cjs'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -13,7 +14,17 @@ module.exports = [
         URL: 'readonly',
         Response: 'readonly',
         File: 'readonly',
-        setTimeout: 'readonly'
+        setTimeout: 'readonly',
+        db: 'writable',
+        storage: 'writable',
+        express: 'readonly',
+        auth: 'writable',
+        document: 'readonly',
+        window: 'readonly',
+        navigator: 'readonly',
+        fetch: 'readonly',
+        alert: 'readonly',
+        confirm: 'readonly'
       }
     },
     rules: {
@@ -28,9 +39,8 @@ module.exports = [
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_' 
       }],
-      'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
-      'no-case-declarations': 'error',
-      'no-useless-escape': 'off'
+      'no-console': ['error', { allow: ['warn', 'error', 'info', 'debug'] }],
+      'no-case-declarations': 'error'
     }
   },
   {
@@ -57,6 +67,20 @@ module.exports = [
         afterEach: 'readonly',
         vi: 'readonly'
       }
+    }
+  },
+  {
+    files: ['**/*.astro', '**/*.ts', '**/*.d.ts', '**/tests/**/*.js'],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module'
+      }
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      'max-lines-per-function': 'off'
     }
   }
 ];

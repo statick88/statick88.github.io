@@ -5,8 +5,6 @@
  */
 
 import { BaseService } from './BaseService.js';
-import { ITrainingRepository } from '../repositories/IRepository.js';
-import { IFileRepository } from '../repositories/IRepository.js';
 
 /**
  * @class TrainingValidator

@@ -86,7 +86,9 @@ describe('Services - Basic Functionality', () => {
       expect(Object.keys(trainingService).length).toBeGreaterThan(0);
     });
   });
+});
 
+describe('Services - Architecture', () => {
   describe('Architecture Compliance', () => {
     it('should follow SOLID principles', () => {
       // Both services should be well-designed according to SOLID

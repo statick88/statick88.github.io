@@ -5,7 +5,7 @@
  */
 
 import { AuthService } from './AuthService.js';
-import { TrainingService, TrainingValidator, TrainingSanitizer, TrainingFileHandler } from './TrainingService.refactored.js';
+import { TrainingService } from './TrainingService.refactored.js';
 import { FirebaseTrainingRepository } from '../repositories/FirebaseTrainingRepository.js';
 import { FirebaseFileRepository } from '../repositories/FirebaseFileRepository.js';
 
@@ -99,10 +99,11 @@ export class ServiceFactory {
    */
   createCustomService(serviceType, config) {
     switch (serviceType) {
-      case 'training':
+      case 'training': {
         const { trainingRepository = this.repositories.get('training'), 
                 fileRepository = this.repositories.get('file') } = config;
         return new TrainingService(trainingRepository, fileRepository);
+      }
       
       case 'auth':
         return new AuthService();

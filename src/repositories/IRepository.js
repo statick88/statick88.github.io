@@ -14,7 +14,7 @@ export class IRepository {
    * @param {Object} entity - Datos de la entidad
    * @returns {Promise<Object>} - Entidad creada
    */
-  async create(entity) {
+  async create(_entity) {
     throw new Error('Method create must be implemented');
   }
 
@@ -23,7 +23,7 @@ export class IRepository {
    * @param {string} id - ID de la entidad
    * @returns {Promise<Object|null>} - Entidad encontrada o null
    */
-  async findById(id) {
+  async findById(_id) {
     throw new Error('Method findById must be implemented');
   }
 
@@ -32,7 +32,7 @@ export class IRepository {
    * @param {Object} filters - Filtros opcionales
    * @returns {Promise<Array>} - Lista de entidades
    */
-  async findAll(filters = {}) {
+  async findAll(_filters = {}) {
     throw new Error('Method findAll must be implemented');
   }
 
@@ -42,7 +42,7 @@ export class IRepository {
    * @param {Object} updates - Datos a actualizar
    * @returns {Promise<Object>} - Entidad actualizada
    */
-  async update(id, updates) {
+  async update(_id, _updates) {
     throw new Error('Method update must be implemented');
   }
 
@@ -51,7 +51,7 @@ export class IRepository {
    * @param {string} id - ID de la entidad
    * @returns {Promise<boolean>} - true si se eliminó
    */
-  async delete(id) {
+  async delete(_id) {
     throw new Error('Method delete must be implemented');
   }
 }
@@ -74,7 +74,7 @@ export class ITrainingRepository extends IRepository {
    * @param {string} id - ID de la capacitación
    * @returns {Promise<boolean>} - true si se verificó
    */
-  async verify(id) {
+  async verify(_id) {
     throw new Error('Method verify must be implemented');
   }
 }
@@ -90,7 +90,7 @@ export class IFileRepository {
    * @param {string} path - Ruta destino
    * @returns {Promise<string>} - URL del archivo
    */
-  async upload(file, path) {
+  async upload(_file, _path) {
     throw new Error('Method upload must be implemented');
   }
 
@@ -99,7 +99,7 @@ export class IFileRepository {
    * @param {string} path - Ruta del archivo
    * @returns {Promise<boolean>} - true si se eliminó
    */
-  async delete(path) {
+  async delete(_path) {
     throw new Error('Method delete must be implemented');
   }
 
@@ -108,7 +108,7 @@ export class IFileRepository {
    * @param {string} path - Ruta del archivo
    * @returns {Promise<string>} - URL de descarga
    */
-  async getUrl(path) {
+  async getUrl(_path) {
     throw new Error('Method getUrl must be implemented');
   }
 }

@@ -26,7 +26,7 @@ class CDPipelineValidator {
       'check': '✅'
     }[type] || '🔵';
 
-    console.log(`${prefix} [${timestamp}] ${message}`);
+    console.info(`${prefix} [${timestamp}] ${message}`);
   }
 
   checkCommand(command, description) {
@@ -92,26 +92,26 @@ class CDPipelineValidator {
     }
   }
 
-  async validateEnvironment() {
-    this.log('🔍 Starting CD Pipeline Validation', 'info');
-
-    // Validar archivos de configuración
+  validateConfigurationFiles() {
     this.log('\n📁 Checking configuration files...', 'info');
     this.checkFileExists('.github/workflows/continuous-deployment.yml', 'CD workflow exists');
     this.checkFileExists('.github/workflows/devsecops.yml', 'DevSecOps workflow exists');
     this.checkFileExists('package.json', 'Package configuration exists');
     this.checkFileExists('astro.config.mjs', 'Astro configuration exists');
+  }
 
-    // Validar archivos del workflow
+  validateWorkflows() {
     this.log('\n🔄 Validating workflow configurations...', 'info');
     this.checkWorkflowFile('.github/workflows/continuous-deployment.yml');
     this.checkWorkflowFile('.github/workflows/devsecops.yml');
+  }
 
-    // Validar dependencias
+  validateDependencies() {
     this.log('\n📦 Validating dependencies...', 'info');
     this.checkCommand('npm list --depth=0', 'Dependencies installed');
+  }
 
-    // Validar scripts del package.json
+  validateScripts() {
     this.log('\n📜 Validating npm scripts...', 'info');
     try {
       const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -138,8 +138,9 @@ class CDPipelineValidator {
       this.log(`❌ Error reading package.json: ${error.message}`, 'error');
       this.errors.push(`Package.json error: ${error.message}`);
     }
+  }
 
-    // Validar estructura del proyecto
+  validateProjectStructure() {
     this.log('\n🏗️ Validating project structure...', 'info');
     const structureChecks = [
       { path: 'src/services', desc: 'Services directory' },
@@ -152,56 +153,65 @@ class CDPipelineValidator {
     structureChecks.forEach(({ path: dirPath, desc }) => {
       this.checkFileExists(dirPath, desc);
     });
+  }
 
-    // Validar build
+  validateBuildAndTests() {
     this.log('\n🏗️ Testing build process...', 'info');
     this.checkCommand('npm run build', 'Build process');
 
-    // Validar tests
     this.log('\n🧪 Testing test suite...', 'info');
     this.checkCommand('npm run test:run', 'Test execution');
 
-    // Validar seguridad
     this.log('\n🔒 Running security validation...', 'info');
     this.checkCommand('npm run security:audit', 'Security audit');
 
-    // Validar calidad de código
     this.log('\n📋 Running code quality validation...', 'info');
     this.checkCommand('npm run validate', 'Code quality validation');
   }
 
+  async validateEnvironment() {
+    this.log('🔍 Starting CD Pipeline Validation', 'info');
+
+    this.validateConfigurationFiles();
+    this.validateWorkflows();
+    this.validateDependencies();
+    this.validateScripts();
+    this.validateProjectStructure();
+    this.validateBuildAndTests();
+  }
+
   generateReport() {
-    console.log('\n' + '='.repeat(80));
-    console.log('📊 CD PIPELINE VALIDATION REPORT');
-    console.log('='.repeat(80));
+    console.info('\n' + '='.repeat(80));
+    console.info('📊 CD PIPELINE VALIDATION REPORT');
+    console.info('='.repeat(80));
     
-    console.log(`\n🟢 Successful Checks: ${this.success.length}`);
-    this.success.forEach(item => console.log(`   ✅ ${item}`));
+    console.info(`\n🟢 Successful Checks: ${this.success.length}`);
+    this.success.forEach(item => console.info(`   ✅ ${item}`));
     
     if (this.warnings.length > 0) {
-      console.log(`\n🟡 Warnings: ${this.warnings.length}`);
-      this.warnings.forEach(item => console.log(`   ⚠️ ${item}`));
+      console.info(`\n🟡 Warnings: ${this.warnings.length}`);
+      this.warnings.forEach(item => console.info(`   ⚠️ ${item}`));
     }
     
     if (this.errors.length > 0) {
-      console.log(`\n🔴 Errors: ${this.errors.length}`);
-      this.errors.forEach(item => console.log(`   ❌ ${item}`));
+      console.info(`\n🔴 Errors: ${this.errors.length}`);
+      this.errors.forEach(item => console.info(`   ❌ ${item}`));
     }
     
-    console.log('\n' + '='.repeat(80));
+    console.info('\n' + '='.repeat(80));
     
     // Veredicto
     if (this.errors.length === 0) {
-      console.log('🎉 CD Pipeline is READY for deployment!');
-      console.log('✅ All validations passed');
-      console.log('🚀 You can safely deploy to production');
+      console.info('🎉 CD Pipeline is READY for deployment!');
+      console.info('✅ All validations passed');
+      console.info('🚀 You can safely deploy to production');
     } else {
-      console.log('⚠️ CD Pipeline needs attention before deployment');
-      console.log(`❌ Fix ${this.errors.length} error(s) before deploying`);
-      console.log('🔧 Review the issues above and run validation again');
+      console.warn('⚠️ CD Pipeline needs attention before deployment');
+      console.warn(`❌ Fix ${this.errors.length} error(s) before deploying`);
+      console.warn('🔧 Review the issues above and run validation again');
     }
     
-    console.log('='.repeat(80));
+    console.info('='.repeat(80));
     
     return {
       success: this.errors.length === 0,

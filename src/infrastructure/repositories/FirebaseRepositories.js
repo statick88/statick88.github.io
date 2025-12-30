@@ -4,7 +4,7 @@
  * Infrastructure Layer - Adaptadores de dominio a Firebase
  */
 
-import { Repository, UserRepository, TrainingRepository, FileRepository } from '../../domain/repositories/Repository.js';
+import { UserRepository, TrainingRepository, FileRepository } from '../../domain/repositories/Repository.js';
 import { User } from '../../domain/entities/User.js';
 import { Training } from '../../domain/entities/Training.js';
 
@@ -24,14 +24,18 @@ import {
   serverTimestamp
 } from "firebase/firestore";
 
+import { db } from "../../firebase.js";
 import {
   ref,
   uploadBytes,
   getDownloadURL,
-  deleteObject
+  deleteObject,
+  getStorage
 } from "firebase/storage";
 
-import { auth } from "@/firebase.js";
+const storage = getStorage();
+
+
 
 /**
  * @class FirebaseUserRepository
@@ -602,7 +606,7 @@ export class FirebaseFileRepository extends FileRepository {
       const storageRef = ref(storage, path);
       await getDownloadURL(storageRef);
       return true;
-    } catch (error) {
+    } catch {
       return false;
     }
   }

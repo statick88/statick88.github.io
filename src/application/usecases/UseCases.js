@@ -23,7 +23,7 @@ export class UseCase {
    * @param {Object} params - Parámetros del caso de uso
    * @returns {Promise<Object>} - Resultado del caso de uso
    */
-  async execute(params) {
+  async execute(_params) {
     throw new Error('Execute method must be implemented by subclass');
   }
 

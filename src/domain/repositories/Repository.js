@@ -16,7 +16,7 @@ export class Repository {
    * @returns {Promise<Object>} - Entidad guardada con ID
    * @throws {Error} Si no se puede guardar
    */
-  async save(entity) {
+  async save(_entity) {
     throw new Error('Method save must be implemented');
   }
 
@@ -25,7 +25,7 @@ export class Repository {
    * @param {string} id - ID de la entidad
    * @returns {Promise<Object|null>} - Entidad encontrada o null
    */
-  async findById(id) {
+  async findById(_id) {
     throw new Error('Method findById must be implemented');
   }
 
@@ -34,7 +34,7 @@ export class Repository {
    * @param {Object} criteria - Criterios de búsqueda (opcional)
    * @returns {Promise<Array>} - Lista de entidades
    */
-  async findAll(criteria = {}) {
+  async findAll(_criteria = {}) {
     throw new Error('Method findAll must be implemented');
   }
 
@@ -45,7 +45,7 @@ export class Repository {
    * @returns {Promise<Object>} - Entidad actualizada
    * @throws {Error} Si no se puede actualizar
    */
-  async update(id, updates) {
+  async update(_id, _updates) {
     throw new Error('Method update must be implemented');
   }
 
@@ -55,7 +55,7 @@ export class Repository {
    * @returns {Promise<boolean>} - true si se eliminó
    * @throws {Error} Si no se puede eliminar
    */
-  async delete(id) {
+  async delete(_id) {
     throw new Error('Method delete must be implemented');
   }
 
@@ -64,7 +64,7 @@ export class Repository {
    * @param {Object} criteria - Criterios de conteo
    * @returns {Promise<number>} - Número de entidades
    */
-  async count(criteria = {}) {
+  async count(_criteria = {}) {
     throw new Error('Method count must be implemented');
   }
 
@@ -90,7 +90,7 @@ export class UserRepository extends Repository {
    * @param {string} email - Email del usuario
    * @returns {Promise<Object|null>} - Usuario encontrado o null
    */
-  async findByEmail(email) {
+  async findByEmail(_email) {
     throw new Error('Method findByEmail must be implemented');
   }
 
@@ -108,7 +108,7 @@ export class UserRepository extends Repository {
    * @param {Object} options - Opciones de paginación y ordenamiento
    * @returns {Promise<{users: Array, total: number}>} - Resultados paginados
    */
-  async findWithCriteria(criteria, options = {}) {
+  async findWithCriteria(_criteria, _options = {}) {
     throw new Error('Method findWithCriteria must be implemented');
   }
 
@@ -118,7 +118,7 @@ export class UserRepository extends Repository {
    * @param {boolean} active - Nuevo estado de actividad
    * @returns {Promise<boolean>} - true si se actualizó
    */
-  async updateActiveStatus(id, active) {
+  async updateActiveStatus(_id, _active) {
     throw new Error('Method updateActiveStatus must be implemented');
   }
 }
@@ -142,7 +142,7 @@ export class TrainingRepository extends Repository {
    * @param {string} institution - Institución a buscar
    * @returns {Promise<Array>} - Lista de capacitaciones de la institución
    */
-  async findByInstitution(institution) {
+  async findByInstitution(_institution) {
     throw new Error('Method findByInstitution must be implemented');
   }
 
@@ -152,7 +152,7 @@ export class TrainingRepository extends Repository {
    * @param {Date} endDate - Fecha de fin
    * @returns {Promise<Array>} - Lista de capacitaciones en el rango
    */
-  async findByDateRange(startDate, endDate) {
+  async findByDateRange(_startDate, _endDate) {
     throw new Error('Method findByDateRange must be implemented');
   }
 
@@ -162,7 +162,7 @@ export class TrainingRepository extends Repository {
    * @param {Object} pagination - Opciones de paginación
    * @returns {Promise<{trainings: Array, total: number, page: number}>} - Resultados paginados
    */
-  async findWithPagination(criteria, pagination) {
+  async findWithPagination(_criteria, _pagination) {
     throw new Error('Method findWithPagination must be implemented');
   }
 
@@ -172,7 +172,7 @@ export class TrainingRepository extends Repository {
    * @param {boolean} verified - Estado de verificación
    * @returns {Promise<boolean>} - true si se actualizó
    */
-  async updateVerificationStatus(id, verified) {
+  async updateVerificationStatus(_id, _verified) {
     throw new Error('Method updateVerificationStatus must be implemented');
   }
 
@@ -182,9 +182,9 @@ export class TrainingRepository extends Repository {
    * @param {number} limit - Límite de resultados
    * @returns {Promise<Array>} - Lista de capacitaciones recientes
    */
-  async findRecent(days = 30, limit = 10) {
+  async findRecent(_days = 30, _limit = 10) {
     const cutoffDate = new Date();
-    cutoffDate.setDate(cutoffDate.getDate() - days);
+    cutoffDate.setDate(cutoffDate.getDate() - _days);
     
     return this.findByDateRange(cutoffDate, new Date());
   }
@@ -222,7 +222,7 @@ export class FileRepository extends Repository {
    * @returns {Promise<string>} - URL del archivo guardado
    * @throws {Error} Si no se puede guardar
    */
-  async save(file, path) {
+  async save(_file, _path) {
     throw new Error('Method save must be implemented');
   }
 
@@ -232,7 +232,7 @@ export class FileRepository extends Repository {
    * @returns {Promise<boolean>} - true si se eliminó
    * @throws {Error} Si no se puede eliminar
    */
-  async delete(path) {
+  async delete(_path) {
     throw new Error('Method delete must be implemented');
   }
 
@@ -242,7 +242,7 @@ export class FileRepository extends Repository {
    * @returns {Promise<string>} - URL del archivo
    * @throws {Error} Si no se puede obtener
    */
-  async getUrl(path) {
+  async getUrl(_path) {
     throw new Error('Method getUrl must be implemented');
   }
 
@@ -251,7 +251,7 @@ export class FileRepository extends Repository {
    * @param {string} path - Ruta del archivo
    * @returns {Promise<boolean>} - true si existe
    */
-  async exists(path) {
+  async exists(_path) {
     throw new Error('Method exists must be implemented');
   }
 
@@ -261,7 +261,7 @@ export class FileRepository extends Repository {
    * @returns {Promise<Object>} - Información del archivo
    * @throws {Error} Si no se puede obtener
    */
-  async getFileInfo(path) {
+  async getFileInfo(_path) {
     throw new Error('Method getFileInfo must be implemented');
   }
 }
