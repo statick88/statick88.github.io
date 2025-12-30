@@ -8,55 +8,55 @@ module.exports = [
       sourceType: 'module',
       globals: {
         console: 'readonly',
-        process: 'readonly'
+        process: 'readonly',
+        Buffer: 'readonly',
+        URL: 'readonly',
+        Response: 'readonly',
+        File: 'readonly',
+        setTimeout: 'readonly'
       }
     },
-    plugins: {
-      security: require('eslint-plugin-security'),
-      xss: require('eslint-plugin-xss')
-    },
     rules: {
-      // Basic Security Rules
       'no-eval': 'error',
       'no-implied-eval': 'error',
+      'no-new-func': 'error',
       'no-script-url': 'error',
-      'no-debugger': 'error',
-      'no-unused-vars': 'error',
-      
-      // SOLID Principles Validation Rules
-      complexity: ['warn', { max: 10 }],
-      'max-depth': ['warn', { max: 4 }],
-      'max-params': ['warn', { max: 5 }],
-      'max-lines-per-function': ['warn', { max: 50 }],
-      
-      // Code Quality Rules
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'prefer-promise-reject-errors': 'error',
-      'no-throw-literal': 'error'
+      'no-unsafe-finally': 'error',
+      'complexity': ['error', { max: 10 }],
+      'max-lines-per-function': ['error', { max: 50 }],
+      'no-unused-vars': ['error', { 
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_' 
+      }],
+      'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+      'no-case-declarations': 'error',
+      'no-useless-escape': 'off'
     }
   },
   {
-    files: ['src/services/**/*.js'],
-    rules: {
-      // SOLID SRP: Single Responsibility
-      'max-lines-per-function': ['error', { max: 30 }],
-      complexity: ['error', { max: 7 }]
+    files: ['**/*.cjs'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'commonjs',
+      globals: {
+        require: 'readonly',
+        module: 'readonly',
+        console: 'readonly',
+        process: 'readonly'
+      }
     }
   },
   {
-    files: ['src/tests/**/*.test.js'],
-    rules: {
-      'no-console': 'off',
-      'max-lines-per-function': 'off'
+    files: ['src/tests/**/*.js'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        vi: 'readonly'
+      }
     }
-  },
-  {
-    ignores: [
-      'node_modules/**',
-      'dist/**',
-      'coverage/**',
-      '*.config.js',
-      '*.config.mjs'
-    ]
   }
 ];

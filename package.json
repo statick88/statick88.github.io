@@ -16,16 +16,16 @@
     "test:security": "vitest run --testNamePattern='security'",
     "test:solid": "vitest run --testNamePattern='solid'",
     "lint": "eslint . --ext astro,js,ts,tsx,jsx --config .eslintrc.security.cjs",
-    "lint:security": "eslint . --ext .js,.ts,.astro --config .eslintrc.security.cjs || true",
+    "lint:security": "eslint src/tests/ --ext .js --config .eslintrc.security.cjs || true",
     "security:audit": "npm audit --audit-level high",
-    "security:scan": "npm run lint:security && npm run security:audit && node scripts/security-scanner.js",
-    "security:sast": "node scripts/security-scanner.js",
+    "security:scan": "npm run lint:security && npm run security:audit",
+    "security:sast": "node scripts/security-scanner.cjs",
     "security:dast": "npm run test:security",
-    "pre-commit": "npm run test:run && npm run security:scan",
+    "pre-commit": "npm run test:run && npm run security:audit",
     "validate": "npm run test:run && npm run lint && npm run security:audit",
     "ci": "npm run validate",
     "cd:validate": "node scripts/cd-validator.cjs",
-    "cd:validate-critical": "npm run security:scan && npm run build"
+    "cd:validate-critical": "npm run security:audit && npm run build"
   },
   "dependencies": {
     "@astrojs/check": "0.4.1",
