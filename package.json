@@ -16,6 +16,8 @@
     "test:security": "vitest run --testNamePattern='security'",
     "test:solid": "vitest run --testNamePattern='solid'",
     "lint:js": "eslint src/ --ext .js --config .eslintrc.security.cjs --quiet",
+    "lint": "eslint src/ --ext .js,.cjs --config .eslintrc.security.cjs --quiet",
+    "lint:js": "eslint src/ --ext .js --config .eslintrc.security.cjs --quiet",
     "lint:security": "eslint src/tests/ --ext .js --config .eslintrc.security.cjs || true",
     "security:audit": "npm audit --audit-level high",
     "security:scan": "npm run lint:security && npm run security:audit",
