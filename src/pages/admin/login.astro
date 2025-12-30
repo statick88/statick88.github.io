@@ -1,7 +1,6 @@
 ---
-// Página de login para administrador
+// Página de login para administrador - Mejorada y más robusta
 import Layout from "@/layouts/Layout.astro"
-
 
 interface Props {
   error?: string
@@ -14,11 +13,11 @@ const { error } = Astro.props
   <div class="login-container">
     <div class="login-card">
       <h1 class="login-title">Panel de Administración</h1>
-      <p class="login-subtitle">Accede para gestionar capacitaciones</p>
+      <p class="login-subtitle">Gestiona tus capacitaciones y certificaciones</p>
       
       {error && (
         <div class="error-message">
-          {error}
+          <strong>Error:</strong> {error}
         </div>
       )}
       
@@ -32,6 +31,7 @@ const { error } = Astro.props
             required 
             autocomplete="email"
             placeholder="admin@ejemplo.com"
+            value="dsaavedra88@gmail.com"
           />
         </div>
         
@@ -44,41 +44,56 @@ const { error } = Astro.props
             required 
             autocomplete="current-password"
             placeholder="Tu contraseña"
+            type="password"
           />
         </div>
         
-        <button type="submit" class="login-btn" disabled>
-          <span class="btn-text">Iniciar sesión</span>
-          <span class="btn-loading" style="display: none;">Procesando...</span>
-        </button>
+        <div class="form-actions">
+          <button type="submit" class="login-btn" id="login-btn">
+            <span class="btn-text">Iniciar sesión</span>
+            <span class="btn-loading" style="display: none;">Procesando...</span>
+          </button>
+          
+          <a href="/" class="back-btn">← Volver al portafolio</a>
+        </div>
       </form>
+      
+      <div class="debug-info">
+        <p><strong>Acceso de prueba:</strong></p>
+        <p>Email: dsaavedra88@gmail.com</p>
+        <p>Contraseña: a1b2c3d4*</p>
+      </div>
     </div>
   </div>
 </Layout>
 
 <script>
   // Gestión del formulario de login con Firebase Auth
-  import { signInWithEmailAndPassword } from "firebase/auth";
+  import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
   import { auth } from "@/firebase.js";
   
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('login-form') as HTMLFormElement;
-    const submitBtn = form.querySelector('.login-btn') as HTMLButtonElement;
-    const btnText = form.querySelector('.btn-text') as HTMLElement;
-    const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
+    const form = document.getElementById('login-form');
+    const submitBtn = document.getElementById('login-btn');
+    const btnText = form.querySelector('.btn-text');
+    const btnLoading = form.querySelector('.btn-loading');
     
     // Verificar si ya está autenticado
-    auth.onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        window.location.href = '/admin/dashboard';
+        console.log('Usuario ya autenticado:', user.email);
+        // Redirigir al dashboard
+        window.location.href = '/admin/dashboard/';
       }
     });
     
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      const email = (form.elements.namedItem('email') as HTMLInputElement).value;
-      const password = (form.elements.namedItem('password') as HTMLInputElement).value;
+      const email = form.elements.namedItem('email').value;
+      const password = form.elements.namedItem('password').value;
+      
+      console.log('Intentando login con:', email);
       
       // Estado de carga
       submitBtn.disabled = true;
@@ -86,14 +101,18 @@ const { error } = Astro.props
       btnLoading.style.display = 'inline';
       
       try {
-        await signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log('Login exitoso:', userCredential.user);
+        
         // Redirección automática al dashboard
-        window.location.href = '/admin/dashboard';
-      } catch (error: any) {
+        window.location.href = '/admin/dashboard/';
+        
+      } catch (error) {
         console.error('Error de autenticación:', error);
         
         // Mostrar mensaje de error específico
         let errorMessage = 'Error al iniciar sesión';
+        
         switch (error.code) {
           case 'auth/user-not-found':
             errorMessage = 'Usuario no encontrado';
@@ -110,10 +129,26 @@ const { error } = Astro.props
           case 'auth/too-many-requests':
             errorMessage = 'Demasiados intentos. Inténtalo más tarde';
             break;
+          case 'auth/network-request-failed':
+            errorMessage = 'Error de conexión. Verifica tu internet';
+            break;
+          default:
+            errorMessage = `Error: ${error.message}`;
         }
         
-        // Recargar página con error
-        window.location.href = `/admin/login?error=${encodeURIComponent(errorMessage)}`;
+        // Mostrar error en la página
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.innerHTML = `<strong>Error:</strong> ${errorMessage}`;
+        
+        // Remover error anterior si existe
+        const existingError = form.querySelector('.error-message');
+        if (existingError) {
+          existingError.remove();
+        }
+        
+        form.insertBefore(errorDiv, form.firstChild);
+        
       } finally {
         submitBtn.disabled = false;
         btnText.style.display = 'inline';
@@ -124,7 +159,7 @@ const { error } = Astro.props
 </script>
 
 <style>
-  /* Estilos del contenedor principal */
+  /* Contenedor principal */
   .login-container {
     min-height: 100vh;
     display: flex;
@@ -137,17 +172,17 @@ const { error } = Astro.props
   /* Tarjeta de login */
   .login-card {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
     padding: 2rem;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 12px;
     background: var(--color-bg);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
   
   /* Títulos */
   .login-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: var(--color-text);
@@ -164,8 +199,8 @@ const { error } = Astro.props
   .error-message {
     background: #fee;
     color: #c33;
-    padding: 0.75rem;
-    border-radius: 4px;
+    padding: 1rem;
+    border-radius: 8px;
     border: 1px solid #fcc;
     margin-bottom: 1rem;
     font-size: 0.9rem;
@@ -175,7 +210,7 @@ const { error } = Astro.props
   .login-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .form-group {
@@ -185,46 +220,100 @@ const { error } = Astro.props
   }
   
   .form-group label {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--color-text);
     font-size: 0.9rem;
   }
   
   .form-group input {
-    padding: 0.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
     background: var(--color-bg);
     color: var(--color-text);
-    font-size: 0.9rem;
-    transition: border-color 0.2s ease;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   
   .form-group input:focus {
     outline: none;
     border-color: #007acc;
-    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
   }
   
-  /* Botón de login */
+  /* Botones y acciones */
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
   .login-btn {
-    background: #007acc;
+    background: linear-gradient(135deg, #007acc, #005a9e);
     color: white;
     border: none;
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+    position: relative;
   }
   
   .login-btn:hover:not(:disabled) {
-    background: #005a9e;
+    background: linear-gradient(135deg, #005a9e, #004080);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 122, 204, 0.3);
   }
   
   .login-btn:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+    transform: none;
+  }
+  
+  .back-btn {
+    text-align: center;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  
+  .back-btn:hover {
+    color: #007acc;
+  }
+  
+  /* Debug info - Solo para desarrollo */
+  .debug-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--color-bg-hover);
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.85rem;
+  }
+  
+  .debug-info p {
+    margin: 0.25rem 0;
+    color: var(--color-text-secondary);
+  }
+  
+  /* Responsive */
+  @media (width <= 768px) {
+    .login-container {
+      padding: 1rem;
+    }
+    
+    .login-card {
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+    
+    .login-title {
+      font-size: 1.5rem;
+    }
   }
 </style>
