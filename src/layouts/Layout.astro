@@ -1,7 +1,7 @@
 ---
 import { basics } from "@cv"
-// Importamos el nuevo componente
 import ThemeToggle from "@/components/ThemeToggle.astro"
+import LanguageToggle from "@/components/LanguageToggle.astro"
 
 interface Props {
   title: string
@@ -52,9 +52,21 @@ const { image, summary, url } = basics
         document.documentElement.classList.remove('dark');
       }
     </script>
+
+    <script is:inline>
+      const lang = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('lang')) {
+          return localStorage.getItem('lang');
+        }
+        return 'es';
+      })();
+    
+      document.documentElement.setAttribute('lang', lang);
+    </script>
   </head>
   <body>
     <slot />
+    <LanguageToggle />
     <ThemeToggle />
   </body>
 </html>
