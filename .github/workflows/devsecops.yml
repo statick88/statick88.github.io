@@ -103,12 +103,15 @@ jobs:
           echo "✅ Build successful - security checks passed"
           
       # Deploy to GitHub Pages with security
-      - name: Deploy to GitHub Pages
-        uses: withastro/action@v1
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          retention-days: 1
+           
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
           
       # Security Scan on Build Artifacts
       - name: Security scan of build artifacts
