@@ -29,23 +29,8 @@
     "network": "GitHub",
     "username": "statick88",
     "url": "https://github.com/statick88"
-  },
-  {
-    "network": "Duolingo",
-    "username": "statick_ds",
-    "url": "https://www.duolingo.com/profile/statick_ds"
-  },
-  {
-    "network": "Chess Universe",
-    "username": "Statick",
-    "url": "https://chess-universe.sng.link/Dqw52/j86j/uusd"
-  },
-  {
-    "network": "Chess.com",
-    "username": "Diego Saavedra",
-    "url": "https://link.chess.com/friend/yHjp4u"
   }
-]
+    ]
   },
   "work": [
     {
@@ -303,6 +288,126 @@
         "Android",
         "iOS"
       ]
+    },
+    {
+      "name": "Angular",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "TypeScript Framework",
+        "SPA"
+      ]
+    },
+    {
+      "name": "Vue",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Framework",
+        "SPA"
+      ]
+    },
+    {
+      "name": "Svelte",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Framework",
+        "SPA"
+      ]
+    },
+    {
+      "name": "NestJS",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Node.js Framework",
+        "TypeScript"
+      ]
+    },
+    {
+      "name": "Java",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Programación Orientada a Objetos",
+        "Spring"
+      ]
+    },
+    {
+      "name": "Spring Boot",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Java Framework",
+        "API REST"
+      ]
+    },
+    {
+      "name": "C#",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Microsoft",
+        ".NET"
+      ]
+    },
+    {
+      "name": ".NET",
+      "level": "Intermedio",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "Microsoft Framework",
+        "C#"
+      ]
+    },
+    {
+      "name": "AWS",
+      "level": "Intermedio",
+      "keywords": [
+        "Cloud",
+        "Infraestructura",
+        "Servicios Web",
+        "DevOps"
+      ]
+    },
+    {
+      "name": "Azure",
+      "level": "Intermedio",
+      "keywords": [
+        "Cloud",
+        "Infraestructura",
+        "Servicios Web",
+        "Microsoft"
+      ]
+    },
+    {
+      "name": "Vercel",
+      "level": "Avanzado",
+      "keywords": [
+        "Cloud",
+        "Deploy",
+        "Frontend",
+        "Serverless"
+      ]
+    },
+    {
+      "name": "Railway",
+      "level": "Intermedio",
+      "keywords": [
+        "Cloud",
+        "Deploy",
+        "Backend",
+        "DevOps"
+      ]
     }
   ],
   "languages": [
@@ -329,15 +434,18 @@
   ],
   "projects": [
     {
-      "name": "Chat Cliente-Servidor en Python",
+      "name": "Saavedra Construction",
       "isActive": true,
-      "description": "Este es un proyecto de chat en tiempo real utilizando sockets en Python, con una interfaz gráfica construida con Tkinter. Permite la comunicación entre múltiples clientes a través de un servidor central.",
+      "description": "Sitio web empresarial para empresa de construcción con gestión de proyectos, galerías de imágenes y contacto. Implementa arquitectura limpia con Next.js 15, React 19, TypeScript y Tailwind CSS 4.",
       "highlights": [
-        "Implementación de laboratorio de Redes en la asignatura de Tecnologias de la Información",
-        "Python, Tkinter, Socket"
+        "Arquitectura Clean Architecture con capas de dominio, infraestructura y presentación",
+        "Integración con Cloudinary para gestión de imágenes de proyectos",
+        "API Routes con transformación de datos para el frontend",
+        "Deploy en Vercel con CI/CD automatizado"
       ],
-      "url": "https://github.com/statick88/chat-red-local",
-      "github": "https://github.com/statick88/chat-red-local"
+      "url": "https://webiste-hs.vercel.app/",
+      "github": "https://github.com/statick88/saavedra-construction",
+      "image": "/projects/saavedra-construction.webp"
     },
     {
       "name": "Facilitador del Bootcamp de Desarrollo Fullstack",
@@ -348,7 +456,8 @@
         "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React, TypeScript, Git, Github, Docker, Bootstrap, Tailwind"
       ],
       "url": "https://statick88.github.io/bootcamp_fullstack/",
-      "github": "https://statick88.github.io/bootcamp_fullstack/"
+      "github": "https://statick88.github.io/bootcamp_fullstack/",
+      "image": "/projects/bootcamp-fullstack.webp"
     },
     {
       "name": "Facilitador del Curso de Django and React 2024",
@@ -359,9 +468,9 @@
         "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
       ],
       "url": "https://statick88.github.io/course_of_django_and_react",
-      "github": "https://statick88.github.io/course_of_django_and_react"
+      "github": "https://statick88.github.io/course_of_django_and_react",
+      "image": "/projects/django-react-2024.webp"
     },
-
     {
       "name": "Creador del ebook de Fast API",
       "isActive": true,
@@ -371,18 +480,8 @@
         "Python, Fast API, REST"
       ],
       "url": "https://statick88.github.io/course_of_FastAPI/",
-      "github": "https://statick88.github.io/course_of_FastAPI/"
-    },
-    {
-      "name": "Creador del Ebook de Ruby on Rails",
-      "isActive": true,
-      "description": "Ebook de Ruby on Rails para aprender a crear aplicaciones web con Ruby",
-      "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "Ruby, Ruby on Rails"
-      ],
-      "url": "https://statick88.github.io/course_of_ruby_on_rails/",
-      "github": "https://statick88.github.io/course_of_ruby_on_rails/"
+      "github": "https://statick88.github.io/course_of_FastAPI/",
+      "image": "/projects/fastapi-ebook.webp"
     },
     {
       "name": "Creador del Ebook de Docker",
@@ -393,7 +492,8 @@
         "Docker"
       ],
       "url": "https://statick88.github.io/course_docker/",
-      "github": "https://statick88.github.io/course_docker/"
+      "github": "https://statick88.github.io/course_docker/",
+      "image": "/projects/docker-ebook.webp"
     },
     {
       "name": "Creador del Ebook de TypeScript",
@@ -418,13 +518,83 @@
     },
     {
       "name": "Diplomado de IA orientado a la Educación",
+      "isActive": true,
       "description": "Facilitador del Diplomado de Inteligencia Artificial orientado a Educadores",
       "highlights": [
         "Enseñanza/Aprendizaje de herramientas de IA orientadas a la Educación en diferentes áreas",
-        ""
+        "Quarto, Python, IA Generativa, Prompt Engineering"
       ],
-      "url": "https://statick88.github.io/diplomado_ia/",
-      "github": "https://statick88.github.io/diplomado_ia/"
+      "url": "https://statick88.github.io/diplomado_ia/"
+    },
+    {
+      "name": "Bootcamp de Desarrollo Web FullStack",
+      "isActive": true,
+      "description": "Facilitador del Bootcamp de Desarrollo Web FullStack con tecnologías modernas",
+      "highlights": [
+        "Formación intensiva de desarrolladores web fullstack durante 3 meses",
+        "Python, Django, FastAPI, HTML5, CSS3, JavaScript, TypeScript, React, Node.js, Git, Docker"
+      ],
+      "url": "https://statick88.github.io/bootcamp_fullstack/"
+    },
+    {
+      "name": "Bootcamp de Desarrollo Móvil con Flutter",
+      "isActive": true,
+      "description": "Facilitador del Bootcamp de Desarrollo Móvil con Flutter",
+      "highlights": [
+        "Desarrollo de aplicaciones móviles multiplataforma",
+        "Flutter, Dart, Firebase, GitHub Pages"
+      ],
+      "url": "https://statick88.github.io/bootcamp_desarrollo_movil_flutter/"
+    },
+    {
+      "name": "Advanced Web Programming Course",
+      "isActive": true,
+      "description": "Curso avanzado de programación web con tecnologías modernas",
+      "highlights": [
+        "Programación web avanzada",
+        "React, Next.js, Node.js, TypeScript"
+      ],
+      "url": "https://statick88.github.io/programacionWebAvanzada/"
+    },
+    {
+      "name": "Secure Software Development Course",
+      "isActive": true,
+      "description": "Curso de desarrollo de software seguro",
+      "highlights": [
+        "Desarrollo seguro de software",
+        "OWASP, Seguridad en APIs, Autenticación, Autorización"
+      ],
+      "url": "https://statick88.github.io/desarrollo-software-seguro/"
+    },
+    {
+      "name": "Fundamentals of Data Engineering",
+      "isActive": true,
+      "description": "Ebook de fundamentos de Ingeniería de Datos",
+      "highlights": [
+        "Fundamentos de ingeniería de datos",
+        "Python, SQL, Pandas, NumPy, Data Pipelines"
+      ],
+      "url": "https://statick88.github.io/book_fundamentos_dataEngineer/"
+    },
+    {
+      "name": "Course of Android Studio",
+      "isActive": true,
+      "description": "Curso de desarrollo de aplicaciones Android",
+      "highlights": [
+        "Desarrollo de aplicaciones Android nativas",
+        "Android Studio, Kotlin, Java, XML"
+      ],
+      "url": "https://statick88.github.io/Course_of_Android_Studio/"
+    },
+    {
+      "name": "Course of React",
+      "isActive": true,
+      "description": "Ebook de React para aprender a crear aplicaciones web",
+      "highlights": [
+        "Fundamentos de React",
+        "JavaScript, TypeScript, React, Hooks, Redux"
+      ],
+      "url": "https://statick88.github.io/course_of_react/"
     }
   ]
 }
