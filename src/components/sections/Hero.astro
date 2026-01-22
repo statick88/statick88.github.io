@@ -1,139 +1,81 @@
 ---
-import { basics } from "@cv"
-import Section from "@/components/Section.astro"
 import Mail from "@/icons/Mail.astro"
 import Phone from "@/icons/Phone.astro"
 import X from "@/icons/X.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
 import GitHub from "@/icons/GitHub.astro"
 import WorldMap from "@/icons/WorldMap.astro"
-
-// Importamos los nuevos iconos (Asegúrate de tenerlos en src/icons/)
-import Duolingo from "@/icons/Duolingo.astro"
-import Chess from "@/icons/Chess.astro"
-import Game from "@/icons/Game.astro"
-
-import type { SocialIcon } from "@/types"
-
-// RE-AÑADIMOS la importación de 'image'
-const { name, label, image, location, profiles, phone, email } = basics 
-const { city, region } = location
-
-// Mapeamos las redes sociales a sus componentes de ícono
-const SOCIAL_ICONS: SocialIcon = {
-  GitHub,
-  LinkedIn,
-  X,
-  Duolingo,
-  "Chess.com": Chess,
-  "Chess Universe": Game,
-}
-
-const linkedInfo = profiles.find(({ network }) => network === "LinkedIn")
-const linkedUrl = linkedInfo?.url
-
-const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
 ---
 
-<Section>
-  <div class="container">
-    <div class="info">
-      <h1>{name}</h1>
-      <h2>{label}</h2>
-      <span>
-        <WorldMap />
-        {city}, {region}
-      </span>
-      <footer class="print">
-        {printInfo}
-      </footer>
-      <footer class="no-print">
-        {
-          email && (
-            <a
-              href={`mailto:${email}`}
-              title={`Enviar un correo electrónico a ${name} al correo ${email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Mail />
-            </a>
-          )
-        }
-        {
-          phone && (
-            <a
-              href={`tel:${phone}`}
-              title={`Llamar por teléfono a ${name} al número ${phone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Phone />
-            </a>
-          )
-        }
-        {
-          profiles.map(({ network, url, username }) => {
-            const Icon = SOCIAL_ICONS[network]
-
-            if (!Icon) return null
-
-            return (
-              <a
-                href={url}
-                title={`Visitar el perfil de ${name} en ${network}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon />
-              </a>
-            )
-          })
-        }
-      </footer>
+<div id="i18n-content" data-i18n>
+  <section class="hero-section" data-i18n-key="hero">
+    <div class="container">
+      <div class="info">
+        <h1 data-i18n="hero.name">Diego Medardo Saavedra García</h1>
+        <h2 data-i18n="hero.label">FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.</h2>
+        <span>
+          <WorldMap />
+          <span data-i18n="hero.location">Loja - Loja, Ecuador</span>
+        </span>
+        <footer class="print">
+          <span data-i18n="hero.printInfo">dsaavedra88@gmail.com • +593 980192790 • https://linkedin.com/in/diego-saavedra-developer</span>
+        </footer>
+        <footer class="no-print">
+          <a href="mailto:dsaavedra88@gmail.com" title="Enviar un correo electrónico a Diego Medardo Saavedra García al correo dsaavedra88@gmail.com" target="_blank" rel="noopener noreferrer">
+            <Mail />
+          </a>
+          <a href="tel:+593980192790" title="Llamar por teléfono a Diego Medardo Saavedra García al número +593 980192790" target="_blank" rel="noopener noreferrer">
+            <Phone />
+          </a>
+          <a href="https://www.linkedin.com/in/diego-saavedra-developer/" title="Visitar el perfil de Diego Medardo Saavedra García en LinkedIn" target="_blank" rel="noopener noreferrer">
+            <LinkedIn />
+          </a>
+          <a href="https://x.com/statick_ds" title="Visitar el perfil de Diego Medardo Saavedra García en X" target="_blank" rel="noopener noreferrer">
+            <X />
+          </a>
+          <a href="https://github.com/statick88" title="Visitar el perfil de Diego Medardo Saavedra García en GitHub" target="_blank" rel="noopener noreferrer">
+            <GitHub />
+          </a>
+        </footer>
+      </div>
+      <figure>
+        <img src="/me.webp" alt="Diego Medardo Saavedra García" />
+      </figure>
     </div>
-    <figure>
-      <img src={image} alt={name} />
-    </figure>
-  </div>
-</Section>
+  </section>
+</div>
 
 <style>
   .container {
-    /* Usamos flex para posicionar texto e imagen */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     gap: 1rem;
-    padding-top: 2rem; 
+    padding-top: 2rem;
   }
 
   .info {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    /* 🎯 CENTRADO EN ESCRITORIO (como en el diseño original) */
-    text-align: center; 
+    text-align: center;
     padding-right: 32px;
-    flex: 1; 
+    flex: 1;
   }
 
-  /* ESTILOS DE IMAGEN */
   figure {
-      display: block;
+    display: block;
   }
   
   img { 
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      width: 128px;
-      border-radius: 16px;
-      border: 1px solid var(--color-border);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 128px;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
   }
-  /* FIN ESTILOS DE IMAGEN */
 
-  /* 🎯 TAMAÑO GRANDE Y COLOR DE TEMA PARA EL NOMBRE */
   h1 {
     font-size: 2rem;
     color: var(--color-text);
@@ -150,8 +92,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     color: var(--color-text-secondary);
     display: flex;
     align-items: center;
-    /* 🎯 CENTRADO PARA EL ICONO DE UBICACIÓN */
-    justify-content: center; 
+    justify-content: center;
     gap: 0.25rem;
     font-size: 0.85rem;
     letter-spacing: -0.05rem;
@@ -163,8 +104,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     display: flex;
     gap: 4px;
     margin-top: 8px;
-    /* 🎯 CENTRADO PARA LOS ÍCONOS SOCIALES */
-    justify-content: center; 
+    justify-content: center;
   }
 
   footer a {
@@ -185,11 +125,9 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     border: 1px solid var(--color-border);
   }
 
-  /* MEDIA QUERY PARA MOVIL */
   @media (width <= 700px) {
     .container {
-      /* Imagen encima del texto en móvil */
-      flex-direction: column-reverse; 
+      flex-direction: column-reverse;
       padding-top: 1rem;
       justify-content: center;
     }
@@ -202,7 +140,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ")
     }
 
     h1 {
-        font-size: 1.8rem; 
+        font-size: 1.8rem;
     }
 
     span, footer {

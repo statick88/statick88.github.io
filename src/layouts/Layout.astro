@@ -63,6 +63,82 @@ const { image, summary, url } = basics
     
       document.documentElement.setAttribute('lang', lang);
     </script>
+
+    <script is:inline>
+      const translations = {
+        es: {
+          section: {
+            about: "Sobre mí",
+            experience: "Experiencia laboral",
+            education: "Educación",
+            portfolio: "Portafolio",
+            publications: "Publicaciones Científicas",
+            skills: "Habilidades"
+          },
+          portfolio: {
+            active: "Activo"
+          },
+          hero: {
+            name: "Diego Medardo Saavedra García",
+            label: "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
+            location: "Loja - Loja, Ecuador",
+            printInfo: "dsaavedra88@gmail.com • +593 980192790 • https://linkedin.com/in/diego-saavedra-developer"
+          }
+        },
+        en: {
+          section: {
+            about: "About Me",
+            experience: "Work Experience",
+            education: "Education",
+            portfolio: "Portfolio",
+            publications: "Scientific Publications",
+            skills: "Skills"
+          },
+          portfolio: {
+            active: "Active"
+          },
+          hero: {
+            name: "Diego Medardo Saavedra García",
+            label: "FullStack Developer with over 8 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses.",
+            location: "Loja - Loja, Ecuador",
+            printInfo: "dsaavedra88@gmail.com • +593 980192790 • https://linkedin.com/in/diego-saavedra-developer"
+          }
+        }
+      };
+
+      function updateContent(lang) {
+        const t = translations[lang];
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (key && t[key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.placeholder = t[key];
+            } else {
+              el.textContent = t[key];
+            }
+          }
+        });
+        
+        document.querySelectorAll('[data-i18n-key]').forEach(el => {
+          const key = el.getAttribute('data-i18n-key');
+          if (key && t[key]) {
+            el.textContent = t[key];
+          }
+        });
+      }
+
+      function initI18n() {
+        const lang = document.documentElement.getAttribute('lang') || 'es';
+        updateContent(lang);
+
+        window.addEventListener('langchange', (event) => {
+          updateContent(event.detail.lang);
+        });
+      }
+
+      initI18n();
+    </script>
   </head>
   <body>
     <slot />

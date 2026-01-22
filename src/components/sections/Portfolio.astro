@@ -22,7 +22,7 @@ function getDomain(url: string): string {
 }
 ---
 
-<Section title="Portafolio">
+<Section title="Portafolio" i18nKey="section.portfolio">
   <div class="projects-grid">
     {
       sortedProjects.map(
@@ -41,7 +41,7 @@ function getDomain(url: string): string {
                       {name}
                     </a>
                   </h3>
-                  {isActive && <span class="active-badge">Activo</span>}
+                  {isActive && <span class="active-badge" data-i18n="portfolio.active">Activo</span>}
                 </div>
               </header>
 

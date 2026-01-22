@@ -3,28 +3,33 @@
 </button>
 
 <script is:inline>
-  const handleLangClick = () => {
-    const element = document.documentElement;
-    const currentLang = element.getAttribute('lang') || 'es';
-    const newLang = currentLang === 'es' ? 'en' : 'es';
-    
-    element.setAttribute('lang', newLang);
-    localStorage.setItem('lang', newLang);
-    
-    // Update button text
+  const initLangToggle = () => {
     const btn = document.getElementById('lang-toggle');
-    if (btn) {
-      const langText = btn.querySelector('.lang-text');
+    if (!btn) return;
+    
+    const langText = btn.querySelector('.lang-text');
+    const currentLang = document.documentElement.getAttribute('lang') || 'es';
+    
+    if (langText) {
+      langText.textContent = currentLang.toUpperCase();
+    }
+    
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('lang') || 'es';
+      const newLang = current === 'es' ? 'en' : 'es';
+      
+      document.documentElement.setAttribute('lang', newLang);
+      localStorage.setItem('lang', newLang);
+      
       if (langText) {
         langText.textContent = newLang.toUpperCase();
       }
-    }
-    
-    // Dispatch event for other components to listen
-    window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: newLang } }));
-  }
+      
+      window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: newLang } }));
+    });
+  };
 
-  document.getElementById('lang-toggle')?.addEventListener('click', handleLangClick);
+  initLangToggle();
 </script>
 
 <style>
