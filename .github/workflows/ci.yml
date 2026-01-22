@@ -17,4 +17,4 @@ jobs:
       - name: Install dependencies and build the site
         uses: withastro/action@v3
         with:
-          package-manager: pnpm@latest
+          package-manager: npm@latest
