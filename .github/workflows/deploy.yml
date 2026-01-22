@@ -31,14 +31,6 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Compress assets with Brotli
-        run: |
-          find dist -type f \( -name "*.js" -o -name "*.css" -o -name "*.html" \) -exec brotli -f --best {} \;
-
-      - name: Rename .br files for GitHub Pages
-        run: |
-          find dist -name "*.br" -exec sh -c 'mv "$1" "${1%.br}"' _ {} \;
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

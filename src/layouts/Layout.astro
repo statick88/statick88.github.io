@@ -5,9 +5,10 @@ import LanguageToggle from "@/components/LanguageToggle.astro"
 
 interface Props {
   title: string
+  preconnects?: { href: string; crossorigin?: boolean }[]
 }
 
-const { title } = Astro.props
+const { title, preconnects = [] } = Astro.props
 
 const { image, summary, url } = basics
 const summaryText = typeof summary === 'object' ? summary.es : summary
@@ -22,6 +23,10 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    {preconnects.map((p) => (
+      <link rel="preconnect" href={p.href} {...p.crossorigin ? { crossorigin: "" } : {}} />
+    ))}
+
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -34,11 +39,6 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={summaryText} />
     <meta name="twitter:image" content="" />
-
-    <link rel="preconnect" href="https://identitytoolkit.googleapis.com" />
-    <link rel="preconnect" href="https://www.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://firestore.googleapis.com" />
-    <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
 
     <script is:inline>
       const theme = (() => {

@@ -9,6 +9,9 @@ export default defineConfig({
     cssMinify: true,
   },
   vite: {
+    server: {
+      compress: true,
+    },
     build: {
       cssMinify: true,
       rollupOptions: {
@@ -22,7 +25,7 @@ export default defineConfig({
     enabled: false,
   },
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
+    prefetchAll: import.meta.env.PROD,
+    defaultStrategy: import.meta.env.PROD ? 'viewport' : false,
   },
 })
