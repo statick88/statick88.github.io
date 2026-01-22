@@ -22,16 +22,4 @@ jobs:
       - name: Install dependencies and build the site
         uses: withastro/action@v3
         with:
-          package-manager: pnpm@latest # Especifica la versión de pnpm a usar
-
-  deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          package-manager: npm@latest
