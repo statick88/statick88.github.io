@@ -58,11 +58,13 @@ const { error } = Astro.props
         </div>
       </form>
       
-      <div class="debug-info">
+      {import.meta.env.PROD === false && (
+        <div class="debug-info">
         <p><strong>Acceso de prueba:</strong></p>
         <p>Email: dsaavedra88@gmail.com</p>
         <p>Contraseña: a1b2c3d4*</p>
       </div>
+      )}
     </div>
   </div>
 </Layout>

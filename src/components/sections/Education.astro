@@ -7,7 +7,7 @@ import { education } from "@cv"
 <Section title="Educación" i18nKey="section.education">
   <ul>
     {
-      education.map(({ institution, startDate, endDate, area }) => {
+      education.map(({ institution, startDate, endDate, area }, index) => {
         const startYear = new Date(startDate).getFullYear()
         const endYear =
           endDate != null ? new Date(endDate).getFullYear() : "Actual"
@@ -25,7 +25,7 @@ import { education } from "@cv"
               </header>
 
               <footer>
-                <p>{area}</p>
+                <p data-i18n={`cv.education.${index}.area`}>{area}</p>
               </footer>
             </article>
           </li>

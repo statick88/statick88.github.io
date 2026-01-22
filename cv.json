@@ -1,12 +1,18 @@
 {
   "basics": {
     "name": "Diego Medardo Saavedra García",
-    "label": "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
+    "label": {
+      "es": "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
+      "en": "FullStack Developer with over 8 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses."
+    },
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
-    "summary": "Profesional de TI con más de 8 años de experiencia combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye destacadas colaboraciones con prestigiosas instituciones académicas como la Universidad de las Fuerzas Armadas ESPE, la Universidad Internacional del Ecuador, el Instituto Superior Tecnológico Juan Montalvo y centros de capacitación como Abacom y Codings Academy",
+    "summary": {
+      "es": "Profesional de TI con más de 8 años de experiencia combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye destacadas colaboraciones con prestigiosas instituciones académicas como la Universidad de las Fuerzas Armadas ESPE, la Universidad Internacional del Ecuador, el Instituto Superior Tecnológico Juan Montalvo y centros de capacitación como Abacom y Codings Academy",
+      "en": "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer. I have successfully designed and taught bootcamps in web development, Data Science, and mobile. My teaching career includes notable collaborations with prestigious academic institutions such as Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, and training centers like Abacom and Codings Academy"
+    },
     "location": {
       "address": "",
       "postalCode": "171102",
@@ -15,400 +21,202 @@
       "region": "Ecuador"
     },
     "profiles": [
-  {
-    "network": "LinkedIn",
-    "username": "Diego Saavedra",
-    "url": "https://www.linkedin.com/in/diego-saavedra-developer/"
-  },
-  {
-    "network": "X",
-    "username": "statick_ds",
-    "url": "https://x.com/statick_ds"
-  },
-  {
-    "network": "GitHub",
-    "username": "statick88",
-    "url": "https://github.com/statick88"
-  }
+      {
+        "network": "LinkedIn",
+        "username": "Diego Saavedra",
+        "url": "https://www.linkedin.com/in/diego-saavedra-developer/"
+      },
+      {
+        "network": "X",
+        "username": "statick_ds",
+        "url": "https://x.com/statick_ds"
+      },
+      {
+        "network": "GitHub",
+        "username": "statick88",
+        "url": "https://github.com/statick88"
+      }
     ]
   },
   "work": [
     {
       "name": "Codings Academy",
-      "position": "Facilitador de Bootcamps",
+      "position": {
+        "es": "Facilitador de Bootcamps",
+        "en": "Bootcamp Facilitator"
+      },
       "url": "http://codingsacademy.com",
       "startDate": "2024-09-01",
       "endDate": "2024-12-31",
-      "summary": "Facilitador de Bootcamps de Desarrollo Web Fullstack, Data Science y Movil.",
-      "highlights": ["Started the company"]
+      "summary": {
+        "es": "Facilitador de Bootcamps de Desarrollo Web Fullstack, Data Science y Movil.",
+        "en": "Facilitator of Fullstack Web Development, Data Science, and Mobile Bootcamps."
+      },
+      "highlights": {
+        "es": ["Formación de desarrolladores durante 3 meses"],
+        "en": ["Training developers for 3 months"]
+      }
     },
     {
       "name": "Universidad de Zulia en Venezuela",
-      "position": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación",
+      "position": {
+        "es": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación",
+        "en": "Professor of the Diploma in Artificial Intelligence applied to Education"
+      },
       "url": "https://www.luz.edu.ve/",
       "startDate": "2024-10-19",
       "endDate": "2024-12-15",
-      "summary": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación.",
-      "highlights": ["Started the company"]
+      "summary": {
+        "es": "Docente del Diplomado en Inteligencia Artificial aplicada a la Educación.",
+        "en": "Professor of the Diploma in Artificial Intelligence applied to Education."
+      },
+      "highlights": {
+        "es": ["Enseñanza de IA en educación"],
+        "en": ["Teaching AI in education"]
+      }
     },
     {
       "name": "Universidad de las Fuerzas Armadas ESPE",
-      "position": "Docente Ocasional 1 Tiempo Completo",
+      "position": {
+        "es": "Docente Ocasional 1 Tiempo Completo",
+        "en": "Occasional Professor 1 Full Time"
+      },
       "url": "https://www.espe.edu.ec",
       "startDate": "2023-04-26",
       "endDate": "2024-10-31",
-      "summary": "Docente del Departamento de Ciencias de la Computación en las carreras de Ingeniería en Desarrollo de Software y Tecnologías de la Computación.",
-      "highlights": ["Started the company"]
+      "summary": {
+        "es": "Docente del Departamento de Ciencias de la Computación en las carreras de Ingeniería en Desarrollo de Software y Tecnologías de la Computación.",
+        "en": "Professor in the Computer Science Department for Software Engineering and Computer Technology degrees."
+      },
+      "highlights": {
+        "es": ["Docencia en carreras de ingeniería"],
+        "en": ["Teaching in engineering degrees"]
+      }
     },
     {
       "name": "Abacom",
-      "position": "Facilitador",
+      "position": {
+        "es": "Facilitador",
+        "en": "Facilitator"
+      },
       "url": "https://abacom.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2024-12-31",
-      "summary": "Facilitador de cursos de Desarrollo Web Fullstack.",
-      "highlights": ["Started the company"]
+      "summary": {
+        "es": "Facilitador de cursos de Desarrollo Web Fullstack.",
+        "en": "Facilitator of Fullstack Web Development courses."
+      },
+      "highlights": {
+        "es": ["Cursos de desarrollo web"],
+        "en": ["Web development courses"]
+      }
     },
     {
       "name": "Universidad Internacional del Ecuador",
-      "position": "Docente Ocasional Tiempo Completo",
+      "position": {
+        "es": "Docente Ocasional Tiempo Completo",
+        "en": "Occasional Professor Full Time"
+      },
       "url": "https://www.uide.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2022-12-31",
-      "summary": "Docente de la carrera de Tecnologías de la Información y Comunicación.",
-      "highlights": ["Started the company"]
+      "summary": {
+        "es": "Docente de la carrera de Tecnologías de la Información y Comunicación.",
+        "en": "Professor of the Information and Communication Technology career."
+      },
+      "highlights": {
+        "es": ["Docencia en TIC"],
+        "en": ["Teaching in ICT"]
+      }
     },
     {
       "name": "Instituto Superior Tecnológico Juan Montalvo",
-      "position": "Docente Ocasional Tiempo Completo",
+      "position": {
+        "es": "Docente Ocasional Tiempo Completo",
+        "en": "Occasional Professor Full Time"
+      },
       "url": "https://istjm.edu.ec/",
       "startDate": "2019-10-31",
       "endDate": "2022-10-31",
-      "summary": "Docente de la carrera de Tecnología en Mantenimiento de Computadoras.",
-      "highlights": ["Started the company"]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "Organization",
-      "position": "Volunteer",
-      "url": "https://organization.com/",
-      "startDate": "2012-01-01",
-      "endDate": "2013-01-01",
-      "summary": "Description…",
-      "highlights": ["Awarded 'Volunteer of the Month'"]
+      "summary": {
+        "es": "Docente de la carrera de Tecnología en Mantenimiento de Computadoras.",
+        "en": "Professor of the Computer Maintenance Technology career."
+      },
+      "highlights": {
+        "es": ["Docencia en mantenimiento de computadoras"],
+        "en": ["Teaching computer maintenance"]
+      }
     }
   ],
   "education": [
     {
       "institution": "Universidad Técnica Particular de Loja",
       "url": "https://utpl.edu.ec/",
-      "area": "Maestría en Ciencias y Tecnologías de la Computación",
+      "area": {
+        "es": "Maestría en Ciencias y Tecnologías de la Computación",
+        "en": "Master's in Computer Science and Technologies"
+      },
       "studyType": "Master",
       "startDate": "2018-09-01",
       "endDate": "2021-02-28",
-      "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
+      "score": "4.0"
     },
     {
       "institution": "Universidad Nacional de Loja",
       "url": "https://unl.edu.ec/",
-      "area": "Licenciatura en Ciencias de la Educación Mención Informática Educativa",
+      "area": {
+        "es": "Licenciatura en Ciencias de la Educación Mención Informática Educativa",
+        "en": "Bachelor's in Educational Sciences with specialization in Educational Computing"
+      },
       "studyType": "Bachelor",
       "startDate": "2006-09-01",
       "endDate": "2011-02-28",
-      "score": "4.0",
-      "courses": ["DB1101 - Basic SQL"]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Award",
-      "date": "2014-11-01",
-      "awarder": "Company",
-      "summary": "There is no spoon."
-    }
-  ],
-  "certificates": [
-    {
-      "name": "Certificate",
-      "date": "2021-11-07",
-      "issuer": "Company",
-      "url": "https://certificate.com"
+      "score": "4.0"
     }
   ],
   "publications": [
     {
-      "name": "Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger en estudiantes universitarios",
+      "name": {
+        "es": "Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger en estudiantes universitarios",
+        "en": "Evaluation of Deep Learning to detect ADHD and Asperger's syndrome in university students"
+      },
       "publisher": "REMI - Revisata de Investigación Multidisciplinaria Iberoamericana",
       "releaseDate": "2024-10-01",
-      "url": "https://revistarimi.net/index.php/home/article/view/89",
-      "summary": "En la última década, el uso de tecnologías de inteligencia artificial ha crecido exponencialmente en diversas áreas, incluyendo la educación y la salud. Este artículo se enfoca en la revisión de la literatura existente sobre el uso de modelos de Deep Learning para la detección de trastornos como el déficit de atención e hiperactividad (TDAH) y el síndrome de Asperger en entornos educativos universitarios. Se pretende analizar las metodologías y enfoques teóricos utilizados, así como resultados obtenidos de estudios previos. Es importante mencionar que Deep Learning es una subcategoría dentro del Machine Learning, y este artículo tomará en consideración el orden jerárquico existente entre estos conceptos."
+      "url": "https://revistarimi.net/index.php/home/article/view/89"
     }
   ],
   "skills": [
-    {
-      "name": "HTML",
-      "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend"]
-    },
-    {
-      "name": "CSS",
-      "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend", "Diseño Responsive"]
-    },
-    {
-      "name": "JavaScript",
-      "level": "Master",
-      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack"]
-    },
-    {
-      "name": "Tailwind",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "CSS Framework",
-        "Diseño Responsive"
-      ]
-    },
-    {
-      "name": "TypeScript",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
-    },
-    {
-      "name": "Node",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "JavaScript", "Servidor"]
-    },
-    {
-      "name": "React",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Frontend", "JavaScript Library", "UI"]
-    },
-    {
-      "name": "Next.js",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
-    },
-    {
-      "name": "MySQL",
-      "level": "Avanzado",
-      "keywords": [
-        "Bases de Datos",
-        "SQL",
-        "Almacenamiento de Datos",
-        "Backend"
-      ]
-    },
-    {
-      "name": "MongoDB",
-      "level": "Avanzado",
-      "keywords": [
-        "Bases de Datos",
-        "NoSQL",
-        "Almacenamiento de Datos",
-        "Backend"
-      ]
-    },
-    {
-      "name": "Python",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Data Science",
-        "Machine Learning"
-      ]
-    },
-    {
-      "name": "Django",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Python Framework"]
-    },
-    {
-      "name": "FastAPI",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Python Framework", "API REST"]
-    },
-    {
-      "name": "Ruby",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Ruby on Rails"]
-    },
-    {
-      "name": "Docker",
-      "level": "Avanzado",
-      "keywords": ["Desarrollo Web", "Backend", "Contenedores", "DevOps"]
-    },
-    {
-      "name": "Kubernetes",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Orquestación de Contenedores",
-        "DevOps"
-      ]
-    },
-    {
-      "name": "Git",
-      "level": "Avanzado",
-      "keywords": ["Control de Versiones", "Colaboración", "Código Fuente"]
-    },
-    {
-      "name": "GitHub",
-      "level": "Avanzado",
-      "keywords": [
-        "Control de Versiones",
-        "Colaboración",
-        "Código Fuente",
-        "Git"
-      ]
-    },
-    {
-      "name": "Flutter",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Móvil",
-        "Frontend",
-        "Dart Framework",
-        "Android",
-        "iOS"
-      ]
-    },
-    {
-      "name": "Angular",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "TypeScript Framework",
-        "SPA"
-      ]
-    },
-    {
-      "name": "Vue",
-      "level": "Intermedio",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "JavaScript Framework",
-        "SPA"
-      ]
-    },
-    {
-      "name": "Svelte",
-      "level": "Intermedio",
-      "keywords": [
-        "Desarrollo Web",
-        "Frontend",
-        "JavaScript Framework",
-        "SPA"
-      ]
-    },
-    {
-      "name": "NestJS",
-      "level": "Avanzado",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Node.js Framework",
-        "TypeScript"
-      ]
-    },
-    {
-      "name": "Java",
-      "level": "Intermedio",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Programación Orientada a Objetos",
-        "Spring"
-      ]
-    },
-    {
-      "name": "Spring Boot",
-      "level": "Intermedio",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Java Framework",
-        "API REST"
-      ]
-    },
-    {
-      "name": "C#",
-      "level": "Intermedio",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Microsoft",
-        ".NET"
-      ]
-    },
-    {
-      "name": ".NET",
-      "level": "Intermedio",
-      "keywords": [
-        "Desarrollo Web",
-        "Backend",
-        "Microsoft Framework",
-        "C#"
-      ]
-    },
-    {
-      "name": "AWS",
-      "level": "Intermedio",
-      "keywords": [
-        "Cloud",
-        "Infraestructura",
-        "Servicios Web",
-        "DevOps"
-      ]
-    },
-    {
-      "name": "Azure",
-      "level": "Intermedio",
-      "keywords": [
-        "Cloud",
-        "Infraestructura",
-        "Servicios Web",
-        "Microsoft"
-      ]
-    },
-    {
-      "name": "Vercel",
-      "level": "Avanzado",
-      "keywords": [
-        "Cloud",
-        "Deploy",
-        "Frontend",
-        "Serverless"
-      ]
-    },
-    {
-      "name": "Railway",
-      "level": "Intermedio",
-      "keywords": [
-        "Cloud",
-        "Deploy",
-        "Backend",
-        "DevOps"
-      ]
-    }
+    { "name": "HTML", "level": "Master" },
+    { "name": "CSS", "level": "Master" },
+    { "name": "JavaScript", "level": "Master" },
+    { "name": "Tailwind", "level": "Avanzado" },
+    { "name": "TypeScript", "level": "Avanzado" },
+    { "name": "Node", "level": "Avanzado" },
+    { "name": "React", "level": "Avanzado" },
+    { "name": "Next.js", "level": "Avanzado" },
+    { "name": "MySQL", "level": "Avanzado" },
+    { "name": "MongoDB", "level": "Avanzado" },
+    { "name": "Python", "level": "Avanzado" },
+    { "name": "Django", "level": "Avanzado" },
+    { "name": "FastAPI", "level": "Avanzado" },
+    { "name": "Ruby", "level": "Avanzado" },
+    { "name": "Docker", "level": "Avanzado" },
+    { "name": "Kubernetes", "level": "Avanzado" },
+    { "name": "Git", "level": "Avanzado" },
+    { "name": "GitHub", "level": "Avanzado" },
+    { "name": "Flutter", "level": "Avanzado" },
+    { "name": "Angular", "level": "Avanzado" },
+    { "name": "Vue", "level": "Intermedio" },
+    { "name": "Svelte", "level": "Intermedio" },
+    { "name": "NestJS", "level": "Avanzado" },
+    { "name": "Java", "level": "Intermedio" },
+    { "name": "Spring Boot", "level": "Intermedio" },
+    { "name": "C#", "level": "Intermedio" },
+    { "name": ".NET", "level": "Intermedio" },
+    { "name": "AWS", "level": "Intermedio" },
+    { "name": "Azure", "level": "Intermedio" },
+    { "name": "Vercel", "level": "Avanzado" },
+    { "name": "Railway", "level": "Intermedio" }
   ],
   "languages": [
     {
@@ -420,29 +228,28 @@
       "fluency": "Advanced"
     }
   ],
-  "interests": [
-    {
-      "name": "Wildlife",
-      "keywords": ["Ferrets", "Unicorns"]
-    }
-  ],
-  "references": [
-    {
-      "name": "Jane Doe",
-      "reference": "Reference…"
-    }
-  ],
   "projects": [
     {
       "name": "Saavedra Construction",
       "isActive": true,
-      "description": "Sitio web empresarial para empresa de construcción con gestión de proyectos, galerías de imágenes y contacto. Implementa arquitectura limpia con Next.js 15, React 19, TypeScript y Tailwind CSS 4.",
-      "highlights": [
-        "Arquitectura Clean Architecture con capas de dominio, infraestructura y presentación",
-        "Integración con Cloudinary para gestión de imágenes de proyectos",
-        "API Routes con transformación de datos para el frontend",
-        "Deploy en Vercel con CI/CD automatizado"
-      ],
+      "description": {
+        "es": "Sitio web empresarial para empresa de construcción con gestión de proyectos, galerías de imágenes y contacto. Implementa arquitectura limpia con Next.js 15, React 19, TypeScript y Tailwind CSS 4.",
+        "en": "Business website for a construction company with project management, image galleries, and contact. Implements clean architecture with Next.js 15, React 19, TypeScript, and Tailwind CSS 4."
+      },
+      "highlights": {
+        "es": [
+          "Arquitectura Clean Architecture con capas de dominio, infraestructura y presentación",
+          "Integración con Cloudinary para gestión de imágenes de proyectos",
+          "API Routes con transformación de datos para el frontend",
+          "Deploy en Vercel con CI/CD automatizado"
+        ],
+        "en": [
+          "Clean Architecture with domain, infrastructure, and presentation layers",
+          "Cloudinary integration for project image management",
+          "API Routes with data transformation for frontend",
+          "Vercel deployment with automated CI/CD"
+        ]
+      },
       "url": "https://webiste-hs.vercel.app/",
       "github": "https://github.com/statick88/saavedra-construction",
       "image": "/projects/saavedra-construction.webp"
@@ -450,151 +257,82 @@
     {
       "name": "Facilitador del Bootcamp de Desarrollo Fullstack",
       "isActive": true,
-      "description": "Facilitador de bootcamp de Desarrollo Web Fullstack con Python, Django, FastAPI y React",
-      "highlights": [
-        "Formación de desarrolladores web fullstack durante 3 meses",
-        "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React, TypeScript, Git, Github, Docker, Bootstrap, Tailwind"
-      ],
+      "description": {
+        "es": "Facilitador de bootcamp de Desarrollo Web Fullstack con Python, Django, FastAPI y React",
+        "en": "Facilitator of Fullstack Web Development bootcamp with Python, Django, FastAPI, and React"
+      },
+      "highlights": {
+        "es": [
+          "Formación de desarrolladores web fullstack durante 3 meses",
+          "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React, TypeScript, Git, Github, Docker, Bootstrap, Tailwind"
+        ],
+        "en": [
+          "Training fullstack web developers for 3 months",
+          "Python, Django, HTML5, CSS3, JavaScript, Node.js, Express, React, TypeScript, Git, GitHub, Docker, Bootstrap, Tailwind"
+        ]
+      },
       "url": "https://statick88.github.io/bootcamp_fullstack/",
-      "github": "https://statick88.github.io/bootcamp_fullstack/",
       "image": "/projects/bootcamp-fullstack.webp"
     },
     {
       "name": "Facilitador del Curso de Django and React 2024",
       "isActive": true,
-      "description": "Facilitador de curso de Programación Web Fullstack con Django y React",
-      "highlights": [
-        "Formación de desarrolladores web fullstack",
-        "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
-      ],
+      "description": {
+        "es": "Facilitador de curso de Programación Web Fullstack con Django y React",
+        "en": "Facilitator of Fullstack Web Programming course with Django and React"
+      },
+      "highlights": {
+        "es": [
+          "Formación de desarrolladores web fullstack",
+          "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
+        ],
+        "en": [
+          "Training fullstack web developers",
+          "Python, Django, HTML5, CSS3, JavaScript, Node.js, Express, React"
+        ]
+      },
       "url": "https://statick88.github.io/course_of_django_and_react",
-      "github": "https://statick88.github.io/course_of_django_and_react",
       "image": "/projects/django-react-2024.webp"
     },
     {
       "name": "Creador del ebook de Fast API",
       "isActive": true,
-      "description": "Ebook de Fast API para aprender a crear APIs REST con Python",
-      "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "Python, Fast API, REST"
-      ],
+      "description": {
+        "es": "Ebook de Fast API para aprender a crear APIs REST con Python",
+        "en": "Fast API ebook to learn how to create REST APIs with Python"
+      },
+      "highlights": {
+        "es": [
+          "Uso de herramienta de Quarto para escritura científica",
+          "Python, Fast API, REST"
+        ],
+        "en": [
+          "Use of Quarto tool for scientific writing",
+          "Python, Fast API, REST"
+        ]
+      },
       "url": "https://statick88.github.io/course_of_FastAPI/",
-      "github": "https://statick88.github.io/course_of_FastAPI/",
       "image": "/projects/fastapi-ebook.webp"
     },
     {
       "name": "Creador del Ebook de Docker",
       "isActive": true,
-      "description": "Ebook de Docker para aprender a crear contenedores de aplicaciones",
-      "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "Docker"
-      ],
+      "description": {
+        "es": "Ebook de Docker para aprender a crear contenedores de aplicaciones",
+        "en": "Docker ebook to learn how to create application containers"
+      },
+      "highlights": {
+        "es": [
+          "Uso de herramienta de Quarto para escritura científica",
+          "Docker"
+        ],
+        "en": [
+          "Use of Quarto tool for scientific writing",
+          "Docker"
+        ]
+      },
       "url": "https://statick88.github.io/course_docker/",
-      "github": "https://statick88.github.io/course_docker/",
       "image": "/projects/docker-ebook.webp"
-    },
-    {
-      "name": "Creador del Ebook de TypeScript",
-      "isActive": true,
-      "description": "Ebook de TypeScript para aprender a crear aplicaciones web con TypeScript hasta Angular",
-      "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "TypeScript, Angular"
-      ],
-      "url": "https://pruebastecnicas.com",
-      "github": "https://github.com/midudev/pruebas-tecnicas"
-    },
-    {
-      "name": "Creador del Ebook de Nextjs",
-      "description": "Ebook de Nextjs para aprender a crear aplicaciones web con Nextjs",
-      "highlights": [
-        "Uso de herramienta de Quarto para escritura científica",
-        "JavaScript, TypeScript, React, Nextjs"
-      ],
-      "url": "https://statick88.github.io/course_of_next/",
-      "github": "https://statick88.github.io/course_of_next/"
-    },
-    {
-      "name": "Diplomado de IA orientado a la Educación",
-      "isActive": true,
-      "description": "Facilitador del Diplomado de Inteligencia Artificial orientado a Educadores",
-      "highlights": [
-        "Enseñanza/Aprendizaje de herramientas de IA orientadas a la Educación en diferentes áreas",
-        "Quarto, Python, IA Generativa, Prompt Engineering"
-      ],
-      "url": "https://statick88.github.io/diplomado_ia/"
-    },
-    {
-      "name": "Bootcamp de Desarrollo Web FullStack",
-      "isActive": true,
-      "description": "Facilitador del Bootcamp de Desarrollo Web FullStack con tecnologías modernas",
-      "highlights": [
-        "Formación intensiva de desarrolladores web fullstack durante 3 meses",
-        "Python, Django, FastAPI, HTML5, CSS3, JavaScript, TypeScript, React, Node.js, Git, Docker"
-      ],
-      "url": "https://statick88.github.io/bootcamp_fullstack/"
-    },
-    {
-      "name": "Bootcamp de Desarrollo Móvil con Flutter",
-      "isActive": true,
-      "description": "Facilitador del Bootcamp de Desarrollo Móvil con Flutter",
-      "highlights": [
-        "Desarrollo de aplicaciones móviles multiplataforma",
-        "Flutter, Dart, Firebase, GitHub Pages"
-      ],
-      "url": "https://statick88.github.io/bootcamp_desarrollo_movil_flutter/"
-    },
-    {
-      "name": "Advanced Web Programming Course",
-      "isActive": true,
-      "description": "Curso avanzado de programación web con tecnologías modernas",
-      "highlights": [
-        "Programación web avanzada",
-        "React, Next.js, Node.js, TypeScript"
-      ],
-      "url": "https://statick88.github.io/programacionWebAvanzada/"
-    },
-    {
-      "name": "Secure Software Development Course",
-      "isActive": true,
-      "description": "Curso de desarrollo de software seguro",
-      "highlights": [
-        "Desarrollo seguro de software",
-        "OWASP, Seguridad en APIs, Autenticación, Autorización"
-      ],
-      "url": "https://statick88.github.io/desarrollo-software-seguro/"
-    },
-    {
-      "name": "Fundamentals of Data Engineering",
-      "isActive": true,
-      "description": "Ebook de fundamentos de Ingeniería de Datos",
-      "highlights": [
-        "Fundamentos de ingeniería de datos",
-        "Python, SQL, Pandas, NumPy, Data Pipelines"
-      ],
-      "url": "https://statick88.github.io/book_fundamentos_dataEngineer/"
-    },
-    {
-      "name": "Course of Android Studio",
-      "isActive": true,
-      "description": "Curso de desarrollo de aplicaciones Android",
-      "highlights": [
-        "Desarrollo de aplicaciones Android nativas",
-        "Android Studio, Kotlin, Java, XML"
-      ],
-      "url": "https://statick88.github.io/Course_of_Android_Studio/"
-    },
-    {
-      "name": "Course of React",
-      "isActive": true,
-      "description": "Ebook de React para aprender a crear aplicaciones web",
-      "highlights": [
-        "Fundamentos de React",
-        "JavaScript, TypeScript, React, Hooks, Redux"
-      ],
-      "url": "https://statick88.github.io/course_of_react/"
     }
   ]
 }

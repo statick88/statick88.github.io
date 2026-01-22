@@ -5,17 +5,21 @@ import X from "@/icons/X.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
 import GitHub from "@/icons/GitHub.astro"
 import WorldMap from "@/icons/WorldMap.astro"
+import { basics } from "@cv"
+
+const labelValue = basics.label?.es || basics.label?.en || String(basics.label)
+const imageSrc = basics.image || "/me.webp"
 ---
 
 <div id="i18n-content" data-i18n>
   <section class="hero-section" data-i18n-key="hero">
     <div class="container">
       <div class="info">
-        <h1 data-i18n="hero.name">Diego Medardo Saavedra García</h1>
-        <h2 data-i18n="hero.label">FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.</h2>
+        <h1 data-i18n="cv.basics.name">{basics.name}</h1>
+        <h2 data-i18n="cv.basics.label">{labelValue}</h2>
         <span>
           <WorldMap />
-          <span data-i18n="hero.location">Loja - Loja, Ecuador</span>
+          <span data-i18n="hero.location">{basics.location.city}, {basics.location.countryCode}</span>
         </span>
         <footer class="print">
           <span data-i18n="hero.printInfo">dsaavedra88@gmail.com • +593 980192790 • https://linkedin.com/in/diego-saavedra-developer</span>
@@ -39,7 +43,7 @@ import WorldMap from "@/icons/WorldMap.astro"
         </footer>
       </div>
       <figure>
-        <img src="/me.webp" alt="Diego Medardo Saavedra García" />
+        <img src={imageSrc} alt="Diego Medardo Saavedra García" />
       </figure>
     </div>
   </section>

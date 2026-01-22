@@ -1,5 +1,5 @@
 <button id="lang-toggle" aria-label="Cambiar idioma">
-  <span class="lang-text">ES</span>
+  <span class="lang-text"></span>
 </button>
 
 <script is:inline>
@@ -10,8 +10,9 @@
     const langText = btn.querySelector('.lang-text');
     const currentLang = document.documentElement.getAttribute('lang') || 'es';
     
+    const oppositeLang = currentLang === 'es' ? 'EN' : 'ES';
     if (langText) {
-      langText.textContent = currentLang.toUpperCase();
+      langText.textContent = oppositeLang;
     }
     
     btn.addEventListener('click', () => {
@@ -21,8 +22,9 @@
       document.documentElement.setAttribute('lang', newLang);
       localStorage.setItem('lang', newLang);
       
+      const newOpposite = newLang === 'es' ? 'EN' : 'ES';
       if (langText) {
-        langText.textContent = newLang.toUpperCase();
+        langText.textContent = newOpposite;
       }
       
       window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: newLang } }));

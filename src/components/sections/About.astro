@@ -6,7 +6,7 @@ const { summary } = basics
 ---
 
 <Section title="Sobre mí" i18nKey="section.about">
-  <p>
-    {summary}
+  <p data-i18n="cv.basics.summary">
+    {typeof summary === 'object' ? summary.es : summary}
   </p>
 </Section>

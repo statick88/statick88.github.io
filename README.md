@@ -115,10 +115,32 @@ Profesional de TI con más de **8 años de experiencia** combinando experticia e
 
 ## 🛠️ Stack Técnico del Portafolio
 
-- [**Astro**](https://astro.build/) - Framework web moderno
+- [**Astro 5**](https://astro.build/) - Framework web moderno con renderizado híbrido
 - [**TypeScript**](https://www.typescriptlang.org/) - JavaScript con tipado estático
-- [**Tailwind CSS**](https://tailwindcss.com/) - Framework CSS utilitario
-- [**Vitest**](https://vitest.dev/) - Framework de testing
+- [**Tailwind CSS 4**](https://tailwindcss.com/) - Framework CSS utilitario con CSS-first config
+- [**Firebase**](https://firebase.google.com/) - Autenticación y base de datos en tiempo real
+- **HotKeyPad** - Paleta de comandos con atajos de teclado (Ctrl+K)
+
+### ✨ Características
+
+- 🌐 **Internacionalización (i18n)** - Soporte completo para español (es) e inglés (en)
+- 🌓 **Tema Oscuro/Claro** - Alternancia automática según preferencias del sistema
+- ⌨️ **Atajos de Teclado** - Ctrl+K para paleta de comandos, Ctrl+P para imprimir
+- 📱 **Diseño Responsivo** - Optimizado para dispositivos móviles
+- 🔐 **Autenticación Firebase** - Panel de administración seguro
+- 📄 **Generación de PDF** - Currículum imprimible desde el navegador
+- 🚀 **Rendimiento Optimizado** - Carga diferida de imágenes y assets
+
+### 🐛 Correcciones Recientes (v1.2.0)
+
+- **Fixed**: Botón ES/EN ya no causa error `[object Object]` en secciones
+- **Fixed**: Eliminado script vacío en `Section.astro` que causaba chunk vacío
+- **Fixed**: Removidos console.logs de debug en producción
+- **Fixed**: Preload de imagen `me.webp` eliminado para evitar conflictos
+- **Fixed**: Manejo correcto de objetos en traducciones i18n
+- **Improved**: Textos justificados para mejor lectura
+- **Added**: Verificación de DOM antes de ejecutar traducciones
+- **Added**: try-catch en funciones i18n para manejo de errores
 
 <div align="center">
 

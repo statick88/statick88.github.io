@@ -35,11 +35,9 @@ const sortedWork = [...work].sort((a, b) => {
   <ul>
     {
       sortedWork.map(
-        ({ name, startDate, endDate, position, summary, url }) => {
-          // 1. Obtiene el año de inicio
+        ({ name, startDate, endDate, position, summary, url }, index) => {
           const startYear = new Date(startDate).getFullYear()
 
-          // 2. Determina el año de finalización a mostrar
           let displayEndYear: string | number = "Actual";
           let endYear: number | null = null;
 
@@ -49,12 +47,10 @@ const sortedWork = [...work].sort((a, b) => {
                   endYear = date.getFullYear();
                   displayEndYear = endYear;
               } else {
-                  displayEndYear = endDate; // Si es inválido, muestra la cadena original (ej: "Actual")
+                  displayEndYear = endDate;
               }
           }
 
-          // 3. 🎯 LÓGICA DE CORRECCIÓN DE REDUNDANCIA: 
-          // Si el año de inicio es igual al año de fin, mostramos solo el año de inicio.
           const isSameYear = endYear && startYear === endYear;
 
           return (
@@ -67,7 +63,7 @@ const sortedWork = [...work].sort((a, b) => {
                         {name}
                       </a>
                     </h3>
-                    <h4>{position}</h4>
+                    <h4 data-i18n={`cv.work.${index}.position`}>{position}</h4>
                   </div>
 
                   <div>
@@ -76,7 +72,6 @@ const sortedWork = [...work].sort((a, b) => {
                       data-title={startDate}>
                         {startYear}
                     </time>
-                    {/* MOSTRAMOS EL GUION Y EL AÑO FINAL SOLO SI NO SON EL MISMO AÑO */}
                     { !isSameYear && " - " }
                     { !isSameYear && (
                         <time 
@@ -89,7 +84,7 @@ const sortedWork = [...work].sort((a, b) => {
                 </header>
 
                 <footer>
-                  <p>{summary}</p>
+                  <p data-i18n={`cv.work.${index}.summary`}>{summary}</p>
                 </footer>
               </article>
             </li>

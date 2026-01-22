@@ -10,9 +10,10 @@ import Skills from "@/components/sections/Skills.astro"
 import KeyboardManager from "@/components/KeyboardManager.astro"
 import { basics } from "@cv"
 const { name, label } = basics
+const labelText = typeof label === 'object' ? label.es : label
 ---
 
-<Layout title={`Portafolio de ${name} - ${label}`}>
+<Layout title={`Portafolio de ${name} - ${labelText}`}>
   <main>
     <Hero />
     <About />

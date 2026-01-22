@@ -1,5 +1,5 @@
 ---
-import { basics } from "@cv"
+import { basics, work, education, publications, projects } from "@cv"
 import ThemeToggle from "@/components/ThemeToggle.astro"
 import LanguageToggle from "@/components/LanguageToggle.astro"
 
@@ -10,6 +10,7 @@ interface Props {
 const { title } = Astro.props
 
 const { image, summary, url } = basics
+const summaryText = typeof summary === 'object' ? summary.es : summary
 ---
 
 <!doctype html>
@@ -17,22 +18,21 @@ const { image, summary, url } = basics
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
-    <meta name="description" content={summary} />
+    <meta name="description" content={summaryText} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" as="image" href={image} />
 
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
+    <meta property="og:description" content={summaryText} />
     <meta property="og:image" content="" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={url.split("//")[1] ?? ''} />
     <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={summary} />
+    <meta name="twitter:description" content={summaryText} />
     <meta name="twitter:image" content="" />
 
     <script is:inline>
@@ -63,8 +63,23 @@ const { image, summary, url } = basics
     
       document.documentElement.setAttribute('lang', lang);
     </script>
+  </head>
+  <body>
+    <slot />
+    <LanguageToggle />
+    <ThemeToggle />
 
-    <script is:inline>
+    <script is:inline define:vars={{ basics, work, education, publications, projects }}>
+      window.cvData = {
+        basics: basics,
+        work: work,
+        education: education,
+        publications: publications,
+        projects: projects
+      };
+    </script>
+
+      <script is:inline>
       const translations = {
         es: {
           section: {
@@ -121,54 +136,108 @@ const { image, summary, url } = basics
       };
 
       function getNestedValue(obj, path) {
-        return path.split('.').reduce((current, key) => current?.[key], obj);
+        if (!obj || !path) return undefined;
+        return path.split('.').reduce((current, key) => {
+          if (current && typeof current === 'object' && key in current) {
+            return current[key];
+          }
+          return undefined;
+        }, obj);
+      }
+
+      function getTranslation(value, lang) {
+        if (value === undefined || value === null) return undefined;
+        if (typeof value === 'object' && value !== null) {
+          if (Array.isArray(value)) {
+            return value.map(item => getTranslation(item, lang));
+          }
+          if ('es' in value || 'en' in value) {
+            return value[lang] || value.es || value.en || JSON.stringify(value);
+          }
+          return JSON.stringify(value);
+        }
+        return value;
       }
 
       function updateContent(lang) {
         const t = translations[lang];
+        const cvData = window.cvData || {};
+        
         if (!t) return;
         
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
-          if (key) {
-            const value = getNestedValue(t, key);
-            if (value !== undefined) {
-              if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.placeholder = value;
-              } else {
-                el.textContent = value;
-              }
+          if (!key) return;
+          
+          let value;
+          
+          if (key.startsWith('cv.')) {
+            const cvPath = key.substring(3);
+            const cvValue = getNestedValue(cvData, cvPath);
+            value = getTranslation(cvValue, lang);
+          } else {
+            value = getNestedValue(t, key);
+          }
+          
+          if (value !== undefined) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.placeholder = value;
+            } else {
+              el.textContent = value;
             }
           }
         });
         
         document.querySelectorAll('[data-i18n-key]').forEach(el => {
           const key = el.getAttribute('data-i18n-key');
-          if (key) {
-            const value = getNestedValue(t, key);
-            if (value !== undefined) {
-              el.textContent = value;
-            }
+          if (!key) return;
+          
+          let value;
+          
+          if (key.startsWith('cv.')) {
+            const cvPath = key.substring(3);
+            const cvValue = getNestedValue(cvData, cvPath);
+            value = getTranslation(cvValue, lang);
+          } else {
+            value = getNestedValue(t, key);
+          }
+          
+          if (value !== undefined && typeof value !== 'object') {
+            el.textContent = value;
           }
         });
       }
 
       function initI18n() {
         const lang = document.documentElement.getAttribute('lang') || 'es';
-        updateContent(lang);
+        
+        function doUpdate() {
+          try {
+            updateContent(lang);
+          } catch (e) {
+            console.error('i18n updateContent error:', e.message, e.stack);
+          }
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', doUpdate, { once: true });
+        } else {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(doUpdate);
+          });
+        }
 
         window.addEventListener('langchange', (event) => {
-          updateContent(event.detail.lang);
+          try {
+            updateContent(event.detail.lang);
+          } catch (e) {
+            console.error('i18n langchange error:', e.message, e.stack);
+          }
         });
       }
 
       initI18n();
     </script>
-  </head>
-  <body>
-    <slot />
-    <LanguageToggle />
-    <ThemeToggle />
   </body>
 </html>
 
@@ -254,6 +323,7 @@ const { image, summary, url } = basics
     line-height: 1.5;
     margin: 0;
     text-wrap: pretty;
+    text-align: justify;
   }
 
   .print {

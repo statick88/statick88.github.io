@@ -26,7 +26,7 @@ function getDomain(url: string): string {
   <div class="projects-grid">
     {
       sortedProjects.map(
-        ({ name, description, highlights, url, github, image, isActive }) => {
+        ({ name, description, highlights, url, github, image, isActive }, index) => {
           return (
             <article class="project-card">
               {image && (
@@ -46,11 +46,11 @@ function getDomain(url: string): string {
               </header>
 
               <footer>
-                <p class="project-description">{description}</p>
-                {highlights && highlights.length > 0 && (
+                <p class="project-description" data-i18n={`cv.projects.${index}.description`}>{description}</p>
+                {highlights && typeof highlights === 'object' && 'es' in highlights && (
                   <ul class="project-highlights">
-                    {highlights.map((highlight) => (
-                      <li>{highlight}</li>
+                    {(highlights.es || []).map((highlight, hIndex) => (
+                      <li data-i18n={`cv.projects.${index}.highlights.${hIndex}`}>{highlight}</li>
                     ))}
                   </ul>
                 )}

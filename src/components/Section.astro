@@ -1,16 +1,13 @@
 ---
-// se ejecuta en el servidor o en build time <----
-const { title, i18nKey } = Astro.props
+const { i18nKey } = Astro.props
 ---
 
 <section>
-  {title && <h2 data-i18n={i18nKey}>{title}</h2>}
+  {i18nKey && <h2 data-i18n-key={i18nKey}></h2>}
   <slot />
 </section>
 
-<script>
-  // se ejecuta en el cliente <----
-</script>
+
 
 <style>
   section {
