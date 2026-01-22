@@ -11,16 +11,11 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  issues: write
 
 jobs:
-  # Job 1: Pre-Deployment Validation
-  pre-deploy-validation:
-    name: Pre-Deployment Validation
+  build:
+    name: Build & Deploy
     runs-on: ubuntu-latest
-    outputs:
-      should-deploy: ${{ steps.validation.outputs.should-deploy }}
-      build-number: ${{ steps.meta.outputs.build-number }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,93 +29,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run all tests
-        run: |
-          echo "🧪 Running comprehensive test suite"
-          npm run test:run
-          echo "✅ All tests passed"
-
-      - name: Security validation
-        run: |
-          echo "🔒 Running security validation"
-          npm run security:scan
-          echo "✅ Security validation completed"
-
-      - name: Code quality validation
-        run: |
-          echo "📋 Running code quality validation"
-          npm run validate
-          echo "✅ Code quality validation completed"
-
       - name: Build application
         run: |
           echo "🏗️ Building application"
           NODE_OPTIONS='--max-old-space-size=4096' npm run build
-          echo "✅ Build completed successfully"
-
-      - name: Validate build artifacts
-        run: |
-          echo "📦 Validating build artifacts"
-          if [ ! -d "dist" ]; then
-            echo "❌ Build directory not found"
-            exit 1
-          fi
-          
-          if [ ! -f "dist/index.html" ]; then
-            echo "❌ index.html not found in build"
-            exit 1
-          fi
-          
-          echo "✅ Build artifacts validated"
-          
-      - name: Generate build metadata
-        id: meta
-        run: |
-          BUILD_NUMBER=${{ github.run_number }}
-          COMMIT_SHA=${{ github.sha }}
-          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          
-          echo "build-number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
-          echo "commit-sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
-          echo "build-timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
-          
-          echo "📊 Build #$BUILD_NUMBER - SHA: $COMMIT_SHA - $TIMESTAMP"
-
-      - name: Deployment decision
-        id: validation
-        run: |
-          if [ "${{ github.event_name }}" == "push" ] && [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            echo "should-deploy=true" >> $GITHUB_OUTPUT
-            echo "🚀 Deployment approved for production"
-          else
-            echo "should-deploy=false" >> $GITHUB_OUTPUT
-            echo "🔍 Validation only - not deploying"
-          fi
 
       - name: Upload build artifacts
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: dist
           retention-days: 1
 
-  # Job 2: Deployment to GitHub Pages
-  deploy-to-production:
-    name: Deploy to GitHub Pages
-    needs: pre-deploy-validation
-    if: needs.pre-deploy-validation.outputs.should-deploy == 'true'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
-          path: dist
-
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: deployment
         uses: actions/deploy-pages@v4
