@@ -1,206 +1,135 @@
 <div align="center">
-<img src="logo.png" height="90px" width="auto" /> 
-<h2>
-    <em>Currículum Vitae (CV)</em> minimalista maquetado para web y pdf
-</h2>
-<p>
-Esquema del JSON de CV de <a href="https://jsonresume.org/schema/">jsonresume.org</a>
-</p>
+<img src="logo.png" height="90px" width="auto" />
 
+# Diego Saavedra García
 
-<p>
-Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz Jarocki</a>
+### FullStack Developer | Learning Engineer | AI & Data Science Enthusiast
 
-</p>
+[![GitHub followers](https://img.shields.io/github/followers/statick88?style=flat&logo=github)](https://github.com/statick88)
+[![X Follow](https://img.shields.io/twitter/follow/statick_ds?style=flat&logo=x)](https://x.com/statick_ds)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://linkedin.com/in/diego-saavedra-developer)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-007acc?style=flat)](https://statick88.github.io)
+
+Docente del Departamento de Ciencias de la Computación - Universidad de las Fuerzas Armadas ESPE
+
+Loja, Ecuador
 
 </div>
+
+---
+
+## 👨‍💼 Sobre Mí
+
+Profesional de TI con más de **8 años de experiencia** combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye colaboraciones con prestigiosas instituciones académicas como:
+
+- **Universidad de las Fuerzas Armadas ESPE**
+- **Universidad Internacional del Ecuador (UIDE)**
+- **Instituto Superior Tecnológico Juan Montalvo**
+- **Abacom** y **Codings Academy**
+
+---
+
+## 🏆 Logros Académicos
+
+- **Maestría** en Ciencias y Tecnologías de la Computación - Universidad Técnica Particular de Loja (UTPL)
+- **Licenciatura** en Ciencias de la Educación Mención Informática Educativa - Universidad Nacional de Loja
+
+---
+
+## 🛠️ Tecnologías
+
+### Frontend
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat&logo=flutter&logoColor=white)
+
+### Backend
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)
+![Ruby on Rails](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=flat&logo=rubyonrails&logoColor=white)
+
+### Databases & DevOps
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazonaws&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)
+
+---
+
+## 📁 Portafolio
+
+### 🚀 Proyectos Destacados
+
+| Proyecto | Descripción | Tecnologías | Repositorio |
+|----------|-------------|-------------|-------------|
+| **Saavedra Construction** | Sitio web empresarial para empresa de construcción con gestión de proyectos y galerías de imágenes | Next.js 15, React 19, TypeScript, Tailwind CSS 4 | 🔒 Privado |
+| **Bootcamp FullStack** | Bootcamp intensivo de desarrollo web Fullstack | Python, Django, FastAPI, React, TypeScript | [Ver](https://statick88.github.io/bootcamp_fullstack/) |
+| **Django & React 2024** | Curso de Programación Web Fullstack con Django y React | Python, Django, JavaScript, React | [Ver](https://statick88.github.io/course_of_django_and_react) |
+| **FastAPI Ebook** | Ebook para aprender a crear APIs REST con Python | Python, FastAPI, Quarto | [Ver](https://statick88.github.io/course_of_FastAPI/) |
+| **Docker Ebook** | Ebook para aprender a crear contenedores de aplicaciones | Docker, Quarto | [Ver](https://statick88.github.io/course_docker/) |
+
+### 📚 Cursos y Material Educativo
+
+- [Advanced Web Programming](https://statick88.github.io/programacionWebAvanzada/)
+- [Secure Software Development](https://statick88.github.io/desarrollo-software-seguro/)
+- [Fundamentals of Data Engineering](https://statick88.github.io/book_fundamentos_dataEngineer/)
+- [Android Studio Course](https://statick88.github.io/Course_of_Android_Studio/)
+- [React Course](https://statick88.github.io/course_of_react/)
+- [Next.js Course](https://statick88.github.io/course_of_next/)
+- [TypeScript Course](https://pruebastecnicas.com)
+- [Diplomado de IA para Educación](https://statick88.github.io/diplomado_ia/)
+- [Flutter Mobile Bootcamp](https://statick88.github.io/bootcamp_desarrollo_movil_flutter/)
+
+---
+
+## 📰 Publicaciones
+
+- **Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger en estudiantes universitarios** - REMI Revista de Investigación Multidisciplinaria Iberoamericana (2024)
+
+---
+
+## 🔗 Conectar
 
 <div align="center">
-    <a href="#🚀-empezar">
-        Empezar
-    </a>
-    <span>&nbsp;✦&nbsp;</span>
-    <a href="#🧞-comandos">
-        Comandos
-    </a>
-    <span>&nbsp;✦&nbsp;</span>
-    <a href="#🔑-licencia">
-        Licencia
-    </a>
-    <span>&nbsp;✦&nbsp;</span>
-    <a href="https://statick88.github.io">
-        Personal
-    </a>
-   
+
+[![GitHub](https://img.shields.io/badge/GitHub-Statick88-black?style=flat&logo=github)](https://github.com/statick88)
+[![X](https://img.shields.io/badge/X-statick_ds-white?style=flat&logo=x)](https://x.com/statick_ds)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-diego--saavedra--developer-blue?style=flat&logo=linkedin)](https://linkedin.com/in/diego-saavedra-developer)
+[![Duolingo](https://img.shields.io/badge/Duolingo-Statick_ds-58CC02?style=flat&logo=duolingo)](https://www.duolingo.com/profile/statick_ds)
+
 </div>
 
-<p></p>
+---
+
+## 🛠️ Stack Técnico del Portafolio
+
+- [**Astro**](https://astro.build/) - Framework web moderno
+- [**TypeScript**](https://www.typescriptlang.org/) - JavaScript con tipado estático
+- [**Tailwind CSS**](https://tailwindcss.com/) - Framework CSS utilitario
+- [**Vitest**](https://vitest.dev/) - Framework de testing
 
 <div align="center">
 
 ![Astro Badge](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff&style=flat)
 ![GitHub stars](https://img.shields.io/github/stars/statick88/statick88.github.io)
 ![GitHub issues](https://img.shields.io/github/issues/statick88/statick88.github.io)
-![GitHub forks](https://img.shields.io/github/forks/statick88/statick88.github.io)
-![GitHub PRs](https://img.shields.io/github/issues-pr/statick88/statick88.github.io)
 
 </div>
 
-<img src="portada.png"></img>
+---
 
-## 🛠️ Stack
+## 📄 Licencia
 
-- [**Astro**](https://astro.build/) - El framework web de la nueva época.
-- [**Typescript**](https://www.typescriptlang.org/) - JavaScript con sintaxis de tipado.
-- [**Firebase**](https://firebase.google.com/) - Autenticación y almacenamiento en la nube.
-- [**Ninja Keys**](https://github.com/ssleptsov/ninja-keys) - Menu desplegable con atajos de teclado hecho en puro Javascript.
-- [**Vitest**](https://vitest.dev/) - Framework de testing moderno.
-
-
-## 🚀 Empezar
-
-### 1. Clona este [repositorio](https://github.com/statick88/statick88.github.io)
-Este proyecto está listo para ser desplegado. Simplemente clona el repositorio y usa tus propias dependencias.
-
-- Yo uso [pnpm](https://pnpm.io/installation) como gestor de dependencias y empaquetador.
-
-```bash
-# Clona el repositorio
-git clone [https://github.com/statick88/statick88.github.io.git](https://github.com/statick88/statick88.github.io.git)
-cd statick88.github.io
-
-# Instala las dependencias
-corepack enable
-pnpm install
-```
-
-### 2. Configuración de Variables de Entorno
-
-Este proyecto incluye un sistema de administración para gestionar capacitaciones y certificaciones. Para configurarlo:
-
-1. **Crear archivo `.env`**
-   ```bash
-   # Crea el archivo .env en la raíz del proyecto
-   touch .env
-   
-   # Agrega tus credenciales de Firebase
-   ```
-   
-2. **Configurar credenciales de Firebase**
-   - Ve a `FIREBASE_SETUP.md` para instrucciones detalladas
-   - O sigue la guía en: [Firebase Console](https://console.firebase.google.com/)
-   
-   **Variables requeridas en .env:**
-   ```bash
-   PUBLIC_FIREBASE_API_KEY=tu_api_key
-   PUBLIC_FIREBASE_AUTH_DOMAIN=tu_project_id.firebaseapp.com
-   PUBLIC_FIREBASE_PROJECT_ID=tu_project_id
-   PUBLIC_FIREBASE_STORAGE_BUCKET=tu_project_id.appspot.com
-   PUBLIC_FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
-   PUBLIC_FIREBASE_APP_ID=tu_app_id
-   PUBLIC_FIREBASE_MEASUREMENT_ID=tu_measurement_id
-   ```
-
-3. **Configurar Firebase Console**
-   - Ve a [Firebase Console](https://console.firebase.google.com/)
-   - Crea un nuevo proyecto o usa uno existente
-   
-4. **Configurar Authentication**
-   - Habilita el método "Email/Password"
-   - Crea al menos un usuario administrador
-   
-5. **Configurar Firestore Database**
-   - Crea una base de datos Firestore
-   - En modo de producción, agrega estas reglas de seguridad:
-   ```javascript
-   rules_version = '2';
-   service cloud.firestore {
-     match /databases/{database}/documents {
-       match /trainings/{trainingId} {
-         allow read: if resource.data.verified == true;
-         allow write: if request.auth != null;
-       }
-     }
-   }
-   ```
-   
-6. **Configurar Storage**
-   - Habilita Firebase Storage
-   - Agrega estas reglas de seguridad:
-   ```javascript
-   rules_version = '2';
-   service firebase.storage {
-     match /b/{bucket}/o {
-       match /trainings/{allPaths=**} {
-         allow read: if true;
-         allow write: if request.auth != null;
-       }
-     }
-   }
-   ```
-
-### 3. Cómo Agregar Certificados
-
-Una vez configurado Firebase, puedes agregar tus certificados al portafolio:
-
-#### **3.1. Acceso al Panel de Administración**
-1. Inicia sesión en `/admin/login` con tus credenciales de administrador
-2. Serás redirigido automáticamente al dashboard en `/admin/dashboard`
-
-#### **3.2. Subir Nuevo Certificado**
-En el panel de administración:
-1. **Título**: Nombre del curso o certificación (ej: "Certificación AWS Cloud Practitioner")
-2. **Fecha de obtención**: Cuándo recibiste el certificado
-3. **Descripción**: Breve descripción del curso (opcional)
-4. **Archivo PDF**: Sube el certificado en formato PDF (máximo 10MB)
-5. **Institución**: Nombre de la organización que emitió el certificado (ej: "AWS", "Coursera")
-
-#### **3.3. Proceso de Verificación**
-- Los certificados subidos aparecen como **"Pendientes de verificación"**
-- Solo el administrador puede verificar los certificados válidos
-- Los certificados **verificados** aparecen automáticamente en el portafolio público
-- Los certificados **no verificados** solo son visibles en el panel admin
-
-#### **3.4. Gestión de Certificados**
-En el dashboard puedes:
-- **Verificar**: Marcar un certificado como válido para mostrarlo públicamente
-- **Eliminar**: Borrar certificados (se elimina el PDF y los metadatos)
-- **Descargar**: Ver el PDF del certificado en una nueva pestaña
-
-#### **3.5. Visualización en el Portafolio**
-- Los certificados verificados aparecen en la sección "Capacitaciones" del portafolio
-- Se ordenan por fecha (más recientes primero)
-- Cada tarjeta muestra: título, institución, fecha y enlace al PDF
-- Solo los usuarios autenticados pueden acceder al panel de administración
-
-#### **3.6. Recomendaciones**
-- **Formato PDF**: Asegúrate de que los certificados sean PDFs claros y legibles
-- **Tamaño**: Mantén los archivos por debajo de 10MB para mejor rendimiento
-- **Consistencia**: Usa nombres descriptivos para identificar fácilmente cada certificado
-- **Seguridad**: Solo verifica certificados que puedas confirmar como auténticos
-
-### 4. Testing
-
-El proyecto incluye tests para garantizar la calidad del sistema:
-
-```bash
-# Ejecutar tests en modo observación
-npm run test
-
-# Ejecutar tests una vez
-npm run test:run
-
-# Ver interfaz de tests
-npm run test:ui
-```
-
-### 5. Despliegue
-
-Para producción, configura las variables de entorno en tu plataforma de hosting:
-
-```bash
-# Variables de entorno recomendadas
-FIREBASE_API_KEY=tu_api_key
-FIREBASE_PROJECT_ID=tu_project_id
-FIREBASE_APP_ID=tu_app_id
-```
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE.txt](LICENSE.txt) para más detalles.
