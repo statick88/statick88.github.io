@@ -84,15 +84,15 @@ function getDomain(url: string): string {
 <style>
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
   }
 
   .project-card {
     background: var(--color-bg-hover);
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    padding: 1.25rem;
+    padding: 1rem;
     transition: transform 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -104,7 +104,7 @@ function getDomain(url: string): string {
   }
 
   .project-image {
-    margin: -1.25rem -1.25rem 1rem -1.25rem;
+    margin: -1rem -1rem 0.75rem -1rem;
     border-radius: 8px 8px 0 0;
     overflow: hidden;
     aspect-ratio: 16/9;
@@ -122,13 +122,13 @@ function getDomain(url: string): string {
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .project-card h3 {
     font-weight: 600;
     color: var(--color-text);
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin: 0;
   }
 
@@ -144,8 +144,8 @@ function getDomain(url: string): string {
   .active-badge {
     background: #28a745;
     color: white;
-    font-size: 0.7rem;
-    padding: 0.15rem 0.4rem;
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
     border-radius: 10px;
     font-weight: 500;
     white-space: nowrap;
@@ -153,22 +153,22 @@ function getDomain(url: string): string {
 
   .project-description {
     color: var(--color-text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
     flex-grow: 1;
   }
 
   .project-highlights {
     list-style: none;
     padding: 0;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.75rem 0;
   }
 
   .project-highlights li {
     color: var(--color-text);
-    font-size: 0.85rem;
-    padding: 0.2rem 0;
+    font-size: 0.8rem;
+    padding: 0.15rem 0;
     padding-left: 1rem;
     position: relative;
   }
@@ -184,17 +184,17 @@ function getDomain(url: string): string {
     display: flex;
     gap: 0.5rem;
     margin-top: auto;
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     border-top: 1px solid var(--color-border);
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
+    gap: 0.35rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-decoration: none;
     transition: all 0.2s ease;
