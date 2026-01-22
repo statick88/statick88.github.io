@@ -75,6 +75,9 @@ const { image, summary, url } = basics
             publications: "Publicaciones Científicas",
             skills: "Habilidades"
           },
+          about: {
+            summary: "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer."
+          },
           portfolio: {
             active: "Activo"
           },
@@ -98,6 +101,9 @@ const { image, summary, url } = basics
             publications: "Scientific Publications",
             skills: "Skills"
           },
+          about: {
+            summary: "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer."
+          },
           portfolio: {
             active: "Active"
           },
@@ -120,6 +126,7 @@ const { image, summary, url } = basics
 
       function updateContent(lang) {
         const t = translations[lang];
+        if (!t) return;
         
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
