@@ -70,21 +70,18 @@ const { error } = Astro.props
 </Layout>
 
 <script>
-  // Gestión del formulario de login con Firebase Auth
-  import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-  import { auth } from "@/firebase.js";
-  
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    const { signInWithEmailAndPassword, onAuthStateChanged } = await import("firebase/auth");
+    const { auth } = await import("@/firebase.js");
+    
     const form = document.getElementById('login-form');
     const submitBtn = document.getElementById('login-btn');
     const btnText = form.querySelector('.btn-text');
     const btnLoading = form.querySelector('.btn-loading');
     
-    // Verificar si ya está autenticado
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log('Usuario ya autenticado:', user.email);
-        // Redirigir al dashboard
         window.location.href = '/admin/dashboard/';
       }
     });
@@ -97,7 +94,6 @@ const { error } = Astro.props
       
       console.log('Intentando login con:', email);
       
-      // Estado de carga
       submitBtn.disabled = true;
       btnText.style.display = 'none';
       btnLoading.style.display = 'inline';
@@ -105,14 +101,11 @@ const { error } = Astro.props
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log('Login exitoso:', userCredential.user);
-        
-        // Redirección automática al dashboard
         window.location.href = '/admin/dashboard/';
         
       } catch (error) {
         console.error('Error de autenticación:', error);
         
-        // Mostrar mensaje de error específico
         let errorMessage = 'Error al iniciar sesión';
         
         switch (error.code) {
@@ -138,12 +131,10 @@ const { error } = Astro.props
             errorMessage = `Error: ${error.message}`;
         }
         
-        // Mostrar error en la página
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.innerHTML = `<strong>Error:</strong> ${errorMessage}`;
         
-        // Remover error anterior si existe
         const existingError = form.querySelector('.error-message');
         if (existingError) {
           existingError.remove();

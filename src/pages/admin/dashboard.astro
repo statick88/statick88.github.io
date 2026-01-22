@@ -103,314 +103,275 @@ import Layout from "@/layouts/Layout.astro"
 </Layout>
 
 <script>
-  // Gestión del dashboard de administración
-  import { 
-    signOut, 
-    onAuthStateChanged 
-  } from "firebase/auth";
-  import { 
-    collection, 
-    addDoc, 
-    getDocs, 
-    deleteDoc, 
-    doc,
-    updateDoc,
-    query,
-    orderBy 
-  } from "firebase/firestore";
-  import { 
-    ref, 
-    uploadBytes, 
-    getDownloadURL,
-    deleteObject 
-  } from "firebase/storage";
-  import { auth, db, storage } from "@/firebase.js";
-  
-  // Estado de la aplicación
-  let currentTrainingDocs: any[] = [];
-  
   document.addEventListener('DOMContentLoaded', async () => {
-    // Verificar autenticación
+    const { 
+      signOut, 
+      onAuthStateChanged 
+    } = await import("firebase/auth");
+    const { 
+      collection, 
+      addDoc, 
+      getDocs, 
+      deleteDoc, 
+      doc,
+      updateDoc,
+      query,
+      orderBy 
+    } = await import("firebase/firestore");
+    const { 
+      ref, 
+      uploadBytes, 
+      getDownloadURL,
+      deleteObject 
+    } = await import("firebase/storage");
+    const { auth, db, storage } = await import("@/firebase.js");
+    
+    let currentTrainingDocs: any[] = [];
+    
     await checkAuth();
-    
-    // Configurar event listeners
     setupEventListeners();
-    
-    // Cargar capacitaciones existentes
     await loadTrainings();
-  });
-  
-  // Verificar si el usuario está autenticado
-  async function checkAuth() {
-    return new Promise((resolve, reject) => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        unsubscribe();
-        if (!user) {
+    
+    async function checkAuth() {
+      return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          unsubscribe();
+          if (!user) {
+            window.location.href = '/admin/login';
+            reject(new Error('Usuario no autenticado'));
+          } else {
+            resolve(user);
+          }
+        });
+      });
+    }
+    
+    function setupEventListeners() {
+      document.getElementById('logout-btn')?.addEventListener('click', async () => {
+        try {
+          await signOut(auth);
           window.location.href = '/admin/login';
-          reject(new Error('Usuario no autenticado'));
-        } else {
-          resolve(user);
+        } catch (error) {
+          console.error('Error al cerrar sesión:', error);
+          alert('Error al cerrar sesión');
         }
       });
-    });
-  }
-  
-  // Configurar event listeners
-  function setupEventListeners() {
-    // Logout
-    document.getElementById('logout-btn')?.addEventListener('click', async () => {
-      try {
-        await signOut(auth);
-        window.location.href = '/admin/login';
-      } catch (error) {
-        console.error('Error al cerrar sesión:', error);
-        alert('Error al cerrar sesión');
-      }
-    });
-    
-    // Formulario de capacitación
-    const form = document.getElementById('training-form') as HTMLFormElement;
-    form.addEventListener('submit', handleTrainingSubmit);
-    
-    // Validación del formulario
-    const fileInput = document.getElementById('pdf-file') as HTMLInputElement;
-    fileInput.addEventListener('change', validateForm);
-    
-    // Validar otros campos
-    const inputs = form.querySelectorAll('input[type="text"], input[type="date"], textarea');
-    inputs.forEach(input => {
-      input.addEventListener('input', validateForm);
-    });
-  }
-  
-  // Validar formulario
-  function validateForm() {
-    const form = document.getElementById('training-form') as HTMLFormElement;
-    const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
-    const title = (form.elements.namedItem('title') as HTMLInputElement).value.trim();
-    const date = (form.elements.namedItem('date') as HTMLInputElement).value;
-    const institution = (form.elements.namedItem('institution') as HTMLInputElement).value.trim();
-    const fileInput = (form.elements.namedItem('pdfFile') as HTMLInputElement);
-    const file = fileInput.files?.[0];
-    
-    const isValid = title && date && institution && file && file.type === 'application/pdf' && file.size <= 10 * 1024 * 1024;
-    
-    submitBtn.disabled = !isValid;
-  }
-  
-  // Manejar envío del formulario
-  async function handleTrainingSubmit(e: Event) {
-    e.preventDefault();
-    
-    const form = e.target as HTMLFormElement;
-    const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
-    const btnText = form.querySelector('.btn-text') as HTMLElement;
-    const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
-    
-    // Obtener datos del formulario
-    const title = (form.elements.namedItem('title') as HTMLInputElement).value.trim();
-    const date = (form.elements.namedItem('date') as HTMLInputElement).value;
-    const description = (form.elements.namedItem('description') as HTMLTextAreaElement).value.trim();
-    const institution = (form.elements.namedItem('institution') as HTMLInputElement).value.trim();
-    const fileInput = (form.elements.namedItem('pdfFile') as HTMLInputElement);
-    const file = fileInput.files?.[0];
-    
-    if (!file || file.type !== 'application/pdf') {
-      alert('Por favor selecciona un archivo PDF válido');
-      return;
+      
+      const form = document.getElementById('training-form') as HTMLFormElement;
+      form.addEventListener('submit', handleTrainingSubmit);
+      
+      const fileInput = document.getElementById('pdf-file') as HTMLInputElement;
+      fileInput.addEventListener('change', validateForm);
+      
+      const inputs = form.querySelectorAll('input[type="text"], input[type="date"], textarea');
+      inputs.forEach(input => {
+        input.addEventListener('input', validateForm);
+      });
     }
     
-    // Estado de carga
-    submitBtn.disabled = true;
-    btnText.style.display = 'none';
-    btnLoading.style.display = 'inline';
-    
-    try {
-      // Subir PDF a Firebase Storage
-      const fileName = `trainings/${Date.now()}_${file.name}`;
-      const storageRef = ref(storage, fileName);
+    function validateForm() {
+      const form = document.getElementById('training-form') as HTMLFormElement;
+      const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+      const title = (form.elements.namedItem('title') as HTMLInputElement).value.trim();
+      const date = (form.elements.namedItem('date') as HTMLInputElement).value;
+      const institution = (form.elements.namedItem('institution') as HTMLInputElement).value.trim();
+      const fileInput = (form.elements.namedItem('pdfFile') as HTMLInputElement);
+      const file = fileInput.files?.[0];
       
-      await uploadBytes(storageRef, file);
-      const pdfUrl = await getDownloadURL(storageRef);
+      const isValid = title && date && institution && file && file.type === 'application/pdf' && file.size <= 10 * 1024 * 1024;
       
-      // Guardar metadatos en Firestore
-      const trainingData = {
-        title,
-        date: new Date(date),
-        description,
-        institution,
-        pdfUrl,
-        fileName,
-        createdAt: new Date(),
-        verified: false // Requiere verificación manual
-      };
-      
-      const docRef = await addDoc(collection(db, 'trainings'), trainingData);
-      
-      // Recargar lista de capacitaciones
-      await loadTrainings();
-      
-      // Resetear formulario
-      form.reset();
-      validateForm();
-      
-      alert('Capacitación subida exitosamente. Pendiente de verificación.');
-      
-    } catch (error: any) {
-      console.error('Error al subir capacitación:', error);
-      alert(`Error al subir capacitación: ${error.message}`);
-    } finally {
-      submitBtn.disabled = false;
-      btnText.style.display = 'inline';
-      btnLoading.style.display = 'none';
+      submitBtn.disabled = !isValid;
     }
-  }
-  
-  // Cargar capacitaciones existentes
-  async function loadTrainings() {
-    try {
-      const trainingsQuery = query(
-        collection(db, 'trainings'),
-        orderBy('createdAt', 'desc')
-      );
+    
+    async function handleTrainingSubmit(e: Event) {
+      e.preventDefault();
       
-      const querySnapshot = await getDocs(trainingsQuery);
-      currentTrainingDocs = querySnapshot.docs;
+      const form = e.target as HTMLFormElement;
+      const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+      const btnText = form.querySelector('.btn-text') as HTMLElement;
+      const btnLoading = form.querySelector('.btn-loading') as HTMLElement;
       
-      const container = document.getElementById('trainings-container');
+      const title = (form.elements.namedItem('title') as HTMLInputElement).value.trim();
+      const date = (form.elements.namedItem('date') as HTMLInputElement).value;
+      const description = (form.elements.namedItem('description') as HTMLTextAreaElement).value.trim();
+      const institution = (form.elements.namedItem('institution') as HTMLInputElement).value.trim();
+      const fileInput = (form.elements.namedItem('pdfFile') as HTMLInputElement);
+      const file = fileInput.files?.[0];
       
-      if (querySnapshot.empty) {
-        container!.innerHTML = '<div class="empty-message">No hay capacitaciones registradas</div>';
+      if (!file || file.type !== 'application/pdf') {
+        alert('Por favor selecciona un archivo PDF válido');
         return;
       }
       
-      const trainingsHtml = querySnapshot.docs.map(doc => {
-        const data = doc.data();
-        const verifiedClass = data.verified ? 'verified' : 'pending';
-        const verifiedText = data.verified ? 'Verificado' : 'Pendiente de verificación';
-        const verifiedIcon = data.verified ? '✓' : '⏳';
+      submitBtn.disabled = true;
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      
+      try {
+        const fileName = `trainings/${Date.now()}_${file.name}`;
+        const storageRef = ref(storage, fileName);
         
-        return `
-          <div class="training-card ${verifiedClass}">
-            <div class="training-header">
-              <h4 class="training-title">${data.title}</h4>
-              <span class="training-status" title="${verifiedText}">
-                ${verifiedIcon}
-              </span>
-            </div>
-            
-            <div class="training-details">
-              <p class="training-institution">${data.institution}</p>
-              <p class="training-date">${formatDate(data.date.toDate())}</p>
-              ${data.description ? `<p class="training-description">${data.description}</p>` : ''}
-            </div>
-            
-            <div class="training-actions">
-              <a href="${data.pdfUrl}" target="_blank" class="view-btn">
-                Ver PDF
-              </a>
+        await uploadBytes(storageRef, file);
+        const pdfUrl = await getDownloadURL(storageRef);
+        
+        const trainingData = {
+          title,
+          date: new Date(date),
+          description,
+          institution,
+          pdfUrl,
+          fileName,
+          createdAt: new Date(),
+          verified: false
+        };
+        
+        const docRef = await addDoc(collection(db, 'trainings'), trainingData);
+        await loadTrainings();
+        form.reset();
+        validateForm();
+        alert('Capacitación subida exitosamente. Pendiente de verificación.');
+        
+      } catch (error: any) {
+        console.error('Error al subir capacitación:', error);
+        alert(`Error al subir capacitación: ${error.message}`);
+      } finally {
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      }
+    }
+    
+    async function loadTrainings() {
+      try {
+        const trainingsQuery = query(
+          collection(db, 'trainings'),
+          orderBy('createdAt', 'desc')
+        );
+        
+        const querySnapshot = await getDocs(trainingsQuery);
+        currentTrainingDocs = querySnapshot.docs;
+        
+        const container = document.getElementById('trainings-container');
+        
+        if (querySnapshot.empty) {
+          container!.innerHTML = '<div class="empty-message">No hay capacitaciones registradas</div>';
+          return;
+        }
+        
+        const trainingsHtml = querySnapshot.docs.map(doc => {
+          const data = doc.data();
+          const verifiedClass = data.verified ? 'verified' : 'pending';
+          const verifiedText = data.verified ? 'Verificado' : 'Pendiente de verificación';
+          const verifiedIcon = data.verified ? '✓' : '⏳';
+          
+          return `
+            <div class="training-card ${verifiedClass}">
+              <div class="training-header">
+                <h4 class="training-title">${data.title}</h4>
+                <span class="training-status" title="${verifiedText}">
+                  ${verifiedIcon}
+                </span>
+              </div>
               
-              <div class="action-buttons">
-                ${!data.verified ? `
-                  <button class="verify-btn" data-id="${doc.id}">
-                    Verificar
-                  </button>
-                ` : ''}
+              <div class="training-details">
+                <p class="training-institution">${data.institution}</p>
+                <p class="training-date">${formatDate(data.date.toDate())}</p>
+                ${data.description ? `<p class="training-description">${data.description}</p>` : ''}
+              </div>
+              
+              <div class="training-actions">
+                <a href="${data.pdfUrl}" target="_blank" class="view-btn">
+                  Ver PDF
+                </a>
                 
-                <button class="delete-btn" data-id="${doc.id}" data-filename="${data.fileName}">
-                  Eliminar
-                </button>
+                <div class="action-buttons">
+                  ${!data.verified ? `
+                    <button class="verify-btn" data-id="${doc.id}">
+                      Verificar
+                    </button>
+                  ` : ''}
+                  
+                  <button class="delete-btn" data-id="${doc.id}" data-filename="${data.fileName}">
+                    Eliminar
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        `;
-      }).join('');
-      
-      container!.innerHTML = trainingsHtml;
-      
-      // Agregar event listeners a los botones de acción
-      setupActionButtons();
-      
-    } catch (error: any) {
-      console.error('Error al cargar capacitaciones:', error);
-      document.getElementById('trainings-container')!.innerHTML = 
-        '<div class="error-message">Error al cargar capacitaciones</div>';
+          `;
+        }).join('');
+        
+        container!.innerHTML = trainingsHtml;
+        setupActionButtons();
+        
+      } catch (error: any) {
+        console.error('Error al cargar capacitaciones:', error);
+        document.getElementById('trainings-container')!.innerHTML = 
+          '<div class="error-message">Error al cargar capacitaciones</div>';
+      }
     }
-  }
-  
-  // Configurar botones de acción
-  function setupActionButtons() {
-    // Botones de verificación
-    document.querySelectorAll('.verify-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        const target = e.target as HTMLElement;
-        const docId = target.dataset.id;
-        
-        if (!docId) return;
-        
-        if (confirm('¿Verificar esta capacitación?')) {
-          await verifyTraining(docId);
-        }
-      });
-    });
     
-    // Botones de eliminación
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        const target = e.target as HTMLElement;
-        const docId = target.dataset.id;
-        const fileName = target.dataset.filename;
-        
-        if (!docId || !fileName) return;
-        
-        if (confirm('¿Eliminar esta capacitación? Esta acción no se puede deshacer.')) {
-          await deleteTraining(docId, fileName);
-        }
+    function setupActionButtons() {
+      document.querySelectorAll('.verify-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const target = e.target as HTMLElement;
+          const docId = target.dataset.id;
+          
+          if (!docId) return;
+          
+          if (confirm('¿Verificar esta capacitación?')) {
+            await verifyTraining(docId);
+          }
+        });
       });
-    });
-  }
-  
-  // Verificar capacitación
-  async function verifyTraining(docId: string) {
-    try {
-      const docRef = doc(db, 'trainings', docId);
-      await updateDoc(docRef, { verified: true });
-      await loadTrainings();
-      alert('Capacitación verificada exitosamente');
-    } catch (error: any) {
-      console.error('Error al verificar capacitación:', error);
-      alert('Error al verificar capacitación');
+      
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const target = e.target as HTMLElement;
+          const docId = target.dataset.id;
+          const fileName = target.dataset.filename;
+          
+          if (!docId || !fileName) return;
+          
+          if (confirm('¿Eliminar esta capacitación? Esta acción no se puede deshacer.')) {
+            await deleteTraining(docId, fileName);
+          }
+        });
+      });
     }
-  }
-  
-  // Eliminar capacitación
-  async function deleteTraining(docId: string, fileName: string) {
-    try {
-      // Eliminar de Firestore
-      await deleteDoc(doc(db, 'trainings', docId));
-      
-      // Eliminar PDF de Storage
-      const storageRef = ref(storage, fileName);
-      await deleteObject(storageRef);
-      
-      // Recargar lista
-      await loadTrainings();
-      
-      alert('Capacitación eliminada exitosamente');
-    } catch (error: any) {
-      console.error('Error al eliminar capacitación:', error);
-      alert('Error al eliminar capacitación');
+    
+    async function verifyTraining(docId: string) {
+      try {
+        const docRef = doc(db, 'trainings', docId);
+        await updateDoc(docRef, { verified: true });
+        await loadTrainings();
+        alert('Capacitación verificada exitosamente');
+      } catch (error: any) {
+        console.error('Error al verificar capacitación:', error);
+        alert('Error al verificar capacitación');
+      }
     }
-  }
-  
-  // Formatear fecha
-  function formatDate(date: Date): string {
-    return date.toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  }
+    
+    async function deleteTraining(docId: string, fileName: string) {
+      try {
+        await deleteDoc(doc(db, 'trainings', docId));
+        const storageRef = ref(storage, fileName);
+        await deleteObject(storageRef);
+        await loadTrainings();
+        alert('Capacitación eliminada exitosamente');
+      } catch (error: any) {
+        console.error('Error al eliminar capacitación:', error);
+        alert('Error al eliminar capacitación');
+      }
+    }
+    
+    function formatDate(date: Date): string {
+      return date.toLocaleDateString('es-ES', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+  });
 </script>
 
 <style>
