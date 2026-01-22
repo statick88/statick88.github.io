@@ -6,6 +6,17 @@ export default defineConfig({
   trailingSlash: 'never',
   build: {
     inlineStylesheets: 'auto',
+    cssMinify: true,
+  },
+  vite: {
+    build: {
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
   },
   devToolbar: {
     enabled: false,
