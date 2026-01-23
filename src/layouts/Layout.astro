@@ -2,6 +2,7 @@
 import { basics, work, education, publications, projects } from "@cv"
 import ThemeToggle from "@/components/ThemeToggle.astro"
 import LanguageToggle from "@/components/LanguageToggle.astro"
+import AcademyButton from "@/components/AcademyButton.astro"
 
 interface Props {
   title: string
@@ -73,6 +74,7 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     <slot />
     <LanguageToggle />
     <ThemeToggle />
+    <AcademyButton />
 
     <script is:inline define:vars={{ basics, work, education, publications, projects }}>
       window.cvData = {
@@ -110,6 +112,9 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
           hotkeypad: {
             footer: 'Pulsa <kbd>Cmd</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.',
             placeholder: "Buscar comando"
+          },
+          academy: {
+            text: "Academia"
           }
         },
         en: {
@@ -134,8 +139,11 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
             printInfo: "dsaavedra88@gmail.com • +593 980192790 • https://linkedin.com/in/diego-saavedra-developer"
           },
           hotkeypad: {
-            footer: 'Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.',
+            footer: 'Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open command palette.',
             placeholder: "Search command"
+          },
+          academy: {
+            text: "Academy"
           }
         }
       };
