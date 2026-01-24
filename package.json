@@ -18,7 +18,7 @@
     "lint:js": "eslint src/ --ext .js --config .eslintrc.security.cjs --quiet",
     "lint": "eslint src/ --ext .js,.cjs --config .eslintrc.security.cjs --quiet",
     "lint:security": "eslint src/tests/ --ext .js --config .eslintrc.security.cjs || true",
-    "security:audit": "npm audit --audit-level high --omit=dev",
+    "security:audit": "pnpm audit --audit-level high",
     "security:scan": "npm run lint:security && npm run security:audit",
     "security:sast": "node scripts/security-scanner.cjs",
     "security:dast": "npm run test:security",
@@ -26,7 +26,7 @@
     "validate": "npm run test:run && npm run lint && npm run security:audit",
     "ci": "npm run validate",
     "cd:validate": "node scripts/cd-validator.cjs",
-    "cd:validate-critical": "npm run security:audit && npm run build"
+    "cd:validate-critical": "pnpm run security:audit && pnpm run build"
   },
   "dependencies": {
     "@astrojs/check": "0.4.1",
