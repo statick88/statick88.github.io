@@ -155,3 +155,4 @@ Profesional de TI con más de **8 años de experiencia** combinando experticia e
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE.txt](LICENSE.txt) para más detalles.
+# Build verification with pnpm
