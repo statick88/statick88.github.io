@@ -90,17 +90,20 @@ const SKILLS_ICONS: Record<string, any> = {
 
   li:hover {
     background: var(--color-border);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
   li :global(svg) {
     height: 14px;
     width: 14px;
     fill: var(--color-text);
+    transition: all 0.3s ease;
   }
 
   @media (width >= 1200px) {
     ul {
-      gap: 10px;
+      gap: 12px;
     }
     
     li {
@@ -111,6 +114,22 @@ const SKILLS_ICONS: Record<string, any> = {
     li :global(svg) {
       height: 15px;
       width: 15px;
+    }
+  }
+
+  @media (width >= 1400px) {
+    ul {
+      gap: 14px;
+    }
+    
+    li {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+    
+    li :global(svg) {
+      height: 16px;
+      width: 16px;
     }
   }
 </style>

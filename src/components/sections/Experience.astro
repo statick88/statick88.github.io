@@ -72,12 +72,12 @@ const sortedWork = [...work].sort((a, b) => {
                       data-title={startDate}>
                         {startYear}
                     </time>
-                    { !isSameYear && " - " }
-                    { !isSameYear && (
+                    { endDate ? (!isSameYear && " - ") : " - " }
+                    { (!isSameYear || !endDate) && (
                         <time 
-                            datetime={endDate}
-                            data-title={endDate}>
-                            {displayEndYear}
+                            datetime={endDate || 'present'}
+                            data-title={endDate || 'present'}>
+                            {endDate ? displayEndYear : "Actual"}
                         </time>
                     )}
                   </div>
@@ -187,11 +187,15 @@ const sortedWork = [...work].sort((a, b) => {
 
   @media (width >= 1400px) {
     ul {
-      gap: 32px;
+      gap: 36px;
     }
     
     header {
-      gap: 24px;
+      gap: 28px;
+    }
+    
+    article {
+      padding: 1.5rem 0;
     }
   }
 
