@@ -70,7 +70,7 @@ const SKILLS_ICONS: Record<string, any> = {
 <style>
   ul {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
@@ -81,10 +81,10 @@ const SKILLS_ICONS: Record<string, any> = {
     border-radius: 5px;
     color: var(--color-text);
     display: flex;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     gap: 4px;
-    padding: 0.15rem 0.5rem;
+    padding: 0.25rem 0.6rem;
     transition: all 0.2s ease;
   }
 
@@ -96,5 +96,21 @@ const SKILLS_ICONS: Record<string, any> = {
     height: 14px;
     width: 14px;
     fill: var(--color-text);
+  }
+
+  @media (width >= 1200px) {
+    ul {
+      gap: 10px;
+    }
+    
+    li {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+    }
+    
+    li :global(svg) {
+      height: 15px;
+      width: 15px;
+    }
   }
 </style>

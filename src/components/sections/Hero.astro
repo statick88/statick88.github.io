@@ -59,16 +59,16 @@ const imageSrc = basics.image || "/me.webp"
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding-top: 2rem;
+    gap: 2rem;
+    padding-top: 1rem;
   }
 
   .info {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-    padding-right: 32px;
+    gap: 0.75rem;
+    text-align: left;
+    padding-right: 2rem;
     flex: 1;
   }
 
@@ -85,15 +85,17 @@ const imageSrc = basics.image || "/me.webp"
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     color: var(--color-text);
+    margin-bottom: 0.25rem;
   }
 
   h2 {
     color: var(--color-text-secondary);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     text-wrap: balance;
+    line-height: 1.4;
   }
 
   span {
@@ -110,9 +112,9 @@ const imageSrc = basics.image || "/me.webp"
     color: var(--color-text-secondary);
     font-size: 0.65rem;
     display: flex;
-    gap: 4px;
-    margin-top: 8px;
-    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+    justify-content: flex-start;
   }
 
   footer a {
@@ -133,11 +135,33 @@ const imageSrc = basics.image || "/me.webp"
     border: 1px solid var(--color-border);
   }
 
+  @media (width >= 1400px) {
+    .container {
+      gap: 3rem;
+    }
+    
+    .info {
+      padding-right: 3rem;
+    }
+    
+    img {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  @media (width <= 1200px) {
+    .container {
+      gap: 1.5rem;
+    }
+  }
+
   @media (width <= 700px) {
     .container {
       flex-direction: column-reverse;
       padding-top: 1rem;
       justify-content: center;
+      gap: 1rem;
     }
 
     .info {

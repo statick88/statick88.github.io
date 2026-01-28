@@ -29,15 +29,22 @@ const labelText = typeof label === 'object' ? label.es : label
 
 <style>
   main {
-    padding: 3rem 4rem;
+    padding: 2.5rem 3rem;
     margin: auto;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
+  }
+
+  @media (width <= 1200px) {
+    main {
+      max-width: 1200px;
+      padding: 2rem 2.5rem;
+    }
   }
 
   @media (width <= 1024px) {
     main {
-      padding: 2.5rem 3rem;
+      padding: 2.5rem 2rem;
     }
   }
 
