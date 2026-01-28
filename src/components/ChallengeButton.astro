@@ -5,37 +5,37 @@ interface Props {
 
 const { class: className = "" } = Astro.props
 
-const ACADEMY_ICON = `
+const CHALLENGE_ICON = `
   <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M22 10v6M2 10l6.5 6.5L22 10"></path>
-    <path d="M14 2v6m0 0v6m0-6h6m-6 0h-6"></path>
-    <path d="M2 16l6.5-6.5M22 16l-6.5 6.5"></path>
-    <path d="M2 8l6.5-6.5M22 8l-6.5 6.5"></path>
-    <path d="M12 14l-4 4m0 0l4-4m0 0l4 4"></path>
-    <circle cx="12" cy="8" r="2"></circle>
+    <path d="M6 9l6 6 6-6"></path>
+    <path d="M12 3v12"></path>
+    <path d="M8 21h8"></path>
+    <path d="M12 15l2 2"></path>
+    <path d="M12 15l-2 2"></path>
+    <circle cx="12" cy="4" r="2"></circle>
   </svg>
 `;
 ---
 
 <a 
-  href="https://statick88.github.io/academy" 
+  href="https://statick88.github.io/challenges-dashboard/" 
   target="_blank" 
   rel="noopener noreferrer"
-  aria-label="Visitar Statick Academy"
-  data-i18n-key="academy.text"
+  aria-label="Visitar Statick Challenge"
+  data-i18n-key="challenge.text"
   class={className}
   role="button"
   tabindex="0"
 >
-  <span>{ACADEMY_ICON}</span>
-  <span data-i18n="academy.text">Academia</span>
+  <span>{CHALLENGE_ICON}</span>
+  <span data-i18n="challenge.text">Challenge</span>
 </a>
 
 <style>
   a {
     position: fixed;
     top: 1rem;
-    left: 2rem;
+    left: 9.5rem;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     color: var(--color-text);
@@ -76,7 +76,7 @@ const ACADEMY_ICON = `
 
   @media (max-width: 500px) {
     a {
-      left: 1.5rem;
+      left: 7rem;
       padding: 0.4rem 0.6rem;
       font-size: 0.8rem;
     }
@@ -89,7 +89,7 @@ const ACADEMY_ICON = `
   @media (max-width: 400px) {
     a {
       left: 1.5rem;
-      top: 1rem;
+      top: 3.5rem;
     }
   }
 
@@ -97,7 +97,7 @@ const ACADEMY_ICON = `
     a {
       left: 1rem;
       right: 1rem;
-      top: 1rem;
+      top: 4rem;
       width: auto;
     }
   }

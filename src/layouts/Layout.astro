@@ -3,6 +3,7 @@ import { basics, work, education, publications, projects } from "@cv"
 import ThemeToggle from "@/components/ThemeToggle.astro"
 import LanguageToggle from "@/components/LanguageToggle.astro"
 import AcademyButton from "@/components/AcademyButton.astro"
+import ChallengeButton from "@/components/ChallengeButton.astro"
 
 interface Props {
   title: string
@@ -75,6 +76,7 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     <LanguageToggle />
     <ThemeToggle />
     <AcademyButton />
+    <ChallengeButton />
 
     <script is:inline define:vars={{ basics, work, education, publications, projects }}>
       window.cvData = {
@@ -115,6 +117,9 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
           },
           academy: {
             text: "Academia"
+          },
+          challenge: {
+            text: "Desafío"
           }
         },
         en: {
@@ -144,6 +149,9 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
           },
           academy: {
             text: "Academy"
+          },
+          challenge: {
+            text: "Challenge"
           }
         }
       };

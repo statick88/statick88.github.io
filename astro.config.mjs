@@ -26,6 +26,6 @@ export default defineConfig({
   },
   prefetch: {
     prefetchAll: import.meta.env.PROD,
-    defaultStrategy: import.meta.env.PROD ? 'viewport' : false,
+    defaultStrategy: import.meta.env.PROD ? 'viewport' : 'tap',
   },
 })

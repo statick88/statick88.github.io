@@ -2,16 +2,16 @@
   "basics": {
     "name": "Diego Medardo Saavedra García",
     "label": {
-      "es": "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
-      "en": "FullStack Developer with over 8 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses."
+      "es": "FullStack Developer con más de 9 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
+      "en": "FullStack Developer with over 9 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses."
     },
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
     "summary": {
-      "es": "Profesional de TI con más de 8 años de experiencia combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye destacadas colaboraciones con prestigiosas instituciones académicas como la Universidad de las Fuerzas Armadas ESPE, la Universidad Internacional del Ecuador, el Instituto Superior Tecnológico Juan Montalvo y centros de capacitación como Abacom y Codings Academy",
-      "en": "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer. I have successfully designed and taught bootcamps in web development, Data Science, and mobile. My teaching career includes notable collaborations with prestigious academic institutions such as Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, and training centers like Abacom and Codings Academy"
+      "es": "Profesional de TI con más de 9 años de experiencia combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye destacadas colaboraciones con prestigiosas instituciones académicas como la Universidad de las Fuerzas Armadas ESPE, la Universidad Internacional del Ecuador, el Instituto Superior Tecnológico Juan Montalvo y centros de capacitación como Abacom y Codings Academy",
+      "en": "IT professional with over 9 years of experience combining expertise in Fullstack development and knowledge transfer. I have successfully designed and taught bootcamps in web development, Data Science, and mobile. My teaching career includes notable collaborations with prestigious academic institutions such as Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, and training centers like Abacom and Codings Academy"
     },
     "location": {
       "address": "",
@@ -39,6 +39,23 @@
     ]
   },
   "work": [
+    {
+      "name": "Abacom",
+      "position": {
+        "es": "Facilitador",
+        "en": "Facilitator"
+      },
+      "url": "https://abacom.edu.ec/",
+      "startDate": "2022-10-31",
+      "summary": {
+        "es": "Facilitador de cursos de Desarrollo Web Fullstack.",
+        "en": "Facilitator of Fullstack Web Development courses."
+      },
+      "highlights": {
+        "es": ["Cursos de desarrollo web"],
+        "en": ["Web development courses"]
+      }
+    },
     {
       "name": "Codings Academy",
       "position": {
@@ -91,24 +108,6 @@
       "highlights": {
         "es": ["Docencia en carreras de ingeniería"],
         "en": ["Teaching in engineering degrees"]
-      }
-    },
-    {
-      "name": "Abacom",
-      "position": {
-        "es": "Facilitador",
-        "en": "Facilitator"
-      },
-      "url": "https://abacom.edu.ec/",
-      "startDate": "2022-10-31",
-      "endDate": "2024-12-31",
-      "summary": {
-        "es": "Facilitador de cursos de Desarrollo Web Fullstack.",
-        "en": "Facilitator of Fullstack Web Development courses."
-      },
-      "highlights": {
-        "es": ["Cursos de desarrollo web"],
-        "en": ["Web development courses"]
       }
     },
     {
