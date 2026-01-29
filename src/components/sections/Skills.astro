@@ -23,6 +23,18 @@ import Swift from "@/icons/swift.astro"
 import SwiftUI from "@/icons/swiftui.astro"
 import Kotlin from "@/icons/kotlin.astro"
 import Flutter from "@/icons/Flutter.astro"
+import Vue from "@/icons/vue.astro"
+import Svelte from "@/icons/svelte.astro"
+import NestJS from "@/icons/nestjs.astro"
+import Java from "@/icons/java.astro"
+import SpringBoot from "@/icons/springboot.astro"
+import CSharp from "@/icons/csharp.astro"
+import DotNet from "@/icons/dotnet.astro"
+import AWS from "@/icons/aws.astro"
+import Azure from "@/icons/azure.astro"
+import Vercel from "@/icons/vercel.astro"
+import Railway from "@/icons/railway.astro"
+import Angular from "@/icons/angular.astro"
 
 const SKILLS_ICONS: Record<string, any> = {
   HTML,
@@ -47,6 +59,18 @@ const SKILLS_ICONS: Record<string, any> = {
   SwiftUI,
   Kotlin,
   Flutter,
+  Angular,
+  Vue,
+  Svelte,
+  NestJS,
+  Java,
+  SpringBoot,
+  CSharp,
+  DotNet,
+  AWS,
+  Azure,
+  Vercel,
+  Railway,
 }
 ---
 
@@ -54,7 +78,14 @@ const SKILLS_ICONS: Record<string, any> = {
   <ul>
     {
       skills.map(({ name }) => {
-        const iconName = name === "Next.js" ? "Next" : name
+        let iconName = name
+        
+        // Handle special name mappings
+        if (name === "Next.js") iconName = "Next"
+        else if (name === "C#") iconName = "CSharp"
+        else if (name === ".NET") iconName = "DotNet"
+        else if (name === "Spring Boot") iconName = "SpringBoot"
+        
         const Icon = SKILLS_ICONS[iconName]
 
         return (

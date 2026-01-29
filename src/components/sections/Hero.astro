@@ -1,56 +1,56 @@
 ---
-import Mail from "@/icons/Mail.astro"
-import Phone from "@/icons/Phone.astro"
-import X from "@/icons/X.astro"
-import LinkedIn from "@/icons/LinkedIn.astro"
-import GitHub from "@/icons/GitHub.astro"
-import WorldMap from "@/icons/WorldMap.astro"
-import { basics } from "@cv"
+import Mail from "../../icons/Mail.astro"
+import Phone from "../../icons/Phone.astro"
+import X from "../../icons/X.astro"
+import LinkedIn from "../../icons/LinkedIn.astro"
+import GitHub from "../../icons/GitHub.astro"
+import WorldMap from "../../icons/WorldMap.astro"
+import { basics } from "../../../cv.json"
 
 const labelValue = basics.label?.es || basics.label?.en || String(basics.label)
 const imageSrc = basics.image || "/me.webp"
 ---
 
 <div id="i18n-content" data-i18n>
-  <section class="hero-section" data-i18n-key="hero">
-    <div class="container">
-      <div class="info">
-        <h1 data-i18n="cv.basics.name">{basics.name}</h1>
-        <h2 data-i18n="cv.basics.label">{labelValue}</h2>
-        <span>
-          <WorldMap />
-          <span data-i18n="hero.location">{basics.location.city}, {basics.location.countryCode}</span>
-        </span>
-        <footer class="print">
-          <span data-i18n="hero.printInfo">dsaavedra88@gmail.com • +593 980192790 • https://www.linkedin.com/in/statick88</span>
-        </footer>
-        <footer class="no-print social-links">
-          <a href="mailto:dsaavedra88@gmail.com" title="Enviar un correo electrónico a Diego Medardo Saavedra García al correo dsaavedra88@gmail.com" target="_blank" rel="noopener noreferrer">
-            <Mail />
-          </a>
-          <a href="tel:+593980192790" title="Llamar por teléfono a Diego Medardo Saavedra García al número +593 980192790" target="_blank" rel="noopener noreferrer">
-            <Phone />
-          </a>
-          <a href="https://www.linkedin.com/in/statick88/" title="Visitar el perfil de Diego Medardo Saavedra García en LinkedIn" target="_blank" rel="noopener noreferrer">
-            <LinkedIn />
-          </a>
-          <a href="https://x.com/statick_ds" title="Visitar el perfil de Diego Medardo Saavedra García en X" target="_blank" rel="noopener noreferrer">
-            <X />
-          </a>
-          <a href="https://github.com/statick88" title="Visitar el perfil de Diego Medardo Saavedra García en GitHub" target="_blank" rel="noopener noreferrer">
-            <GitHub />
-          </a>
-        </footer>
-      </div>
-        <figure>
-          <picture>
+   <section class="hero-section" data-i18n-key="hero">
+     <div class="container">
+       <div class="info">
+         <h1 data-i18n="cv.basics.name">{basics.name}</h1>
+         <h2 data-i18n="cv.basics.label">{labelValue}</h2>
+          <span>
+            <WorldMap />
+            <span data-i18n="hero.location">{basics.location.city}, {basics.location.countryCode}</span>
+          </span>
+         <footer class="print">
+           <span data-i18n="hero.printInfo">dsaavedra88@gmail.com • +593 980192790 • https://www.linkedin.com/in/statick88</span>
+         </footer>
+          <footer class="no-print social-links">
+            <a href="mailto:dsaavedra88@gmail.com" title="Enviar un correo electrónico a Diego Medardo Saavedra García al correo dsaavedra88@gmail.com" target="_blank" rel="noopener noreferrer">
+              <Mail />
+            </a>
+            <a href="tel:+593980192790" title="Llamar por teléfono a Diego Medardo Saavedra García al número +593 980192790" target="_blank" rel="noopener noreferrer">
+              <Phone />
+            </a>
+            <a href="https://www.linkedin.com/in/statick88/" title="Visitar el perfil de Diego Medardo Saavedra García en LinkedIn" target="_blank" rel="noopener noreferrer">
+              <LinkedIn />
+            </a>
+            <a href="https://x.com/statick_ds" title="Visitar el perfil de Diego Medardo Saavedra García en X" target="_blank" rel="noopener noreferrer">
+              <X />
+            </a>
+            <a href="https://github.com/statick88" title="Visitar el perfil de Diego Medardo Saavedra García en GitHub" target="_blank" rel="noopener noreferrer">
+              <GitHub />
+            </a>
+</footer>
+       </div>
+<figure>
+<picture>
             <source srcset={`${imageSrc.replace('.webp', '.avif')} 1x, ${imageSrc.replace('.webp', '.avif')} 2x`} type="image/avif" />
-            <source srcset={`${imageSrc} 1x, ${imageSrc} 2x`} type="image/webp" />
+            <source srcset={`${imageSrc.replace('.webp', '.webp')} 1x, ${imageSrc.replace('.webp', '.webp')} 2x`} type="image/webp" />
             <img src={imageSrc} alt="Diego Medardo Saavedra García" width="128" height="128" fetchpriority="high" />
           </picture>
         </figure>
-    </div>
-  </section>
+     </div>
+   </section>
 </div>
 
 <style>
@@ -60,7 +60,10 @@ const imageSrc = basics.image || "/me.webp"
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    padding-top: 1rem;
+    padding: 2rem 3rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .info {
@@ -70,40 +73,48 @@ const imageSrc = basics.image || "/me.webp"
     text-align: left;
     padding-right: 2rem;
     flex: 1;
+    min-width: 0;
   }
+
+
 
   figure {
     display: block;
+    flex-shrink: 0;
   }
-  
+    
   img { 
     aspect-ratio: 1 / 1;
     object-fit: cover;
     width: 128px;
+    height: 128px;
     border-radius: 16px;
     border: 1px solid var(--color-border);
     transition: all 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   }
-  
+   
   img:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
   }
-
+  
   h1 {
     font-size: 2.25rem;
     color: var(--color-text);
     margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
   }
-
+  
   h2 {
     color: var(--color-text-secondary);
     font-weight: 500;
     font-size: 1.15rem;
     text-wrap: balance;
     line-height: 1.4;
+    transition: color 0.3s ease;
   }
-
+  
   span {
     color: var(--color-text-secondary);
     display: flex;
@@ -113,47 +124,46 @@ const imageSrc = basics.image || "/me.webp"
     font-size: 0.85rem;
     letter-spacing: -0.05rem;
   }
-
+  
   footer {
     color: var(--color-text-secondary);
     font-size: 0.65rem;
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-    justify-content: flex-start;
+    margin-top: 1rem;
   }
-
+  
   .social-links {
     display: flex;
-    gap: 8px;
+    gap: 0.5rem;
     flex-wrap: wrap;
   }
-
+  
   footer a {
     color: var(--color-text-secondary);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--color-border);
-    padding: 6px;
-    height: 36px;
-    width: 36px;
+    padding: 0.5rem;
+    height: 40px;
+    width: 40px;
     border-radius: 8px;
     transition: all 0.3s ease;
     background: var(--color-bg-hover);
+    text-decoration: none;
   }
-
+  
   footer a:hover {
     background: var(--color-border);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
+
+
   @media (width >= 1400px) {
     .container {
       gap: 3rem;
       max-width: 900px;
-      margin: 0 auto;
     }
     
     .info {
@@ -164,43 +174,98 @@ const imageSrc = basics.image || "/me.webp"
     img {
       width: 150px;
       height: 150px;
-      border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
     }
     
     img:hover {
       transform: scale(1.05);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+    
+    footer a {
+      height: 45px;
+      width: 45px;
     }
   }
 
   @media (width <= 1200px) {
     .container {
       gap: 1.5rem;
+      padding: 1.5rem 2rem;
+    }
+    
+    .info {
+      padding-right: 1.5rem;
+      flex: 1;
+    }
+    
+    img {
+      width: 120px;
+      height: 120px;
     }
   }
 
   @media (width <= 700px) {
     .container {
-      flex-direction: column-reverse;
-      padding-top: 1rem;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .info {
-      justify-content: center;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1.5rem;
       align-items: center;
       text-align: center;
+      max-width: 100%;
+    }
+    
+    .info {
       padding-right: 0;
+      flex: 1;
+      text-align: center;
+      width: 100%;
     }
-
+    
     h1 {
-        font-size: 1.8rem;
+      font-size: 1.8rem;
+    }
+    
+    h2 {
+      font-size: 1rem;
+    }
+    
+    footer a {
+      height: 35px;
+      width: 35px;
+    }
+  }
+
+  @media (width <= 480px) {
+    .container {
+      padding: 0.75rem;
+      gap: 1rem;
+    }
+    
+    h1 {
+      font-size: 1.6rem;
+    }
+    
+    h2 {
+      font-size: 0.95rem;
+    }
+    
+    footer a {
+      height: 30px;
+      width: 30px;
     }
 
-    span, .social-links {
-      justify-content: center;
+    img {
+      width: 100px;
+      height: 100px;
     }
   }
 </style>

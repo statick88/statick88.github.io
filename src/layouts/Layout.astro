@@ -33,14 +33,40 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={summaryText} />
-    <meta property="og:image" content="" />
+    <meta property="og:image" content={image} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={url.split("//")[1] ?? ''} />
     <meta property="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={summaryText} />
-    <meta name="twitter:image" content="" />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json" is:inline>
+    {{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": basics.name,
+      "jobTitle": typeof basics.label === 'object' ? basics.label.es : basics.label,
+      "email": "dsaavedra88@gmail.com",
+      "telephone": "+593 980192790",
+      "url": basics.url,
+      "image": image,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": basics.location.city,
+        "addressCountry": basics.location.countryCode
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/statick88/",
+        "https://github.com/statick88",
+        "https://x.com/statick_ds"
+      ],
+      "knowsAbout": work.map(w => w.name).concat(education.map(e => e.institution)).filter(Boolean),
+      "description": summaryText
+    }}
+    </script>
 
     <script is:inline>
       const theme = (() => {
@@ -267,18 +293,18 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
   :root {
     --color-bg: #fff;
     --color-bg-hover: #f4f4f4;
-    --color-text: #111;
-    --color-text-secondary: #666;
-    --color-border: #eee;
+    --color-text: #000;
+    --color-text-secondary: #444;
+    --color-border: #ddd;
   }
 
   /* VARIABLES PARA EL AZUL OSCURO */
   html.dark {
     --color-bg: #0a0e1a; /* Azul oscuro profundo */
     --color-bg-hover: #1b243d;
-    --color-text: #ededed;
-    --color-text-secondary: #a1a1a1;
-    --color-border: #333;
+    --color-text: #ffffff;
+    --color-text-secondary: #b8b8b8;
+    --color-border: #2a2a2a;
   }
 
   html {
