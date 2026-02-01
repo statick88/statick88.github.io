@@ -254,6 +254,30 @@
       "image": "/projects/saavedra-construction.webp"
     },
     {
+      "name": "Curso de Administración de Servidores Linux (Abacom)",
+      "isActive": true,
+      "description": {
+        "es": "Curso de Administración de Servidores Linux para Abacom. Contenido práctico orientado a despliegue, administración y seguridad básica de servidores.",
+        "en": "Linux Server Administration course for Abacom. Hands-on content focused on deployment, administration, and basic server security."
+      },
+      "highlights": {
+        "es": [
+          "Administración de usuarios, permisos y procesos",
+          "Servicios y red: SSH, firewall, logs y troubleshooting",
+          "Automatización básica con Bash y tareas programadas",
+          "Buenas prácticas de hardening y mantenimiento"
+        ],
+        "en": [
+          "User, permissions, and process administration",
+          "Services and networking: SSH, firewall, logs, and troubleshooting",
+          "Basic automation with Bash and scheduled tasks",
+          "Hardening and maintenance best practices"
+        ]
+      },
+      "url": "https://statick88.github.io/administracion-servidores-linux/",
+      "github": "https://github.com/statick88/administracion-servidores-linux"
+    },
+    {
       "name": "Facilitador del Bootcamp de Desarrollo Fullstack",
       "isActive": true,
       "description": {
