@@ -8,6 +8,10 @@ const sortedProjects = [...projects]
   })
   .slice(0, 5)
 
+function isWebpImage(path?: string): boolean {
+  return typeof path === "string" && path.endsWith(".webp")
+}
+
 function isGitHub(url: string): boolean {
   return url.includes("github.com")
 }
@@ -31,11 +35,15 @@ function getDomain(url: string): string {
             <article class="project-card">
               {image && (
                 <div class="project-image">
-                  <picture>
-                    <source srcset={`${image.replace('.webp', '.avif')} 400w, ${image.replace('.webp', '.avif')} 800w`} sizes="(max-width: 700px) 100vw, 400px" type="image/avif" />
-                    <source srcset={`${image} 400w, ${image} 800w`} sizes="(max-width: 700px) 100vw, 400px" type="image/webp" />
+                  {isWebpImage(image) ? (
+                    <picture>
+                      <source srcset={`${image.replace('.webp', '.avif')} 400w, ${image.replace('.webp', '.avif')} 800w`} sizes="(max-width: 700px) 100vw, 400px" type="image/avif" />
+                      <source srcset={`${image} 400w, ${image} 800w`} sizes="(max-width: 700px) 100vw, 400px" type="image/webp" />
+                      <img src={image} alt={name} loading="lazy" decoding="async" width="400" height="225" />
+                    </picture>
+                  ) : (
                     <img src={image} alt={name} loading="lazy" decoding="async" width="400" height="225" />
-                  </picture>
+                  )}
                 </div>
               )}
               <header>
