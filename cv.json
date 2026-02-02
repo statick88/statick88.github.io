@@ -149,6 +149,18 @@
   ],
   "education": [
     {
+      "institution": "Universidad Complutense de Madrid",
+      "url": "https://www.ucm.es/",
+      "area": {
+        "es": "Master en Cyberseguridad Defensiva y Ofensiva",
+        "en": "Master's in Defensive and Offensive Cybersecurity"
+      },
+      "studyType": "Master",
+      "startDate": "2026-02-01",
+      "endDate": "2027-12-31",
+      "score": ""
+    },
+    {
       "institution": "Universidad Técnica Particular de Loja",
       "url": "https://utpl.edu.ec/",
       "area": {
