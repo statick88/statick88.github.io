@@ -406,8 +406,9 @@
           "Railway deployment with automatic scaling"
         ]
       },
-      "url": "https://github.com/statick88/real-estate-prediction",
-      "github": "https://github.com/statick88/real-estate-prediction"
+      "url": "https://statick88.github.io/real-estate-prediction/",
+      "github": "https://github.com/statick88/real-estate-prediction",
+      "image": "/projects/real-estate-prediction.webp"
     },
     {
       "name": "App Móvil de Gestión Financiera Personal",
@@ -431,7 +432,8 @@
         ]
       },
       "url": "https://github.com/statick88/finance-app-flutter",
-      "github": "https://github.com/statick88/finance-app-flutter"
+      "github": "https://github.com/statick88/finance-app-flutter",
+      "image": "/projects/finance-app-flutter.webp"
     },
     {
       "name": "E-Commerce Marketplace Multi-Vendedor",
@@ -454,8 +456,9 @@
           "REST API documented with Swagger"
         ]
       },
-      "url": "https://github.com/statick88/marketplace-django",
-      "github": "https://github.com/statick88/marketplace-django"
+      "url": "https://statick88.github.io/marketplace-django/",
+      "github": "https://github.com/statick88/marketplace-django",
+      "image": "/projects/marketplace-django.webp"
     },
     {
       "name": "Sistema de Gestión Académica Universitaria",
@@ -478,8 +481,9 @@
           "University SIU integration"
         ]
       },
-      "url": "https://github.com/statick88/academic-management",
-      "github": "https://github.com/statick88/academic-management"
+      "url": "https://statick88.github.io/academic-management/",
+      "github": "https://github.com/statick88/academic-management",
+      "image": "/projects/academic-management.webp"
     },
     {
       "name": "Scanner de Vulnerabilidades Web",
@@ -502,8 +506,9 @@
           "REST API for DevSecOps pipeline integration"
         ]
       },
-      "url": "https://github.com/statick88/vulnerability-scanner",
-      "github": "https://github.com/statick88/vulnerability-scanner"
+      "url": "https://statick88.github.io/vulnerability-scanner/",
+      "github": "https://github.com/statick88/vulnerability-scanner",
+      "image": "/projects/vulnerability-scanner.webp"
     },
     {
       "name": "Blog Técnico con Sistema de Comentarios IA",
@@ -527,7 +532,8 @@
         ]
       },
       "url": "https://statick88.github.io/blog",
-      "github": "https://github.com/statick88/blog"
+      "github": "https://github.com/statick88/blog",
+      "image": "/projects/blog-tecnico.webp"
     }
   ]
 }
