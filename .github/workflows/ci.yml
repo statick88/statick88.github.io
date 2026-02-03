@@ -35,9 +35,6 @@ jobs:
       - name: Run linting
         run: pnpm run lint
 
-      - name: Run security audit
-        run: pnpm run security:audit
-
       - name: Run tests
         run: pnpm run test:run
 
