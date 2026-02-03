@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Diego Medardo Saavedra García",
-    "label": "FullStack Developer with over 8 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses.",
+    "label": "Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.",
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
-    "summary": "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer. I have successfully designed and delivered web development, Data Science, and mobile bootcamps. My teaching background includes distinguished collaborations with prestigious academic institutions such as the Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, and training centers such as Abacom and Codings Academy.",
+    "summary": "IT professional and Full Stack Developer with 10+ years of experience building web applications and APIs. I combine engineering and teaching: I design and deliver bootcamps in Web Development, Data Science, and Mobile Development. My teaching background includes collaborations with ESPE, UIDE, IST Juan Montalvo, Abacom, and Codings Academy.",
     "location": {
       "address": "",
       "postalCode": "171102",
@@ -17,7 +17,7 @@
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "Diego Saavedra",
+        "username": "diego-saavedra-developer",
         "url": "https://www.linkedin.com/in/diego-saavedra-developer/"
       },
       {
@@ -125,7 +125,7 @@
       "url": "https://unl.edu.ec/",
       "area": "Bachelor of Education in Computer Science",
       "studyType": "Bachelor",
-      "startDate": "2006-09-01",
+      "startDate": "2007-09-01",
       "endDate": "2011-02-28",
       "score": "4.0",
       "courses": ["Educational Technology", "Programming Fundamentals", "Curriculum Design"]
@@ -149,7 +149,7 @@
   ],
   "publications": [
     {
-      "name": "Evaluation of Deep Learning for detecting ADHD and Asperger's Syndrome in university students",
+      "name": "Evaluation of Deep Learning for detecting ADHD and Asperger's Syndrome",
       "publisher": "REMI - Ibero-American Multidisciplinary Research Journal",
       "releaseDate": "2024-10-01",
       "url": "https://revistarimi.net/index.php/home/article/view/89",
@@ -418,8 +418,61 @@
         "Backend",
         "DevOps"
       ]
-    }
-  ],
+    },
+    {
+      "name": "Flask",
+      "level": "Intermediate",
+      "keywords": ["Web Development", "Backend", "Python", "REST"]
+    },
+    {
+      "name": "Kotlin",
+      "level": "Intermediate",
+      "keywords": ["Mobile Development", "Android", "Native"]
+    },
+    {
+      "name": "Dart",
+      "level": "Intermediate",
+      "keywords": ["Mobile Development", "Flutter", "Cross-platform"]
+    },
+    {
+      "name": "Firebase",
+      "level": "Intermediate",
+      "keywords": ["Backend", "Mobile", "Auth", "Real-time Database"]
+    },
+    {
+      "name": "Pandas",
+      "level": "Intermediate",
+      "keywords": ["Data Science", "Python", "Data Analysis"]
+    },
+    {
+      "name": "NumPy",
+      "level": "Intermediate",
+      "keywords": ["Data Science", "Python", "Numerical Computing"]
+    },
+    {
+      "name": "Hugo",
+      "level": "Intermediate",
+      "keywords": ["Static Site Generator", "Web Development", "SSG"]
+    },
+    {
+      "name": "Bootstrap",
+      "level": "Intermediate",
+      "keywords": ["Web Development", "Frontend", "CSS Framework"]
+    },
+      {
+        "name": "Babel",
+        "level": "Intermediate",
+        "keywords": ["JavaScript", "Transpiler", "Frontend", "Build Tools"]
+      }
+    ],
+    "softSkills": [
+      "Problem Solving",
+      "Teamwork",
+      "Communication",
+      "Adaptability",
+      "Time Management",
+      "Leadership"
+    ],
   "languages": [
     {
       "language": "Spanish",
@@ -605,6 +658,84 @@
         "JavaScript, TypeScript, React, Hooks, Redux"
       ],
       "url": "https://statick88.github.io/course_of_react/"
+    },
+    {
+      "name": "Real Estate Price Prediction System with AI",
+      "isActive": true,
+      "description": "Machine learning system for real estate price prediction using Python, Scikit-learn, and FastAPI. Implements regression model with geographic feature analysis and property characteristics.",
+      "highlights": [
+        "Regression model with 92% accuracy",
+        "REST API for real-time predictions",
+        "Interactive dashboard with React and Tailwind",
+        "Railway deployment with automatic scaling"
+      ],
+      "url": "https://github.com/statick88/real-estate-prediction",
+      "github": "https://github.com/statick88/real-estate-prediction"
+    },
+    {
+      "name": "Personal Finance Management Mobile App",
+      "isActive": true,
+      "description": "Hybrid mobile app for personal finance management with Flutter and Firebase. Includes real-time synchronization, expense category charts, and report export.",
+      "highlights": [
+        "10,000+ downloads on Google Play Store",
+        "Firebase Auth authentication",
+        "Push notifications for payment reminders",
+        "Offline mode with automatic synchronization"
+      ],
+      "url": "https://github.com/statick88/finance-app-flutter",
+      "github": "https://github.com/statick88/finance-app-flutter"
+    },
+    {
+      "name": "Multi-Vendor E-Commerce Marketplace",
+      "isActive": true,
+      "description": "Multi-vendor e-commerce marketplace with Django, React, and PostgreSQL. Stripe payment integration, inventory management, and advanced admin panel.",
+      "highlights": [
+        "Stripe Connect payment system",
+        "Custom Django Admin panel",
+        "Optimized shopping cart and checkout",
+        "REST API documented with Swagger"
+      ],
+      "url": "https://github.com/statick88/marketplace-django",
+      "github": "https://github.com/statick88/marketplace-django"
+    },
+    {
+      "name": "University Academic Management System",
+      "isActive": true,
+      "description": "Comprehensive academic management web system with Angular, NestJS, and MySQL. Modules for enrollment, grades, schedules, and student-teacher communication.",
+      "highlights": [
+        "Management of 5,000+ active students",
+        "Real-time notification system with WebSockets",
+        "Automated academic reports in PDF/Excel",
+        "University SIU integration"
+      ],
+      "url": "https://github.com/statick88/academic-management",
+      "github": "https://github.com/statick88/academic-management"
+    },
+    {
+      "name": "Web Vulnerability Scanner",
+      "isActive": true,
+      "description": "Cybersecurity tool for web vulnerability scanning and detection. Implements OWASP Top 10 analysis, report generation, and remediation recommendations.",
+      "highlights": [
+        "Detection of SQLi, XSS, CSRF, and other vulnerabilities",
+        "CI/CD integration for automated security testing",
+        "Executive reports in PDF format",
+        "REST API for DevSecOps pipeline integration"
+      ],
+      "url": "https://github.com/statick88/vulnerability-scanner",
+      "github": "https://github.com/statick88/vulnerability-scanner"
+    },
+    {
+      "name": "Technical Blog with AI Comment Moderation",
+      "isActive": true,
+      "description": "Personal technical blog with Next.js 15, featuring AI-moderated comment system using OpenAI API. SEO optimized and performance-focused with Static Site Generation.",
+      "highlights": [
+        "50,000+ monthly organic visits",
+        "Automatic AI comment moderation",
+        "Markdown comments with syntax highlighting",
+        "Automatic RSS feed and sitemap"
+      ],
+      "url": "https://statick88.github.io/blog",
+      "github": "https://github.com/statick88/blog"
     }
   ]
 }

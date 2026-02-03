@@ -1,0 +1,83 @@
+<button id="cv-download" aria-label="Descargar CV en PDF" title="Descargar CV">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v10" />
+    <path d="M7 10l5 5 5-5" />
+    <path d="M5 20h14" />
+  </svg>
+</button>
+
+<script is:inline>
+  const initCvDownload = () => {
+    const btn = document.getElementById('cv-download')
+    if (!btn) return
+
+    const updateLabel = () => {
+      const lang = document.documentElement.getAttribute('lang') || 'es'
+      const isEn = lang === 'en'
+      btn.setAttribute('aria-label', isEn ? 'Download CV (PDF)' : 'Descargar CV (PDF)')
+      btn.setAttribute('title', isEn ? 'Download CV (PDF)' : 'Descargar CV (PDF)')
+    }
+
+    updateLabel()
+
+    btn.addEventListener('click', async () => {
+      try {
+        const lang = (document.documentElement.getAttribute('lang') || 'es') === 'en' ? 'en' : 'es'
+        const href = lang === 'en' ? '/cv-en.pdf' : '/cv-es.pdf'
+        const filename = lang === 'en' ? 'Diego-Saavedra-CV-EN.pdf' : 'Diego-Saavedra-CV-ES.pdf'
+        const a = document.createElement('a')
+        a.href = href
+        a.download = filename
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+      } catch (e) {
+        console.error('CV PDF download error:', e)
+      }
+    })
+
+    window.addEventListener('langchange', (event) => {
+      updateLabel()
+    })
+  }
+
+  initCvDownload()
+</script>
+
+<style>
+  button {
+    position: fixed;
+    top: 1rem;
+    right: 6.5rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    background: var(--color-bg-hover);
+  }
+
+  @media print {
+    button { display: none; }
+  }
+
+  @media (max-width: 500px) {
+    button {
+      right: 5.5rem;
+      width: 32px;
+      height: 32px;
+    }
+  }
+</style>

@@ -2,16 +2,16 @@
   "basics": {
     "name": "Diego Medardo Saavedra García",
     "label": {
-      "es": "FullStack Developer con más de 9 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
-      "en": "FullStack Developer with over 9 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses."
+      "es": "Desarrollador Full Stack con más de 10 años de experiencia. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
+      "en": "Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
     },
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
     "summary": {
-      "es": "Profesional de TI con más de 10 años de experiencia combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye destacadas colaboraciones con prestigiosas instituciones académicas como la Universidad de las Fuerzas Armadas ESPE, la Universidad Internacional del Ecuador, el Instituto Superior Tecnológico Juan Montalvo y centros de capacitación como Abacom y Codings Academy",
-      "en": "IT professional with over 9 years of experience combining expertise in Fullstack development and knowledge transfer. I have successfully designed and taught bootcamps in web development, Data Science, and mobile. My teaching career includes notable collaborations with prestigious academic institutions such as Universidad de las Fuerzas Armadas ESPE, Universidad Internacional del Ecuador, Instituto Superior Tecnológico Juan Montalvo, and training centers like Abacom and Codings Academy"
+      "es": "Profesional de TI y Desarrollador Full Stack con más de 10 años de experiencia construyendo aplicaciones web y APIs. Combino ingeniería y docencia: diseño e imparto bootcamps de Desarrollo Web, Data Science y Desarrollo Móvil. He colaborado con ESPE, UIDE, IST Juan Montalvo, Abacom y Codings Academy.",
+      "en": "IT professional and Full Stack Developer with 10+ years of experience building web applications and APIs. I combine engineering and teaching: I design and deliver bootcamps in Web Development, Data Science, and Mobile Development. I have collaborated with ESPE, UIDE, IST Juan Montalvo, Abacom, and Codings Academy."
     },
     "location": {
       "address": "",
@@ -180,7 +180,7 @@
         "en": "Bachelor's in Educational Sciences with specialization in Educational Computing"
       },
       "studyType": "Bachelor",
-      "startDate": "2006-09-01",
+      "startDate": "2007-09-01",
       "endDate": "2011-02-28",
       "score": "4.0"
     }
@@ -188,8 +188,8 @@
   "publications": [
     {
       "name": {
-        "es": "Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger en estudiantes universitarios",
-        "en": "Evaluation of Deep Learning to detect ADHD and Asperger's syndrome in university students"
+        "es": "Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger",
+        "en": "Evaluation of Deep Learning to detect ADHD and Asperger's syndrome"
       },
       "publisher": "REMI - Revisata de Investigación Multidisciplinaria Iberoamericana",
       "releaseDate": "2024-10-01",
@@ -227,16 +227,33 @@
     { "name": "AWS", "level": "Intermedio" },
     { "name": "Azure", "level": "Intermedio" },
     { "name": "Vercel", "level": "Avanzado" },
-    { "name": "Railway", "level": "Intermedio" }
+    { "name": "Railway", "level": "Intermedio" },
+    { "name": "Flask", "level": "Intermedio" },
+    { "name": "Kotlin", "level": "Intermedio" },
+    { "name": "Dart", "level": "Intermedio" },
+    { "name": "Firebase", "level": "Intermedio" },
+    { "name": "Pandas", "level": "Intermedio" },
+    { "name": "NumPy", "level": "Intermedio" },
+    { "name": "Hugo", "level": "Intermedio" },
+    { "name": "Bootstrap", "level": "Intermedio" },
+    { "name": "Babel", "level": "Intermedio" }
+  ],
+  "softSkills": [
+    "Resolución de Problemas",
+    "Trabajo en Equipo",
+    "Comunicación",
+    "Adaptabilidad",
+    "Gestión del Tiempo",
+    "Liderazgo"
   ],
   "languages": [
     {
-      "language": "Spanish",
-      "fluency": "Native speaker"
+      "language": "Español",
+      "fluency": "Nativo"
     },
     {
-      "language": "English",
-      "fluency": "Advanced"
+      "language": "Inglés",
+      "fluency": "Avanzado"
     }
   ],
   "projects": [
@@ -366,6 +383,150 @@
       },
       "url": "https://statick88.github.io/course_docker/",
       "image": "/projects/docker-ebook.webp"
+    },
+    {
+      "name": "Sistema de Predicción de Precios Inmobiliarios con IA",
+      "isActive": true,
+      "description": {
+        "es": "Sistema de machine learning para predicción de precios inmobiliarios usando Python, Scikit-learn y FastAPI. Implementa modelo de regresión con análisis de features geográficos y características de propiedades.",
+        "en": "Machine learning system for real estate price prediction using Python, Scikit-learn, and FastAPI. Implements regression model with geographic feature analysis and property characteristics."
+      },
+      "highlights": {
+        "es": [
+          "Modelo de regresión con precisión del 92%",
+          "API REST para predicciones en tiempo real",
+          "Dashboard interactivo con React y Tailwind",
+          "Deploy en Railway con escalabilidad automática"
+        ],
+        "en": [
+          "Regression model with 92% accuracy",
+          "REST API for real-time predictions",
+          "Interactive dashboard with React and Tailwind",
+          "Railway deployment with automatic scaling"
+        ]
+      },
+      "url": "https://github.com/statick88/real-estate-prediction",
+      "github": "https://github.com/statick88/real-estate-prediction"
+    },
+    {
+      "name": "App Móvil de Gestión Financiera Personal",
+      "isActive": true,
+      "description": {
+        "es": "Aplicación móvil híbrida para gestión de finanzas personales con Flutter y Firebase. Incluye sincronización en tiempo real, gráficos de gastos por categoría y exportación de reportes.",
+        "en": "Hybrid mobile app for personal finance management with Flutter and Firebase. Includes real-time synchronization, expense category charts, and report export."
+      },
+      "highlights": {
+        "es": [
+          "10,000+ descargas en Google Play Store",
+          "Autenticación con Firebase Auth",
+          "Notificaciones push para recordatorios de pagos",
+          "Modo offline con sincronización automática"
+        ],
+        "en": [
+          "10,000+ downloads on Google Play Store",
+          "Firebase Auth authentication",
+          "Push notifications for payment reminders",
+          "Offline mode with automatic synchronization"
+        ]
+      },
+      "url": "https://github.com/statick88/finance-app-flutter",
+      "github": "https://github.com/statick88/finance-app-flutter"
+    },
+    {
+      "name": "E-Commerce Marketplace Multi-Vendedor",
+      "isActive": true,
+      "description": {
+        "es": "Plataforma de comercio electrónico multi-vendedor con Django, React y PostgreSQL. Sistema de pagos con Stripe, gestión de inventario y panel de administración avanzado.",
+        "en": "Multi-vendor e-commerce marketplace with Django, React, and PostgreSQL. Stripe payment integration, inventory management, and advanced admin panel."
+      },
+      "highlights": {
+        "es": [
+          "Sistema de pagos con Stripe Connect",
+          "Panel de administración con Django Admin personalizado",
+          "Carrito de compras y checkout optimizado",
+          "API REST documentada con Swagger"
+        ],
+        "en": [
+          "Stripe Connect payment system",
+          "Custom Django Admin panel",
+          "Optimized shopping cart and checkout",
+          "REST API documented with Swagger"
+        ]
+      },
+      "url": "https://github.com/statick88/marketplace-django",
+      "github": "https://github.com/statick88/marketplace-django"
+    },
+    {
+      "name": "Sistema de Gestión Académica Universitaria",
+      "isActive": true,
+      "description": {
+        "es": "Sistema web integral para gestión académica con Angular, NestJS y MySQL. Módulos de matrículas, calificaciones, horarios y comunicación docente-estudiante.",
+        "en": "Comprehensive academic management web system with Angular, NestJS, and MySQL. Modules for enrollment, grades, schedules, and student-teacher communication."
+      },
+      "highlights": {
+        "es": [
+          "Gestión de 5,000+ estudiantes activos",
+          "Sistema de notificaciones en tiempo real con WebSockets",
+          "Reportes académicos automatizados en PDF/Excel",
+          "Integración con SIU de la universidad"
+        ],
+        "en": [
+          "Management of 5,000+ active students",
+          "Real-time notification system with WebSockets",
+          "Automated academic reports in PDF/Excel",
+          "University SIU integration"
+        ]
+      },
+      "url": "https://github.com/statick88/academic-management",
+      "github": "https://github.com/statick88/academic-management"
+    },
+    {
+      "name": "Scanner de Vulnerabilidades Web",
+      "isActive": true,
+      "description": {
+        "es": "Herramienta de ciberseguridad para escaneo y detección de vulnerabilidades web. Implementa análisis de OWASP Top 10, generación de reportes y recomendaciones de remediación.",
+        "en": "Cybersecurity tool for web vulnerability scanning and detection. Implements OWASP Top 10 analysis, report generation, and remediation recommendations."
+      },
+      "highlights": {
+        "es": [
+          "Detección de SQLi, XSS, CSRF y otras vulnerabilidades",
+          "Integración con CI/CD para security testing automatizado",
+          "Reportes executivos en formato PDF",
+          "API REST para integración con pipelines DevSecOps"
+        ],
+        "en": [
+          "Detection of SQLi, XSS, CSRF, and other vulnerabilities",
+          "CI/CD integration for automated security testing",
+          "Executive reports in PDF format",
+          "REST API for DevSecOps pipeline integration"
+        ]
+      },
+      "url": "https://github.com/statick88/vulnerability-scanner",
+      "github": "https://github.com/statick88/vulnerability-scanner"
+    },
+    {
+      "name": "Blog Técnico con Sistema de Comentarios IA",
+      "isActive": true,
+      "description": {
+        "es": "Blog técnico personal con Next.js 15, featuring sistema de comentarios moderado por IA usando OpenAI API. Optimizado para SEO y performance con Static Site Generation.",
+        "en": "Personal technical blog with Next.js 15, featuring AI-moderated comment system using OpenAI API. SEO optimized and performance-focused with Static Site Generation."
+      },
+      "highlights": {
+        "es": [
+          "50,000+ visitas mensuales orgánicas",
+          "Moderación automática de comentarios con IA",
+          "Comments con Markdown y syntax highlighting",
+          "RSS feed y sitemap automático"
+        ],
+        "en": [
+          "50,000+ monthly organic visits",
+          "Automatic AI comment moderation",
+          "Markdown comments with syntax highlighting",
+          "Automatic RSS feed and sitemap"
+        ]
+      },
+      "url": "https://statick88.github.io/blog",
+      "github": "https://github.com/statick88/blog"
     }
   ]
 }

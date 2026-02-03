@@ -4,6 +4,7 @@ import ThemeToggle from "@/components/ThemeToggle.astro"
 import LanguageToggle from "@/components/LanguageToggle.astro"
 import AcademyButton from "@/components/AcademyButton.astro"
 import ChallengeButton from "@/components/ChallengeButton.astro"
+import CvDownloadButton from "@/components/CvDownloadButton.astro"
 
 interface Props {
   title: string
@@ -101,6 +102,7 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     <slot />
     <LanguageToggle />
     <ThemeToggle />
+    <CvDownloadButton />
     <AcademyButton />
     <ChallengeButton />
 
