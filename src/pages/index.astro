@@ -7,9 +7,8 @@ import Hero from "@/components/sections/Hero.astro"
 import Portfolio from "@/components/sections/Portfolio.astro"
 import Publications from "@/components/sections/Publications.astro"
 import Skills from "@/components/sections/Skills.astro"
-import KeyboardManager from "@/components/KeyboardManager.astro"
-import { basics } from "@cv"
-const { name, label } = basics
+import cvData from "../../cv.json"
+const { name, label } = cvData.basics
 const labelText = typeof label === 'object' ? label.es : label
 ---
 
@@ -23,8 +22,6 @@ const labelText = typeof label === 'object' ? label.es : label
     <Publications />
     <Skills />
   </main>
-
-  <KeyboardManager />
 </Layout>
 
 <style>

@@ -1,289 +1,331 @@
-# Architecture Documentation
+# Architecture Documentation - Simplified Portfolio
 
 ## Overview
 
-This application follows **SOLID principles**, **Test-Driven Development (TDD)**, and **DevSecOps** practices to create a secure, maintainable, and scalable portfolio website.
+Minimalist portfolio website with static JSON data, following clean code principles.
 
-## Architecture Principles
-
-### SOLID Principles Implementation
-
-#### 1. Single Responsibility Principle (SRP)
-- **Services**: Each service handles one business concern
-  - `AuthService`: Authentication only
-  - `TrainingService`: Training data management only
-  - `MonitoringService`: Logging and metrics only
-- **Repositories**: Handle only data access
-  - `FirebaseTrainingRepository`: Training data CRUD
-  - `FirebaseFileRepository`: File operations only
-- **Validators**: Handle only validation logic
-  - `TrainingValidator`: Training data validation
-
-#### 2. Open/Closed Principle (OCP)
-- **Repository Pattern**: Easy to extend with new storage implementations
-- **Service Factory**: Supports registration of new services without modifying existing code
-- **Logger Interface**: Multiple logger implementations (Console, Memory, etc.)
-
-#### 3. Liskov Substitution Principle (LSP)
-- **Interface Segregation**: Repositories implement interfaces that can be swapped
-- **Service Inheritance**: Services inherit from BaseService and can be used polymorphically
-
-#### 4. Interface Segregation Principle (ISP)
-- **Specific Interfaces**: `IRepository`, `ITrainingRepository`, `IFileRepository`
-- **Focused Methods**: Each interface contains only relevant methods
-
-#### 5. Dependency Inversion Principle (DIP)
-- **Dependency Injection**: Services receive dependencies through constructors
-- **Abstract Dependencies**: Depend on interfaces, not concrete implementations
-
-## Architecture Layers
+## Architecture
 
 ```
-┌─────────────────────────────────────────┐
-│              Presentation                │
-│  (Astro Components, Pages, Admin UI)    │
-└─────────────────┬───────────────────────┘
-                  │
-┌─────────────────▼───────────────────────┐
-│               Business                  │
-│    (Services, Validators, Logic)       │
-└─────────────────┬───────────────────────┘
-                  │
-┌─────────────────▼───────────────────────┐
-│                Data                     │
-│   (Repositories, Firebase, Storage)     │
-└─────────────────┬───────────────────────┘
-                  │
-┌─────────────────▼───────────────────────┐
-│              Infrastructure              │
-│  (Logging, Monitoring, Security)        │
-└─────────────────────────────────────────┘
+┌─────────────────────────────────────┐
+│         Presentation               │
+│  Astro Components, Pages, Layouts  │
+└──────────────┬──────────────────┘
+               │
+┌──────────────▼──────────────────┐
+│         Data Layer               │
+│     cv.json (Static Data)       │
+└─────────────────────────────────┘
 ```
 
 ## Core Components
 
-### Services Layer
+### Pages
+- `index.astro`: Main portfolio page
 
-#### BaseService
-- **Purpose**: Provides common functionality for all services
-- **Features**: Structured logging, metrics collection, error handling
-- **SOLID**: Template Method pattern for initialization and cleanup
+### Sections (Components)
+- `Hero.astro`: Introduction section
+- `About.astro`: About me section
+- `Skills.astro`: Technical skills
+- `Experience.astro`: Work experience
+- `Education.astro`: Education background
+- `Projects.astro`: Project portfolio
+- `Publications.astro`: Academic publications
+- `Trainings.astro`: Training courses (from cv.json)
 
-#### AuthService
-- **Purpose**: User authentication and session management
-- **Dependencies**: Firebase Auth
-- **SOLID**: Single responsibility for authentication only
+### Interactive Components
+- `ThemeToggle.astro`: Dark/Light mode toggle
+- `LanguageToggle.astro`: ES/EN language toggle
+- `CvDownloadButton.astro`: PDF CV download
+- `ChallengeButton.astro`: Challenge section (visible)
+- `AcademyButton.astro`: Academy section (hidden)
 
-#### TrainingService (Refactored)
-- **Purpose**: Training data management
-- **Dependencies**: `ITrainingRepository`, `IFileRepository`
-- **SOLID**: Dependency injection, separated concerns
+## Data Structure
 
-#### MonitoringService
-- **Purpose**: Application logging and metrics
-- **Features**: Structured logging, performance metrics, health monitoring
-- **SOLID**: Single responsibility for monitoring
-
-### Repository Layer
-
-#### IRepository Interface
-- **Purpose**: Define contract for data access
-- **Methods**: CRUD operations (Create, Read, Update, Delete)
-
-#### FirebaseTrainingRepository
-- **Purpose**: Firebase Firestore implementation
-- **SOLID**: Implements interface, depends only on Firebase
-
-#### FirebaseFileRepository
-- **Purpose**: Firebase Storage implementation
-- **SOLID**: Single responsibility for file operations
-
-### Factory Pattern
-
-#### ServiceFactory
-- **Purpose**: Centralized service creation with dependency injection
-- **Features**: Singleton management, dependency resolution, extensibility
-- **SOLID**: Open/Closed - easy to add new services
-
-### Security Layer
-
-#### Security Scanning
-- **SAST**: ESLint security rules, npm audit
-- **DAST**: Security test suite, endpoint validation
-- **Tools**: Custom security scanner, automated vulnerability detection
-
-#### Authentication & Authorization
-- **JWT Token Management**: Secure session handling
-- **Input Validation**: Sanitization and validation layers
-- **Rate Limiting**: Brute force protection
-
-## Testing Strategy
-
-### Test-Driven Development (TDD)
-
-#### Unit Tests
-- **Coverage**: All business logic, validators, utilities
-- **Tools**: Vitest, JSDOM for DOM testing
-- **Pattern**: Red-Green-Refactor cycle
-
-#### Integration Tests
-- **Purpose**: Test component interactions
-- **Coverage**: Service-repository integration
-- **Tools**: Firebase mocking, test doubles
-
-#### Security Tests
-- **OWASP Top 10**: Comprehensive security validation
-- **Attack Vectors**: XSS, SQL Injection, CSRF simulation
-- **Input Validation**: Malicious input detection
-
-### Test Structure
-```
-src/tests/
-├── security.test.js          # Security test suite
-├── auth.service.test.js      # AuthService tests
-├── training.service.test.js  # TrainingService tests
-├── admin.test.js            # Admin functionality tests
-└── admin-helpers.js         # Test utilities
+### cv.json Format
+```json
+{
+  "basics": { ... },
+  "work": [ ... ],
+  "education": [ ... ],
+  "skills": [ ... ],
+  "projects": [ ... ],
+  "trainings": [ ... ],
+  "publications": [ ... ],
+  "softSkills": [ ... ],
+  "languages": [ ... ]
+}
 ```
 
-## DevSecOps Implementation
+### Key Data Fields
 
-### Continuous Integration/Continuous Deployment
+#### Basics
+- `name`: Full name
+- `label`: Job title (bilingual)
+- `image`: Profile image path
+- `email`: Email address
+- `phone`: Phone number
+- `url`: Portfolio URL
+- `summary`: Professional summary (bilingual)
+- `location`: Location information
+- `profiles`: Social media profiles
 
-#### Security Pipeline
-1. **Static Analysis (SAST)**: Code quality and security scanning
-2. **Dependency Scanning**: npm audit, Snyk integration
-3. **Secret Detection**: TruffleHog for hardcoded secrets
-4. **Dynamic Analysis (DAST)**: Security test execution
-5. **Build Validation**: Security-hardened build process
+#### Work
+- `name`: Company name
+- `position`: Job title (bilingual)
+- `url`: Company website
+- `startDate`: Start date (YYYY-MM-DD)
+- `endDate`: End date (optional)
+- `summary`: Job summary (bilingual)
+- `highlights`: Key achievements (bilingual)
 
-#### Quality Gates
-1. **Unit Tests**: All tests must pass
-2. **Code Coverage**: Minimum coverage thresholds
-3. **Security Scan**: No critical vulnerabilities
-4. **SOLID Validation**: Architectural compliance
+#### Education
+- `institution`: University/institution name
+- `url`: Institution website
+- `area`: Field of study (bilingual)
+- `studyType`: Degree type
+- `startDate`: Start date
+- `endDate`: End date
+- `score`: GPA/grade
 
-### Monitoring & Observability
+#### Skills
+- `name`: Skill name
+- `level`: Skill level (Master, Avanzado, Intermedio, etc.)
 
-#### Logging Strategy
-- **Structured Logging**: JSON format with context
-- **Log Levels**: ERROR, WARN, INFO, DEBUG
-- **Correlation IDs**: Request tracing
-- **Sensitive Data**: Automatic sanitization
+#### Projects
+- `name`: Project name
+- `isActive`: Active status
+- `description`: Project description (bilingual)
+- `highlights`: Key features (bilingual)
+- `url`: Project URL
+- `github`: GitHub repository (optional)
+- `image`: Project image path
 
-#### Metrics Collection
-- **Performance Metrics**: Operation duration, throughput
-- **Business Metrics**: User actions, feature usage
-- **System Metrics**: Error rates, resource usage
-- **Health Checks**: Service availability monitoring
+#### Trainings
+- `title`: Training title
+- `description`: Training description (bilingual)
+- `date`: Training date
+- `verified`: Verification status
+- `url`: Training URL (optional)
 
-#### Alerting
-- **Error Thresholds**: Automated error rate monitoring
-- **Performance Alerts**: Response time monitoring
-- **Security Events**: Suspicious activity detection
+#### Publications
+- `name`: Publication title (bilingual)
+- `publisher`: Publisher name
+- `releaseDate`: Publication date
+- `url`: Publication URL
 
-## Security Architecture
+## Features
 
-### Defense in Depth
+1. **Bilingual**: ES/EN toggle with localStorage persistence
+2. **Theme Switching**: Dark/Light mode with system preference detection
+3. **PDF Generation**: Automated PDF CV generation
+4. **Static**: No database, no authentication
+5. **Simple**: Pure JSON data, Astro SSR/SSG
+6. **Responsive**: Mobile-first design
 
-#### Input Validation Layer
-- **Sanitization**: XSS prevention, HTML stripping
-- **Validation Rules**: Type checking, length limits
-- **File Upload**: Type validation, size limits
+## Scripts
 
-#### Authentication Layer
-- **Multi-Factor**: Email verification for critical operations
-- **Session Management**: Secure token handling
-- **Rate Limiting**: Brute force prevention
+- `npm run dev`: Development server with hot reload
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build locally
+- `npm run cv:pdf`: Generate CV PDFs
+- `npm run test`: Run tests
+- `npm run test:ui`: Run tests with UI
+- `npm run test:run`: Run tests without watch mode
+- `npm run test:coverage`: Run tests with coverage report
+- `npm run lint`: Lint code
 
-#### Authorization Layer
-- **Role-Based Access**: Admin/user separation
-- **Resource Isolation**: User data protection
-- **API Security**: Endpoint protection
+## Security
 
-#### Infrastructure Security
-- **HTTPS Enforcement**: TLS encryption everywhere
-- **Headers Security**: CSP, HSTS, XSS protection
-- **Dependency Security**: Automated vulnerability scanning
+### Input Validation
+- Email format validation
+- XSS prevention in all inputs
+- HTML sanitization for user content
+- Path traversal prevention in PDF downloads
+- URL validation for all external links
 
-## Performance Considerations
+### Content Security
+- Proper CSP headers configuration
+- XSS prevention in rendering
+- Secure CORS policies
+- No eval() or unsafe-inline scripts
 
-### Frontend Optimization
-- **Code Splitting**: Lazy loading of components
-- **Asset Optimization**: Image compression, CDN usage
-- **Caching Strategy**: Browser and CDN caching
+### Data Protection
+- No sensitive data in client-side code
+- Secure URL validation
+- File path sanitization
 
-### Backend Optimization
-- **Database Indexing**: Optimized queries
-- **Connection Pooling**: Resource management
-- **Caching Layer**: Redis for frequently accessed data
+## Performance
 
-### Monitoring Performance
-- **Real User Monitoring**: User experience tracking
-- **Synthetic Monitoring**: Automated performance testing
-- **Resource Monitoring**: Memory, CPU, network usage
+### Optimization
+- Static generation where possible
+- Optimized images (WebP)
+- Lazy loading for heavy content
+- Minimal JavaScript bundle
+- CSS-in-JS for component styles
 
-## Scalability Architecture
+### Metrics
+- First Contentful Paint (FCP): < 1.5s
+- Largest Contentful Paint (LCP): < 2.5s
+- Time to Interactive (TTI): < 3.5s
+- Cumulative Layout Shift (CLS): < 0.1
 
-### Horizontal Scaling
-- **Stateless Design**: Services can be horizontally scaled
-- **Load Balancing**: Traffic distribution
-- **Database Scaling**: Read replicas, sharding strategy
+## Accessibility
 
-### Vertical Scaling
-- **Resource Optimization**: Efficient resource usage
-- **Performance Monitoring**: Bottleneck identification
-- **Capacity Planning**: Resource provisioning
+### Features
+- Semantic HTML structure
+- ARIA labels where needed
+- Keyboard navigation support
+- Screen reader compatible
+- Focus indicators
+- Color contrast compliance (WCAG AA)
 
-## Deployment Architecture
+### Best Practices
+- Alt text for images
+- Proper heading hierarchy
+- Skip navigation links
+- Form labels
+- Error messages
 
-### Environment Strategy
-- **Development**: Local development with hot reload
-- **Staging**: Production-like testing environment
-- **Production**: High-availability deployment
+## Internationalization
 
-### Container Strategy
-- **Docker**: Containerized applications
-- **Orchestration**: Kubernetes for production
-- **CI/CD**: Automated deployment pipelines
+### Supported Languages
+- Spanish (es) - Default
+- English (en)
 
-## Future Enhancements
+### Implementation
+- Language toggle with localStorage
+- Bilingual content in cv.json
+- Dynamic content updates
+- URL localization (future)
 
-### Microservices Migration
-- **Service Decomposition**: Break into smaller services
-- **API Gateway**: Centralized API management
-- **Service Mesh**: Inter-service communication
+## Development
 
-### Advanced Security
-- **Zero Trust Architecture**: Assume breach mindset
-- **Machine Learning Security**: Anomaly detection
-- **Compliance Automation**: GDPR, SOC 2 compliance
+### Getting Started
 
-### Performance Optimization
-- **Edge Computing**: CDN edge functions
-- **Progressive Web App**: Offline capabilities
-- **Real-time Features**: WebSocket integration
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm run dev
+
+# Open browser
+# Navigate to http://localhost:4321
+```
+
+### Project Structure
+
+```
+src/
+├── components/
+│   ├── sections/    # Portfolio sections
+│   ├── icons/       # SVG icons
+│   ├── ThemeToggle.astro
+│   ├── LanguageToggle.astro
+│   ├── CvDownloadButton.astro
+│   ├── ChallengeButton.astro
+│   ├── AcademyButton.astro
+│   └── Section.astro
+├── pages/
+│   └── index.astro  # Main page
+├── layouts/
+│   └── Layout.astro # Main layout
+├── tests/
+│   ├── basic.test.js
+│   └── security.test.js
+└── styles/
+    └── global.css
+```
+
+### Adding New Sections
+
+1. Create component in `src/components/sections/`
+2. Add section to `src/pages/index.astro`
+3. Add data to `cv.json` if needed
+4. Add translations to `src/layouts/Layout.astro`
+
+### Updating Content
+
+1. Edit `cv.json` for portfolio data
+2. Run `pnpm run build` to rebuild
+3. Test changes locally with `pnpm run preview`
+
+## Deployment
+
+### Static Hosting
+The portfolio can be deployed to any static hosting:
+- GitHub Pages
+- Vercel
+- Netlify
+- Cloudflare Pages
+
+### Build Process
+
+```bash
+# Build for production
+pnpm run build
+
+# Output in ./dist directory
+# Deploy ./dist to your hosting provider
+```
+
+### GitHub Pages
+
+```bash
+# Build
+pnpm run build
+
+# Deploy dist folder to gh-pages branch
+# Configure GitHub Pages to use gh-pages branch
+```
+
+## Maintenance
+
+### Regular Tasks
+- Update cv.json with new projects/experience
+- Generate new PDF CVs with `npm run cv:pdf`
+- Update dependencies with `pnpm update`
+- Run tests before deploying
+
+### Troubleshooting
+
+**Build fails?**
+- Check cv.json syntax is valid
+- Ensure all images exist
+- Check for missing components
+
+**Tests fail?**
+- Run `pnpm run test:run` for details
+- Check test files for errors
+- Verify cv.json structure
+
+**Styles not loading?**
+- Check CSS variables are defined
+- Verify component imports
+- Check for syntax errors
 
 ## Best Practices
 
 ### Code Quality
-- **Linting**: ESLint with security rules
-- **TypeScript**: Type safety
-- **Code Reviews**: Mandatory peer reviews
-- **Documentation**: Comprehensive documentation
+- Use descriptive variable names
+- Keep functions small and focused
+- Add comments for complex logic
+- Follow Astro component patterns
 
-### Security Best Practices
-- **Principle of Least Privilege**: Minimal access rights
-- **Secure by Default**: Secure configuration
-- **Regular Updates**: Dependency management
-- **Security Training**: Team awareness
+### Performance
+- Lazy load images
+- Minify CSS/JS
+- Use WebP images
+- Optimize bundle size
 
-### Operational Excellence
-- **Infrastructure as Code**: Terraform/CloudFormation
-- **GitOps**: Git-based deployment
-- **Monitoring**: Comprehensive observability
-- **Disaster Recovery**: Backup and restore procedures
+### Security
+- Validate all inputs
+- Sanitize user content
+- Use HTTPS only
+- Implement CSP headers
 
 ---
 
-This architecture document serves as the foundation for maintaining and extending the application while ensuring security, performance, and maintainability throughout its lifecycle.
+*Minimalist portfolio - Clean and simple*
+*Last updated: February 2026*

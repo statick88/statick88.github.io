@@ -13,41 +13,31 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:integration": "vitest run --testNamePattern='integration'",
-    "test:security": "vitest run --testNamePattern='security'",
-    "test:solid": "vitest run --testNamePattern='solid'",
-    "lint:js": "eslint src/ --ext .js --config .eslintrc.security.cjs --quiet",
-    "lint": "eslint src/ --ext .js,.cjs --config .eslintrc.security.cjs --quiet",
-    "lint:security": "eslint src/tests/ --ext .js --config .eslintrc.security.cjs || true",
-    "security:audit": "pnpm audit --audit-level high",
-    "security:scan": "npm run lint:security && npm run security:audit",
-    "security:sast": "node scripts/security-scanner.cjs",
-    "security:dast": "npm run test:security",
-    "pre-commit": "npm run test:run && npm run security:audit",
-    "validate": "npm run test:run && npm run lint && npm run security:audit",
-    "ci": "npm run validate",
-    "cd:validate": "node scripts/cd-validator.cjs",
-    "cd:validate-critical": "pnpm run security:audit && pnpm run build"
+    "lint": "eslint src/ --ext .js,.cjs --config .eslintrc.security.cjs --quiet"
   },
   "dependencies": {
-    "@astrojs/check": "0.4.1",
-    "astro": "^5.16.12",
-    "firebase": "^12.7.0",
-    "hotkeypad": "0.1.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "typescript": "5.3.3"
+    "@astrojs/check": "0.9.6",
+    "astro": "^5.17.1",
+    "hotkeypad": "1.0.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "typescript": "5.9.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@types/eslint-plugin-security": "^3.0.0",
+    "@types/eslint-plugin-security": "^3.0.1",
     "eslint": "^9.39.2",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-xss": "^0.1.12",
-    "jsdom": "^27.4.0",
+    "jsdom": "^28.0.0",
     "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.4",
     "sharp": "^0.34.5",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.18"
+  },
+  "pnpm": {
+    "overrides": {
+      "lodash": "^4.17.23"
+    }
   }
 }
