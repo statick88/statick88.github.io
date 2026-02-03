@@ -20,8 +20,9 @@ Loja, Ecuador
 
 ## 👨‍💼 Sobre Mí
 
-Profesional de TI con más de **8 años de experiencia** combinando experticia en el desarrollo Fullstack y la transferencia de conocimiento. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye colaboraciones con prestigiosas instituciones académicas como:
+Profesional de TI y Desarrollador Full Stack con **más de 10 años de experiencia** construyendo aplicaciones web y APIs. He diseñado e impartido con éxito bootcamps de desarrollo web, Data Science y móvil. Mi trayectoria docente incluye colaboraciones con prestigiosas instituciones académicas como:
 
+- **Universidad Complutense de Madrid** (Maestría en Ciberseguridad Defensiva y Ofensiva - En curso)
 - **Universidad de las Fuerzas Armadas ESPE**
 - **Universidad Internacional del Ecuador (UIDE)**
 - **Instituto Superior Tecnológico Juan Montalvo**
@@ -29,10 +30,11 @@ Profesional de TI con más de **8 años de experiencia** combinando experticia e
 
 ---
 
-## 🏆 Logros Académicos
+## 🏆 Formación Académica
 
-- **Maestría** en Ciencias y Tecnologías de la Computación - Universidad Técnica Particular de Loja (UTPL)
-- **Licenciatura** en Ciencias de la Educación Mención Informática Educativa - Universidad Nacional de Loja
+- **Maestría** en Cyberseguridad Defensiva y Ofensiva - Universidad Complutense de Madrid (2026-2027) - En proceso
+- **Maestría** en Ciencias y Tecnologías de la Computación - Universidad Técnica Particular de Loja (UTPL) (2018-2021)
+- **Licenciatura** en Ciencias de la Educación Mención Informática Educativa - Universidad Nacional de Loja (2007-2011)
 
 ---
 
@@ -131,7 +133,15 @@ Profesional de TI con más de **8 años de experiencia** combinando experticia e
 - 📄 **Generación de PDF** - Currículum imprimible desde el navegador
 - 🚀 **Rendimiento Optimizado** - Carga diferida de imágenes y assets
 
-### 🐛 Correcciones Recientes (v1.2.0)
+### 🐛 Correcciones Recientes (v1.3.1)
+
+- **Fixed**: Educación ahora muestra "En proceso" cuando el estudio está en curso (igual que el PDF)
+- **Fixed**: Publicaciones muestran fecha en formato YYYY-MM y título/publisher son enlaces con color de acento
+- **Fixed**: Colores de texto de Educación ahora usan variables CSS para coherencia con tema claro/oscuro
+- **Improved**: Hero y traducciones alineadas con el contenido del CV
+- **Added**: Variable CSS `--color-accent` para enlaces coherentes
+
+### 🐛 Correcciones Anteriores (v1.2.0)
 
 - **Fixed**: Botón ES/EN ya no causa error `[object Object]` en secciones
 - **Fixed**: Eliminado script vacío en `Section.astro` que causaba chunk vacío
