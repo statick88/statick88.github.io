@@ -196,7 +196,38 @@
       "url": "https://revistarimi.net/index.php/home/article/view/89"
     }
   ],
-  "trainings": [],
+  "trainings": [
+    {
+      "name": {
+        "es": "Curso de Administración de Servidores Linux",
+        "en": "Linux Server Administration Course"
+      },
+      "institution": "Abacom",
+      "url": "https://statick88.github.io/administracion-servidores-linux/",
+      "github": "https://github.com/statick88/administracion-servidores-linux",
+      "startDate": "2025-01-01",
+      "isActive": true,
+      "verified": true,
+      "description": {
+        "es": "Curso de Administración de Servidores Linux para Abacom. Contenido práctico orientado a despliegue, administración y seguridad básica de servidores. Incluye gestión de usuarios, permisos, servicios de red (SSH, firewall), logs, troubleshooting y automatización con Bash.",
+        "en": "Linux Server Administration course for Abacom. Hands-on content focused on deployment, administration, and basic server security. Includes user management, permissions, network services (SSH, firewall), logs, troubleshooting and Bash automation."
+      },
+      "highlights": {
+        "es": [
+          "Administración de usuarios, permisos y procesos",
+          "Servicios y red: SSH, firewall, logs y troubleshooting",
+          "Automatización básica con Bash y tareas programadas",
+          "Buenas prácticas de hardening y mantenimiento"
+        ],
+        "en": [
+          "User, permissions, and process administration",
+          "Services and networking: SSH, firewall, logs, and troubleshooting",
+          "Basic automation with Bash and scheduled tasks",
+          "Hardening and maintenance best practices"
+        ]
+      }
+    }
+  ],
   "skills": [
     { "name": "HTML", "level": "Master" },
     { "name": "CSS", "level": "Master" },
