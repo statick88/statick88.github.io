@@ -82,7 +82,7 @@ Profesional de TI y Desarrollador Full Stack con **más de 10 años de experienc
 | **FastAPI eBook** | eBook para aprender a crear APIs REST con Python | Python, FastAPI, Quarto | [Ver](https://statick88.github.io/course_of_FastAPI/) |
 | **Docker eBook** | eBook para aprender a crear contenedores de aplicaciones | Docker, Quarto | [Ver](https://statick88.github.io/course_docker/) |
 
-### 📚 Cursos y Material Educativo
+### 📚 Cursos y Material educativo
 
 - [Advanced Web Programming](https://statick88.github.io/programacionWebAvanzada/)
 - [Secure Software Development](https://statick88.github.io/desarrollo-software-seguro/)
@@ -128,8 +128,8 @@ Profesional de TI y Desarrollador Full Stack con **más de 10 años de experienc
 - 🌐 **Internacionalización (i18n)** - Soporte completo para español (es) e inglés (en)
 - 🌓 **Tema Oscuro/Claro** - Alternancia automática según preferencias del sistema
 - ⌨️ **Atajos de Teclado** - Ctrl+K para paleta de comandos, Ctrl+P para imprimir
-- 📱 **Diseño Responsivo** - Optimizado para dispositivos móviles
-- 🔐 **Autenticación Firebase** - Panel de administración seguro
+- 📱 **Diseño Responsive** - Optimizado para dispositivos móviles
+- 🔐 **Autenticación con Firebase** - Panel de administración seguro
 - 📄 **Generación de PDF** - Currículum imprimible desde el navegador
 - 🚀 **Rendimiento Optimizado** - Carga diferida de imágenes y assets
 
