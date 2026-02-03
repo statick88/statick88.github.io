@@ -91,15 +91,15 @@ const imageSrc = basics.image || "/me.webp"
     object-fit: cover;
     width: 128px;
     height: 128px;
-    border-radius: 16px;
-    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    border: 3px solid var(--color-accent);
     transition: all 0.3s ease;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(76, 128, 204, 0.3);
   }
-   
+    
   img:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(76, 128, 204, 0.4);
   }
   
   h1 {
@@ -177,7 +177,7 @@ const imageSrc = basics.image || "/me.webp"
     img {
       width: 150px;
       height: 150px;
-      border-radius: 16px;
+      border-radius: 50%;
     }
     
     img:hover {
