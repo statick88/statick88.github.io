@@ -5,9 +5,12 @@ import X from "../../icons/X.astro"
 import LinkedIn from "../../icons/LinkedIn.astro"
 import GitHub from "../../icons/GitHub.astro"
 import WorldMap from "../../icons/WorldMap.astro"
-import { basics } from "../../../cv.json"
+import { basics } from "@cv"
 
-const labelValue = basics.label?.es || basics.label?.en || String(basics.label)
+const labelValue =
+  typeof basics.label === 'object'
+    ? (basics.label.es || basics.label.en || '')
+    : String(basics.label)
 const imageSrc = basics.image || "/me.webp"
 ---
 

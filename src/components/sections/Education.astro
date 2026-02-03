@@ -2,16 +2,23 @@
 import Section from "../Section.astro"
 
 import { education } from "@cv"
+
+const todayIso = new Date().toISOString().slice(0, 10)
 ---
 
 <Section title="Educación" i18nKey="section.education">
   <ul>
     {
       education.map(({ institution, startDate, endDate, area }, index) => {
-        const startYear = new Date(startDate).getFullYear()
-        const endYear =
-          endDate != null ? new Date(endDate).getFullYear() : "Actual"
-        const years = `${startYear} - ${endYear}`
+        const startIso = String(startDate ?? "").slice(0, 10)
+        const endIso = String(endDate ?? "").slice(0, 10)
+        const isInProgress = Boolean(
+          startIso && startIso <= todayIso && (!endIso || todayIso <= endIso)
+        )
+
+        const startYear = startIso.slice(0, 4)
+        const endYear = endIso.slice(0, 4)
+        const years = endYear ? startYear + " - " + endYear : startYear
 
         return (
           <li>
@@ -21,11 +28,17 @@ import { education } from "@cv"
                   <h3>{institution}</h3>
                 </div>
 
-                <time>{years}</time>
+                {
+                  isInProgress ? (
+                    <time data-i18n="education.inProgress">En proceso</time>
+                  ) : (
+                    <time>{years}</time>
+                  )
+                }
               </header>
 
               <footer>
-                <p data-i18n={`cv.education.${index}.area`}>{area}</p>
+                <p data-i18n={'cv.education.' + index + '.area'}>{area}</p>
               </footer>
             </article>
           </li>

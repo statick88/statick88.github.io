@@ -8,22 +8,32 @@ import { publications } from "@cv"
   <ul>
     {
       publications.map(({ name, publisher, releaseDate, url, summary }, index) => {
-        const year = new Date(releaseDate).getFullYear()
+        const date = typeof releaseDate === 'string' ? releaseDate.slice(0, 7) : ''
 
         return (
           <li>
             <article>
               <header>
                 <div>
-                  <h3 data-i18n={`cv.publications.${index}.name`}>{name}</h3>
-                  <p><strong>{publisher}</strong></p>
+                  <h3>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-i18n={`cv.publications.${index}.name`}
+                    >
+                      {name}
+                    </a>
+                  </h3>
+                  <p>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {publisher}
+                    </a>
+                  </p>
                 </div>
 
-                <time>{year}</time>
+                <time>{date}</time>
               </header>
-              <footer>
-                <a href={url} target="_blank" rel="noopener noreferrer">link</a>
-              </footer>
             </article>
           </li>
         )
@@ -49,12 +59,30 @@ import { publications } from "@cv"
     /* 🎯 CORRECCIÓN: Usar variable para el color de texto principal */
     color: var(--color-text); 
   }
+
+  article h3 a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  article h3 a:hover {
+    text-decoration: underline;
+  }
   
   article p {
     /* Usar variable para el color de texto secundario */
     color: var(--color-text-secondary);
     font-size: 0.9rem;
     margin-top: 4px;
+  }
+
+  article p a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  article p a:hover {
+    text-decoration: underline;
   }
 
   header {
@@ -72,16 +100,7 @@ import { publications } from "@cv"
     text-align: right;
   }
 
-  footer a {
-    /* 🎯 CORRECCIÓN: Usar variable para el color de acento (azul/enlaces) */
-    color: var(--color-accent); 
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-
-  footer a:hover {
-    text-decoration: underline;
-  }
+  footer { display: none; }
 
   @media (width <= 700px) {
     header {

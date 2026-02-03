@@ -119,6 +119,9 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
       <script is:inline>
       const translations = {
         es: {
+          education: {
+            inProgress: "En proceso"
+          },
           section: {
             about: "Sobre mí",
             experience: "Experiencia laboral",
@@ -128,14 +131,14 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
             skills: "Habilidades"
           },
           about: {
-            summary: "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer."
+            summary: "Profesional de TI y Desarrollador Full Stack con más de 10 años de experiencia construyendo aplicaciones web y APIs."
           },
           portfolio: {
             active: "Activo"
           },
           hero: {
             name: "Diego Medardo Saavedra García",
-            label: "FullStack Developer con más de 8 años de experiencia & Facilitador de Cursos de Desarrollo Web FullStack, Data Science y Móvil.",
+            label: "Desarrollador Full Stack con más de 10 años de experiencia. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
             location: "Loja - Loja, Ecuador",
             printInfo: "dsaavedra88@gmail.com • +593 980192790 • https://www.linkedin.com/in/diego-saavedra-developer/"
           },
@@ -151,6 +154,9 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
           }
         },
         en: {
+          education: {
+            inProgress: "In progress"
+          },
           section: {
             about: "About Me",
             experience: "Work Experience",
@@ -160,14 +166,14 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
             skills: "Skills"
           },
           about: {
-            summary: "IT professional with over 8 years of experience combining expertise in Fullstack development and knowledge transfer."
+            summary: "IT professional and Full Stack Developer with 10+ years of experience building web applications and APIs."
           },
           portfolio: {
             active: "Active"
           },
           hero: {
             name: "Diego Medardo Saavedra García",
-            label: "FullStack Developer with over 8 years of experience & Facilitator of Web Development, Data Science, and Mobile Development Courses.",
+            label: "Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.",
             location: "Loja - Loja, Ecuador",
             printInfo: "dsaavedra88@gmail.com • +593 980192790 • https://www.linkedin.com/in/diego-saavedra-developer/"
           },
@@ -298,6 +304,7 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     --color-text: #000;
     --color-text-secondary: #444;
     --color-border: #ddd;
+    --color-accent: #4c80cc;
   }
 
   /* VARIABLES PARA EL AZUL OSCURO */
@@ -307,6 +314,7 @@ const summaryText = typeof summary === 'object' ? summary.es : summary
     --color-text: #ffffff;
     --color-text-secondary: #b8b8b8;
     --color-border: #2a2a2a;
+    --color-accent: #4c80cc;
   }
 
   html {
