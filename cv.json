@@ -226,8 +226,40 @@
           "Hardening and maintenance best practices"
         ]
       }
-    }
-  ],
+    },
+    {
+      "name": {
+        "es": "Curso de Docker y Containerización",
+        "en": "Docker and Containerization Course"
+      },
+        "institution": "Abacom",
+        "url": "https://statick88.github.io/docker-course/",
+        "github": "https://github.com/statick88/docker-course",
+        "startDate": "2025-02-01",
+        "isActive": true,
+        "verified": true,
+        "description": {
+          "es": "Curso práctico de Docker para despliegue de aplicaciones con contenedores. Aprende a crear, gestionar y escalar aplicaciones modernas usando Docker. Incluye instalación, despliegue de Nginx, gestión del ciclo de vida de contenedores y troubleshooting.",
+          "en": "Hands-on Docker course for application deployment with containers. Learn to create, manage and scale modern applications using Docker. Includes installation, Nginx deployment, container lifecycle management and troubleshooting."
+        },
+        "highlights": {
+          "es": [
+            "Instalación y configuración de Docker",
+            "Despliegue de Nginx con contenedores",
+            "Gestión del ciclo de vida de contenedores",
+            "Operaciones de archivos y troubleshooting",
+            "Buenas prácticas de containerización"
+          ],
+          "en": [
+            "Docker installation and configuration",
+            "Nginx deployment with containers",
+            "Container lifecycle management",
+            "File operations and troubleshooting",
+            "Containerization best practices"
+          ]
+        }
+      }
+    ],
   "skills": [
     { "name": "HTML", "level": "Master" },
     { "name": "CSS", "level": "Master" },
