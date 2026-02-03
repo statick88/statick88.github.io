@@ -9,7 +9,7 @@ interface Props {
 const { error } = Astro.props
 ---
 
-<Layout title="Administración - Login">
+<Layout title="Administración - Inicio de sesión">
   <div class="login-container">
     <div class="login-card">
       <h1 class="login-title">Panel de Administración</h1>
@@ -31,7 +31,6 @@ const { error } = Astro.props
             required 
             autocomplete="email"
             placeholder="admin@ejemplo.com"
-            value="dsaavedra88@gmail.com"
           />
         </div>
         
@@ -58,21 +57,18 @@ const { error } = Astro.props
         </div>
       </form>
       
-      {import.meta.env.PROD === false && (
-        <div class="debug-info">
-        <p><strong>Acceso de prueba:</strong></p>
-        <p>Email: dsaavedra88@gmail.com</p>
-        <p>Contraseña: a1b2c3d4*</p>
-      </div>
-      )}
     </div>
   </div>
 </Layout>
 
 <script>
   document.addEventListener('DOMContentLoaded', async () => {
-    const { signInWithEmailAndPassword, onAuthStateChanged } = await import("firebase/auth");
+    const { signInWithEmailAndPassword, onAuthStateChanged, signOut } = await import("firebase/auth");
     const { auth } = await import("@/firebase.js");
+    const adminEmails = (import.meta.env.PUBLIC_ADMIN_EMAILS || '')
+      .split(',')
+      .map((email) => email.trim())
+      .filter(Boolean);
     
     const form = document.getElementById('login-form');
     const submitBtn = document.getElementById('login-btn');
@@ -81,6 +77,11 @@ const { error } = Astro.props
     
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        if (adminEmails.length > 0 && !adminEmails.includes(user.email)) {
+          console.warn('Usuario no autorizado para administración:', user.email);
+          signOut(auth);
+          return;
+        }
         console.log('Usuario ya autenticado:', user.email);
         window.location.href = '/admin/dashboard/';
       }
@@ -100,7 +101,14 @@ const { error } = Astro.props
       
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        console.log('Login exitoso:', userCredential.user);
+        const { user } = userCredential;
+        console.log('Login exitoso:', user.email);
+
+        if (adminEmails.length > 0 && !adminEmails.includes(user.email)) {
+          await signOut(auth);
+          throw new Error('No tienes permisos de administración');
+        }
+
         window.location.href = '/admin/dashboard/';
         
       } catch (error) {

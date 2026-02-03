@@ -3,7 +3,7 @@
 
 # Diego Saavedra García
 
-### FullStack Developer | Learning Engineer | AI & Data Science Enthusiast
+### Full Stack Developer | Learning Engineer | AI & Data Science Enthusiast
 
 [![GitHub followers](https://img.shields.io/github/followers/statick88?style=flat&logo=github)](https://github.com/statick88)
 [![X Follow](https://img.shields.io/twitter/follow/statick_ds?style=flat&logo=x)](https://x.com/statick_ds)
@@ -32,7 +32,7 @@ Profesional de TI y Desarrollador Full Stack con **más de 10 años de experienc
 
 ## 🏆 Formación Académica
 
-- **Maestría** en Cyberseguridad Defensiva y Ofensiva - Universidad Complutense de Madrid (2026-2027) - En proceso
+- **Maestría** en Ciberseguridad Defensiva y Ofensiva - Universidad Complutense de Madrid (2026-2027) - En proceso
 - **Maestría** en Ciencias y Tecnologías de la Computación - Universidad Técnica Particular de Loja (UTPL) (2018-2021)
 - **Licenciatura** en Ciencias de la Educación Mención Informática Educativa - Universidad Nacional de Loja (2007-2011)
 
@@ -77,10 +77,10 @@ Profesional de TI y Desarrollador Full Stack con **más de 10 años de experienc
 | Proyecto | Descripción | Tecnologías | Repositorio |
 |----------|-------------|-------------|-------------|
 | **Saavedra Construction** | Sitio web empresarial para empresa de construcción con gestión de proyectos y galerías de imágenes | Next.js 15, React 19, TypeScript, Tailwind CSS 4 | 🔒 Privado |
-| **Bootcamp FullStack** | Bootcamp intensivo de desarrollo web Fullstack | Python, Django, FastAPI, React, TypeScript | [Ver](https://statick88.github.io/bootcamp_fullstack/) |
-| **Django & React 2024** | Curso de Programación Web Fullstack con Django y React | Python, Django, JavaScript, React | [Ver](https://statick88.github.io/course_of_django_and_react) |
-| **FastAPI Ebook** | Ebook para aprender a crear APIs REST con Python | Python, FastAPI, Quarto | [Ver](https://statick88.github.io/course_of_FastAPI/) |
-| **Docker Ebook** | Ebook para aprender a crear contenedores de aplicaciones | Docker, Quarto | [Ver](https://statick88.github.io/course_docker/) |
+| **Bootcamp Full Stack** | Bootcamp intensivo de desarrollo web Full Stack | Python, Django, FastAPI, React, TypeScript | [Ver](https://statick88.github.io/bootcamp_fullstack/) |
+| **Django & React 2024** | Curso de Programación Web Full Stack con Django y React | Python, Django, JavaScript, React | [Ver](https://statick88.github.io/course_of_django_and_react) |
+| **FastAPI eBook** | eBook para aprender a crear APIs REST con Python | Python, FastAPI, Quarto | [Ver](https://statick88.github.io/course_of_FastAPI/) |
+| **Docker eBook** | eBook para aprender a crear contenedores de aplicaciones | Docker, Quarto | [Ver](https://statick88.github.io/course_docker/) |
 
 ### 📚 Cursos y Material Educativo
 
@@ -121,7 +121,7 @@ Profesional de TI y Desarrollador Full Stack con **más de 10 años de experienc
 - [**TypeScript**](https://www.typescriptlang.org/) - JavaScript con tipado estático
 - [**Tailwind CSS 4**](https://tailwindcss.com/) - Framework CSS utilitario con CSS-first config
 - [**Firebase**](https://firebase.google.com/) - Autenticación y base de datos en tiempo real
-- **HotKeyPad** - Paleta de comandos con atajos de teclado (Ctrl+K)
+- **Hotkeypad** - Paleta de comandos con atajos de teclado (Ctrl+K)
 
 ### ✨ Características
 
@@ -145,8 +145,8 @@ Profesional de TI y Desarrollador Full Stack con **más de 10 años de experienc
 
 - **Fixed**: Botón ES/EN ya no causa error `[object Object]` en secciones
 - **Fixed**: Eliminado script vacío en `Section.astro` que causaba chunk vacío
-- **Fixed**: Removidos console.logs de debug en producción
-- **Fixed**: Preload de imagen `me.webp` eliminado para evitar conflictos
+- **Fixed**: Eliminados los console.log de debug en producción
+- **Fixed**: Precarga de imagen `me.webp` eliminada para evitar conflictos
 - **Fixed**: Manejo correcto de objetos en traducciones i18n
 - **Improved**: Textos justificados para mejor lectura
 - **Added**: Verificación de DOM antes de ejecutar traducciones

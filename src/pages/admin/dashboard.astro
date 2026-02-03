@@ -19,11 +19,11 @@ import Layout from "@/layouts/Layout.astro"
     <main class="admin-main">
       <!-- Sección de gestión de capacitaciones -->
       <section class="admin-section">
-        <h2 class="section-title">Gestión de Capacitaciones</h2>
+        <h2 class="section-title">Gestión de capacitaciones</h2>
         
         <!-- Formulario para subir nueva capacitación -->
         <div class="upload-card">
-          <h3 class="card-title">Subir Nueva Capacitación</h3>
+          <h3 class="card-title">Subir nueva capacitación</h3>
           
           <form id="training-form" class="training-form">
             <div class="form-row">
@@ -83,7 +83,7 @@ import Layout from "@/layouts/Layout.astro"
             </div>
             
             <button type="submit" class="submit-btn" disabled>
-              <span class="btn-text">Subir Capacitación</span>
+              <span class="btn-text">Subir capacitación</span>
               <span class="btn-loading" style="display: none;">Procesando...</span>
             </button>
           </form>
@@ -91,7 +91,7 @@ import Layout from "@/layouts/Layout.astro"
         
         <!-- Lista de capacitaciones existentes -->
         <div class="trainings-list">
-          <h3 class="card-title">Capacitaciones Existentes</h3>
+          <h3 class="card-title">Capacitaciones existentes</h3>
           <div id="trainings-container" class="trainings-grid">
             <!-- Las capacitaciones se cargarán dinámicamente -->
             <div class="loading-message">Cargando capacitaciones...</div>
@@ -125,6 +125,10 @@ import Layout from "@/layouts/Layout.astro"
       deleteObject 
     } = await import("firebase/storage");
     const { auth, db, storage } = await import("@/firebase.js");
+    const adminEmails = (import.meta.env.PUBLIC_ADMIN_EMAILS || '')
+      .split(',')
+      .map((email) => email.trim())
+      .filter(Boolean);
     
     let currentTrainingDocs: any[] = [];
     
@@ -139,6 +143,11 @@ import Layout from "@/layouts/Layout.astro"
           if (!user) {
             window.location.href = '/admin/login';
             reject(new Error('Usuario no autenticado'));
+          } else if (adminEmails.length > 0 && !adminEmails.includes(user.email)) {
+            signOut(auth).finally(() => {
+              window.location.href = '/admin/login';
+            });
+            reject(new Error('Usuario no autorizado'));
           } else {
             resolve(user);
           }

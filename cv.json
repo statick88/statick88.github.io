@@ -48,8 +48,8 @@
       "url": "https://abacom.edu.ec/",
       "startDate": "2022-10-31",
       "summary": {
-        "es": "Facilitador de cursos de Desarrollo Web Fullstack.",
-        "en": "Facilitator of Fullstack Web Development courses."
+        "es": "Facilitador de cursos de Desarrollo Web Full Stack.",
+        "en": "Facilitator of Full-stack Web Development courses."
       },
       "highlights": {
         "es": ["Cursos de desarrollo web"],
@@ -66,8 +66,8 @@
       "startDate": "2024-09-01",
       "endDate": "2024-12-31",
       "summary": {
-        "es": "Facilitador de Bootcamps de Desarrollo Web Fullstack, Data Science y Movil.",
-        "en": "Facilitator of Fullstack Web Development, Data Science, and Mobile Bootcamps."
+        "es": "Facilitador de Bootcamps de Desarrollo Web Full Stack, Data Science y Móvil.",
+        "en": "Facilitator of Full-stack Web Development, Data Science, and Mobile Bootcamps."
       },
       "highlights": {
         "es": ["Formación de desarrolladores durante 3 meses"],
@@ -95,8 +95,8 @@
     {
       "name": "Universidad de las Fuerzas Armadas ESPE",
       "position": {
-        "es": "Docente Ocasional 1 Tiempo Completo",
-        "en": "Occasional Professor 1 Full Time"
+        "es": "Docente ocasional, tiempo completo",
+        "en": "Occasional Full-time Professor"
       },
       "url": "https://www.espe.edu.ec",
       "startDate": "2023-04-26",
@@ -152,7 +152,7 @@
       "institution": "Universidad Complutense de Madrid",
       "url": "https://www.ucm.es/",
       "area": {
-        "es": "Master en Cyberseguridad Defensiva y Ofensiva",
+        "es": "Máster en Ciberseguridad Defensiva y Ofensiva",
         "en": "Master's in Defensive and Offensive Cybersecurity"
       },
       "studyType": "Master",
@@ -191,7 +191,7 @@
         "es": "Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger",
         "en": "Evaluation of Deep Learning to detect ADHD and Asperger's syndrome"
       },
-      "publisher": "REMI - Revisata de Investigación Multidisciplinaria Iberoamericana",
+      "publisher": "REMI - Revista de Investigación Multidisciplinaria Iberoamericana",
       "releaseDate": "2024-10-01",
       "url": "https://revistarimi.net/index.php/home/article/view/89"
     }
@@ -308,16 +308,16 @@
       "image": "/projects/administracion-servidores-linux.webp"
     },
     {
-      "name": "Facilitador del Bootcamp de Desarrollo Fullstack",
+      "name": "Facilitador del Bootcamp de Desarrollo Full Stack",
       "isActive": true,
       "description": {
-        "es": "Facilitador de bootcamp de Desarrollo Web Fullstack con Python, Django, FastAPI y React",
-        "en": "Facilitator of Fullstack Web Development bootcamp with Python, Django, FastAPI, and React"
+        "es": "Facilitador de bootcamp de Desarrollo Web Full Stack con Python, Django, FastAPI y React",
+        "en": "Facilitator of Full-stack Web Development bootcamp with Python, Django, FastAPI, and React"
       },
       "highlights": {
         "es": [
-          "Formación de desarrolladores web fullstack durante 3 meses",
-          "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React, TypeScript, Git, Github, Docker, Bootstrap, Tailwind"
+          "Formación de desarrolladores web full stack durante 3 meses",
+          "Python, Django, HTML5, CSS3, JavaScript, Node.js, Express, React, TypeScript, Git, GitHub, Docker, Bootstrap, Tailwind"
         ],
         "en": [
           "Training fullstack web developers for 3 months",
@@ -328,16 +328,16 @@
       "image": "/projects/bootcamp-fullstack.webp"
     },
     {
-      "name": "Facilitador del Curso de Django and React 2024",
+      "name": "Facilitador del Curso de Django y React 2024",
       "isActive": true,
       "description": {
-        "es": "Facilitador de curso de Programación Web Fullstack con Django y React",
-        "en": "Facilitator of Fullstack Web Programming course with Django and React"
+        "es": "Facilitador de curso de Programación Web Full Stack con Django y React",
+        "en": "Facilitator of Full-stack Web Programming course with Django and React"
       },
       "highlights": {
         "es": [
-          "Formación de desarrolladores web fullstack",
-          "Python, Django, Html5, Css3, JavaScript, Nodejs, Express, React"
+          "Formación de desarrolladores web full stack",
+          "Python, Django, HTML5, CSS3, JavaScript, Node.js, Express, React"
         ],
         "en": [
           "Training fullstack web developers",
@@ -348,31 +348,31 @@
       "image": "/projects/django-react-2024.webp"
     },
     {
-      "name": "Creador del ebook de Fast API",
+      "name": "Creador del eBook de FastAPI",
       "isActive": true,
       "description": {
-        "es": "Ebook de Fast API para aprender a crear APIs REST con Python",
-        "en": "Fast API ebook to learn how to create REST APIs with Python"
+        "es": "eBook de FastAPI para aprender a crear APIs REST con Python",
+        "en": "FastAPI eBook to learn how to create REST APIs with Python"
       },
       "highlights": {
         "es": [
           "Uso de herramienta de Quarto para escritura científica",
-          "Python, Fast API, REST"
+          "Python, FastAPI, REST"
         ],
         "en": [
           "Use of Quarto tool for scientific writing",
-          "Python, Fast API, REST"
+          "Python, FastAPI, REST"
         ]
       },
       "url": "https://statick88.github.io/course_of_FastAPI/",
       "image": "/projects/fastapi-ebook.webp"
     },
     {
-      "name": "Creador del Ebook de Docker",
+      "name": "Creador del eBook de Docker",
       "isActive": true,
       "description": {
-        "es": "Ebook de Docker para aprender a crear contenedores de aplicaciones",
-        "en": "Docker ebook to learn how to create application containers"
+        "es": "eBook de Docker para aprender a crear contenedores de aplicaciones",
+        "en": "Docker eBook to learn how to create application containers"
       },
       "highlights": {
         "es": [
@@ -388,7 +388,7 @@
       "name": "Sistema de Predicción de Precios Inmobiliarios con IA",
       "isActive": true,
       "description": {
-        "es": "Sistema de machine learning para predicción de precios inmobiliarios usando Python, Scikit-learn y FastAPI. Implementa modelo de regresión con análisis de features geográficos y características de propiedades.",
+        "es": "Sistema de machine learning para predicción de precios inmobiliarios usando Python, Scikit-learn y FastAPI. Implementa modelo de regresión con análisis de características geográficas y de las propiedades.",
         "en": "Machine learning system for real estate price prediction using Python, Scikit-learn, and FastAPI. Implements regression model with geographic feature analysis and property characteristics."
       },
       "highlights": {
@@ -396,7 +396,7 @@
           "Modelo de regresión con precisión del 92%",
           "API REST para predicciones en tiempo real",
           "Dashboard interactivo con React y Tailwind",
-          "Deploy en Railway con escalabilidad automática"
+          "Despliegue en Railway con escalabilidad automática"
         ],
         "en": [
           "Regression model with 92% accuracy",
@@ -491,7 +491,7 @@
         "es": [
           "Detección de SQLi, XSS, CSRF y otras vulnerabilidades",
           "Integración con CI/CD para security testing automatizado",
-          "Reportes executivos en formato PDF",
+          "Reportes ejecutivos en formato PDF",
           "API REST para integración con pipelines DevSecOps"
         ],
         "en": [
@@ -508,14 +508,14 @@
       "name": "Blog Técnico con Sistema de Comentarios IA",
       "isActive": true,
       "description": {
-        "es": "Blog técnico personal con Next.js 15, featuring sistema de comentarios moderado por IA usando OpenAI API. Optimizado para SEO y performance con Static Site Generation.",
+        "es": "Blog técnico personal con Next.js 15, con un sistema de comentarios moderado por IA usando OpenAI API. Optimizado para SEO y performance con Static Site Generation.",
         "en": "Personal technical blog with Next.js 15, featuring AI-moderated comment system using OpenAI API. SEO optimized and performance-focused with Static Site Generation."
       },
       "highlights": {
         "es": [
           "50,000+ visitas mensuales orgánicas",
           "Moderación automática de comentarios con IA",
-          "Comments con Markdown y syntax highlighting",
+          "Comentarios con Markdown y resaltado de sintaxis",
           "RSS feed y sitemap automático"
         ],
         "en": [

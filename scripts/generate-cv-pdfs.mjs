@@ -659,7 +659,7 @@ async function generateCvPdfBytes(cv, lang) {
           drawLabeledUrl('Deploy', projectUrl)
         }
         if (projectGithub && projectGithub !== projectUrl) {
-          drawLabeledUrl('Codigo', projectGithub)
+          drawLabeledUrl('Código', projectGithub)
         }
 
         y -= 10
@@ -669,7 +669,7 @@ async function generateCvPdfBytes(cv, lang) {
   }
 
   // Hard Skills
-  const hardSkillsTitle = lang === 'en' ? 'Hard Skills' : 'Hard Skills'
+  const hardSkillsTitle = lang === 'en' ? 'Hard Skills' : 'Habilidades técnicas'
   drawSectionHeader(hardSkillsTitle)
 
   const skills = clampArray(cv?.skills)
@@ -681,7 +681,7 @@ async function generateCvPdfBytes(cv, lang) {
   y -= 6
 
   // Soft Skills
-  const softSkillsTitle = lang === 'en' ? 'Soft Skills' : 'Soft Skills'
+  const softSkillsTitle = lang === 'en' ? 'Soft Skills' : 'Habilidades blandas'
   const softSkills = clampArray(cv?.softSkills)
   drawSectionHeader(softSkillsTitle)
   for (const s of softSkills) {

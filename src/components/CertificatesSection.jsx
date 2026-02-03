@@ -75,7 +75,7 @@ const CertificatesSection = () => {
 
   return (
     <section className="py-12 px-4 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8 text-center">Certificados y Capacitaciones Recientes</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center">Certificados y capacitaciones recientes</h2>
 
       {/* Vista Pública: Lista de Certificados */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -83,7 +83,7 @@ const CertificatesSection = () => {
           <div key={cert.id} className="bg-white border rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
             <h3 className="font-bold text-xl mb-2 text-gray-800">{cert.title}</h3>
             <a href={cert.url} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 text-blue-600 font-semibold hover:underline">
-              📄 Ver Certificado (PDF)
+              📄 Ver certificado (PDF)
             </a>
           </div>
         ))}
@@ -93,20 +93,20 @@ const CertificatesSection = () => {
       <div className="mt-16 border-t pt-8">
         {!user ? (
           <div className="text-center">
-            <button onClick={handleLogin} className="text-gray-400 text-sm hover:text-gray-600 underline">Acceso Admin</button>
+            <button onClick={handleLogin} className="text-gray-400 text-sm hover:text-gray-600 underline">Acceso de administrador</button>
           </div>
         ) : (
           <div className="bg-gray-50 p-6 rounded-lg max-w-2xl mx-auto">
             <div className="flex justify-between items-center mb-6 border-b pb-4">
-              <span className="text-sm text-gray-600">Logueado como: {user.email}</span>
-              <button onClick={() => signOut(auth)} className="text-red-500 text-sm font-medium hover:text-red-700">Cerrar Sesión</button>
+              <span className="text-sm text-gray-600">Con sesión iniciada como: {user.email}</span>
+              <button onClick={() => signOut(auth)} className="text-red-500 text-sm font-medium hover:text-red-700">Cerrar sesión</button>
             </div>
 
             {user.email === ADMIN_EMAIL ? (
               <form onSubmit={handleUpload} className="space-y-4">
-                <h3 className="font-bold text-lg text-gray-800">Subir Nuevo Certificado</h3>
+                <h3 className="font-bold text-lg text-gray-800">Subir nuevo certificado</h3>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Título de la Capacitación</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Título de la capacitación</label>
                   <input
                     type="text"
                     value={title}
@@ -131,7 +131,7 @@ const CertificatesSection = () => {
                   disabled={uploading}
                   className={`w-full py-2 px-4 rounded text-white font-bold ${uploading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}`}
                 >
-                  {uploading ? 'Subiendo...' : 'Subir Certificado'}
+                  {uploading ? 'Subiendo...' : 'Subir certificado'}
                 </button>
               </form>
             ) : (

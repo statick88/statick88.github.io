@@ -1,16 +1,16 @@
 {
   "basics": {
     "name": "Miguel Ángel Durán",
-    "label": "Full-Stack developer with more than 15 years of experience & development content creator",
+    "label": "Full-stack developer with more than 15 years of experience & development content creator",
     "image": "/me.webp",
     "email": "miduga@gmail.com",
     "phone": "+34 688888888",
     "url": "https://midu.dev",
-    "summary": "+15 years of experience as a web developer. Currently I am a content creator and development dommunicator. I live in Barcelona, Spain. I have worked in different environments: from accelerating the development of start-ups to leading teams in multinational companies.",
+    "summary": "+15 years of experience as a web developer. Currently, I am a content creator and development communicator. I live in Barcelona, Spain. I have worked in different environments: from accelerating the development of start-ups to leading teams in multinational companies.",
     "location": {
       "address": "",
       "postalCode": "08820",
-      "city": "el Prat de Llobregat",
+      "city": "El Prat de Llobregat",
       "countryCode": "ES",
       "region": "Spain"
     },
@@ -57,10 +57,10 @@
     },
     {
       "name": "Hubii",
-      "position": "Senior FrontEnd Developer",
+      "position": "Senior Front-end Developer",
       "startDate": "2011-03-01",
       "endDate": "2016-05-01",
-      "summary": "I developed a geolocated news platform and an API to consume the information. Scaled services to support the load of over hundreds of thousands of requests per day. Cut delivery times and deployments to production by half. Collaborated with Mozilla and Telefónica to develop the first FirefoxOS TV app.",
+      "summary": "I developed a geolocated news platform and an API to consume the information. Scaled services to support the load of over hundreds of thousands of requests per day. Cut delivery times and deployments to production by half. Collaborated with Mozilla and Telefónica to develop the first Firefox OS TV app.",
       "highlights": [
         "Started the company"
       ]
@@ -127,7 +127,7 @@
       "name": "JavaScript",
       "level": "Master",
       "keywords": [
-        "Web development", "Frontend", "Backend", "Fullstack"
+        "Web development", "Frontend", "Backend", "Full-stack"
       ]
     },
     {

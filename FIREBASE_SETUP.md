@@ -18,9 +18,9 @@ PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
 
 ## Firebase Setup Steps:
 
-1. Create Firebase Project at https://console.firebase.google.com
+1. Create a Firebase project at https://console.firebase.google.com
 2. Enable Authentication → Email/Password
-3. Create Firestore Database with production rules
+3. Create a Firestore database with production rules
 4. Enable Storage with security rules
 5. Get your configuration from Project Settings → Web apps
 

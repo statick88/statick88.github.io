@@ -43,7 +43,7 @@
       "highlights": ["Founded the company"]
     },
     {
-      "name": "Universidad de Zulia in Venezuela",
+      "name": "University of Zulia, Venezuela",
       "position": "Instructor of the Diploma in Artificial Intelligence applied to Education",
       "url": "https://www.luz.edu.ve/",
       "startDate": "2024-10-19",
@@ -66,7 +66,7 @@
       "url": "https://abacom.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2024-12-31",
-      "summary": "Facilitator of Fullstack Web Development courses.",
+      "summary": "Facilitator of Full-stack Web Development courses.",
       "highlights": ["Trained professional developers"]
     },
     {
@@ -75,7 +75,7 @@
       "url": "https://www.uide.edu.ec/",
       "startDate": "2022-10-31",
       "endDate": "2022-12-31",
-      "summary": "Professor for the Information and Communication Technologies program.",
+      "summary": "Professor in the Information and Communication Technologies program.",
       "highlights": ["Contributed to curriculum development"]
     },
     {
@@ -84,7 +84,7 @@
       "url": "https://istjm.edu.ec/",
       "startDate": "2019-10-31",
       "endDate": "2022-10-31",
-      "summary": "Professor for the Computer Maintenance Technology program.",
+      "summary": "Professor in the Computer Maintenance Technology program.",
       "highlights": ["Mentored students in technical skills"]
     }
   ],
@@ -170,7 +170,7 @@
     {
       "name": "JavaScript",
       "level": "Master",
-      "keywords": ["Web Development", "Frontend", "Backend", "Fullstack"]
+      "keywords": ["Web Development", "Frontend", "Backend", "Full-stack"]
     },
     {
       "name": "Tailwind",
@@ -511,11 +511,11 @@
       "image": "/projects/saavedra-construction.webp"
     },
     {
-      "name": "FullStack Development Bootcamp Facilitator",
+      "name": "Full-stack Development Bootcamp Facilitator",
       "isActive": true,
-      "description": "Facilitator of FullStack Web Development bootcamp with Python, Django, FastAPI, and React",
+      "description": "Facilitator of Full-stack Web Development bootcamp with Python, Django, FastAPI, and React",
       "highlights": [
-        "Training of fullstack web developers over 3 months",
+        "Training full-stack web developers for 3 months",
         "Python, Django, HTML5, CSS3, JavaScript, Node.js, Express, React, TypeScript, Git, GitHub, Docker, Bootstrap, Tailwind"
       ],
       "url": "https://statick88.github.io/bootcamp_fullstack/",
@@ -525,9 +525,9 @@
     {
       "name": "Django and React 2024 Course Facilitator",
       "isActive": true,
-      "description": "Facilitator of FullStack Web Programming course with Django and React",
+      "description": "Facilitator of Full-stack Web Programming course with Django and React",
       "highlights": [
-        "Training of fullstack web developers",
+        "Training full-stack web developers",
         "Python, Django, HTML5, CSS3, JavaScript, Node.js, Express, React"
       ],
       "url": "https://statick88.github.io/course_of_django_and_react",
@@ -592,7 +592,7 @@
     {
       "name": "Web Development Bootcamp",
       "isActive": true,
-      "description": "Facilitator of Web Development Bootcamp with modern technologies",
+      "description": "Facilitator of a Web Development Bootcamp with modern technologies",
       "highlights": [
         "Intensive training of fullstack web developers over 3 months",
         "Python, Django, FastAPI, HTML5, CSS3, JavaScript, TypeScript, React, Node.js, Git, Docker"
