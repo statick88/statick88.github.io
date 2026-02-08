@@ -361,13 +361,42 @@ async function generateCvPdfBytes(cv, lang) {
       const avatar = await embedImage(pdfDoc, imgPath)
       if (avatar) {
         const avatarX = (sidebarWidth - avatarSize) / 2
+        const avatarY = y - avatarSize
         ensureSpace(avatarSize + 25, true)
+
+        // Create circular clipping path using PDF operators
+        const centerX = avatarX + avatarSize / 2
+        const centerY = avatarY + avatarSize / 2
+        const radius = avatarSize / 2
+
+        // Draw clipping circle
+        page.drawCircle({
+          x: centerX,
+          y: centerY,
+          size: radius,
+          borderColor: whiteColor,
+          borderWidth: 0,
+          color: whiteColor
+        })
+
+        // Draw image (will be clipped by the white circle background)
         page.drawImage(avatar, {
           x: avatarX,
-          y: y - avatarSize,
+          y: avatarY,
           width: avatarSize,
           height: avatarSize
         })
+
+        // Draw accent border circle
+        page.drawCircle({
+          x: centerX,
+          y: centerY,
+          size: radius,
+          borderColor: accentColor,
+          borderWidth: 2.5,
+          color: undefined
+        })
+
         y -= avatarSize + 18
       }
     }
