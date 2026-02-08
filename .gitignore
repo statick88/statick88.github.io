@@ -33,3 +33,4 @@ firebase*.config.js
 
 # local folders
 .history
+.unlighthouse/
