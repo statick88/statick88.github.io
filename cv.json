@@ -229,7 +229,7 @@
         "es": "Modelo para detectar la atención de los estudiantes en un salón de clases basado en redes neuronales convolucionales",
         "en": "Model to detect student attention in a classroom based on convolutional neural networks"
       },
-      "publisher": "Universidad Nacional de Loja",
+      "publisher": "Universidad Técnica Particular de Loja",
       "releaseDate": "2021-01-01",
       "url": "https://github.com/statick88/ml-attention-detection"
     }
