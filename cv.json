@@ -35,6 +35,11 @@
         "network": "GitHub",
         "username": "statick88",
         "url": "https://github.com/statick88"
+      },
+      {
+        "network": "Google Scholar",
+        "username": "getKs_4AAAAJ",
+        "url": "https://scholar.google.com/citations?user=getKs_4AAAAJ&hl=es"
       }
     ]
   },
@@ -52,8 +57,12 @@
         "en": "Facilitator of Full-stack Web Development courses."
       },
       "highlights": {
-        "es": ["Cursos de desarrollo web"],
-        "en": ["Web development courses"]
+        "es": [
+          "Cursos de desarrollo web"
+        ],
+        "en": [
+          "Web development courses"
+        ]
       }
     },
     {
@@ -70,8 +79,12 @@
         "en": "Facilitator of Full-stack Web Development, Data Science, and Mobile Bootcamps."
       },
       "highlights": {
-        "es": ["Formación de desarrolladores durante 3 meses"],
-        "en": ["Training developers for 3 months"]
+        "es": [
+          "Formación de desarrolladores durante 3 meses"
+        ],
+        "en": [
+          "Training developers for 3 months"
+        ]
       }
     },
     {
@@ -88,8 +101,12 @@
         "en": "Professor of the Diploma in Artificial Intelligence applied to Education."
       },
       "highlights": {
-        "es": ["Enseñanza de IA en educación"],
-        "en": ["Teaching AI in education"]
+        "es": [
+          "Enseñanza de IA en educación"
+        ],
+        "en": [
+          "Teaching AI in education"
+        ]
       }
     },
     {
@@ -106,8 +123,12 @@
         "en": "Professor in the Computer Science Department for Software Engineering and Computer Technology degrees."
       },
       "highlights": {
-        "es": ["Docencia en carreras de ingeniería"],
-        "en": ["Teaching in engineering degrees"]
+        "es": [
+          "Docencia en carreras de ingeniería"
+        ],
+        "en": [
+          "Teaching in engineering degrees"
+        ]
       }
     },
     {
@@ -124,8 +145,12 @@
         "en": "Professor of the Information and Communication Technology career."
       },
       "highlights": {
-        "es": ["Docencia en TIC"],
-        "en": ["Teaching in ICT"]
+        "es": [
+          "Docencia en TIC"
+        ],
+        "en": [
+          "Teaching in ICT"
+        ]
       }
     },
     {
@@ -142,8 +167,12 @@
         "en": "Professor of the Computer Maintenance Technology career."
       },
       "highlights": {
-        "es": ["Docencia en mantenimiento de computadoras"],
-        "en": ["Teaching computer maintenance"]
+        "es": [
+          "Docencia en mantenimiento de computadoras"
+        ],
+        "en": [
+          "Teaching computer maintenance"
+        ]
       }
     }
   ],
@@ -194,6 +223,15 @@
       "publisher": "REMI - Revista de Investigación Multidisciplinaria Iberoamericana",
       "releaseDate": "2024-10-01",
       "url": "https://revistarimi.net/index.php/home/article/view/89"
+    },
+    {
+      "name": {
+        "es": "Modelo para detectar la atención de los estudiantes en un salón de clases basado en redes neuronales convolucionales",
+        "en": "Model to detect student attention in a classroom based on convolutional neural networks"
+      },
+      "publisher": "Universidad Nacional de Loja",
+      "releaseDate": "2021-01-01",
+      "url": "https://github.com/statick88/ml-attention-detection"
     }
   ],
   "trainings": [
@@ -232,75 +270,195 @@
         "es": "Curso de Docker y Containerización",
         "en": "Docker and Containerization Course"
       },
-        "institution": "Abacom",
-        "url": "https://statick88.github.io/docker-course/",
-        "github": "https://github.com/statick88/docker-course",
-        "startDate": "2025-02-01",
-        "isActive": true,
-        "verified": true,
-        "description": {
-          "es": "Curso práctico de Docker para despliegue de aplicaciones con contenedores. Aprende a crear, gestionar y escalar aplicaciones modernas usando Docker. Incluye instalación, despliegue de Nginx, gestión del ciclo de vida de contenedores y troubleshooting.",
-          "en": "Hands-on Docker course for application deployment with containers. Learn to create, manage and scale modern applications using Docker. Includes installation, Nginx deployment, container lifecycle management and troubleshooting."
-        },
-        "highlights": {
-          "es": [
-            "Instalación y configuración de Docker",
-            "Despliegue de Nginx con contenedores",
-            "Gestión del ciclo de vida de contenedores",
-            "Operaciones de archivos y troubleshooting",
-            "Buenas prácticas de containerización"
-          ],
-          "en": [
-            "Docker installation and configuration",
-            "Nginx deployment with containers",
-            "Container lifecycle management",
-            "File operations and troubleshooting",
-            "Containerization best practices"
-          ]
-        }
+      "institution": "Abacom",
+      "url": "https://statick88.github.io/docker-course/",
+      "github": "https://github.com/statick88/docker-course",
+      "startDate": "2025-02-01",
+      "isActive": true,
+      "verified": true,
+      "description": {
+        "es": "Curso práctico de Docker para despliegue de aplicaciones con contenedores. Aprende a crear, gestionar y escalar aplicaciones modernas usando Docker. Incluye instalación, despliegue de Nginx, gestión del ciclo de vida de contenedores y troubleshooting.",
+        "en": "Hands-on Docker course for application deployment with containers. Learn to create, manage and scale modern applications using Docker. Includes installation, Nginx deployment, container lifecycle management and troubleshooting."
+      },
+      "highlights": {
+        "es": [
+          "Instalación y configuración de Docker",
+          "Despliegue de Nginx con contenedores",
+          "Gestión del ciclo de vida de contenedores",
+          "Operaciones de archivos y troubleshooting",
+          "Buenas prácticas de containerización"
+        ],
+        "en": [
+          "Docker installation and configuration",
+          "Nginx deployment with containers",
+          "Container lifecycle management",
+          "File operations and troubleshooting",
+          "Containerization best practices"
+        ]
       }
-    ],
+    }
+  ],
   "skills": [
-    { "name": "HTML", "level": "Master" },
-    { "name": "CSS", "level": "Master" },
-    { "name": "JavaScript", "level": "Master" },
-    { "name": "Tailwind", "level": "Avanzado" },
-    { "name": "TypeScript", "level": "Avanzado" },
-    { "name": "Node", "level": "Avanzado" },
-    { "name": "React", "level": "Avanzado" },
-    { "name": "Next.js", "level": "Avanzado" },
-    { "name": "MySQL", "level": "Avanzado" },
-    { "name": "MongoDB", "level": "Avanzado" },
-    { "name": "Python", "level": "Avanzado" },
-    { "name": "Django", "level": "Avanzado" },
-    { "name": "FastAPI", "level": "Avanzado" },
-    { "name": "Ruby", "level": "Avanzado" },
-    { "name": "Docker", "level": "Avanzado" },
-    { "name": "Kubernetes", "level": "Avanzado" },
-    { "name": "Git", "level": "Avanzado" },
-    { "name": "GitHub", "level": "Avanzado" },
-    { "name": "Flutter", "level": "Avanzado" },
-    { "name": "Angular", "level": "Avanzado" },
-    { "name": "Vue", "level": "Intermedio" },
-    { "name": "Svelte", "level": "Intermedio" },
-    { "name": "NestJS", "level": "Avanzado" },
-    { "name": "Java", "level": "Intermedio" },
-    { "name": "Spring Boot", "level": "Intermedio" },
-    { "name": "C#", "level": "Intermedio" },
-    { "name": ".NET", "level": "Intermedio" },
-    { "name": "AWS", "level": "Intermedio" },
-    { "name": "Azure", "level": "Intermedio" },
-    { "name": "Vercel", "level": "Avanzado" },
-    { "name": "Railway", "level": "Intermedio" },
-    { "name": "Flask", "level": "Intermedio" },
-    { "name": "Kotlin", "level": "Intermedio" },
-    { "name": "Dart", "level": "Intermedio" },
-    { "name": "Firebase", "level": "Intermedio" },
-    { "name": "Pandas", "level": "Intermedio" },
-    { "name": "NumPy", "level": "Intermedio" },
-    { "name": "Hugo", "level": "Intermedio" },
-    { "name": "Bootstrap", "level": "Intermedio" },
-    { "name": "Babel", "level": "Intermedio" }
+    {
+      "name": "HTML",
+      "level": "Master"
+    },
+    {
+      "name": "CSS",
+      "level": "Master"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Master"
+    },
+    {
+      "name": "Tailwind",
+      "level": "Avanzado"
+    },
+    {
+      "name": "TypeScript",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Node",
+      "level": "Avanzado"
+    },
+    {
+      "name": "React",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Next.js",
+      "level": "Avanzado"
+    },
+    {
+      "name": "MySQL",
+      "level": "Avanzado"
+    },
+    {
+      "name": "MongoDB",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Python",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Django",
+      "level": "Avanzado"
+    },
+    {
+      "name": "FastAPI",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Ruby",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Docker",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Kubernetes",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Git",
+      "level": "Avanzado"
+    },
+    {
+      "name": "GitHub",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Flutter",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Angular",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Vue",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Svelte",
+      "level": "Intermedio"
+    },
+    {
+      "name": "NestJS",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Java",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Spring Boot",
+      "level": "Intermedio"
+    },
+    {
+      "name": "C#",
+      "level": "Intermedio"
+    },
+    {
+      "name": ".NET",
+      "level": "Intermedio"
+    },
+    {
+      "name": "AWS",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Azure",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Vercel",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Railway",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Flask",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Kotlin",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Dart",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Firebase",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Pandas",
+      "level": "Intermedio"
+    },
+    {
+      "name": "NumPy",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Hugo",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Bootstrap",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Babel",
+      "level": "Intermedio"
+    }
   ],
   "softSkills": [
     "Resolución de Problemas",
@@ -443,7 +601,10 @@
           "Uso de herramienta de Quarto para escritura científica",
           "Docker"
         ],
-        "en": ["Use of Quarto tool for scientific writing", "Docker"]
+        "en": [
+          "Use of Quarto tool for scientific writing",
+          "Docker"
+        ]
       },
       "url": "https://statick88.github.io/course_docker/",
       "image": "/projects/docker-ebook.webp"
