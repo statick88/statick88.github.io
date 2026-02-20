@@ -515,22 +515,33 @@
   ],
   "htbAchievements": [
     {
-      "module": "Network Enumeration with Nmap",
+      "module": "Introduction to Academy",
+      "badge": "Academician",
       "difficulty": "Easy",
-      "exercisesCompleted": "9/9",
       "completedAt": "2026-02-20",
-      "url": "https://academy.hackthebox.com/achievement/2300153/19",
-      "skills": ["Nmap", "Network Scanning", "Port Scanning", "Service Enumeration"],
-      "description": "Self-taught training in network analysis and service enumeration."
+      "url": "https://academy.hackthebox.com/achievement/2300153",
+      "skills": ["HTB Academy", "Platform Basics"],
+      "description": "Introduction to Hack The Box Academy platform."
     },
     {
       "module": "Linux Fundamentals",
+      "badge": "Our favorite seabird",
       "difficulty": "Easy",
       "exercisesCompleted": "12/12",
       "completedAt": "2026-02-20",
       "url": "https://academy.hackthebox.com/achievement/2300153/18",
       "skills": ["Linux", "Command Line", "System Administration", "Shell Scripting"],
       "description": "Linux fundamentals: essential commands, file management, permissions and system administration."
+    },
+    {
+      "module": "Network Enumeration with Nmap",
+      "badge": "The eye that sees all",
+      "difficulty": "Easy",
+      "exercisesCompleted": "9/9",
+      "completedAt": "2026-02-20",
+      "url": "https://academy.hackthebox.com/achievement/2300153/19",
+      "skills": ["Nmap", "Network Scanning", "Port Scanning", "Service Enumeration"],
+      "description": "Self-taught training in network analysis and service enumeration."
     }
   ],
   "technicalChallenges": {
@@ -544,15 +555,11 @@
         "profileUrl": "https://app.hackthebox.com/users/2300153",
         "academyUrl": "https://academy.hackthebox.com/achievement/2300153/19",
         "completed": 3,
-        "total": 6,
+        "total": 156,
         "modules": [
-          { "name": "Linux Fundamentals", "status": "completed", "difficulty": "Easy" },
-          { "name": "Network Enumeration with Nmap", "status": "completed", "difficulty": "Easy" },
-          { "name": "Caesar Cipher Cryptanalysis", "status": "completed", "difficulty": "Easy" },
-          { "name": "LDAP Enumeration", "status": "pending", "difficulty": "Easy" },
-          { "name": "Memory Forensics Basics", "status": "pending", "difficulty": "Medium" },
-          { "name": "Linux Privilege Escalation", "status": "pending", "difficulty": "Medium" },
-          { "name": "SQL Injection Fundamentals", "status": "pending", "difficulty": "Medium" }
+          { "name": "Introduction to Academy", "status": "completed", "difficulty": "Easy", "badge": "Academician" },
+          { "name": "Linux Fundamentals", "status": "completed", "difficulty": "Easy", "badge": "Our favorite seabird" },
+          { "name": "Network Enumeration with Nmap", "status": "completed", "difficulty": "Easy", "badge": "The eye that sees all" }
         ]
       },
       "tryhackme": {
