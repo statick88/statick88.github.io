@@ -1,0 +1,101 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className = "" } = Astro.props
+
+const EBOOK_ICON = `
+  <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+    <path d="M8 7h6"></path>
+    <path d="M8 11h8"></path>
+  </svg>
+`;
+---
+
+<a 
+  href="https://statick88.github.io/ebooks/" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  aria-label="Visitar Statick Ebooks"
+  data-i18n-key="ebook.text"
+  class={className}
+  role="button"
+  tabindex="0"
+>
+  <span>{EBOOK_ICON}</span>
+  <span data-i18n="ebook.text">Ebook</span>
+</a>
+
+<style>
+  a {
+    position: fixed;
+    top: 1rem;
+    left: 15rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  a:focus {
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+  }
+
+  a:hover {
+    transform: scale(1.05);
+    background: var(--color-bg-hover);
+    border-color: var(--color-text-secondary);
+  }
+
+  a svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media print {
+    a { 
+      display: none; 
+    }
+  }
+
+  @media (max-width: 500px) {
+    a {
+      left: 13rem;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    a span:first-child {
+      margin-right: 6px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    a {
+      left: 1.5rem;
+      top: 6.5rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    a {
+      left: 1rem;
+      right: 1rem;
+      top: 7rem;
+      width: auto;
+    }
+  }
+</style>

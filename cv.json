@@ -758,6 +758,78 @@
       "url": "https://statick88.github.io/blog",
       "github": "https://github.com/statick88/blog",
       "image": "/projects/blog-tecnico.webp"
+    },
+    {
+      "name": "Statick Academy",
+      "isActive": true,
+      "description": {
+        "es": "Plataforma de educación tecnológica premium para bootcamps y cursos online.",
+        "en": "Premium technology education platform for online bootcamps and courses."
+      },
+      "highlights": {
+        "es": [
+          "Plataforma de e-learning moderna",
+          "Gestión de cursos y estudiantes",
+          "Contenido interactivo",
+          "Soporte para múltiples idiomas"
+        ],
+        "en": [
+          "Modern e-learning platform",
+          "Course and student management",
+          "Interactive content",
+          "Multi-language support"
+        ]
+      },
+      "url": "https://statick88.github.io/academy/",
+      "github": "https://github.com/statick88/academy"
+    },
+    {
+      "name": "Statick Challenges",
+      "isActive": true,
+      "description": {
+        "es": "Repositorio unificado de desafíos técnicos para el aprendizaje de Linux, Docker y DevOps.",
+        "en": "Unified technical challenges repository for Linux, Docker, and DevOps learning journey."
+      },
+      "highlights": {
+        "es": [
+          "Desafíos de Linux y administración de sistemas",
+          "Ejercicios de Docker y contenedores",
+          "Prácticas DevOps",
+          "Progresión de dificultad"
+        ],
+        "en": [
+          "Linux and system administration challenges",
+          "Docker and container exercises",
+          "DevOps practices",
+          "Difficulty progression"
+        ]
+      },
+      "url": "https://statick88.github.io/challenges/",
+      "github": "https://github.com/statick88/challenges"
+    },
+    {
+      "name": "DevStack Tasks - Flutter & Firebase",
+      "isActive": true,
+      "description": {
+        "es": "Sistema de gestión de tareas de alto rendimiento con Flutter y Firebase. Base de datos Local-First.",
+        "en": "High-performance task management system with Flutter and Firebase. Local-First Database."
+      },
+      "highlights": {
+        "es": [
+          "Flutter para desarrollo móvil multiplataforma",
+          "Firebase para backend y autenticación",
+          "Arquitectura Local-First",
+          "Sincronización offline"
+        ],
+        "en": [
+          "Flutter for cross-platform mobile development",
+          "Firebase for backend and authentication",
+          "Local-First Architecture",
+          "Offline synchronization"
+        ]
+      },
+      "url": "https://github.com/statick88/devstack_tasks",
+      "github": "https://github.com/statick88/devstack_tasks"
     }
   ]
 }

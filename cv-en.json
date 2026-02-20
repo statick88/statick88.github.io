@@ -736,6 +736,45 @@
       ],
       "url": "https://statick88.github.io/blog",
       "github": "https://github.com/statick88/blog"
+    },
+    {
+      "name": "Statick Academy",
+      "isActive": true,
+      "description": "Premium technology education platform for online bootcamps and courses.",
+      "highlights": [
+        "Modern e-learning platform",
+        "Course and student management",
+        "Interactive content",
+        "Multi-language support"
+      ],
+      "url": "https://statick88.github.io/academy/",
+      "github": "https://github.com/statick88/academy"
+    },
+    {
+      "name": "Statick Challenges",
+      "isActive": true,
+      "description": "Unified technical challenges repository for Linux, Docker, and DevOps learning journey.",
+      "highlights": [
+        "Linux and system administration challenges",
+        "Docker and container exercises",
+        "DevOps practices",
+        "Difficulty progression"
+      ],
+      "url": "https://statick88.github.io/challenges/",
+      "github": "https://github.com/statick88/challenges"
+    },
+    {
+      "name": "DevStack Tasks - Flutter & Firebase",
+      "isActive": true,
+      "description": "High-performance task management system with Flutter and Firebase. Local-First Database.",
+      "highlights": [
+        "Flutter for cross-platform mobile development",
+        "Firebase for backend and authentication",
+        "Local-First Architecture",
+        "Offline synchronization"
+      ],
+      "url": "https://github.com/statick88/devstack_tasks",
+      "github": "https://github.com/statick88/devstack_tasks"
     }
   ]
 }
