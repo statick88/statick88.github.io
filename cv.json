@@ -522,6 +522,24 @@
         "es": "Formación autodidacta en análisis de redes y enumeración de servicios.",
         "en": "Self-taught training in network analysis and service enumeration."
       }
+    },
+    {
+      "module": {
+        "es": "Linux Fundamentals",
+        "en": "Linux Fundamentals"
+      },
+      "difficulty": "Easy",
+      "exercisesCompleted": "12/12",
+      "completedAt": "2026-02-20",
+      "url": "https://academy.hackthebox.com/achievement/2300153/18",
+      "skills": {
+        "es": ["Linux", "Command Line", "System Administration", "Shell Scripting"],
+        "en": ["Linux", "Command Line", "System Administration", "Shell Scripting"]
+      },
+      "description": {
+        "es": "Fundamentos de Linux: comandos esenciales, gestión de archivos, permisos y administración del sistema.",
+        "en": "Linux fundamentals: essential commands, file management, permissions and system administration."
+      }
     }
   ],
   "technicalChallenges": {
@@ -534,9 +552,10 @@
         "name": "Hack The Box",
         "profileUrl": "https://app.hackthebox.com/users/2300153",
         "academyUrl": "https://academy.hackthebox.com/achievement/2300153/19",
-        "completed": 2,
+        "completed": 3,
         "total": 6,
         "modules": [
+          { "name": "Linux Fundamentals", "status": "completed", "difficulty": "Easy" },
           { "name": "Network Enumeration with Nmap", "status": "completed", "difficulty": "Easy" },
           { "name": "Caesar Cipher Cryptanalysis", "status": "completed", "difficulty": "Easy" },
           { "name": "LDAP Enumeration", "status": "pending", "difficulty": "Easy" },
