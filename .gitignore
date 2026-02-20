@@ -1,10 +1,6 @@
 # build output
 dist/
 
-# generated CV PDFs (built in CI)
-public/cv-es.pdf
-public/cv-en.pdf
-
 # generated types
 .astro/
 
