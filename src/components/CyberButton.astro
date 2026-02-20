@@ -5,34 +5,34 @@ interface Props {
 
 const { class: className = "" } = Astro.props
 
-const EBOOK_ICON = `
+const CYBER_ICON = `
   <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-    <path d="M8 7h6"></path>
-    <path d="M8 11h8"></path>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    <path d="M9 12l2 2 4-4"></path>
   </svg>
 `;
 ---
 
 <a 
-  href="https://statick88.github.io/ebooks/" 
+  href="https://statick88.github.io/challenges/" 
   target="_blank" 
   rel="noopener noreferrer"
-  aria-label="Visitar Statick Ebooks"
-  data-i18n-key="ebook.text"
+  aria-label="Ver progreso en plataformas de ciberseguridad: HTB, TryHackMe, CTF"
+  data-i18n-key="cyber.text"
   class={className}
   role="button"
   tabindex="0"
+  title="Hack The Box • TryHackMe • CTF Challenges"
 >
-  <span>{EBOOK_ICON}</span>
-  <span data-i18n="ebook.text">Ebook</span>
+  <span>{CYBER_ICON}</span>
+  <span data-i18n="cyber.text">Cyber</span>
 </a>
 
 <style>
   a {
     position: fixed;
     top: 1rem;
-    left: 9.5rem;
+    left: 2rem;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     color: var(--color-text);
@@ -73,7 +73,7 @@ const EBOOK_ICON = `
 
   @media (max-width: 500px) {
     a {
-      left: 7rem;
+      left: 1.5rem;
       padding: 0.4rem 0.6rem;
       font-size: 0.8rem;
     }
@@ -86,7 +86,7 @@ const EBOOK_ICON = `
   @media (max-width: 400px) {
     a {
       left: 1.5rem;
-      top: 3.5rem;
+      top: 1rem;
     }
   }
 
@@ -94,7 +94,7 @@ const EBOOK_ICON = `
     a {
       left: 1rem;
       right: 1rem;
-      top: 4rem;
+      top: 1rem;
       width: auto;
     }
   }

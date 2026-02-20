@@ -2,8 +2,7 @@
 import cvData from "../../cv.json"
 import ThemeToggle from "@/components/ThemeToggle.astro"
 import LanguageToggle from "@/components/LanguageToggle.astro"
-import AcademyButton from "@/components/AcademyButton.astro"
-import ChallengeButton from "@/components/ChallengeButton.astro"
+import CyberButton from "@/components/CyberButton.astro"
 import EbookButton from "@/components/EbookButton.astro"
 import CvDownloadButton from "@/components/CvDownloadButton.astro"
 
@@ -141,7 +140,7 @@ const { basics, work, education, publications, projects } = cvData
     <LanguageToggle />
     <ThemeToggle />
     <CvDownloadButton />
-    <ChallengeButton />
+    <CyberButton />
     <EbookButton />
 
     <script is:inline define:vars={{ basics, work, education, publications, projects }}>
@@ -191,8 +190,8 @@ const { basics, work, education, publications, projects } = cvData
           academy: {
             text: "Academia"
           },
-          challenge: {
-            text: "Desafío"
+          cyber: {
+            text: "Cyber"
           },
           ebook: {
             text: "Ebooks"
@@ -233,8 +232,8 @@ const { basics, work, education, publications, projects } = cvData
           academy: {
             text: "Academy"
           },
-          challenge: {
-            text: "Challenge"
+          cyber: {
+            text: "Cyber"
           },
           ebook: {
             text: "Ebooks"

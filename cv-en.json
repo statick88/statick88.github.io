@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Diego Medardo Saavedra García",
-    "label": "Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.",
+    "label": "FullStack, Mobile and AI Software Developer with 10+ years of experience. University Educator. Exploring the information security ecosystem from a secure development perspective.",
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
-    "summary": "IT professional and Full Stack Developer with 10+ years of experience building web applications and APIs. I combine engineering and teaching: I design and deliver bootcamps in Web Development, Data Science, and Mobile Development. My teaching background includes collaborations with ESPE, UIDE, IST Juan Montalvo, Abacom, and Codings Academy.",
+    "summary": "Software Developer with 10+ years of experience building FullStack, Mobile, and AI applications. I have trained hundreds of students as a university educator at ESPE, UIDE, IST Juan Montalvo, Abacom, and Codings Academy. My career combines software development with technical education, creating courses, eBooks, and hands-on content for the community. Currently expanding my competencies into system analysis, testing methodologies, and secure development principles, applying a continuous learning mindset through practical challenges.",
     "location": {
       "address": "",
       "postalCode": "171102",
@@ -29,6 +29,16 @@
         "network": "GitHub",
         "username": "statick88",
         "url": "https://github.com/statick88"
+      },
+      {
+        "network": "Hack The Box",
+        "username": "statick",
+        "url": "https://app.hackthebox.com/users/2300153"
+      },
+      {
+        "network": "TryHackMe",
+        "username": "statick",
+        "url": "https://tryhackme.com/p/statick"
       }
     ]
   },
@@ -463,6 +473,26 @@
         "name": "Babel",
         "level": "Intermediate",
         "keywords": ["JavaScript", "Transpiler", "Frontend", "Build Tools"]
+      },
+      {
+        "name": "Nmap",
+        "level": "Intermediate",
+        "keywords": ["Network Scanning", "Reconnaissance", "Enumeration"]
+      },
+      {
+        "name": "Network Enumeration",
+        "level": "Intermediate",
+        "keywords": ["Security", "Networking", "Analysis"]
+      },
+      {
+        "name": "Linux Administration",
+        "level": "Advanced",
+        "keywords": ["Linux", "System Administration", "DevOps"]
+      },
+      {
+        "name": "CTF",
+        "level": "Intermediate",
+        "keywords": ["Capture The Flag", "Problem Solving", "Security"]
       }
     ],
     "softSkills": [
@@ -483,18 +513,52 @@
       "fluency": "Advanced"
     }
   ],
-  "interests": [
+  "htbAchievements": [
     {
-      "name": "Wildlife",
-      "keywords": ["Ferrets", "Unicorns"]
+      "module": "Network Enumeration with Nmap",
+      "difficulty": "Easy",
+      "exercisesCompleted": "9/9",
+      "completedAt": "2026-02-20",
+      "url": "https://academy.hackthebox.com/achievement/2300153/19",
+      "skills": ["Nmap", "Network Scanning", "Port Scanning", "Service Enumeration"],
+      "description": "Self-taught training in network analysis and service enumeration."
     }
   ],
-  "references": [
-    {
-      "name": "Jane Doe",
-      "reference": "Reference..."
-    }
-  ],
+  "technicalChallenges": {
+    "url": "https://statick88.github.io/challenges/",
+    "totalChallenges": 56,
+    "completed": 22,
+    "inProgress": 23,
+    "platforms": {
+      "htb": {
+        "name": "Hack The Box",
+        "profileUrl": "https://app.hackthebox.com/users/2300153",
+        "academyUrl": "https://academy.hackthebox.com/achievement/2300153/19",
+        "completed": 2,
+        "total": 6,
+        "modules": [
+          { "name": "Network Enumeration with Nmap", "status": "completed", "difficulty": "Easy" },
+          { "name": "Caesar Cipher Cryptanalysis", "status": "completed", "difficulty": "Easy" },
+          { "name": "LDAP Enumeration", "status": "pending", "difficulty": "Easy" },
+          { "name": "Memory Forensics Basics", "status": "pending", "difficulty": "Medium" },
+          { "name": "Linux Privilege Escalation", "status": "pending", "difficulty": "Medium" },
+          { "name": "SQL Injection Fundamentals", "status": "pending", "difficulty": "Medium" }
+        ]
+      },
+      "tryhackme": {
+        "name": "TryHackMe",
+        "profileUrl": "https://tryhackme.com/p/statick",
+        "description": "Pentesting and offensive security practice"
+      }
+    },
+    "categories": {
+      "linux": { "completed": 6, "total": 19, "description": "Linux system administration" },
+      "docker": { "completed": 5, "total": 5, "description": "Containers and Docker" },
+      "devops": { "completed": 7, "total": 15, "description": "DevOps practices" },
+      "ctf": { "completed": 2, "total": 11, "description": "Capture The Flag - Forensics, Crypto" }
+    },
+    "description": "Interactive learning platform with hands-on challenges in Linux, Docker, DevOps, CTF, Hack The Box, and TryHackMe."
+  },
   "projects": [
     {
       "name": "Saavedra Construction",
@@ -740,28 +804,15 @@
     {
       "name": "Statick Academy",
       "isActive": true,
-      "description": "Premium technology education platform for online bootcamps and courses.",
+      "description": "Training center specialized in full stack web development, Data Science, and mobile development. Includes technical eBooks on FastAPI, Docker, TypeScript, Next.js, and React.",
       "highlights": [
-        "Modern e-learning platform",
-        "Course and student management",
-        "Interactive content",
-        "Multi-language support"
+        "Technical eBooks: FastAPI, Docker, TypeScript, Next.js, React",
+        "Web and mobile development bootcamps",
+        "Data Science and Machine Learning courses",
+        "Spanish content with hands-on exercises"
       ],
       "url": "https://statick88.github.io/academy/",
       "github": "https://github.com/statick88/academy"
-    },
-    {
-      "name": "Statick Challenges",
-      "isActive": true,
-      "description": "Unified technical challenges repository for Linux, Docker, and DevOps learning journey.",
-      "highlights": [
-        "Linux and system administration challenges",
-        "Docker and container exercises",
-        "DevOps practices",
-        "Difficulty progression"
-      ],
-      "url": "https://statick88.github.io/challenges/",
-      "github": "https://github.com/statick88/challenges"
     },
     {
       "name": "DevStack Tasks - Flutter & Firebase",

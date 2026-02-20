@@ -2,16 +2,16 @@
   "basics": {
     "name": "Diego Medardo Saavedra García",
     "label": {
-      "es": "Desarrollador Full Stack con más de 10 años de experiencia. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
-      "en": "Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
+      "es": "Software Developer FullStack, Móvil e IA con más de 10 años de experiencia. Docente universitario. Explorando el ecosistema de seguridad informática desde una perspectiva de desarrollo seguro.",
+      "en": "FullStack, Mobile and AI Software Developer with 10+ years of experience. University Educator. Exploring the information security ecosystem from a secure development perspective."
     },
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
     "url": "https://statick88.github.io",
     "summary": {
-      "es": "Profesional de TI y Desarrollador Full Stack con más de 10 años de experiencia construyendo aplicaciones web y APIs. Combino ingeniería y docencia: diseño e imparto bootcamps de Desarrollo Web, Data Science y Desarrollo Móvil. He colaborado con ESPE, UIDE, IST Juan Montalvo, Abacom y Codings Academy.",
-      "en": "IT professional and Full Stack Developer with 10+ years of experience building web applications and APIs. I combine engineering and teaching: I design and deliver bootcamps in Web Development, Data Science, and Mobile Development. I have collaborated with ESPE, UIDE, IST Juan Montalvo, Abacom, and Codings Academy."
+      "es": "Software Developer con más de 10 años de experiencia construyendo aplicaciones FullStack, Móvil e IA. He formado a cientos de estudiantes como docente universitario en ESPE, UIDE, IST Juan Montalvo, Abacom y Codings Academy. Mi trayectoria combina el desarrollo de software con la educación técnica, creando cursos, eBooks y contenido práctico para la comunidad. Actualmente amplío mis competencias hacia el análisis de sistemas, metodologías de testing y principios de desarrollo seguro, aplicando una mentalidad de aprendizaje continuo a través de desafíos prácticos.",
+      "en": "Software Developer with 10+ years of experience building FullStack, Mobile, and AI applications. I have trained hundreds of students as a university educator at ESPE, UIDE, IST Juan Montalvo, Abacom, and Codings Academy. My career combines software development with technical education, creating courses, eBooks, and hands-on content for the community. Currently expanding my competencies into system analysis, testing methodologies, and secure development principles, applying a continuous learning mindset through practical challenges."
     },
     "location": {
       "address": "",
@@ -35,6 +35,16 @@
         "network": "GitHub",
         "username": "statick88",
         "url": "https://github.com/statick88"
+      },
+      {
+        "network": "Hack The Box",
+        "username": "statick",
+        "url": "https://app.hackthebox.com/users/2300153"
+      },
+      {
+        "network": "TryHackMe",
+        "username": "statick",
+        "url": "https://tryhackme.com/p/statick"
       },
       {
         "network": "Google Scholar",
@@ -458,6 +468,22 @@
     {
       "name": "Babel",
       "level": "Intermedio"
+    },
+    {
+      "name": "Nmap",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Network Enumeration",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Linux Administration",
+      "level": "Avanzado"
+    },
+    {
+      "name": "CTF",
+      "level": "Intermedio"
     }
   ],
   "softSkills": [
@@ -478,6 +504,64 @@
       "fluency": "Avanzado"
     }
   ],
+  "htbAchievements": [
+    {
+      "module": {
+        "es": "Network Enumeration with Nmap",
+        "en": "Network Enumeration with Nmap"
+      },
+      "difficulty": "Easy",
+      "exercisesCompleted": "9/9",
+      "completedAt": "2026-02-20",
+      "url": "https://academy.hackthebox.com/achievement/2300153/19",
+      "skills": {
+        "es": ["Nmap", "Network Scanning", "Port Scanning", "Service Enumeration"],
+        "en": ["Nmap", "Network Scanning", "Port Scanning", "Service Enumeration"]
+      },
+      "description": {
+        "es": "Formación autodidacta en análisis de redes y enumeración de servicios.",
+        "en": "Self-taught training in network analysis and service enumeration."
+      }
+    }
+  ],
+  "technicalChallenges": {
+    "url": "https://statick88.github.io/challenges/",
+    "totalChallenges": 56,
+    "completed": 22,
+    "inProgress": 23,
+    "platforms": {
+      "htb": {
+        "name": "Hack The Box",
+        "profileUrl": "https://app.hackthebox.com/users/2300153",
+        "academyUrl": "https://academy.hackthebox.com/achievement/2300153/19",
+        "completed": 2,
+        "total": 6,
+        "modules": [
+          { "name": "Network Enumeration with Nmap", "status": "completed", "difficulty": "Easy" },
+          { "name": "Caesar Cipher Cryptanalysis", "status": "completed", "difficulty": "Easy" },
+          { "name": "LDAP Enumeration", "status": "pending", "difficulty": "Easy" },
+          { "name": "Memory Forensics Basics", "status": "pending", "difficulty": "Medium" },
+          { "name": "Linux Privilege Escalation", "status": "pending", "difficulty": "Medium" },
+          { "name": "SQL Injection Fundamentals", "status": "pending", "difficulty": "Medium" }
+        ]
+      },
+      "tryhackme": {
+        "name": "TryHackMe",
+        "profileUrl": "https://tryhackme.com/p/statick",
+        "description": { "es": "Práctica de pentesting y seguridad ofensiva", "en": "Pentesting and offensive security practice" }
+      }
+    },
+    "categories": {
+      "linux": { "completed": 6, "total": 19, "description": { "es": "Administración de sistemas Linux", "en": "Linux system administration" } },
+      "docker": { "completed": 5, "total": 5, "description": { "es": "Contenedores y Docker", "en": "Containers and Docker" } },
+      "devops": { "completed": 7, "total": 15, "description": { "es": "Prácticas DevOps", "en": "DevOps practices" } },
+      "ctf": { "completed": 2, "total": 11, "description": { "es": "Capture The Flag - Forensics, Crypto", "en": "Capture The Flag - Forensics, Crypto" } }
+    },
+    "description": {
+      "es": "Plataforma interactiva de aprendizaje con desafíos prácticos en Linux, Docker, DevOps, CTF, Hack The Box y TryHackMe.",
+      "en": "Interactive learning platform with hands-on challenges in Linux, Docker, DevOps, CTF, Hack The Box, and TryHackMe."
+    }
+  },
   "projects": [
     {
       "name": "Saavedra Construction",
@@ -763,49 +847,25 @@
       "name": "Statick Academy",
       "isActive": true,
       "description": {
-        "es": "Plataforma de educación tecnológica premium para bootcamps y cursos online.",
-        "en": "Premium technology education platform for online bootcamps and courses."
+        "es": "Centro de formación especializado en desarrollo web full stack, Data Science y desarrollo móvil. Incluye eBooks técnicos de FastAPI, Docker, TypeScript, Next.js y React.",
+        "en": "Training center specialized in full stack web development, Data Science, and mobile development. Includes technical eBooks on FastAPI, Docker, TypeScript, Next.js, and React."
       },
       "highlights": {
         "es": [
-          "Plataforma de e-learning moderna",
-          "Gestión de cursos y estudiantes",
-          "Contenido interactivo",
-          "Soporte para múltiples idiomas"
+          "eBooks técnicos: FastAPI, Docker, TypeScript, Next.js, React",
+          "Bootcamps de desarrollo web y móvil",
+          "Cursos de Data Science y Machine Learning",
+          "Contenido en español con ejercicios prácticos"
         ],
         "en": [
-          "Modern e-learning platform",
-          "Course and student management",
-          "Interactive content",
-          "Multi-language support"
+          "Technical eBooks: FastAPI, Docker, TypeScript, Next.js, React",
+          "Web and mobile development bootcamps",
+          "Data Science and Machine Learning courses",
+          "Spanish content with hands-on exercises"
         ]
       },
       "url": "https://statick88.github.io/academy/",
       "github": "https://github.com/statick88/academy"
-    },
-    {
-      "name": "Statick Challenges",
-      "isActive": true,
-      "description": {
-        "es": "Repositorio unificado de desafíos técnicos para el aprendizaje de Linux, Docker y DevOps.",
-        "en": "Unified technical challenges repository for Linux, Docker, and DevOps learning journey."
-      },
-      "highlights": {
-        "es": [
-          "Desafíos de Linux y administración de sistemas",
-          "Ejercicios de Docker y contenedores",
-          "Prácticas DevOps",
-          "Progresión de dificultad"
-        ],
-        "en": [
-          "Linux and system administration challenges",
-          "Docker and container exercises",
-          "DevOps practices",
-          "Difficulty progression"
-        ]
-      },
-      "url": "https://statick88.github.io/challenges/",
-      "github": "https://github.com/statick88/challenges"
     },
     {
       "name": "DevStack Tasks - Flutter & Firebase",
