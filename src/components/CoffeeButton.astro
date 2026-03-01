@@ -5,30 +5,28 @@ interface Props {
 
 const { class: className = "" } = Astro.props
 
-const ACADEMY_ICON = `
+const COFFEE_ICON = `
   <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M22 10v6M2 10l6.5 6.5L22 10"></path>
-    <path d="M14 2v6m0 0v6m0-6h6m-6 0h-6"></path>
-    <path d="M2 16l6.5-6.5M22 16l-6.5 6.5"></path>
-    <path d="M2 8l6.5-6.5M22 8l-6.5 6.5"></path>
-    <path d="M12 14l-4 4m0 0l4-4m0 0l4 4"></path>
-    <circle cx="12" cy="8" r="2"></circle>
+    <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+    <line x1="6" y1="2" x2="6" y2="4"></line>
+    <line x1="10" y1="2" x2="10" y2="4"></line>
+    <line x1="14" y1="2" x2="14" y2="4"></line>
   </svg>
 `;
 ---
 
 <a 
-  href="https://statick88.github.io/academy" 
+  href="https://paypal.me/dsaavedra88" 
   target="_blank" 
   rel="noopener noreferrer"
-  aria-label="Visitar Statick Academy"
-  data-i18n-key="academy.text"
+  aria-label="Invítame un café"
   class={className}
   role="button"
   tabindex="0"
 >
-  <span set:html={ACADEMY_ICON}></span>
-  <span data-i18n="academy.text">Academia</span>
+  <span set:html={COFFEE_ICON}></span>
+  <span data-i18n="coffee.text">Café</span>
 </a>
 
 <style>
@@ -36,9 +34,9 @@ const ACADEMY_ICON = `
     position: fixed;
     top: 1rem;
     left: 2rem;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+    background: linear-gradient(135deg, #ff813f, #e6560e);
+    border: 1px solid #e6560e;
+    color: #fff;
     border-radius: 0.5rem;
     padding: 0.5rem 0.75rem;
     display: flex;
@@ -47,20 +45,20 @@ const ACADEMY_ICON = `
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 9999;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(230, 86, 14, 0.3);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   a:focus {
-    outline: 2px solid var(--color-text);
+    outline: 2px solid #ff813f;
     outline-offset: 2px;
   }
 
   a:hover {
     transform: scale(1.05);
-    background: var(--color-bg-hover);
-    border-color: var(--color-text-secondary);
+    background: linear-gradient(135deg, #e6560e, #cc4400);
+    box-shadow: 0 4px 12px rgba(230, 86, 14, 0.4);
   }
 
   a svg {
