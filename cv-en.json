@@ -39,11 +39,6 @@
         "network": "TryHackMe",
         "username": "statick",
         "url": "https://tryhackme.com/p/statick"
-      },
-      {
-        "network": "Saavedra Construction",
-        "username": "saavedra-construction",
-        "url": "https://saavedra-construction.com"
       }
     ]
   },
@@ -585,14 +580,15 @@
     {
       "name": "Saavedra Construction",
       "isActive": true,
-      "description": "Corporate website for a construction company featuring project management, image galleries, and contact information. Implements clean architecture with Next.js 15, React 19, TypeScript, and Tailwind CSS 4.",
+      "description": "Production-ready corporate website for a construction company. Features project management, optimized image galleries, and contact system. Built with Next.js 15, React 19, TypeScript, and Tailwind CSS 4 following Clean Architecture. Deployed on custom domain with professional infrastructure.",
       "highlights": [
+        "Live in production with custom domain (saavedra-construction.com)",
         "Clean Architecture with domain, infrastructure, and presentation layers",
-        "Cloudinary integration for project image management",
-        "API Routes with data transformation for the frontend",
-        "Vercel deployment with automated CI/CD"
+        "Cloudinary integration for image management and optimization",
+        "DNS managed with Cloudflare (CDN, SSL, and DDoS protection)",
+        "Automated deployment on Vercel with CI/CD and preview deployments"
       ],
-      "url": "https://webiste-hs.vercel.app/",
+      "url": "https://saavedra-construction.com",
       "github": "https://github.com/statick88/saavedra-construction",
       "image": "/projects/saavedra-construction.webp"
     },

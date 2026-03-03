@@ -50,11 +50,6 @@
         "network": "Google Scholar",
         "username": "getKs_4AAAAJ",
         "url": "https://scholar.google.com/citations?user=getKs_4AAAAJ&hl=es"
-      },
-      {
-        "network": "Saavedra Construction",
-        "username": "saavedra-construction",
-        "url": "https://saavedra-construction.com"
       }
     ]
   },
@@ -607,24 +602,26 @@
       "name": "Saavedra Construction",
       "isActive": true,
       "description": {
-        "es": "Sitio web empresarial para empresa de construcción con gestión de proyectos, galerías de imágenes y contacto. Implementa arquitectura limpia con Next.js 15, React 19, TypeScript y Tailwind CSS 4.",
-        "en": "Business website for a construction company with project management, image galleries, and contact. Implements clean architecture with Next.js 15, React 19, TypeScript, and Tailwind CSS 4."
+        "es": "Sitio web corporativo en producción para empresa de construcción. Incluye gestión de proyectos, galerías de imágenes optimizadas y sistema de contacto. Desarrollado con Next.js 15, React 19, TypeScript y Tailwind CSS 4 siguiendo Clean Architecture. Desplegado en dominio propio con infraestructura profesional.",
+        "en": "Production-ready corporate website for a construction company. Features project management, optimized image galleries, and contact system. Built with Next.js 15, React 19, TypeScript, and Tailwind CSS 4 following Clean Architecture. Deployed on custom domain with professional infrastructure."
       },
       "highlights": {
         "es": [
+          "En producción con dominio propio (saavedra-construction.com)",
           "Arquitectura Clean Architecture con capas de dominio, infraestructura y presentación",
-          "Integración con Cloudinary para gestión de imágenes de proyectos",
-          "API Routes con transformación de datos para el frontend",
-          "Deploy en Vercel con CI/CD automatizado"
+          "Integración con Cloudinary para gestión y optimización de imágenes",
+          "DNS gestionado con Cloudflare (CDN, SSL y protección DDoS)",
+          "Deploy automatizado en Vercel con CI/CD y preview deployments"
         ],
         "en": [
+          "Live in production with custom domain (saavedra-construction.com)",
           "Clean Architecture with domain, infrastructure, and presentation layers",
-          "Cloudinary integration for project image management",
-          "API Routes with data transformation for frontend",
-          "Vercel deployment with automated CI/CD"
+          "Cloudinary integration for image management and optimization",
+          "DNS managed with Cloudflare (CDN, SSL, and DDoS protection)",
+          "Automated deployment on Vercel with CI/CD and preview deployments"
         ]
       },
-      "url": "https://webiste-hs.vercel.app/",
+      "url": "https://saavedra-construction.com",
       "github": "https://github.com/statick88/saavedra-construction",
       "image": "/projects/saavedra-construction.webp"
     },
