@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Diego Medardo Saavedra García",
-    "label": "FullStack, Mobile and AI Software Developer with 10+ years of experience. University Educator. Exploring the information security ecosystem from a secure development perspective.",
+    "label": "FullStack, Mobile and AI Software Developer with 10+ years of experience. University Educator. Specialized in Ethical Hacking and Offensive Security. Exploring the information security ecosystem.",
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
     "phone": "+593 980192790",
@@ -493,6 +493,51 @@
         "name": "CTF",
         "level": "Intermediate",
         "keywords": ["Capture The Flag", "Problem Solving", "Security"]
+      },
+      {
+        "name": "Ethical Hacking",
+        "level": "Advanced",
+        "keywords": ["Penetration Testing", "Security Assessment", "Offensive Security"]
+      },
+      {
+        "name": "Penetration Testing",
+        "level": "Advanced",
+        "keywords": ["Vulnerability Assessment", "Exploitation", "Security Testing"]
+      },
+      {
+        "name": "Vulnerability Assessment",
+        "level": "Advanced",
+        "keywords": ["CVE", "Risk Analysis", "Security Auditing"]
+      },
+      {
+        "name": "OWASP Top 10",
+        "level": "Advanced",
+        "keywords": ["Web Security", "Application Security", "Risk Mitigation"]
+      },
+      {
+        "name": "Burp Suite",
+        "level": "Intermediate",
+        "keywords": ["Web Application Testing", "Proxy", "Security Scanning"]
+      },
+      {
+        "name": "Metasploit",
+        "level": "Intermediate",
+        "keywords": ["Exploitation Framework", "Penetration Testing", "Security Tools"]
+      },
+      {
+        "name": "Web Application Security",
+        "level": "Advanced",
+        "keywords": ["Secure Coding", "OWASP", "Security Headers"]
+      },
+      {
+        "name": "Network Security",
+        "level": "Advanced",
+        "keywords": ["Firewall", "IDS/IPS", "VPN", "Segmentation"]
+      },
+      {
+        "name": "Incident Response",
+        "level": "Intermediate",
+        "keywords": ["Forensics", "Threat Detection", "Security Operations"]
       }
     ],
     "softSkills": [
@@ -577,6 +622,20 @@
     "description": "Interactive learning platform with hands-on challenges in Linux, Docker, DevOps, CTF, Hack The Box, and TryHackMe."
   },
   "projects": [
+    {
+      "name": "Ethical Hacking Course - Introduction",
+      "isActive": true,
+      "description": "Virtual course on Introduction to Ethical Hacking. Live online classes with transmission, autonomous work, evaluations, and access to virtual platform. We grant an approval certificate with the endorsement of the Ministry of Labor.",
+      "highlights": [
+        "Virtual modality with live classes from 7:00 PM to 10:00 PM",
+        "From March 16 to 27, 2026 (Monday to Saturday, except Friday)",
+        "Certificate with Ministry of Labor endorsement",
+        "Virtual platform with online evaluations",
+        "Practical simulators with requirements: core i5, 8GB RAM minimum"
+      ],
+      "url": "https://statick88.github.io",
+      "image": "/projects/ethical-hacking-course.webp"
+    },
     {
       "name": "Saavedra Construction",
       "isActive": true,

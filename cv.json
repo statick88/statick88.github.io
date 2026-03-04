@@ -2,8 +2,8 @@
   "basics": {
     "name": "Diego Medardo Saavedra García",
     "label": {
-      "es": "Software Developer FullStack, Móvil e IA con más de 10 años de experiencia. Docente universitario. Explorando el ecosistema de seguridad informática desde una perspectiva de desarrollo seguro.",
-      "en": "FullStack, Mobile and AI Software Developer with 10+ years of experience. University Educator. Exploring the information security ecosystem from a secure development perspective."
+      "es": "Software Developer FullStack, Móvil e IA con más de 10 años de experiencia. Docente universitario. Especializado en Ethical Hacking y Seguridad Ofensiva. Explorando el ecosistema de seguridad informática.",
+      "en": "FullStack, Mobile and AI Software Developer with 10+ years of experience. University Educator. Specialized in Ethical Hacking and Offensive Security. Exploring the information security ecosystem."
     },
     "image": "/me.webp",
     "email": "dsaavedra88@gmail.com",
@@ -484,6 +484,42 @@
     {
       "name": "CTF",
       "level": "Intermedio"
+    },
+    {
+      "name": "Ethical Hacking",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Penetration Testing",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Vulnerability Assessment",
+      "level": "Avanzado"
+    },
+    {
+      "name": "OWASP Top 10",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Burp Suite",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Metasploit",
+      "level": "Intermedio"
+    },
+    {
+      "name": "Web Application Security",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Network Security",
+      "level": "Avanzado"
+    },
+    {
+      "name": "Incident Response",
+      "level": "Intermedio"
     }
   ],
   "softSkills": [
@@ -598,6 +634,32 @@
     }
   },
   "projects": [
+    {
+      "name": "Curso de Ethical Hacking - Introducción",
+      "isActive": true,
+      "description": {
+        "es": "Curso virtual de Introducción al Ethical Hacking. Clases online en vivo con transmisión, trabajo autónomo, evaluaciones y acceso a plataforma virtual. Otorgamos certificado de aprobación con aval del Ministerio del Trabajo.",
+        "en": "Virtual course on Introduction to Ethical Hacking. Live online classes with transmission, autonomous work, evaluations, and access to virtual platform. We grant an approval certificate with the endorsement of the Ministry of Labor."
+      },
+      "highlights": {
+        "es": [
+          "Modalidad virtual con clases en vivo de 19:00 a 22:00",
+          "Del 16 al 27 de marzo 2026 (lunes a sábado, menos viernes)",
+          "Certificado con aval del Ministerio del Trabajo",
+          "Plataforma virtual con evaluaciones en línea",
+          "Simuladores prácticos con requisitos: core i5, 8GB RAM mínimo"
+        ],
+        "en": [
+          "Virtual modality with live classes from 7:00 PM to 10:00 PM",
+          "From March 16 to 27, 2026 (Monday to Saturday, except Friday)",
+          "Certificate with Ministry of Labor endorsement",
+          "Virtual platform with online evaluations",
+          "Practical simulators with requirements: core i5, 8GB RAM minimum"
+        ]
+      },
+      "url": "https://statick88.github.io",
+      "image": "/projects/ethical-hacking-course.webp"
+    },
     {
       "name": "Saavedra Construction",
       "isActive": true,
