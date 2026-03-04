@@ -35,6 +35,15 @@ import Azure from "@/icons/azure.astro"
 import Vercel from "@/icons/vercel.astro"
 import Railway from "@/icons/railway.astro"
 import Angular from "@/icons/angular.astro"
+import EthicalHacking from "@/icons/EthicalHacking.astro"
+import PenetrationTesting from "@/icons/PenetrationTesting.astro"
+import VulnerabilityAssessment from "@/icons/VulnerabilityAssessment.astro"
+import OWASPTop10 from "@/icons/OWASPTop10.astro"
+import BurpSuite from "@/icons/BurpSuite.astro"
+import Metasploit from "@/icons/Metasploit.astro"
+import WebApplicationSecurity from "@/icons/WebApplicationSecurity.astro"
+import NetworkSecurity from "@/icons/NetworkSecurity.astro"
+import IncidentResponse from "@/icons/IncidentResponse.astro"
 
 const SKILLS_ICONS: Record<string, any> = {
   HTML,
@@ -71,6 +80,15 @@ const SKILLS_ICONS: Record<string, any> = {
   Azure,
   Vercel,
   Railway,
+  EthicalHacking,
+  PenetrationTesting,
+  VulnerabilityAssessment,
+  OWASPTop10,
+  BurpSuite,
+  Metasploit,
+  WebApplicationSecurity,
+  NetworkSecurity,
+  IncidentResponse,
 }
 ---
 
@@ -85,6 +103,14 @@ const SKILLS_ICONS: Record<string, any> = {
         else if (name === "C#") iconName = "CSharp"
         else if (name === ".NET") iconName = "DotNet"
         else if (name === "Spring Boot") iconName = "SpringBoot"
+        else if (name === "Ethical Hacking") iconName = "EthicalHacking"
+        else if (name === "Penetration Testing") iconName = "PenetrationTesting"
+        else if (name === "Vulnerability Assessment") iconName = "VulnerabilityAssessment"
+        else if (name === "OWASP Top 10") iconName = "OWASPTop10"
+        else if (name === "Burp Suite") iconName = "BurpSuite"
+        else if (name === "Web Application Security") iconName = "WebApplicationSecurity"
+        else if (name === "Network Security") iconName = "NetworkSecurity"
+        else if (name === "Incident Response") iconName = "IncidentResponse"
         
         const Icon = SKILLS_ICONS[iconName]
 
