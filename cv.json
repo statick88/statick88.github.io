@@ -247,8 +247,8 @@
   "trainings": [
     {
       "name": {
-        "es": "RootedCON 2026: Experto en Docker y Análisis Forense de Hardware",
-        "en": "RootedCON 2026: Docker & Hardware Forensics Expert"
+        "es": "Experto en Docker y Análisis Forense (RootedCON)",
+        "en": "Docker & Hardware Forensics Expert (RootedCON)"
       },
       "institution": "ProtAAPP / RootedCON",
       "url": "https://github.com/statick88/challenges/tree/main/ctf/rootedcon2026",
@@ -272,6 +272,16 @@
           "Password cracking via dictionary attacks in Kali environments",
           "Multi-disciplinary challenge resolution using SDD methodology"
         ]
+      },
+      "icon": "🐳",
+      "percentage": "100%",
+      "stats": {
+        "es": "✓ 15/15 Challenges",
+        "en": "✓ 15/15 Challenges"
+      },
+      "buttonText": {
+        "es": "Verificar certificado",
+        "en": "Verify certificate"
       }
     },
     {
