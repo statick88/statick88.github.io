@@ -247,8 +247,8 @@
   "trainings": [
     {
       "name": {
-        "es": "Experto en Docker y Análisis Forense (RootedCON)",
-        "en": "Docker & Hardware Forensics Expert (RootedCON)"
+        "es": "Superación Retos RootedCON 2026",
+        "en": "RootedCON 2026 Challenges Completion"
       },
       "institution": "ProtAAPP / RootedCON",
       "url": "https://github.com/statick88/challenges/tree/main/ctf/rootedcon2026",
