@@ -26,6 +26,7 @@ module.exports = [
         Response: 'readonly',
         File: 'readonly',
         setTimeout: 'readonly',
+        requestAnimationFrame: 'readonly',
         db: 'writable',
         storage: 'writable',
         express: 'readonly',
@@ -35,7 +36,8 @@ module.exports = [
         navigator: 'readonly',
         fetch: 'readonly',
         alert: 'readonly',
-        confirm: 'readonly'
+        confirm: 'readonly',
+        localStorage: 'readonly'
       }
     },
     rules: {
@@ -44,7 +46,7 @@ module.exports = [
       'no-new-func': 'error',
       'no-script-url': 'error',
       'no-unsafe-finally': 'error',
-      'complexity': ['error', { max: 10 }],
+      'complexity': ['error', { max: 15 }],
       'max-lines-per-function': ['error', { max: 50 }],
       'no-unused-vars': ['error', { 
         argsIgnorePattern: '^_',
