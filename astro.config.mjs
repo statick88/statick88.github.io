@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config'
+import { securityHeaders } from './src/integrations/security-headers'
 
 export default defineConfig({
   site: 'https://statick88.github.io',
@@ -28,4 +29,7 @@ export default defineConfig({
     prefetchAll: import.meta.env.PROD,
     defaultStrategy: import.meta.env.PROD ? 'viewport' : 'tap',
   },
+  integrations: [
+    securityHeaders()
+  ],
 })

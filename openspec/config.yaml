@@ -1,0 +1,74 @@
+# OpenSpec Configuration
+
+## Project Information
+project:
+  name: statick88.github.io
+  description: Astro-based personal portfolio website
+  version: 0.0.1
+  type: static
+
+## Spec-Driven Development
+sdd:
+  # Change management configuration
+  changes:
+    directory: openspec/changes
+    default_branch: main
+
+  # Specs configuration
+  specs:
+    directory: openspec/specs
+
+  # Artifact types
+  artifacts:
+    - type: proposal
+      extension: md
+    - type: specs
+      extension: md
+    - type: design
+      extension: md
+    - type: tasks
+      extension: md
+
+  # Rules
+  rules:
+    # Proposal rules
+    proposal:
+      required_sections: [intent, scope, approach, affected_areas, risks, rollback_plan, dependencies, success_criteria]
+      max_length: 2000
+
+    # Specs rules
+    specs:
+      required_sections: [overview, requirements, implementation_details, verification_steps, success_criteria]
+      max_length: 3000
+
+    # Design rules
+    design:
+      required_sections: [architecture_overview, implementation_details, build_configuration, verification_testing, rollback_plan, success_criteria]
+      max_length: 4000
+
+    # Tasks rules
+    tasks:
+      required_sections: [phase_1, phase_2, phase_3, phase_4, phase_5, success_criteria]
+      max_length: 3000
+
+## Security Configuration
+security:
+  # CSP directives
+  csp:
+    default_src: "'self'"
+    script_src: "'self' https://www.googletagmanager.com https://www.google-analytics.com"
+    style_src: "'self' https://fonts.googleapis.com"
+    font_src: "'self' https://fonts.gstatic.com"
+    img_src: "'self' data: https://*.githubusercontent.com"
+    frame_src: "'none'"
+    form_action: "'self'"
+    base_uri: "'self'"
+
+  # Security headers
+  headers:
+    x_frame_options: DENY
+    x_xss_protection: 1; mode=block
+    x_content_type_options: nosniff
+    strict_transport_security: max-age=31536000; includeSubDomains; preload
+    referrer_policy: strict-origin-when-cross-origin
+    permissions_policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), clipboard-read=(), clipboard-write=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker-selection=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()
