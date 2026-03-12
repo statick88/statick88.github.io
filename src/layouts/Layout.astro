@@ -99,12 +99,12 @@ const { basics, work, education, publications, projects } = cvData
     </script>
 
     <!-- External scripts -->
-    <script type="module" src="./scripts/theme.js"></script>
-    <script type="module" src="./scripts/lang.js"></script>
+    <script type="module" src="/scripts/theme.js"></script>
+    <script type="module" src="/scripts/lang.js"></script>
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERTFC8RLNR"></script>
-    <script type="module" src="./scripts/analytics.js"></script>
+    <script type="module" src="/scripts/analytics.js"></script>
   </head>
   <body>
     <slot />
@@ -116,7 +116,7 @@ const { basics, work, education, publications, projects } = cvData
     <EbookButton />
 
     <script type="module" define:vars={{ basics, work, education, publications, projects }}>
-      import { setCvData } from './scripts/cv-data.js';
+      import { setCvData } from '/scripts/cv-data.js';
       setCvData({
         basics: basics,
         work: work,
@@ -126,7 +126,7 @@ const { basics, work, education, publications, projects } = cvData
       });
     </script>
 
-    <script type="module" src="./scripts/i18n.js"></script>
+    <script type="module" src="/scripts/i18n.js"></script>
   </body>
 </html>
 
