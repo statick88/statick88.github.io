@@ -104,12 +104,7 @@ const { basics, work, education, publications, projects } = cvData
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERTFC8RLNR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ERTFC8RLNR');
-    </script>
+    <script type="module" src="/src/scripts/analytics.js"></script>
   </head>
   <body>
     <slot />
