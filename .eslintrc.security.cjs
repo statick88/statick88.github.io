@@ -37,7 +37,8 @@ module.exports = [
         fetch: 'readonly',
         alert: 'readonly',
         confirm: 'readonly',
-        localStorage: 'readonly'
+        localStorage: 'readonly',
+        CustomEvent: 'readonly'
       }
     },
     rules: {
@@ -52,7 +53,7 @@ module.exports = [
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_' 
       }],
-      'no-console': ['error', { allow: ['warn', 'error', 'info', 'debug'] }],
+      'no-console': ['error', { allow: ['warn', 'error', 'info', 'debug', 'log'] }],
       'no-case-declarations': 'error'
     }
   },
