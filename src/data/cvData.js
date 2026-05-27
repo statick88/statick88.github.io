@@ -357,12 +357,16 @@ export const cvData = {
       github: "https://github.com/statick88/academic-management"
     }
   ],
-  certifications: [
-    { name: "Certified Ethical Hacker", issuer: "EC-Council", status: "active" },
-    { name: "Security+", issuer: "CompTIA", status: "active" },
-    { name: "Network+", issuer: "CompTIA", status: "active" },
-    { name: "Linux+", issuer: "CompTIA", status: "active" },
-    { name: "Azure Fundamentals", issuer: "Microsoft", status: "active" },
-    { name: "OSCP", issuer: "Offensive Security", status: "in-progress" }
-  ]
+   certifications: [
+     { name: "Certified Ethical Hacker", issuer: "EC-Council", status: "active" },
+     { name: "Security+", issuer: "CompTIA", status: "active" },
+     { name: "Network+", issuer: "CompTIA", status: "active" },
+     { name: "Linux+", issuer: "CompTIA", status: "active" },
+     { name: "Azure Fundamentals", issuer: "Microsoft", status: "active" },
+     { name: "OSCP", issuer: "Offensive Security", status: "in-progress" },
+     { name: "Título de Maestría en Ciberseguridad", issuer: "Universidad Complutense de Madrid", status: "active" },
+     { name: "Certificate as Reviewer", issuer: "VIIT-CIT-2024 International Congress", status: "active" },
+     { name: "Estrategias de atención educativa inclusiva", issuer: "Consejo de Educación Superior Ecuador", status: "active" },
+     { name: "Fundamentos de Marketing Digital", issuer: "Google Activate", status: "active" }
+   ]
 }

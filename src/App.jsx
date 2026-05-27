@@ -58,76 +58,7 @@ function App() {
     return summaries.statick // Default
   }
 
-  // Skills según el perfil seleccionado
-  const getSkillsByProfile = () => {
-    const allSkills = cvData.skills
-    
-    const skillsByProfile = {
-      statick: allSkills, // Todos los skills
-      developer: allSkills.filter(s => 
-        ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Python', 'Docker', 'PostgreSQL', 'MongoDB'].includes(s.name)
-      ),
-      facilitator: allSkills.filter(s => 
-        ['Python', 'JavaScript', 'HTML', 'CSS', 'Flutter', 'Angular'].includes(s.name)
-      ),
-      researcher: [
-        { name: "Python", level: "master" },
-        { name: "Machine Learning", level: "master" },
-        { name: "Deep Learning", level: "advanced" },
-        { name: "TensorFlow", level: "advanced" },
-        { name: "PyTorch", level: "advanced" },
-        { name: "Keras", level: "advanced" },
-        { name: "Scikit-learn", level: "advanced" },
-        { name: "Pandas", level: "master" },
-        { name: "NumPy", level: "master" },
-        { name: "Statistical Analysis", level: "advanced" },
-        { name: "Data Visualization", level: "advanced" },
-        { name: "NLP", level: "intermediate" },
-        { name: "Computer Vision", level: "intermediate" },
-        { name: "Cybersecurity", level: "advanced" },
-        { name: "Network Security", level: "advanced" }
-      ],
-      hacker: [
-        { name: "Penetration Testing", level: "master" },
-        { name: "Burp Suite", level: "master" },
-        { name: "Nmap", level: "master" },
-        { name: "Metasploit", level: "advanced" },
-        { name: "Wireshark", level: "advanced" },
-        { name: "SQL Injection", level: "master" },
-        { name: "XSS", level: "master" },
-        { name: "CSRF", level: "advanced" },
-        { name: "SSRF", level: "advanced" },
-        { name: "IDOR", level: "advanced" },
-        { name: "RCE", level: "advanced" },
-        { name: "SSTI", level: "advanced" },
-        { name: "CORS", level: "advanced" },
-        { name: "OWASP Top 10", level: "master" },
-        { name: "Burp Suite Pro", level: "advanced" },
-        { name: "Nikto", level: "intermediate" },
-        { name: "Gobuster", level: "intermediate" },
-        { name: "Python (Security)", level: "master" },
-        { name: "Bash Scripting", level: "advanced" },
-        { name: "Linux", level: "master" }
-      ],
-      student: [
-        { name: "Python", level: "advanced" },
-        { name: "JavaScript", level: "intermediate" },
-        { name: "HTML/CSS", level: "intermediate" },
-        { name: "Cybersecurity Basics", level: "intermediate" },
-        { name: "Network Fundamentals", level: "intermediate" },
-        { name: "Linux Basics", level: "intermediate" },
-        { name: "Git", level: "intermediate" },
-        { name: "Docker", level: "basic" },
-        { name: "SQL Basics", level: "intermediate" },
-        { name: "Security Tools", level: "basic" }
-      ]
-    }
-    
-    if (activeProfile && skillsByProfile[activeProfile.id]) {
-      return skillsByProfile[activeProfile.id]
-    }
-    return allSkills // Default
-  }
+
 
   // Handle scroll to section
   const scrollToSection = (sectionId) => {
@@ -184,13 +115,13 @@ function App() {
     { id: 'certifications', label: t('Certificaciones', 'Certifications'), icon: '🏆', aria: t('Ir a Certificaciones', 'Go to Certifications') }
   ]
 
-  // Keyboard navigation handler
-  const handleKeyNav = (e, currentIndex, direction) => {
-    const newIndex = currentIndex + direction
-    if (newIndex >= 0 && newIndex < navItems.length) {
-      scrollToSection(navItems[newIndex].id)
-    }
-  }
+   // Keyboard navigation handler - currently unused but kept for future implementation
+   // const handleKeyNav = (e, currentIndex, direction) => {
+   //   const newIndex = currentIndex + direction
+   //   if (newIndex >= 0 && newIndex < navItems.length) {
+   //     scrollToSection(navItems[newIndex].id)
+   //   }
+   // }
 
   return (
     <div className="min-h-screen relative">
