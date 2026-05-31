@@ -43,8 +43,8 @@ function App() {
         en: "Researcher in cybersecurity and machine learning. MSc student in Defensive and Offensive Cybersecurity at UCM. Interest in threat modeling, pentesting and AI security."
       },
       hacker: {
-        es: "Ethical Hacker y security researcher con enfoque en pentesting, vulnerability assessment y secure coding. Conocimientos en OWASP, CVE analysis, penetration testing methodologies y defense strategies.",
-        en: "Ethical Hacker and security researcher with focus on pentesting, vulnerability assessment and secure coding. Knowledge in OWASP, CVE analysis and defense strategies."
+        es: "Ethical Hacker y security researcher con más de 10 años de experiencia en desarrollo full-stack, especializado en pruebas de penetración, evaluación de vulnerabilidades, codificación segura e ingeniería inversa (incluyendo reversing de malware para plataformas móviles y de escritorio). Experiencia en OWASP, análisis de CVE, metodologías de pruebas de penetración y estrategias de defensa. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
+        en: "Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Expertise in OWASP, CVE analysis, penetration testing methodologies, and defense strategies. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
       },
       student: {
         es: "Estudiante de MSc en Ciberseguridad en la Universidad Complutense de Madrid. Buscando oportunidades para aplicar conocimientos en proyectos reales. backgrounds en desarrollo web y educación tecnológica.",
@@ -128,11 +128,11 @@ function App() {
       {/* Particles Background */}
       <Particles />
 
-      {/* Controls */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2 no-print">
-        <LanguageToggle language={language} setLanguage={setLanguage} />
-        <ThemeToggle theme={theme} setTheme={setTheme} />
-      </div>
+       {/* Controls */}
+       <div className="fixed top-4 right-4 z-100 flex gap-2 no-print">
+         <LanguageToggle language={language} setLanguage={setLanguage} />
+         <ThemeToggle theme={theme} setTheme={setTheme} />
+       </div>
 
       {/* Profile Selector */}
       <ProfileSelector t={t} activeProfile={activeProfile} setActiveProfile={setActiveProfile} />
@@ -408,17 +408,28 @@ function App() {
             {/* Summary */}
             <div id="summary">
               <Section title={t('Resumen Profesional', 'Professional Summary')}>
-                {/* Perfil badge */}
-                {activeProfile && (
-                  <div className="mb-4 flex items-center gap-2">
-                    <span 
-                      className="px-3 py-1 rounded-full text-xs font-medium"
-                      style={{ backgroundColor: activeProfile.color + '20', color: activeProfile.color }}
-                    >
-                      {activeProfile.icon} {activeProfile.label}
-                    </span>
-                  </div>
-                )}
+                 {/* Perfil badge */}
+                 {activeProfile && (
+                   <div className="mb-4 flex items-center gap-2">
+                     <span 
+                       className="px-3 py-1 rounded-full text-xs font-medium"
+                       style={{ backgroundColor: activeProfile.color + '20', color: activeProfile.color }}
+                     >
+                       {activeProfile.icon} {activeProfile.label}
+                     </span>
+                     {/* PDF Download Buttons */}
+                     <div className="flex gap-2">
+                       <a 
+                         href={`/cv-${activeProfile.id}-${language === 'es' ? 'es' : 'en'}.pdf`}
+                         download={`CV_Diego_Saavedra_${activeProfile.label.es || activeProfile.label.en}_${language === 'es' ? 'ES' : 'EN'}.pdf`}
+                         className="px-2 py-1 rounded border border-white/20 text-xs font-medium hover:bg-white/10 transition-all duration-200"
+                         aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
+                       >
+                         📄
+                       </a>
+                     </div>
+                   </div>
+                 )}
                 
                 <p className="text-gray-300 leading-relaxed text-lg">
                   {t(getSummary().es, getSummary().en)}
