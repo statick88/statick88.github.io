@@ -2,7 +2,7 @@
 
 ## Professional Summary
 
-Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.
+Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Expertise in OWASP, CVE analysis, penetration testing methodologies, and defense strategies. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.
 
 ### Contact Information
 
