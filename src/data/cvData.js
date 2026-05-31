@@ -153,8 +153,8 @@ export const cvData = {
   basics: {
     name: "Diego Medardo Saavedra García",
     label: {
-      es: "Desarrollador Full Stack con más de 10 años de experiencia. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
-      en: "Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
+      es: "Ético Hacker e investigador de seguridad con más de 10 años de experiencia en desarrollo full-stack, especializado en pruebas de penetración, evaluación de vulnerabilidades, codificación segura e ingeniería inversa (incluyendo reversing de malware para plataformas móviles y de escritorio). Experiencia en OWASP, análisis de CVE, metodologías de pruebas de penetración y estrategias de defensa. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
+      en: "Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Expertise in OWASP, CVE analysis, penetration testing methodologies, and defense strategies. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
     },
     image: "/me.webp",
     email: "dsaavedra88@gmail.com",
@@ -244,30 +244,31 @@ export const cvData = {
       score: "4.0"
     }
   ],
-  skills: [
-    { name: "HTML", level: "master" },
-    { name: "CSS", level: "master" },
-    { name: "JavaScript", level: "master" },
-    { name: "TypeScript", level: "advanced" },
-    { name: "React", level: "advanced" },
-    { name: "Next.js", level: "advanced" },
-    { name: "Node.js", level: "advanced" },
-    { name: "Python", level: "advanced" },
-    { name: "Django", level: "advanced" },
-    { name: "FastAPI", level: "advanced" },
-    { name: "Flutter", level: "advanced" },
-    { name: "Angular", level: "advanced" },
-    { name: "Docker", level: "advanced" },
-    { name: "Kubernetes", level: "advanced" },
-    { name: "MySQL", level: "advanced" },
-    { name: "MongoDB", level: "advanced" },
-    { name: "NestJS", level: "advanced" },
-    { name: "Vue", level: "intermediate" },
-    { name: "Svelte", level: "intermediate" },
-    { name: "AWS", level: "intermediate" },
-    { name: "Azure", level: "intermediate" },
-    { name: "PostgreSQL", level: "intermediate" }
-  ],
+skills: [
+     { name: "HTML", level: "master" },
+     { name: "CSS", level: "master" },
+     { name: "JavaScript", level: "master" },
+     { name: "TypeScript", level: "advanced" },
+     { name: "React", level: "advanced" },
+     { name: "Next.js", level: "advanced" },
+     { name: "Node.js", level: "advanced" },
+     { name: "Python", level: "advanced" },
+     { name: "Django", level: "advanced" },
+     { name: "FastAPI", level: "advanced" },
+     { name: "Flutter", level: "advanced" },
+     { name: "Angular", level: "advanced" },
+     { name: "Docker", level: "advanced" },
+     { name: "Kubernetes", level: "advanced" },
+     { name: "MySQL", level: "advanced" },
+     { name: "MongoDB", level: "advanced" },
+     { name: "NestJS", level: "advanced" },
+     { name: "Vue", level: "intermediate" },
+     { name: "Svelte", level: "intermediate" },
+     { name: "AWS", level: "intermediate" },
+     { name: "Azure", level: "intermediate" },
+     { name: "PostgreSQL", level: "intermediate" },
+     { name: "Reverse Engineering", level: "advanced" }
+   ],
   softSkills: [
     { es: "Resolución de Problemas", en: "Problem Solving" },
     { es: "Trabajo en Equipo", en: "Teamwork" },
