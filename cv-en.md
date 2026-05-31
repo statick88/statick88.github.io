@@ -2,7 +2,7 @@
 
 ## Professional Summary
 
-Full Stack Developer with 10+ years of experience. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.
+Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development.
 
 ### Contact Information
 

@@ -2,7 +2,7 @@
 
 ## Resumen Profesional
 
-Desarrollador Full Stack con más de 10 años de experiencia. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.
+Ético Hacker e investigador de seguridad con más de 10 años de experiencia en desarrollo full-stack, especializado en pruebas de penetración, evaluación de vulnerabilidades, codificación segura e ingeniería inversa (incluyendo reversing de malware para plataformas móviles y de escritorio). Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.
 
 ### Información de Contacto
 
