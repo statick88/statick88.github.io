@@ -98,7 +98,7 @@ Bachelor
 - **AWS**: intermediate
 - **Azure**: intermediate
 - **PostgreSQL**: intermediate
-- **Reverse Engineering**: advanced (malware reversing including mobile)
+- **Reverse Engineering**: advanced
 
 ## Proyectos Destacados
 
