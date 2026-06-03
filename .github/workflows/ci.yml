@@ -29,10 +29,10 @@ jobs:
         run: pnpm install
 
       - name: Lint
-        run: pnpm run lint || true
+        run: pnpm run lint
 
       - name: TypeScript Check
-        run: pnpm run typecheck || true
+        run: pnpm run typecheck
 
       - name: Build
         run: pnpm build
@@ -62,9 +62,9 @@ jobs:
       - name: Dependency Audit
         run: pnpm audit --audit-level=moderate
 
-      - name: Dependency Scan
+      - name: Secret scan
         run: |
-          npm audit --audit-level=moderate || true
+          ! grep -rEn "(api[_-]?key|secret|token|password)\s*[:=]\s*['\"][A-Za-z0-9_\-]{8,}" src/ index.html *.config.* 2>/dev/null || (echo "Potential secret found in source" && exit 1)
 
   # === DESIGN GATE (Build Verification) ===
   design-gate:
@@ -94,7 +94,29 @@ jobs:
       - name: Verify assets exist
         run: |
           ls -la dist/
-          ls -la dist/assets/ || echo "No assets folder"
+          ls -la dist/assets/
+
+      - name: Generate CV variants (8 PDFs expected)
+        run: |
+          node generate-cv-markdown.js
+          node generate-profile-cvs.js
+          for p in developer hacker research curriculista; do
+            for l in es en; do
+              if [ ! -f cv-$p-$l.md ]; then
+                echo "::error::Missing cv-$p-$l.md"
+                exit 1
+              fi
+            done
+          done
+          echo "All 8 CV markdown variants generated."
+
+      - name: Verify bundle size
+        run: |
+          SIZE=$(stat -c%s dist/assets/index-*.js 2>/dev/null | head -1)
+          echo "Bundle size: ${SIZE} bytes"
+          if [ "$SIZE" -gt 500000 ]; then
+            echo "::warning::Bundle exceeds 500KB"
+          fi
 
   # === DEPLOY (only on main) ===
   deploy:
