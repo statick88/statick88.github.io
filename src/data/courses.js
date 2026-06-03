@@ -1,5 +1,5 @@
-// courses.js — Cursos creados con Quarto por Diego Saavedra
-// Fuente: github.com/statick88 (11 repos con GitHub Pages)
+// courses.js — Repos con GitHub Pages por Diego Saavedra
+// Fuente: github.com/statick88 (23 repos con GitHub Pages)
 
 export const courses = [
   {
@@ -123,6 +123,81 @@ export const courses = [
     tags: ['Secure Coding', 'OWASP', 'Software']
   },
   {
+    id: 'iron-man-evolution',
+    title: 'Iron Man Evolution',
+    subtitle: 'Evolución tecnológica de Tony Stark',
+    description: 'Presentación interactiva sobre la evolución tecnológica del personaje Iron Man. Análisis de hardware, software y armaduras.',
+    type: 'presentation',
+    tool: 'Quarto',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/iron-man-evolution/',
+    repo: 'https://github.com/statick88/iron-man-evolution',
+    icon: '🤖',
+    color: '#ef4444',
+    tags: ['Presentación', 'Tecnología', 'Pop Culture']
+  },
+  {
+    id: 'bootcamp_fullstack',
+    title: 'Bootcamp Fullstack',
+    subtitle: 'Desarrollo Web Full Stack con Quarto',
+    description: 'Bootcamp de desarrollo web full stack. HTML, CSS, JavaScript, backend, bases de datos y despliegue.',
+    type: 'book',
+    tool: 'Quarto',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/bootcamp_fullstack/',
+    repo: 'https://github.com/statick88/bootcamp_fullstack',
+    icon: '💻',
+    color: '#3b82f6',
+    tags: ['Fullstack', 'Bootcamp', 'Web']
+  },
+  {
+    id: 'bootcamp_desarrollo_movil_flutter',
+    title: 'Bootcamp Desarrollo Móvil Flutter',
+    subtitle: 'Curso intensivo de desarrollo móvil con Flutter',
+    description: 'Bootcamp de desarrollo móvil con Flutter. Dart, widgets, state management, APIs y publicación en stores.',
+    type: 'book',
+    tool: 'Quarto',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/bootcamp_desarrollo_movil_flutter/',
+    repo: 'https://github.com/statick88/bootcamp_desarrollo_movil_flutter',
+    icon: '📱',
+    color: '#06b6d4',
+    tags: ['Flutter', 'Mobile', 'Bootcamp']
+  },
+  {
+    id: 'diplomado_ia',
+    title: 'Diplomado Inteligencia Artificial',
+    subtitle: 'Diplomado de IA y sus aplicaciones',
+    description: 'Diplomado de Inteligencia Artificial. Fundamentos, machine learning, deep learning, LLMs y aplicaciones prácticas.',
+    type: 'book',
+    tool: 'Quarto',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/diplomado_ia/',
+    repo: 'https://github.com/statick88/diplomado_ia',
+    icon: '🧠',
+    color: '#a855f7',
+    tags: ['IA', 'ML', 'Diplomado']
+  },
+  {
+    id: 'curso_nvim',
+    title: 'Curso de NVim',
+    subtitle: 'Editor de texto modal para terminales',
+    description: 'Curso completo de Neovim. Configuración, plugins, keybindings, LSP y productividad en terminal.',
+    type: 'book',
+    tool: 'Quarto',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/curso_nvim/',
+    repo: 'https://github.com/statick88/curso_nvim',
+    icon: '⌨️',
+    color: '#10b981',
+    tags: ['NVim', 'Terminal', 'Productividad']
+  },
+  {
     id: 'taller-ia-no-informaticos',
     title: 'Taller de IA para No Informáticos',
     subtitle: 'Presentaciones y guías prácticas',
@@ -138,6 +213,81 @@ export const courses = [
     tags: ['IA', 'LLMs', 'Taller']
   },
   {
+    id: 'taller-ia-presentation',
+    title: 'Taller de IA — Presentación',
+    subtitle: 'Material de presentación del taller',
+    description: 'Material de presentación del Taller de Inteligencia Artificial para profesionales no informáticos.',
+    type: 'presentation',
+    tool: 'HTML',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/taller-ia-presentation/',
+    repo: 'https://github.com/statick88/taller-ia-presentation',
+    icon: '🎤',
+    color: '#a855f7',
+    tags: ['IA', 'Presentación', 'Taller']
+  },
+  {
+    id: 'charla-dr-doom',
+    title: 'Charla Dr. Doom — Bug Bounty',
+    subtitle: 'Introducción al Bug Bounty — FLISOL',
+    description: 'Charla sobre Bug Bounty presentada en FLISOL. Introducción a la cacería de errores y recompensas.',
+    type: 'presentation',
+    tool: 'HTML',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/charla-dr-doom/',
+    repo: 'https://github.com/statick88/charla-dr-doom',
+    icon: '🎤',
+    color: '#f59e0b',
+    tags: ['Bug Bounty', 'Charla', 'FLISOL']
+  },
+  {
+    id: 'showroom-digital-inmobiliario',
+    title: 'Showroom Digital Inmobiliario',
+    subtitle: 'Plataforma digital para mostrar propiedades',
+    description: 'Aplicación web para visualización y gestión de propiedades inmobiliarias. Catálogo digital interactivo.',
+    type: 'project',
+    tool: 'HTML',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/showroom-digital-inmobiliario/',
+    repo: 'https://github.com/statick88/showroom-digital-inmobiliario',
+    icon: '🏠',
+    color: '#06b6d4',
+    tags: ['Inmobiliario', 'Web', 'Proyecto']
+  },
+  {
+    id: 'nurburgring-predictor',
+    title: 'Nürburgring 24h Predictor',
+    subtitle: 'Predictor de carrera en vivo — Next.js 15 + Tailwind',
+    description: 'Aplicación de predicción de carreras Nürburgring 24h en tiempo real. Next.js 15, Tailwind CSS y datos en vivo.',
+    type: 'project',
+    tool: 'Next.js',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/nurburgring-predictor/',
+    repo: 'https://github.com/statick88/nurburgring-predictor',
+    icon: '🏎️',
+    color: '#ef4444',
+    tags: ['Next.js', 'Predictor', 'Deportes']
+  },
+  {
+    id: 'abacom-gestion',
+    title: 'ABACOM Gestión Educativa',
+    subtitle: 'Sistema de gestión educativa — Proyecto Python',
+    description: 'Sistema de gestión educativa desarrollado como proyecto integrador del curso de Python en ABACOM.',
+    type: 'project',
+    tool: 'Python',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/abacom-gestion/',
+    repo: 'https://github.com/statick88/abacom-gestion',
+    icon: '🏫',
+    color: '#10b981',
+    tags: ['Python', 'ABACOM', 'Gestión']
+  },
+  {
     id: 'ethical-hacking-labs',
     title: 'Ethical Hacking Labs',
     subtitle: 'Laboratorios prácticos con Docker',
@@ -151,6 +301,21 @@ export const courses = [
     icon: '🎯',
     color: '#f97316',
     tags: ['Docker', 'Labs', 'Vulnerable']
+  },
+  {
+    id: 'challenges',
+    title: 'Technical Challenges',
+    subtitle: 'Linux, Docker y DevOps challenges',
+    description: 'Repositorio unificado de desafíos técnicos para aprendizaje de Linux, Docker y DevOps.',
+    type: 'labs',
+    tool: 'HTML',
+    author: 'Diego Saavedra',
+    date: '2025',
+    url: 'https://statick88.github.io/challenges/',
+    repo: 'https://github.com/statick88/challenges',
+    icon: '🧩',
+    color: '#64748b',
+    tags: ['Linux', 'Docker', 'DevOps']
   },
   {
     id: 'ebooks',

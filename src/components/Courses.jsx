@@ -119,12 +119,16 @@ export default function Courses({ t }) {
     { id: 'all', label: 'Todos' },
     { id: 'Quarto', label: 'Quarto' },
     { id: 'book', label: 'Libros' },
+    { id: 'presentation', label: 'Presentaciones' },
+    { id: 'project', label: 'Proyectos' },
     { id: 'labs', label: 'Labs' },
   ]
 
   const filteredCourses = courses.filter((c) => {
     if (filter === 'all') return true
     if (filter === 'book') return c.type === 'book'
+    if (filter === 'presentation') return c.type === 'presentation'
+    if (filter === 'project') return c.type === 'project'
     return c.tool === filter || c.type === filter
   })
 
