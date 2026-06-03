@@ -26,23 +26,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        env:
-          pnpm_config_only_built_dependencies: '["esbuild"]'
         run: pnpm install --frozen-lockfile
-
-      - name: Debug pnpm config
-        if: failure()
-        run: |
-          echo "=== pnpm config get ==="
-          pnpm config get onlyBuiltDependencies || echo "key not found"
-          pnpm config get only-built-dependencies || echo "kebab key not found"
-          echo "=== env vars ==="
-          env | grep -i pnpm | head -10
-          echo "=== .npmrc ==="
-          cat .npmrc
-          echo "=== current dir ==="
-          pwd
-          ls -la .npmrc
 
       - name: Lint
         run: pnpm run lint
@@ -73,8 +57,6 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        env:
-          pnpm_config_only_built_dependencies: '["esbuild"]'
         run: pnpm install --frozen-lockfile
 
       - name: Dependency Audit
@@ -104,8 +86,6 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        env:
-          pnpm_config_only_built_dependencies: '["esbuild"]'
         run: pnpm install --frozen-lockfile
 
       - name: Build Verification
@@ -166,8 +146,6 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        env:
-          pnpm_config_only_built_dependencies: '["esbuild"]'
         run: pnpm install --frozen-lockfile
 
       - name: Build
