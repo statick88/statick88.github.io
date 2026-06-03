@@ -2,9 +2,10 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const profiles = [
-  { id: 'developer', icon: '💻', label: 'Developer', color: '#3b82f6', desc: 'Full Stack Engineer' },
-  { id: 'hacker', icon: '🎯', label: 'Ethical Hacker', color: '#ef4444', desc: 'Pentester & Security' },
-  { id: 'research', icon: '🔬', label: 'Research', color: '#f59e0b', desc: 'Academic Researcher' }
+  { id: 'developer', icon: '💻', label: 'Full Stack', color: '#3b82f6', desc: 'React/Node.js/Python' },
+  { id: 'hacker', icon: '🎯', label: 'Hacker Ético', color: '#ef4444', desc: 'Pentest & RE' },
+  { id: 'research', icon: '🔬', label: 'Investigador', color: '#f59e0b', desc: 'MSc Ciberseguridad UCM' },
+  { id: 'curriculista', icon: '📚', label: 'Curriculista', color: '#10b981', desc: 'Docente + Diseño ABP' }
 ]
 
 export default function ProfileSelector({ t, activeProfile, setActiveProfile }) {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { cvData } from './data/cvData'
+import { cvData, profileData } from './data/cvData'
 import Particles from './components/Particles'
 import LanguageToggle from './components/LanguageToggle'
 import ThemeToggle from './components/ThemeToggle'
@@ -10,6 +10,7 @@ import Timeline from './components/Timeline'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Certifications from './components/Certifications'
+import Metrics from './components/Metrics'
 
 function App() {
   const [language, setLanguage] = useState('es')
@@ -17,45 +18,22 @@ function App() {
   const [activeSection, setActiveSection] = useState('summary')
   const [isLoaded, setIsLoaded] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeProfile, setActiveProfile] = useState(null) // Perfil seleccionado
+  const [activeProfile, setActiveProfile] = useState({ id: 'curriculista', label: 'Curriculista', color: '#10b981' }) // Perfil seleccionado
   const [showNav, setShowNav] = useState(true) // Controlar visibilidad de nav
   const contentRef = useRef(null)
 
   const t = (es, en) => language === 'es' ? es : en
 
-  // Resumen según el perfil seleccionado
+  // Resumen según el perfil seleccionado (lee de profileData o fallback a cvData.basics)
   const getSummary = () => {
-    const summaries = {
-      statick: {
-        es: "Profesional de TI y Desarrollador Full Stack con más de 10 años de experiencia construyendo aplicaciones web y APIs. Combino ingeniería y docencia: diseño e imparto bootcamps de Desarrollo Web, Data Science y Desarrollo Móvil. He colaborados con ESPE, UIDE, IST Juan Montalvo, Abacom y Codings Academy.",
-        en: "IT professional and Full Stack Developer with 10+ years of experience building web applications and APIs. I combine engineering and teaching: I design and deliver bootcamps in Web Development, Data Science, and Mobile Development."
-      },
-      developer: {
-        es: "Desarrollador Full Stack especializado en React, Node.js, TypeScript y arquitecturas modernas. Passionate about clean code, SOLID principles y mejores prácticas de desarrollo. Experiencia en proyectos de alta escala y optimización de rendimiento.",
-        en: "Full Stack developer specialized in React, Node.js, TypeScript and modern architectures. Passionate about clean code, SOLID principles and development best practices."
-      },
-      facilitator: {
-        es: "Facilitador y docente con más de 6 años de experiencia en educación tecnológica. He capacitado a más de 500 estudiantes en bootcamps intensivos de Desarrollo Web, Data Science y Móvil. Metodologías ágiles y aprendizaje basado en proyectos.",
-        en: "Facilitator and teacher with 6+ years of experience in technology education. I've trained 500+ students in intensive bootcamps. Agile methodologies and project-based learning."
-      },
-      researcher: {
-        es: "Investigador en ciberseguridad y aprendizaje automático. Estudiante de MSc en Ciberseguridad Defensiva y Ofensiva en UCM. Interesse en threat modeling, pentesting y AI security. Participación en conferences y publicaciones académicas.",
-        en: "Researcher in cybersecurity and machine learning. MSc student in Defensive and Offensive Cybersecurity at UCM. Interest in threat modeling, pentesting and AI security."
-      },
-      hacker: {
-        es: "Ethical Hacker y security researcher con más de 10 años de experiencia en desarrollo full-stack, especializado en pruebas de penetración, evaluación de vulnerabilidades, codificación segura e ingeniería inversa (incluyendo reversing de malware para plataformas móviles y de escritorio). Experiencia en OWASP, análisis de CVE, metodologías de pruebas de penetración y estrategias de defensa. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
-        en: "Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Expertise in OWASP, CVE analysis, penetration testing methodologies, and defense strategies. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
-      },
-      student: {
-        es: "Estudiante de MSc en Ciberseguridad en la Universidad Complutense de Madrid. Buscando oportunidades para aplicar conocimientos en proyectos reales. backgrounds en desarrollo web y educación tecnológica.",
-        en: "MSc Cybersecurity student at Universidad Complutense de Madrid. Seeking opportunities to apply knowledge in real projects. Background in web development and tech education."
-      }
+    if (activeProfile && profileData[activeProfile.id]) {
+      const s = profileData[activeProfile.id].summary
+      return { es: s.es, en: s.en }
     }
-    
-    if (activeProfile && summaries[activeProfile.id]) {
-      return summaries[activeProfile.id]
+    return {
+      es: cvData.basics.label.es,
+      en: cvData.basics.label.en
     }
-    return summaries.statick // Default
   }
 
 
@@ -263,6 +241,9 @@ function App() {
           </motion.div>
         </motion.section>
 
+        {/* Metrics Section */}
+        <Metrics metrics={cvData.metrics} t={t} />
+
         {/* Navigation - Desktop */}
         <AnimatePresence>
           {showNav ? (
@@ -421,7 +402,7 @@ function App() {
                      <div className="flex gap-2">
                        <a 
                          href={`/cv-${activeProfile.id}-${language === 'es' ? 'es' : 'en'}.pdf`}
-                         download={`CV_Diego_Saavedra_${activeProfile.label.es || activeProfile.label.en}_${language === 'es' ? 'ES' : 'EN'}.pdf`}
+                         download={`CV_Diego_Saavedra_${activeProfile.label.replace(/\s+/g, '_')}_${language === 'es' ? 'ES' : 'EN'}.pdf`}
                          className="px-2 py-1 rounded border border-white/20 text-xs font-medium hover:bg-white/10 transition-all duration-200"
                          aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
                        >
