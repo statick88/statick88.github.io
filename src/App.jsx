@@ -111,7 +111,7 @@ function App() {
       <Particles />
 
        {/* Controls */}
-       <div className="fixed top-4 right-4 z-100 flex gap-2 no-print">
+       <div className="fixed top-4 right-4 z-50 flex gap-2 no-print">
          <LanguageToggle language={language} setLanguage={setLanguage} />
          <ThemeToggle theme={theme} setTheme={setTheme} />
        </div>
@@ -402,17 +402,17 @@ function App() {
                      >
                        {activeProfile.icon} {activeProfile.label}
                      </span>
-                      {/* PDF Download Buttons */}
-                      <div className="flex gap-2">
-                        <a 
-                          href={`/cv-${language === 'es' ? 'es' : 'en'}.pdf`}
-                          download={`CV_Diego_Saavedra_${language === 'es' ? 'ES' : 'EN'}.pdf`}
-                          className="px-2 py-1 rounded border border-white/20 text-xs font-medium hover:bg-white/10 transition-all duration-200"
-                          aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
-                        >
-                          📄
-                        </a>
-                      </div>
+                       {/* PDF Download Buttons */}
+                       <div className="flex gap-2">
+                         <a 
+                           href={`/cv-${language === 'es' ? 'es' : 'en'}.pdf`}
+                           download={`CV_Diego_Saavedra_${language === 'es' ? 'ES' : 'EN'}.pdf`}
+                           className="px-3 py-1 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-medium hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-200 flex items-center gap-1"
+                           aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
+                         >
+                           📄 {language === 'es' ? 'Descargar CV' : 'Download CV'}
+                         </a>
+                       </div>
                    </div>
                  )}
                 
