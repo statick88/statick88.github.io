@@ -26,7 +26,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Allow esbuild build script
-        run: pnpm config set onlyBuiltDependencies --location project '["esbuild"]'
+        run: pnpm config set only-built-dependencies[]=esbuild --location project
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
