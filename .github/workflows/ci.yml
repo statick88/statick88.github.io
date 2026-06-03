@@ -25,7 +25,7 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
 
-      - name: Allow esbuild build script
+      - name: Install dependencies
         env:
           pnpm_config_only_built_dependencies: '["esbuild"]'
         run: pnpm install --frozen-lockfile
@@ -42,6 +42,37 @@ jobs:
   # === SECURITY GATE ===
   security-gate:
     needs: qa-gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.0.8
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        env:
+          pnpm_config_only_built_dependencies: '["esbuild"]'
+        run: pnpm install --frozen-lockfile
+
+      - name: Dependency Audit
+        run: pnpm audit --audit-level=moderate
+
+      - name: Secret scan
+        run: |
+          ! grep -rEn "(api[_-]?key|secret|token|password)\s*[:=]\s*['\"][A-Za-z0-9_\-]{8,}" src/ index.html *.config.* 2>/dev/null || (echo "Potential secret found in source" && exit 1)
+
+  # === DESIGN GATE (Build Verification) ===
+  design-gate:
+    needs: security-gate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
