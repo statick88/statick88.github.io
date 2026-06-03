@@ -12,6 +12,7 @@ import Projects from './components/Projects'
 import Certifications from './components/Certifications'
 import Metrics from './components/Metrics'
 import Courses from './components/Courses'
+import Research from './components/Research'
 
 function App() {
   const [language, setLanguage] = useState('es')
@@ -92,7 +93,8 @@ function App() {
     { id: 'skills', label: t('Habilidades', 'Skills'), icon: '⚡', aria: t('Ir a Habilidades', 'Go to Skills') },
     { id: 'projects', label: t('Proyectos', 'Projects'), icon: '🚀', aria: t('Ir a Proyectos', 'Go to Projects') },
     { id: 'certifications', label: t('Certificaciones', 'Certifications'), icon: '🏆', aria: t('Ir a Certificaciones', 'Go to Certifications') },
-    { id: 'courses', label: t('Cursos', 'Courses'), icon: '📖', aria: t('Ir a Cursos', 'Go to Courses') }
+    { id: 'courses', label: t('Cursos', 'Courses'), icon: '📖', aria: t('Ir a Cursos', 'Go to Courses') },
+    { id: 'research', label: t('Investigación', 'Research'), icon: '🔬', aria: t('Ir a Investigación', 'Go to Research') }
   ]
 
    // Keyboard navigation handler - currently unused but kept for future implementation
@@ -503,6 +505,13 @@ function App() {
             <div id="courses" className="mt-8">
               <Section title={t('Cursos Publicados', 'Published Courses')}>
                 <Courses t={t} />
+              </Section>
+            </div>
+
+            {/* Research */}
+            <div id="research" className="mt-8">
+              <Section title={t('Investigación Científica', 'Scientific Research')}>
+                <Research />
               </Section>
             </div>
           </motion.div>
