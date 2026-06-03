@@ -103,7 +103,7 @@ jobs:
         run: |
           node generate-cv-markdown.js
           node generate-profile-cvs.js
-          for p in developer hacker research curriculista; do
+          for p in developer hacker research docente-facilitador; do
             for l in es en; do
               if [ ! -f cv-$p-$l.md ]; then
                 echo "::error::Missing cv-$p-$l.md"

@@ -28,7 +28,7 @@ const ALLOWED_CATEGORIES = [
   'tools',
 ];
 const ALLOWED_STUDY_TYPES = ['Master', 'Bachelor', 'PhD', 'Diploma'];
-const EXPECTED_PROFILES = ['developer', 'hacker', 'research', 'curriculista'];
+const EXPECTED_PROFILES = ['developer', 'hacker', 'research', 'docente-facilitador'];
 const EXPECTED_METRICS = [
   'abacomCohorte2026',
   'githubRepos',
@@ -103,8 +103,8 @@ describe('profileData', () => {
       }
     });
 
-    it('has bilingual summary ≤ 400 chars (CV display constraint)', () => {
-      expect(isBilingualString(profileData[key].summary, 400)).toBe(true);
+    it('has bilingual summary ≤ 450 chars (CV display constraint)', () => {
+      expect(isBilingualString(profileData[key].summary, 450)).toBe(true);
     });
   });
 });

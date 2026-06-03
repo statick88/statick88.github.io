@@ -5,7 +5,7 @@ const profiles = [
   { id: 'developer', icon: '💻', label: 'Full Stack', color: '#3b82f6', desc: 'React/Node.js/Python' },
   { id: 'hacker', icon: '🎯', label: 'Hacker Ético', color: '#ef4444', desc: 'Pentest & RE' },
   { id: 'research', icon: '🔬', label: 'Investigador', color: '#f59e0b', desc: 'MSc Ciberseguridad UCM' },
-  { id: 'curriculista', icon: '📚', label: 'Curriculista', color: '#10b981', desc: 'Docente + Diseño ABP' }
+  { id: 'docente-facilitador', icon: '📚', label: 'Docente Facilitador', color: '#10b981', desc: 'ABP + ADDIE + Cursos' }
 ]
 
 export default function ProfileSelector({ t, activeProfile, setActiveProfile }) {

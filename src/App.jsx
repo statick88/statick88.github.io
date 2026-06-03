@@ -18,7 +18,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('summary')
   const [isLoaded, setIsLoaded] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeProfile, setActiveProfile] = useState({ id: 'curriculista', label: 'Curriculista', color: '#10b981' }) // Perfil seleccionado
+  const [activeProfile, setActiveProfile] = useState({ id: 'developer', label: 'Full Stack', color: '#3b82f6' }) // Perfil por defecto
   const [showNav, setShowNav] = useState(true) // Controlar visibilidad de nav
   const contentRef = useRef(null)
 

@@ -132,10 +132,10 @@ export const profileData = {
     pdf: "cv-research.pdf"
   },
 
-  curriculista: {
+  "docente-facilitador": {
     label: {
-      es: "Curriculista | Docente + Diseño Curricular ABP",
-      en: "Curriculum Designer | Instructor + PBL Curriculum"
+      es: "Docente Facilitador | Generador de Currículos ABP",
+      en: "Teaching Facilitator | ABP Curriculum Generator"
     },
     skills: [
       { name: "Diseño Curricular (ABP / ADDIE)", level: "master", category: "teaching" },
@@ -164,10 +164,10 @@ export const profileData = {
       { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
     ],
     summary: {
-      es: "Docente, Facilitador y Curriculista con 6+ años de experiencia (12+ como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 con promedio 93.4/100. Diseño curricular con metodología ABP/ADDIE. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).",
-      en: "Instructor, Facilitator, and Curriculum Designer with 6+ years (12+ as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Curriculum design with PBL/ADDIE methodology. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.)."
+      es: "Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).",
+      en: "Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.)."
     },
-    pdf: "cv-curriculista.pdf"
+    pdf: "cv-docente-facilitador.pdf"
   }
 }
 
@@ -236,9 +236,10 @@ export const cvData = {
       position: { es: "Profesor de Computación", en: "Computer Science Teacher" },
       url: "https://apc.edu.ec/",
       startDate: "2013-09-01",
+      endDate: "2022-12-31",
       summary: {
-        es: "Profesor de Computación. Más de 12 años formando estudiantes en programación, ofimática avanzada y soporte técnico. Ref: Ing. Rolando Marcelo Rojas Merchán.",
-        en: "Computer Science Teacher. 12+ years training students in programming, advanced office tools, and technical support. Ref: Rolando Marcelo Rojas Merchán, Eng."
+        es: "Profesor de Computación durante 9 años (2013-2022). Formación en programación, ofimática avanzada y soporte técnico. Ref: Ing. Rolando Marcelo Rojas Merchán.",
+        en: "Computer Science Teacher for 9 years (2013-2022). Training in programming, advanced office tools, and technical support. Ref: Rolando Marcelo Rojas Merchán, Eng."
       }
     },
     {
