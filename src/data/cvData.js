@@ -1,4 +1,7 @@
-// Perfiles con habilidades, descripciones y proyectos específicos
+// cvData.js — Diego Medardo Saavedra García
+// Source of truth: ~/Documents/job_applications/core/cv-consolidado.md
+// Last verified: 2026-06-01 (130+ PDF audit, NLM, GitHub, 3 directory audits)
+
 export const profileData = {
   developer: {
     label: {
@@ -17,6 +20,7 @@ export const profileData = {
       { name: "Django", level: "advanced", category: "backend" },
       { name: "FastAPI", level: "advanced", category: "backend" },
       { name: "NestJS", level: "advanced", category: "backend" },
+      { name: "SRI / XAdES", level: "advanced", category: "backend" },
       { name: "Flutter", level: "advanced", category: "mobile" },
       { name: "React Native", level: "advanced", category: "mobile" },
       { name: "Expo SDK 53+", level: "advanced", category: "mobile" },
@@ -37,102 +41,136 @@ export const profileData = {
       { name: "TDD", level: "advanced", category: "architecture" }
     ],
     certifications: [
-      { name: "AWS Solutions Architect", issuer: "Amazon", status: "active" },
-      { name: "Azure Fundamentals", issuer: "Microsoft", status: "active" },
-      { name: "Docker Certified Associate", issuer: "Docker", status: "active" }
+      { name: "Magíster en Cs. y Tec. de la Computación", issuer: "UTPL", status: "active" },
+      { name: "Python for Data Science", issuer: "ABACOM", status: "active" },
+      { name: "Flutter Mobile Development", issuer: "ABACOM", status: "active" },
+      { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
     ],
     summary: {
-      es: "Desarrollador Full Stack con más de 10 años de experiencia en la construcción de aplicaciones empresariales, móviles e inteligentes. Dominio de múltiples stacks tecnológicos (React, Next.js, Python/Django, Node.js, Flutter). Experiencia en arquitecturas modernas (Clean Architecture, SOLID, TDD) y despliegue en cloud (AWS, Azure, Vercel).",
-      en: "Full Stack Developer with 10+ years building enterprise, mobile, and intelligent applications. Mastery of multiple tech stacks (React, Next.js, Python/Django, Node.js, Flutter). Experience in modern architectures (Clean Architecture, SOLID, TDD) and cloud deployment (AWS, Azure, Vercel)."
+      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 100+ repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
+      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 100+ public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
     },
     pdf: "cv-developer.pdf"
   },
+
   hacker: {
     label: {
-      es: "Ethical Hacker | Pentester & Security Researcher",
+      es: "Hacker Ético | Pentester & Security Researcher",
       en: "Ethical Hacker | Pentester & Security Researcher"
     },
     skills: [
-      { name: "Ethical Hacking", level: "master", category: "security" },
-      { name: "Penetration Testing", level: "master", category: "security" },
-      { name: "OWASP Top 10", level: "master", category: "security" },
+      { name: "Ethical Hacking", level: "advanced", category: "security" },
+      { name: "Penetration Testing", level: "advanced", category: "security" },
+      { name: "OWASP Top 10", level: "advanced", category: "security" },
+      { name: "Auditoría de Pentesting", level: "advanced", category: "security" },
+      { name: "Ingeniería Inversa y Explotación", level: "advanced", category: "security" },
+      { name: "Hardware Hacking (OpenWrt)", level: "advanced", category: "security" },
       { name: "Nmap", level: "advanced", category: "security" },
-      { name: "Burp Suite", level: "advanced", category: "security" },
-      { name: "Metasploit", level: "advanced", category: "security" },
-      { name: "Wireshark", level: "advanced", category: "security" },
+      { name: "Metasploit", level: "intermediate", category: "security" },
+      { name: "Burp Suite", level: "intermediate", category: "security" },
+      { name: "Wireshark", level: "intermediate", category: "security" },
       { name: "SQL Injection", level: "advanced", category: "security" },
       { name: "XSS/CSRF", level: "advanced", category: "security" },
-      { name: "Python", level: "advanced", category: "backend" },
       { name: "Bash Scripting", level: "advanced", category: "security" },
       { name: "Linux", level: "master", category: "security" },
-      { name: "Docker", level: "advanced", category: "security" },
-      { name: "CTF", level: "advanced", category: "security" },
-      { name: "Reverse Engineering", level: "intermediate", category: "security" },
-      { name: "Malware Analysis", level: "intermediate", category: "security" },
+      { name: "Kali Linux", level: "advanced", category: "security" },
+      { name: "CTF", level: "intermediate", category: "security" },
       { name: "Network Security", level: "advanced", category: "security" },
       { name: "Web Security", level: "advanced", category: "security" },
       { name: "Cloud Security", level: "intermediate", category: "security" },
-      { name: "Kali Linux", level: "advanced", category: "security" },
-      { name: "Reverse Engineering", level: "advanced", category: "security" },
-      { name: "Malware Analysis", level: "advanced", category: "security" },
-      { name: "Exploit Development", level: "intermediate", category: "security" },
+      { name: "Python", level: "advanced", category: "backend" },
+      { name: "Docker", level: "advanced", category: "devops" },
       { name: "Git", level: "advanced", category: "tools" },
-      { name: "GitHub Actions", level: "intermediate", category: "devops" }
+      { name: "OpenCode + MCP", level: "advanced", category: "tools" }
     ],
     certifications: [
-      { name: "Certified Ethical Hacker (CEH)", issuer: "EC-Council", status: "active" },
-      { name: "Security+", issuer: "CompTIA", status: "active" },
-      { name: "Network+", issuer: "CompTIA", status: "active" },
-      { name: "Linux+", issuer: "CompTIA", status: "active" },
-      { name: "OSCP", issuer: "Offensive Security", status: "in-progress" }
+      { name: "Reverse Engineering & Exploit Development", issuer: "UCM", status: "active" },
+      { name: "Ethical Hacking & Penetration Testing", issuer: "ABACOM", status: "active" },
+      { name: "Fundamentos de Ciberseguridad", issuer: "ABACOM", status: "active" },
+      { name: "MSc Ciberseguridad (en curso)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
     ],
     summary: {
-      es: "Ethical Hacker y Security Researcher con experiencia en penetration testing, análisis de vulnerabilidades y seguridad web. Dominio de herramientas profesionales (Burp Suite, Nmap, Metasploit, Wireshark). Experiencia en CTF y labs de ciberseguridad. Comprometido con la seguridad defensiva y ofensiva.",
-      en: "Ethical Hacker and Security Researcher with experience in penetration testing, vulnerability analysis, and web security. Mastery of professional tools (Burp Suite, Nmap, Metasploit, Wireshark). Experience in CTF and cybersecurity labs. Committed to defensive and offensive security."
+      es: "Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). Auditoría Moodle UCM: 5 hallazgos (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Ciberseguridad UCM en curso.",
+      en: "Ethical Hacker and Security Researcher. Pentesting, IDOR/CVSS, RE/Exploitation (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). UCM Moodle audit: 5 findings (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Cybersecurity UCM in progress."
     },
-    pdf: "cv-cybersecurity.pdf"
+    pdf: "cv-hacker.pdf"
   },
+
   research: {
     label: {
-      es: "Investigador | Research",
-      en: "Researcher | Academic"
+      es: "Investigador | MSc Ciberseguridad UCM",
+      en: "Researcher | MSc Cybersecurity UCM"
     },
     skills: [
-      { name: "Python", level: "master", category: "backend" },
-      { name: "Machine Learning", level: "advanced", category: "ai" },
-      { name: "Data Analysis", level: "advanced", category: "ai" },
-      { name: "Statistical Analysis", level: "advanced", category: "ai" },
-      { name: "LaTeX", level: "master", category: "tools" },
+      { name: "Machine Learning", level: "intermediate", category: "ai" },
+      { name: "Statistical Analysis", level: "intermediate", category: "ai" },
+      { name: "LaTeX", level: "advanced", category: "tools" },
       { name: "Quarto", level: "advanced", category: "tools" },
-      { name: "Jupyter", level: "master", category: "tools" },
-      { name: "Research Methodology", level: "master", category: "research" },
-      { name: "Scientific Writing", level: "master", category: "research" },
-      { name: "Academic Publishing", level: "advanced", category: "research" },
+      { name: "Jupyter", level: "advanced", category: "tools" },
+      { name: "NotebookLM Power-User", level: "master", category: "tools" },
+      { name: "Research Methodology", level: "advanced", category: "research" },
+      { name: "Scientific Writing", level: "advanced", category: "research" },
+      { name: "Academic Publishing", level: "intermediate", category: "research" },
       { name: "Ethical Hacking", level: "advanced", category: "security" },
-      { name: "Penetration Testing", level: "intermediate", category: "security" },
+      { name: "Penetration Testing", level: "advanced", category: "security" },
       { name: "Network Security", level: "advanced", category: "security" },
-      { name: "Docker", level: "intermediate", category: "devops" },
-      { name: "Git", level: "advanced", category: "tools" },
-      { name: "Cybersecurity", level: "advanced", category: "security" },
       { name: "Threat Modeling", level: "advanced", category: "security" },
       { name: "Vulnerability Assessment", level: "advanced", category: "security" },
+      { name: "Python", level: "advanced", category: "backend" },
       { name: "R Language", level: "intermediate", category: "ai" },
       { name: "TensorFlow", level: "intermediate", category: "ai" },
-      { name: "Kali Linux", level: "advanced", category: "security" }
+      { name: "Git", level: "advanced", category: "tools" }
     ],
     certifications: [
-      { name: "Security+", issuer: "CompTIA", status: "active" },
-      { name: "Network+", issuer: "CompTIA", status: "active" }
+      { name: "Magíster en Cs. y Tec. de la Computación", issuer: "UTPL", status: "active" },
+      { name: "MSc Ciberseguridad (en curso)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
     ],
     summary: {
-      es: "Investigador en ciberseguridad con experiencia en análisis de amenazas, modelado de riesgos y publicación académica. Actualmente cursando MSc en Ciberseguridad en la Universidad Complutense de Madrid. Experiencia en写作 científica, análisis estadístico y herramientas de investigación. Participación en conferencias y publicaciones en revistas Q1/Q2.",
-      en: "Cybersecurity researcher with experience in threat analysis, risk modeling, and academic publishing. Currently pursuing MSc in Cybersecurity at Universidad Complutense de Madrid. Experience in scientific writing, statistical analysis, and research tools. Participation in conferences and publications in Q1/Q2 journals."
+      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. Interesado en threat modeling, pentesting y AI security.",
+      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. Interested in threat modeling, pentesting, and AI security."
     },
-    pdf: "cv-researcher.pdf"
+    pdf: "cv-research.pdf"
+  },
+
+  curriculista: {
+    label: {
+      es: "Curriculista | Docente + Diseño Curricular ABP",
+      en: "Curriculum Designer | Instructor + PBL Curriculum"
+    },
+    skills: [
+      { name: "Diseño Curricular (ABP / ADDIE)", level: "master", category: "teaching" },
+      { name: "Python", level: "advanced", category: "backend" },
+      { name: "R Language", level: "intermediate", category: "ai" },
+      { name: "Flutter", level: "advanced", category: "mobile" },
+      { name: "Linux", level: "master", category: "security" },
+      { name: "Ethical Hacking", level: "advanced", category: "security" },
+      { name: "Quarto", level: "advanced", category: "tools" },
+      { name: "LaTeX", level: "advanced", category: "tools" },
+      { name: "NotebookLM Power-User", level: "master", category: "tools" },
+      { name: "Jupyter", level: "advanced", category: "tools" },
+      { name: "OpenCode + MCP", level: "advanced", category: "tools" },
+      { name: "Hardware Hacking (OpenWrt)", level: "advanced", category: "security" }
+    ],
+    certifications: [
+      { name: "Magíster en Cs. y Tec. de la Computación", issuer: "UTPL", status: "active" },
+      { name: "Licenciado en Informática Educativa", issuer: "UNL", status: "active" },
+      { name: "Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)", issuer: "ABACOM", status: "active" },
+      { name: "Imagen de Marca (Branding)", issuer: "ABACOM", status: "active" },
+      { name: "Ethical Hacking & Penetration Testing", issuer: "ABACOM", status: "active" },
+      { name: "Fundamentos de Ciberseguridad", issuer: "ABACOM", status: "active" },
+      { name: "Python for Data Science", issuer: "ABACOM", status: "active" },
+      { name: "R para Análisis Estadístico", issuer: "ABACOM", status: "active" },
+      { name: "Flutter Mobile Development (3 niveles)", issuer: "ABACOM", status: "active" },
+      { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
+    ],
+    summary: {
+      es: "Docente, Facilitador y Curriculista con 6+ años de experiencia (12+ como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 con promedio 93.4/100. Diseño curricular con metodología ABP/ADDIE. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).",
+      en: "Instructor, Facilitator, and Curriculum Designer with 6+ years (12+ as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Curriculum design with PBL/ADDIE methodology. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.)."
+    },
+    pdf: "cv-curriculista.pdf"
   }
 }
 
-// Category colors para habilidades
 export const categoryColors = {
   "frontend-fundamentals": { bg: "bg-blue-500/20", border: "border-blue-500/50", text: "text-blue-400" },
   "frontend-frameworks": { bg: "bg-purple-500/20", border: "border-purple-500/50", text: "text-purple-400" },
@@ -153,8 +191,8 @@ export const cvData = {
   basics: {
     name: "Diego Medardo Saavedra García",
     label: {
-      es: "Ético Hacker e investigador de seguridad con más de 10 años de experiencia en desarrollo full-stack, especializado en pruebas de penetración, evaluación de vulnerabilidades, codificación segura e ingeniería inversa (incluyendo reversing de malware para plataformas móviles y de escritorio). Experiencia en OWASP, análisis de CVE, metodologías de pruebas de penetración y estrategias de defensa. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.",
-      en: "Ethical Hacker and security researcher with 10+ years of experience in full-stack development, specialized in penetration testing, vulnerability assessment, secure coding, and reverse engineering (including malware reversing for mobile and desktop platforms). Expertise in OWASP, CVE analysis, penetration testing methodologies, and defense strategies. Bootcamp and course facilitator in Web Development, Data Science, and Mobile Development."
+      es: "Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 6+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP.",
+      en: "Master's in Computer Science (UTPL). MSc Cybersecurity in progress (UCM). 10+ years in full-stack development, 6+ as university instructor. Specialized in React, Node.js, Python, pentesting, reverse engineering, and PBL curriculum design."
     },
     image: "/me.webp",
     email: "dsaavedra88@gmail.com",
@@ -167,69 +205,91 @@ export const cvData = {
     profiles: [
       { network: "LinkedIn", url: "https://www.linkedin.com/in/diego-saavedra-developer/" },
       { network: "GitHub", url: "https://github.com/statick88" },
-      { network: "X", url: "https://x.com/statick_ds" }
+      { network: "Portfolio", url: "https://statick88.github.io" }
     ]
   },
+
   work: [
     {
-      name: "Abacom",
-      position: { es: "Facilitador", en: "Facilitator" },
+      name: "ABACOM",
+      position: { es: "Docente, Facilitador y Curriculista", en: "Instructor, Facilitator and Curriculum Designer" },
       url: "https://abacom.edu.ec/",
-      startDate: "2022-10-31",
-      summary: { es: "Facilitador de cursos de Desarrollo Web Full Stack.", en: "Facilitator of Full-stack Web Development courses." }
+      startDate: "2021-12-01",
+      summary: {
+        es: "Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA. 200+ horas docentes verificadas con cohorte Python 2026 promedio 93.4/100. Ref: Ing. Kelbi Ramírez Macas.",
+        en: "Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals, and AI courses. 200+ verified teaching hours with 2026 cohort averaging 93.4/100. Ref: Kelbi Ramírez Macas, Eng."
+      }
+    },
+    {
+      name: "ESPE - Universidad de las Fuerzas Armadas",
+      position: { es: "Docente Ocasional Tiempo Completo - DCC", en: "Full-time Professor - Computer Science Dept." },
+      url: "https://www.espe.edu.ec",
+      startDate: "2023-04-01",
+      endDate: "2024-10-31",
+      summary: {
+        es: "Docente del Departamento de Ciencias de la Computación. Asignaturas: Programación, Bases de Datos, Ingeniería de Software. (Sin certificado laboral PDF disponible).",
+        en: "Professor in the Computer Science Department. Courses: Programming, Databases, Software Engineering. (No PDF employment certificate available)."
+      }
+    },
+    {
+      name: "APC - Antonio Peña Celi",
+      position: { es: "Profesor de Computación", en: "Computer Science Teacher" },
+      url: "https://apc.edu.ec/",
+      startDate: "2013-09-01",
+      summary: {
+        es: "Profesor de Computación. Más de 12 años formando estudiantes en programación, ofimática avanzada y soporte técnico. Ref: Ing. Rolando Marcelo Rojas Merchán.",
+        en: "Computer Science Teacher. 12+ years training students in programming, advanced office tools, and technical support. Ref: Rolando Marcelo Rojas Merchán, Eng."
+      }
     },
     {
       name: "Codings Academy",
-      position: { es: "Facilitador de Bootcamps", en: "Bootcamp Facilitator" },
-      url: "http://codingsacademy.com",
-      startDate: "2024-09-01",
+      position: { es: "Facilitador de Bootcamps (Django + React)", en: "Bootcamp Facilitator (Django + React)" },
+      url: "https://codingsacademy.com",
+      startDate: "2024-02-01",
       endDate: "2024-12-31",
-      summary: { es: "Facilitador de Bootcamps de Desarrollo Web Full Stack, Data Science y Móvil.", en: "Facilitator of Full-stack Web Development, Data Science, and Mobile Bootcamps." }
+      summary: {
+        es: "Facilitador de Bootcamps de Desarrollo Web Full Stack con Django y React. Ref: Ing. Jyron Isai Cedeño Chavez, MSc.",
+        en: "Facilitator of Full-stack Web Development Bootcamps with Django and React. Ref: Jyron Isai Cedeño Chavez, MSc Eng."
+      }
     },
     {
-      name: "Universidad de Zulia",
-      position: { es: "Profesor - Diplomado en IA", en: "Professor - AI Diploma" },
-      url: "https://www.luz.edu.ve/",
-      startDate: "2024-10-19",
-      endDate: "2024-12-15",
-      summary: { es: "Diplomado en Inteligencia Artificial aplicada a la Educación.", en: "Diploma in Artificial Intelligence applied to Education." }
-    },
-    {
-      name: "Universidad ESPE",
-      position: { es: "Docente Ocasional Tiempo Completo", en: "Full-time Professor" },
-      url: "https://www.espe.edu.ec",
-      startDate: "2023-04-26",
-      endDate: "2024-10-31",
-      summary: { es: "Docente del Departamento de Ciencias de la Computación.", en: "Professor in the Computer Science Department." }
-    },
-    {
-      name: "Universidad UIDEM",
-      position: { es: "Docente Ocasional Tiempo Completo", en: "Full-time Professor" },
-      url: "https://www.uide.edu.ec/",
-      startDate: "2022-10-31",
-      endDate: "2022-12-31",
-      summary: { es: "Docente de la carrera de Tecnologías de la Información.", en: "Professor of Information Technology career." }
-    },
-    {
-      name: "Instituto Juan Montalvo",
-      position: { es: "Docente Ocasional Tiempo Completo", en: "Full-time Professor" },
+      name: "Instituto Superior Tecnológico Juan Montalvo",
+      position: { es: "Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo", en: "Associate Professor - Computer Assembly & Maintenance Career" },
       url: "https://istjm.edu.ec/",
-      startDate: "2019-10-31",
-      endDate: "2022-10-31",
-      summary: { es: "Docente de Tecnología en Mantenimiento de Computadoras.", en: "Professor of Computer Maintenance Technology." }
+      startDate: "2020-10-01",
+      endDate: "2022-03-31",
+      summary: {
+        es: "Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coord. Talento Humano, CI 1103882955).",
+        en: "Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, ID 1103882955)."
+      }
+    },
+    {
+      name: "UIDE - Universidad Internacional del Ecuador (Ext. Loja)",
+      position: { es: "Docente Ocasional - TTI", en: "Adjunct Professor - IT Career" },
+      url: "https://www.uide.edu.ec/",
+      startDate: "2022-10-01",
+      endDate: "2022-12-31",
+      summary: {
+        es: "Docente de la carrera de Tecnologías de la Información. (Sin certificado laboral PDF disponible).",
+        en: "Professor of Information Technologies career. (No PDF employment certificate available)."
+      }
     }
   ],
+
   education: [
     {
       institution: "Universidad Complutense de Madrid",
-      area: { es: "Máster en Ciberseguridad Defensiva y Ofensiva", en: "Master's in Cybersecurity" },
+      area: { es: "Máster en Ciberseguridad Defensiva y Ofensiva", en: "Master's in Defensive and Offensive Cybersecurity" },
+      url: "https://www.ucm.es/",
       startDate: "2026-02-01",
       endDate: "2027-12-31",
-      studyType: "Master"
+      studyType: "Master",
+      score: "En curso"
     },
     {
       institution: "Universidad Técnica Particular de Loja",
-      area: { es: "Maestría en Ciencias y Tecnologías de la Computación", en: "Master's in Computer Science" },
+      area: { es: "Maestría en Ciencias y Tecnologías de la Computación", en: "Master's in Computer Science and Technologies" },
+      url: "https://www.utpl.edu.ec/",
       startDate: "2018-09-01",
       endDate: "2021-02-28",
       studyType: "Master",
@@ -238,136 +298,206 @@ export const cvData = {
     {
       institution: "Universidad Nacional de Loja",
       area: { es: "Licenciatura en Informática Educativa", en: "Bachelor's in Educational Computing" },
+      url: "https://unl.edu.ec/",
       startDate: "2007-09-01",
       endDate: "2011-02-28",
       studyType: "Bachelor",
       score: "4.0"
     }
   ],
-skills: [
-     { name: "HTML", level: "master" },
-     { name: "CSS", level: "master" },
-     { name: "JavaScript", level: "master" },
-     { name: "TypeScript", level: "advanced" },
-     { name: "React", level: "advanced" },
-     { name: "Next.js", level: "advanced" },
-     { name: "Node.js", level: "advanced" },
-     { name: "Python", level: "advanced" },
-     { name: "Django", level: "advanced" },
-     { name: "FastAPI", level: "advanced" },
-     { name: "Flutter", level: "advanced" },
-     { name: "Angular", level: "advanced" },
-     { name: "Docker", level: "advanced" },
-     { name: "Kubernetes", level: "advanced" },
-     { name: "MySQL", level: "advanced" },
-     { name: "MongoDB", level: "advanced" },
-     { name: "NestJS", level: "advanced" },
-     { name: "Vue", level: "intermediate" },
-     { name: "Svelte", level: "intermediate" },
-     { name: "AWS", level: "intermediate" },
-     { name: "Azure", level: "intermediate" },
-     { name: "PostgreSQL", level: "intermediate" },
-     { name: "Reverse Engineering", level: "advanced" }
-   ],
+
+  skills: [
+    { name: "HTML", level: "master", category: "frontend-fundamentals" },
+    { name: "CSS", level: "master", category: "frontend-fundamentals" },
+    { name: "JavaScript", level: "master", category: "frontend-fundamentals" },
+    { name: "TypeScript", level: "advanced", category: "frontend-frameworks" },
+    { name: "React", level: "advanced", category: "frontend-frameworks" },
+    { name: "Next.js", level: "advanced", category: "frontend-frameworks" },
+    { name: "Vue", level: "intermediate", category: "frontend-frameworks" },
+    { name: "Svelte", level: "intermediate", category: "frontend-frameworks" },
+    { name: "Angular", level: "intermediate", category: "frontend-frameworks" },
+    { name: "Node.js", level: "advanced", category: "backend" },
+    { name: "Python", level: "advanced", category: "backend" },
+    { name: "Django", level: "advanced", category: "backend" },
+    { name: "FastAPI", level: "advanced", category: "backend" },
+    { name: "NestJS", level: "advanced", category: "backend" },
+    { name: "SRI / XAdES", level: "advanced", category: "backend" },
+    { name: "Flutter", level: "advanced", category: "mobile" },
+    { name: "React Native", level: "advanced", category: "mobile" },
+    { name: "Expo SDK 53+", level: "advanced", category: "mobile" },
+    { name: "Swift (iOS)", level: "intermediate", category: "mobile-native" },
+    { name: "Kotlin (Android)", level: "intermediate", category: "mobile-native" },
+    { name: "Docker", level: "advanced", category: "devops" },
+    { name: "Kubernetes", level: "intermediate", category: "devops" },
+    { name: "AWS", level: "intermediate", category: "devops" },
+    { name: "Azure", level: "intermediate", category: "devops" },
+    { name: "GitHub Actions", level: "intermediate", category: "devops" },
+    { name: "MySQL", level: "advanced", category: "databases" },
+    { name: "MongoDB", level: "advanced", category: "databases" },
+    { name: "PostgreSQL", level: "advanced", category: "databases" },
+    { name: "Clean Architecture", level: "advanced", category: "architecture" },
+    { name: "SOLID", level: "advanced", category: "architecture" },
+    { name: "TDD", level: "advanced", category: "architecture" },
+    { name: "Ethical Hacking", level: "advanced", category: "security" },
+    { name: "Penetration Testing", level: "advanced", category: "security" },
+    { name: "OWASP Top 10", level: "advanced", category: "security" },
+    { name: "Auditoría de Pentesting", level: "advanced", category: "security" },
+    { name: "Ingeniería Inversa y Explotación", level: "advanced", category: "security" },
+    { name: "Hardware Hacking (OpenWrt)", level: "advanced", category: "security" },
+    { name: "Bash Scripting", level: "advanced", category: "security" },
+    { name: "Linux", level: "master", category: "security" },
+    { name: "Kali Linux", level: "advanced", category: "security" },
+    { name: "Metasploit", level: "intermediate", category: "security" },
+    { name: "Burp Suite", level: "intermediate", category: "security" },
+    { name: "Nmap", level: "advanced", category: "security" },
+    { name: "Wireshark", level: "intermediate", category: "security" },
+    { name: "Machine Learning", level: "intermediate", category: "ai" },
+    { name: "TensorFlow", level: "intermediate", category: "ai" },
+    { name: "R Language", level: "intermediate", category: "ai" },
+    { name: "Git", level: "advanced", category: "tools" },
+    { name: "NotebookLM Power-User", level: "master", category: "tools" },
+    { name: "OpenCode + MCP", level: "advanced", category: "tools" },
+    { name: "Quarto", level: "advanced", category: "tools" },
+    { name: "Jupyter", level: "advanced", category: "tools" },
+    { name: "LaTeX", level: "advanced", category: "tools" },
+    { name: "Diseño Curricular (ABP / ADDIE)", level: "master", category: "teaching" }
+  ],
+
   softSkills: [
     { es: "Resolución de Problemas", en: "Problem Solving" },
     { es: "Trabajo en Equipo", en: "Teamwork" },
     { es: "Comunicación", en: "Communication" },
     { es: "Adaptabilidad", en: "Adaptability" },
     { es: "Gestión del Tiempo", en: "Time Management" },
-    { es: "Liderazgo", en: "Leadership" }
+    { es: "Liderazgo", en: "Leadership" },
+    { es: "Mentoría", en: "Mentoring" }
   ],
+
   languages: [
     { language: "Español", fluency: { es: "Nativo", en: "Native" } },
     { language: "Inglés", fluency: { es: "Avanzado", en: "Advanced" } },
     { language: "Italiano", fluency: { es: "Básico", en: "Basic" } },
     { language: "Portugués", fluency: { es: "Básico", en: "Basic" } }
   ],
+
   projects: [
     {
-      name: "Saavedra Construction",
+      name: "open-api-facturacion-sri",
       description: {
-        es: "Sitio web empresarial para empresa de construcción.",
-        en: "Business website for construction company."
+        es: "API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.",
+        en: "REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission."
       },
       highlights: {
-        es: ["Clean Architecture", "Next.js 15", "React 19", "Tailwind CSS 4"],
-        en: ["Clean Architecture", "Next.js 15", "React 19", "Tailwind CSS 4"]
+        es: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"],
+        en: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"]
       },
-      url: "https://saavedra-construction.com",
-      github: "https://github.com/statick88/saavedra-construction"
+      github: "https://github.com/statick88/open-api-facturacion-sri"
     },
     {
-      name: "Sistema de Predicción de Precios Inmobiliarios",
+      name: "multi-agent-system",
       description: {
-        es: "ML para predicción de precios inmobiliarios.",
-        en: "ML for real estate price prediction."
+        es: "Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.",
+        en: "Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects."
       },
       highlights: {
-        es: ["Python", "Scikit-learn", "FastAPI", "92% accuracy"],
-        en: ["Python", "Scikit-learn", "FastAPI", "92% accuracy"]
+        es: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"],
+        en: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"]
       },
-      github: "https://github.com/statick88/real-estate-prediction"
+      github: "https://github.com/statick88/multi-agent-system"
     },
     {
-      name: "App de Gestión Financiera",
+      name: "material-educativo-unl",
       description: {
-        es: "App móvil híbrida para finanzas personales.",
-        en: "Hybrid mobile app for personal finance."
+        es: "Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica.",
+        en: "Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics."
       },
       highlights: {
-        es: ["Flutter", "Firebase", "10,000+ downloads"],
-        en: ["Flutter", "Firebase", "10,000+ downloads"]
+        es: ["Quarto", "ABP", "Open Educational Resources", "UNL"],
+        en: ["Quarto", "PBL", "Open Educational Resources", "UNL"]
       },
-      github: "https://github.com/statick88/finance-app-flutter"
+      github: "https://github.com/statick88/material-educativo-unl"
     },
     {
-      name: "E-Commerce Marketplace",
+      name: "UCM-Moodle-Pentest",
       description: {
-        es: "Plataforma multi-vendedor con Django y React.",
-        en: "Multi-vendor e-commerce platform."
+        es: "Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl.",
+        en: "Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl."
       },
       highlights: {
-        es: ["Django", "React", "Stripe", "PostgreSQL"],
-        en: ["Django", "React", "Stripe", "PostgreSQL"]
+        es: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"],
+        en: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"]
       },
-      github: "https://github.com/statick88/marketplace-django"
+      github: "https://github.com/statick88/ucm-moodle-pentest"
     },
     {
-      name: "Scanner de Vulnerabilidades Web",
+      name: "OpenWrt-Hardware-Hacking",
       description: {
-        es: "Herramienta de ciberseguridad para OWASP Top 10.",
-        en: "Cybersecurity tool for OWASP Top 10."
+        es: "Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM.",
+        en: "Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project."
       },
       highlights: {
-        es: ["Python", "OWASP", "CI/CD", "PDF Reports"],
-        en: ["Python", "OWASP", "CI/CD", "PDF Reports"]
+        es: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"],
+        en: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"]
       },
-      github: "https://github.com/statick88/vulnerability-scanner"
+      github: "https://github.com/statick88/openwrt-hardware-hacking"
     },
     {
-      name: "Sistema de Gestión Académica",
+      name: "ms08-067-metasploit-demo",
       description: {
-        es: "Sistema web para gestión universitaria.",
-        en: "University management web system."
+        es: "Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso.",
+        en: "Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation."
       },
       highlights: {
-        es: ["Angular", "NestJS", "MySQL", "5,000+ students"],
-        en: ["Angular", "NestJS", "MySQL", "5,000+ students"]
+        es: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"],
+        en: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"]
       },
-      github: "https://github.com/statick88/academic-management"
+      github: "https://github.com/statick88/ms08-067-metasploit-demo"
     }
   ],
-   certifications: [
-     { name: "Certified Ethical Hacker", issuer: "EC-Council", status: "active" },
-     { name: "Security+", issuer: "CompTIA", status: "active" },
-     { name: "Network+", issuer: "CompTIA", status: "active" },
-     { name: "Linux+", issuer: "CompTIA", status: "active" },
-     { name: "Azure Fundamentals", issuer: "Microsoft", status: "active" },
-     { name: "OSCP", issuer: "Offensive Security", status: "in-progress" },
-     { name: "Título de Maestría en Ciberseguridad", issuer: "Universidad Complutense de Madrid", status: "active" },
-     { name: "Certificate as Reviewer", issuer: "VIIT-CIT-2024 International Congress", status: "active" },
-     { name: "Estrategias de atención educativa inclusiva", issuer: "Consejo de Educación Superior Ecuador", status: "active" },
-     { name: "Fundamentos de Marketing Digital", issuer: "Google Activate", status: "active" }
-   ]
+
+  certifications: [
+    { name: "Magíster en Cs. y Tec. de la Computación", issuer: "UTPL", status: "active" },
+    { name: "Licenciado en Informática Educativa", issuer: "UNL", status: "active" },
+    { name: "Reverse Engineering & Exploit Development", issuer: "UCM", status: "active" },
+    { name: "Ethical Hacking & Penetration Testing", issuer: "ABACOM", status: "active" },
+    { name: "Linux Server Administration", issuer: "ABACOM", status: "active" },
+    { name: "Python for Data Science", issuer: "ABACOM", status: "active" },
+    { name: "R para Análisis Estadístico", issuer: "ABACOM", status: "active" },
+    { name: "Flutter Mobile Development (3 niveles)", issuer: "ABACOM", status: "active" },
+    { name: "Fundamentos de Ciberseguridad", issuer: "ABACOM", status: "active" },
+    { name: "Imagen de Marca (Branding)", issuer: "ABACOM", status: "active" },
+    { name: "Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)", issuer: "ABACOM", status: "active" },
+    { name: "MSc Ciberseguridad (en curso, 2026-2027)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
+  ],
+
+  metrics: {
+    abacomCohorte2026: {
+      value: "93.4",
+      unit: "/100",
+      label_es: "Promedio cohorte Python 2026",
+      label_en: "Python 2026 cohort avg",
+      source: "Docente Cuantitativa Evaluation.pdf"
+    },
+    githubRepos: {
+      value: "100+",
+      unit: "",
+      label_es: "Repositorios públicos en GitHub",
+      label_en: "Public GitHub repos",
+      source: "github.com/statick88"
+    },
+    nlmNotebooks: {
+      value: "55 / 898",
+      unit: "",
+      label_es: "Notebooks / sources en NotebookLM",
+      label_en: "Notebooks / sources in NotebookLM",
+      source: "nlm --version (v0.6.8)"
+    },
+    certificationsCount: {
+      value: "134+",
+      unit: "",
+      label_es: "Certificaciones categorizadas",
+      label_en: "Categorized certifications",
+      source: "~/Documents/Certificados/"
+    }
+  }
 }
