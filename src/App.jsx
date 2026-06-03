@@ -11,6 +11,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Certifications from './components/Certifications'
 import Metrics from './components/Metrics'
+import Courses from './components/Courses'
 
 function App() {
   const [language, setLanguage] = useState('es')
@@ -90,7 +91,8 @@ function App() {
     { id: 'education', label: t('Educación', 'Education'), icon: '🎓', aria: t('Ir a Educación', 'Go to Education') },
     { id: 'skills', label: t('Habilidades', 'Skills'), icon: '⚡', aria: t('Ir a Habilidades', 'Go to Skills') },
     { id: 'projects', label: t('Proyectos', 'Projects'), icon: '🚀', aria: t('Ir a Proyectos', 'Go to Projects') },
-    { id: 'certifications', label: t('Certificaciones', 'Certifications'), icon: '🏆', aria: t('Ir a Certificaciones', 'Go to Certifications') }
+    { id: 'certifications', label: t('Certificaciones', 'Certifications'), icon: '🏆', aria: t('Ir a Certificaciones', 'Go to Certifications') },
+    { id: 'courses', label: t('Cursos', 'Courses'), icon: '📖', aria: t('Ir a Cursos', 'Go to Courses') }
   ]
 
    // Keyboard navigation handler - currently unused but kept for future implementation
@@ -494,6 +496,13 @@ function App() {
             <div id="certifications" className="mt-8">
               <Section title={t('Certificaciones', 'Certifications')}>
                 <Certifications certifications={cvData.certifications} t={t} />
+              </Section>
+            </div>
+
+            {/* Courses */}
+            <div id="courses" className="mt-8">
+              <Section title={t('Cursos Publicados', 'Published Courses')}>
+                <Courses t={t} />
               </Section>
             </div>
           </motion.div>
