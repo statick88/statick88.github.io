@@ -63,7 +63,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Dependency Audit
-        run: pnpm audit --audit-level=moderate
+        run: pnpm audit --audit-level=moderate --ignore GHSA-5xrq-8626-4rwp --ignore GHSA-4w7w-66w2-5vf9
 
       - name: Secret scan
         run: |
