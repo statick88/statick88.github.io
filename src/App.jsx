@@ -402,17 +402,17 @@ function App() {
                      >
                        {activeProfile.icon} {activeProfile.label}
                      </span>
-                     {/* PDF Download Buttons */}
-                     <div className="flex gap-2">
-                       <a 
-                         href={`/cv-${activeProfile.id}-${language === 'es' ? 'es' : 'en'}.pdf`}
-                         download={`CV_Diego_Saavedra_${activeProfile.label.replace(/\s+/g, '_')}_${language === 'es' ? 'ES' : 'EN'}.pdf`}
-                         className="px-2 py-1 rounded border border-white/20 text-xs font-medium hover:bg-white/10 transition-all duration-200"
-                         aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
-                       >
-                         📄
-                       </a>
-                     </div>
+                      {/* PDF Download Buttons */}
+                      <div className="flex gap-2">
+                        <a 
+                          href={`/cv-${language === 'es' ? 'es' : 'en'}.pdf`}
+                          download={`CV_Diego_Saavedra_${language === 'es' ? 'ES' : 'EN'}.pdf`}
+                          className="px-2 py-1 rounded border border-white/20 text-xs font-medium hover:bg-white/10 transition-all duration-200"
+                          aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
+                        >
+                          📄
+                        </a>
+                      </div>
                    </div>
                  )}
                 
