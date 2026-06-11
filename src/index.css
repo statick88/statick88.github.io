@@ -28,7 +28,7 @@ html {
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: linear-gradient(180deg, #0a0a0f 0%, #050508 100%);
-  color: #a0a0b0;
+  color: #b0b0c0;
   min-height: 100vh;
   line-height: 1.6;
 }
@@ -40,19 +40,45 @@ body {
 }
 
 /* Focus states - Accessibility */
+/* Keep native focus for keyboard users, enhance with visible ring */
 :focus {
   outline: none;
 }
 
+/* Ensure focus-visible works for keyboard navigation */
 :focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.6);
+  outline: 2px solid rgba(0, 255, 255, 0.8);
   outline-offset: 2px;
+  border-radius: 4px;
 }
 
 button:focus-visible,
 a:focus-visible,
-input:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.6);
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link - Accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00ffff;
+  color: #0a0a0f;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  z-index: 9999;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #00cc33;
   outline-offset: 2px;
 }
 
@@ -230,10 +256,21 @@ img[loading="lazy"].loaded {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
   
   html {
     scroll-behavior: auto;
+  }
+  
+  /* Disable particles animation entirely */
+  .particles {
+    display: none;
+  }
+  
+  /* Disable hover transforms */
+  .hover-glow:hover {
+    transform: none;
   }
 }
 

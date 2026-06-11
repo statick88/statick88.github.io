@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion'
 import { cvData, profileData } from './data/cvData'
 import Particles from './components/Particles'
 import LanguageToggle from './components/LanguageToggle'
@@ -13,6 +13,7 @@ import Certifications from './components/Certifications'
 import Metrics from './components/Metrics'
 import Courses from './components/Courses'
 import Research from './components/Research'
+import HireMe from './components/HireMe'
 
 function App() {
   const [language, setLanguage] = useState('es')
@@ -65,7 +66,7 @@ function App() {
 
   // Handle scroll spy for navigation
   useEffect(() => {
-    const sections = ['summary', 'experience', 'education', 'skills', 'projects', 'certifications']
+    const sections = ['summary', 'experience', 'education', 'skills', 'projects', 'certifications', 'hire']
     
     const observer = new IntersectionObserver(
       (entries) => {
@@ -94,7 +95,8 @@ function App() {
     { id: 'projects', label: t('Proyectos', 'Projects'), icon: '🚀', aria: t('Ir a Proyectos', 'Go to Projects') },
     { id: 'certifications', label: t('Certificaciones', 'Certifications'), icon: '🏆', aria: t('Ir a Certificaciones', 'Go to Certifications') },
     { id: 'courses', label: t('Cursos', 'Courses'), icon: '📖', aria: t('Ir a Cursos', 'Go to Courses') },
-    { id: 'research', label: t('Investigación', 'Research'), icon: '🔬', aria: t('Ir a Investigación', 'Go to Research') }
+    { id: 'research', label: t('Investigación', 'Research'), icon: '🔬', aria: t('Ir a Investigación', 'Go to Research') },
+    { id: 'hire', label: t('Contáctame', 'Contact Me'), icon: '🎯', aria: t('Ir a Servicios', 'Go to Services') }
   ]
 
    // Keyboard navigation handler - currently unused but kept for future implementation
@@ -106,9 +108,15 @@ function App() {
    // }
 
   return (
-    <div className="min-h-screen relative">
-      {/* Particles Background */}
-      <Particles />
+    <LazyMotion features={domAnimation} strict>
+      <div className="min-h-screen relative">
+        {/* Skip to main content - Accessibility */}
+        <a href="#main-content" className="skip-link">
+          {t('Saltar al contenido principal', 'Skip to main content')}
+        </a>
+
+        {/* Particles Background */}
+        <Particles />
 
        {/* Controls */}
        <div className="fixed top-4 right-4 z-50 flex gap-2 no-print">
@@ -148,6 +156,7 @@ function App() {
 
       {/* Main Content */}
       <main 
+        id="main-content"
         ref={contentRef}
         className={`relative z-10 max-w-4xl mx-auto px-4 py-8 transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
       >
@@ -514,6 +523,13 @@ function App() {
                 <Research />
               </Section>
             </div>
+
+            {/* Hire Me / Services */}
+            <div id="hire" className="mt-8">
+              <Section title={t('Servicios & Contacto', 'Services & Contact')}>
+                <HireMe t={t} />
+              </Section>
+            </div>
           </motion.div>
         </AnimatePresence>
 
@@ -526,10 +542,25 @@ function App() {
         >
           <p className="text-lg text-white mb-2">© {new Date().getFullYear()} {cvData.basics.name}</p>
           <p className="text-sm">{t('Desarrollador Full Stack & Facilitador', 'Full Stack Developer & Facilitator')}</p>
-          <p className="text-xs mt-4 text-gray-600">Loja, Ecuador</p>
+          <div className="mt-6">
+            <a
+              href={cvData.contact?.whatsapp || 'https://wa.me/593980192790'}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('Contactar por WhatsApp', 'Contact via WhatsApp')}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              {t('¿Hablamos? Contáctame', "Let's talk? Contact me")}
+            </a>
+          </div>
+          <p className="text-xs mt-4 text-gray-600">Loja, Ecuador • {t('100% Remoto', '100% Remote')}</p>
         </motion.footer>
       </main>
     </div>
+    </LazyMotion>
   )
 }
 

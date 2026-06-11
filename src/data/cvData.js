@@ -500,5 +500,87 @@ export const cvData = {
       label_en: "Categorized certifications",
       source: "~/Documents/Certificados/"
     }
+  },
+
+  // Services data — for HireMe / Contact section
+  services: [
+    {
+      id: 'fullstack',
+      icon: 'code',
+      title: { es: 'Desarrollo FullStack', en: 'FullStack Development' },
+      description: {
+        es: 'Aplicaciones web y móviles de producción con arquitectura sólida, tests, y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL.',
+        en: 'Production-grade web and mobile applications with solid architecture, tests, and documentation. React, Next.js, Flutter, Node.js, Python, PostgreSQL.'
+      },
+      formats: {
+        es: ['Por proyecto', 'Por horas', 'Medio tiempo'],
+        en: ['Per project', 'Hourly', 'Part-time']
+      },
+      priceRange: '$25-50/hora',
+      color: '#3b82f6'
+    },
+    {
+      id: 'security',
+      icon: 'shield',
+      title: { es: 'Auditoría de Seguridad', en: 'Security Audit' },
+      description: {
+        es: 'Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring, y recomendaciones de remediación.',
+        en: 'Web and mobile application pentesting. OWASP Top 10 vulnerability identification, CVSS-scored reports, and remediation recommendations.'
+      },
+      formats: {
+        es: ['Por proyecto', 'Retainer mensual'],
+        en: ['Per project', 'Monthly retainer']
+      },
+      priceRange: '$500-3000/proyecto',
+      color: '#ef4444'
+    },
+    {
+      id: 'consulting',
+      icon: 'target',
+      title: { es: 'Consultoría Técnica', en: 'Technical Consulting' },
+      description: {
+        es: 'CTO Fractional: arquitectura de software, code review, mentoring de equipos, y toma de decisiones técnicas estratégicas.',
+        en: 'Fractional CTO: software architecture, code review, team mentoring, and strategic technical decision-making.'
+      },
+      formats: {
+        es: ['Medio tiempo', 'Por horas', 'Retainer'],
+        en: ['Part-time', 'Hourly', 'Retainer']
+      },
+      priceRange: '$20-40/hora',
+      color: '#8b5cf6'
+    },
+    {
+      id: 'training',
+      icon: 'book',
+      title: { es: 'Capacitación & Cursos', en: 'Training & Courses' },
+      description: {
+        es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad, y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM.',
+        en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM.'
+      },
+      formats: {
+        es: ['Por hora', 'Por curso', 'Workshop'],
+        en: ['Hourly', 'Per course', 'Workshop']
+      },
+      priceRange: '$30-60/hora',
+      color: '#10b981'
+    }
+  ],
+
+  // Contact CTAs
+  contact: {
+    email: 'dsaavedra88@gmail.com',
+    phone: '+593 98 019 2790',
+    whatsapp: 'https://wa.me/593980192790',
+    linkedin: 'https://linkedin.com/in/dsaavedra88',
+    github: 'https://github.com/statick88',
+    calendar: '', // Add Calendly or similar if available
+    tagline: {
+      es: '¿Listo para llevar tu proyecto al siguiente nivel? Hablemos.',
+      en: 'Ready to take your project to the next level? Let\'s talk.'
+    },
+    cta: {
+      es: 'Agendar Llamada Gratuita',
+      en: 'Schedule Free Call'
+    }
   }
 }
