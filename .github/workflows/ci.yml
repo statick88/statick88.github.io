@@ -115,10 +115,10 @@ jobs:
 
       - name: Verify bundle size
         run: |
-          SIZE=$(stat -c%s dist/assets/index-*.js 2>/dev/null | head -1)
-          echo "Bundle size: ${SIZE} bytes"
-          if [ "$SIZE" -gt 500000 ]; then
-            echo "::warning::Bundle exceeds 500KB"
+          MAIN_SIZE=$(stat -c%s dist/assets/index-*.js 2>/dev/null | sort -n | tail -1)
+          echo "Main bundle size: ${MAIN_SIZE} bytes"
+          if [ "$MAIN_SIZE" -gt 500000 ]; then
+            echo "::warning::Main bundle exceeds 500KB"
           fi
 
   # === DEPLOY (only on main) ===
