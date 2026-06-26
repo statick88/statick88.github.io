@@ -5,6 +5,7 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  workflow_dispatch: {}
 
 jobs:
   # === QA GATE ===
@@ -99,6 +100,14 @@ jobs:
           ls -la dist/
           ls -la dist/assets/
 
+      - name: Verify _headers in dist
+        run: |
+          test -f dist/_headers || (echo "::error::dist/_headers missing" && exit 1)
+          grep -q "frame-ancestors 'none'" dist/_headers || (echo "::error::frame-ancestors missing" && exit 1)
+          ! grep -q "strict-dynamic" dist/_headers || (echo "::error::strict-dynamic found" && exit 1)
+          grep -q "X-Frame-Options: DENY" dist/_headers || (echo "::error::X-Frame-Options missing" && exit 1)
+          echo "✅ dist/_headers validation passed"
+
       - name: Generate CV variants (8 PDFs expected)
         run: |
           node generate-cv-markdown.js
@@ -162,3 +171,52 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # === VERIFY HEADERS IN PRODUCTION ===
+  verify-headers:
+    needs: deploy
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for CDN propagation
+        run: sleep 45
+
+      - name: Verify CSP headers in production
+        run: |
+          CSP=$(curl -sI https://statick88.github.io/ | grep -i "content-security-policy" | head -1)
+          echo "CSP Header: $CSP"
+          echo "$CSP" | grep -q "strict-dynamic" && { echo "::error::strict-dynamic found in production CSP"; exit 1; } || echo "✅ No strict-dynamic"
+          echo "$CSP" | grep -q "frame-ancestors 'none'" || { echo "::error::frame-ancestors 'none' missing"; exit 1; }
+          echo "✅ frame-ancestors 'none' present"
+
+      - name: Verify X-Frame-Options in production
+        run: |
+          XFO=$(curl -sI https://statick88.github.io/ | grep -i "x-frame-options" | head -1)
+          echo "X-Frame-Options: $XFO"
+          echo "$XFO" | grep -qi "deny" || { echo "::error::X-Frame-Options not DENY"; exit 1; }
+          echo "✅ X-Frame-Options: DENY"
+
+      - name: Verify Cache-Control for HTML
+        run: |
+          CC=$(curl -sI https://statick88.github.io/ | grep -i "cache-control" | head -1)
+          echo "Cache-Control: $CC"
+          echo "$CC" | grep -qi "no-cache\|must-revalidate" || { echo "::warning::Cache-Control could be stricter for HTML"; }
+
+      - name: Verify security headers
+        run: |
+          HEADERS=$(curl -sI https://statick88.github.io/)
+          echo "$HEADERS" | grep -qi "x-content-type-options: nosniff" && echo "✅ X-Content-Type-Options: nosniff" || echo "::warning::X-Content-Type-Options missing"
+          echo "$HEADERS" | grep -qi "referrer-policy:" && echo "✅ Referrer-Policy present" || echo "::warning::Referrer-Policy missing"
+          echo "$HEADERS" | grep -qi "permissions-policy:" && echo "✅ Permissions-Policy present" || echo "::warning::Permissions-Policy missing"
+
+  # === CSP VIOLATION REPORT ENDPOINT (simulated) ===
+  csp-monitor:
+    needs: deploy
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log CSP monitoring endpoint
+        run: |
+          echo "CSP violations would be reported to: https://statick88.github.io/api/csp-report"
+          echo "Configure CSP report-uri in _headers to enable monitoring"
+          echo "Example: Content-Security-Policy: ...; report-uri /api/csp-report"
