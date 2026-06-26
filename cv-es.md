@@ -2,7 +2,7 @@
 
 ## Resumen Profesional
 
-Ético Hacker e investigador de seguridad con más de 10 años de experiencia en desarrollo full-stack, especializado en pruebas de penetración, evaluación de vulnerabilidades, codificación segura e ingeniería inversa (incluyendo reversing de malware para plataformas móviles y de escritorio). Experiencia en OWASP, análisis de CVE, metodologías de pruebas de penetración y estrategias de defensa. Facilitador de bootcamps y cursos en Desarrollo Web, Data Science y Desarrollo Móvil.
+Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 6+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP.
 
 ### Información de Contacto
 
@@ -12,57 +12,58 @@
 - **Perfiles:**
   - [LinkedIn](https://www.linkedin.com/in/diego-saavedra-developer/)
   - [GitHub](https://github.com/statick88)
-  - [X](https://x.com/statick_ds)
+  - [Portfolio](https://statick88.github.io)
 
 ## Experiencia Laboral
 
-### Facilitador at Abacom
+### Docente, Facilitador y Curriculista at ABACOM
 https://abacom.edu.ec/
 
-2022-10-31 Presente
+2021-12-01 Presente
 
-Facilitador de cursos de Desarrollo Web Full Stack.
+Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA. 200+ horas docentes verificadas con cohorte Python 2026 promedio 93.4/100. Ref: Ing. Kelbi Ramírez Macas.
 
-### Facilitador de Bootcamps at Codings Academy
-http://codingsacademy.com
-
-2024-09-01 - 2024-12-31
-
-Facilitador de Bootcamps de Desarrollo Web Full Stack, Data Science y Móvil.
-
-### Profesor - Diplomado en IA at Universidad de Zulia
-https://www.luz.edu.ve/
-
-2024-10-19 - 2024-12-15
-
-Diplomado en Inteligencia Artificial aplicada a la Educación.
-
-### Docente Ocasional Tiempo Completo at Universidad ESPE
+### Docente Ocasional Tiempo Completo - DCC at ESPE - Universidad de las Fuerzas Armadas
 https://www.espe.edu.ec
 
-2023-04-26 - 2024-10-31
+2023-04-01 - 2024-10-31
 
-Docente del Departamento de Ciencias de la Computación.
+Docente del Departamento de Ciencias de la Computación. Asignaturas: Programación, Bases de Datos, Ingeniería de Software. (Sin certificado laboral PDF disponible).
 
-### Docente Ocasional Tiempo Completo at Universidad UIDEM
-https://www.uide.edu.ec/
+### Profesor de Computación at APC - Antonio Peña Celi
+https://apc.edu.ec/
 
-2022-10-31 - 2022-12-31
+2013-09-01 - 2022-12-31
 
-Docente de la carrera de Tecnologías de la Información.
+Profesor de Computación durante 9 años (2013-2022). Formación en programación, ofimática avanzada y soporte técnico. Ref: Ing. Rolando Marcelo Rojas Merchán.
 
-### Docente Ocasional Tiempo Completo at Instituto Juan Montalvo
+### Facilitador de Bootcamps (Django + React) at Codings Academy
+https://codingsacademy.com
+
+2024-02-01 - 2024-12-31
+
+Facilitador de Bootcamps de Desarrollo Web Full Stack con Django y React. Ref: Ing. Jyron Isai Cedeño Chavez, MSc.
+
+### Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo at Instituto Superior Tecnológico Juan Montalvo
 https://istjm.edu.ec/
 
-2019-10-31 - 2022-10-31
+2020-10-01 - 2022-03-31
 
-Docente de Tecnología en Mantenimiento de Computadoras.
+Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coord. Talento Humano, CI 1103882955).
+
+### Docente Ocasional - TTI at UIDE - Universidad Internacional del Ecuador (Ext. Loja)
+https://www.uide.edu.ec/
+
+2022-10-01 - 2022-12-31
+
+Docente de la carrera de Tecnologías de la Información. (Sin certificado laboral PDF disponible).
 
 ## Educación
 
 ### Máster en Ciberseguridad Defensiva y Ofensiva - Universidad Complutense de Madrid
 Master
 2026-02-01 - 2027-12-31
+**Puntuación:** En curso
 
 ### Maestría en Ciencias y Tecnologías de la Computación - Universidad Técnica Particular de Loja
 Master
@@ -76,88 +77,154 @@ Bachelor
 
 ## Habilidades Técnicas
 
+### Fundamentos de Frontend
+
 - **HTML**: master
 - **CSS**: master
 - **JavaScript**: master
+
+### Frameworks de Frontend
+
 - **TypeScript**: advanced
 - **React**: advanced
 - **Next.js**: advanced
+- **Vue**: intermediate
+- **Svelte**: intermediate
+- **Angular**: intermediate
+
+### Backend
+
 - **Node.js**: advanced
 - **Python**: advanced
 - **Django**: advanced
 - **FastAPI**: advanced
-- **Flutter**: advanced
-- **Angular**: advanced
-- **Docker**: advanced
-- **Kubernetes**: advanced
-- **MySQL**: advanced
-- **MongoDB**: advanced
 - **NestJS**: advanced
-- **Vue**: intermediate
-- **Svelte**: intermediate
+- **SRI / XAdES**: advanced
+
+### Móvil
+
+- **Flutter**: advanced
+- **React Native**: advanced
+- **Expo SDK 53+**: advanced
+
+### Móvil Nativo
+
+- **Swift (iOS)**: intermediate
+- **Kotlin (Android)**: intermediate
+
+### DevOps
+
+- **Docker**: advanced
+- **Kubernetes**: intermediate
 - **AWS**: intermediate
 - **Azure**: intermediate
-- **PostgreSQL**: intermediate
-- **Reverse Engineering**: advanced
+- **GitHub Actions**: intermediate
+
+### Bases de Datos
+
+- **MySQL**: advanced
+- **MongoDB**: advanced
+- **PostgreSQL**: advanced
+
+### Seguridad
+
+- **Ethical Hacking**: advanced
+- **Penetration Testing**: advanced
+- **OWASP Top 10**: advanced
+- **Auditoría de Pentesting**: advanced
+- **Ingeniería Inversa y Explotación**: advanced
+- **Hardware Hacking (OpenWrt)**: advanced
+- **Bash Scripting**: advanced
+- **Linux**: master
+- **Kali Linux**: advanced
+- **Metasploit**: intermediate
+- **Burp Suite**: intermediate
+- **Nmap**: advanced
+- **Wireshark**: intermediate
+
+### Arquitectura
+
+- **Clean Architecture**: advanced
+- **SOLID**: advanced
+- **TDD**: advanced
+
+### Enseñanza
+
+- **Diseño Curricular (ABP / ADDIE)**: master
+
+### Herramientas
+
+- **Git**: advanced
+- **NotebookLM Power-User**: master
+- **OpenCode + MCP**: advanced
+- **Quarto**: advanced
+- **Jupyter**: advanced
+- **LaTeX**: advanced
+
+### Inteligencia Artificial
+
+- **Machine Learning**: intermediate
+- **TensorFlow**: intermediate
+- **R Language**: intermediate
 
 ## Proyectos Destacados
 
-### Saavedra Construction
-Sitio web empresarial para empresa de construcción.
+### open-api-facturacion-sri
+API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.
 
-**Tecnologías:** Clean Architecture, Next.js 15, React 19, Tailwind CSS 4
+**Tecnologías:** Node.js, TypeScript, XAdES-BES, SRI Ecuador
 
-[Ver Proyecto](https://saavedra-construction.com)
+[Código Fuente](https://github.com/statick88/open-api-facturacion-sri)
 
-[Código Fuente](https://github.com/statick88/saavedra-construction)
+### multi-agent-system
+Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.
 
-### Sistema de Predicción de Precios Inmobiliarios
-ML para predicción de precios inmobiliarios.
+**Tecnologías:** Python, FastAPI, OpenCode, MCP, SDD
 
-**Tecnologías:** Python, Scikit-learn, FastAPI, 92% accuracy
+[Código Fuente](https://github.com/statick88/multi-agent-system)
 
-[Código Fuente](https://github.com/statick88/real-estate-prediction)
+### material-educativo-unl
+Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica.
 
-### App de Gestión Financiera
-App móvil híbrida para finanzas personales.
+**Tecnologías:** Quarto, ABP, Open Educational Resources, UNL
 
-**Tecnologías:** Flutter, Firebase, 10,000+ downloads
+[Código Fuente](https://github.com/statick88/material-educativo-unl)
 
-[Código Fuente](https://github.com/statick88/finance-app-flutter)
+### UCM-Moodle-Pentest
+Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl.
 
-### E-Commerce Marketplace
-Plataforma multi-vendedor con Django y React.
+**Tecnologías:** Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle
 
-**Tecnologías:** Django, React, Stripe, PostgreSQL
+[Código Fuente](https://github.com/statick88/ucm-moodle-pentest)
 
-[Código Fuente](https://github.com/statick88/marketplace-django)
+### OpenWrt-Hardware-Hacking
+Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM.
 
-### Scanner de Vulnerabilidades Web
-Herramienta de ciberseguridad para OWASP Top 10.
+**Tecnologías:** OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware
 
-**Tecnologías:** Python, OWASP, CI/CD, PDF Reports
+[Código Fuente](https://github.com/statick88/openwrt-hardware-hacking)
 
-[Código Fuente](https://github.com/statick88/vulnerability-scanner)
+### ms08-067-metasploit-demo
+Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso.
 
-### Sistema de Gestión Académica
-Sistema web para gestión universitaria.
+**Tecnologías:** Metasploit, ms08_067, ms17_010, RE, Windows
 
-**Tecnologías:** Angular, NestJS, MySQL, 5,000+ students
-
-[Código Fuente](https://github.com/statick88/academic-management)
+[Código Fuente](https://github.com/statick88/ms08-067-metasploit-demo)
 
 ## Certificaciones
 
-- **Certified Ethical Hacker** - EC-Council (Activo)
-- **Security+** - CompTIA (Activo)
-- **Network+** - CompTIA (Activo)
-- **Linux+** - CompTIA (Activo)
-- **Azure Fundamentals** - Microsoft (Activo)
-- **OSCP** - Offensive Security (En Progreso)
-- **Título de Maestría en Ciberseguridad** - Universidad Complutense de Madrid (Activo)
-- **Certificate as Reviewer** - VIIT-CIT-2024 International Congress (Activo)
-- **Estrategias de atención educativa inclusiva** - Consejo de Educación Superior Ecuador (Activo)
-- **Fundamentos de Marketing Digital** - Google Activate (Activo)
+- **Magíster en Cs. y Tec. de la Computación** - UTPL (Activo)
+- **Licenciado en Informática Educativa** - UNL (Activo)
+- **Reverse Engineering & Exploit Development** - UCM (Activo)
+- **Ethical Hacking & Penetration Testing** - ABACOM (Activo)
+- **Linux Server Administration** - ABACOM (Activo)
+- **Python for Data Science** - ABACOM (Activo)
+- **R para Análisis Estadístico** - ABACOM (Activo)
+- **Flutter Mobile Development (3 niveles)** - ABACOM (Activo)
+- **Fundamentos de Ciberseguridad** - ABACOM (Activo)
+- **Imagen de Marca (Branding)** - ABACOM (Activo)
+- **Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)** - ABACOM (Activo)
+- **MSc Ciberseguridad (en curso, 2026-2027)** - Universidad Complutense de Madrid (En Progreso)
 
 ### Habilidades Blandas y Idiomas
 
@@ -168,9 +235,17 @@ Sistema web para gestión universitaria.
 - Adaptabilidad
 - Gestión del Tiempo
 - Liderazgo
+- Mentoría
 
 #### Idiomas
 - Español: Nativo
 - Inglés: Avanzado
 - Italiano: Básico
 - Portugués: Básico
+
+## Métricas Verificadas
+
+- **93.4/100** — Promedio cohorte Python 2026 _(Fuente: Docente Cuantitativa Evaluation.pdf)_
+- **100+** — Repositorios públicos en GitHub _(Fuente: github.com/statick88)_
+- **55 / 898** — Notebooks / sources en NotebookLM _(Fuente: nlm --version (v0.6.8))_
+- **134+** — Certificaciones categorizadas _(Fuente: ~/Documents/Certificados/)_

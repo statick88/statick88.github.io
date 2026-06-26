@@ -22,8 +22,9 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeProfile, setActiveProfile] = useState({ id: 'developer', label: 'Full Stack', color: '#3b82f6' }) // Perfil por defecto
-  const [showNav, setShowNav] = useState(true) // Controlar visibilidad de nav
+  const [scrollProgress, setScrollProgress] = useState(0)
   const contentRef = useRef(null)
+  const progressBarRef = useRef(null)
 
   const t = (es, en) => language === 'es' ? es : en
 
@@ -48,13 +49,20 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
       setActiveSection(sectionId)
       setMobileMenuOpen(false) // Cerrar menú móvil
-      
-      // Ocultar navegación después del scroll
-      setTimeout(() => {
-        setShowNav(false)
-      }, 400)
     }
   }
+
+  // Track scroll progress for top bar
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+      setScrollProgress(Math.min(100, Math.max(0, progress)))
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     setTimeout(() => setIsLoaded(true), 150)
@@ -87,16 +95,17 @@ function App() {
     return () => observer.disconnect()
   }, [isLoaded])
 
+  // Navigation items - used for progress bar dots and mobile menu
   const navItems = [
-    { id: 'summary', label: t('Resumen', 'Summary'), icon: '📋', aria: t('Ir a Resumen', 'Go to Summary') },
-    { id: 'experience', label: t('Experiencia', 'Experience'), icon: '💼', aria: t('Ir a Experiencia', 'Go to Experience') },
-    { id: 'education', label: t('Educación', 'Education'), icon: '🎓', aria: t('Ir a Educación', 'Go to Education') },
-    { id: 'skills', label: t('Habilidades', 'Skills'), icon: '⚡', aria: t('Ir a Habilidades', 'Go to Skills') },
-    { id: 'projects', label: t('Proyectos', 'Projects'), icon: '🚀', aria: t('Ir a Proyectos', 'Go to Projects') },
-    { id: 'certifications', label: t('Certificaciones', 'Certifications'), icon: '🏆', aria: t('Ir a Certificaciones', 'Go to Certifications') },
-    { id: 'courses', label: t('Cursos', 'Courses'), icon: '📖', aria: t('Ir a Cursos', 'Go to Courses') },
-    { id: 'research', label: t('Investigación', 'Research'), icon: '🔬', aria: t('Ir a Investigación', 'Go to Research') },
-    { id: 'hire', label: t('Contáctame', 'Contact Me'), icon: '🎯', aria: t('Ir a Servicios', 'Go to Services') }
+    { id: 'summary', label: t('Resumen', 'Summary'), aria: t('Ir a Resumen', 'Go to Summary') },
+    { id: 'experience', label: t('Experiencia', 'Experience'), aria: t('Ir a Experiencia', 'Go to Experience') },
+    { id: 'education', label: t('Educación', 'Education'), aria: t('Ir a Educación', 'Go to Education') },
+    { id: 'skills', label: t('Habilidades', 'Skills'), aria: t('Ir a Habilidades', 'Go to Skills') },
+    { id: 'projects', label: t('Proyectos', 'Projects'), aria: t('Ir a Proyectos', 'Go to Projects') },
+    { id: 'certifications', label: t('Certificaciones', 'Certifications'), aria: t('Ir a Certificaciones', 'Go to Certifications') },
+    { id: 'courses', label: t('Cursos', 'Courses'), aria: t('Ir a Cursos', 'Go to Courses') },
+    { id: 'research', label: t('Investigación', 'Research'), aria: t('Ir a Investigación', 'Go to Research') },
+    { id: 'hire', label: t('Contáctame', 'Contact Me'), aria: t('Ir a Servicios', 'Go to Services') }
   ]
 
    // Keyboard navigation handler - currently unused but kept for future implementation
@@ -246,7 +255,7 @@ function App() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-lg hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 text-cyan-400 font-medium"
+                className="min-h-[44px] px-5 py-2.5 bg-white/5 border border-white/10 rounded-lg hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 text-cyan-400 font-medium"
               >
                 {profile.network}
               </motion.a>
@@ -257,72 +266,68 @@ function App() {
         {/* Metrics Section */}
         <Metrics metrics={cvData.metrics} t={t} />
 
-        {/* Navigation - Desktop */}
-        <AnimatePresence>
-          {showNav ? (
-            <motion.nav 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="hidden lg:flex flex-wrap justify-center gap-2 mb-8 no-print sticky top-4 z-40 py-2"
-              role="navigation"
-              aria-label="Navegación principal"
-            >
-              {navItems.map((item, i) => {
-                const isActive = activeSection === item.id
-                return (
-                  <motion.button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && scrollToSection(item.id)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-label={item.aria}
-                    tabIndex={0}
-                    className={`px-5 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2.5 font-medium ${
-                      isActive
-                        ? 'bg-gradient-to-r from-cyan-500/30 to-blue-500/30 border border-cyan-500/50 text-cyan-400 shadow-lg shadow-cyan-500/20'
-                        : 'bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/20 hover:text-gray-300'
-                    }`}
-                  >
-                    <motion.span
-                      animate={isActive ? { scale: [1, 1.2, 1] } : {}}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {item.icon}
-                    </motion.span>
-                    <span>{item.label}</span>
-                    {isActive && (
-                      <motion.span
-                        layoutId="activeIndicator"
-                        className="w-1.5 h-1.5 rounded-full bg-cyan-400"
-                      />
-                    )}
-                  </motion.button>
-                )
-              })}
-            </motion.nav>
-          ) : (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowNav(true)}
-              className="hidden lg:flex mx-auto mb-4 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all no-print items-center gap-2"
-              aria-label="Mostrar navegación"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <span>{t('Mostrar menú', 'Show menu')}</span>
-            </motion.button>
-          )}
-        </AnimatePresence>
+        {/* Top Progress Bar Navigation - Minimal & Non-intrusive */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed top-0 left-0 right-0 z-50 no-print"
+          role="navigation"
+          aria-label="Progreso de lectura"
+        >
+          {/* Progress Bar */}
+          <motion.div
+            ref={progressBarRef}
+            className="h-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20"
+            style={{ width: '100%' }}
+          >
+            <motion.div
+              className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-500/30"
+              animate={{ width: `${scrollProgress}%` }}
+              transition={{ duration: 0.1, ease: 'easeOut' }}
+              style={{ width: `${scrollProgress}%` }}
+            />
+          </motion.div>
 
-        {/* Mobile Navigation - Enhanced */}
+          {/* Section Indicators - Dots */}
+          <motion.div
+            className="hidden lg:flex justify-center gap-1.5 px-4 py-2 bg-black/50 backdrop-blur-md border-b border-white/5"
+          >
+            {navItems.map((item, index) => {
+              const isActive = activeSection === item.id
+              const isScrolledPast = navItems.slice(0, index + 1).some(nav => activeSection === nav.id)
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && scrollToSection(item.id)}
+                  whileHover={{ scale: 1.5 }}
+                  whileTap={{ scale: 0.8 }}
+                  role="button"
+                  aria-label={item.aria}
+                  aria-current={isActive ? 'section' : undefined}
+                  tabIndex={0}
+                  className={`relative w-2 h-2 rounded-full transition-all duration-300 flex-shrink-0 ${
+                    isActive
+                      ? 'bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)] ring-2 ring-cyan-400/30'
+                      : isScrolledPast
+                      ? 'bg-cyan-500/60 hover:bg-cyan-400'
+                      : 'bg-white/20 hover:bg-white/40'
+                  }`}
+                >
+                  <motion.span
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs px-2 py-1 rounded bg-gray-900 border border-white/10 text-white opacity-0 pointer-events-none"
+                    animate={{ opacity: isActive ? 1 : 0, y: isActive ? -4 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item.label}
+                  </motion.span>
+                </motion.button>
+              )
+            })}
+          </motion.div>
+        </motion.div>
+
+        {/* Mobile Navigation - Drawer */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -366,7 +371,6 @@ function App() {
                             : 'text-gray-300 hover:bg-white/5 border border-transparent'
                         }`}
                       >
-                        <span className="text-xl">{item.icon}</span>
                         <span className="font-medium">{item.label}</span>
                         {isActive && (
                           <motion.span 
@@ -413,12 +417,12 @@ function App() {
                      </span>
                        {/* PDF Download Buttons */}
                        <div className="flex gap-2">
-                         <a 
-                           href={`/cv-${language === 'es' ? 'es' : 'en'}.pdf`}
-                           download={`CV_Diego_Saavedra_${language === 'es' ? 'ES' : 'EN'}.pdf`}
-                           className="px-3 py-1 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-medium hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-200 flex items-center gap-1"
-                           aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
-                         >
+                          <a 
+                            href={`/cv-${language === 'es' ? 'es' : 'en'}.pdf`}
+                            download={`CV_Diego_Saavedra_${language === 'es' ? 'ES' : 'EN'}.pdf`}
+                            className="min-h-[44px] min-w-[44px] px-4 py-2.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-medium hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-200 flex items-center gap-1"
+                            aria-label={`Descargar CV en ${language === 'es' ? 'español' : 'english'}`}
+                          >
                            📄 {language === 'es' ? 'Descargar CV' : 'Download CV'}
                          </a>
                        </div>
