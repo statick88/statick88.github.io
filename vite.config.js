@@ -29,28 +29,44 @@ export default defineConfig({
     {
       name: 'csp-hashes-inject',
       apply: 'build',
-      async closeBundle() {
+      async writeBundle() {
         const distDir = path.resolve('dist')
         const indexPath = path.join(distDir, 'index.html')
         const assetsDir = path.join(distDir, 'assets')
 
-        if (!fs.existsSync(indexPath) || !fs.existsSync(assetsDir)) return
+        if (!fs.existsSync(indexPath)) {
+          throw new Error(`[CSP] index.html not found at ${indexPath}`)
+        }
+        if (!fs.existsSync(assetsDir)) {
+          throw new Error(`[CSP] assets directory not found at ${assetsDir}`)
+        }
 
         // Leer bundles JS generados para calcular hashes
         const jsFiles = fs.readdirSync(assetsDir)
           .filter(f => f.endsWith('.js'))
           .map(f => fs.readFileSync(path.join(assetsDir, f)))
 
-        if (jsFiles.length === 0) return
+        if (jsFiles.length === 0) {
+          throw new Error('[CSP] No JS files found to hash')
+        }
 
         const scriptHashes = jsFiles.map(sha256)
         const csp = getCspDirectives(scriptHashes)
 
         // Leer y actualizar index.html
         let html = fs.readFileSync(indexPath, 'utf-8')
-        html = html.replace('<head>', `<head>\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`)
-        fs.writeFileSync(indexPath, html)
-        console.log('[CSP] Injected with hashes:', scriptHashes)
+        if (!html.includes('<head>')) {
+          throw new Error('[CSP] <head> tag not found in index.html')
+        }
+        
+        // Evitar inyectar múltiples veces si ya existe
+        if (!html.includes('http-equiv="Content-Security-Policy"')) {
+          html = html.replace('<head>', `<head>\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`)
+          fs.writeFileSync(indexPath, html)
+          console.log('[CSP] Injected with hashes:', scriptHashes)
+        } else {
+          console.log('[CSP] CSP already present in index.html')
+        }
       }
     }
   ],
