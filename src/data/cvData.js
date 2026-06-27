@@ -194,7 +194,7 @@ export const cvData = {
       es: "Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 6+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP.",
       en: "Master's in Computer Science (UTPL). MSc Cybersecurity in progress (UCM). 10+ years in full-stack development, 6+ as university instructor. Specialized in React, Node.js, Python, pentesting, reverse engineering, and PBL curriculum design."
     },
-    image: "/me.webp",
+    image: "/statick.png",
     email: "dsaavedra88@gmail.com",
     phone: "+593 980192790",
     location: {
