@@ -1,0 +1,34 @@
+schema: spec-driven
+
+context: |
+  Tech stack: React 18 + Vite 8 + TypeScript + Tailwind CSS 3.4 + Framer Motion 11
+  Architecture: Single-page static CV portfolio (glassmorphism/cyberpunk theme)
+  Testing: Vitest 4 + @testing-library/react 16 + jsdom + @vitest/coverage-v8
+  Style: Tailwind with custom cyber colors, Fira Code/Inter fonts, 8pt grid
+  Deployment: Cloudflare Pages (wrangler.toml present)
+  Linting: ESLint 8 (react-app config), TypeScript strict mode
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Consider impact on CV export scripts (generate-cv-markdown.js, generate-profile-cvs.js)
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include component hierarchy for UI changes
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns
+    - Maintain glassmorphism and cyberpunk theme consistency
+    tdd: true
+    test_command: "pnpm test"
+  verify:
+    test_command: "pnpm test"
+    build_command: "pnpm build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas

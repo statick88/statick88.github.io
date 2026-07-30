@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { cvData } from '../data/cvData'
+import { services, contact } from '@/data/cv-data'
 
 // SVG Icon components for services (accessibility: replaces emoji)
 const ServiceIcon = ({ type, className = "w-10 h-10" }) => {
@@ -29,7 +29,6 @@ const ServiceIcon = ({ type, className = "w-10 h-10" }) => {
 }
 
 const HireMe = ({ t }) => {
-  const { services, contact } = cvData
 
   return (
     <div className="space-y-8">

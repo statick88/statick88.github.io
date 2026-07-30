@@ -1,74 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import crypto from 'crypto'
-import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
+import { visualizer } from 'rollup-plugin-visualizer'
 
-// Generar hash SHA256 base64 de un archivo
-const sha256 = (content) =>
-  'sha256-' + crypto.createHash('sha256').update(content).digest('base64')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-// CSP para GitHub Pages (solo <meta>, sin nonces, con hashes)
-const getCspDirectives = (scriptHashes) => [
-  "default-src 'self'",
-  `script-src 'self' ${scriptHashes.join(' ')}`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: https:",
-  "connect-src 'self'",
-  "frame-ancestors 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "object-src 'none'",
-  "upgrade-insecure-requests"
-].join('; ')
+const isAnalyze = process.env.mode === 'analyze'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
   plugins: [
     react(),
-    {
-      name: 'csp-hashes-inject',
-      apply: 'build',
-      async writeBundle() {
-        const distDir = path.resolve('dist')
-        const indexPath = path.join(distDir, 'index.html')
-        const assetsDir = path.join(distDir, 'assets')
-
-        if (!fs.existsSync(indexPath)) {
-          throw new Error(`[CSP] index.html not found at ${indexPath}`)
-        }
-        if (!fs.existsSync(assetsDir)) {
-          throw new Error(`[CSP] assets directory not found at ${assetsDir}`)
-        }
-
-        // Leer bundles JS generados para calcular hashes
-        const jsFiles = fs.readdirSync(assetsDir)
-          .filter(f => f.endsWith('.js'))
-          .map(f => fs.readFileSync(path.join(assetsDir, f)))
-
-        if (jsFiles.length === 0) {
-          throw new Error('[CSP] No JS files found to hash')
-        }
-
-        const scriptHashes = jsFiles.map(sha256)
-        const csp = getCspDirectives(scriptHashes)
-
-        // Leer y actualizar index.html
-        let html = fs.readFileSync(indexPath, 'utf-8')
-        if (!html.includes('<head>')) {
-          throw new Error('[CSP] <head> tag not found in index.html')
-        }
-        
-        // Evitar inyectar múltiples veces si ya existe
-        if (!html.includes('http-equiv="Content-Security-Policy"')) {
-          html = html.replace('<head>', `<head>\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`)
-          fs.writeFileSync(indexPath, html)
-          console.log('[CSP] Injected with hashes:', scriptHashes)
-        } else {
-          console.log('[CSP] CSP already present in index.html')
-        }
-      }
-    }
+    // CSP generation is now in scripts/generate-csp.mjs (post-build)
+    // Run: node scripts/generate-csp.mjs after vite build
+    ...(isAnalyze ? [visualizer({ open: false, filename: 'stats.html' })] : []),
   ],
   build: {
     rollupOptions: {

@@ -1,9 +1,18 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-yLEUbMYrNZGTTeLq3u5HeCUgShxhTjqk4vbnd+btgCw=' 'sha256-PLGChKPbDzZc3vq52Y3CftG/2KOK/YDxupQ6b8Y0Lbo=' 'sha256-YT5VnRAirTMUdFS82sc7CLu/hDdeYbbYrnVCJjxPp6k=' 'sha256-QDvWEeBl6Ha/G+qvHIA+Mbv4F4W9ppEmaM5xpO7BpRw=' 'sha256-iM9qP9pTVjoqT/yaE5OCoZuLTKxO1EuIuWefgxq4Pps=' 'sha256-CbDfrnx0h6fJZZob1/zNit7+nO9qO+AleseY05JLzDY=' 'sha256-v8kzf7uB7pW7XNiU1o11fgxSgalEsjMcrDAXRQUrw7Y=' 'sha256-ap8VkEFbxzaZuZNI+dpmLiCIUqVkYp1k+SprU+0Pbgo=' 'sha256-X+gSfBQ6FgcqNS9H5kjf+O3q5jrYHsS6QF9OX3QJmOU=' 'sha256-1KC0hAMPz1JWKGQjNIRdQAXYvwJgO/TOV/XcMmx8bX4=' 'sha256-Gj50qiiggjYEdNwPQKC4L1H0f1nJuACNGRhrtsYDrEk=' 'sha256-cKwXWhvRZ/4zRR0UHejfN/uE2Uqz4AUQ/5/fufzIsN8=' 'sha256-EUNm/a7eOAzD5Z5HvJIMU3Q5UWM3J/O6Z9hOReQHIBQ=' 'sha256-1KNpIMe6tuyX0L3F0SM2IvKP4BAZjKMrzdgMjLa2Sq4='; style-src 'self' 'unsafe-inline' 'sha256-O+pR/RH3Oo2CE4UeBOAPacvCiwMSWCuLfgR9XLrOkN0=' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()
-  X-Permitted-Cross-Domain-Policies: none
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/*.pdf
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

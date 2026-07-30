@@ -47,8 +47,8 @@ export const profileData = {
       { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
     ],
     summary: {
-      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 100+ repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
-      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 100+ public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
+      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 379 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
+      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 379 public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
     },
     pdf: "cv-developer.pdf"
   },
@@ -126,8 +126,8 @@ export const profileData = {
       { name: "MSc Ciberseguridad (en curso)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
     ],
     summary: {
-      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. Interesado en threat modeling, pentesting y AI security.",
-      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. Interested in threat modeling, pentesting, and AI security."
+      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. 379 repos en GitHub. Interesado en threat modeling, pentesting y AI security.",
+      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. 379 repos on GitHub. Interested in threat modeling, pentesting, and AI security."
     },
     pdf: "cv-research.pdf"
   },
@@ -395,6 +395,30 @@ export const cvData = {
       github: "https://github.com/statick88/open-api-facturacion-sri"
     },
     {
+      name: "MindLedger",
+      description: {
+        es: "Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro.",
+        en: "Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme."
+      },
+      highlights: {
+        es: ["Tauri v2", "Rust", "React", "SQLCipher", "Clean Architecture", "Multi-Tenant"],
+        en: ["Tauri v2", "Rust", "React", "SQLCipher", "Clean Architecture", "Multi-Tenant"]
+      },
+      github: "https://github.com/statick88/MindLedger"
+    },
+    {
+      name: "CyberGuardians",
+      description: {
+        es: "Plataforma de educación en ciberseguridad para jóvenes latinoamericanos (14-22). Enseña a través de gamificación, no de lectures. Next.js 15, TypeScript, Tailwind CSS, diseño glasspunk colorido con paneles de cristal y neón. Sistema de XP, logros y módulos interactivos.",
+        en: "Cybersecurity education platform for Latin American youth (14-22). Teaches through gameplay, not lectures. Next.js 15, TypeScript, Tailwind CSS, colorful glasspunk design with glass panels and neon. XP system, achievements, and interactive modules."
+      },
+      highlights: {
+        es: ["Next.js 15", "TypeScript", "Tailwind CSS", "Gamificación", "Glassmorphism", "Educación"],
+        en: ["Next.js 15", "TypeScript", "Tailwind CSS", "Gamification", "Glassmorphism", "Education"]
+      },
+      github: "https://github.com/statick88/cyber-guardians"
+    },
+    {
       name: "multi-agent-system",
       description: {
         es: "Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.",
@@ -468,7 +492,27 @@ export const cvData = {
     { name: "Fundamentos de Ciberseguridad", issuer: "ABACOM", status: "active" },
     { name: "Imagen de Marca (Branding)", issuer: "ABACOM", status: "active" },
     { name: "Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)", issuer: "ABACOM", status: "active" },
-    { name: "MSc Ciberseguridad (en curso, 2026-2027)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
+    { name: "MSc Ciberseguridad (en curso, 2026-2027)", issuer: "Universidad Complutense de Madrid", status: "in-progress" },
+    { name: "Introduction to Cybersecurity", issuer: "Cisco Networking Academy", status: "active" },
+    { name: "Introduction to IoT", issuer: "Cisco Networking Academy", status: "active" },
+    { name: "Hack The Box Certificate", issuer: "Hack The Box", status: "active" },
+    { name: "Course of Cybersecurity (NIST CSF 2.0)", issuer: "Self-published", status: "active" },
+    { name: "Ethical Hacking 2026 (Ebook + Labs)", issuer: "Self-published", status: "active" },
+    { name: "Dark Web Course", issuer: "Self-published", status: "active" },
+    { name: "Docker Fundamentals + Docker Course", issuer: "Platzi", status: "active" },
+    { name: "Flutter Course + Flutter Avanzado", issuer: "Platzi", status: "active" },
+    { name: "Python Course + Python Practico + Python CS", issuer: "Platzi", status: "active" },
+    { name: "Django Course", issuer: "Platzi", status: "active" },
+    { name: "AWS Fundamentals", issuer: "Platzi", status: "active" },
+    { name: "AI for Developers + AI Course", issuer: "Platzi", status: "active" },
+    { name: "Git & GitHub Course", issuer: "Platzi", status: "active" },
+    { name: "Linux Fundamentals + Linux Course", issuer: "Platzi", status: "active" },
+    { name: "Backend con Node.js", issuer: "Platzi", status: "active" },
+    { name: "React Native Course", issuer: "Codigo Facilito", status: "active" },
+    { name: "Curso Profesional de Python", issuer: "Codigo Facilito", status: "active" },
+    { name: "Curso de Machine Learning", issuer: "Codigo Facilito", status: "active" },
+    { name: "Curso de CSS", issuer: "Codigo Facilito", status: "active" },
+    { name: "Taller de Next.js", issuer: "Codigo Facilito", status: "active" }
   ],
 
   metrics: {
@@ -480,7 +524,7 @@ export const cvData = {
       source: "Docente Cuantitativa Evaluation.pdf"
     },
     githubRepos: {
-      value: "100+",
+      value: "379",
       unit: "",
       label_es: "Repositorios públicos en GitHub",
       label_en: "Public GitHub repos",

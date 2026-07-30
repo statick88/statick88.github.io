@@ -32,6 +32,10 @@ yarn-error.log*
 # Testing
 coverage/
 
+# Bundle analysis
+stats.html
+
 # Misc
 *.log
-.cache/
+.cache/test-export.json
+test-export.json

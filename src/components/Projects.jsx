@@ -23,7 +23,7 @@ export default function Projects({ projects, t }) {
           </p>
 
           <div className="flex flex-wrap gap-2 mb-3">
-            {project.highlights.es.map((tech, i) => (
+            {t(project.highlights.es, project.highlights.en).map((tech, i) => (
               <span 
                 key={i}
                 className="px-2 py-1 bg-white/5 rounded text-xs text-gray-500"

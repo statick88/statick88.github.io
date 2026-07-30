@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 const MAX_PARTICLES = 15;
 
@@ -35,8 +35,8 @@ export default function Particles() {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const particlesRef = useRef([]);
-  const [isVisible, setIsVisible] = useState(true);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const isVisibleRef = useRef(true);
+  const prefersReducedMotionRef = useRef(false);
 
   // Initialize particles
   useEffect(() => {
@@ -57,14 +57,68 @@ export default function Particles() {
   // Handle prefers-reduced-motion
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
+    prefersReducedMotionRef.current = mediaQuery.matches;
 
     const handler = (event) => {
-      setPrefersReducedMotion(event.matches);
+      prefersReducedMotionRef.current = event.matches;
     };
 
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  // Animation loop — uses refs to avoid re-running effect on visibility change
+  const animate = useCallback((currentTime) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+
+    // Stop the loop entirely when not visible or reduced motion
+    if (!isVisibleRef.current || prefersReducedMotionRef.current) {
+      animationRef.current = null;
+      return;
+    }
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+    const width = canvas.width / dpr;
+    const height = canvas.height / dpr;
+
+    // Update and draw particles
+    for (let i = particlesRef.current.length - 1; i >= 0; i--) {
+      const particle = particlesRef.current[i];
+      
+      particle.y -= particle.speed;
+      particle.rotation += particle.rotationSpeed;
+
+      // Reset particle when it goes off-screen
+      if (particle.y < -particle.size) {
+        particlesRef.current[i] = createParticle(width, height);
+        particlesRef.current[i].y = height + particle.size;
+      }
+
+      drawParticle(ctx, particle);
+    }
+
+    animationRef.current = requestAnimationFrame(animate);
+  }, []);
+
+  // Start animation loop
+  const startAnimation = useCallback(() => {
+    if (animationRef.current === null) {
+      animationRef.current = requestAnimationFrame(animate);
+    }
+  }, [animate]);
+
+  // Stop animation loop
+  const stopAnimation = useCallback(() => {
+    if (animationRef.current !== null) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
   }, []);
 
   // IntersectionObserver for visibility detection
@@ -74,14 +128,19 @@ export default function Particles() {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          startAnimation();
+        } else {
+          stopAnimation();
+        }
       },
-      { rootMargin: '100px' } // Start/stop slightly before entering/leaving viewport
+      { rootMargin: '100px' }
     );
 
     observer.observe(canvas);
     return () => observer.disconnect();
-  }, []);
+  }, [startAnimation, stopAnimation]);
 
   // Resize handler
   useEffect(() => {
@@ -111,59 +170,10 @@ export default function Particles() {
     return () => window.removeEventListener('resize', resize);
   }, []);
 
-  // Animation loop
+  // Cleanup on unmount
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    const dpr = window.devicePixelRatio || 1;
-
-    let lastTime = 0;
-
-    const animate = (currentTime) => {
-      // Skip if not visible or reduced motion preferred
-      if (!isVisible || prefersReducedMotion) {
-        animationRef.current = requestAnimationFrame(animate);
-        return;
-      }
-
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
-
-      // Clear canvas
-      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-
-      const width = canvas.width / dpr;
-      const height = canvas.height / dpr;
-
-      // Update and draw particles
-      for (let i = particlesRef.current.length - 1; i >= 0; i--) {
-        const particle = particlesRef.current[i];
-        
-        particle.y -= particle.speed * (deltaTime / 16.67); // Normalize to 60fps
-        particle.rotation += particle.rotationSpeed;
-
-        // Reset particle when it goes off-screen
-        if (particle.y < -particle.size) {
-          particlesRef.current[i] = createParticle(width, height);
-          particlesRef.current[i].y = height + particle.size;
-        }
-
-        drawParticle(ctx, particle);
-      }
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isVisible, prefersReducedMotion]);
+    return () => stopAnimation();
+  }, [stopAnimation]);
 
   return (
     <canvas

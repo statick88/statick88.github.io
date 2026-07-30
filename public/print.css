@@ -1,0 +1,184 @@
+/**
+ * print.css — Print-only stylesheet for CV Diego
+ *
+ * A4 page, 20mm margins, grayscale high-contrast, two-column preserved.
+ * Loaded via <link rel="stylesheet" href="/print.css" media="print">.
+ */
+
+/* ── Page setup ────────────────────────────────────────────── */
+@page {
+  size: A4;
+  margin: 20mm;
+  marks: none;
+}
+
+/* ── Global resets ─────────────────────────────────────────── */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Typography ─────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 14pt !important;
+    font-weight: 700;
+    page-break-after: avoid;
+  }
+
+  h1 {
+    font-size: 18pt !important;
+  }
+
+  h2 {
+    font-size: 15pt !important;
+  }
+
+  p, li, span, td, th {
+    font-size: 11pt;
+  }
+
+  /* ── Layout: preserve two-column grid ───────────────────── */
+  .cv-two-column {
+    display: grid !important;
+    grid-template-columns: 30% 70% !important;
+    gap: 16px !important;
+  }
+
+  .cv-two-column > * {
+    break-inside: avoid;
+  }
+
+  /* ── Page breaks ────────────────────────────────────────── */
+  section,
+  [id] {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  /* Force break before major sections in the right column */
+  main > div + div,
+  main > section + section,
+  main > div + section {
+    page-break-before: auto;
+  }
+
+  /* ── Hide non-print elements ────────────────────────────── */
+  .no-print,
+  .particles,
+  .particle,
+  nav,
+  .fixed,
+  button,
+  .skip-link,
+  .hover-glow,
+  .hover-skew,
+  .pulse-glow {
+    display: none !important;
+  }
+
+  /* ── Cards / glass panels ───────────────────────────────── */
+  .glass,
+  [class*="bg-white"],
+  [class*="border-white"] {
+    background: transparent !important;
+    border: 1px solid #ccc !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* ── Links: show URLs ───────────────────────────────────── */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555 !important;
+    word-break: break-all;
+  }
+
+  /* Don't show URL for anchors or skip links */
+  a[href^="#"]::after,
+  a.skip-link::after {
+    content: "";
+  }
+
+  /* ── Images ─────────────────────────────────────────────── */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* ── SVG icons: force grayscale ─────────────────────────── */
+  svg {
+    fill: #000 !important;
+    stroke: #000 !important;
+  }
+
+  /* ── Utility overrides ──────────────────────────────────── */
+  .gradient-text {
+    background: none !important;
+    -webkit-text-fill-color: #000 !important;
+    color: #000 !important;
+  }
+
+  .neon-border {
+    border: 1px solid #999 !important;
+  }
+
+  .neon-text {
+    text-shadow: none !important;
+  }
+
+  /* ── Footer ─────────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid #ccc !important;
+    page-break-before: avoid;
+  }
+
+  /* ── Scrollbar: hide ────────────────────────────────────── */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+  }
+
+  /* ── Transitions: kill all ──────────────────────────────── */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* ── Selection styling ──────────────────────────────────── */
+  ::selection {
+    background: transparent;
+    color: #000;
+  }
+}

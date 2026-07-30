@@ -1,0 +1,67 @@
+{
+  "$schema": "./features.schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2026-07-12",
+  "flags": {
+    "hero": {
+      "enabled": true,
+      "description": "Hero section with avatar, name, and contact info"
+    },
+    "metrics": {
+      "enabled": true,
+      "description": "Metrics section showing key stats"
+    },
+    "summary": {
+      "enabled": true,
+      "description": "Professional summary section"
+    },
+    "experience": {
+      "enabled": true,
+      "description": "Work experience timeline"
+    },
+    "education": {
+      "enabled": true,
+      "description": "Education section"
+    },
+    "skills": {
+      "enabled": true,
+      "description": "Skills visualization"
+    },
+    "projects": {
+      "enabled": true,
+      "description": "Projects showcase"
+    },
+    "certifications": {
+      "enabled": true,
+      "description": "Certifications section"
+    },
+    "courses": {
+      "enabled": true,
+      "description": "Courses section"
+    },
+    "research": {
+      "enabled": true,
+      "description": "Research publications"
+    },
+    "hire": {
+      "enabled": true,
+      "description": "Hire me CTA section"
+    },
+    "particles": {
+      "enabled": true,
+      "description": "Animated particles background"
+    },
+    "darkMode": {
+      "enabled": true,
+      "description": "Dark mode toggle"
+    },
+    "languageToggle": {
+      "enabled": true,
+      "description": "Language switcher (ES/EN)"
+    },
+    "profileSelector": {
+      "enabled": true,
+      "description": "Profile selector for different CV views"
+    }
+  }
+}

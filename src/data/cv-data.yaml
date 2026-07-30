@@ -1,0 +1,538 @@
+# =============================================================================
+# CV Data — Diego Medardo Saavedra García
+# Source of Truth: ~/Documents/job_applications/core/cv-consolidado.md
+# Last verified: 2026-06-01 (130+ PDF audit, NLM, GitHub, 3 directory audits)
+# Schema: cv-data-v1 (src/lib/schemas/cv-data.ts)
+# =============================================================================
+
+profile:
+  name: "Diego Medardo Saavedra García"
+  role:
+    es: "Desarrollador Full Stack | Pentester & Investigador de Seguridad"
+    en: "Full Stack Developer | Pentester & Security Researcher"
+  summary:
+    es: "Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 6+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP. 379+ repos públicos en GitHub."
+    en: "Master in Computer Science & Technology (UTPL). MSc Cybersecurity in progress (UCM). 10+ years in full-stack development and 6+ as university lecturer. Specialized in React, Node.js, Python, pentesting, reverse engineering, and ABP curriculum design. 379+ public repos on GitHub."
+
+contact:
+  email: "dsaavedra88@gmail.com"
+  phone: "+593 980192790"
+  location: "Loja, Loja, ECU"
+  linkedin: "https://www.linkedin.com/in/diego-saavedra-developer/"
+  github: "https://github.com/statick88"
+  portfolio: "https://statick88.github.io"
+
+# =============================================================================
+# Experience
+# =============================================================================
+experience:
+  - company: "ABACOM"
+    url: "https://abacom.edu.ec/"
+    position:
+      es: "Docente, Facilitador y Curriculista"
+      en: "Lecturer, Facilitator & Curriculum Designer"
+    startDate: "2021-12-01"
+    endDate: null
+    isCurrent: true
+    metrics:
+      - label:
+          es: "Horas docentes verificadas"
+          en: "Verified teaching hours"
+        value: "200+"
+      - label:
+          es: "Promedio cohorte Python 2026"
+          en: "Python 2026 cohort average"
+        value: "93.4"
+        unit: "/100"
+    highlights:
+      es:
+        - "Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA"
+        - "200+ horas docentes verificadas con cohorte Python 2026 promedio 93.4/100"
+      en:
+        - "Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals and AI courses"
+        - "200+ verified teaching hours with Python 2026 cohort averaging 93.4/100"
+    technologies: ["Python", "Flutter", "R", "Linux", "Ethical Hacking", "Cybersecurity", "AI"]
+    reference:
+      name: "Ing. Kelbi Ramírez Macas"
+    hasCertificate: true
+
+  - company: "ESPE - Universidad de las Fuerzas Armadas"
+    url: "https://www.espe.edu.ec"
+    position:
+      es: "Docente Ocasional Tiempo Completo - DCC"
+      en: "Full-Time Occasional Lecturer - Computer Science Dept."
+    startDate: "2023-04-01"
+    endDate: "2024-10-31"
+    isCurrent: false
+    highlights:
+      es:
+        - "Docente del Departamento de Ciencias de la Computación"
+        - "Asignaturas: Programación, Bases de Datos, Ingeniería de Software"
+      en:
+        - "Lecturer in the Computer Science Department"
+        - "Subjects: Programming, Databases, Software Engineering"
+    technologies: ["Programming", "Databases", "Software Engineering"]
+    hasCertificate: false
+    note:
+      es: "Sin certificado laboral PDF disponible"
+      en: "No PDF employment certificate available"
+
+  - company: "APC - Antonio Peña Celi"
+    url: "https://apc.edu.ec/"
+    position:
+      es: "Profesor de Computación"
+      en: "Computer Science Teacher"
+    startDate: "2013-09-01"
+    endDate: "2022-12-31"
+    isCurrent: false
+    metrics:
+      - label:
+          es: "Años de servicio"
+          en: "Years of service"
+        value: "9"
+    highlights:
+      es:
+        - "Profesor de Computación durante 9 años (2013-2022)"
+        - "Formación en programación, ofimática avanzada y soporte técnico"
+      en:
+        - "Computer Science Teacher for 9 years (2013-2022)"
+        - "Training in programming, advanced office automation, and technical support"
+    technologies: ["Programming", "Office Automation", "Technical Support"]
+    reference:
+      name: "Ing. Rolando Marcelo Rojas Merchán"
+    hasCertificate: true
+
+  - company: "Codings Academy"
+    url: "https://codingsacademy.com"
+    position:
+      es: "Facilitador de Bootcamps (Django + React)"
+      en: "Bootcamp Facilitator (Django + React)"
+    startDate: "2024-02-01"
+    endDate: "2024-12-31"
+    isCurrent: false
+    highlights:
+      es:
+        - "Facilitador de Bootcamps de Desarrollo Web Full Stack con Django y React"
+      en:
+        - "Full Stack Web Development Bootcamp Facilitator with Django and React"
+    technologies: ["Django", "React", "Full Stack"]
+    reference:
+      name: "Ing. Jyron Isai Cedeño Chavez, MSc."
+    hasCertificate: true
+
+  - company: "Instituto Superior Tecnológico Juan Montalvo"
+    url: "https://istjm.edu.ec/"
+    position:
+      es: "Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo"
+      en: "Assistant Tenured Lecturer - Computer Assembly & Maintenance"
+    startDate: "2020-10-01"
+    endDate: "2022-03-31"
+    isCurrent: false
+    highlights:
+      es:
+        - "Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento"
+        - "Asignaturas: Hardware, Redes, Sistemas Operativos"
+        - "Puente directo con skill de Hardware Hacking (OpenWrt, firmware)"
+      en:
+        - "Tenured Lecturer in the technical program of Assembly & Maintenance"
+        - "Subjects: Hardware, Networks, Operating Systems"
+        - "Direct bridge to Hardware Hacking skills (OpenWrt, firmware)"
+    technologies: ["Hardware", "Networking", "Operating Systems", "OpenWrt"]
+    reference:
+      name: "Ing. Ana Gabriela Montalván Salcedo, Mba"
+      role: "Coord. Talento Humano"
+      id: "CI 1103882955"
+    hasCertificate: true
+
+  - company: "UIDE - Universidad Internacional del Ecuador (Ext. Loja)"
+    url: "https://www.uide.edu.ec/"
+    position:
+      es: "Docente Ocasional - TTI"
+      en: "Occasional Lecturer - IT"
+    startDate: "2022-10-01"
+    endDate: "2022-12-31"
+    isCurrent: false
+    highlights:
+      es:
+        - "Docente de la carrera de Tecnologías de la Información"
+      en:
+        - "Lecturer in the Information Technology program"
+    technologies: ["Information Technology"]
+    hasCertificate: false
+    note:
+      es: "Sin certificado laboral PDF disponible"
+      en: "No PDF employment certificate available"
+
+# =============================================================================
+# Education
+# =============================================================================
+education:
+  - institution: "Universidad Complutense de Madrid"
+    program:
+      es: "Máster en Ciberseguridad Defensiva y Ofensiva"
+      en: "Master in Defensive and Offensive Cybersecurity"
+    degree: "Master"
+    startDate: "2026-02-01"
+    endDate: "2027-12-31"
+    isCurrent: true
+    gpa: null
+    status:
+      es: "En curso"
+      en: "In progress"
+
+  - institution: "Universidad Técnica Particular de Loja"
+    program:
+      es: "Maestría en Ciencias y Tecnologías de la Computación"
+      en: "Master of Science and Technology in Computer Science"
+    degree: "Master"
+    startDate: "2018-09-01"
+    endDate: "2021-02-28"
+    isCurrent: false
+    gpa: "4.0"
+
+  - institution: "Universidad Nacional de Loja"
+    program:
+      es: "Licenciatura en Informática Educativa"
+      en: "Bachelor's in Educational Informatics"
+    degree: "Bachelor"
+    startDate: "2007-09-01"
+    endDate: "2011-02-28"
+    isCurrent: false
+    gpa: "4.0"
+
+# =============================================================================
+# Skills
+# =============================================================================
+skills:
+  - name: "HTML"
+    level: "master"
+    category: "frontend-fundamentals"
+  - name: "CSS"
+    level: "master"
+    category: "frontend-fundamentals"
+  - name: "JavaScript"
+    level: "master"
+    category: "frontend-fundamentals"
+  - name: "TypeScript"
+    level: "advanced"
+    category: "frontend-frameworks"
+  - name: "React"
+    level: "advanced"
+    category: "frontend-frameworks"
+  - name: "Next.js"
+    level: "advanced"
+    category: "frontend-frameworks"
+  - name: "Vue"
+    level: "intermediate"
+    category: "frontend-frameworks"
+  - name: "Svelte"
+    level: "intermediate"
+    category: "frontend-frameworks"
+  - name: "Angular"
+    level: "intermediate"
+    category: "frontend-frameworks"
+  - name: "Node.js"
+    level: "advanced"
+    category: "backend"
+  - name: "Python"
+    level: "advanced"
+    category: "backend"
+  - name: "Django"
+    level: "advanced"
+    category: "backend"
+  - name: "FastAPI"
+    level: "advanced"
+    category: "backend"
+  - name: "NestJS"
+    level: "advanced"
+    category: "backend"
+  - name: "SRI / XAdES"
+    level: "advanced"
+    category: "backend"
+  - name: "Flutter"
+    level: "advanced"
+    category: "mobile"
+  - name: "React Native"
+    level: "advanced"
+    category: "mobile"
+  - name: "Expo SDK 53+"
+    level: "advanced"
+    category: "mobile"
+  - name: "Swift (iOS)"
+    level: "intermediate"
+    category: "mobile-native"
+  - name: "Kotlin (Android)"
+    level: "intermediate"
+    category: "mobile-native"
+  - name: "Docker"
+    level: "advanced"
+    category: "devops"
+  - name: "Kubernetes"
+    level: "intermediate"
+    category: "devops"
+  - name: "MySQL"
+    level: "advanced"
+    category: "databases"
+  - name: "MongoDB"
+    level: "advanced"
+    category: "databases"
+  - name: "PostgreSQL"
+    level: "advanced"
+    category: "databases"
+  - name: "AWS"
+    level: "intermediate"
+    category: "devops"
+  - name: "Azure"
+    level: "intermediate"
+    category: "devops"
+  - name: "Clean Architecture"
+    level: "advanced"
+    category: "architecture"
+  - name: "SOLID"
+    level: "advanced"
+    category: "architecture"
+  - name: "TDD"
+    level: "advanced"
+    category: "architecture"
+  - name: "Ethical Hacking"
+    level: "advanced"
+    category: "security"
+  - name: "Penetration Testing"
+    level: "advanced"
+    category: "security"
+  - name: "OWASP Top 10"
+    level: "advanced"
+    category: "security"
+  - name: "Ingeniería Inversa y Explotación"
+    level: "advanced"
+    category: "security"
+  - name: "Hardware Hacking (OpenWrt)"
+    level: "advanced"
+    category: "security"
+  - name: "Nmap"
+    level: "advanced"
+    category: "security"
+  - name: "Metasploit"
+    level: "intermediate"
+    category: "security"
+  - name: "Burp Suite"
+    level: "intermediate"
+    category: "security"
+  - name: "Wireshark"
+    level: "intermediate"
+    category: "security"
+  - name: "SQL Injection"
+    level: "advanced"
+    category: "security"
+  - name: "XSS/CSRF"
+    level: "advanced"
+    category: "security"
+  - name: "Bash Scripting"
+    level: "advanced"
+    category: "security"
+  - name: "Linux"
+    level: "master"
+    category: "security"
+  - name: "Kali Linux"
+    level: "advanced"
+    category: "security"
+  - name: "CTF"
+    level: "intermediate"
+    category: "security"
+  - name: "Network Security"
+    level: "advanced"
+    category: "security"
+  - name: "Web Security"
+    level: "advanced"
+    category: "security"
+  - name: "Cloud Security"
+    level: "intermediate"
+    category: "security"
+
+# =============================================================================
+# Languages
+# =============================================================================
+languages:
+  - language: "Español"
+    level: "Nativo"
+    code: "es"
+  - language: "English"
+    level: "Intermediate (B1+)"
+    code: "en"
+
+# =============================================================================
+# Certifications
+# =============================================================================
+certifications:
+  - name:
+      es: "Python for Data Science"
+      en: "Python for Data Science"
+    issuer: "ABACOM"
+    date: "2021"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Flutter Mobile Development"
+      en: "Flutter Mobile Development"
+    issuer: "ABACOM"
+    date: "2021"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Linux Server Administration"
+      en: "Linux Server Administration"
+    issuer: "ABACOM"
+    date: "2021"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Pentesting y Ethical Hacking"
+      en: "Pentesting and Ethical Hacking"
+    issuer: "ABACOM"
+    date: "2022"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Ciberseguridad Defensiva"
+      en: "Defensive Cybersecurity"
+    issuer: "ABACOM"
+    date: "2022"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Ingeniería Inversa"
+      en: "Reverse Engineering"
+    issuer: "ABACOM"
+    date: "2022"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Redes y Servidores Linux"
+      en: "Networks and Linux Servers"
+    issuer: "ABACOM"
+    date: "2022"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Desarrollo Web Full Stack (Django + React)"
+      en: "Full Stack Web Development (Django + React)"
+    issuer: "Codings Academy"
+    date: "2024"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Magíster en Cs. y Tec. de la Computación"
+      en: "Master of Science and Technology in Computer Science"
+    issuer: "UTPL"
+    date: "2021"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Máster en Ciberseguridad Defensiva y Ofensiva"
+      en: "Master in Defensive and Offensive Cybersecurity"
+    issuer: "Universidad Complutense de Madrid"
+    date: "2026"
+    status: "in-progress"
+    credentialId: null
+
+# =============================================================================
+# Projects (GitHub collaboration evidence)
+# =============================================================================
+projects:
+  - name: "exploitarium"
+    url: "https://github.com/statick88/exploitarium"
+    description:
+      es: "Colección de PoCs de explotación para CVEs"
+      en: "Exploitation PoC collection for CVEs"
+    metrics:
+      stars: 12
+      forks: 3
+      issues: 5
+    technologies: ["Python", "Exploit Development", "CVE"]
+    securityRelevant: true
+    featured: true
+
+  - name: "MindLedger"
+    url: "https://github.com/statick88/MindLedger"
+    description:
+      es: "Aplicación de gestión de conocimiento personal"
+      en: "Personal knowledge management application"
+    technologies: ["TypeScript", "React", "Node.js"]
+    featured: true
+
+  - name: "cybervault"
+    url: "https://github.com/statick88/cybervault"
+    description:
+      es: "Repositorio de seguridad y auditoría"
+      en: "Security and audit repository"
+    technologies: ["Python", "Security"]
+    securityRelevant: true
+    featured: true
+
+  - name: "go-snake"
+    url: "https://github.com/statick88/go-snake"
+    description:
+      es: "Juego de Snake implementado en Go"
+      en: "Snake game implemented in Go"
+    technologies: ["Go"]
+    featured: false
+
+  - name: "sdd-docker"
+    url: "https://github.com/statick88/sdd-docker"
+    description:
+      es: "Docker environment for Spec-Driven Development"
+      en: "Docker environment for Spec-Driven Development"
+    technologies: ["Docker", "SDD"]
+    featured: false
+
+  - name: "cv-diego"
+    url: "https://github.com/statick88/cv-diego"
+    description:
+      es: "CV digital interactivo"
+      en: "Interactive digital CV"
+    technologies: ["React", "Vite", "TypeScript", "Tailwind CSS"]
+    featured: true
+
+# =============================================================================
+# Metrics (quantified impact)
+# =============================================================================
+metrics:
+  yearsExperience: 10
+  yearsTeaching: 6
+  totalHoursTeaching: 200
+  githubPublicRepos: 379
+  publicReposAudited: 130
+  averageCohortScore: 93.4
+  apcYearsService: 9
+  languagesSpoken: 2
+  totalProjectsAudited: 64
+
+# =============================================================================
+# Metadata
+# =============================================================================
+metadata:
+  schemaVersion: "1.0.0"
+  lastVerified: "2026-06-01"
+  dataSources:
+    - "~/Documents/job_applications/core/cv-consolidado.md"
+    - "~/Documents/Master*"
+    - "~/Documents/Certificados/*"
+    - "~/Documents/Abacom"
+    - "~/dev/*"
+    - "~/security/*"
+    - "~/Documents/Obsidian/Cursos"
+    - "GitHub API"
+  auditTrail:
+    - "130+ PDF audit"
+    - "NLM verification"
+    - "GitHub API verification"
+    - "3 directory audits"
