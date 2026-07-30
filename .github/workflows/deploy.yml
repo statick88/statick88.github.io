@@ -35,7 +35,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint (advisory)
+        run: pnpm lint || true
+
+      - name: Build (validate + bundle + export)
         run: pnpm build
 
       - name: Setup Pages

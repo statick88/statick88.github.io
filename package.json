@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "husky",
     "dev": "vite",
-    "build": "vite build && node scripts/generate-csp.mjs",
+    "build": "pnpm validate:cv && vite build && node scripts/generate-csp.mjs && pnpm export:cv",
+    "build:quick": "vite build && node scripts/generate-csp.mjs",
     "build:analyze": "vite build --mode analyze && node scripts/generate-csp.mjs",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
