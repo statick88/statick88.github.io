@@ -257,76 +257,76 @@ export const languages: readonly Language[] = [
 
 export const projects: readonly Project[] = [
   {
-    name: 'open-api-facturacion-sri',
+    name: 'course-of-cybersecurity',
     description: {
-      es: 'API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.',
-      en: 'REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission.',
+      es: 'Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker.',
+      en: 'Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual.',
     },
     highlights: {
-      es: ['Node.js', 'TypeScript', 'XAdES-BES', 'SRI Ecuador'],
-      en: ['Node.js', 'TypeScript', 'XAdES-BES', 'SRI Ecuador'],
+      es: ['Diseño Curricular', '42 horas', 'Retos', 'Laboratorios', 'Docker'],
+      en: ['Curriculum Design', '42 hours', 'Challenges', 'Labs', 'Docker'],
     },
-    github: 'https://github.com/statick88/open-api-facturacion-sri',
+    github: 'https://github.com/statick88/course-of-cybersecurity',
   },
   {
-    name: 'multi-agent-system',
+    name: 'cyber-guardians',
     description: {
-      es: 'Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.',
-      en: 'Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects.',
+      es: 'Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar nunca la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición.',
+      en: 'AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel.',
     },
     highlights: {
-      es: ['Python', 'FastAPI', 'OpenCode', 'MCP', 'SDD'],
-      en: ['Python', 'FastAPI', 'OpenCode', 'MCP', 'SDD'],
+      es: ['TypeScript', 'Método Socrático', 'Andamiaje', 'Vygotsky', 'Metacognición'],
+      en: ['TypeScript', 'Socratic Method', 'Scaffolding', 'Vygotsky', 'Metacognition'],
     },
-    github: 'https://github.com/statick88/multi-agent-system',
+    github: 'https://github.com/statick88/cyber-guardians',
   },
   {
-    name: 'material-educativo-unl',
+    name: 'desarrollo-software-seguro',
     description: {
-      es: 'Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica.',
-      en: 'Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics.',
+      es: 'Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub.',
+      en: 'Secure software development material published as open material, and the only repository in this set with a star on GitHub.',
     },
     highlights: {
-      es: ['Quarto', 'ABP', 'Open Educational Resources', 'UNL'],
-      en: ['Quarto', 'PBL', 'Open Educational Resources', 'UNL'],
+      es: ['JavaScript', 'Desarrollo Seguro', 'Open Educational Resources'],
+      en: ['JavaScript', 'Secure Development', 'Open Educational Resources'],
     },
-    github: 'https://github.com/statick88/material-educativo-unl',
+    github: 'https://github.com/statick88/desarrollo-software-seguro',
   },
   {
-    name: 'UCM-Moodle-Pentest',
+    name: 'Course_of_python',
     description: {
-      es: 'Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl.',
-      en: 'Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl.',
+      es: 'Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto.',
+      en: 'Own Python course of 11 modules with 70+ practical challenges, published as open material.',
     },
     highlights: {
-      es: ['Pentest', 'OWASP WSTG', 'CVSS 3.1', 'IDOR', 'Moodle'],
-      en: ['Pentest', 'OWASP WSTG', 'CVSS 3.1', 'IDOR', 'Moodle'],
+      es: ['JavaScript', 'Python', '11 módulos', '70+ retos', 'Material Abierto'],
+      en: ['JavaScript', 'Python', '11 modules', '70+ challenges', 'Open Material'],
     },
-    github: 'https://github.com/statick88/ucm-moodle-pentest',
+    github: 'https://github.com/statick88/Course_of_python',
   },
   {
-    name: 'OpenWrt-Hardware-Hacking',
+    name: 'MindLedger',
     description: {
-      es: 'Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM.',
-      en: 'Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project.',
+      es: 'Sistema multi-tenant de gestión clínica y contable: arquitectura limpia, aislamiento multi-tenant, cifrado de base de datos local y validación de entrada tipada.',
+      en: 'Multi-tenant clinical and accounting system: clean architecture, multi-tenant isolation, local database encryption and typed input validation.',
     },
     highlights: {
-      es: ['OpenWrt', 'ramips-mt76x8', 'imagebuilder', 'TFTP', 'firmware'],
-      en: ['OpenWrt', 'ramips-mt76x8', 'imagebuilder', 'TFTP', 'firmware'],
+      es: ['Rust', 'Clean Architecture', 'Multi-Tenant', 'Cifrado', 'Validación Tipada'],
+      en: ['Rust', 'Clean Architecture', 'Multi-Tenant', 'Encryption', 'Typed Validation'],
     },
-    github: 'https://github.com/statick88/openwrt-hardware-hacking',
+    github: 'https://github.com/statick88/MindLedger',
   },
   {
-    name: 'ms08-067-metasploit-demo',
+    name: 'jarvis-os',
     description: {
-      es: 'Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso.',
-      en: 'Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation.',
+      es: 'Capa de servicios en Python.',
+      en: 'Python service layer.',
     },
     highlights: {
-      es: ['Metasploit', 'ms08_067', 'ms17_010', 'RE', 'Windows'],
-      en: ['Metasploit', 'ms08_067', 'ms17_010', 'RE', 'Windows'],
+      es: ['Python'],
+      en: ['Python'],
     },
-    github: 'https://github.com/statick88/ms08-067-metasploit-demo',
+    github: 'https://github.com/statick88/jarvis-os',
   },
 ]
 
@@ -358,7 +358,7 @@ export const metrics: Record<string, Metric> = {
     source: 'Docente Cuantitativa Evaluation.pdf',
   },
   githubRepos: {
-    value: '100+',
+    value: '400',
     unit: 'repos',
     label_es: 'Repositorios públicos en GitHub',
     label_en: 'Public GitHub repos',
@@ -424,8 +424,8 @@ export const services: readonly Service[] = [
     icon: 'book',
     title: { es: 'Capacitación & Cursos', en: 'Training & Courses' },
     description: {
-      es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad, y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM.',
-      en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM.',
+      es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad, y desarrollo de software. Trece años de docencia continua desde 2013 en seis instituciones, entre ellas ESPE, UIDE y ABACOM.',
+      en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. Thirteen continuous years of teaching since 2013 across six institutions, including ESPE, UIDE and ABACOM.',
     },
     formats: { es: ['Por hora', 'Por curso', 'Workshop'], en: ['Hourly', 'Per course', 'Workshop'] },
     priceRange: '$30-60/hora',
@@ -476,8 +476,8 @@ export const profileData: Record<string, Profile> = {
     color: '#3b82f6',
     icon: '💻',
     summary: {
-      es: 'Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 100+ repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.',
-      en: 'Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 100+ public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD.',
+      es: 'Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 400 repos públicos en GitHub. Apasionado por Clean Architecture, SOLID y TDD.',
+      en: 'Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 400 public repos on GitHub. Passionate about Clean Architecture, SOLID, and TDD.',
     },
     skills: [
       { name: 'HTML', level: 'master', category: 'frontend-fundamentals' },

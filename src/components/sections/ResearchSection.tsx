@@ -11,7 +11,7 @@ export function ResearchSection() {
 
   return (
     <div id="research" className="mt-8">
-      <Section title={t('Investigación Científica', 'Scientific Research')}>
+      <Section title={t('Publicaciones', 'Publications')}>
         <Research />
       </Section>
     </div>

@@ -55,7 +55,7 @@ export function ScrollNavBar() {
               tabIndex={0}
               className={`relative w-2 h-2 rounded-full transition-all duration-300 flex-shrink-0 ${
                 isActive
-                  ? 'bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)] ring-2 ring-cyan-400/30'
+                  ? 'bg-cyan-400 shadow-[0_0_8px_rgba(255,105,0,0.8)] ring-2 ring-cyan-400/30'
                   : isScrolledPast
                     ? 'bg-cyan-500/60 hover:bg-cyan-400'
                     : 'bg-white/20 hover:bg-white/40'

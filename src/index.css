@@ -2,13 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * DragonJAR colour language on a dark ground.
+ *
+ * The channel triplets below are the single source of truth for the palette:
+ * tailwind.config.js exposes every Tailwind colour family as
+ * `rgb(var(--dj-*) / <alpha-value>)`, so the ~389 existing standard colour
+ * classes (`text-cyan-400`, `bg-green-500`, `border-cyan-500`, ...) resolve to
+ * these values with zero component edits.
+ */
 :root {
-  --color-primary: #00cc33;
-  --color-secondary: #00b4e6;
-  --color-accent: #9333ea;
-  --color-bg: #0a0a0f;
-  --color-bg-alt: #12121a;
-  
+  /* --- DragonJAR brand orange (accent slot, formerly neon cyan) ----------- */
+  --dj-orange-50: 255 241 230;
+  --dj-orange-100: 255 224 199;
+  --dj-orange-200: 255 189 146;
+  --dj-orange-300: 255 155 92;
+  --dj-orange-400: 255 130 46;
+  --dj-orange-500: 255 105 0;   /* #ff6900 - signature brand colour */
+  --dj-orange-600: 217 92 0;    /* #d95c00 */
+  --dj-orange-700: 168 72 0;    /* #a84800 */
+  --dj-orange-800: 130 56 0;    /* #823800 */
+  --dj-orange-900: 92 40 0;     /* #5c2800 */
+
+  /* --- Success / verified (jade, calmer than neon #00cc33) --------------- */
+  --dj-green-50: 234 249 239;
+  --dj-green-100: 209 243 223;
+  --dj-green-200: 167 227 193;
+  --dj-green-300: 122 205 158;
+  --dj-green-400: 74 181 121;
+  --dj-green-500: 40 155 96;
+  --dj-green-600: 26 122 74;
+  --dj-green-700: 18 88 54;
+  --dj-green-800: 13 63 39;
+  --dj-green-900: 9 45 28;
+
+  /* --- Secondary / informational (desaturated steel) ---------------------- */
+  --dj-blue-50: 239 244 248;
+  --dj-blue-100: 217 228 238;
+  --dj-blue-200: 184 203 219;
+  --dj-blue-300: 143 173 199;
+  --dj-blue-400: 108 145 176;
+  --dj-blue-500: 82 116 146;
+  --dj-blue-600: 64 94 122;
+  --dj-blue-700: 50 74 98;
+  --dj-blue-800: 39 58 77;
+  --dj-blue-900: 31 46 62;
+
+  /* --- Danger / error (DragonJAR #cf2e2e, brightened for dark ground) ----- */
+  --dj-red-50: 253 238 238;
+  --dj-red-100: 250 219 219;
+  --dj-red-200: 243 187 187;
+  --dj-red-300: 231 137 137;
+  --dj-red-400: 217 90 84;      /* #d95a54 - legible as text on the dark ground */
+  --dj-red-500: 207 46 46;      /* #cf2e2e - DragonJAR alert red */
+  --dj-red-600: 172 36 36;
+  --dj-red-700: 139 29 29;
+  --dj-red-800: 108 24 24;
+  --dj-red-900: 82 20 20;
+
+  /* --- Warm neutral scale (same lightness ordering as Tailwind gray) ------ */
+  --dj-gray-50: 250 249 248;
+  --dj-gray-100: 245 243 241;
+  --dj-gray-200: 234 234 234;   /* #eaeaea - DragonJAR hairline */
+  --dj-gray-300: 211 206 201;
+  --dj-gray-400: 158 151 144;
+  --dj-gray-500: 114 108 102;
+  --dj-gray-600: 82 77 72;
+  --dj-gray-700: 60 56 52;
+  --dj-gray-800: 40 37 34;
+  --dj-gray-900: 24 24 24;      /* #181818 - DragonJAR near-black ink */
+  --dj-gray-950: 13 11 10;
+
+  /* --- Decorative tier accents ------------------------------------------- */
+  /* Plum: skill "Master"/"Intermediate", language B2, "Repos Auditados". */
+  --dj-purple-50: 246 240 248;
+  --dj-purple-100: 230 216 238;
+  --dj-purple-200: 205 179 219;
+  --dj-purple-300: 176 138 194;
+  --dj-purple-400: 147 105 168;
+  --dj-purple-500: 122 80 143;
+  --dj-purple-600: 98 62 116;
+  --dj-purple-700: 76 48 91;
+  --dj-purple-800: 57 36 69;
+  --dj-purple-900: 42 27 51;
+
+  /* Bronze: language A2 badge. Deliberately NOT the brand orange so the
+     decorative tier stays distinct from the accent. */
+  --dj-bronze-50: 250 243 235;
+  --dj-bronze-100: 240 227 211;
+  --dj-bronze-200: 223 198 168;
+  --dj-bronze-300: 200 164 122;
+  --dj-bronze-400: 172 133 88;
+  --dj-bronze-500: 146 107 62;
+  --dj-bronze-600: 118 85 47;
+  --dj-bronze-700: 91 64 35;
+  --dj-bronze-800: 67 47 25;
+  --dj-bronze-900: 48 34 18;
+
+  /* Sand: "Certificado" education tier. */
+  --dj-amber-50: 251 246 232;
+  --dj-amber-100: 245 234 202;
+  --dj-amber-200: 233 208 148;
+  --dj-amber-300: 216 176 92;
+  --dj-amber-400: 194 148 60;
+  --dj-amber-500: 168 124 40;
+  --dj-amber-600: 135 98 30;
+  --dj-amber-700: 104 75 23;
+  --dj-amber-800: 76 55 17;
+  --dj-amber-900: 55 40 12;
+
+  /*
+   * Semantic aliases. These had zero usages in the tree but were kept in line
+   * with what actually renders so they cannot contradict the design.
+   */
+  --color-primary: #ff6900;              /* brand accent */
+  --color-secondary: #6a91b0;            /* steel blue */
+  --color-accent: #cf2e2e;                /* alert red */
+  --color-bg: #0d0b0a;                    /* warm near-black ground */
+  --color-bg-alt: #181818;                /* DragonJAR ink */
+
+  /* Dark ground, nudged warm so the orange reads native rather than pasted on. */
+  --dj-surface-0: #0d0b0a;
+  --dj-surface-1: #141110;
+  --dj-surface-2: #181818;
+
   /* Smooth scrolling */
   scroll-behavior: smooth;
 }
@@ -27,15 +144,15 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #0a0a0f 0%, #050508 100%);
-  color: #b0b0c0;
+  background: linear-gradient(180deg, var(--dj-surface-0) 0%, #070605 100%);
+  color: rgb(var(--dj-gray-400));
   min-height: 100vh;
   line-height: 1.6;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(0, 255, 255, 0.3);
+  background: rgba(255, 105, 0, 0.28);
   color: white;
 }
 
@@ -47,7 +164,7 @@ body {
 
 /* Ensure focus-visible works for keyboard navigation */
 :focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.8);
+  outline: 2px solid rgba(255, 105, 0, 0.85);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -56,7 +173,7 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.8);
+  outline: 2px solid rgba(255, 105, 0, 0.85);
   outline-offset: 2px;
 }
 
@@ -66,8 +183,8 @@ input:focus-visible,
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #00ffff;
-  color: #0a0a0f;
+  background: #ff6900;
+  color: #0d0b0a;
   padding: 12px 24px;
   border-radius: 0 0 8px 8px;
   font-weight: 700;
@@ -78,7 +195,7 @@ input:focus-visible,
 
 .skip-link:focus {
   top: 0;
-  outline: 3px solid #00cc33;
+  outline: 3px solid #4ab579;
   outline-offset: 2px;
 }
 
@@ -96,13 +213,14 @@ input:focus-visible,
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Neon effects */
+/* Neon effects - class names retained for compatibility, repointed at the brand
+   orange so the glow layer matches the palette. */
 .neon-text {
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+  text-shadow: 0 0 10px rgba(255, 105, 0, 0.45), 0 0 20px rgba(255, 105, 0, 0.25);
 }
 
 .neon-border {
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), inset 0 0 5px rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 5px rgba(255, 105, 0, 0.3), inset 0 0 5px rgba(255, 105, 0, 0.12);
 }
 
 /* Custom scrollbar - Enhanced */
@@ -112,23 +230,23 @@ input:focus-visible,
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: var(--dj-surface-0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(0, 255, 255, 0.3), rgba(0, 204, 51, 0.3));
+  background: linear-gradient(180deg, rgba(255, 105, 0, 0.32), rgba(40, 155, 96, 0.32));
   border-radius: 4px;
   transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(0, 255, 255, 0.5), rgba(0, 204, 51, 0.5));
+  background: linear-gradient(180deg, rgba(255, 105, 0, 0.55), rgba(40, 155, 96, 0.55));
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 255, 255, 0.3) #0a0a0f;
+  scrollbar-color: rgba(255, 105, 0, 0.32) var(--dj-surface-0);
 }
 
 /* Particles background */
@@ -147,7 +265,7 @@ input:focus-visible,
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(0, 255, 255, 0.3);
+  background: rgba(255, 105, 0, 0.3);
   border-radius: 50%;
   animation: float 15s infinite;
 }
@@ -171,7 +289,7 @@ input:focus-visible,
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #00cc33 0%, #00b4e6 100%);
+  background: linear-gradient(135deg, #ff6900 0%, #6a91b0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -183,7 +301,7 @@ input:focus-visible,
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(255, 105, 0, 0.28), 0 10px 40px rgba(0, 0, 0, 0.3);
   transform: translateY(-4px);
 }
 
@@ -206,10 +324,10 @@ input:focus-visible,
 /* Pulse animation for CTAs */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 105, 0, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 40px rgba(255, 105, 0, 0.45);
   }
 }
 
@@ -219,13 +337,13 @@ input:focus-visible,
 
 /* Link styles */
 a {
-  color: #00b4e6;
+  color: #6a91b0;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #00cc33;
+  color: #ff6900;
 }
 
 /* Button base styles */
@@ -344,6 +462,6 @@ img[loading="lazy"].loaded {
 
 @supports not (backdrop-filter: blur(10px)) {
   .glass {
-    background: rgba(10, 10, 15, 0.95);
+    background: rgba(13, 11, 10, 0.95);
   }
 }

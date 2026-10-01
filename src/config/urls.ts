@@ -25,12 +25,12 @@ export const URLS = {
 
   // Project Repositories
   projects: {
-    openApiFacturacionSri: 'https://github.com/statick88/open-api-facturacion-sri',
-    multiAgentSystem: 'https://github.com/statick88/multi-agent-system',
-    materialEducativoUnl: 'https://github.com/statick88/material-educativo-unl',
-    ucmMoodlePentest: 'https://github.com/statick88/ucm-moodle-pentest',
-    openwrtHardwareHacking: 'https://github.com/statick88/openwrt-hardware-hacking',
-    ms08_067MetasploitDemo: 'https://github.com/statick88/ms08-067-metasploit-demo'
+    courseOfCybersecurity: 'https://github.com/statick88/course-of-cybersecurity',
+    cyberGuardians: 'https://github.com/statick88/cyber-guardians',
+    desarrolloSoftwareSeguro: 'https://github.com/statick88/desarrollo-software-seguro',
+    courseOfPython: 'https://github.com/statick88/Course_of_python',
+    mindLedger: 'https://github.com/statick88/MindLedger',
+    jarvisOs: 'https://github.com/statick88/jarvis-os'
   },
 
   // Course URLs (from courses.js)

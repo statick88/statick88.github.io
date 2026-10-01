@@ -184,15 +184,15 @@ const HireMe = ({ t }) => {
         </span>
         <span className="flex items-center gap-2">
           <span className="text-green-500">✓</span>
-          {t('500+ estudiantes formados', '500+ students trained')}
+          {t('13 años de docencia', '13 years teaching')}
         </span>
         <span className="flex items-center gap-2">
           <span className="text-green-500">✓</span>
-          {t('100+ repos públicos', '100+ public repos')}
+          {t('400 repos públicos', '400 public repos')}
         </span>
         <span className="flex items-center gap-2">
           <span className="text-green-500">✓</span>
-          {t('MSc Ciberseguridad UCM', 'MSc Cybersecurity UCM')}
+          {t('MSc Ciberseguridad UCM (en curso)', 'MSc Cybersecurity UCM (in progress)')}
         </span>
       </motion.div>
     </div>

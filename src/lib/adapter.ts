@@ -146,9 +146,9 @@ export function adaptProfile(activeProfileId: string = 'developer'): ExecutivePr
 export function getDefaultMetrics(): MetricsSummary {
   return {
     yearsExperience: 10,
-    yearsTeaching: 4,
-    totalHoursTeaching: 2400,
-    githubPublicRepos: 100,
+    yearsTeaching: 13,
+    totalHoursTeaching: 200,
+    githubPublicRepos: 400,
     publicReposAudited: 10,
     averageCohortScore: 93.4,
     apcYearsService: 9,
