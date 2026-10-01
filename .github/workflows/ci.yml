@@ -113,10 +113,18 @@ jobs:
           ! grep -q "strict-dynamic" dist/_headers || (echo "::error::strict-dynamic found in _headers" && exit 1)
           echo "✅ dist/_headers validation passed"
 
-      - name: Verify CSP in dist/_headers
+      - name: Verify CSP on the policy the browser actually enforces
         run: |
-          ! grep -q "unsafe-inline" dist/_headers || { echo "::error::unsafe-inline in dist/_headers CSP"; exit 1; }
-          echo "✅ No unsafe-inline in dist/_headers"
+          # GitHub Pages ignores _headers (that is a Netlify/Cloudflare Pages
+          # convention). The CSP actually applied to this deployment is the
+          # <meta http-equiv> tag injected into dist/index.html by
+          # scripts/generate-csp.mjs, so that is what this gate must assert.
+          META=$(grep -o 'http-equiv="Content-Security-Policy" content="[^"]*"' dist/index.html) || (echo "::error::CSP meta tag missing from dist/index.html" && exit 1)
+          echo "$META" | grep -q "script-src[^;]*unsafe-inline" && { echo "::error::unsafe-inline in script-src"; exit 1; }
+          echo "$META" | grep -q "unsafe-eval" && { echo "::error::unsafe-eval in CSP"; exit 1; }
+          HASHES=$(echo "$META" | grep -o 'sha256-[A-Za-z0-9+/]\{43\}=' | wc -l | tr -d ' ')
+          test "$HASHES" -gt 0 || { echo "::error::script-src has no sha256 hashes"; exit 1; }
+          echo "✅ CSP verified: script-src is hash-only, $HASHES script hash(es); style-src keeps 'unsafe-inline' because the app renders inline style attributes"
 
       - name: Generate CV variants (8 PDFs expected)
         run: |

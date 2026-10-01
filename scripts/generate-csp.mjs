@@ -138,6 +138,25 @@ function main() {
 
   writeFileSync(INDEX_PATH, html)
   console.log('[CSP] Injected into dist/index.html ✓')
+
+  // Emit dist/_headers from the SAME policy object, so the two can never drift.
+  // Previously dist/_headers was copied from public/_headers, a stale duplicate
+  // that still allowed script-src 'unsafe-inline'. GitHub Pages ignores _headers
+  // entirely (it is a Netlify/Cloudflare Pages convention), but the file is kept
+  // in sync for platforms that do honour it, and for the CI gate to assert on.
+  const HEADERS_PATH = join(DIST_DIR, '_headers')
+  const headersBody = [
+    '/*',
+    `  Content-Security-Policy: ${csp}`,
+    '  X-Frame-Options: DENY',
+    '  X-Content-Type-Options: nosniff',
+    '  Referrer-Policy: strict-origin-when-cross-origin',
+    '  Permissions-Policy: geolocation=(), microphone=(), camera=()',
+    '',
+  ].join('\n')
+  writeFileSync(HEADERS_PATH, headersBody)
+  console.log('[CSP] Wrote dist/_headers from the same policy ✓')
+
   console.log('[CSP] Done.')
 }
 
