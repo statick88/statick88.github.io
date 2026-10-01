@@ -49,7 +49,7 @@ https://istjm.edu.ec/
 
 2020-10-01 - 2022-03-31
 
-Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coord. Talento Humano, CI 1103882955).
+Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coordinación de Talento Humano, IST Juan Montalvo).
 
 ### Docente Ocasional - TTI at UIDE - Universidad Internacional del Ecuador (Ext. Loja)
 https://www.uide.edu.ec/

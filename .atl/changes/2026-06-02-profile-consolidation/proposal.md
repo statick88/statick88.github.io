@@ -11,7 +11,7 @@ The `cv-diego` portfolio site (deployed at `statick88.github.io`) currently serv
 
 Examples of drift:
 - `cvData.js` lists `Universidad de Zulia` (LUZ) and `Universidad UIDEM` — **neither verified** as work experience with PDF reference. These appear to be placeholder/legacy entries from before the consolidation.
-- `cvData.js` lists IST Juan Montalvo as "2019-10-31 → 2022-10-31" with position "Docente Ocasional Tiempo Completo" — but the verified PDF `Referencias_laborales_ist_juan_montalvo.pdf` (ref Ing. Ana Gabriela Montalván Salcedo, Mba, CI 1103882955) states: **"Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo"** from **"octubre 2020 a marzo 2022"**.
+- `cvData.js` lists IST Juan Montalvo as "2019-10-31 → 2022-10-31" with position "Docente Ocasional Tiempo Completo" — but the verified PDF `Referencias_laborales_ist_juan_montalvo.pdf` (ref Ing. Ana Gabriela Montalván Salcedo, Mba, Coordinación de Talento Humano) states: **"Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo"** from **"octubre 2020 a marzo 2022"**.
 - `cvData.js` lists a certification `"Título de Maestría en Ciberseguridad"` by UCM as `status: "active"` — this is the **MSc in progress (2026–2027)**, not a completed cert.
 - `cvData.js` lists `OSCP` as `in-progress` — no evidence Diego is enrolled/has taken it. Should be removed unless verifiable.
 - `cvData.js` lists APC (Antonio Peña Celi) as a profile data point but does NOT include it in `work` array, despite having a PDF ref (Ing. Rolando Marcelo Rojas Merchán, since 01/09/2013).

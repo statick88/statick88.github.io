@@ -184,7 +184,7 @@ const HireMe = ({ t }) => {
         </span>
         <span className="flex items-center gap-2">
           <span className="text-green-500">✓</span>
-          {t('500+ estudiantes formados', '500+ students trained')}
+          {t('200+ horas docentes verificadas', '200+ verified teaching hours')}
         </span>
         <span className="flex items-center gap-2">
           <span className="text-green-500">✓</span>

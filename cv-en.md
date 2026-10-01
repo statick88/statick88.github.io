@@ -49,7 +49,7 @@ https://istjm.edu.ec/
 
 2020-10-01 - 2022-03-31
 
-Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, ID 1103882955).
+Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, IST Juan Montalvo).
 
 ### Adjunct Professor - IT Career at UIDE - Universidad Internacional del Ecuador (Ext. Loja)
 https://www.uide.edu.ec/

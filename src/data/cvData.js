@@ -260,8 +260,8 @@ export const cvData = {
       startDate: "2020-10-01",
       endDate: "2022-03-31",
       summary: {
-        es: "Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coord. Talento Humano, CI 1103882955).",
-        en: "Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, ID 1103882955)."
+        es: "Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coordinación de Talento Humano, IST Juan Montalvo).",
+        en: "Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, IST Juan Montalvo)."
       }
     },
     {
@@ -598,8 +598,8 @@ export const cvData = {
       icon: 'book',
       title: { es: 'Capacitación & Cursos', en: 'Training & Courses' },
       description: {
-        es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad, y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM.',
-        en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM.'
+        es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad y desarrollo de software. Más de 200 horas docentes verificadas en ABACOM y seis instituciones de educación superior.',
+        en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. Over 200 verified teaching hours at ABACOM and six higher-education institutions.'
       },
       formats: {
         es: ['Por hora', 'Por curso', 'Workshop'],
