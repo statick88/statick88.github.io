@@ -16,5 +16,12 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['src/test/setup.ts'],
     css: true,
+    coverage: {
+      // Vitest's default reporters are text, html, clover and json — none of
+      // them is lcov. Without it SonarQube reports 0% coverage while every
+      // test passes, which is a metric that lies rather than one that fails.
+      reporter: ['text', 'lcov'],
+      reportsDirectory: 'coverage',
+    },
   },
 })
