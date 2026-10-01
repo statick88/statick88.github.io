@@ -19,7 +19,6 @@ import Particles from '@/components/Particles'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
 import { Footer } from '@/components/layout/Footer'
-import { initPrefetching } from '@/lib/prefetch'
 import { initWebVitalsForProject } from '@/lib/web-vitals'
 
 interface AppLayoutProps {
@@ -30,14 +29,7 @@ function AppLayoutInner({ children }: AppLayoutProps) {
   const { language, setLanguage, theme, setTheme, isLoaded, t } = useApp()
 
   useEffect(() => {
-    const cleanupPrefetch = initPrefetching()
-    const vitalsEndpoint = import.meta.env.VITE_VITALS_ENDPOINT
-    if (vitalsEndpoint) {
-      initWebVitalsForProject(vitalsEndpoint)
-    } else {
-      initWebVitalsForProject()
-    }
-    return () => cleanupPrefetch()
+    initWebVitalsForProject(import.meta.env.VITE_VITALS_ENDPOINT)
   }, [])
 
   return (

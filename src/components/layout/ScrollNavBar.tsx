@@ -10,7 +10,6 @@ import { useScrollProgress } from '@/hooks/useScrollProgress'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useNavItems, scrollToSection } from '@/hooks/useNavItems'
 import { SECTION_IDS } from '@/config/navigation'
-import { prefetchSection } from '@/lib/prefetch'
 
 export function ScrollNavBar() {
   const { progress } = useScrollProgress()
@@ -46,7 +45,6 @@ export function ScrollNavBar() {
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              onMouseEnter={() => prefetchSection(item.id)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && scrollToSection(item.id)}
               whileHover={{ scale: 1.5 }}
               whileTap={{ scale: 0.8 }}

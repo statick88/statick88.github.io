@@ -113,6 +113,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Firefox needs its own scrollbar properties; WebKit is handled below with
+     ::-webkit-scrollbar. Kept in one rule so the selector is not duplicated. */
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-primary-rgb) / 0.35) var(--color-bg);
 }
 
 html {
@@ -243,12 +247,6 @@ input:focus-visible,
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(var(--color-primary-rgb) / 0.55);
-}
-
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(var(--color-primary-rgb) / 0.35) var(--color-bg);
 }
 
 /* Particles background */

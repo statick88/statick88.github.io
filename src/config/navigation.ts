@@ -1,7 +1,7 @@
 /**
  * src/config/navigation.ts — Single source of truth for section IDs
  *
- * All navigation components (SectionRenderer, ScrollNavBar, MobileDrawer, useNavItems)
+ * All navigation components (ScrollNavBar, MobileDrawer, useNavItems)
  * import SECTION_IDS from here. Adding/removing a section requires changes in ONE place.
  */
 

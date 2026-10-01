@@ -2,18 +2,18 @@
  * src/__tests__/components/AppLayout.test.tsx
  *
  * Integration tests for AppLayout component.
- * Verifies initPrefetching is wired on mount and cleanup on unmount.
+ * Verifies initWebVitalsForProject is wired on mount.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/react'
 import { AppProvider } from '@/context/AppContext'
 
-// Mock prefetch module
-const mockInitPrefetching = vi.fn(() => vi.fn()) // returns cleanup fn
+// Mock web-vitals module
+const mockInitWebVitalsForProject = vi.fn()
 
-vi.mock('@/lib/prefetch', () => ({
-  initPrefetching: (...args: []) => mockInitPrefetching(...args),
+vi.mock('@/lib/web-vitals', () => ({
+  initWebVitalsForProject: (...args: []) => mockInitWebVitalsForProject(...args),
 }))
 
 // Mock heavy component imports to avoid real lazy loading in tests
@@ -42,7 +42,7 @@ describe('AppLayout', () => {
     cleanup()
   })
 
-  it('calls initPrefetching on mount', () => {
+  it('calls initWebVitalsForProject on mount', () => {
     render(
       <AppProvider>
         <AppLayout>
@@ -51,24 +51,7 @@ describe('AppLayout', () => {
       </AppProvider>
     )
 
-    expect(mockInitPrefetching).toHaveBeenCalledOnce()
-  })
-
-  it('calls cleanup function on unmount', () => {
-    const mockCleanup = vi.fn()
-    mockInitPrefetching.mockReturnValue(mockCleanup)
-
-    const { unmount } = render(
-      <AppProvider>
-        <AppLayout>
-          <div>child content</div>
-        </AppLayout>
-      </AppProvider>
-    )
-
-    unmount()
-
-    expect(mockCleanup).toHaveBeenCalledOnce()
+    expect(mockInitWebVitalsForProject).toHaveBeenCalledOnce()
   })
 
   it('renders children inside the layout', () => {

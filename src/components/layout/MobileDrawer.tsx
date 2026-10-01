@@ -9,7 +9,6 @@ import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useNavItems, scrollToSection } from '@/hooks/useNavItems'
 import { useApp } from '@/context/AppContext'
 import { SECTION_IDS } from '@/config/navigation'
-import { prefetchSection } from '@/lib/prefetch'
 
 interface MobileDrawerProps {
   isOpen: boolean
@@ -65,7 +64,6 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                   <motion.button
                     key={item.id}
                     onClick={() => handleNav(item.id)}
-                    onMouseEnter={() => prefetchSection(item.id)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
