@@ -140,7 +140,13 @@ describe('education entries', () => {
   it.each<Education>(education)('$institution has valid dates and bilingual fields', (entry) => {
     expectNonEmptyString(entry.institution, `education[${entry.institution}].institution`)
     expectIsoDate(entry.startDate, `education[${entry.institution}].startDate`)
-    expectIsoDate(entry.endDate, `education[${entry.institution}].endDate`)
+    // An in-progress programme (UCM, started 2026-02) has no end date on
+    // record, so endDate must be either a valid ISO date or empty. This mirrors
+    // the `work` block above. The previous unconditional assertion encoded an
+    // invented end date and was wrong, not merely strict.
+    if (entry.endDate) {
+      expectIsoDate(entry.endDate, `education[${entry.institution}].endDate`)
+    }
     expectBilingual(entry.area, `education[${entry.institution}].area`)
   })
 

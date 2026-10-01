@@ -119,11 +119,9 @@ interface RawCVData {
     yearsTeaching: number
     totalHoursTeaching: number
     githubPublicRepos: number
-    publicReposAudited: number
     averageCohortScore: number
     apcYearsService: number
     languagesSpoken: number
-    totalProjectsAudited: number
   }
 }
 
@@ -158,6 +156,9 @@ const LANGUAGE_LEVEL_MAP: Record<string, ATSData['languages'][number]['proficien
   'Nativo': 'native',
   'nativo': 'native',
   'Native': 'native',
+  'B2': 'conversational',
+  // Without this an A2 language would be exported as "conversational".
+  'A2': 'basic',
   'Intermediate (B1+)': 'conversational',
   'Básico': 'basic',
   'basic': 'basic',

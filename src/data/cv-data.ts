@@ -89,7 +89,8 @@ export const education: readonly Education[] = raw.education.map((edu: any) => (
   area: edu.program,
   url: '',
   startDate: edu.startDate,
-  endDate: edu.endDate,
+  // An in-progress programme (UCM, started 2026-02) has no end date on record.
+  endDate: edu.endDate || '',
   studyType: edu.degree,
   score: edu.gpa || '',
 }))
@@ -164,13 +165,8 @@ export const metrics: Record<string, Metric> = {
     label_en: 'Public GitHub repos',
     source: 'github.com/statick88',
   },
-  publicReposAudited: {
-    value: String(m.publicReposAudited),
-    unit: 'repos',
-    label_es: 'Repositorios auditados',
-    label_en: 'Audited repositories',
-    source: 'cv-data.yaml',
-  },
+  // `publicReposAudited` and `totalProjectsAudited` were removed on 2026-10-01:
+  // no source backed the 130 / 64 values. Do not reintroduce them without one.
   averageCohortScore: {
     value: String(m.averageCohortScore),
     unit: '/100',
@@ -190,13 +186,6 @@ export const metrics: Record<string, Metric> = {
     unit: 'languages',
     label_es: 'Idiomas hablados',
     label_en: 'Languages spoken',
-    source: 'cv-data.yaml',
-  },
-  totalProjectsAudited: {
-    value: String(m.totalProjectsAudited),
-    unit: 'projects',
-    label_es: 'Proyectos auditados',
-    label_en: 'Audited projects',
     source: 'cv-data.yaml',
   },
 }
@@ -283,8 +272,13 @@ export const profileData: Record<string, Profile> = {
     color: '#ef4444',
     icon: '🎯',
     summary: {
-      es: 'Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). Auditoría Moodle UCM: 5 hallazgos (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Ciberseguridad UCM en curso.',
-      en: 'Ethical Hacker and Security Researcher. Pentesting, IDOR/CVSS, RE/Exploitation (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). UCM Moodle audit: 5 findings (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Cybersecurity UCM in progress.',
+      // Client engagements are described as verifiable capability only. Signed
+      // authorization letters may carry confidentiality terms, so the client is
+      // not named and no link is published — that attribution is the user's call.
+      // Source: ~/Security engagement reports and authorization letters,
+      // verified 2026-10-01.
+      es: 'Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). Auditoría Moodle UCM: 5 hallazgos (1 CRIT CVSS 9.1, 2 MED, 2 LOW). Red team sobre API vLLM 0.19.0: 10 hallazgos confirmados, CVSS medio 8.2, con PoC ejecutable. Pentest + red team sobre plataforma web: 9 vulnerabilidades (2 críticas, 2 altas), 205 registros exfiltrados, 0 falsos positivos. Tercer encargo con carta de autorización firmada, informe entregable y bundle de PoC con manifiesto SHA-256. Metodología propia: 116 hallazgos mapeados a MITRE ATT&CK (28/53 técnicas), NIST CSF 2.0 y OWASP Top 10. MSc Ciberseguridad UCM en curso.',
+      en: 'Ethical Hacker and Security Researcher. Pentesting, IDOR/CVSS, RE/Exploitation (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). UCM Moodle audit: 5 findings (1 CRIT CVSS 9.1, 2 MED, 2 LOW). Red team on a vLLM 0.19.0 API: 10 confirmed findings, mean CVSS 8.2, with executable PoCs. Pentest + red team on a web platform: 9 vulnerabilities (2 critical, 2 high), 205 records exfiltrated, 0 false positives. A third engagement under a signed authorization letter, with a deliverable report and a PoC bundle carrying a SHA-256 manifest. Own methodology: 116 findings mapped to MITRE ATT&CK (28/53 techniques), NIST CSF 2.0, and OWASP Top 10. MSc Cybersecurity UCM in progress.',
     },
     skills: skills.filter((s) => s.category === 'security'),
     certifications: certifications.filter((c) =>
@@ -299,8 +293,11 @@ export const profileData: Record<string, Profile> = {
     color: '#f59e0b',
     icon: '🔬',
     summary: {
-      es: 'Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). Interesado en threat modeling, pentesting y AI security.',
-      en: 'Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master\'s in Computer Science (UTPL 2021). Interested in threat modeling, pentesting, and AI security.',
+      // The UCM programme has no completion date on record: in progress since
+      // 2026-02 (user-confirmed 2026-10-01). The previous "2026-2027" range
+      // carried the invented end date.
+      es: 'Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, desde 2026-02). Magíster en Cs. y Tec. de la Computación (UTPL 2021). Interesado en threat modeling, pentesting y AI security.',
+      en: 'Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, since 2026-02). Master\'s in Computer Science (UTPL 2021). Interested in threat modeling, pentesting, and AI security.',
     },
     skills: skills.filter((s) => ['ai', 'research', 'tools'].includes(s.category)),
     certifications: certifications.filter((c) =>
@@ -315,8 +312,10 @@ export const profileData: Record<string, Profile> = {
     color: '#10b981',
     icon: '📚',
     summary: {
-      es: 'Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100.',
-      en: 'Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100.',
+      // 13 years is the user-confirmed figure; it must agree with
+      // metrics.yearsTeaching in cv-data.yaml.
+      es: 'Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 13+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100.',
+      en: 'Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 13+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100.',
     },
     skills: skills.filter((s) => s.category === 'teaching' || s.name === 'Python' || s.name === 'R Language' || s.name === 'Flutter' || s.name === 'Linux' || s.name === 'Ethical Hacking' || s.name === 'Hardware Hacking (OpenWrt)'),
     certifications: certifications.filter((c) => c.status === 'active'),
@@ -356,7 +355,7 @@ function validate(): void {
 
   for (const [i, entry] of education.entries()) {
     assertIsoDate(entry.startDate, `education[${i}].startDate`)
-    assertIsoDate(entry.endDate, `education[${i}].endDate`)
+    if (entry.endDate) assertIsoDate(entry.endDate, `education[${i}].endDate`)
     assertNonEmpty(entry.institution, `education[${i}].institution`)
     assertBilingual(entry.area, `education[${i}].area`)
   }

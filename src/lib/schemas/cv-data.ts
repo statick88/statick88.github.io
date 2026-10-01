@@ -201,11 +201,11 @@ export const MetricsSummarySchema = z.object({
   yearsTeaching: z.number(),
   totalHoursTeaching: z.number(),
   githubPublicRepos: z.number(),
-  publicReposAudited: z.number(),
   averageCohortScore: z.number(),
   apcYearsService: z.number(),
   languagesSpoken: z.number(),
-  totalProjectsAudited: z.number(),
+  // `publicReposAudited` and `totalProjectsAudited` were removed on 2026-10-01:
+  // no traceable source backed the 130 / 64 values they carried.
 });
 
 export type MetricsSummary = z.infer<typeof MetricsSummarySchema>;

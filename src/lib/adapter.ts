@@ -14,6 +14,7 @@ import {
   projects,
   contact,
   profileData,
+  metrics,
 } from '@/data/cv-data'
 
 import type {
@@ -141,18 +142,30 @@ export function adaptProfile(activeProfileId: string = 'developer'): ExecutivePr
   }
 }
 
-// ─── Metrics (hardcoded defaults — no source in cv-data) ───────────────────────
+// ─── Metrics (sourced from cv-data.yaml — no hardcoded numbers) ────────────────
+
+/**
+ * Reads a numeric metric from the YAML-backed `metrics` record.
+ *
+ * The record is `Record<string, Metric>` with a string `value`, so this is the
+ * single place where the YAML shape is converted to the numeric shape the
+ * components expect. `noUncheckedIndexedAccess` makes the lookup return
+ * `Metric | undefined`; a missing or non-numeric entry resolves to 0 rather
+ * than to a fabricated figure.
+ */
+function metricValue(key: string): number {
+  const parsed = Number(metrics[key]?.value)
+  return Number.isFinite(parsed) ? parsed : 0
+}
 
 export function getDefaultMetrics(): MetricsSummary {
   return {
-    yearsExperience: 10,
-    yearsTeaching: 4,
-    totalHoursTeaching: 2400,
-    githubPublicRepos: 100,
-    publicReposAudited: 10,
-    averageCohortScore: 93.4,
-    apcYearsService: 9,
-    languagesSpoken: 4,
-    totalProjectsAudited: 6,
+    yearsExperience: metricValue('yearsExperience'),
+    yearsTeaching: metricValue('yearsTeaching'),
+    totalHoursTeaching: metricValue('totalHoursTeaching'),
+    githubPublicRepos: metricValue('githubPublicRepos'),
+    averageCohortScore: metricValue('averageCohortScore'),
+    apcYearsService: metricValue('apcYearsService'),
+    languagesSpoken: metricValue('languagesSpoken'),
   }
 }

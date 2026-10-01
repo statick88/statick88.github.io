@@ -102,14 +102,12 @@ function makeCvData(overrides: Partial<CVData> = {}): CVData {
 
   const metrics: MetricsSummary = {
     yearsExperience: 10,
-    yearsTeaching: 4,
-    totalHoursTeaching: 2400,
-    githubPublicRepos: 100,
-    publicReposAudited: 10,
+    yearsTeaching: 13,
+    totalHoursTeaching: 200,
+    githubPublicRepos: 400,
     averageCohortScore: 93.4,
     apcYearsService: 9,
     languagesSpoken: 4,
-    totalProjectsAudited: 6,
   }
 
   const metadata = {

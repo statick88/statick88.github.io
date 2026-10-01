@@ -1,8 +1,14 @@
 # =============================================================================
 # CV Data — Diego Medardo Saavedra García
-# Source of Truth: ~/Documents/job_applications/core/cv-consolidado.md
-# Last verified: 2026-06-01 (130+ PDF audit, NLM, GitHub, 3 directory audits)
+# Source of Truth: this file (the previous cv-consolidado.md reference did not exist)
+# Reconciliation: odd/tasks/cv-data-reconciliation.md
+# Last verified: 2026-10-01 (GitHub API statick88 + user-confirmed facts)
 # Schema: cv-data-v1 (src/lib/schemas/cv-data.ts)
+#
+# Integrity rule: every number below carries a traceable source. Unsourced
+# figures are removed, never estimated. `certifications[]` is deliberately left
+# untouched: the PDFs on disk are image scans with no text layer and are not
+# verifiable without OCR.
 # =============================================================================
 
 profile:
@@ -11,8 +17,10 @@ profile:
     es: "Desarrollador Full Stack | Pentester & Investigador de Seguridad"
     en: "Full Stack Developer | Pentester & Security Researcher"
   summary:
-    es: "Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 6+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP. 379+ repos públicos en GitHub."
-    en: "Master in Computer Science & Technology (UTPL). MSc Cybersecurity in progress (UCM). 10+ years in full-stack development and 6+ as university lecturer. Specialized in React, Node.js, Python, pentesting, reverse engineering, and ABP curriculum design. 379+ public repos on GitHub."
+    # Source: user-confirmed 2026-10-01 (13 years of teaching, MSc UCM in progress
+    # since 2026-02); GitHub API 2026-10-01 → 400 public repos.
+    es: "Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 13+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP. 400 repos públicos en GitHub."
+    en: "Master in Computer Science & Technology (UTPL). MSc Cybersecurity in progress (UCM). 10+ years in full-stack development and 13+ as university lecturer. Specialized in React, Node.js, Python, pentesting, reverse engineering, and ABP curriculum design. 400 public repos on GitHub."
 
 contact:
   email: "dsaavedra88@gmail.com"
@@ -171,8 +179,11 @@ education:
       es: "Máster en Ciberseguridad Defensiva y Ofensiva"
       en: "Master in Defensive and Offensive Cybersecurity"
     degree: "Master"
+    # Started 2026-02 (user-confirmed 2026-10-01). endDate is null because the
+    # programme is in progress and no completion date exists on disk. The
+    # previous endDate 2027-12-31 was invented and has been removed.
     startDate: "2026-02-01"
-    endDate: "2027-12-31"
+    endDate: null
     isCurrent: true
     gpa: null
     status:
@@ -369,14 +380,22 @@ softSkills:
 
 # =============================================================================
 # Languages
+# Source: user-confirmed 2026-10-01 — Spanish native, English B2, other A2.
+# The previous "English: Intermediate (B1+)" claim had no source and is gone.
 # =============================================================================
 languages:
   - language: "Español"
     level: "Nativo"
     code: "es"
   - language: "English"
-    level: "Intermediate (B1+)"
+    level: "B2"
     code: "en"
+  - language: "Italiano"
+    level: "A2"
+    code: "it"
+  - language: "Portugués"
+    level: "A2"
+    code: "pt"
 
 # =============================================================================
 # Certifications
@@ -543,93 +562,180 @@ services:
 
 # =============================================================================
 # Projects (GitHub collaboration evidence)
+#
+# Rule: every `url` below was confirmed HTTP 200 against the GitHub API for
+# `statick88` on 2026-10-01. Repos that are not public (404) are described
+# without a link, or omitted. `stars`/`forks`/`issues` are gone: they were
+# never sourced and are therefore not estimates either.
 # =============================================================================
 projects:
   - name: "exploitarium"
     url: "https://github.com/statick88/exploitarium"
+    # PENDING DECISION: this repo is a GitHub *fork* of bikini/exploitarium
+    # (API: fork=true, parent=bikini/exploitarium). The reconciliation doc says
+    # "keep", but presenting a fork as personal work is a provenance claim that
+    # cannot be verified. Left as-is pending an explicit decision.
     description:
-      es: "Colección de PoCs de explotación para CVEs"
-      en: "Exploitation PoC collection for CVEs"
-    metrics:
-      stars: 12
-      forks: 3
-      issues: 5
-    technologies: ["Python", "Exploit Development", "CVE"]
+      es: "Archivo de PoCs de explotación públicos y writeups de investigación de vulnerabilidades"
+      en: "Archive of public exploit PoCs and vulnerability research writeups"
+    technologies: ["Exploit Development", "CVE"]
     securityRelevant: true
     featured: true
 
-  - name: "MindLedger"
-    url: "https://github.com/statick88/MindLedger"
+  - name: "pentest-methodology"
+    url: "https://github.com/statick88/pentest-methodology"
     description:
-      es: "Aplicación de gestión de conocimiento personal"
-      en: "Personal knowledge management application"
-    technologies: ["TypeScript", "React", "Node.js"]
+      es: "Metodología completa de pentest, bug bounty y red team. 116 hallazgos mapeados a MITRE ATT&CK (28 de 53 técnicas), NIST CSF 2.0 y OWASP Top 10 (35 hallazgos)."
+      en: "Complete pentest, bug bounty, and red team methodology. 116 findings mapped to MITRE ATT&CK (28 of 53 techniques), NIST CSF 2.0, and OWASP Top 10 (35 findings)."
+    # Source: ~/Security/pentest-methodology, verified 2026-10-01
+    technologies: ["Shell", "MITRE ATT&CK", "NIST CSF 2.0", "OWASP Top 10"]
+    securityRelevant: true
+    featured: true
+
+  - name: "dockerlabs-writeups"
+    url: "https://github.com/statick88/dockerlabs-writeups"
+    description:
+      es: "Evidencia de práctica en contenedores Docker: 59 writeups, tabla de clases y registro de fallos instrumentados."
+      en: "Docker lab engagement evidence: 59 writeups, the class table, and recurring instrument failures."
+    # Source: 59 writeups counted by glob over the local corpus
+    # (~/Security/.../corpus, INDEX.md). The GitHub repo description says 45 and
+    # the README says 52/27; the glob count is the only reproducible figure.
+    technologies: ["Docker", "HTML"]
+    securityRelevant: true
     featured: true
 
   - name: "cybervault"
     url: "https://github.com/statick88/cybervault"
     description:
-      es: "Repositorio de seguridad y auditoría"
-      en: "Security and audit repository"
-    technologies: ["Python", "Security"]
+      es: "Gestor de credenciales Zero-Knowledge con cifrado en 4 capas y monitoreo de vulnerabilidades"
+      en: "Zero-Knowledge credential manager with 4-layer encryption and vulnerability monitoring"
+    technologies: ["TypeScript", "Security", "Cryptography"]
     securityRelevant: true
     featured: true
 
-  - name: "go-snake"
-    url: "https://github.com/statick88/go-snake"
+  - name: "lab_fundamentos_cyber"
+    url: "https://github.com/statick88/lab_fundamentos_cyber"
     description:
-      es: "Juego de Snake implementado en Go"
-      en: "Snake game implemented in Go"
-    technologies: ["Go"]
+      es: "Laboratorio interactivo autocontenido de Fundamentos de Ciberseguridad: 26 unidades, 243 retos (60 CORE + 183 OPT) y evaluación automática en Docker."
+      en: "Self-contained interactive Cybersecurity Fundamentals lab: 26 units, 243 challenges (60 CORE + 183 OPT), and automatic assessment in Docker."
+    # Source: repo README, 2026-10-01
+    technologies: ["Docker", "Linux", "Networking"]
+    securityRelevant: true
+    featured: true
+
+  - name: "abc-cyb-101-labs"
+    url: "https://github.com/statick88/abc-cyb-101-labs"
+    description:
+      es: "Motor de laboratorios CORE para ABC-CYB-101: 60 retos en 5 módulos, CLI interactiva, persistencia firmada con HMAC-SHA256 y stack SIEM opcional."
+      en: "CORE lab engine for ABC-CYB-101: 60 challenges across 5 modules, interactive CLI, HMAC-SHA256 signed progress, and an optional SIEM stack."
+    # Source: repo README, 2026-10-01
+    technologies: ["Docker", "Shell", "SIEM"]
+    securityRelevant: true
     featured: false
 
-  - name: "sdd-docker"
-    url: "https://github.com/statick88/sdd-docker"
+  - name: "course-of-cybersecurity"
+    url: "https://github.com/statick88/course-of-cybersecurity"
     description:
-      es: "Docker environment for Spec-Driven Development"
-      en: "Docker environment for Spec-Driven Development"
-    technologies: ["Docker", "SDD"]
+      es: "Curso profesional de Fundamentos de Ciberseguridad: NIST CSF 2.0, VPN, ZTNA, MFA, CVSS y respuesta a incidentes."
+      en: "Professional Cybersecurity Fundamentals course: NIST CSF 2.0, VPN, ZTNA, MFA, CVSS, and incident response."
+    # Source: GitHub repo description, 2026-10-01
+    technologies: ["Shell", "NIST CSF 2.0", "CVSS"]
+    securityRelevant: true
+    featured: false
+
+  - name: "cyber-guardians"
+    url: "https://github.com/statick88/cyber-guardians"
+    description:
+      es: "Proyecto Next.js + Vitest con 7 módulos de datos de ciberseguridad para uso docente."
+      en: "Next.js + Vitest project with 7 cybersecurity data modules for teaching use."
+    # Source: ~/Security, module file count verified 2026-10-01
+    technologies: ["TypeScript", "Next.js", "Vitest"]
+    securityRelevant: false
+    featured: false
+
+  - name: "kali-i3"
+    url: "https://github.com/statick88/kali-i3"
+    description:
+      es: "Suite de migración a NEON i3-wm para Kali Linux: de XFCE a i3 con el suite de pentesting."
+      en: "NEON i3-wm migration suite for Kali Linux: XFCE to i3 with the pentesting suite."
+    # Source: GitHub repo description, 2026-10-01
+    technologies: ["Shell", "Kali Linux", "i3"]
+    securityRelevant: false
+    featured: false
+
+  - name: "jarvis-os"
+    url: "https://github.com/statick88/jarvis-os"
+    description:
+      es: "Framework de orquestación de IA con workflows ODD/RDD, arquitectura de skills e integraciones de seguridad."
+      en: "AI orchestration framework with ODD/RDD workflows, skills architecture, and security integrations."
+    # Source: GitHub repo description, 2026-10-01
+    technologies: ["Python", "AI", "ODD/RDD"]
+    securityRelevant: false
+    featured: false
+
+  - name: "MindLedger"
+    url: "https://github.com/statick88/MindLedger"
+    description:
+      es: "Sistema de gestión clínica y contable multi-tenant con Clean Architecture, Tauri v2, Rust, React y SQLCipher."
+      en: "Multi-tenant clinical and accounting management system built on Clean Architecture with Tauri v2, Rust, React, and SQLCipher."
+    # Source: GitHub repo description, 2026-10-01
+    technologies: ["Rust", "React", "Tauri", "SQLCipher"]
+    securityRelevant: false
+    featured: true
+
+  - name: "jarvis"
+    # Not public (HTTP 404 on GitHub 2026-10-01); exists locally. Described with
+    # its own README/pyproject status wording, never as production.
+    description:
+      es: "Proyecto local. Estado declarado en su propio README: \"Phase 1: scaffolding complete / Phase 2 in progress\"; pyproject.toml: Alpha."
+      en: "Local project. Status per its own README: \"Phase 1: scaffolding complete / Phase 2 in progress\"; pyproject.toml: Alpha."
+    # Source: ~/Security/jarvis README + pyproject.toml, verified 2026-10-01
+    technologies: ["Python"]
+    securityRelevant: false
     featured: false
 
   - name: "cv-diego"
-    url: "https://github.com/statick88/cv-diego"
+    # Private repository: GitHub API returns 404 for statick88/cv-diego, so no
+    # link is published. The project itself is real and deployed on GitHub Pages.
     description:
-      es: "CV digital interactivo"
-      en: "Interactive digital CV"
+      es: "CV digital interactivo (este sitio). Desplegado en GitHub Pages."
+      en: "Interactive digital CV (this site). Deployed on GitHub Pages."
     technologies: ["React", "Vite", "TypeScript", "Tailwind CSS"]
+    securityRelevant: false
     featured: true
 
 # =============================================================================
 # Metrics (quantified impact)
+# Sources: GitHub API statick88 (2026-10-01) and user-confirmed facts
+# (2026-10-01). `publicReposAudited` and `totalProjectsAudited` were removed:
+# no source backed 130 or 64.
 # =============================================================================
 metrics:
   yearsExperience: 10
-  yearsTeaching: 6
+  yearsTeaching: 13
   totalHoursTeaching: 200
-  githubPublicRepos: 379
-  publicReposAudited: 130
+  githubPublicRepos: 400
   averageCohortScore: 93.4
   apcYearsService: 9
-  languagesSpoken: 2
-  totalProjectsAudited: 64
+  languagesSpoken: 4
 
 # =============================================================================
 # Metadata
 # =============================================================================
 metadata:
   schemaVersion: "1.0.0"
-  lastVerified: "2026-06-01"
+  lastVerified: "2026-10-01"
   dataSources:
-    - "~/Documents/job_applications/core/cv-consolidado.md"
+    - "odd/tasks/cv-data-reconciliation.md"
+    - "GitHub API (statick88, 2026-10-01)"
+    - "~/Security"
     - "~/Documents/Master*"
-    - "~/Documents/Certificados/*"
+    - "~/Documents/Certificados/* (no verificados: escaneos sin capa de texto)"
     - "~/Documents/Abacom"
     - "~/dev/*"
-    - "~/security/*"
     - "~/Documents/Obsidian/Cursos"
-    - "GitHub API"
   auditTrail:
-    - "130+ PDF audit"
-    - "NLM verification"
-    - "GitHub API verification"
+    - "GitHub API verification (400 repos públicos: 266 originales / 134 forks)"
+    - "User-confirmed facts (2026-10-01): 13 años de docencia, inglés B2, otros A2, UCM en curso desde 2026-02"
+    - "Local engagement evidence in ~/Security (reportes, cartas de autorización, corpus DockerLabs)"
     - "3 directory audits"
