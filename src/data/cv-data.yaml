@@ -570,14 +570,19 @@ services:
 # =============================================================================
 projects:
   - name: "exploitarium"
-    url: "https://github.com/statick88/exploitarium"
-    # PENDING DECISION: this repo is a GitHub *fork* of bikini/exploitarium
-    # (API: fork=true, parent=bikini/exploitarium). The reconciliation doc says
-    # "keep", but presenting a fork as personal work is a provenance claim that
-    # cannot be verified. Left as-is pending an explicit decision.
+    url: "https://github.com/bikini/exploitarium"
+    # Verified 2026-10-01 via the GitHub API: fork=true, parent=bikini/exploitarium.
+    # This is NOT original work. It is a fork of an archive authored by bikini,
+    # so the link points at the upstream and the description names it as such
+    # rather than presenting a fork as personal work.
+    attribution:
+      kind: "fork"
+      upstream: "bikini/exploitarium"
+      upstreamUrl: "https://github.com/bikini/exploitarium"
+      verifiedAt: "2026-10-01"
     description:
-      es: "Archivo de PoCs de explotación públicos y writeups de investigación de vulnerabilidades"
-      en: "Archive of public exploit PoCs and vulnerability research writeups"
+      es: "Fork del archivo de PoCs de explotación y writeups de investigación de vulnerabilidades publicado por bikini/exploitarium; referencia de estudio, no autoría propia"
+      en: "Fork of the public exploit PoC and vulnerability research writeup archive published by bikini/exploitarium; study reference, not my own authorship"
     technologies: ["Exploit Development", "CVE"]
     securityRelevant: true
     featured: true
