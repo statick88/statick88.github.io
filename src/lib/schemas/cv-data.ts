@@ -129,6 +129,33 @@ export const SkillEntrySchema = z.object({
 export type SkillEntry = z.infer<typeof SkillEntrySchema>;
 
 // ============================================================================
+// Soft Skill Entry
+// ============================================================================
+
+export const SoftSkillEntrySchema = BilingualStringSchema;
+
+export type SoftSkillEntry = z.infer<typeof SoftSkillEntrySchema>;
+
+// ============================================================================
+// Service Entry
+// ============================================================================
+
+export const ServiceEntrySchema = z.object({
+  id: z.string().min(1),
+  icon: z.enum(['code', 'shield', 'target', 'book']),
+  title: BilingualStringSchema,
+  description: BilingualStringSchema,
+  formats: z.object({
+    es: z.array(z.string()),
+    en: z.array(z.string()),
+  }),
+  priceRange: z.string().min(1),
+  color: z.string().min(1),
+});
+
+export type ServiceEntry = z.infer<typeof ServiceEntrySchema>;
+
+// ============================================================================
 // Certification Entry
 // ============================================================================
 
@@ -193,6 +220,11 @@ export const CVDataSchema = z.object({
   experience: z.array(ExperienceEntrySchema).min(1),
   education: z.array(EducationEntrySchema).min(1),
   skills: z.array(SkillEntrySchema),
+  // Optional: these blocks were added after the initial schema, so they
+  // stay optional to remain backwards compatible with payloads that omit
+  // them. When present they are validated rather than silently stripped.
+  softSkills: z.array(SoftSkillEntrySchema).optional(),
+  services: z.array(ServiceEntrySchema).optional(),
   languages: z.array(LanguageEntrySchema).min(1),
   certifications: z.array(CertificationEntrySchema),
   projects: z.array(ProjectEntrySchema),
