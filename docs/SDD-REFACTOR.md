@@ -391,7 +391,7 @@ export const contact = {
   email: 'dsaavedra88@gmail.com',
   phone: '+593 980192790',
   whatsapp: 'https://wa.me/593980192790',
-  linkedin: 'https://linkedin.com/in/dsaavedra88',
+  linkedin: 'https://www.linkedin.com/in/diego-saavedra-developer/',
   github: 'https://github.com/statick88',
   tagline: {
     es: '¿Listo para llevar tu proyecto al siguiente nivel? Hablemos.',

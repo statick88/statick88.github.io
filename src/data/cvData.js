@@ -615,7 +615,7 @@ export const cvData = {
     email: 'dsaavedra88@gmail.com',
     phone: '+593 98 019 2790',
     whatsapp: 'https://wa.me/593980192790',
-    linkedin: 'https://linkedin.com/in/dsaavedra88',
+    linkedin: 'https://www.linkedin.com/in/diego-saavedra-developer/',
     github: 'https://github.com/statick88',
     calendar: '', // Add Calendly or similar if available
     tagline: {
