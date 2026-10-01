@@ -13,6 +13,7 @@ import { ScrollNavBar } from '@/components/layout/ScrollNavBar'
 import { MobileMenuButton } from '@/components/layout/MobileMenuButton'
 import { MobileDrawer } from '@/components/layout/MobileDrawer'
 import { useProfileState } from '@/hooks/useProfile'
+import { useWebMcpTools } from '@/hooks/useWebMcpTools'
 import ProfileSelector from '@/components/ProfileSelector'
 import LanguageToggle from '@/components/LanguageToggle'
 
@@ -49,6 +50,9 @@ function AppInner() {
   const { t, language, setLanguage } = useApp()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { activeProfile, setActiveProfile } = useProfileState()
+
+  // Progressive enhancement: no-op when the browser has no WebMCP host.
+  useWebMcpTools()
 
   const contact = adaptContact()
   const linksProps = {
