@@ -51,7 +51,7 @@ class ErrorBoundary extends Component {
       const copy = COPY[lang]
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0a0a0f] p-4">
+        <div className="min-h-screen flex items-center justify-center bg-surface p-4">
           <div className="text-center max-w-md">
             <div className="text-6xl mb-4" role="img" aria-hidden="true">⚠️</div>
             <h1 className="text-2xl font-bold text-white mb-2">

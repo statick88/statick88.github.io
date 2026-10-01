@@ -15,7 +15,6 @@ import { MobileDrawer } from '@/components/layout/MobileDrawer'
 import { useProfileState } from '@/hooks/useProfile'
 import { useWebMcpTools } from '@/hooks/useWebMcpTools'
 import ProfileSelector from '@/components/ProfileSelector'
-import LanguageToggle from '@/components/LanguageToggle'
 
 // Left column
 import PhotoCard from '@/components/left-column/PhotoCard'
@@ -47,7 +46,7 @@ import {
 } from '@/lib/adapter'
 
 function AppInner() {
-  const { t, language, setLanguage } = useApp()
+  const { t } = useApp()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { activeProfile, setActiveProfile } = useProfileState()
 
@@ -61,30 +60,33 @@ function AppInner() {
     ...(contact.portfolio && { portfolio: contact.portfolio }),
   }
 
-  const leftColumn = (
-    <>
-      <PhotoCard photoUrl="/statick.png" name="Diego Saavedra" />
-      <ContactCard contact={contact} />
-      <LinksCard {...linksProps} />
-      <SkillsCard skills={adaptSkills()} />
-      <LanguagesCard languages={adaptLanguages()} />
-      <CertificationsSummaryCard certifications={adaptCertifications()} />
-    </>
-  )
+  const leftColumn = [
+    <PhotoCard key="photo" photoUrl="/statick.png" name="Diego Saavedra" />,
+    <ContactCard key="contact" contact={contact} />,
+    <LinksCard key="links" {...linksProps} />,
+    <SkillsCard key="skills" skills={adaptSkills()} />,
+    <LanguagesCard key="languages" languages={adaptLanguages()} />,
+    <CertificationsSummaryCard
+      key="certs-summary"
+      certifications={adaptCertifications()}
+    />,
+  ]
 
-  const rightColumn = (
-    <>
-      <ProfileCard
-        profile={adaptProfile(activeProfile.id)}
-        metrics={getDefaultMetrics()}
-      />
-      <ExperienceTimeline experience={adaptExperience()} />
-      <EducationCard education={adaptEducation()} />
-      <ProjectsGrid projects={adaptProjects()} />
-      <CertificationsList certifications={adaptCertifications()} />
-      <ExploitariumSummary metrics={getDefaultMetrics()} />
-    </>
-  )
+  const rightColumn = [
+    <ProfileCard
+      key="profile"
+      profile={adaptProfile(activeProfile.id)}
+      metrics={getDefaultMetrics()}
+    />,
+    <ExperienceTimeline key="experience" experience={adaptExperience()} />,
+    <EducationCard key="education" education={adaptEducation()} />,
+    <ProjectsGrid key="projects" projects={adaptProjects()} />,
+    <CertificationsList
+      key="certs"
+      certifications={adaptCertifications()}
+    />,
+    <ExploitariumSummary key="exploitarium" metrics={getDefaultMetrics()} />,
+  ]
 
   return (
     <>
@@ -95,8 +97,7 @@ function AppInner() {
         setActiveProfile={setActiveProfile}
       />
 
-      {/* Language Toggle */}
-      <LanguageToggle language={language} setLanguage={setLanguage} />
+      {/* Language Toggle is rendered by AppLayout, in the fixed control cluster */}
 
       {/* Navigation */}
       <ScrollNavBar />

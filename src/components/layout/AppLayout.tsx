@@ -59,7 +59,7 @@ function AppLayoutInner({ children }: AppLayoutProps) {
         {/* Main Content */}
         <main
           id="main-content"
-          className={`relative z-10 max-w-4xl mx-auto px-4 py-8 transition-opacity duration-700 ${
+          className={`relative z-10 max-w-content mx-auto px-4 py-8 transition-opacity duration-700 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         >

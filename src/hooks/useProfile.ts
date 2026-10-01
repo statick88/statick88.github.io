@@ -9,6 +9,11 @@ import { useState, useCallback, useEffect } from 'react'
 export interface ActiveProfile {
   id: string
   label: string
+  /**
+   * A CSS colour: a design token reference (`var(--color-primary)`) or a hex
+   * string persisted by an earlier version. Both render correctly — see
+   * `withAlpha` in src/lib/color.ts.
+   */
   color: string
   icon?: string
 }
@@ -18,7 +23,7 @@ const PROFILE_KEY = 'cv-active-profile'
 const DEFAULT_PROFILE: ActiveProfile = {
   id: 'developer',
   label: 'Full Stack',
-  color: '#3b82f6',
+  color: 'var(--color-primary)',
 }
 
 function readPersistedProfile(): ActiveProfile {

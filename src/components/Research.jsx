@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
+import { withAlpha } from '@/lib/color'
 
 const publications = [
   {
@@ -13,7 +14,7 @@ const publications = [
     type: 'article',
     url: 'https://scholar.google.com/citations?user=getKs_4AAAAJ&hl=es',
     tags: ['Deep Learning', 'TDAH', 'Asperger', 'Educación'],
-    color: '#8b5cf6',
+    color: 'var(--color-secondary)',
     description: 'Revisión de literatura sobre el uso de modelos de Deep Learning para la detección de TDAH y síndrome de Asperger en entornos educativos universitarios. Analiza metodologías, enfoques teóricos y resultados de estudios previos.'
   },
   {
@@ -27,7 +28,7 @@ const publications = [
     type: 'thesis',
     url: 'https://dspace.utpl.edu.ec/handle/20.500.11962/27635',
     tags: ['RNC', 'Visión Artificial', 'Atención', 'Educación'],
-    color: '#06b6d4',
+    color: 'var(--color-primary)',
     description: 'Sistema de monitoreo de atención estudiantil usando Redes Neuronales Convolucionales (RNC) y visión artificial. Aprendizaje >90%, precisión de detección de atención 99.64%. Metodología SCRUM, 3000+ secuencias de video.'
   }
 ]
@@ -43,7 +44,7 @@ function PublicationCard({ pub, onClick }) {
       <div className="flex items-start gap-3">
         <div
           className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm shrink-0"
-          style={{ backgroundColor: `${pub.color}30`, color: pub.color }}
+          style={{ backgroundColor: withAlpha(pub.color, 19), color: pub.color }}
         >
           {pub.type === 'article' ? '📄' : '🎓'}
         </div>
@@ -78,16 +79,16 @@ function PublicationModal({ pub, onClose }) {
         className="relative w-full max-w-lg bg-gradient-to-br from-gray-900 to-gray-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6 pb-4" style={{ borderBottom: `2px solid ${pub.color}30` }}>
+        <div className="p-6 pb-4" style={{ borderBottom: `2px solid ${withAlpha(pub.color, 19)}` }}>
           <div className="flex items-center gap-3 mb-3">
             <div
               className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm shrink-0"
-              style={{ backgroundColor: `${pub.color}30`, color: pub.color }}
+              style={{ backgroundColor: withAlpha(pub.color, 19), color: pub.color }}
             >
               {pub.type === 'article' ? '📄' : '🎓'}
             </div>
             <div>
-              <span className="text-xs px-2 py-0.5 rounded-full border" style={{ borderColor: `${pub.color}50`, color: pub.color, backgroundColor: `${pub.color}10` }}>
+              <span className="text-xs px-2 py-0.5 rounded-full border" style={{ borderColor: withAlpha(pub.color, 31), color: pub.color, backgroundColor: withAlpha(pub.color, 6) }}>
                 {pub.type === 'article' ? 'Artículo' : 'Tesis de Maestría'}
               </span>
             </div>
@@ -136,7 +137,7 @@ function PublicationModal({ pub, onClose }) {
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 text-center py-2.5 rounded-lg font-medium text-sm transition-all"
-            style={{ backgroundColor: `${pub.color}20`, color: pub.color, border: `1px solid ${pub.color}40` }}
+            style={{ backgroundColor: withAlpha(pub.color, 13), color: pub.color, border: `1px solid ${withAlpha(pub.color, 25)}` }}
           >
             {pub.type === 'article' ? 'Google Scholar' : 'Ver Repositorio'}
           </a>

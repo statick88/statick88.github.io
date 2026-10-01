@@ -47,10 +47,10 @@ export default function ProfileCard({ profile, metrics }: ProfileCardProps) {
 
   return (
     <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl p-4 space-y-3 print:bg-transparent print:border-0 print:p-0">
-      {/* Executive Headline */}
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-sans print:text-black print:text-lg">
+      {/* Executive Headline — the document's top-level heading */}
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-white font-sans print:text-black print:text-lg">
         {profile.name}
-      </h2>
+      </h1>
 
       {/* Role */}
       <p className="text-sm font-medium text-blue-600 dark:text-blue-400 print:text-black">

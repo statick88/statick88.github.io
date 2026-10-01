@@ -9,12 +9,13 @@
  */
 
 import type { ReactNode } from 'react'
+import { Reveal } from '@/components/Reveal'
 
 interface TwoColumnLayoutProps {
   /** Left sidebar content (photo, contact, skills, etc.) */
-  left: ReactNode
+  left: ReactNode[]
   /** Right main content (experience, education, etc.) */
-  right: ReactNode
+  right: ReactNode[]
 }
 
 /**
@@ -22,6 +23,10 @@ interface TwoColumnLayoutProps {
  *
  * - `<aside>` holds the left sidebar (photo, contact, links, skills, languages, certs summary).
  * - `<main>` holds the right content area (profile, experience, education, projects, etc.).
+ *
+ * Each card is wrapped in `<Reveal>` with its index as the stagger step (90ms
+ * apart). The component collapses to a static wrapper under
+ * `prefers-reduced-motion: reduce`.
  *
  * Print styles are injected via a `<style>` element to handle `@media print` rules
  * that Tailwind classes alone cannot express.
@@ -44,11 +49,19 @@ export default function TwoColumnLayout({ left, right }: TwoColumnLayoutProps) {
         className="cv-two-column grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[3fr_7fr] gap-6 lg:gap-8"
       >
         <aside className="space-y-4">
-          {left}
+          {left.map((card, index) => (
+            <Reveal key={index} step={index}>
+              {card}
+            </Reveal>
+          ))}
         </aside>
 
         <main className="space-y-6">
-          {right}
+          {right.map((card, index) => (
+            <Reveal key={index} step={index}>
+              {card}
+            </Reveal>
+          ))}
         </main>
       </div>
     </>

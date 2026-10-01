@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion'
+import { withAlpha } from './lib/color'
 import { cvData, profileData } from './data/cvData'
 import Particles from './components/Particles'
 import LanguageToggle from './components/LanguageToggle'
@@ -21,7 +22,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('summary')
   const [isLoaded, setIsLoaded] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeProfile, setActiveProfile] = useState({ id: 'developer', label: 'Full Stack', color: '#3b82f6' }) // Perfil por defecto
+  const [activeProfile, setActiveProfile] = useState({ id: 'developer', label: 'Full Stack', color: 'var(--color-primary)' }) // Perfil por defecto
   const [scrollProgress, setScrollProgress] = useState(0)
   const contentRef = useRef(null)
   const progressBarRef = useRef(null)
@@ -411,7 +412,7 @@ function App() {
                    <div className="mb-4 flex items-center gap-2">
                      <span 
                        className="px-3 py-1 rounded-full text-xs font-medium"
-                       style={{ backgroundColor: activeProfile.color + '20', color: activeProfile.color }}
+                       style={{ backgroundColor: withAlpha(activeProfile.color, 13), color: activeProfile.color }}
                      >
                        {activeProfile.icon} {activeProfile.label}
                      </span>

@@ -2,14 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   DESIGN TOKENS — single source of truth
+   Nothing in this project may declare a colour outside this block.
+
+   Why the `-rgb` triplets are canonical:
+   Tailwind's opacity modifiers (`bg-cyan-500/20`, `border-cyan-500/30`, ...)
+   require the `<alpha-value>` placeholder to inject alpha into a colour. A raw
+   `var(--x)` cannot carry an alpha channel, so 135 utilities in src/ would
+   silently render fully opaque. Storing space-separated channels lets the
+   Tailwind config compose `rgb(var(--token) / <alpha-value>)`.
+   The hex-value aliases below are derived from the same channels, so there is
+   exactly one place to change a colour.
+   ========================================================================== */
 :root {
-  --color-primary: #00cc33;
-  --color-secondary: #00b4e6;
-  --color-accent: #9333ea;
-  --color-bg: #0a0a0f;
-  --color-bg-alt: #12121a;
-  
-  /* Smooth scrolling */
+  /* --- Brand ------------------------------------------------------------ */
+  --color-primary-rgb: 59 130 246;        /* #3b82f6 — 5.37:1 on --color-bg, 5.07:1 on --color-bg-alt */
+  --color-primary-hover-rgb: 96 165 250;  /* #60a5fa — 7.77:1 / 7.33:1 */
+  --color-primary-dim-rgb: 30 64 175;     /* #1e40af — 2.26:1 / 2.14:1 */
+  --color-secondary-rgb: 56 189 248;     /* #38bdf8 — 9.22:1 / 8.70:1 */
+  --color-success-rgb: 52 211 153;        /* #34d399 — 10.27:1 / 9.69:1 */
+  --color-warning-rgb: 251 191 36;        /* #fbbf24 — 11.83:1 / 11.16:1 */
+  --color-danger-rgb: 248 113 113;        /* #f87171 — 7.14:1 / 6.74:1 */
+
+  /* --- Surfaces --------------------------------------------------------- */
+  --color-bg-rgb: 10 10 15;               /* #0a0a0f */
+  --color-bg-alt-rgb: 18 18 26;           /* #12121a */
+  --color-bg-deep-rgb: 5 5 8;             /* #050508 — gradient floor */
+
+  /* --- Text ------------------------------------------------------------- */
+  --color-text-rgb: 248 250 252;          /* #f8fafc — 18.88:1 / 17.81:1 */
+  --color-text-light-rgb: 203 213 225;    /* #cbd5e1 — 13.30:1 / 12.55:1 */
+  --color-text-muted-rgb: 148 163 184;    /* #94a3b8 — 7.70:1 / 7.27:1 */
+
+  /* --- Derived hex aliases (same values, readable in devtools) ---------- */
+  --color-primary: rgb(var(--color-primary-rgb));
+  --color-primary-hover: rgb(var(--color-primary-hover-rgb));
+  --color-primary-dim: rgb(var(--color-primary-dim-rgb));
+  --color-secondary: rgb(var(--color-secondary-rgb));
+  --color-success: rgb(var(--color-success-rgb));
+  --color-warning: rgb(var(--color-warning-rgb));
+  --color-danger: rgb(var(--color-danger-rgb));
+  --color-bg: rgb(var(--color-bg-rgb));
+  --color-bg-alt: rgb(var(--color-bg-alt-rgb));
+  --color-bg-deep: rgb(var(--color-bg-deep-rgb));
+  --color-text: rgb(var(--color-text-rgb));
+  --color-text-light: rgb(var(--color-text-light-rgb));
+  --color-text-muted: rgb(var(--color-text-muted-rgb));
+
+  /* --- Neutral ramp -----------------------------------------------------
+     Kept full-range on purpose: components ship light/dark pairs
+     (`text-gray-900 dark:text-white`) and print overrides, so collapsing
+     the ramp would break those variants. Values match the scale the
+     components were already written against. */
+  --color-neutral-50-rgb: 249 250 251;
+  --color-neutral-100-rgb: 243 244 246;
+  --color-neutral-200-rgb: 229 231 235;
+  --color-neutral-300-rgb: 209 213 219;
+  --color-neutral-400-rgb: 156 163 175;
+  --color-neutral-500-rgb: 107 114 128;
+  --color-neutral-600-rgb: 75 85 99;
+  --color-neutral-700-rgb: 55 65 81;
+  --color-neutral-800-rgb: 31 41 55;
+  --color-neutral-900-rgb: 17 24 39;
+  --color-neutral-950-rgb: 3 7 18;
+  --color-neutral-50: rgb(var(--color-neutral-50-rgb));
+  --color-neutral-100: rgb(var(--color-neutral-100-rgb));
+  --color-neutral-200: rgb(var(--color-neutral-200-rgb));
+  --color-neutral-300: rgb(var(--color-neutral-300-rgb));
+  --color-neutral-400: rgb(var(--color-neutral-400-rgb));
+  --color-neutral-500: rgb(var(--color-neutral-500-rgb));
+  --color-neutral-600: rgb(var(--color-neutral-600-rgb));
+  --color-neutral-700: rgb(var(--color-neutral-700-rgb));
+  --color-neutral-800: rgb(var(--color-neutral-800-rgb));
+  --color-neutral-900: rgb(var(--color-neutral-900-rgb));
+  --color-neutral-950: rgb(var(--color-neutral-950-rgb));
+
+  /* --- Shape scale ------------------------------------------------------ */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* --- Rhythm ----------------------------------------------------------- */
+  --container-max: 1120px;
+  --section-pad: 96px;
+
+  /* --- Fluid type ------------------------------------------------------- */
+  --text-hero: clamp(2.25rem, 1.5rem + 3.75vw, 4rem);
+  --text-section: clamp(1.375rem, 1.15rem + 1.125vw, 2rem);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --ease-reveal: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-reveal: 0.64s;
+  --reveal-stagger: 90ms;
+  --reveal-distance: 18px;
+
+  /* --- Translucent surfaces -------------------------------------------- */
+  --surface-hairline: rgb(255 255 255 / 0.08);
+  --surface-hairline-strong: rgb(255 255 255 / 0.12);
+  --surface-fill: rgb(255 255 255 / 0.03);
+  --surface-fill-hover: rgb(255 255 255 / 0.05);
+  --surface-solid-fallback: rgb(10 10 15 / 0.95);
+  --accent-glow: rgb(var(--color-primary-rgb) / 0.18);
+
   scroll-behavior: smooth;
 }
 
@@ -27,36 +123,62 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #0a0a0f 0%, #050508 100%);
-  color: #b0b0c0;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-deep) 100%);
+  color: var(--color-text-light);
   min-height: 100vh;
   line-height: 1.6;
 }
 
-/* Selection */
-::selection {
-  background: rgba(0, 255, 255, 0.3);
-  color: white;
+/* Fluid display type + balanced headings / pretty paragraphs.
+   Declared inside @layer base on purpose: an unlayered rule outranks every
+   Tailwind utility regardless of specificity, so `h1 { font-size: ... }` at the
+   top level would override `text-2xl` on components that size themselves.
+   In the base layer these act as the default and any size utility wins. */
+@layer base {
+  h1 {
+    font-size: var(--text-hero);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-size: var(--text-section);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
-/* Focus states - Accessibility */
-/* Keep native focus for keyboard users, enhance with visible ring */
+/* Selection */
+::selection {
+  background: rgb(var(--color-primary-rgb) / 0.3);
+  color: var(--color-text);
+}
+
+/* Focus states — Accessibility
+   Uses --color-primary (5.37:1), not --color-primary-dim (2.26:1), because a
+   focus indicator is a non-text UI component and must clear 3:1. */
 :focus {
   outline: none;
 }
 
-/* Ensure focus-visible works for keyboard navigation */
 :focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.8);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.8);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -66,10 +188,10 @@ input:focus-visible,
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #00ffff;
-  color: #0a0a0f;
+  background: var(--color-primary);
+  color: var(--color-bg);
   padding: 12px 24px;
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-weight: 700;
   z-index: 9999;
   transition: top 0.2s ease;
@@ -78,57 +200,55 @@ input:focus-visible,
 
 .skip-link:focus {
   top: 0;
-  outline: 3px solid #00cc33;
+  outline: 3px solid var(--color-primary-hover);
   outline-offset: 2px;
 }
 
-/* Glassmorphism - Enhanced */
+/* Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-fill);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  border: 1px solid var(--surface-hairline);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .glass:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--surface-fill-hover);
+  border-color: var(--surface-hairline-strong);
 }
 
-/* Neon effects */
-.neon-text {
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
+/* Accent ring — replaces the retired neon glow. Restrained: one soft
+   accent-tinted shadow instead of a saturated 20px bloom. */
 .neon-border {
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3), inset 0 0 5px rgba(0, 255, 255, 0.1);
+  border-color: rgb(var(--color-primary-rgb) / 0.35);
+  box-shadow: 0 0 0 1px rgb(var(--color-primary-rgb) / 0.2);
 }
 
-/* Custom scrollbar - Enhanced */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(0, 255, 255, 0.3), rgba(0, 204, 51, 0.3));
-  border-radius: 4px;
+  background: rgb(var(--color-primary-rgb) / 0.35);
+  border-radius: var(--radius-pill);
   transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(0, 255, 255, 0.5), rgba(0, 204, 51, 0.5));
+  background: rgb(var(--color-primary-rgb) / 0.55);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 255, 255, 0.3) #0a0a0f;
+  scrollbar-color: rgb(var(--color-primary-rgb) / 0.35) var(--color-bg);
 }
 
 /* Particles background */
@@ -147,12 +267,12 @@ input:focus-visible,
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(0, 255, 255, 0.3);
+  background: rgb(var(--color-primary-rgb) / 0.3);
   border-radius: 50%;
-  animation: float 15s infinite;
+  animation: particle-drift 15s infinite;
 }
 
-@keyframes float {
+@keyframes particle-drift {
   0%, 100% {
     transform: translateY(100vh) rotate(0deg);
     opacity: 0;
@@ -169,63 +289,62 @@ input:focus-visible,
   }
 }
 
-/* Gradient text */
+/* Gradient title */
 .gradient-text {
-  background: linear-gradient(135deg, #00cc33 0%, #00b4e6 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-primary);
 }
 
-/* Hover effects - Enhanced */
+/* Hover lift */
 .hover-glow {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.3), 0 0 24px var(--accent-glow);
   transform: translateY(-4px);
 }
 
-/* Skew hover effect */
-.hover-skew {
-  transition: transform 0.3s ease;
+/* ==========================================================================
+   SCROLL REVEAL
+   Declarative pattern: mark an element `data-reveal` and give it an optional
+   `--reveal-step` index. The collapse under prefers-reduced-motion is total:
+   opacity 1, no transform, no transition.
+
+   The JS-driven reveal in src/components/Reveal.tsx uses the same constants
+   through framer-motion's useReducedMotion(), so both paths honour the
+   preference.
+   ========================================================================== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity var(--duration-reveal) var(--ease-reveal),
+    transform var(--duration-reveal) var(--ease-reveal);
+  transition-delay: calc(var(--reveal-step, 0) * var(--reveal-stagger));
 }
 
-.hover-skew:hover {
-  transform: skewX(-5deg);
-}
-
-/* Stagger animation */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-
-/* Pulse animation for CTAs */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-  }
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+[data-reveal='in'] {
+  opacity: 1;
+  transform: none;
 }
 
 /* Link styles */
 a {
-  color: #00b4e6;
+  color: var(--color-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #00cc33;
+  color: var(--color-primary-hover);
 }
 
 /* Button base styles */
@@ -240,15 +359,17 @@ img {
   transition: opacity 0.3s ease;
 }
 
-img[loading="lazy"] {
+img[loading='lazy'] {
   opacity: 0;
 }
 
-img[loading="lazy"].loaded {
+img[loading='lazy'].loaded {
   opacity: 1;
 }
 
-/* Reduced motion support */
+/* ==========================================================================
+   REDUCED MOTION — collapse everything, not just the reveal
+   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -256,19 +377,24 @@ img[loading="lazy"].loaded {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
-  
-  /* Disable particles animation entirely */
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
   .particles {
     display: none;
   }
-  
-  /* Disable hover transforms */
+
   .hover-glow:hover {
     transform: none;
   }
@@ -277,33 +403,33 @@ img[loading="lazy"].loaded {
 /* Print styles */
 @media print {
   .no-print { display: none !important; }
-  body { 
-    background: white !important; 
-    color: black !important; 
+  body {
+    background: white !important;
+    color: black !important;
     font-size: 12pt;
   }
-  .glass { 
-    background: white !important; 
-    border: 1px solid #ccc; 
+  .glass {
+    background: white !important;
+    border: 1px solid #ccc;
     box-shadow: none;
   }
-  
+
   /* Hide interactive elements */
-  button, 
+  button,
   nav,
   .fixed {
     display: none !important;
   }
-  
+
   /* Ensure links show URLs */
   a[href]::after {
-    content: " (" attr(href) ")";
+    content: ' (' attr(href) ')';
     font-size: 10pt;
     color: #666;
   }
 }
 
-/* Responsive text sizing */
+/* Responsive root sizing */
 @media (max-width: 640px) {
   html {
     font-size: 14px;
@@ -344,6 +470,6 @@ img[loading="lazy"].loaded {
 
 @supports not (backdrop-filter: blur(10px)) {
   .glass {
-    background: rgba(10, 10, 15, 0.95);
+    background: var(--surface-solid-fallback);
   }
 }

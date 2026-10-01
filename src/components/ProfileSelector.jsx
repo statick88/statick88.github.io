@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { withAlpha } from '@/lib/color'
 
 const profiles = [
-  { id: 'developer', icon: '💻', label: 'Full Stack', color: '#3b82f6', desc: 'React/Node.js/Python' },
-  { id: 'hacker', icon: '🎯', label: 'Hacker Ético', color: '#ef4444', desc: 'Pentest & RE' },
-  { id: 'research', icon: '🔬', label: 'Investigador', color: '#f59e0b', desc: 'MSc Ciberseguridad UCM' },
-  { id: 'docente-facilitador', icon: '📚', label: 'Docente Facilitador', color: '#10b981', desc: 'ABP + ADDIE + Cursos' }
+  { id: 'developer', icon: '💻', label: 'Full Stack', color: 'var(--color-primary)', desc: 'React/Node.js/Python' },
+  { id: 'hacker', icon: '🎯', label: 'Hacker Ético', color: 'var(--color-danger)', desc: 'Pentest & RE' },
+  { id: 'research', icon: '🔬', label: 'Investigador', color: 'var(--color-warning)', desc: 'MSc Ciberseguridad UCM' },
+  { id: 'docente-facilitador', icon: '📚', label: 'Docente Facilitador', color: 'var(--color-success)', desc: 'ABP + ADDIE + Cursos' }
 ]
 
 export default function ProfileSelector({ t, activeProfile, setActiveProfile }) {
@@ -50,7 +51,7 @@ export default function ProfileSelector({ t, activeProfile, setActiveProfile }) 
         >
           <span 
             className="w-8 h-8 rounded-full flex items-center justify-center text-lg shadow-lg"
-            style={{ backgroundColor: currentProfile.color + '30' }}
+            style={{ backgroundColor: withAlpha(currentProfile.color, 19) }}
           >
             {currentProfile.icon}
           </span>
@@ -80,7 +81,7 @@ export default function ProfileSelector({ t, activeProfile, setActiveProfile }) 
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="absolute top-full left-0 mt-2 w-56 py-2 rounded-xl bg-[#050508]/98 border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50"
+              className="absolute top-full left-0 mt-2 w-56 py-2 rounded-xl bg-[rgb(var(--color-bg-deep-rgb)/0.98)] border border-white/10 backdrop-blur-xl shadow-2xl shadow-black/50"
               role="listbox"
               aria-label="Seleccionar perfil"
             >
@@ -98,7 +99,7 @@ export default function ProfileSelector({ t, activeProfile, setActiveProfile }) 
                 >
                   <span 
                     className="w-8 h-8 rounded-full flex items-center justify-center text-sm"
-                    style={{ backgroundColor: profile.color + '30' }}
+                    style={{ backgroundColor: withAlpha(profile.color, 19) }}
                   >
                     {profile.icon}
                   </span>
