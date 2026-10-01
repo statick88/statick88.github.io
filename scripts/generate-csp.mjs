@@ -45,6 +45,33 @@ function getFilesByExt(dir, ext) {
     .map((f) => ({ name: f, content: readFileSync(join(dir, f)) }))
 }
 
+/**
+ * Hash only the INLINE scripts and styles that CSP hash-sources actually govern.
+ *
+ * External files loaded with <script src> / <link rel=stylesheet> are already
+ * covered by 'self', so hashing them is meaningless: Chrome discards most of
+ * those hashes as invalid sources and logs "It will be ignored" for each.
+ * Hash-sources exist solely to whitelist inline <script> and <style> blocks.
+ *
+ * Data blocks such as <script type="application/ld+json"> are not executed and
+ * are therefore not subject to script-src, so they are excluded.
+ */
+function getInlineHashes(html, tag) {
+  const hashes = []
+  const re =
+    tag === 'script'
+      ? /<script(?![^>]*\bsrc=)(?![^>]*type\s*=\s*["']?(?!text\/javascript|module)[^"'\s>]*)[^>]*>([\s\S]*?)<\/script>/gi
+      : /<style[^>]*>([\s\S]*?)<\/style>/gi
+
+  let m
+  while ((m = re.exec(html)) !== null) {
+    const body = m[1]
+    if (!body || !body.trim()) continue
+    hashes.push(sha256Hash(body))
+  }
+  return hashes
+}
+
 // ── CSP Directives ───────────────────────────────────────────────
 //
 // This is the CANONICAL CSP policy.
@@ -87,23 +114,17 @@ function main() {
     process.exit(1)
   }
 
-  // Collect JS hashes
-  const jsFiles = getFilesByExt(ASSETS_DIR, '.js')
-  if (jsFiles.length === 0) {
-    console.error('[CSP] ERROR: No JS files found in dist/assets/.')
-    process.exit(1)
-  }
-  const scriptHashes = jsFiles.map((f) => sha256Hash(f.content))
-  console.log(`[CSP] Hashed ${scriptHashes.length} JS files:`)
-  jsFiles.forEach((f, i) => console.log(`  ${f.name} → ${scriptHashes[i]}`))
+  // Read the built index once - the inline hash scan and the later meta
+  // injection must both work from the same source.
+  let html = readFileSync(INDEX_PATH, 'utf-8')
 
-  // Collect CSS hashes
-  const cssFiles = getFilesByExt(ASSETS_DIR, '.css')
-  const styleHashes = cssFiles.map((f) => sha256Hash(f.content))
-  if (styleHashes.length > 0) {
-    console.log(`[CSP] Hashed ${styleHashes.length} CSS files:`)
-    cssFiles.forEach((f, i) => console.log(`  ${f.name} → ${styleHashes[i]}`))
-  }
+  // Collect hashes for INLINE scripts only - see getInlineHashes().
+  const scriptHashes = getInlineHashes(html, 'script')
+  console.log(`[CSP] Hashed ${scriptHashes.length} inline script(s)`)
+  scriptHashes.forEach((h, i) => console.log(`  inline script ${i + 1} → ${h}`))
+
+  const styleHashes = getInlineHashes(html, 'style')
+  console.log(`[CSP] Hashed ${styleHashes.length} inline style block(s)`)
 
   // Build CSP string
   const csp = buildCsp(scriptHashes, styleHashes)
@@ -119,8 +140,6 @@ function main() {
   console.log('[CSP] Validation passed ✓')
 
   // Inject into index.html
-  let html = readFileSync(INDEX_PATH, 'utf-8')
-
   if (!html.includes('<head>')) {
     console.error('[CSP] ERROR: <head> tag not found in index.html.')
     process.exit(1)
