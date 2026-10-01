@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+# .husky/pre-push — Quality Gate enforcement
+#
+# The SonarQube gate is the one check that a green test suite cannot stand in
+# for: this repo once sat on a FAILING gate while tsc and vitest stayed green.
+# A gate that is not run on every push is not a gate, so this hook runs it and
+# blocks the push when it is red.
+#
+# Escape hatch for a genuine emergency: SONAR_GATE_SKIP=1 git push
+# Report the skip; do not let it become the habit.
+
+set -uo pipefail
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
+
+echo ""
+echo "🚦 Pre-push quality gate ($BRANCH)"
+echo ""
+
+if [ "${SONAR_GATE_SKIP:-0}" = "1" ]; then
+  echo "⚠️  SONAR_GATE_SKIP=1 — the quality gate was NOT run. This push is unverified."
+  exit 0
+fi
+
+GATE="${HOME}/.config/opencode/skills/branch-pr/scripts/sonar-gate.sh"
+if [ ! -x "$GATE" ]; then
+  # Fall back to the other installed copies: the skill is installed per agent.
+  for candidate in \
+    "${HOME}/.agents/skills/branch-pr/scripts/sonar-gate.sh" \
+    "${HOME}/.codex/skills/branch-pr/scripts/sonar-gate.sh"; do
+    [ -x "$candidate" ] && GATE="$candidate" && break
+  done
+fi
+
+if [ ! -x "$GATE" ]; then
+  echo "✗ Could not locate sonar-gate.sh in any branch-pr skill directory."
+  echo "  Expected it under ~/.config/opencode/skills/branch-pr/scripts/."
+  echo "  Not running the gate is not running a gate — push blocked."
+  exit 1
+fi
+
+PROJECT_KEY="${SONAR_PROJECT_KEY:-$(basename "$PWD" | tr '[:upper:]' '[:lower:]' | tr -c 'a-z0-9._-' '-' | sed 's/-$//')}"
+
+"$GATE" --project-key "$PROJECT_KEY" --json >/tmp/sonar-gate-report.json 2>/tmp/sonar-gate.log
+GATE_EXIT=$?
+
+if [ "$GATE_EXIT" -ne 2 ]; then
+  python3 - <<'PY' 2>/dev/null || true
+import json
+try:
+    d = json.load(open("/tmp/sonar-gate-report.json"))
+except Exception:
+    raise SystemExit(0)
+
+gate = d.get("gate", {})
+status = gate.get("status")
+counts = d.get("counts", {})
+metrics = d.get("metrics", {})
+
+def val(k):
+    return metrics.get(k, "-")
+
+print(f"  Quality gate : {status}")
+print(f"  Bugs         : {val('bugs')}")
+print(f"  Vulnerabilities: {val('vulnerabilities')}")
+print(f"  Code smells  : {val('code_smells')}")
+print(f"  Hotspots     : {counts.get('hotspots', '-')}")
+print(f"  Coverage     : {val('coverage')}%")
+print(f"  Dashboard    : {d.get('dashboard','-')}")
+print("")
+
+if status == "OK":
+    return_marker = True
+else:
+    print("  Failing conditions:")
+    for c in gate.get("failingConditions", []):
+        print(f"    - {c.get('metric')}: actual {c.get('actual')} vs {c.get('comparator')} {c.get('threshold')}")
+    print("")
+
+findings = d.get("findings", [])
+if findings:
+    print("  Findings requiring a decision:")
+    for f in findings[:20]:
+        print(f"    [{f.get('severity')}] {f.get('rule')}  {f.get('file')}:{f.get('line')}  {f.get('message')}")
+    print("")
+
+if status != "OK":
+    print("  Fix the findings, re-run the analysis, and push only when the gate is OK.")
+PY
+fi
+
+if [ "$GATE_EXIT" -eq 0 ]; then
+  echo "✅ Quality gate passed — proceeding with the push."
+  exit 0
+fi
+
+echo "🚫 Push blocked."
+if [ "$GATE_EXIT" -eq 2 ]; then
+  echo "   The gate could not run. That is not the same as passing."
+  echo "   Diagnostics:"
+  sed 's/^/   /' /tmp/sonar-gate.log 2>/dev/null | tail -15
+fi
+exit "$GATE_EXIT"
