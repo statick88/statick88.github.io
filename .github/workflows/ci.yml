@@ -227,7 +227,11 @@ jobs:
         run: |
           HTML=$(curl -s "https://statick88.github.io/?t=$(date +%s)")
           echo "$HTML" | grep -q 'http-equiv="Content-Security-Policy"' || { echo "::error::CSP meta tag missing"; exit 1; }
-          echo "$HTML" | grep -q "sha256-" || { echo "::error::sha256 hashes missing in CSP"; exit 1; }
+          # Assert what actually protects the site. Requiring "sha256-" to be
+          # present was unsatisfiable by design: hash-sources only govern inline
+          # scripts and this app ships none, so script-src is exactly "'self'".
+          echo "$HTML" | grep -q "script-src[^;]*'unsafe-inline'" && { echo "::error::unsafe-inline in script-src"; exit 1; } || echo "✅ script-src has no unsafe-inline"
+          echo "$HTML" | grep -q "unsafe-eval" && { echo "::error::unsafe-eval in CSP"; exit 1; } || echo "✅ No unsafe-eval in CSP"
           echo "$HTML" | grep -q "strict-dynamic" && { echo "::error::strict-dynamic found in CSP"; exit 1; } || echo "✅ No strict-dynamic in CSP"
           echo "$HTML" | grep -q "frame-ancestors 'none'" && echo "✅ frame-ancestors 'none' present in CSP meta" || echo "⚠️ frame-ancestors in meta (ignored by browsers, X-Frame-Options used)"
           echo "✅ CSP meta tag validation passed"
