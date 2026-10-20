@@ -39,3 +39,15 @@ stats.html
 *.log
 .cache/test-export.json
 test-export.json
+
+# AI / agent artifacts (ODD task docs, skill registry cache, agent reports)
+odd/
+.atl/
+verify-report.md
+.claude/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+.playwright-mcp/

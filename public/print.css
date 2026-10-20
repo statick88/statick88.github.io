@@ -1,14 +1,17 @@
 /**
  * print.css — Print-only stylesheet for CV Diego
  *
- * A4 page, 20mm margins, grayscale high-contrast, two-column preserved.
+ * A4 page, 18mm × 16mm margins. The sheet prints as the CV it is: the top bar
+ * disappears, the identity column keeps its dark ground (the browser is asked
+ * to print backgrounds), and the document column stays linear and legible.
+ *
  * Loaded via <link rel="stylesheet" href="/print.css" media="print">.
  */
 
 /* ── Page setup ────────────────────────────────────────────── */
 @page {
   size: A4;
-  margin: 20mm;
+  margin: 18mm 16mm;
   marks: none;
 }
 
@@ -24,141 +27,176 @@
   }
 
   html {
-    font-size: 11pt;
+    font-size: 10.5pt;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
   body {
     font-family:
+      'Inter',
       system-ui,
       -apple-system,
-      "Segoe UI",
+      'Segoe UI',
       Roboto,
       Helvetica,
       Arial,
       sans-serif;
-    line-height: 1.4;
+    line-height: 1.45;
     margin: 0;
     padding: 0;
+    background: white !important;
   }
 
   /* ── Typography ─────────────────────────────────────────── */
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 14pt !important;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 13pt !important;
     font-weight: 700;
     page-break-after: avoid;
   }
 
-  h1 {
-    font-size: 18pt !important;
+  p,
+  li,
+  span,
+  td,
+  th {
+    font-size: 10.5pt;
   }
 
-  h2 {
-    font-size: 15pt !important;
-  }
-
-  p, li, span, td, th {
-    font-size: 11pt;
-  }
-
-  /* ── Layout: preserve two-column grid ───────────────────── */
-  .cv-two-column {
-    display: grid !important;
-    grid-template-columns: 30% 70% !important;
-    gap: 16px !important;
-  }
-
-  .cv-two-column > * {
-    break-inside: avoid;
-  }
-
-  /* ── Page breaks ────────────────────────────────────────── */
-  section,
-  [id] {
-    page-break-inside: avoid;
-  }
-
-  h1, h2, h3 {
-    page-break-after: avoid;
-  }
-
-  /* Force break before major sections in the right column */
-  main > div + div,
-  main > section + section,
-  main > div + section {
-    page-break-before: auto;
-  }
-
-  /* ── Hide non-print elements ────────────────────────────── */
+  /* ── Page furniture disappears ───────────────────────────── */
   .no-print,
-  .particles,
-  .particle,
-  nav,
-  .fixed,
-  button,
   .skip-link,
-  .hover-glow,
-  .hover-skew,
-  .pulse-glow {
+  .cv-topbar,
+  nav,
+  button,
+  .fixed {
     display: none !important;
   }
 
-  /* ── Cards / glass panels ───────────────────────────────── */
-  .glass,
-  [class*="bg-white"],
-  [class*="border-white"] {
+  /* ── The sheet ───────────────────────────────────────────── */
+  .cv-page {
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .cv-sheet {
+    display: grid !important;
+    grid-template-columns: 190pt minmax(0, 1fr) !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  .cv-aside {
+    padding: 0 14pt 0 6pt !important;
+    background: #1e2a5e !important;
+    color: white !important;
+    gap: 14pt !important;
+  }
+
+  .cv-aside .panel {
     background: transparent !important;
-    border: 1px solid #ccc !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  }
+
+  .cv-aside .panel-header {
+    border-bottom-color: rgb(255 255 255 / 0.35) !important;
+  }
+
+  .cv-aside .panel-title {
+    color: #ffffff !important;
+  }
+
+  .cv-aside .panel-label {
+    color: rgb(255 255 255 / 0.7) !important;
+  }
+
+  .cv-aside .panel-value,
+  .cv-aside .cv-identity-name,
+  .cv-aside .cv-identity-role,
+  .cv-aside .cv-contact-item {
+    color: #ffffff !important;
+  }
+
+  .cv-aside .chip {
+    border: 1px solid rgb(255 255 255 / 0.4) !important;
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+
+  .cv-aside .cv-bar {
+    background: rgb(255 255 255 / 0.25) !important;
+  }
+
+  .cv-aside .cv-bar > span {
+    background: #ffffff !important;
+  }
+
+  .cv-main {
+    padding: 0 0 0 14pt !important;
+    background: white !important;
+  }
+
+  .cv-document-name,
+  .cv-document-role,
+  .panel-title,
+  .panel-value {
+    color: black !important;
+  }
+
+  .panel-header {
+    border-bottom-color: #999 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .panel-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-top-color: #e2e2e2 !important;
+  }
+
+  .panel-label {
+    color: #444 !important;
+  }
+
+  .chip {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: black !important;
+    font-size: 8.5pt !important;
+  }
+
+  .cv-photo-ring {
+    width: 66pt !important;
+    height: 66pt !important;
+    border-color: #ffffff !important;
+    box-shadow: none !important;
   }
 
   /* ── Links: show URLs ───────────────────────────────────── */
   a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 9pt;
+    content: ' (' attr(href) ')';
+    font-size: 8.5pt;
     color: #555 !important;
     word-break: break-all;
   }
 
-  /* Don't show URL for anchors or skip links */
-  a[href^="#"]::after,
-  a.skip-link::after {
-    content: "";
+  a[href^='#']::after {
+    content: '';
   }
 
   /* ── Images ─────────────────────────────────────────────── */
   img {
     max-width: 100% !important;
     page-break-inside: avoid;
-  }
-
-  /* ── SVG icons: force grayscale ─────────────────────────── */
-  svg {
-    fill: #000 !important;
-    stroke: #000 !important;
-  }
-
-  /* ── Utility overrides ──────────────────────────────────── */
-  .gradient-text {
-    background: none !important;
-    -webkit-text-fill-color: #000 !important;
-    color: #000 !important;
-  }
-
-  .neon-border {
-    border: 1px solid #999 !important;
-  }
-
-  .neon-text {
-    text-shadow: none !important;
-  }
-
-  /* ── Footer ─────────────────────────────────────────────── */
-  footer {
-    border-top: 1px solid #ccc !important;
-    page-break-before: avoid;
   }
 
   /* ── Scrollbar: hide ────────────────────────────────────── */
@@ -168,10 +206,6 @@
 
   * {
     scrollbar-width: none;
-  }
-
-  /* ── Transitions: kill all ──────────────────────────────── */
-  * {
     transition: none !important;
     animation: none !important;
   }

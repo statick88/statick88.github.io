@@ -3,133 +3,195 @@
 @tailwind utilities;
 
 /*
- * DragonJAR colour language on a dark ground.
+ * CONSOLE → CORPORATE design tokens.
  *
- * The channel triplets below are the single source of truth for the palette:
- * tailwind.config.js exposes every Tailwind colour family as
- * `rgb(var(--dj-*) / <alpha-value>)`, so the ~389 existing standard colour
- * classes (`text-cyan-400`, `bg-green-500`, `border-cyan-500`, ...) resolve to
- * these values with zero component edits.
+ * The sheet is a corporate CV: a navy identity column on the left and a white
+ * document column on the right, with blue section titles, hairline rules and
+ * level bars — the language of a printed curriculum vitae, not an app.
+ *
+ * Every value is a space-separated RGB triple so plain CSS
+ * (`rgb(var(--ct-line) / 0.6)`) and Tailwind
+ * (`rgb(var(--ct-line) / <alpha-value>)`) consume the same source.
+ *
+ * The light theme is the default; `html.dark` carries the night variant.
  */
+
+/* ---------------------------------------------------------------------------
+ * Corporate palette (default)
+ * ------------------------------------------------------------------------ */
 :root {
-  /* --- DragonJAR brand orange (accent slot, formerly neon cyan) ----------- */
-  --dj-orange-50: 255 241 230;
-  --dj-orange-100: 255 224 199;
-  --dj-orange-200: 255 189 146;
-  --dj-orange-300: 255 155 92;
-  --dj-orange-400: 255 130 46;
-  --dj-orange-500: 255 105 0;   /* #ff6900 - signature brand colour */
-  --dj-orange-600: 217 92 0;    /* #d95c00 */
-  --dj-orange-700: 168 72 0;    /* #a84800 */
-  --dj-orange-800: 130 56 0;    /* #823800 */
-  --dj-orange-900: 92 40 0;     /* #5c2800 */
+  /* Ground and surfaces */
+  --ct-base: 233 236 243; /* #e9ecf3 — page background */
+  --ct-panel: 255 255 255; /* #ffffff — document column */
+  --ct-surface-0: 244 246 250; /* #f4f6fa — inset rows */
+  --ct-surface-1: 237 241 248; /* #edf1f8 */
+  --ct-surface-2: 227 233 244; /* #e3e9f4 */
 
-  /* --- Success / verified (jade, calmer than neon #00cc33) --------------- */
-  --dj-green-50: 234 249 239;
-  --dj-green-100: 209 243 223;
-  --dj-green-200: 167 227 193;
-  --dj-green-300: 122 205 158;
-  --dj-green-400: 74 181 121;
-  --dj-green-500: 40 155 96;
-  --dj-green-600: 26 122 74;
-  --dj-green-700: 18 88 54;
-  --dj-green-800: 13 63 39;
-  --dj-green-900: 9 45 28;
+  /* Hairlines */
+  --ct-line: 221 227 237; /* #dde3ed */
+  --ct-line-strong: 198 208 224; /* #c6d0e0 */
 
-  /* --- Secondary / informational (desaturated steel) ---------------------- */
-  --dj-blue-50: 239 244 248;
-  --dj-blue-100: 217 228 238;
-  --dj-blue-200: 184 203 219;
-  --dj-blue-300: 143 173 199;
-  --dj-blue-400: 108 145 176;
-  --dj-blue-500: 82 116 146;
-  --dj-blue-600: 64 94 122;
-  --dj-blue-700: 50 74 98;
-  --dj-blue-800: 39 58 77;
-  --dj-blue-900: 31 46 62;
+  /* Text hierarchy */
+  --ct-text: 38 48 65; /* #263041 — ink */
+  --ct-subtext-1: 75 85 99; /* #4b5563 */
+  --ct-subtext-0: 104 116 138; /* #68748a */
 
-  /* --- Danger / error (DragonJAR #cf2e2e, brightened for dark ground) ----- */
-  --dj-red-50: 253 238 238;
-  --dj-red-100: 250 219 219;
-  --dj-red-200: 243 187 187;
-  --dj-red-300: 231 137 137;
-  --dj-red-400: 217 90 84;      /* #d95a54 - legible as text on the dark ground */
-  --dj-red-500: 207 46 46;      /* #cf2e2e - DragonJAR alert red */
-  --dj-red-600: 172 36 36;
-  --dj-red-700: 139 29 29;
-  --dj-red-800: 108 24 24;
-  --dj-red-900: 82 20 20;
+  /* Primary: corporate blue */
+  --ct-accent: 43 92 168; /* #2b5ca8 — section titles, rules */
+  --ct-accent-bright: 53 112 198; /* #3570c6 — links on white */
+  --ct-accent-dim: 234 240 250; /* #eaf0fa — tinted fills */
+  --ct-accent-contrast: 255 255 255; /* #ffffff */
 
-  /* --- Warm neutral scale (same lightness ordering as Tailwind gray) ------ */
-  --dj-gray-50: 250 249 248;
-  --dj-gray-100: 245 243 241;
-  --dj-gray-200: 234 234 234;   /* #eaeaea - DragonJAR hairline */
-  --dj-gray-300: 211 206 201;
-  --dj-gray-400: 158 151 144;
-  --dj-gray-500: 114 108 102;
-  --dj-gray-600: 82 77 72;
-  --dj-gray-700: 60 56 52;
-  --dj-gray-800: 40 37 34;
-  --dj-gray-900: 24 24 24;      /* #181818 - DragonJAR near-black ink */
-  --dj-gray-950: 13 11 10;
+  /* Corporate navy — the identity column */
+  --ct-navy: 30 42 94; /* #1e2a5e */
+  --ct-navy-soft: 42 56 112; /* #2a3870 */
 
-  /* --- Decorative tier accents ------------------------------------------- */
-  /* Plum: skill "Master"/"Intermediate", language B2, "Repos Auditados". */
-  --dj-purple-50: 246 240 248;
-  --dj-purple-100: 230 216 238;
-  --dj-purple-200: 205 179 219;
-  --dj-purple-300: 176 138 194;
-  --dj-purple-400: 147 105 168;
-  --dj-purple-500: 122 80 143;
-  --dj-purple-600: 98 62 116;
-  --dj-purple-700: 76 48 91;
-  --dj-purple-800: 57 36 69;
-  --dj-purple-900: 42 27 51;
+  /* Semantic states */
+  --ct-ok: 30 142 90; /* #1e8e5a */
+  --ct-warn: 180 121 27; /* #b4791b */
+  --ct-danger: 192 57 43; /* #c0392b */
+  --ct-info: 43 92 168; /* #2b5ca8 */
 
-  /* Bronze: language A2 badge. Deliberately NOT the brand orange so the
-     decorative tier stays distinct from the accent. */
-  --dj-bronze-50: 250 243 235;
-  --dj-bronze-100: 240 227 211;
-  --dj-bronze-200: 223 198 168;
-  --dj-bronze-300: 200 164 122;
-  --dj-bronze-400: 172 133 88;
-  --dj-bronze-500: 146 107 62;
-  --dj-bronze-600: 118 85 47;
-  --dj-bronze-700: 91 64 35;
-  --dj-bronze-800: 67 47 25;
-  --dj-bronze-900: 48 34 18;
+  /* Primary blue ramp (Tailwind `cyan` family) */
+  --ct-blue-50: 242 246 253;
+  --ct-blue-100: 226 235 248;
+  --ct-blue-200: 200 216 240;
+  --ct-blue-300: 158 187 228;
+  --ct-blue-400: 100 148 208;
+  --ct-blue-500: 43 92 168;
+  --ct-blue-600: 33 74 141;
+  --ct-blue-700: 26 58 111;
+  --ct-blue-800: 21 47 89;
+  --ct-blue-900: 17 38 72;
 
-  /* Sand: "Certificado" education tier. */
-  --dj-amber-50: 251 246 232;
-  --dj-amber-100: 245 234 202;
-  --dj-amber-200: 233 208 148;
-  --dj-amber-300: 216 176 92;
-  --dj-amber-400: 194 148 60;
-  --dj-amber-500: 168 124 40;
-  --dj-amber-600: 135 98 30;
-  --dj-amber-700: 104 75 23;
-  --dj-amber-800: 76 55 17;
-  --dj-amber-900: 55 40 12;
+  /* Steel ramp (Tailwind `blue` family) — informational */
+  --ct-steel-50: 248 250 252;
+  --ct-steel-100: 241 245 249;
+  --ct-steel-200: 226 232 240;
+  --ct-steel-300: 199 208 220;
+  --ct-steel-400: 148 161 178;
+  --ct-steel-500: 110 124 143;
+  --ct-steel-600: 82 94 110;
+  --ct-steel-700: 61 71 84;
+  --ct-steel-800: 43 51 61;
+  --ct-steel-900: 30 36 43;
 
-  /*
-   * Semantic aliases. These had zero usages in the tree but were kept in line
-   * with what actually renders so they cannot contradict the design.
-   */
-  --color-primary: #ff6900;              /* brand accent */
-  --color-secondary: #6a91b0;            /* steel blue */
-  --color-accent: #cf2e2e;                /* alert red */
-  --color-bg: #0d0b0a;                    /* warm near-black ground */
-  --color-bg-alt: #181818;                /* DragonJAR ink */
+  /* Jade ramp (Tailwind `green` family) — verified / success */
+  --ct-jade-50: 235 248 241;
+  --ct-jade-100: 209 240 226;
+  --ct-jade-200: 165 221 196;
+  --ct-jade-300: 118 196 158;
+  --ct-jade-400: 62 173 124;
+  --ct-jade-500: 30 142 90;
+  --ct-jade-600: 24 113 72;
+  --ct-jade-700: 19 85 54;
+  --ct-jade-800: 15 64 41;
+  --ct-jade-900: 12 48 31;
 
-  /* Dark ground, nudged warm so the orange reads native rather than pasted on. */
-  --dj-surface-0: #0d0b0a;
-  --dj-surface-1: #141110;
-  --dj-surface-2: #181818;
+  /* Danger ramp (Tailwind `red` family) */
+  --ct-red-50: 253 240 239;
+  --ct-red-100: 250 221 219;
+  --ct-red-200: 244 186 182;
+  --ct-red-300: 231 143 137;
+  --ct-red-400: 216 97 91;
+  --ct-red-500: 192 57 43;
+  --ct-red-600: 160 45 34;
+  --ct-red-700: 128 36 27;
+  --ct-red-800: 99 30 24;
+  --ct-red-900: 76 24 20;
 
-  /* Smooth scrolling */
+  /* Neutral ramp (Tailwind `gray` family) — cool slate */
+  --ct-slate-50: 248 250 252;
+  --ct-slate-100: 241 245 249;
+  --ct-slate-200: 226 232 240;
+  --ct-slate-300: 203 211 223;
+  --ct-slate-400: 148 161 178;
+  --ct-slate-500: 110 124 143;
+  --ct-slate-600: 82 94 110;
+  --ct-slate-700: 61 71 84;
+  --ct-slate-800: 43 51 61;
+  --ct-slate-900: 30 36 43;
+  --ct-slate-950: 20 24 29;
+
+  /* Violet ramp (Tailwind `purple` family) — decorative tier accent */
+  --ct-violet-50: 246 244 252;
+  --ct-violet-100: 236 232 249;
+  --ct-violet-200: 216 208 242;
+  --ct-violet-300: 188 175 231;
+  --ct-violet-400: 150 132 210;
+  --ct-violet-500: 112 90 172;
+  --ct-violet-600: 90 72 138;
+  --ct-violet-700: 71 57 110;
+  --ct-violet-800: 56 45 87;
+  --ct-violet-900: 44 35 68;
+
+  /* Amber ramp (Tailwind `orange` family) — decorative tier accent */
+  --ct-amber-50: 253 247 235;
+  --ct-amber-100: 249 239 219;
+  --ct-amber-200: 245 222 180;
+  --ct-amber-300: 238 197 133;
+  --ct-amber-400: 221 167 79;
+  --ct-amber-500: 184 134 42;
+  --ct-amber-600: 148 106 32;
+  --ct-amber-700: 115 82 25;
+  --ct-amber-800: 87 63 21;
+  --ct-amber-900: 66 48 18;
+
+  /* Sand ramp (Tailwind `amber` family) — decorative tier accent */
+  --ct-sand-50: 253 249 238;
+  --ct-sand-100: 249 242 224;
+  --ct-sand-200: 244 230 193;
+  --ct-sand-300: 233 210 153;
+  --ct-sand-400: 214 183 105;
+  --ct-sand-500: 182 149 64;
+  --ct-sand-600: 145 116 45;
+  --ct-sand-700: 112 88 33;
+  --ct-sand-800: 85 67 26;
+  --ct-sand-900: 65 52 22;
+
+  /* Chrome metrics */
+  --ct-aside-width: 320px;
+  --ct-topbar-height: 48px;
+  --ct-radius: 3px;
+  --ct-radius-sm: 2px;
+
   scroll-behavior: smooth;
 }
 
+/* ---------------------------------------------------------------------------
+ * Night variant — the same document, read in the dark
+ * ------------------------------------------------------------------------ */
+html.dark {
+  --ct-base: 8 13 26; /* #080d1a — navy ground */
+  --ct-panel: 13 20 36; /* #0d1424 — document column */
+  --ct-surface-0: 18 26 44; /* #121a2c */
+  --ct-surface-1: 23 33 55; /* #172137 */
+  --ct-surface-2: 31 44 71; /* #1f2c47 */
+
+  --ct-line: 30 43 70; /* #1e2b46 */
+  --ct-line-strong: 48 65 99; /* #304163 */
+
+  --ct-text: 226 234 246; /* #e2eaf6 */
+  --ct-subtext-1: 158 172 196;
+  --ct-subtext-0: 116 132 160;
+
+  --ct-accent: 96 150 240; /* #6096f0 */
+  --ct-accent-bright: 133 176 245; /* #85b0f5 */
+  --ct-accent-dim: 22 38 68; /* #162644 */
+  --ct-accent-contrast: 8 13 26;
+
+  --ct-navy: 12 19 38; /* #0c1326 — identity column */
+  --ct-navy-soft: 21 31 58; /* #151f3a */
+
+  --ct-ok: 74 197 134;
+  --ct-warn: 226 172 82;
+  --ct-danger: 230 108 96;
+  --ct-info: 96 150 240;
+}
+
+/* ---------------------------------------------------------------------------
+ * Reset
+ * ------------------------------------------------------------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -144,49 +206,515 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, var(--dj-surface-0) 0%, #070605 100%);
-  color: rgb(var(--dj-gray-400));
+  background: rgb(var(--ct-base));
+  color: rgb(var(--ct-text));
   min-height: 100vh;
+  font-size: 14px;
   line-height: 1.6;
 }
 
-/* Selection */
-::selection {
-  background: rgba(255, 105, 0, 0.28);
-  color: white;
+/* Micro data — dates, identifiers, counters — stays monospaced. */
+.mono {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* Focus states - Accessibility */
-/* Keep native focus for keyboard users, enhance with visible ring */
+::selection {
+  background: rgb(var(--ct-accent) / 0.18);
+  color: rgb(var(--ct-text));
+}
+
+/* ---------------------------------------------------------------------------
+ * Focus — 2px accent ring, 2px offset, everywhere
+ * ------------------------------------------------------------------------ */
 :focus {
   outline: none;
 }
 
-/* Ensure focus-visible works for keyboard navigation */
 :focus-visible {
-  outline: 2px solid rgba(255, 105, 0, 0.85);
+  outline: 2px solid rgb(var(--ct-accent));
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--ct-radius-sm);
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid rgba(255, 105, 0, 0.85);
+  outline: 2px solid rgb(var(--ct-accent));
   outline-offset: 2px;
 }
 
-/* Skip to main content link - Accessibility */
+/* ---------------------------------------------------------------------------
+ * Page and sheet — the printed document, on a desk
+ * ------------------------------------------------------------------------ */
+.cv-page {
+  min-height: 100vh;
+  padding: 0;
+  background: rgb(var(--ct-base));
+}
+
+.cv-sheet {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  display: grid;
+  grid-template-columns: clamp(300px, 24vw, 420px) minmax(0, 1fr);
+  background: rgb(var(--ct-panel));
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.cv-aside {
+  position: relative;
+  background: rgb(var(--ct-navy));
+  color: rgb(255 255 255);
+  padding: 34px 26px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* A soft blue light from the top of the identity column. */
+.cv-aside::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 55% at 25% 0%,
+    rgb(var(--ct-accent) / 0.22),
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.cv-aside > * {
+  position: relative;
+}
+
+.cv-main {
+  padding: 32px 36px 40px;
+  min-width: 0;
+  background: rgb(var(--ct-panel));
+}
+
+/* Top bar and footer --------------------------------------------------- */
+.cv-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  min-height: var(--ct-topbar-height);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  background: rgb(var(--ct-panel));
+  border-bottom: 1px solid rgb(var(--ct-line));
+}
+
+.cv-topbar [data-testid='console-brand'] {
+  white-space: nowrap;
+}
+
+.cv-topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cv-topbar-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cv-topbar-link {
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(var(--ct-subtext-0));
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.cv-topbar-link:hover {
+  color: rgb(var(--ct-accent));
+}
+
+.cv-topbar-link[aria-current='true'] {
+  color: rgb(var(--ct-accent));
+  border-bottom-color: rgb(var(--ct-accent));
+}
+
+.cv-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(var(--ct-line));
+  color: rgb(var(--ct-subtext-0));
+  font-size: 12px;
+}
+
+/* Identity block -------------------------------------------------------- */
+.cv-identity-name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(255 255 255);
+}
+
+.cv-identity-role {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--ct-accent-bright));
+}
+
+.cv-photo-ring {
+  width: 116px;
+  height: 116px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 3px solid rgb(var(--ct-panel));
+  box-shadow: 0 0 0 1px rgb(var(--ct-navy-soft));
+  background: rgb(var(--ct-navy-soft));
+}
+
+.cv-document-name {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: rgb(var(--ct-navy));
+}
+
+html.dark .cv-document-name {
+  color: rgb(var(--ct-text));
+}
+
+.cv-document-role {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--ct-accent));
+}
+
+/* ---------------------------------------------------------------------------
+ * Sections and panels — the printed idiom
+ * ------------------------------------------------------------------------ */
+.panel {
+  background: rgb(var(--ct-panel));
+  border: none;
+  border-radius: 0;
+}
+
+.panel + .panel {
+  margin-top: 26px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgb(var(--ct-line-strong));
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgb(var(--ct-accent));
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.panel-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  background: rgb(var(--ct-accent));
+  box-shadow: 0 0 0 3px rgb(var(--ct-accent) / 0.16);
+}
+
+.panel-subtitle {
+  color: rgb(var(--ct-subtext-0));
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.panel-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 200px) minmax(0, 1fr);
+  gap: 6px 20px;
+  align-items: start;
+  padding: 8px 0;
+}
+
+.panel-row + .panel-row {
+  border-top: 1px solid rgb(var(--ct-line));
+}
+
+.panel-label {
+  color: rgb(var(--ct-subtext-0));
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 2px;
+  /* Long repository names must wrap inside the label column. */
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.panel-value {
+  color: rgb(var(--ct-text));
+  font-size: 13px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.panel-value-muted {
+  color: rgb(var(--ct-subtext-1));
+}
+
+/* The summary reads as a quotation: a rule in the brand blue. */
+.cv-summary {
+  border-left: 2px solid rgb(var(--ct-accent));
+  padding-left: 16px;
+}
+
+/* The KPI band is an inset panel of its own. */
+.cv-metrics {
+  background: rgb(var(--ct-surface-0));
+  border: 1px solid rgb(var(--ct-line));
+  border-radius: var(--ct-radius);
+}
+
+/* Experience entries hang from a timeline. */
+.cv-timeline {
+  position: relative;
+  padding-left: 20px;
+}
+
+.cv-timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: rgb(var(--ct-line-strong));
+}
+
+.cv-timeline-item {
+  position: relative;
+}
+
+.cv-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: rgb(var(--ct-accent));
+  box-shadow: 0 0 0 3px rgb(var(--ct-panel));
+}
+
+/* Rows answer the pointer. */
+.panel-row {
+  transition: background 0.15s ease;
+}
+
+.panel-row:hover {
+  background: rgb(var(--ct-accent) / 0.05);
+}
+
+/* Identity column: same panels, inverted for the navy ground ------------- */
+.cv-aside .panel {
+  background: transparent;
+}
+
+.cv-aside .panel-header {
+  border-bottom-color: rgb(var(--ct-navy-soft));
+}
+
+.cv-aside .panel-body {
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: var(--ct-radius);
+  padding: 12px 14px;
+}
+
+.cv-aside .panel-header {
+  margin-bottom: 10px;
+}
+
+.cv-aside .panel-title {
+  color: rgb(var(--ct-accent-bright));
+}
+
+.cv-aside .panel-subtitle {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.cv-aside .panel-row {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 7px 0;
+}
+
+.cv-aside .panel-row + .panel-row {
+  border-top-color: rgb(var(--ct-navy-soft));
+}
+
+.cv-aside .panel-label {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.cv-aside .panel-value {
+  color: rgb(255 255 255);
+  font-size: 13px;
+}
+
+/* Inside the navy column the text colours invert with the ground. */
+.cv-aside .text-ct-text {
+  color: rgb(255 255 255);
+}
+
+.cv-aside .text-ct-subtext-1 {
+  color: rgb(255 255 255 / 0.85);
+}
+
+.cv-aside .text-ct-subtext-0 {
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* Chips and badges -------------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border: 1px solid rgb(var(--ct-line-strong));
+  border-radius: 999px;
+  background: rgb(var(--ct-surface-0));
+  color: rgb(var(--ct-text));
+  font-size: 11px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.chip-accent {
+  border-color: rgb(var(--ct-accent) / 0.35);
+  background: rgb(var(--ct-accent-dim));
+  color: rgb(var(--ct-accent));
+}
+
+.chip-ok {
+  border-color: rgb(var(--ct-ok) / 0.3);
+  background: rgb(var(--ct-ok) / 0.1);
+  color: rgb(var(--ct-ok));
+}
+
+.chip-warn {
+  border-color: rgb(var(--ct-warn) / 0.3);
+  background: rgb(var(--ct-warn) / 0.1);
+  color: rgb(var(--ct-warn));
+}
+
+.chip-danger {
+  border-color: rgb(var(--ct-danger) / 0.3);
+  background: rgb(var(--ct-danger) / 0.1);
+  color: rgb(var(--ct-danger));
+}
+
+.chip-muted {
+  border-color: rgb(var(--ct-line));
+  background: transparent;
+  color: rgb(var(--ct-subtext-0));
+}
+
+.cv-aside .chip {
+  border-color: rgb(255 255 255 / 0.28);
+  background: rgb(255 255 255 / 0.08);
+  color: rgb(255 255 255 / 0.9);
+}
+
+/* Level bars — the signature of the printed CV --------------------------- */
+.cv-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(var(--ct-line));
+  overflow: hidden;
+}
+
+.cv-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(var(--ct-accent));
+}
+
+.cv-aside .cv-bar {
+  background: rgb(255 255 255 / 0.22);
+}
+
+.cv-aside .cv-bar > span {
+  background: rgb(var(--ct-accent-bright));
+}
+
+/* Contact list in the identity column ------------------------------------ */
+.cv-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12.5px;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.cv-contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+/* ---------------------------------------------------------------------------
+ * Accessibility helpers
+ * ------------------------------------------------------------------------ */
 .skip-link {
   position: absolute;
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #ff6900;
-  color: #0d0b0a;
-  padding: 12px 24px;
-  border-radius: 0 0 8px 8px;
+  background: rgb(var(--ct-accent));
+  color: rgb(var(--ct-accent-contrast));
+  padding: 10px 20px;
+  border-radius: 0 0 var(--ct-radius) var(--ct-radius);
+  font-size: 12px;
   font-weight: 700;
   z-index: 9999;
   transition: top 0.2s ease;
@@ -195,252 +723,10 @@ input:focus-visible,
 
 .skip-link:focus {
   top: 0;
-  outline: 3px solid #4ab579;
+  outline: 2px solid rgb(var(--ct-ok));
   outline-offset: 2px;
 }
 
-/* Glassmorphism - Enhanced */
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-}
-
-.glass:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Neon effects - class names retained for compatibility, repointed at the brand
-   orange so the glow layer matches the palette. */
-.neon-text {
-  text-shadow: 0 0 10px rgba(255, 105, 0, 0.45), 0 0 20px rgba(255, 105, 0, 0.25);
-}
-
-.neon-border {
-  box-shadow: 0 0 5px rgba(255, 105, 0, 0.3), inset 0 0 5px rgba(255, 105, 0, 0.12);
-}
-
-/* Custom scrollbar - Enhanced */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--dj-surface-0);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(255, 105, 0, 0.32), rgba(40, 155, 96, 0.32));
-  border-radius: 4px;
-  transition: background 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(255, 105, 0, 0.55), rgba(40, 155, 96, 0.55));
-}
-
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 105, 0, 0.32) var(--dj-surface-0);
-}
-
-/* Particles background */
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 105, 0, 0.3);
-  border-radius: 50%;
-  animation: float 15s infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #ff6900 0%, #6a91b0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hover effects - Enhanced */
-.hover-glow {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(255, 105, 0, 0.28), 0 10px 40px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
-}
-
-/* Skew hover effect */
-.hover-skew {
-  transition: transform 0.3s ease;
-}
-
-.hover-skew:hover {
-  transform: skewX(-5deg);
-}
-
-/* Stagger animation */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-
-/* Pulse animation for CTAs */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 105, 0, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(255, 105, 0, 0.45);
-  }
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Link styles */
-a {
-  color: #6a91b0;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #ff6900;
-}
-
-/* Button base styles */
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-/* Image loading */
-img {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-img[loading="lazy"] {
-  opacity: 0;
-}
-
-img[loading="lazy"].loaded {
-  opacity: 1;
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-  
-  /* Disable particles animation entirely */
-  .particles {
-    display: none;
-  }
-  
-  /* Disable hover transforms */
-  .hover-glow:hover {
-    transform: none;
-  }
-}
-
-/* Print styles */
-@media print {
-  .no-print { display: none !important; }
-  body { 
-    background: white !important; 
-    color: black !important; 
-    font-size: 12pt;
-  }
-  .glass { 
-    background: white !important; 
-    border: 1px solid #ccc; 
-    box-shadow: none;
-  }
-  
-  /* Hide interactive elements */
-  button, 
-  nav,
-  .fixed {
-    display: none !important;
-  }
-  
-  /* Ensure links show URLs */
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 10pt;
-    color: #666;
-  }
-}
-
-/* Responsive text sizing */
-@media (max-width: 640px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  html {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 1025px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-/* Utility for screen reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -453,15 +739,214 @@ img[loading="lazy"].loaded {
   border: 0;
 }
 
-/* Backdrop blur support */
-@supports (backdrop-filter: blur(10px)) {
-  .glass {
-    backdrop-filter: blur(16px);
+/* Custom scrollbars ------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--ct-base));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ct-line-strong));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--ct-subtext-0));
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--ct-line-strong)) rgb(var(--ct-base));
+}
+
+/* Links ------------------------------------------------------------------ */
+a {
+  color: rgb(var(--ct-accent-bright));
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: rgb(var(--ct-accent));
+  text-decoration: underline;
+}
+
+.cv-aside a {
+  color: rgb(255 255 255 / 0.92);
+}
+
+.cv-aside a:hover {
+  color: rgb(var(--ct-accent-bright));
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[loading='lazy'] {
+  opacity: 0;
+}
+
+img[loading='lazy'].loaded {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+ * Responsive — the sheet becomes one column on small screens
+ * ------------------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .cv-sheet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cv-aside {
+    padding: 24px 20px 28px;
+  }
+
+  .cv-main {
+    padding: 24px 20px 32px;
+  }
+
+  .cv-document-name {
+    font-size: 24px;
   }
 }
 
-@supports not (backdrop-filter: blur(10px)) {
-  .glass {
-    background: rgba(13, 11, 10, 0.95);
+@media (max-width: 640px) {
+  /* The identity column already carries the name on small screens. */
+  .cv-topbar [data-testid='console-brand'] {
+    display: none;
+  }
+
+  .cv-topbar {
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .panel-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .panel-label {
+    padding-top: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Reduced motion
+ * ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Print — the CV, without the page furniture
+ * ------------------------------------------------------------------------ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 10.5pt;
+  }
+
+  .cv-page {
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* The sheet layout in print belongs to public/print.css — the dedicated
+     print stylesheet. Duplicating it here made the two files fight over the
+     identity column and the app stylesheet (injected last) won. */
+  .cv-document-name,
+  .cv-document-role,
+  .panel-title,
+  .panel-value {
+    color: black !important;
+  }
+
+  .panel-header {
+    border-bottom-color: #999 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .panel-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-top-color: #e2e2e2 !important;
+  }
+
+  .panel-label {
+    color: #444 !important;
+  }
+
+  .chip {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: black !important;
+    font-size: 8.5pt !important;
+  }
+
+  .cv-photo-ring {
+    width: 72pt !important;
+    height: 72pt !important;
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 8.5pt;
+    color: #555 !important;
+    word-break: break-all;
+  }
+
+  a[href^='#']::after {
+    content: '';
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+    transition: none !important;
+    animation: none !important;
   }
 }

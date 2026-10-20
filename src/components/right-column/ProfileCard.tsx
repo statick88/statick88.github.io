@@ -1,15 +1,18 @@
 /**
- * src/components/right-column/ProfileCard.tsx — Executive profile card
+ * src/components/right-column/ProfileCard.tsx — Summary panel (reference design)
  *
- * Displays executive headline, role, summary, and key KPI metrics.
- * Bilingual support for role and summary text.
- * Metrics highlight row with large number + label per KPI.
- * Print: compact layout, no animations.
+ * This component is the reference implementation of the console panel idiom:
+ *
+ *   - the panel chrome comes from `Panel` / `PanelRow`,
+ *   - long prose opts back into the humanist sans (`.prose-sans`),
+ *   - the KPI block is a hairline grid, exactly like a settings summary,
+ *   - every colour comes from the semantic tokens (never hardcoded hex).
  *
  * @see T-016
  */
 
 import { useApp } from '@/context/AppContext'
+import { Panel } from '@/components/panels/Panel'
 import type { ExecutiveProfile, MetricsSummary } from '@/lib/schemas/cv-data'
 
 interface ProfileCardProps {
@@ -17,6 +20,8 @@ interface ProfileCardProps {
   profile: ExecutiveProfile
   /** Metrics summary data */
   metrics: MetricsSummary
+  /** Long professional headline (degrees, experience, specialisations) */
+  headline?: { es: string; en: string }
 }
 
 /**
@@ -34,57 +39,41 @@ const KPI_CONFIG: Array<{
 ]
 
 /**
- * ProfileCard — Executive headline, role, summary, and KPI metrics.
+ * ProfileCard — Summary prose plus the KPI grid.
  *
- * - Name as large heading.
- * - Role displayed bilingually via t().
- * - Summary paragraph bilingually.
- * - 4-column KPI row: each with large number + bilingual label.
- * - Print mode: compact, no background, no blur.
+ * The name lives in the identity block, so this panel carries the summary and
+ * the numbers, not the headline.
  */
-export default function ProfileCard({ profile, metrics }: ProfileCardProps) {
+export default function ProfileCard({ profile, metrics, headline }: ProfileCardProps) {
   const { t } = useApp()
 
   return (
-    <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl p-4 space-y-3 print:bg-transparent print:border-0 print:p-0">
-      {/* Executive Headline */}
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white font-sans print:text-black print:text-lg">
-        {profile.name}
-      </h2>
+    <Panel title={t('resumen', 'summary')}>
+      <div className="cv-summary px-4 py-4 space-y-3">
+        {headline ? (
+          <p className="prose-sans text-ct-subtext-1 max-w-[70ch]">
+            {t(headline.es, headline.en)}
+          </p>
+        ) : null}
+        <p className="prose-sans max-w-[70ch]">{t(profile.summary.es, profile.summary.en)}</p>
+      </div>
 
-      {/* Role */}
-      <p className="text-sm font-medium text-blue-600 dark:text-blue-400 print:text-black">
-        {t(profile.role.es, profile.role.en)}
-      </p>
-
-      {/* Summary */}
-      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed print:text-gray-700">
-        {t(profile.summary.es, profile.summary.en)}
-      </p>
-
-      {/* KPI Metrics Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 print:gap-2">
+      <div className="cv-metrics grid grid-cols-2 gap-px bg-ct-line border-t border-ct-line sm:grid-cols-4 print:bg-white print:gap-0">
         {KPI_CONFIG.map((kpi) => {
           const value = metrics[kpi.key]
           return (
-            <div key={kpi.key} className="text-center print:text-left">
-              <p className="text-xl font-bold text-gray-900 dark:text-white print:text-black print:text-base">
-                {value}{kpi.suffix ?? ''}
+            <div key={kpi.key} className="bg-ct-surface-0 px-4 py-3 print:bg-white">
+              <p className="text-lg font-bold text-ct-accent-bright print:text-black">
+                {value}
+                {kpi.suffix ?? ''}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 print:text-gray-600">
+              <p className="text-[11px] uppercase tracking-[0.06em] text-ct-subtext-0 print:text-gray-700">
                 {t(kpi.label.es, kpi.label.en)}
               </p>
             </div>
           )
         })}
       </div>
-
-      <style>{`
-        @media print {
-          .print\\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-          .print\\:text-base { font-size: 0.875rem; line-height: 1.25rem; }
-        }
-      `}</style>
-    </div>
+    </Panel>
   )
 }

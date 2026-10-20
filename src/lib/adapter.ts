@@ -136,9 +136,20 @@ export function adaptProfile(activeProfileId: string = 'developer'): ExecutivePr
   const profile = profileData[activeProfileId]
   return {
     name: basics.name,
-    role: basics.label,
+    // The profile label is the short professional role ("Desarrollador Full Stack |
+    // Full Stack Engineer"). `basics.label` is the long headline and is exposed
+    // separately by `adaptHeadline()`.
+    role: profile?.label ?? basics.label,
     summary: profile?.summary || basics.label,
   }
+}
+
+/**
+ * The long professional headline (degrees, years of experience, specialisations).
+ * It belongs to the summary panel as prose, not to the identity header.
+ */
+export function adaptHeadline(): { es: string; en: string } {
+  return basics.label
 }
 
 // ─── Metrics (hardcoded defaults — no source in cv-data) ───────────────────────
@@ -149,10 +160,10 @@ export function getDefaultMetrics(): MetricsSummary {
     yearsTeaching: 13,
     totalHoursTeaching: 200,
     githubPublicRepos: 400,
-    publicReposAudited: 10,
+    exploitariumEntries: 35,
     averageCohortScore: 93.4,
     apcYearsService: 9,
     languagesSpoken: 4,
-    totalProjectsAudited: 6,
+    auditedProjects: 1,
   }
 }

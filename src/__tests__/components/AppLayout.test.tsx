@@ -1,33 +1,35 @@
 /**
  * src/__tests__/components/AppLayout.test.tsx
  *
- * Integration tests for AppLayout component.
- * Verifies initPrefetching is wired on mount and cleanup on unmount.
+ * Integration tests for the AppLayout component.
+ *
+ * The layout changed shape with the console redesign: the old scroll-spy
+ * prefetch mechanism is gone (sections are no longer lazy chunks), so those
+ * assertions were replaced by the new contract — the shell renders its three
+ * zones, the skip link points at the main content, and web-vitals still boots.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/react'
 import { AppProvider } from '@/context/AppContext'
+import { ProfileProvider } from '@/context/ProfileContext'
 
-// Mock prefetch module
-const mockInitPrefetching = vi.fn(() => vi.fn()) // returns cleanup fn
+const mockInitWebVitals = vi.fn()
 
-vi.mock('@/lib/prefetch', () => ({
-  initPrefetching: (...args: []) => mockInitPrefetching(...args),
+vi.mock('@/lib/web-vitals', () => ({
+  initWebVitalsForProject: (...args: []) => mockInitWebVitals(...args),
 }))
 
-// Mock heavy component imports to avoid real lazy loading in tests
 vi.mock('@/components/Particles', () => ({
   default: () => <div data-testid="particles" />,
 }))
+
 vi.mock('@/components/LanguageToggle', () => ({
   default: () => <div data-testid="lang-toggle" />,
 }))
+
 vi.mock('@/components/ThemeToggle', () => ({
   default: () => <div data-testid="theme-toggle" />,
-}))
-vi.mock('@/components/layout/Footer', () => ({
-  Footer: () => <div data-testid="footer" />,
 }))
 
 // Import after mocks
@@ -42,44 +44,63 @@ describe('AppLayout', () => {
     cleanup()
   })
 
-  it('calls initPrefetching on mount', () => {
+  it('calls initWebVitalsForProject on mount', () => {
     render(
       <AppProvider>
-        <AppLayout>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
           <div>child content</div>
         </AppLayout>
+        </ProfileProvider>
       </AppProvider>
     )
 
-    expect(mockInitPrefetching).toHaveBeenCalledOnce()
-  })
-
-  it('calls cleanup function on unmount', () => {
-    const mockCleanup = vi.fn()
-    mockInitPrefetching.mockReturnValue(mockCleanup)
-
-    const { unmount } = render(
-      <AppProvider>
-        <AppLayout>
-          <div>child content</div>
-        </AppLayout>
-      </AppProvider>
-    )
-
-    unmount()
-
-    expect(mockCleanup).toHaveBeenCalledOnce()
+    expect(mockInitWebVitals).toHaveBeenCalledOnce()
   })
 
   it('renders children inside the layout', () => {
     const { getByText } = render(
       <AppProvider>
-        <AppLayout>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
           <div>My child content</div>
         </AppLayout>
+        </ProfileProvider>
       </AppProvider>
     )
 
     expect(getByText('My child content')).toBeInTheDocument()
+  })
+
+  it('renders the console shell zones', () => {
+    const { getByTestId, getByRole } = render(
+      <AppProvider>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
+          <div>child content</div>
+        </AppLayout>
+        </ProfileProvider>
+      </AppProvider>
+    )
+
+    expect(getByTestId('console-tabbar')).toBeInTheDocument()
+    expect(getByRole('navigation')).toBeInTheDocument()
+    expect(getByRole('complementary')).toBeInTheDocument()
+    expect(getByRole('main')).toBeInTheDocument()
+  })
+
+  it('exposes a skip link to the main content', () => {
+    const { getByRole } = render(
+      <AppProvider>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
+          <div>child content</div>
+        </AppLayout>
+        </ProfileProvider>
+      </AppProvider>
+    )
+
+    const skipLink = getByRole('link', { name: /saltar al contenido|skip to main content/i })
+    expect(skipLink).toHaveAttribute('href', '#main-content')
   })
 })

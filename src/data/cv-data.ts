@@ -77,8 +77,8 @@ export const work: readonly WorkExperience[] = [
     url: 'https://abacom.edu.ec/',
     startDate: '2021-12-01',
     summary: {
-      es: 'Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA. 200+ horas docentes verificadas con cohorte Python 2026 promedio 93.4/100. Ref: Ing. Kelbi Ramírez Macas.',
-      en: 'Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals, and AI courses. 200+ verified teaching hours with 2026 cohort averaging 93.4/100. Ref: Kelbi Ramírez Macas, Eng.',
+      es: 'Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA. 200+ horas docentes verificadas con la cohorte de Python 2026 (promedio 93.4/100). Ref: Ing. Kelbi Ramírez Macas.',
+      en: 'Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals, and AI courses. 200+ verified teaching hours with the 2026 Python cohort averaging 93.4/100. Ref: Kelbi Ramírez Macas, Eng.',
     },
   },
   {
@@ -124,8 +124,8 @@ export const work: readonly WorkExperience[] = [
     startDate: '2020-10-01',
     endDate: '2022-03-31',
     summary: {
-      es: 'Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coord. Talento Humano, CI 1103882955).',
-      en: 'Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, ID 1103882955).',
+      es: 'Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con la habilidad de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, MBA (Coord. Talento Humano, CI 1103882955).',
+      en: 'Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to the Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, MBA Eng. (HR Coordinator, ID 1103882955).',
     },
   },
   {
@@ -271,7 +271,7 @@ export const projects: readonly Project[] = [
   {
     name: 'cyber-guardians',
     description: {
-      es: 'Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar nunca la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición.',
+      es: 'Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición.',
       en: 'AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel.',
     },
     highlights: {
@@ -388,7 +388,7 @@ export const services: readonly Service[] = [
     icon: 'code',
     title: { es: 'Desarrollo FullStack', en: 'FullStack Development' },
     description: {
-      es: 'Aplicaciones web y móviles de producción con arquitectura sólida, tests, y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL.',
+      es: 'Aplicaciones web y móviles de producción con arquitectura sólida, pruebas y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL.',
       en: 'Production-grade web and mobile applications with solid architecture, tests, and documentation. React, Next.js, Flutter, Node.js, Python, PostgreSQL.',
     },
     formats: { es: ['Por proyecto', 'Por horas', 'Medio tiempo'], en: ['Per project', 'Hourly', 'Part-time'] },
@@ -400,7 +400,7 @@ export const services: readonly Service[] = [
     icon: 'shield',
     title: { es: 'Auditoría de Seguridad', en: 'Security Audit' },
     description: {
-      es: 'Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring, y recomendaciones de remediación.',
+      es: 'Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring y recomendaciones de remediación.',
       en: 'Web and mobile application pentesting. OWASP Top 10 vulnerability identification, CVSS-scored reports, and remediation recommendations.',
     },
     formats: { es: ['Por proyecto', 'Retainer mensual'], en: ['Per project', 'Monthly retainer'] },
@@ -412,7 +412,7 @@ export const services: readonly Service[] = [
     icon: 'target',
     title: { es: 'Consultoría Técnica', en: 'Technical Consulting' },
     description: {
-      es: 'CTO Fractional: arquitectura de software, code review, mentoring de equipos, y toma de decisiones técnicas estratégicas.',
+      es: 'CTO Fractional: arquitectura de software, revisión de código, mentoría de equipos y toma de decisiones técnicas estratégicas.',
       en: 'Fractional CTO: software architecture, code review, team mentoring, and strategic technical decision-making.',
     },
     formats: { es: ['Medio tiempo', 'Por horas', 'Retainer'], en: ['Part-time', 'Hourly', 'Retainer'] },
@@ -424,7 +424,7 @@ export const services: readonly Service[] = [
     icon: 'book',
     title: { es: 'Capacitación & Cursos', en: 'Training & Courses' },
     description: {
-      es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad, y desarrollo de software. Trece años de docencia continua desde 2013 en seis instituciones, entre ellas ESPE, UIDE y ABACOM.',
+      es: 'Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. Trece años de docencia continua desde 2013 en seis instituciones, entre ellas ESPE, UIDE y ABACOM.',
       en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. Thirteen continuous years of teaching since 2013 across six institutions, including ESPE, UIDE and ABACOM.',
     },
     formats: { es: ['Por hora', 'Por curso', 'Workshop'], en: ['Hourly', 'Per course', 'Workshop'] },
@@ -476,7 +476,7 @@ export const profileData: Record<string, Profile> = {
     color: '#3b82f6',
     icon: '💻',
     summary: {
-      es: 'Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 400 repos públicos en GitHub. Apasionado por Clean Architecture, SOLID y TDD.',
+      es: 'Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. Más de 400 repos públicos en GitHub. Apasionado por Clean Architecture, SOLID y TDD.',
       en: 'Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 400 public repos on GitHub. Passionate about Clean Architecture, SOLID, and TDD.',
     },
     skills: [
@@ -569,7 +569,7 @@ export const profileData: Record<string, Profile> = {
     color: '#f59e0b',
     icon: '🔬',
     summary: {
-      es: 'Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. Interesado en threat modeling, pentesting y AI security.',
+      es: 'Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 fuentes en NotebookLM. Interesado en threat modeling, pentesting y AI security.',
       en: 'Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master\'s in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. Interested in threat modeling, pentesting, and AI security.',
     },
     skills: [
@@ -605,8 +605,8 @@ export const profileData: Record<string, Profile> = {
     color: '#10b981',
     icon: '📚',
     summary: {
-      es: 'Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100.',
-      en: 'Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100.',
+      es: 'Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, con la cohorte de Python 2026 (promedio 93.4/100).',
+      en: 'Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, with the 2026 Python cohort averaging 93.4/100.',
     },
     skills: [
       { name: 'Diseño Curricular (ABP / ADDIE)', level: 'master', category: 'teaching' },

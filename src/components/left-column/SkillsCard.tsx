@@ -1,16 +1,16 @@
 /**
  * src/components/left-column/SkillsCard.tsx — Skills grouped by category
  *
- * Skills grouped by category with proficiency badges.
- * Featured skills highlighted with a star icon.
- * Collapsible groups on mobile using <details>/<summary>.
- * 8pt grid spacing compliance.
+ * Skills grouped by category. Each category is a collapsible `<details>`
+ * group (open by default) and every skill is a chip whose colour encodes the
+ * proficiency level.
  *
  * @see T-013
  */
 
 import { useMemo } from 'react'
 import { useApp } from '@/context/AppContext'
+import { Panel } from '@/components/panels/Panel'
 import type { SkillEntry } from '@/lib/schemas/cv-data'
 
 interface SkillsCardProps {
@@ -19,22 +19,22 @@ interface SkillsCardProps {
 }
 
 /**
- * Proficiency level configuration: colors and labels.
+ * Proficiency level configuration: chip variant and bilingual label.
+ *
+ * The chip variant carries the semantics (verified / strong / working), the
+ * label carries the words, so the meaning survives a monochrome print.
  */
-const LEVEL_CONFIG: Record<string, { bg: string; text: string; label: { es: string; en: string } }> = {
+const LEVEL_CONFIG: Record<string, { chip: string; label: { es: string; en: string } }> = {
   master: {
-    bg: 'bg-green-500/20 border-green-500/50',
-    text: 'text-green-600 dark:text-green-400',
+    chip: 'chip-ok',
     label: { es: 'Experto', en: 'Expert' },
   },
   advanced: {
-    bg: 'bg-blue-500/20 border-blue-500/50',
-    text: 'text-blue-600 dark:text-blue-400',
+    chip: 'chip-accent',
     label: { es: 'Avanzado', en: 'Advanced' },
   },
   intermediate: {
-    bg: 'bg-purple-500/20 border-purple-500/50',
-    text: 'text-purple-600 dark:text-purple-400',
+    chip: 'chip-muted',
     label: { es: 'Intermedio', en: 'Intermediate' },
   },
 }
@@ -59,28 +59,12 @@ const CATEGORY_LABELS: Record<string, { es: string; en: string }> = {
 }
 
 /**
- * Star SVG for featured skills.
- */
-function StarIcon() {
-  return (
-    <svg
-      className="w-3 h-3 text-yellow-500 fill-yellow-500"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-    </svg>
-  )
-}
-
-/**
  * SkillsCard — Skills grouped by collapsible category sections.
  *
- * - Groups skills by `category` field.
- * - Each category is a collapsible `<details>` element (open by default on desktop).
- * - Proficiency badges use color-coded borders and text.
- * - Featured skills show a star icon next to the name.
- * - 8pt grid: p-4, gap-2, space-y-3 (all multiples of 8px).
+ * - Groups skills by `category` field, preserving insertion order.
+ * - Each category is a `<details>` element (open by default).
+ * - Proficiency is encoded in the chip variant and spelled out next to the
+ *   skill name.
  */
 export default function SkillsCard({ skills }: SkillsCardProps) {
   const { t } = useApp()
@@ -100,21 +84,17 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
   }, [skills])
 
   return (
-    <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl p-4 space-y-3 print:bg-transparent print:border-0 print:p-0">
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider print:text-black">
-        {t('Habilidades', 'Skills')}
-      </h3>
-
-      <div className="space-y-2">
+    <Panel title={t('habilidades', 'skills')} subtitle={`${skills.length}`}>
+      <div>
         {Array.from(grouped.entries()).map(([category, categorySkills]) => (
           <details
             key={category}
-            className="group"
             open
+            className="group border-b border-ct-line last:border-b-0 print:border-black/10"
           >
-            <summary className="flex items-center gap-2 cursor-pointer text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider select-none min-h-[32px] print:min-h-0">
+            <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-[11px] uppercase tracking-[0.08em] text-ct-subtext-0 transition-colors hover:text-ct-text">
               <svg
-                className="w-3 h-3 transition-transform group-open:rotate-90 print:hidden"
+                className="h-3 w-3 shrink-0 transition-transform group-open:rotate-90 print:hidden"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -122,27 +102,24 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-              {t(
-                CATEGORY_LABELS[category]?.es ?? category,
-                CATEGORY_LABELS[category]?.en ?? category
-              )}
-              <span className="text-gray-400 dark:text-gray-500 font-normal">
+              <span className="font-semibold">
+                {t(
+                  CATEGORY_LABELS[category]?.es ?? category,
+                  CATEGORY_LABELS[category]?.en ?? category
+                )}
+              </span>
+              <span className="font-normal">
                 ({categorySkills.length})
               </span>
             </summary>
 
-            <div className="flex flex-wrap gap-1.5 mt-1.5 pl-5 print:pl-0">
+            <div className="flex flex-wrap gap-2 px-4 pb-4">
               {categorySkills.map((skill) => {
                 const level = LEVEL_CONFIG[skill.level] ?? LEVEL_CONFIG.intermediate!
                 return (
-                  <span
-                    key={skill.name}
-                    className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-medium border rounded-md ${level.bg} ${level.text} print:bg-transparent print:border-gray-300 print:text-black`}
-                  >
+                  <span key={skill.name} className={`chip ${level.chip}`}>
                     {skill.name}
-                    <span className="opacity-60 hidden sm:inline">
-                      ({t(level.label.es, level.label.en)})
-                    </span>
+                    <span className="text-[10px]">{t(level.label.es, level.label.en)}</span>
                   </span>
                 )
               })}
@@ -150,6 +127,6 @@ export default function SkillsCard({ skills }: SkillsCardProps) {
           </details>
         ))}
       </div>
-    </div>
+    </Panel>
   )
 }

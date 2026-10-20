@@ -1,16 +1,21 @@
 /**
- * src/components/right-column/ProjectsGrid.tsx — Projects grid
+ * src/components/right-column/ProjectsGrid.tsx — Projects panel
  *
- * Responsive grid of project cards with filtering by type.
- * Cards: name, description, type badge, tech stack, GitHub metrics.
- * Featured projects highlighted with star icon or border accent.
- * Print: compact list format.
+ * One row per project, in the console idiom:
+ *
+ *   - the row label is the project name,
+ *   - the row value carries the repository link, the featured marker, the
+ *     description (prose), the GitHub metrics and the technology chips.
+ *
+ * The grid becomes a settings list, but the "featured" filter survives as a
+ * toolbar button in the panel body.
  *
  * @see T-018
  */
 
 import { useState, useMemo } from 'react'
 import { useApp } from '@/context/AppContext'
+import { Panel, PanelRow } from '@/components/panels/Panel'
 import type { ProjectEntry } from '@/lib/schemas/cv-data'
 
 interface ProjectsGridProps {
@@ -24,7 +29,7 @@ interface ProjectsGridProps {
 function StarIcon() {
   return (
     <svg
-      className="w-3 h-3 text-yellow-500 fill-yellow-500"
+      className="h-3 w-3 fill-current text-ct-warn print:text-black"
       viewBox="0 0 24 24"
       aria-hidden="true"
     >
@@ -34,14 +39,26 @@ function StarIcon() {
 }
 
 /**
- * ProjectsGrid — Responsive grid of project cards.
+ * Extracts a compact display label from a URL.
+ * e.g. "https://github.com/statick88/course-of-cybersecurity"
+ *      → "github.com/statick88/course-of-cybersecurity"
+ */
+function getDisplayUrl(url: string): string {
+  try {
+    const parsed = new URL(url)
+    return parsed.hostname + parsed.pathname.replace(/\/+$/, '')
+  } catch {
+    return url
+  }
+}
+
+/**
+ * ProjectsGrid — Project list with a featured filter.
  *
- * - Filterable by "all" or "featured" toggle.
- * - Cards show name, description (bilingual), tech stack pills.
- * - Featured cards have a star icon and border accent.
- * - GitHub metrics (stars, forks) if available.
- * - Responsive: 1 col mobile, 2 tablet, 3 desktop.
- * - Print: compact single-column list, no grid.
+ * - Toggle between every project and the featured ones only.
+ * - One row per project: name as the label, details as the value.
+ * - Description in the humanist sans (`.prose-sans`), chips in mono.
+ * - Print: every project listed, no toolbar.
  */
 export default function ProjectsGrid({ projects }: ProjectsGridProps) {
   const { t } = useApp()
@@ -53,69 +70,53 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
   }, [projects, showFeatured])
 
   return (
-    <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl p-4 space-y-3 print:bg-transparent print:border-0 print:p-0">
-      <div className="flex items-center justify-between gap-2 print:block">
-        <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider print:text-black">
-          {t('Proyectos', 'Projects')}
-        </h3>
+    <Panel title={t('proyectos', 'projects')} subtitle={`${filtered.length}`}>
+      {/* Featured filter */}
+      <div className="flex items-center justify-end border-b border-ct-line px-4 py-2 print:hidden">
         <button
           type="button"
           onClick={() => setShowFeatured((prev) => !prev)}
-          className={`text-xs px-2 py-1 rounded-md border transition-colors print:hidden ${
-            showFeatured
-              ? 'bg-yellow-500/20 border-yellow-500/50 text-yellow-600 dark:text-yellow-400'
-              : 'bg-white/5 border-white/20 text-gray-500 dark:text-gray-400 hover:bg-white/10'
-          }`}
+          aria-pressed={showFeatured}
+          className={`chip transition-colors ${showFeatured ? 'chip-accent' : 'chip'}`}
         >
           {showFeatured ? t('Destacados', 'Featured') : t('Mostrar todos', 'Show all')}
         </button>
       </div>
 
-      {/* Responsive grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 print:grid-cols-1 print:gap-2">
-        {filtered.map((project) => (
-          <div
-            key={project.name}
-            className={`relative p-3 rounded-lg border transition-colors ${
-              project.featured
-                ? 'border-yellow-500/30 bg-yellow-500/5 dark:bg-yellow-500/5 print:border-yellow-400'
-                : 'border-white/10 bg-white/5 dark:bg-white/5 print:border-gray-300'
-            } print:bg-transparent print:break-inside-avoid`}
-          >
-            {/* Featured star */}
-            {project.featured && (
-              <div className="absolute top-2 right-2 print:hidden">
-                <StarIcon />
-              </div>
-            )}
-
-            {/* Project name */}
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white print:text-black pr-6">
-              {project.url ? (
+      {filtered.map((project) => (
+        <PanelRow key={project.name} label={project.name}>
+          <div className="space-y-2">
+            {/* Featured marker + repository link */}
+            <div className="flex flex-wrap items-center gap-2">
+              {project.featured && (
+                <span className="chip chip-accent">
+                  <StarIcon />
+                  {t('Destacado', 'Featured')}
+                </span>
+              )}
+              {project.url && (
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                  className="text-[11px] text-ct-accent-bright transition-colors hover:text-ct-accent-bright print:text-black"
                 >
-                  {project.name}
+                  {getDisplayUrl(project.url)}
                 </a>
-              ) : (
-                project.name
               )}
-            </h4>
+            </div>
 
             {/* Description */}
-            <p className="text-xs text-gray-600 dark:text-gray-300 mt-1 line-clamp-3 print:text-gray-700">
+            <p className="prose-sans max-w-[70ch] print:text-black">
               {t(project.description.es, project.description.en)}
             </p>
 
             {/* GitHub metrics */}
             {project.metrics && (project.metrics.stars != null || project.metrics.forks != null) && (
-              <div className="flex items-center gap-3 mt-2 text-xs text-gray-500 dark:text-gray-400 print:text-gray-600">
+              <div className="flex items-center gap-3 text-[11px] text-ct-subtext-1 print:text-gray-700">
                 {project.metrics.stars != null && (
                   <span className="flex items-center gap-1">
-                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     {project.metrics.stars}
@@ -123,7 +124,7 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
                 )}
                 {project.metrics.forks != null && (
                   <span className="flex items-center gap-1">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                     </svg>
                     {project.metrics.forks}
@@ -132,28 +133,25 @@ export default function ProjectsGrid({ projects }: ProjectsGridProps) {
               </div>
             )}
 
-            {/* Tech stack pills */}
+            {/* Tech stack */}
             {project.technologies.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2 print:gap-0.5">
+              <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="inline-block px-1.5 py-0.5 text-[10px] font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded print:bg-transparent print:text-gray-600"
-                  >
+                  <span key={tech} className="chip chip-muted">
                     {tech}
                   </span>
                 ))}
               </div>
             )}
           </div>
-        ))}
-      </div>
+        </PanelRow>
+      ))}
 
       {filtered.length === 0 && (
-        <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-4 print:text-gray-600">
+        <p className="px-4 py-4 text-center text-[11px] text-ct-subtext-0 print:text-gray-600">
           {t('No hay proyectos para mostrar.', 'No projects to display.')}
         </p>
       )}
-    </div>
+    </Panel>
   )
 }

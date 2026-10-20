@@ -1,108 +1,101 @@
 /**
- * DragonJAR colour language on a dark ground.
+ * CONSOLE palette — "system settings" aesthetic with a dark-blue primary.
  *
- * The component tree uses ~389 standard Tailwind colour classes (`text-cyan-400`,
- * `bg-green-500`, `border-cyan-500`, `text-gray-400`, ...). Rather than rewriting
- * component class names, the palette is re-skinned from underneath: every colour
- * family below is expressed in `rgb(var(--token) / <alpha-value>)` form and the
- * matching custom properties live in `src/index.css`.
+ * Two colour surfaces live here:
  *
- * Because the channel values are space-separated triples, existing alpha modifiers
- * (`bg-cyan-500/20`, `border-green-500/30`, `shadow-cyan-500/30`) keep working
- * untouched — Tailwind substitutes `<alpha-value>` into the third channel.
+ * 1. `ct` — the semantic scale. Every token is a CSS custom property defined in
+ *    `src/index.css`, exposed as `rgb(var(--ct-*) / <alpha-value>)` so alpha
+ *    modifiers keep working. New code should prefer these names: they say what
+ *    a colour *means* instead of which hue it happens to be.
  *
- * Semantic mapping (verified against real usages under `src/components`):
- *   cyan   -> DragonJAR brand orange  (#ff6900). The dominant accent slot:
- *             project/hover titles, scroll-spy bar, CTAs, focus rings, borders.
- *   green  -> calmer jade. Success/verified: cert status dots, native-language
- *             badges, skill "Master", "Diplomado", availability dot. Kept green so
- *             checkmarks still read as checkmarks.
- *   blue   -> muted steel. Secondary/informational: contact links, Bachelor tier,
- *             C1 language, "Projects Audited" stat.
- *   red    -> DragonJAR alert red (#cf2e2e, brightened for dark ground):
- *             "Doctorado" tier, ErrorBoundary, destructive states.
- *   gray   -> warm neutral type/surface scale (DragonJAR runs warm greys, not cool
- *             blue-greys). Lightness ordering preserved so contrast assumptions hold.
- *   purple -> muted plum. Decorative tier accent (B2, Master/Intermediate, Repos).
- *   orange -> bronze. Decorative tier accent (A2 language) — deliberately NOT the
- *             brand orange, so it cannot be confused with the cyan/brand slot.
- *   amber  -> warm sand. Decorative tier accent ("Certificado").
+ * 2. The classic Tailwind families (cyan/green/blue/red/gray/purple/orange/amber)
+ *    are re-mapped onto the console ramps so the existing component tree keeps
+ *    resolving without rewriting every class name:
+ *
+ *      cyan   -> primary blue ramp   (accent, focus, active states)
+ *      green  -> jade                (verified / success)
+ *      blue   -> steel               (informational / secondary)
+ *      red    -> danger              (errors, destructive states)
+ *      gray   -> cool slate neutral  (text hierarchy, surfaces)
+ *      purple -> violet              (decorative tier accent)
+ *      orange -> amber               (decorative tier accent)
+ *      amber  -> sand                (decorative tier accent)
  */
-const token = (name) => `rgb(var(--dj-${name}) / <alpha-value>)`
 
-/** Build a Tailwind colour family (50..950) from CSS custom properties. */
+const token = (name) => `rgb(var(--ct-${name}) / <alpha-value>)`
+
+/** Build a Tailwind colour family (50..900) from CSS custom properties. */
 const scale = (family, steps) =>
   Object.fromEntries(steps.map((step) => [String(step), token(`${family}-${step}`)]))
 
-const ORANGE_STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]
-const GRAY_STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+const STEPS = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+const GRAY_STEPS = [...STEPS, 950]
 
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        // Brand family, rooted at DragonJAR's signature orange #ff6900.
-        // Replaces the old neon-cyan accent slot.
-        cyan: scale('orange', ORANGE_STEPS),
-
-        // Success / verified. Jade rather than neon #00cc33.
-        green: scale('green', ORANGE_STEPS),
-
-        // Secondary / informational. Desaturated steel.
-        blue: scale('blue', ORANGE_STEPS),
-
-        // Danger / error / destructive. DragonJAR #cf2e2e, brightened for dark.
-        red: scale('red', ORANGE_STEPS),
-
-        // Neutral type + surface scale, warm-shifted.
-        gray: scale('gray', GRAY_STEPS),
-
-        // Decorative tier accents.
-        purple: scale('purple', ORANGE_STEPS),
-        orange: scale('bronze', ORANGE_STEPS),
-        amber: scale('amber', ORANGE_STEPS),
-
-        // Replaces the dead neon `cyber` palette (zero class usages; it was the
-        // exact kind of stale token that lets a palette regress later).
-        dragonjar: {
-          brand: '#ff6900',
-          brandDark: '#d95c00',
-          brandDeep: '#a84a00',
-          alert: '#cf2e2e',
-          ink: '#181818',
-          surface: '#fafafa',
-          hairline: '#eaeaea',
-          white: '#ffffff',
+        // Semantic scale — prefer these in new code.
+        ct: {
+          base: token('base'),
+          panel: token('panel'),
+          surface: {
+            0: token('surface-0'),
+            1: token('surface-1'),
+            2: token('surface-2'),
+          },
+          line: {
+            DEFAULT: token('line'),
+            strong: token('line-strong'),
+          },
+          text: token('text'),
+          subtext: {
+            0: token('subtext-0'),
+            1: token('subtext-1'),
+          },
+          accent: {
+            DEFAULT: token('accent'),
+            bright: token('accent-bright'),
+            dim: token('accent-dim'),
+            contrast: token('accent-contrast'),
+          },
+          ok: token('ok'),
+          warn: token('warn'),
+          danger: token('danger'),
+          info: token('info'),
         },
+
+        // Legacy families re-mapped onto the console ramps.
+        cyan: scale('blue', STEPS),
+        green: scale('jade', STEPS),
+        blue: scale('steel', STEPS),
+        red: scale('red', STEPS),
+        gray: scale('slate', GRAY_STEPS),
+        purple: scale('violet', STEPS),
+        orange: scale('amber', STEPS),
+        amber: scale('sand', STEPS),
       },
       fontFamily: {
-        // Kept open-source: Univia Pro is proprietary and cannot be licensed.
-        // JetBrains Mono was never actually fetched (index.html only preloads
-        // Inter + Fira Code), so a real system-mono fallback is appended to
-        // close the gap rather than leaving a phantom family in the stack.
+        // Mono-first console: labels, values, navigation and titles.
         mono: ['Fira Code', 'JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        // Reserved for long-form prose (summaries, project descriptions).
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
+      borderRadius: {
+        console: 'var(--ct-radius)',
+      },
+      maxWidth: {
+        scene: '1080px',
+      },
       animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
+        'fade-in': 'fadeIn 0.18s ease-out',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        // Was hardcoding #00ffff, which survives any palette override because it
-        // is a literal, not a Tailwind colour token. Re-pointed at the new accent.
-        glow: {
-          '0%': { boxShadow: '0 0 5px rgb(var(--dj-orange-500) / 0.35), 0 0 10px rgb(var(--dj-orange-500) / 0.2)' },
-          '100%': { boxShadow: '0 0 20px rgb(var(--dj-orange-500) / 0.45), 0 0 30px rgb(var(--dj-orange-500) / 0.25)' },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(4px)' },
+          '100%': { opacity: '1', transform: 'none' },
         },
       },
     },

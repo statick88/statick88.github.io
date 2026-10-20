@@ -1,16 +1,22 @@
 /**
- * src/components/right-column/CertificationsList.tsx — Certifications list
+ * src/components/right-column/CertificationsList.tsx — Certifications panel
  *
- * Full certifications display: name, issuer, date, status badge, credential ID.
- * Sorted: active first, then by date.
- * Status badges: active=green, in-progress=yellow, expired=gray.
- * Print: full grouped list.
+ * One row per certification, in the console idiom:
+ *
+ *   - the row label is the certification name,
+ *   - the row value carries the status chip, the issuer, the date and the
+ *     credential id.
+ *
+ * The panel also carries the counts the old summary card used to own: the
+ * total lives in the panel subtitle and the per-status counts live in a
+ * summary row, both computed from the same `certifications` prop.
  *
  * @see T-020
  */
 
 import { useMemo } from 'react'
 import { useApp } from '@/context/AppContext'
+import { Panel, PanelRow } from '@/components/panels/Panel'
 import type { CertificationEntry } from '@/lib/schemas/cv-data'
 
 interface CertificationsListProps {
@@ -18,29 +24,31 @@ interface CertificationsListProps {
   certifications: CertificationEntry[]
 }
 
+/** The three statuses the panel knows about. */
+type CertificationStatus = 'active' | 'in-progress' | 'expired'
+
 /**
- * Status badge configuration.
+ * Status configuration: the chip variant carries the semantics, the label
+ * carries the words, so the meaning survives a monochrome print.
  */
-const STATUS_CONFIG: Record<string, { dot: string; text: string; label: { es: string; en: string } }> = {
+const STATUS_CONFIG: Record<CertificationStatus, { chip: string; label: { es: string; en: string } }> = {
   active: {
-    dot: 'bg-green-500',
-    text: 'text-green-600 dark:text-green-400',
+    chip: 'chip-ok',
     label: { es: 'Activa', en: 'Active' },
   },
   'in-progress': {
-    dot: 'bg-yellow-500',
-    text: 'text-yellow-600 dark:text-yellow-400',
+    chip: 'chip-warn',
     label: { es: 'En progreso', en: 'In progress' },
   },
   expired: {
-    dot: 'bg-gray-400',
-    text: 'text-gray-500 dark:text-gray-400',
+    chip: 'chip-muted',
     label: { es: 'Expirada', en: 'Expired' },
   },
 }
 
 /**
  * Sort order for status badges: active first, then in-progress, then expired.
+ * Unknown statuses sort last.
  */
 const STATUS_ORDER: Record<string, number> = {
   active: 0,
@@ -49,12 +57,22 @@ const STATUS_ORDER: Record<string, number> = {
 }
 
 /**
- * CertificationsList — Full certifications display with status badges.
+ * Resolve the effective status of a certification.
+ * Unknown statuses fall back to "active", exactly like the badge does.
+ */
+function resolveStatus(status: string | undefined): CertificationStatus {
+  if (status === 'active' || status === 'in-progress' || status === 'expired') {
+    return status
+  }
+  return 'active'
+}
+
+/**
+ * CertificationsList — Certifications with status chips and the per-status counts.
  *
  * - Sorted: active first, then in-progress, then expired.
- * - Each entry: name (bilingual), issuer, date, status badge, credential ID.
- * - Status badge: colored dot + text label.
- * - Print: full list, grouped by status.
+ * - One row per certification: name as the label, details as the value.
+ * - A summary row carries the total, active, in-progress and expired counts.
  */
 export default function CertificationsList({ certifications }: CertificationsListProps) {
   const { t } = useApp()
@@ -68,57 +86,68 @@ export default function CertificationsList({ certifications }: CertificationsLis
     })
   }, [certifications])
 
+  const counts = useMemo(() => {
+    const result: Record<CertificationStatus, number> = {
+      active: 0,
+      'in-progress': 0,
+      expired: 0,
+    }
+    for (const cert of certifications) {
+      result[resolveStatus(cert.status)] += 1
+    }
+    return result
+  }, [certifications])
+
   return (
-    <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl p-4 space-y-3 print:bg-transparent print:border-0 print:p-0">
-      <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider print:text-black">
-        {t('Certificaciones', 'Certifications')}
-      </h3>
+    <Panel title={t('certificaciones', 'certifications')} subtitle={`${certifications.length}`}>
+      {/* Counts carried by the old summary card */}
+      <PanelRow label={t('resumen', 'summary')}>
+        <div className="flex flex-wrap gap-2">
+          <span className="chip chip-accent">
+            {t('total', 'total')}: {certifications.length}
+          </span>
+          <span className="chip chip-ok">
+            {t('activas', 'active')}: {counts.active}
+          </span>
+          <span className="chip chip-warn">
+            {t('en progreso', 'in progress')}: {counts['in-progress']}
+          </span>
+          <span className="chip chip-muted">
+            {t('expiradas', 'expired')}: {counts.expired}
+          </span>
+        </div>
+      </PanelRow>
 
-      <div className="space-y-2 print:space-y-1.5">
-        {sorted.map((cert, index) => {
-          const status = STATUS_CONFIG[cert.status ?? 'active'] ?? STATUS_CONFIG.active!
-          return (
-            <div
-              key={`${cert.name.en}-${index}`}
-              className="flex items-start gap-2 print:break-inside-avoid"
-            >
-              {/* Status dot */}
-              <span
-                className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${status.dot}`}
-                aria-hidden="true"
-              />
-
-              <div className="flex-1 min-w-0">
-                {/* Name + status badge row */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h4 className="text-sm font-medium text-gray-900 dark:text-white print:text-black">
-                    {t(cert.name.es, cert.name.en)}
-                  </h4>
-                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border ${status.text} ${
-                    cert.status === 'active' ? 'border-green-500/30 bg-green-500/10' :
-                    cert.status === 'in-progress' ? 'border-yellow-500/30 bg-yellow-500/10' :
-                    'border-gray-400/30 bg-gray-400/10'
-                  } print:bg-transparent print:border-gray-300 print:text-black`}>
-                    {t(status.label.es, status.label.en)}
+      {sorted.map((cert, index) => {
+        const status = STATUS_CONFIG[resolveStatus(cert.status)]
+        return (
+          <PanelRow key={`${cert.name.en}-${index}`} label={t(cert.name.es, cert.name.en)}>
+            <div className="space-y-1.5">
+              {/* Status + issuer + date */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className={`chip ${status.chip}`}>
+                  {t(status.label.es, status.label.en)}
+                </span>
+                <span className="text-[11px] text-ct-subtext-1 print:text-gray-700">
+                  {cert.issuer}
+                </span>
+                {cert.date && (
+                  <span className="text-[11px] text-ct-subtext-0 print:text-gray-600">
+                    {cert.date}
                   </span>
-                </div>
-
-                {/* Issuer + date */}
-                <p className="text-xs text-gray-500 dark:text-gray-400 print:text-gray-600">
-                  {cert.issuer} · {cert.date}
-                </p>
-
-                {/* Credential ID */}
-                {cert.credentialId && (
-                  <p className="text-[10px] text-gray-400 dark:text-gray-500 font-mono print:text-gray-500">
-                    ID: {cert.credentialId}
-                  </p>
                 )}
               </div>
+
+              {/* Credential ID */}
+              {cert.credentialId && (
+                <p className="text-[10px] text-ct-subtext-0 print:text-gray-600">
+                  ID: {cert.credentialId}
+                </p>
+              )}
             </div>
-          )
-        })}
-      </div>
-    </div>
+          </PanelRow>
+        )
+      })}
+    </Panel>
   )
 }

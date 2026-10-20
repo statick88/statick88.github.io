@@ -1,81 +1,68 @@
 /**
- * src/components/layout/AppLayout.tsx — Root layout wrapper
+ * src/components/layout/AppLayout.tsx — Root layout (corporate CV sheet)
  *
- * Wraps the entire app with:
- *   - AppProvider (language, theme, loading)
- *   - LazyMotion (framer-motion)
- *   - Skip-to-content link (a11y)
- *   - Particles background
- *   - Theme toggle + Language toggle
- *   - Main content area with opacity transition
- *   - Footer
+ * The page is a document, not an app:
+ *
+ *   ┌──────────────────────────────────────────────┐
+ *   │ top bar: identity · section links · controls │
+ *   ├───────────────┬──────────────────────────────┤
+ *   │ navy identity │ white document column         │
+ *   │ column        │ (name, experience, projects…) │
+ *   └───────────────┴──────────────────────────────┘
+ *
+ * The sheet is one page: it scrolls as a whole, prints as a CV and stays
+ * linear for the ATS exports.
  */
 
-import { useEffect } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { LazyMotion, domAnimation } from 'framer-motion'
-import { AppProvider } from '@/context/AppContext'
 import { useApp } from '@/context/AppContext'
-import Particles from '@/components/Particles'
-import LanguageToggle from '@/components/LanguageToggle'
-import ThemeToggle from '@/components/ThemeToggle'
-import { Footer } from '@/components/layout/Footer'
-import { initPrefetching } from '@/lib/prefetch'
+import { CvTopBar } from '@/components/layout/CvTopBar'
 import { initWebVitalsForProject } from '@/lib/web-vitals'
 
 interface AppLayoutProps {
-  children: React.ReactNode
+  /** Identity column content (photo, contact, facts, languages). */
+  aside: ReactNode
+  /** Document column content. */
+  children: ReactNode
 }
 
-function AppLayoutInner({ children }: AppLayoutProps) {
-  const { language, setLanguage, theme, setTheme, isLoaded, t } = useApp()
+function AppLayoutInner({ aside, children }: AppLayoutProps) {
+  const { t } = useApp()
 
   useEffect(() => {
-    const cleanupPrefetch = initPrefetching()
     const vitalsEndpoint = import.meta.env.VITE_VITALS_ENDPOINT
     if (vitalsEndpoint) {
       initWebVitalsForProject(vitalsEndpoint)
     } else {
       initWebVitalsForProject()
     }
-    return () => cleanupPrefetch()
   }, [])
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <div className="min-h-screen relative">
-        {/* Skip to main content — a11y */}
-        <a href="#main-content" className="skip-link">
-          {t('Saltar al contenido principal', 'Skip to main content')}
-        </a>
+      {/* Skip to main content — a11y */}
+      <a href="#main-content" className="skip-link">
+        {t('Saltar al contenido principal', 'Skip to main content')}
+      </a>
 
-        <Particles />
+      <CvTopBar />
 
-        {/* Controls */}
-        <div className="fixed top-4 right-4 z-50 flex gap-2 no-print">
-          <LanguageToggle language={language} setLanguage={setLanguage} />
-          <ThemeToggle theme={theme} setTheme={setTheme} />
+      <div className="cv-page">
+        <div className="cv-sheet">
+          <aside className="cv-aside" aria-label={t('Perfil', 'Profile')}>
+            {aside}
+          </aside>
+
+          <main id="main-content" className="cv-main">
+            {children}
+          </main>
         </div>
-
-        {/* Main Content */}
-        <main
-          id="main-content"
-          className={`relative z-10 max-w-4xl mx-auto px-4 py-8 transition-opacity duration-700 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {children}
-        </main>
-
-        <Footer />
       </div>
     </LazyMotion>
   )
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
-  return (
-    <AppProvider>
-      <AppLayoutInner>{children}</AppLayoutInner>
-    </AppProvider>
-  )
+export function AppLayout({ aside, children }: AppLayoutProps) {
+  return <AppLayoutInner aside={aside}>{children}</AppLayoutInner>
 }
