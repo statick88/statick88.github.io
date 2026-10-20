@@ -17,6 +17,8 @@ import { AppLayout } from '@/components/layout/AppLayout'
 import ProfileHeader from '@/components/ProfileHeader'
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ResearchPanel } from '@/components/panels/ResearchPanel'
+import { ContributionsPanel } from '@/components/panels/ContributionsPanel'
+import { PluginsPanel } from '@/components/panels/PluginsPanel'
 
 // Left column
 import ContactCard from '@/components/left-column/ContactCard'
@@ -140,6 +142,14 @@ function AppInner() {
         className="scroll-mt-16"
       >
         <ExploitariumSummary metrics={metrics} />
+      </section>
+
+      <section id={SECTION.portes} aria-label={t('portes', 'ports')} className="scroll-mt-16">
+        <ContributionsPanel />
+      </section>
+
+      <section id={SECTION.plugins} aria-label={t('plugins', 'plugins')} className="scroll-mt-16">
+        <PluginsPanel />
       </section>
 
       <p className="sr-only">{t('Currículum de Diego Saavedra', 'Diego Saavedra curriculum')}</p>

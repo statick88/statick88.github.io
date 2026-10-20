@@ -41,6 +41,8 @@ export const SECTION = {
   cursos: 'cursos',
   investigacion: 'investigacion',
   exploitarium: 'exploitarium',
+  portes: 'portes',
+  plugins: 'plugins',
 } as const
 
 export const NAV_GROUPS = [
@@ -79,6 +81,14 @@ export const NAV_GROUPS = [
       { id: SECTION.cursos, label: { es: 'cursos', en: 'courses' } },
       { id: SECTION.investigacion, label: { es: 'investigación', en: 'research' } },
       { id: SECTION.exploitarium, label: { es: 'exploitarium', en: 'exploitarium' } },
+    ],
+  },
+  {
+    id: 'contribuciones',
+    title: { es: 'contribuciones', en: 'contributions' },
+    items: [
+      { id: SECTION.portes, label: { es: 'portes', en: 'ports' } },
+      { id: SECTION.plugins, label: { es: 'plugins', en: 'plugins' } },
     ],
   },
 ] as const satisfies readonly NavGroupDef[]
