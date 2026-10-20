@@ -472,6 +472,13 @@ html.dark .cv-document-name {
   border-top: 1px solid rgb(var(--ct-line));
 }
 
+/* A long label (a repository name) takes its own line instead of breaking
+   mid-token inside a narrow column. */
+.panel-row-wide {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+}
+
 .panel-label {
   color: rgb(var(--ct-subtext-0));
   font-size: 11px;

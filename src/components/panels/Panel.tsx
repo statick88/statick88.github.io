@@ -38,13 +38,15 @@ export function Panel({ title, subtitle, className = '', children }: PanelProps)
 interface PanelRowProps {
   /** Row label — muted, uppercase, mono. */
   label: string
+  /** Extra classes for the row (e.g. a wide row for long labels). */
+  className?: string
   /** Row value — primary text colour. */
   children: ReactNode
 }
 
-export function PanelRow({ label, children }: PanelRowProps) {
+export function PanelRow({ label, className = '', children }: PanelRowProps) {
   return (
-    <div className="panel-row">
+    <div className={`panel-row ${className}`.trim()}>
       <div className="panel-label">{label}</div>
       <div className="panel-value">{children}</div>
     </div>

@@ -37,7 +37,11 @@ export function ContributionsPanel() {
       </PanelRow>
 
       {UPSTREAM_TARGETS.map((target) => (
-        <PanelRow key={target.repo} label={target.repo}>
+        <PanelRow
+          key={target.repo}
+          label={target.repo}
+          className={target.repo.length > 28 ? 'panel-row-wide' : ''}
+        >
           <div className="space-y-2">
             <p className="text-ct-subtext-1 text-xs">{t(target.kind.es, target.kind.en)}</p>
             <div className="flex flex-wrap items-center gap-2">
