@@ -62,8 +62,10 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
 
   return (
     <Panel title={t('experiencia', 'experience')} subtitle={`${experience.length}`}>
+      <div className="cv-timeline">
       {experience.map((entry, index) => (
-        <PanelRow key={`${entry.company}-${index}`} label={entry.company}>
+        <div key={`${entry.company}-${index}`} className="cv-timeline-item">
+        <PanelRow label={entry.company}>
           <div className="space-y-2">
             {/* Role + current badge */}
             <div className="flex flex-wrap items-center gap-2">
@@ -136,7 +138,9 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
             )}
           </div>
         </PanelRow>
+        </div>
       ))}
+      </div>
     </Panel>
   )
 }

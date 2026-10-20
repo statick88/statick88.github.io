@@ -162,31 +162,31 @@
  * Night variant — the same document, read in the dark
  * ------------------------------------------------------------------------ */
 html.dark {
-  --ct-base: 17 21 29;
-  --ct-panel: 24 29 40;
-  --ct-surface-0: 29 35 47;
-  --ct-surface-1: 35 42 56;
-  --ct-surface-2: 44 52 68;
+  --ct-base: 8 13 26; /* #080d1a — navy ground */
+  --ct-panel: 13 20 36; /* #0d1424 — document column */
+  --ct-surface-0: 18 26 44; /* #121a2c */
+  --ct-surface-1: 23 33 55; /* #172137 */
+  --ct-surface-2: 31 44 71; /* #1f2c47 */
 
-  --ct-line: 44 52 68;
-  --ct-line-strong: 66 76 95;
+  --ct-line: 30 43 70; /* #1e2b46 */
+  --ct-line-strong: 48 65 99; /* #304163 */
 
-  --ct-text: 230 234 242;
-  --ct-subtext-1: 169 178 194;
-  --ct-subtext-0: 128 139 157;
+  --ct-text: 226 234 246; /* #e2eaf6 */
+  --ct-subtext-1: 158 172 196;
+  --ct-subtext-0: 116 132 160;
 
-  --ct-accent: 122 165 226;
-  --ct-accent-bright: 148 185 238;
-  --ct-accent-dim: 30 45 74;
-  --ct-accent-contrast: 12 16 24;
+  --ct-accent: 96 150 240; /* #6096f0 */
+  --ct-accent-bright: 133 176 245; /* #85b0f5 */
+  --ct-accent-dim: 22 38 68; /* #162644 */
+  --ct-accent-contrast: 8 13 26;
 
-  --ct-navy: 14 19 34;
-  --ct-navy-soft: 22 29 50;
+  --ct-navy: 12 19 38; /* #0c1326 — identity column */
+  --ct-navy-soft: 21 31 58; /* #151f3a */
 
-  --ct-ok: 74 190 128;
-  --ct-warn: 222 168 79;
-  --ct-danger: 226 106 90;
-  --ct-info: 122 165 226;
+  --ct-ok: 74 197 134;
+  --ct-warn: 226 172 82;
+  --ct-danger: 230 108 96;
+  --ct-info: 96 150 240;
 }
 
 /* ---------------------------------------------------------------------------
@@ -255,6 +255,7 @@ summary:focus-visible,
 }
 
 .cv-sheet {
+  position: relative;
   width: 100%;
   max-width: none;
   margin: 0;
@@ -267,12 +268,30 @@ summary:focus-visible,
 }
 
 .cv-aside {
+  position: relative;
   background: rgb(var(--ct-navy));
   color: rgb(255 255 255);
-  padding: 28px 24px 32px;
+  padding: 34px 26px 34px;
   display: flex;
   flex-direction: column;
   gap: 22px;
+}
+
+/* A soft blue light from the top of the identity column. */
+.cv-aside::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 55% at 25% 0%,
+    rgb(var(--ct-accent) / 0.22),
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.cv-aside > * {
+  position: relative;
 }
 
 .cv-main {
@@ -411,11 +430,23 @@ html.dark .cv-document-name {
 }
 
 .panel-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   color: rgb(var(--ct-accent));
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.panel-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  background: rgb(var(--ct-accent));
+  box-shadow: 0 0 0 3px rgb(var(--ct-accent) / 0.16);
 }
 
 .panel-subtitle {
@@ -463,6 +494,60 @@ html.dark .cv-document-name {
   color: rgb(var(--ct-subtext-1));
 }
 
+/* The summary reads as a quotation: a rule in the brand blue. */
+.cv-summary {
+  border-left: 2px solid rgb(var(--ct-accent));
+  padding-left: 16px;
+}
+
+/* The KPI band is an inset panel of its own. */
+.cv-metrics {
+  background: rgb(var(--ct-surface-0));
+  border: 1px solid rgb(var(--ct-line));
+  border-radius: var(--ct-radius);
+}
+
+/* Experience entries hang from a timeline. */
+.cv-timeline {
+  position: relative;
+  padding-left: 20px;
+}
+
+.cv-timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: rgb(var(--ct-line-strong));
+}
+
+.cv-timeline-item {
+  position: relative;
+}
+
+.cv-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: rgb(var(--ct-accent));
+  box-shadow: 0 0 0 3px rgb(var(--ct-panel));
+}
+
+/* Rows answer the pointer. */
+.panel-row {
+  transition: background 0.15s ease;
+}
+
+.panel-row:hover {
+  background: rgb(var(--ct-accent) / 0.05);
+}
+
 /* Identity column: same panels, inverted for the navy ground ------------- */
 .cv-aside .panel {
   background: transparent;
@@ -470,6 +555,17 @@ html.dark .cv-document-name {
 
 .cv-aside .panel-header {
   border-bottom-color: rgb(var(--ct-navy-soft));
+}
+
+.cv-aside .panel-body {
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.07);
+  border-radius: var(--ct-radius);
+  padding: 12px 14px;
+}
+
+.cv-aside .panel-header {
+  margin-bottom: 10px;
 }
 
 .cv-aside .panel-title {

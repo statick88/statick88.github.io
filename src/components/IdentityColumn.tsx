@@ -18,6 +18,39 @@ import type {
   SkillEntry,
 } from '@/lib/schemas/cv-data'
 
+/* Line icons for the contact block — 1.5px stroke, monochrome. */
+function MailIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7.5A1.5 1.5 0 0 1 4.5 6h15A1.5 1.5 0 0 1 21 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 16.5v-9Zm1.5 0 7.5 5.25L18 7.5" />
+    </svg>
+  )
+}
+
+function PhoneIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5.5A1.5 1.5 0 0 1 5.5 4h2L9 8.5 7 10a11 11 0 0 0 7 7l1.5-2L20 11.5v2A1.5 1.5 0 0 1 18.5 15 10.5 10.5 0 0 1 4 5.5Z" />
+    </svg>
+  )
+}
+
+function PinIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21s6.5-5.5 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.5 12 21 12 21Zm0-8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+    </svg>
+  )
+}
+
+function LinkIcon() {
+  return (
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 1 0-5.66-5.66L11.5 7M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 1 0 5.66 5.66L12.5 17" />
+    </svg>
+  )
+}
+
 /** Percentage for a proficiency level name. */
 const LEVEL_PERCENT: Record<string, number> = {
   master: 95,
@@ -76,34 +109,44 @@ export default function IdentityColumn({
 
       {/* Contact */}
       <Panel title={t('contacto', 'contact')}>
-        <div className="space-y-2">
-          <a href={`mailto:${contact.email}`} className="block text-sm hover:underline">
-            {contact.email}
+        <div className="space-y-2.5">
+          <a
+            href={`mailto:${contact.email}`}
+            className="cv-contact-item hover:underline"
+          >
+            <MailIcon />
+            <span className="break-all">{contact.email}</span>
           </a>
           {contact.phone ? (
-            <a href={`tel:${contact.phone}`} className="block text-sm hover:underline">
-              {contact.phone}
+            <a href={`tel:${contact.phone}`} className="cv-contact-item hover:underline">
+              <PhoneIcon />
+              <span>{contact.phone}</span>
             </a>
           ) : null}
-          <p className="text-sm">{contact.location}</p>
-          {contact.linkedin ? (
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-sm hover:underline"
-            >
-              LinkedIn
-            </a>
-          ) : null}
+          <p className="cv-contact-item">
+            <PinIcon />
+            <span>{contact.location}</span>
+          </p>
           {contact.github ? (
             <a
               href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-sm hover:underline"
+              className="cv-contact-item hover:underline"
             >
-              GitHub
+              <LinkIcon />
+              <span>GitHub</span>
+            </a>
+          ) : null}
+          {contact.linkedin ? (
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cv-contact-item hover:underline"
+            >
+              <LinkIcon />
+              <span>LinkedIn</span>
             </a>
           ) : null}
         </div>

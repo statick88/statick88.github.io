@@ -49,7 +49,7 @@ export default function ProfileCard({ profile, metrics, headline }: ProfileCardP
 
   return (
     <Panel title={t('resumen', 'summary')}>
-      <div className="px-4 py-4 space-y-3">
+      <div className="cv-summary px-4 py-4 space-y-3">
         {headline ? (
           <p className="prose-sans text-ct-subtext-1 max-w-[70ch]">
             {t(headline.es, headline.en)}
@@ -58,11 +58,11 @@ export default function ProfileCard({ profile, metrics, headline }: ProfileCardP
         <p className="prose-sans max-w-[70ch]">{t(profile.summary.es, profile.summary.en)}</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-px bg-ct-line border-t border-ct-line sm:grid-cols-4 print:bg-white print:gap-0">
+      <div className="cv-metrics grid grid-cols-2 gap-px bg-ct-line border-t border-ct-line sm:grid-cols-4 print:bg-white print:gap-0">
         {KPI_CONFIG.map((kpi) => {
           const value = metrics[kpi.key]
           return (
-            <div key={kpi.key} className="bg-ct-panel px-4 py-3 print:bg-white">
+            <div key={kpi.key} className="bg-ct-surface-0 px-4 py-3 print:bg-white">
               <p className="text-lg font-bold text-ct-accent-bright print:text-black">
                 {value}
                 {kpi.suffix ?? ''}
