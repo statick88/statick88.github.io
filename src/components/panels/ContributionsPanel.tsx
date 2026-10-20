@@ -1,18 +1,18 @@
 /**
  * src/components/panels/ContributionsPanel.tsx — Upstream contributions panel
  *
- * The "aportes" section: pull requests opened against repositories the author
- * does not own. Each row is one upstream target; the value carries the
+ * The "aportes" section: pull requests opened against third-party repositories
+ * the author does not own. Each row is one repository; the value carries the
  * representative pull requests and their state.
+ *
+ * Only professional contributions are listed. Pull requests opened against
+ * course-exercise repositories are not contributions and are not counted here;
+ * the totals below separate them from the author's own repositories.
  */
 
 import { useApp } from '@/context/AppContext'
 import { Panel, PanelRow } from '@/components/panels/Panel'
-import {
-  CONTRIBUTION_STATS,
-  TRAINING_REPOS,
-  UPSTREAM_TARGETS,
-} from '@/data/contributions'
+import { CONTRIBUTION_STATS, UPSTREAM_TARGETS } from '@/data/contributions'
 
 export function ContributionsPanel() {
   const { t } = useApp()
@@ -20,18 +20,18 @@ export function ContributionsPanel() {
   return (
     <Panel
       title={t('aportes', 'contributions')}
-      subtitle={`${CONTRIBUTION_STATS.upstreamPullRequests} PR · ${CONTRIBUTION_STATS.upstreamRepositories} repos`}
+      subtitle={`${CONTRIBUTION_STATS.contributionPullRequests} PR · ${CONTRIBUTION_STATS.upstreamRepositories} repos`}
     >
-      <PanelRow label={t('total', 'total')}>
+      <PanelRow label={t('totales', 'totals')}>
         <div className="flex flex-wrap items-center gap-2">
           <span className="chip chip-accent">
-            {CONTRIBUTION_STATS.totalPullRequests} {t('pull requests', 'pull requests')}
-          </span>
-          <span className="chip">
-            {CONTRIBUTION_STATS.upstreamPullRequests} {t('a repos de terceros', 'to third-party repos')}
+            {CONTRIBUTION_STATS.contributionPullRequests} {t('PR a repos de terceros', 'PRs to third-party repos')}
           </span>
           <span className="chip chip-ok">
-            {CONTRIBUTION_STATS.mergedUpstream} {t('mergeados', 'merged')}
+            {CONTRIBUTION_STATS.mergedUpstream} {t('mergeado', 'merged')}
+          </span>
+          <span className="chip chip-muted">
+            {CONTRIBUTION_STATS.ownRepositoryPullRequests} {t('PR en repos propios', 'PRs in own repos')}
           </span>
         </div>
       </PanelRow>
@@ -78,25 +78,6 @@ export function ContributionsPanel() {
           </div>
         </PanelRow>
       ))}
-
-      <PanelRow label={t('formación', 'training')}>
-        <div className="space-y-2">
-          <p className="text-ct-subtext-1 text-xs">
-            {t(
-              'Pull requests a repos de formación y ejercicios de cursos (Django, pygame, React, Focus iOS).',
-              'Pull requests to training and course-exercise repositories (Django, pygame, React, Focus iOS).',
-            )}
-          </p>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="chip chip-muted">
-              {TRAINING_REPOS.count} {t('PR', 'PR')}
-            </span>
-            <span className="chip chip-ok">
-              {TRAINING_REPOS.merged} {t('mergeados', 'merged')}
-            </span>
-          </div>
-        </div>
-      </PanelRow>
     </Panel>
   )
 }

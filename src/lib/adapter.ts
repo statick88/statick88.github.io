@@ -160,10 +160,10 @@ export function getDefaultMetrics(): MetricsSummary {
     yearsTeaching: 13,
     totalHoursTeaching: 200,
     githubPublicRepos: 400,
-    publicReposAudited: 10,
+    exploitariumEntries: 35,
     averageCohortScore: 93.4,
     apcYearsService: 9,
     languagesSpoken: 4,
-    totalProjectsAudited: 6,
+    auditedProjects: 1,
   }
 }

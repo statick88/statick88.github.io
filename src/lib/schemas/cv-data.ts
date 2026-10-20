@@ -174,11 +174,13 @@ export const MetricsSummarySchema = z.object({
   yearsTeaching: z.number(),
   totalHoursTeaching: z.number(),
   githubPublicRepos: z.number(),
-  publicReposAudited: z.number(),
+  /** Public research entries in the Exploitarium archive (counted from the repo). */
+  exploitariumEntries: z.number(),
   averageCohortScore: z.number(),
   apcYearsService: z.number(),
   languagesSpoken: z.number(),
-  totalProjectsAudited: z.number(),
+  /** Projects with a documented audit (the UCM Moodle audit). */
+  auditedProjects: z.number(),
 });
 
 export type MetricsSummary = z.infer<typeof MetricsSummarySchema>;

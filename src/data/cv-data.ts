@@ -476,7 +476,7 @@ export const profileData: Record<string, Profile> = {
     color: '#3b82f6',
     icon: '💻',
     summary: {
-      es: 'Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 400 repos públicos en GitHub. Apasionado por Clean Architecture, SOLID y TDD.',
+      es: 'Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. Más de 400 repos públicos en GitHub. Apasionado por Clean Architecture, SOLID y TDD.',
       en: 'Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 400 public repos on GitHub. Passionate about Clean Architecture, SOLID, and TDD.',
     },
     skills: [

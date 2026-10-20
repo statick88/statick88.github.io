@@ -510,11 +510,11 @@ metrics:
   yearsTeaching: 6
   totalHoursTeaching: 200
   githubPublicRepos: 400
-  publicReposAudited: 130
+  exploitariumEntries: 35
   averageCohortScore: 93.4
   apcYearsService: 9
   languagesSpoken: 2
-  totalProjectsAudited: 64
+  auditedProjects: 1
 
 # =============================================================================
 # Metadata

@@ -320,92 +320,7 @@ export const UPSTREAM_TARGETS: UpstreamTarget[] = [
       },
     ],
   },
-  {
-    repo: 'pygame/pygame',
-    url: 'https://github.com/pygame/pygame',
-    kind: {
-      es: 'Librería de desarrollo de juegos en Python',
-      en: 'Python game development library',
-    },
-    count: 1,
-    contributions: [
-      {
-        repo: 'pygame/pygame',
-        number: 3916,
-        title: 'Unifique en una sola línea las importaciones de camera',
-        url: 'https://github.com/pygame/pygame/pull/3916',
-        merged: false,
-        open: false,
-        date: '2024-03-26',
-      },
-    ],
-  },
-  {
-    repo: 'react/react',
-    url: 'https://github.com/facebook/react',
-    kind: {
-      es: 'Biblioteca de interfaces de React',
-      en: 'React user interface library',
-    },
-    count: 1,
-    contributions: [
-      {
-        repo: 'react/react',
-        number: 30556,
-        title: 'add is beautiful',
-        url: 'https://github.com/facebook/react/pull/30556',
-        merged: false,
-        open: false,
-        date: '2024-01-26',
-      },
-    ],
-  },
-  {
-    repo: 'mozilla-mobile/focus-ios',
-    url: 'https://github.com/mozilla-mobile/focus-ios',
-    kind: {
-      es: 'Navegador Focus para iOS',
-      en: 'Focus browser for iOS',
-    },
-    count: 1,
-    contributions: [
-      {
-        repo: 'mozilla-mobile/focus-ios',
-        number: 3937,
-        title: 'add thanks very well in readme',
-        url: 'https://github.com/mozilla-mobile/focus-ios/pull/3937',
-        merged: false,
-        open: false,
-        date: '2024-01-26',
-      },
-    ],
-  },
 ]
-
-/** Pull requests opened against training/exercise repositories, grouped. */
-export const TRAINING_REPOS: {
-  count: number
-  repos: string[]
-  merged: number
-} = {
-  count: 16,
-  repos: [
-    'react/react',
-    'pygame/pygame',
-    'mozilla-mobile/focus-ios',
-    'DjangoBlog',
-    'helloWorldDjango',
-    'juego_de_la_vida',
-    'Platzi-Tests',
-    'tank',
-    'weatherapp',
-    'ApiPeliculas',
-    'juego-python-ia-plataforma',
-    'juego-python-ia-misiles',
-    'sis_cmp_fac_py_dj_2.2-',
-  ],
-  merged: 3,
-}
 
 export const PUBLISHED_PLUGINS: PublishedPlugin[] = [
   {
@@ -461,8 +376,12 @@ export const CONTRIBUTION_STATS = {
   totalPullRequests: 133,
   /** Pull requests opened against repositories the author does not own. */
   upstreamPullRequests: 56,
-  /** Distinct third-party repositories targeted. */
-  upstreamRepositories: 21,
-  /** Upstream pull requests that were merged. */
-  mergedUpstream: 4,
+  /** Third-party repositories with professional contributions. */
+  upstreamRepositories: 8,
+  /** Pull requests opened against those repositories. */
+  contributionPullRequests: 43,
+  /** Of those, the ones that were merged. */
+  mergedUpstream: 1,
+  /** Pull requests opened against the author's own repositories. */
+  ownRepositoryPullRequests: 77,
 }

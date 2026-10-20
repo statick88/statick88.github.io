@@ -353,11 +353,11 @@ describe('MetricsSummarySchema', () => {
       yearsTeaching: 9,
       totalHoursTeaching: 200,
       githubPublicRepos: 5,
-      publicReposAudited: 20,
+      exploitariumEntries: 20,
       averageCohortScore: 93.4,
       apcYearsService: 9,
       languagesSpoken: 2,
-      totalProjectsAudited: 60,
+      auditedProjects: 60,
     });
     expect(result.success).toBe(true);
   });
@@ -368,11 +368,11 @@ describe('MetricsSummarySchema', () => {
       yearsTeaching: 9,
       totalHoursTeaching: 200,
       githubPublicRepos: 5,
-      publicReposAudited: 20,
+      exploitariumEntries: 20,
       averageCohortScore: 93.4,
       apcYearsService: 9,
       languagesSpoken: 2,
-      totalProjectsAudited: 60,
+      auditedProjects: 60,
     });
     expect(result.success).toBe(false);
   });
@@ -440,11 +440,11 @@ describe('CVDataSchema', () => {
       yearsTeaching: 9,
       totalHoursTeaching: 200,
       githubPublicRepos: 5,
-      publicReposAudited: 20,
+      exploitariumEntries: 20,
       averageCohortScore: 93.4,
       apcYearsService: 9,
       languagesSpoken: 2,
-      totalProjectsAudited: 60,
+      auditedProjects: 60,
     },
     metadata: {
       schemaVersion: '1.0.0',
@@ -536,11 +536,11 @@ describe('validateCVData', () => {
         yearsTeaching: 1,
         totalHoursTeaching: 1,
         githubPublicRepos: 1,
-        publicReposAudited: 1,
+        exploitariumEntries: 1,
         averageCohortScore: 1,
         apcYearsService: 1,
         languagesSpoken: 1,
-        totalProjectsAudited: 1,
+        auditedProjects: 1,
       },
       metadata: {
         schemaVersion: '1.0.0',
@@ -573,7 +573,7 @@ describe('validateCVDataSafe', () => {
       languages: [{ language: 'L', level: 'L', code: 'en' }],
       certifications: [],
       projects: [],
-      metrics: { yearsExperience: 1, yearsTeaching: 1, totalHoursTeaching: 1, githubPublicRepos: 1, publicReposAudited: 1, averageCohortScore: 1, apcYearsService: 1, languagesSpoken: 1, totalProjectsAudited: 1 },
+      metrics: { yearsExperience: 1, yearsTeaching: 1, totalHoursTeaching: 1, githubPublicRepos: 1, exploitariumEntries: 1, averageCohortScore: 1, apcYearsService: 1, languagesSpoken: 1, auditedProjects: 1 },
       metadata: { schemaVersion: '1.0.0', lastVerified: '2026-01-01', dataSources: ['t'], auditTrail: ['t'] },
     });
     expect(result.success).toBe(true);

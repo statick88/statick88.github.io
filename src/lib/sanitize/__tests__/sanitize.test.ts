@@ -105,11 +105,11 @@ function makeCvData(overrides: Partial<CVData> = {}): CVData {
     yearsTeaching: 4,
     totalHoursTeaching: 2400,
     githubPublicRepos: 100,
-    publicReposAudited: 10,
+    exploitariumEntries: 10,
     averageCohortScore: 93.4,
     apcYearsService: 9,
     languagesSpoken: 4,
-    totalProjectsAudited: 6,
+    auditedProjects: 6,
   }
 
   const metadata = {

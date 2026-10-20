@@ -114,7 +114,8 @@ export default function IdentityColumn({
         <ul className="space-y-1.5 text-sm">
           <li>• {metrics.yearsExperience}+ {t('años de experiencia', 'years of experience')}</li>
           <li>• {metrics.githubPublicRepos}+ {t('repos públicos', 'public repos')}</li>
-          <li>• {metrics.totalProjectsAudited} {t('proyectos auditados', 'projects audited')}</li>
+          <li>• {metrics.exploitariumEntries} {t('entradas de investigación', 'research entries')}</li>
+          <li>• {metrics.auditedProjects} {t('proyecto auditado', 'audited project')}</li>
           <li>• {metrics.totalHoursTeaching}+ {t('horas docentes', 'teaching hours')}</li>
           <li>• {t('100% remoto', '100% remote')}</li>
         </ul>
