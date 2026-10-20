@@ -1,9 +1,8 @@
 /**
- * src/components/left-column/PhotoCard.tsx — Avatar photo card
+ * src/components/left-column/PhotoCard.tsx — Console avatar
  *
- * Displays the profile photo with a rounded border and shadow.
- * Falls back to initials in a circle if the image fails to load.
- * Responsive sizing with max-w-xs on mobile.
+ * The avatar of the identity block: a square, hairline-bordered tile with the
+ * initials as fallback. No glass, no glow — just a tile in the console grid.
  *
  * @see T-010
  */
@@ -32,36 +31,33 @@ function getInitials(name: string): string {
 }
 
 /**
- * PhotoCard — Avatar with border, shadow, and initials fallback.
+ * PhotoCard — Square avatar tile with an initials fallback.
  *
- * - Rounded avatar with `border-white/20` for WCAG AA contrast on dark backgrounds.
- * - On image error, shows initials in a styled circle.
- * - Print: hides the card border/shadow for cleaner output.
+ * - 1px hairline border in the console palette.
+ * - On image error, shows initials in a mono tile.
+ * - Print: drops the border for a cleaner document.
  */
 export default function PhotoCard({ photoUrl, name }: PhotoCardProps) {
   const [imgError, setImgError] = useState(false)
   const showFallback = !photoUrl || imgError
 
   return (
-    <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 rounded-xl p-4 flex justify-center print:bg-transparent print:border-0 print:p-0">
+    <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded border border-ct-line bg-ct-surface-0 overflow-hidden print:border-0 print:bg-transparent">
       {showFallback ? (
         <div
-          className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-2 border-blue-500/40 dark:border-blue-400/40 flex items-center justify-center bg-blue-500/10 dark:bg-blue-400/10"
+          className="w-full h-full flex items-center justify-center text-ct-accent-bright text-2xl font-bold select-none"
           role="img"
           aria-label={name}
         >
-          <span className="text-2xl sm:text-3xl font-bold text-blue-500 dark:text-blue-400 select-none">
-            {getInitials(name)}
-          </span>
+          {getInitials(name)}
         </div>
       ) : (
         <img
           src={photoUrl}
-          alt={`Foto de ${name} / Photo of ${name}`}
-          className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-2 border-white/20 dark:border-white/20 object-cover shadow-lg"
+          alt={name}
+          className="w-full h-full object-cover"
           onError={() => setImgError(true)}
           loading="eager"
-          fetchPriority="high"
         />
       )}
     </div>
