@@ -3,133 +3,282 @@
 @tailwind utilities;
 
 /*
- * DragonJAR colour language on a dark ground.
+ * CONSOLE design tokens — "system settings" aesthetic, dark-blue primary.
  *
- * The channel triplets below are the single source of truth for the palette:
- * tailwind.config.js exposes every Tailwind colour family as
- * `rgb(var(--dj-*) / <alpha-value>)`, so the ~389 existing standard colour
- * classes (`text-cyan-400`, `bg-green-500`, `border-cyan-500`, ...) resolve to
- * these values with zero component edits.
+ * Every value below is a space-separated RGB channel triple so that both
+ * plain CSS (`rgb(var(--ct-line) / 0.6)`) and Tailwind
+ * (`rgb(var(--ct-line) / <alpha-value>)`) can consume the same token.
+ *
+ * The theme is a pure token flip: `html.dark` carries the dark console
+ * palette, `html:not(.dark)` carries the light "paper terminal" palette.
+ * No component needs to know which theme is active.
+ *
+ * The Tailwind colour families (cyan/green/blue/red/gray/purple/orange/amber)
+ * are re-mapped onto these families in `tailwind.config.js`, so legacy class
+ * names keep resolving to the new palette while new code uses the semantic
+ * `ct-*` scale.
  */
-:root {
-  /* --- DragonJAR brand orange (accent slot, formerly neon cyan) ----------- */
-  --dj-orange-50: 255 241 230;
-  --dj-orange-100: 255 224 199;
-  --dj-orange-200: 255 189 146;
-  --dj-orange-300: 255 155 92;
-  --dj-orange-400: 255 130 46;
-  --dj-orange-500: 255 105 0;   /* #ff6900 - signature brand colour */
-  --dj-orange-600: 217 92 0;    /* #d95c00 */
-  --dj-orange-700: 168 72 0;    /* #a84800 */
-  --dj-orange-800: 130 56 0;    /* #823800 */
-  --dj-orange-900: 92 40 0;     /* #5c2800 */
 
-  /* --- Success / verified (jade, calmer than neon #00cc33) --------------- */
-  --dj-green-50: 234 249 239;
-  --dj-green-100: 209 243 223;
-  --dj-green-200: 167 227 193;
-  --dj-green-300: 122 205 158;
-  --dj-green-400: 74 181 121;
-  --dj-green-500: 40 155 96;
-  --dj-green-600: 26 122 74;
-  --dj-green-700: 18 88 54;
-  --dj-green-800: 13 63 39;
-  --dj-green-900: 9 45 28;
+/* ---------------------------------------------------------------------------
+ * Dark console palette (default)
+ * ------------------------------------------------------------------------ */
+:root,
+html.dark {
+  /* Ground and surfaces */
+  --ct-base: 7 11 20; /* #070b14 — page ground */
+  --ct-panel: 11 18 32; /* #0b1220 — panel background */
+  --ct-surface-0: 15 23 40; /* #0f1728 — sidebar, chips */
+  --ct-surface-1: 22 32 52; /* #162034 — active nav item */
+  --ct-surface-2: 30 42 66; /* #1e2a42 — raised surface */
 
-  /* --- Secondary / informational (desaturated steel) ---------------------- */
-  --dj-blue-50: 239 244 248;
-  --dj-blue-100: 217 228 238;
-  --dj-blue-200: 184 203 219;
-  --dj-blue-300: 143 173 199;
-  --dj-blue-400: 108 145 176;
-  --dj-blue-500: 82 116 146;
-  --dj-blue-600: 64 94 122;
-  --dj-blue-700: 50 74 98;
-  --dj-blue-800: 39 58 77;
-  --dj-blue-900: 31 46 62;
+  /* Hairlines */
+  --ct-line: 28 41 66; /* #1c2942 — 1px borders */
+  --ct-line-strong: 45 62 92; /* #2d3e5c — emphasised borders */
 
-  /* --- Danger / error (DragonJAR #cf2e2e, brightened for dark ground) ----- */
-  --dj-red-50: 253 238 238;
-  --dj-red-100: 250 219 219;
-  --dj-red-200: 243 187 187;
-  --dj-red-300: 231 137 137;
-  --dj-red-400: 217 90 84;      /* #d95a54 - legible as text on the dark ground */
-  --dj-red-500: 207 46 46;      /* #cf2e2e - DragonJAR alert red */
-  --dj-red-600: 172 36 36;
-  --dj-red-700: 139 29 29;
-  --dj-red-800: 108 24 24;
-  --dj-red-900: 82 20 20;
+  /* Text hierarchy */
+  --ct-text: 220 229 242; /* #dce5f2 — primary */
+  --ct-subtext-1: 147 163 186; /* #93a3ba — secondary */
+  --ct-subtext-0: 120 137 162; /* #7889a2 — muted labels */
 
-  /* --- Warm neutral scale (same lightness ordering as Tailwind gray) ------ */
-  --dj-gray-50: 250 249 248;
-  --dj-gray-100: 245 243 241;
-  --dj-gray-200: 234 234 234;   /* #eaeaea - DragonJAR hairline */
-  --dj-gray-300: 211 206 201;
-  --dj-gray-400: 158 151 144;
-  --dj-gray-500: 114 108 102;
-  --dj-gray-600: 82 77 72;
-  --dj-gray-700: 60 56 52;
-  --dj-gray-800: 40 37 34;
-  --dj-gray-900: 24 24 24;      /* #181818 - DragonJAR near-black ink */
-  --dj-gray-950: 13 11 10;
+  /* Primary: dark blue */
+  --ct-accent: 53 117 234; /* #3575ea — brand / active surfaces */
+  --ct-accent-bright: 106 155 255; /* #6a9bff — text & icons on dark */
+  --ct-accent-dim: 20 38 74; /* #14264a — tinted backgrounds */
+  --ct-accent-contrast: 5 9 15; /* #05090f — text on accent */
 
-  /* --- Decorative tier accents ------------------------------------------- */
-  /* Plum: skill "Master"/"Intermediate", language B2, "Repos Auditados". */
-  --dj-purple-50: 246 240 248;
-  --dj-purple-100: 230 216 238;
-  --dj-purple-200: 205 179 219;
-  --dj-purple-300: 176 138 194;
-  --dj-purple-400: 147 105 168;
-  --dj-purple-500: 122 80 143;
-  --dj-purple-600: 98 62 116;
-  --dj-purple-700: 76 48 91;
-  --dj-purple-800: 57 36 69;
-  --dj-purple-900: 42 27 51;
+  /* Semantic states */
+  --ct-ok: 62 207 142; /* #3ecf8e */
+  --ct-warn: 227 179 65; /* #e3b341 */
+  --ct-danger: 242 85 90; /* #f2555a */
+  --ct-info: 127 156 245; /* #7f9cf5 */
 
-  /* Bronze: language A2 badge. Deliberately NOT the brand orange so the
-     decorative tier stays distinct from the accent. */
-  --dj-bronze-50: 250 243 235;
-  --dj-bronze-100: 240 227 211;
-  --dj-bronze-200: 223 198 168;
-  --dj-bronze-300: 200 164 122;
-  --dj-bronze-400: 172 133 88;
-  --dj-bronze-500: 146 107 62;
-  --dj-bronze-600: 118 85 47;
-  --dj-bronze-700: 91 64 35;
-  --dj-bronze-800: 67 47 25;
-  --dj-bronze-900: 48 34 18;
+  /* Primary blue ramp (Tailwind `cyan` family) */
+  --ct-blue-50: 235 243 255;
+  --ct-blue-100: 210 226 253;
+  --ct-blue-200: 178 203 250;
+  --ct-blue-300: 138 173 245;
+  --ct-blue-400: 92 137 240;
+  --ct-blue-500: 47 111 228;
+  --ct-blue-600: 32 85 190;
+  --ct-blue-700: 26 66 148;
+  --ct-blue-800: 21 52 116;
+  --ct-blue-900: 18 42 94;
 
-  /* Sand: "Certificado" education tier. */
-  --dj-amber-50: 251 246 232;
-  --dj-amber-100: 245 234 202;
-  --dj-amber-200: 233 208 148;
-  --dj-amber-300: 216 176 92;
-  --dj-amber-400: 194 148 60;
-  --dj-amber-500: 168 124 40;
-  --dj-amber-600: 135 98 30;
-  --dj-amber-700: 104 75 23;
-  --dj-amber-800: 76 55 17;
-  --dj-amber-900: 55 40 12;
+  /* Steel ramp (Tailwind `blue` family) — informational */
+  --ct-steel-50: 240 244 250;
+  --ct-steel-100: 223 230 240;
+  --ct-steel-200: 199 210 227;
+  --ct-steel-300: 165 179 202;
+  --ct-steel-400: 125 145 178;
+  --ct-steel-500: 96 116 150;
+  --ct-steel-600: 74 92 122;
+  --ct-steel-700: 62 76 96;
+  --ct-steel-800: 41 53 70;
+  --ct-steel-900: 24 33 47;
 
-  /*
-   * Semantic aliases. These had zero usages in the tree but were kept in line
-   * with what actually renders so they cannot contradict the design.
-   */
-  --color-primary: #ff6900;              /* brand accent */
-  --color-secondary: #6a91b0;            /* steel blue */
-  --color-accent: #cf2e2e;                /* alert red */
-  --color-bg: #0d0b0a;                    /* warm near-black ground */
-  --color-bg-alt: #181818;                /* DragonJAR ink */
+  /* Jade ramp (Tailwind `green` family) — verified / success */
+  --ct-jade-50: 234 250 243;
+  --ct-jade-100: 209 244 230;
+  --ct-jade-200: 166 229 200;
+  --ct-jade-300: 121 210 162;
+  --ct-jade-400: 74 197 142;
+  --ct-jade-500: 38 167 116;
+  --ct-jade-600: 26 133 92;
+  --ct-jade-700: 22 104 74;
+  --ct-jade-800: 19 80 58;
+  --ct-jade-900: 16 61 44;
 
-  /* Dark ground, nudged warm so the orange reads native rather than pasted on. */
-  --dj-surface-0: #0d0b0a;
-  --dj-surface-1: #141110;
-  --dj-surface-2: #181818;
+  /* Danger ramp (Tailwind `red` family) */
+  --ct-red-50: 253 240 240;
+  --ct-red-100: 250 222 222;
+  --ct-red-200: 244 188 188;
+  --ct-red-300: 233 148 148;
+  --ct-red-400: 242 105 100;
+  --ct-red-500: 220 63 63;
+  --ct-red-600: 186 47 47;
+  --ct-red-700: 148 38 38;
+  --ct-red-800: 116 32 32;
+  --ct-red-900: 88 26 26;
 
-  /* Smooth scrolling */
+  /* Neutral ramp (Tailwind `gray` family) — cool slate, matches the navy ground */
+  --ct-slate-50: 247 249 252;
+  --ct-slate-100: 238 242 248;
+  --ct-slate-200: 226 232 241;
+  --ct-slate-300: 203 212 225;
+  --ct-slate-400: 143 156 176;
+  --ct-slate-500: 111 128 153;
+  --ct-slate-600: 85 100 122;
+  --ct-slate-700: 62 76 96;
+  --ct-slate-800: 41 53 70;
+  --ct-slate-900: 24 33 47;
+  --ct-slate-950: 12 18 28;
+
+  /* Violet ramp (Tailwind `purple` family) — decorative tier accent */
+  --ct-violet-50: 244 241 253;
+  --ct-violet-100: 230 223 250;
+  --ct-violet-200: 205 193 245;
+  --ct-violet-300: 173 154 236;
+  --ct-violet-400: 138 113 224;
+  --ct-violet-500: 110 83 200;
+  --ct-violet-600: 88 64 166;
+  --ct-violet-700: 69 51 130;
+  --ct-violet-800: 54 41 103;
+  --ct-violet-900: 42 33 81;
+
+  /* Amber ramp (Tailwind `orange` family) — decorative tier accent */
+  --ct-amber-50: 253 247 233;
+  --ct-amber-100: 249 237 205;
+  --ct-amber-200: 245 219 156;
+  --ct-amber-300: 238 193 108;
+  --ct-amber-400: 224 163 66;
+  --ct-amber-500: 196 134 38;
+  --ct-amber-600: 160 106 28;
+  --ct-amber-700: 124 83 24;
+  --ct-amber-800: 94 64 21;
+  --ct-amber-900: 71 49 18;
+
+  /* Sand ramp (Tailwind `amber` family) — decorative tier accent */
+  --ct-sand-50: 252 248 236;
+  --ct-sand-100: 248 241 218;
+  --ct-sand-200: 242 226 175;
+  --ct-sand-300: 232 206 133;
+  --ct-sand-400: 214 179 82;
+  --ct-sand-500: 184 148 44;
+  --ct-sand-600: 149 116 32;
+  --ct-sand-700: 116 87 25;
+  --ct-sand-800: 88 66 20;
+  --ct-sand-900: 68 51 17;
+
+  /* Chrome metrics */
+  --ct-sidebar-width: 280px;
+  --ct-tabbar-height: 40px;
+  --ct-statusbar-height: 40px;
+  --ct-radius: 6px;
+  --ct-radius-sm: 4px;
+
   scroll-behavior: smooth;
 }
 
+/* ---------------------------------------------------------------------------
+ * Light "paper terminal" palette — a real theme, not a no-op toggle
+ * ------------------------------------------------------------------------ */
+html:not(.dark) {
+  --ct-base: 238 241 246; /* #eef1f6 */
+  --ct-panel: 255 255 255; /* #ffffff */
+  --ct-surface-0: 244 246 250; /* #f4f6fa */
+  --ct-surface-1: 234 238 245; /* #eaeef5 */
+  --ct-surface-2: 224 230 240; /* #e0e6f0 */
+
+  --ct-line: 213 220 232; /* #d5dce8 */
+  --ct-line-strong: 185 196 214; /* #b9c4d6 */
+
+  --ct-text: 19 28 43; /* #131c2b */
+  --ct-subtext-1: 69 85 110; /* #45556e */
+  --ct-subtext-0: 98 114 138; /* #62728a */
+
+  --ct-accent: 31 95 208; /* #1f5fd0 */
+  --ct-accent-bright: 26 79 176; /* #1a4fb0 */
+  --ct-accent-dim: 220 231 251; /* #dce7fb */
+  --ct-accent-contrast: 255 255 255; /* #ffffff */
+
+  --ct-ok: 23 132 90; /* #17845a */
+  --ct-warn: 154 107 9; /* #9a6b09 */
+  --ct-danger: 192 50 47; /* #c0322f */
+  --ct-info: 58 95 176; /* #3a5fb0 */
+
+  --ct-blue-50: 240 245 255;
+  --ct-blue-100: 219 230 254;
+  --ct-blue-200: 185 208 252;
+  --ct-blue-300: 143 180 249;
+  --ct-blue-400: 79 137 235;
+  --ct-blue-500: 31 95 208;
+  --ct-blue-600: 26 79 176;
+  --ct-blue-700: 23 64 145;
+  --ct-blue-800: 22 54 121;
+  --ct-blue-900: 21 46 101;
+
+  --ct-steel-50: 247 249 252;
+  --ct-steel-100: 238 242 248;
+  --ct-steel-200: 226 232 241;
+  --ct-steel-300: 203 212 225;
+  --ct-steel-400: 143 156 176;
+  --ct-steel-500: 111 128 153;
+  --ct-steel-600: 85 100 122;
+  --ct-steel-700: 62 76 96;
+  --ct-steel-800: 41 53 70;
+  --ct-steel-900: 24 33 47;
+
+  --ct-jade-50: 234 250 243;
+  --ct-jade-100: 209 244 230;
+  --ct-jade-200: 166 229 200;
+  --ct-jade-300: 121 210 162;
+  --ct-jade-400: 74 197 142;
+  --ct-jade-500: 38 167 116;
+  --ct-jade-600: 26 133 92;
+  --ct-jade-700: 22 104 74;
+  --ct-jade-800: 19 80 58;
+  --ct-jade-900: 16 61 44;
+
+  --ct-red-50: 253 240 240;
+  --ct-red-100: 250 222 222;
+  --ct-red-200: 244 188 188;
+  --ct-red-300: 233 148 148;
+  --ct-red-400: 242 105 100;
+  --ct-red-500: 220 63 63;
+  --ct-red-600: 186 47 47;
+  --ct-red-700: 148 38 38;
+  --ct-red-800: 116 32 32;
+  --ct-red-900: 88 26 26;
+
+  --ct-slate-50: 247 249 252;
+  --ct-slate-100: 238 242 248;
+  --ct-slate-200: 226 232 241;
+  --ct-slate-300: 203 212 225;
+  --ct-slate-400: 143 156 176;
+  --ct-slate-500: 111 128 153;
+  --ct-slate-600: 85 100 122;
+  --ct-slate-700: 62 76 96;
+  --ct-slate-800: 41 53 70;
+  --ct-slate-900: 24 33 47;
+  --ct-slate-950: 12 18 28;
+
+  --ct-violet-50: 244 241 253;
+  --ct-violet-100: 230 223 250;
+  --ct-violet-200: 205 193 245;
+  --ct-violet-300: 173 154 236;
+  --ct-violet-400: 138 113 224;
+  --ct-violet-500: 110 83 200;
+  --ct-violet-600: 88 64 166;
+  --ct-violet-700: 69 51 130;
+  --ct-violet-800: 54 41 103;
+  --ct-violet-900: 42 33 81;
+
+  --ct-amber-50: 253 247 233;
+  --ct-amber-100: 249 237 205;
+  --ct-amber-200: 245 219 156;
+  --ct-amber-300: 238 193 108;
+  --ct-amber-400: 224 163 66;
+  --ct-amber-500: 196 134 38;
+  --ct-amber-600: 160 106 28;
+  --ct-amber-700: 124 83 24;
+  --ct-amber-800: 94 64 21;
+  --ct-amber-900: 71 49 18;
+
+  --ct-sand-50: 252 248 236;
+  --ct-sand-100: 248 241 218;
+  --ct-sand-200: 242 226 175;
+  --ct-sand-300: 232 206 133;
+  --ct-sand-400: 214 179 82;
+  --ct-sand-500: 184 148 44;
+  --ct-sand-600: 149 116 32;
+  --ct-sand-700: 116 87 25;
+  --ct-sand-800: 88 66 20;
+  --ct-sand-900: 68 51 17;
+}
+
+/* ---------------------------------------------------------------------------
+ * Reset
+ * ------------------------------------------------------------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -143,50 +292,307 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, var(--dj-surface-0) 0%, #070605 100%);
-  color: rgb(var(--dj-gray-400));
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: rgb(var(--ct-base));
+  color: rgb(var(--ct-text));
   min-height: 100vh;
+  font-size: 13px;
   line-height: 1.6;
 }
 
-/* Selection */
-::selection {
-  background: rgba(255, 105, 0, 0.28);
-  color: white;
+/* Prose blocks opt back into the humanist sans (see `.prose-sans`). */
+.prose-sans {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgb(var(--ct-subtext-1));
 }
 
-/* Focus states - Accessibility */
-/* Keep native focus for keyboard users, enhance with visible ring */
+::selection {
+  background: rgb(var(--ct-accent) / 0.32);
+  color: rgb(var(--ct-text));
+}
+
+/* ---------------------------------------------------------------------------
+ * Focus — 2px accent ring, 2px offset, everywhere
+ * ------------------------------------------------------------------------ */
 :focus {
   outline: none;
 }
 
-/* Ensure focus-visible works for keyboard navigation */
 :focus-visible {
-  outline: 2px solid rgba(255, 105, 0, 0.85);
+  outline: 2px solid rgb(var(--ct-accent-bright));
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: var(--ct-radius-sm);
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
+summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid rgba(255, 105, 0, 0.85);
+  outline: 2px solid rgb(var(--ct-accent-bright));
   outline-offset: 2px;
 }
 
-/* Skip to main content link - Accessibility */
+/* ---------------------------------------------------------------------------
+ * Shell — sidebar + main, like an OS settings app
+ * ------------------------------------------------------------------------ */
+.console-shell {
+  display: grid;
+  grid-template-columns: var(--ct-sidebar-width) minmax(0, 1fr);
+  min-height: 100vh;
+  background: rgb(var(--ct-base));
+}
+
+.console-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background: rgb(var(--ct-surface-0));
+  border-right: 1px solid rgb(var(--ct-line));
+  display: flex;
+  flex-direction: column;
+}
+
+.console-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.console-tabbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--ct-tabbar-height);
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  padding: 0 12px;
+  background: rgb(var(--ct-base));
+  border-bottom: 1px solid rgb(var(--ct-line));
+}
+
+.console-scene {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px 32px;
+  max-width: 1080px;
+  width: 100%;
+}
+
+.console-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: var(--ct-statusbar-height);
+  padding: 6px 24px;
+  border-top: 1px solid rgb(var(--ct-line));
+  background: rgb(var(--ct-base));
+  color: rgb(var(--ct-subtext-0));
+  font-size: 12px;
+}
+
+/* Sidebar navigation ----------------------------------------------- */
+.nav-group-title {
+  color: rgb(var(--ct-subtext-0));
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  padding: 8px 16px 4px;
+}
+
+.nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 7px 16px;
+  border-left: 2px solid transparent;
+  color: rgb(var(--ct-text));
+  font-size: 12px;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-item:hover {
+  background: rgb(var(--ct-surface-0));
+}
+
+.nav-item[aria-current='true'] {
+  background: rgb(var(--ct-surface-1));
+  border-left-color: rgb(var(--ct-accent));
+  color: rgb(var(--ct-accent-bright));
+}
+
+/* Tabbar ---------------------------------------------------------------- */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  font-size: 12px;
+  color: rgb(var(--ct-text));
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tab:hover {
+  background: rgb(var(--ct-surface-0));
+}
+
+.tab.is-active {
+  background: rgb(var(--ct-accent));
+  color: rgb(var(--ct-accent-contrast));
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------------
+ * Panels — the "settings" primitive
+ * ------------------------------------------------------------------------ */
+.panel {
+  background: rgb(var(--ct-panel));
+  border: 1px solid rgb(var(--ct-line));
+  border-radius: var(--ct-radius);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgb(var(--ct-line));
+  background: rgb(var(--ct-surface-0));
+}
+
+.panel-title {
+  color: rgb(var(--ct-accent-bright));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.panel-subtitle {
+  color: rgb(var(--ct-subtext-0));
+  font-size: 11px;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.panel-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+  gap: 8px 20px;
+  align-items: start;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgb(var(--ct-line));
+}
+
+.panel-row:last-child {
+  border-bottom: none;
+}
+
+.panel-label {
+  color: rgb(var(--ct-subtext-0));
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.panel-value {
+  color: rgb(var(--ct-text));
+  font-size: 13px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.panel-value-muted {
+  color: rgb(var(--ct-subtext-1));
+}
+
+/* Chips / badges -------------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid rgb(var(--ct-line-strong));
+  border-radius: 999px;
+  background: rgb(var(--ct-surface-0));
+  color: rgb(var(--ct-text));
+  font-size: 11px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.chip-accent {
+  border-color: rgb(var(--ct-accent) / 0.55);
+  background: rgb(var(--ct-accent-dim));
+  color: rgb(var(--ct-accent-bright));
+}
+
+.chip-ok {
+  border-color: rgb(var(--ct-ok) / 0.45);
+  background: rgb(var(--ct-ok) / 0.12);
+  color: rgb(var(--ct-ok));
+}
+
+.chip-warn {
+  border-color: rgb(var(--ct-warn) / 0.45);
+  background: rgb(var(--ct-warn) / 0.12);
+  color: rgb(var(--ct-warn));
+}
+
+.chip-danger {
+  border-color: rgb(var(--ct-danger) / 0.45);
+  background: rgb(var(--ct-danger) / 0.12);
+  color: rgb(var(--ct-danger));
+}
+
+.chip-muted {
+  border-color: rgb(var(--ct-line));
+  background: transparent;
+  color: rgb(var(--ct-subtext-0));
+}
+
+/* Section title used by the scenes ------------------------------------- */
+.scene-title {
+  color: rgb(var(--ct-accent-bright));
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.scene-tagline {
+  color: rgb(var(--ct-subtext-0));
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Accessibility helpers
+ * ------------------------------------------------------------------------ */
 .skip-link {
   position: absolute;
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #ff6900;
-  color: #0d0b0a;
-  padding: 12px 24px;
-  border-radius: 0 0 8px 8px;
+  background: rgb(var(--ct-accent));
+  color: rgb(var(--ct-accent-contrast));
+  padding: 10px 20px;
+  border-radius: 0 0 var(--ct-radius) var(--ct-radius);
+  font-size: 12px;
   font-weight: 700;
   z-index: 9999;
   transition: top 0.2s ease;
@@ -195,252 +601,10 @@ input:focus-visible,
 
 .skip-link:focus {
   top: 0;
-  outline: 3px solid #4ab579;
+  outline: 2px solid rgb(var(--ct-ok));
   outline-offset: 2px;
 }
 
-/* Glassmorphism - Enhanced */
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-}
-
-.glass:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Neon effects - class names retained for compatibility, repointed at the brand
-   orange so the glow layer matches the palette. */
-.neon-text {
-  text-shadow: 0 0 10px rgba(255, 105, 0, 0.45), 0 0 20px rgba(255, 105, 0, 0.25);
-}
-
-.neon-border {
-  box-shadow: 0 0 5px rgba(255, 105, 0, 0.3), inset 0 0 5px rgba(255, 105, 0, 0.12);
-}
-
-/* Custom scrollbar - Enhanced */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--dj-surface-0);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(255, 105, 0, 0.32), rgba(40, 155, 96, 0.32));
-  border-radius: 4px;
-  transition: background 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(255, 105, 0, 0.55), rgba(40, 155, 96, 0.55));
-}
-
-/* Firefox scrollbar */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 105, 0, 0.32) var(--dj-surface-0);
-}
-
-/* Particles background */
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 105, 0, 0.3);
-  border-radius: 50%;
-  animation: float 15s infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #ff6900 0%, #6a91b0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hover effects - Enhanced */
-.hover-glow {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(255, 105, 0, 0.28), 0 10px 40px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
-}
-
-/* Skew hover effect */
-.hover-skew {
-  transition: transform 0.3s ease;
-}
-
-.hover-skew:hover {
-  transform: skewX(-5deg);
-}
-
-/* Stagger animation */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-
-/* Pulse animation for CTAs */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 105, 0, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(255, 105, 0, 0.45);
-  }
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Link styles */
-a {
-  color: #6a91b0;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #ff6900;
-}
-
-/* Button base styles */
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-/* Image loading */
-img {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-img[loading="lazy"] {
-  opacity: 0;
-}
-
-img[loading="lazy"].loaded {
-  opacity: 1;
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-  
-  /* Disable particles animation entirely */
-  .particles {
-    display: none;
-  }
-  
-  /* Disable hover transforms */
-  .hover-glow:hover {
-    transform: none;
-  }
-}
-
-/* Print styles */
-@media print {
-  .no-print { display: none !important; }
-  body { 
-    background: white !important; 
-    color: black !important; 
-    font-size: 12pt;
-  }
-  .glass { 
-    background: white !important; 
-    border: 1px solid #ccc; 
-    box-shadow: none;
-  }
-  
-  /* Hide interactive elements */
-  button, 
-  nav,
-  .fixed {
-    display: none !important;
-  }
-  
-  /* Ensure links show URLs */
-  a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 10pt;
-    color: #666;
-  }
-}
-
-/* Responsive text sizing */
-@media (max-width: 640px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
-  html {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 1025px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-/* Utility for screen reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -453,15 +617,180 @@ img[loading="lazy"].loaded {
   border: 0;
 }
 
-/* Backdrop blur support */
-@supports (backdrop-filter: blur(10px)) {
-  .glass {
-    backdrop-filter: blur(16px);
+/* Custom scrollbars — thin, console-like -------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--ct-base));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ct-line-strong));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--ct-subtext-0));
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--ct-line-strong)) rgb(var(--ct-base));
+}
+
+/* Links ----------------------------------------------------------------- */
+a {
+  color: rgb(var(--ct-accent-bright));
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: rgb(var(--ct-accent));
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[loading='lazy'] {
+  opacity: 0;
+}
+
+img[loading='lazy'].loaded {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+ * Responsive — below 1024px the sidebar becomes a drawer
+ * ------------------------------------------------------------------------ */
+@media (max-width: 1023px) {
+  .console-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .console-sidebar {
+    display: none;
+  }
+
+  .console-scene {
+    padding: 16px 16px 28px;
+  }
+
+  .console-statusbar {
+    padding: 6px 16px;
+    flex-wrap: wrap;
   }
 }
 
-@supports not (backdrop-filter: blur(10px)) {
-  .glass {
-    background: rgba(13, 11, 10, 0.95);
+@media (max-width: 640px) {
+  .panel-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .panel-label {
+    padding-top: 0;
+  }
+
+  .console-scene {
+    padding: 12px 12px 24px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Reduced motion
+ * ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Print — the CV, not the console
+ * ------------------------------------------------------------------------ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+  }
+
+  .console-shell {
+    display: block !important;
+  }
+
+  .console-scene {
+    padding: 0 !important;
+    max-width: none !important;
+    gap: 8px !important;
+  }
+
+  .panel {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    break-inside: avoid;
+  }
+
+  .panel-header {
+    background: white !important;
+  }
+
+  .panel-title {
+    color: black !important;
+  }
+
+  .panel-row {
+    border-bottom: 1px solid #ddd !important;
+  }
+
+  .panel-label {
+    color: #444 !important;
+  }
+
+  .panel-value,
+  .panel-value-muted {
+    color: black !important;
+  }
+
+  .chip {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #666;
   }
 }
