@@ -50,7 +50,7 @@ function AppLayoutInner({ aside, children }: AppLayoutProps) {
 
       <div className="cv-page">
         <div className="cv-sheet">
-          <aside className="cv-aside no-print" aria-label={t('Perfil', 'Profile')}>
+          <aside className="cv-aside" aria-label={t('Perfil', 'Profile')}>
             {aside}
           </aside>
 

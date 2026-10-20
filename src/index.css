@@ -785,54 +785,9 @@ img[loading='lazy'].loaded {
     background: white !important;
   }
 
-  .cv-sheet {
-    display: grid !important;
-    grid-template-columns: 200pt minmax(0, 1fr) !important;
-    max-width: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-  }
-
-  .cv-aside {
-    padding: 0 14pt 0 0 !important;
-    background: white !important;
-    color: black !important;
-    gap: 12pt !important;
-  }
-
-  .cv-aside .panel-title,
-  .cv-aside .panel-label,
-  .cv-aside .panel-value,
-  .cv-aside .cv-identity-name,
-  .cv-aside .cv-identity-role,
-  .cv-aside .cv-contact-item {
-    color: black !important;
-  }
-
-  .cv-aside .panel-header {
-    border-bottom-color: #999 !important;
-  }
-
-  .cv-aside .chip {
-    border: 1px solid #999 !important;
-    background: white !important;
-    color: black !important;
-  }
-
-  .cv-aside .cv-bar {
-    background: #e2e2e2 !important;
-  }
-
-  .cv-aside .cv-bar > span {
-    background: #666 !important;
-  }
-
-  .cv-main {
-    padding: 0 0 0 14pt !important;
-  }
-
+  /* The sheet layout in print belongs to public/print.css — the dedicated
+     print stylesheet. Duplicating it here made the two files fight over the
+     identity column and the app stylesheet (injected last) won. */
   .cv-document-name,
   .cv-document-role,
   .panel-title,
