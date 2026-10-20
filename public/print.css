@@ -1,9 +1,10 @@
 /**
  * print.css — Print-only stylesheet for CV Diego
  *
- * A4 page, 20mm margins, high-contrast monochrome. The console shell is
- * stripped down to its content: the sidebar, the top bar and the status bar
- * disappear, and what remains is a linear, ATS-friendly document.
+ * A4 page, 18mm × 16mm margins, high-contrast monochrome. The console shell
+ * is stripped down to its content: the sidebar (.console-sidebar), the top bar
+ * (.console-tabbar) and the status bar (.console-statusbar) disappear, and
+ * what remains is a linear, ATS-friendly document.
  *
  * Loaded via <link rel="stylesheet" href="/print.css" media="print">.
  */

@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test'
+import { NAV_GROUPS } from '../src/config/navigation'
 
 /**
  * E2E — the console shell as a user experiences it.
@@ -8,6 +9,9 @@ import { test, expect, type Page } from '@playwright/test'
  * mobile drawer are the controls that make the redesigned CV usable, so they
  * are the ones worth guarding end to end.
  */
+
+/** Sections the scene renders — derived from the navigation config. */
+const SECTION_COUNT = NAV_GROUPS.flatMap((group) => group.items).length
 
 const consoleErrors: string[] = []
 
@@ -49,29 +53,36 @@ test.afterEach(async () => {
 })
 
 test('renders the console shell with every section reachable', async ({ page, isMobile }) => {
-  await expect(page.getByTestId('console-brand')).toHaveText('statick@cv')
+  await expect(page.getByTestId('console-brand')).toHaveText('Diego Medardo Saavedra García')
   await expect(page.getByTestId('console-statusbar')).toBeVisible()
 
   const nav = await openNavigation(page, isMobile)
   await expect(nav).toBeVisible()
 
-  await expect(page.getByRole('region')).toHaveCount(13)
+  await expect(page.getByRole('region')).toHaveCount(SECTION_COUNT)
 })
 
-test('navigates from the sidebar to a section and marks it active', async ({ page, isMobile }) => {
+test('navigates from the sidebar to a section', async ({ page, isMobile }) => {
   const nav = await openNavigation(page, isMobile)
 
   await nav.getByRole('button', { name: /proyectos/i }).click()
 
-  const proyectos = page.locator('#proyectos')
-  await expect(proyectos).toBeInViewport()
+  await expect(page.locator('#proyectos')).toBeInViewport()
+})
 
-  if (!isMobile) {
-    await expect(nav.getByRole('button', { name: /proyectos/i })).toHaveAttribute(
-      'aria-current',
-      'true',
-    )
-  }
+test('marks the active section in the sidebar', async ({ page, isMobile }) => {
+  // The sidebar is hidden below the lg breakpoint, so the marker only exists
+  // on desktop. The skip is declared here instead of inside the assertion:
+  // a conditional expectation can silently never run.
+  test.skip(isMobile, 'the sidebar is hidden on small screens')
+
+  const nav = page.getByRole('navigation')
+  await nav.getByRole('button', { name: /proyectos/i }).click()
+
+  await expect(nav.getByRole('button', { name: /proyectos/i })).toHaveAttribute(
+    'aria-current',
+    'true',
+  )
 })
 
 test('switches the whole interface to English', async ({ page, isMobile }) => {

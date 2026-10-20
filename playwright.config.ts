@@ -1,5 +1,10 @@
 import { defineConfig, devices } from '@playwright/test'
 
+/** Preview server the suite runs against (loopback only). */
+const PREVIEW_HOST = '127.0.0.1'
+const PREVIEW_PORT = 4173
+const PREVIEW_URL = `http://${PREVIEW_HOST}:${PREVIEW_PORT}`
+
 /**
  * E2E configuration.
  *
@@ -14,9 +19,11 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: PREVIEW_URL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    // Pinned so the default-theme assertion cannot depend on the machine.
+    colorScheme: 'dark',
   },
   projects: [
     {
@@ -29,9 +36,11 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm build:quick && pnpm exec vite preview --port 4173 --host 127.0.0.1',
-    url: 'http://127.0.0.1:4173',
-    reuseExistingServer: !process.env.CI,
+    command: `pnpm build:quick && pnpm exec vite preview --port ${PREVIEW_PORT} --host ${PREVIEW_HOST}`,
+    url: PREVIEW_URL,
+    // Always build and serve the artifact under test: reusing whatever already
+    // answers on the port can validate a server that never served this build.
+    reuseExistingServer: false,
     timeout: 180_000,
   },
 })
