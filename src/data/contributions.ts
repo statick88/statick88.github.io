@@ -1,7 +1,7 @@
 /**
  * src/data/contributions.ts — Upstream contributions and published plugins
  *
- * The evidence for the "portes" section: pull requests opened against
+ * The evidence for the "aportes" section: pull requests opened against
  * third-party repositories (not the author's own) and the plugins published
  * for the Omarchy shell.
  *

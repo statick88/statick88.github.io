@@ -1,10 +1,9 @@
 /**
  * print.css — Print-only stylesheet for CV Diego
  *
- * A4 page, 18mm × 16mm margins, high-contrast monochrome. The console shell
- * is stripped down to its content: the sidebar (.console-sidebar), the top bar
- * (.console-tabbar) and the status bar (.console-statusbar) disappear, and
- * what remains is a linear, ATS-friendly document.
+ * A4 page, 18mm × 16mm margins. The sheet prints as the CV it is: the top bar
+ * disappears, the identity column keeps its dark ground (the browser is asked
+ * to print backgrounds), and the document column stays linear and legible.
  *
  * Loaded via <link rel="stylesheet" href="/print.css" media="print">.
  */
@@ -61,10 +60,6 @@
     page-break-after: avoid;
   }
 
-  h1 {
-    font-size: 17pt !important;
-  }
-
   p,
   li,
   span,
@@ -73,97 +68,117 @@
     font-size: 10.5pt;
   }
 
-  /* The console identity survives in print: mono labels, mono section titles. */
-  .panel-title {
-    font-size: 10pt !important;
-    letter-spacing: 0.06em;
-  }
-
-  .panel-label {
-    font-size: 8.5pt !important;
-  }
-
-  /* ── Shell: only the content prints ─────────────────────── */
-  .console-shell {
-    display: block !important;
-  }
-
-  .console-sidebar,
-  .console-tabbar,
-  .console-statusbar,
+  /* ── Page furniture disappears ───────────────────────────── */
   .no-print,
   .skip-link,
-  .particles,
-  .particle,
+  .cv-topbar,
   nav,
   button,
   .fixed {
     display: none !important;
   }
 
-  .console-scene {
-    display: block !important;
+  /* ── The sheet ───────────────────────────────────────────── */
+  .cv-page {
     padding: 0 !important;
-    max-width: none !important;
-    gap: 0 !important;
+    background: white !important;
   }
 
-  /* ── Panels ─────────────────────────────────────────────── */
-  .panel {
-    border: 1px solid #ccc !important;
+  .cv-sheet {
+    display: grid !important;
+    grid-template-columns: 190pt minmax(0, 1fr) !important;
+    max-width: none !important;
+    margin: 0 !important;
+    border: none !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
     background: white !important;
-    margin: 0 0 10px;
-    break-inside: auto;
-    page-break-inside: auto;
+  }
+
+  .cv-aside {
+    padding: 0 14pt 0 0 !important;
+    background: #1e2a5e !important;
+    color: white !important;
+    gap: 14pt !important;
+  }
+
+  .cv-aside .panel {
+    background: transparent !important;
+  }
+
+  .cv-aside .panel-header {
+    border-bottom-color: rgb(255 255 255 / 0.35) !important;
+  }
+
+  .cv-aside .panel-title {
+    color: #ffffff !important;
+  }
+
+  .cv-aside .panel-label {
+    color: rgb(255 255 255 / 0.7) !important;
+  }
+
+  .cv-aside .panel-value,
+  .cv-aside .cv-identity-name,
+  .cv-aside .cv-identity-role,
+  .cv-aside .cv-contact-item {
+    color: #ffffff !important;
+  }
+
+  .cv-aside .chip {
+    border: 1px solid rgb(255 255 255 / 0.4) !important;
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+
+  .cv-aside .cv-bar {
+    background: rgb(255 255 255 / 0.25) !important;
+  }
+
+  .cv-aside .cv-bar > span {
+    background: #ffffff !important;
+  }
+
+  .cv-main {
+    padding: 0 0 0 14pt !important;
+    background: white !important;
+  }
+
+  .cv-document-name,
+  .cv-document-role,
+  .panel-title,
+  .panel-value {
+    color: black !important;
   }
 
   .panel-header {
-    background: white !important;
-    border-bottom: 1px solid #999 !important;
+    border-bottom-color: #999 !important;
     break-after: avoid;
     page-break-after: avoid;
   }
 
-  .panel-body {
-    padding: 0 !important;
-  }
-
-  /* Rows are the atomic unit: never split one across a page. */
   .panel-row {
     break-inside: avoid;
     page-break-inside: avoid;
-    padding: 6px 10px !important;
-    border-bottom: 1px solid #e2e2e2 !important;
+    border-top-color: #e2e2e2 !important;
   }
 
   .panel-label {
     color: #444 !important;
   }
 
-  .panel-value {
-    color: #000 !important;
-  }
-
   .chip {
     border: 1px solid #999 !important;
     background: white !important;
-    color: #000 !important;
+    color: black !important;
     font-size: 8.5pt !important;
   }
 
-  /* The identity block must not be orphaned from the first panel. */
-  #perfil {
-    break-after: avoid;
-    page-break-after: avoid;
-    margin-bottom: 10px;
-  }
-
-  /* ── Page breaks ────────────────────────────────────────── */
-  h1,
-  h2,
-  h3 {
-    page-break-after: avoid;
+  .cv-photo-ring {
+    width: 66pt !important;
+    height: 66pt !important;
+    border-color: #ffffff !important;
+    box-shadow: none !important;
   }
 
   /* ── Links: show URLs ───────────────────────────────────── */
@@ -174,9 +189,7 @@
     word-break: break-all;
   }
 
-  /* Don't show URL for anchors or skip links */
-  a[href^='#']::after,
-  a.skip-link::after {
+  a[href^='#']::after {
     content: '';
   }
 
@@ -186,12 +199,6 @@
     page-break-inside: avoid;
   }
 
-  /* ── SVG icons: force grayscale ─────────────────────────── */
-  svg {
-    fill: #000 !important;
-    stroke: #000 !important;
-  }
-
   /* ── Scrollbar: hide ────────────────────────────────────── */
   ::-webkit-scrollbar {
     display: none;
@@ -199,10 +206,6 @@
 
   * {
     scrollbar-width: none;
-  }
-
-  /* ── Transitions: kill all ──────────────────────────────── */
-  * {
     transition: none !important;
     animation: none !important;
   }

@@ -12,6 +12,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, cleanup } from '@testing-library/react'
 import { AppProvider } from '@/context/AppContext'
+import { ProfileProvider } from '@/context/ProfileContext'
 
 const mockInitWebVitals = vi.fn()
 
@@ -46,9 +47,11 @@ describe('AppLayout', () => {
   it('calls initWebVitalsForProject on mount', () => {
     render(
       <AppProvider>
-        <AppLayout>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
           <div>child content</div>
         </AppLayout>
+        </ProfileProvider>
       </AppProvider>
     )
 
@@ -58,9 +61,11 @@ describe('AppLayout', () => {
   it('renders children inside the layout', () => {
     const { getByText } = render(
       <AppProvider>
-        <AppLayout>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
           <div>My child content</div>
         </AppLayout>
+        </ProfileProvider>
       </AppProvider>
     )
 
@@ -70,23 +75,28 @@ describe('AppLayout', () => {
   it('renders the console shell zones', () => {
     const { getByTestId, getByRole } = render(
       <AppProvider>
-        <AppLayout>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
           <div>child content</div>
         </AppLayout>
+        </ProfileProvider>
       </AppProvider>
     )
 
     expect(getByTestId('console-tabbar')).toBeInTheDocument()
-    expect(getByTestId('console-statusbar')).toBeInTheDocument()
     expect(getByRole('navigation')).toBeInTheDocument()
+    expect(getByRole('complementary')).toBeInTheDocument()
+    expect(getByRole('main')).toBeInTheDocument()
   })
 
   it('exposes a skip link to the main content', () => {
     const { getByRole } = render(
       <AppProvider>
-        <AppLayout>
+        <ProfileProvider>
+        <AppLayout aside={<div>identity column</div>}>
           <div>child content</div>
         </AppLayout>
+        </ProfileProvider>
       </AppProvider>
     )
 

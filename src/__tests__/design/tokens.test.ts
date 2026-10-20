@@ -21,11 +21,18 @@ import { resolve } from 'node:path'
 const CSS_PATH = resolve(__dirname, '../../index.css')
 const css = readFileSync(CSS_PATH, 'utf8')
 
-/** Extract the dark palette block (`:root,` … up to the light-theme rule). */
-const LIGHT_START = css.search(/html:not\(\.dark\)\s*\{/)
+/**
+ * The light palette is the default (`:root`); the night variant lives in
+ * `html.dark`. Both blocks are read straight from the stylesheet.
+ */
+function blockOf(selector: RegExp): string {
+  const start = css.search(selector)
+  if (start < 0) return ''
+  return css.slice(start, css.indexOf('}', start) + 1)
+}
 
-const darkBlock = css.slice(0, LIGHT_START)
-const lightBlock = css.slice(LIGHT_START, css.indexOf('}', LIGHT_START) + 1)
+const lightBlock = blockOf(/:root\s*\{/)
+const darkBlock = blockOf(/html\.dark\s*\{/)
 
 /** Parse `--ct-<name>: r g b;` declarations out of a CSS block. */
 function tokens(source: string): Record<string, [number, number, number] | undefined> {

@@ -553,7 +553,7 @@ export const cvData = {
       icon: 'code',
       title: { es: 'Desarrollo FullStack', en: 'FullStack Development' },
       description: {
-        es: 'Aplicaciones web y móviles de producción con arquitectura sólida, tests, y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL.',
+        es: 'Aplicaciones web y móviles de producción con arquitectura sólida, pruebas y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL.',
         en: 'Production-grade web and mobile applications with solid architecture, tests, and documentation. React, Next.js, Flutter, Node.js, Python, PostgreSQL.'
       },
       formats: {
@@ -568,7 +568,7 @@ export const cvData = {
       icon: 'shield',
       title: { es: 'Auditoría de Seguridad', en: 'Security Audit' },
       description: {
-        es: 'Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring, y recomendaciones de remediación.',
+        es: 'Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring y recomendaciones de remediación.',
         en: 'Web and mobile application pentesting. OWASP Top 10 vulnerability identification, CVSS-scored reports, and remediation recommendations.'
       },
       formats: {
@@ -583,7 +583,7 @@ export const cvData = {
       icon: 'target',
       title: { es: 'Consultoría Técnica', en: 'Technical Consulting' },
       description: {
-        es: 'CTO Fractional: arquitectura de software, code review, mentoring de equipos, y toma de decisiones técnicas estratégicas.',
+        es: 'CTO Fractional: arquitectura de software, revisión de código, mentoría de equipos y toma de decisiones técnicas estratégicas.',
         en: 'Fractional CTO: software architecture, code review, team mentoring, and strategic technical decision-making.'
       },
       formats: {
@@ -598,7 +598,7 @@ export const cvData = {
       icon: 'book',
       title: { es: 'Capacitación & Cursos', en: 'Training & Courses' },
       description: {
-        es: 'Cursos personalizados de Python, Ética Hacking, Ciberseguridad, y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM.',
+        es: 'Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM.',
         en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM.'
       },
       formats: {

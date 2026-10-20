@@ -1,18 +1,16 @@
 /**
  * src/__tests__/design/console-shell.test.tsx
  *
- * Integration + functional tests for the CONSOLE shell.
+ * Integration + functional tests for the CV sheet.
  *
  * These mount the real `<App />` (providers, adapters, data) and assert the
- * structural contract of the new layout:
+ * structural contract of the document layout:
  *
- *   - a sidebar that groups every section,
- *   - a top bar with the brand and the language / theme controls,
- *   - a status bar,
- *   - every navigation target actually exists in the page (no dead links),
- *   - clicking a navigation item scrolls to its section,
+ *   - the top bar with the identity, the section links and the controls,
+ *   - the navy identity column,
+ *   - every document section exists and is reachable from the navigation,
  *   - the language switch translates the navigation,
- *   - the theme switch really flips the document theme.
+ *   - the theme switch flips the document theme.
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
@@ -24,14 +22,14 @@ import { NAV_GROUPS, type NavItemDef } from '@/config/navigation'
 const NAV_ITEMS: NavItemDef[] = NAV_GROUPS.flatMap((group) => [...group.items])
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id)
 
-/** Spanish label of a section, matching the `aria-label` of its scene region. */
+/** Spanish label of a section, matching the `aria-label` of its region. */
 function sectionLabel(id: string): string {
   const item = NAV_ITEMS.find((entry) => entry.id === id)
   if (!item) throw new Error(`unknown section ${id}`)
   return item.label.es
 }
 
-describe('console shell', () => {
+describe('cv sheet', () => {
   beforeEach(() => {
     localStorage.clear()
   })
@@ -40,33 +38,28 @@ describe('console shell', () => {
     cleanup()
   })
 
-  it('renders the sidebar, the top bar and the status bar', () => {
+  it('renders the top bar, the identity column and the document', () => {
     render(<App />)
 
-    expect(screen.getByRole('navigation')).toBeInTheDocument()
     expect(screen.getByTestId('console-tabbar')).toBeInTheDocument()
-    expect(screen.getByTestId('console-statusbar')).toBeInTheDocument()
     expect(screen.getByTestId('console-brand')).toBeInTheDocument()
+    expect(screen.getByRole('navigation')).toBeInTheDocument()
+    expect(screen.getByRole('complementary', { name: /perfil|profile/i })).toBeInTheDocument()
+    expect(screen.getByRole('main')).toBeInTheDocument()
   })
 
-  it('groups the navigation sections', () => {
+  it('renders every document section', () => {
     render(<App />)
-
-    const nav = screen.getByRole('navigation')
-
-    for (const group of NAV_GROUPS) {
-      expect(within(nav).getByText(group.title.es)).toBeInTheDocument()
-    }
 
     for (const id of SECTION_IDS) {
       expect(
         screen.getByRole('region', { name: sectionLabel(id) }),
-        `missing section target #${id}`,
+        `missing section #${id}`,
       ).toBeInTheDocument()
     }
   })
 
-  it('scrolls to the section when a navigation item is clicked', async () => {
+  it('scrolls to the section when a navigation link is clicked', async () => {
     const user = userEvent.setup()
     const scrollIntoView = vi.fn()
     const original = Element.prototype.scrollIntoView
@@ -76,9 +69,7 @@ describe('console shell', () => {
       render(<App />)
 
       const nav = screen.getByRole('navigation')
-      const target = within(nav).getByRole('button', { name: /proyectos/i })
-
-      await user.click(target)
+      await user.click(within(nav).getByRole('button', { name: /proyectos/i }))
 
       expect(scrollIntoView).toHaveBeenCalled()
     } finally {
@@ -86,7 +77,7 @@ describe('console shell', () => {
     }
   })
 
-  it('marks the active navigation item with aria-current', () => {
+  it('marks the active navigation link with aria-current', () => {
     render(<App />)
 
     const nav = screen.getByRole('navigation')
@@ -111,6 +102,7 @@ describe('console shell', () => {
     const user = userEvent.setup()
     render(<App />)
 
+    // The document starts in the dark theme.
     expect(document.documentElement.classList.contains('dark')).toBe(true)
 
     await user.click(screen.getByTestId('theme-toggle'))

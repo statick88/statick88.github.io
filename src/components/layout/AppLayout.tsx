@@ -1,31 +1,34 @@
 /**
- * src/components/layout/AppLayout.tsx — Root layout wrapper (console shell)
+ * src/components/layout/AppLayout.tsx — Root layout (corporate CV sheet)
  *
- * Wraps the entire app with:
- *   - AppProvider (language, theme, loading)
- *   - ProfileProvider (active CV profile)
- *   - LazyMotion (framer-motion)
- *   - Skip-to-content link (a11y)
- *   - The console shell: sidebar + main column (top bar, scene, status bar)
+ * The page is a document, not an app:
+ *
+ *   ┌──────────────────────────────────────────────┐
+ *   │ top bar: identity · section links · controls │
+ *   ├───────────────┬──────────────────────────────┤
+ *   │ navy identity │ white document column         │
+ *   │ column        │ (name, experience, projects…) │
+ *   └───────────────┴──────────────────────────────┘
+ *
+ * The sheet is one page: it scrolls as a whole, prints as a CV and stays
+ * linear for the ATS exports.
  */
 
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { LazyMotion, domAnimation } from 'framer-motion'
-import { AppProvider, useApp } from '@/context/AppContext'
-import { ProfileProvider } from '@/context/ProfileContext'
-import { ConsoleSidebar } from '@/components/layout/ConsoleSidebar'
-import { ConsoleTopBar } from '@/components/layout/ConsoleTopBar'
-import { StatusBar } from '@/components/layout/StatusBar'
-import { MobileDrawer } from '@/components/layout/MobileDrawer'
+import { useApp } from '@/context/AppContext'
+import { CvTopBar } from '@/components/layout/CvTopBar'
 import { initWebVitalsForProject } from '@/lib/web-vitals'
 
 interface AppLayoutProps {
+  /** Identity column content (photo, contact, facts, languages). */
+  aside: ReactNode
+  /** Document column content. */
   children: ReactNode
 }
 
-function AppLayoutInner({ children }: AppLayoutProps) {
-  const { t, isLoaded } = useApp()
-  const [menuOpen, setMenuOpen] = useState(false)
+function AppLayoutInner({ aside, children }: AppLayoutProps) {
+  const { t } = useApp()
 
   useEffect(() => {
     const vitalsEndpoint = import.meta.env.VITE_VITALS_ENDPOINT
@@ -38,43 +41,28 @@ function AppLayoutInner({ children }: AppLayoutProps) {
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <div className="min-h-screen">
-        {/* Skip to main content — a11y */}
-        <a href="#main-content" className="skip-link">
-          {t('Saltar al contenido principal', 'Skip to main content')}
-        </a>
+      {/* Skip to main content — a11y */}
+      <a href="#main-content" className="skip-link">
+        {t('Saltar al contenido principal', 'Skip to main content')}
+      </a>
 
-        <div className="console-shell">
-          <ConsoleSidebar />
+      <CvTopBar />
 
-          <div className="console-main">
-            <ConsoleTopBar isMenuOpen={menuOpen} onOpenMenu={() => setMenuOpen((open) => !open)} />
+      <div className="cv-page">
+        <div className="cv-sheet">
+          <aside className="cv-aside no-print" aria-label={t('Perfil', 'Profile')}>
+            {aside}
+          </aside>
 
-            <main
-              id="main-content"
-              className={`console-scene transition-opacity duration-300 ${
-                isLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              {children}
-            </main>
-
-            <StatusBar />
-          </div>
+          <main id="main-content" className="cv-main">
+            {children}
+          </main>
         </div>
-
-        <MobileDrawer isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       </div>
     </LazyMotion>
   )
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
-  return (
-    <AppProvider>
-      <ProfileProvider>
-        <AppLayoutInner>{children}</AppLayoutInner>
-      </ProfileProvider>
-    </AppProvider>
-  )
+export function AppLayout({ aside, children }: AppLayoutProps) {
+  return <AppLayoutInner aside={aside}>{children}</AppLayoutInner>
 }

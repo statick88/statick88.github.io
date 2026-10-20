@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 export interface ScrollSpyOptions {
   /** Section IDs to observe */
   sectionIds: string[]
-  /** IntersectionObserver threshold (default: 0.3) */
+  /** IntersectionObserver threshold (default: 0) */
   threshold?: number
   /** IntersectionObserver rootMargin (default: '-100px 0px -50% 0px') */
   rootMargin?: string
@@ -23,7 +23,12 @@ export interface ScrollSpyResult {
   activeSection: string
 }
 
-const DEFAULT_THRESHOLD = 0.3
+/**
+ * Threshold 0, not 0.3: a section taller than the viewport can never reach a
+ * 30% visibility ratio, so the observer would never report it. The root
+ * margin already defines the band that counts as "the section you are reading".
+ */
+const DEFAULT_THRESHOLD = 0
 const DEFAULT_ROOT_MARGIN = '-100px 0px -50% 0px'
 
 export function useScrollSpy({

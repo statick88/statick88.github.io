@@ -1,38 +1,34 @@
 /**
- * src/App.tsx — Scene composition
+ * src/App.tsx — Document composition
  *
- * The console shell (sidebar, top bar, status bar) lives in `AppLayout`.
- * This module owns the scene: the ordered stack of panels that make up the
- * curriculum, each one anchored with the section id the navigation points at.
+ * The shell (top bar, sheet, columns) lives in `AppLayout`. This module owns
+ * the two columns:
  *
- * State lives in context, data lives in cv-data.ts, the shell lives in
- * layout components.
+ *   identity column → photo, contact, facts, languages, key skills
+ *   document column → the CV sections, in reading order
+ *
+ * State lives in context, data lives in cv-data.ts.
  */
 
-import { useApp } from '@/context/AppContext'
-import { useProfileContext } from '@/context/ProfileContext'
+import { AppProvider, useApp } from '@/context/AppContext'
+import { ProfileProvider, useProfileContext } from '@/context/ProfileContext'
 import { SECTION } from '@/config/navigation'
 import { AppLayout } from '@/components/layout/AppLayout'
+import IdentityColumn from '@/components/IdentityColumn'
 
-import ProfileHeader from '@/components/ProfileHeader'
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ResearchPanel } from '@/components/panels/ResearchPanel'
 import { ContributionsPanel } from '@/components/panels/ContributionsPanel'
 import { PluginsPanel } from '@/components/panels/PluginsPanel'
 
-// Left column
-import ContactCard from '@/components/left-column/ContactCard'
-import LinksCard from '@/components/left-column/LinksCard'
-import SkillsCard from '@/components/left-column/SkillsCard'
-import LanguagesCard from '@/components/left-column/LanguagesCard'
-
-// Right column
+// Document column
 import ProfileCard from '@/components/right-column/ProfileCard'
 import ExperienceTimeline from '@/components/right-column/ExperienceTimeline'
 import EducationCard from '@/components/right-column/EducationCard'
 import ProjectsGrid from '@/components/right-column/ProjectsGrid'
 import CertificationsList from '@/components/right-column/CertificationsList'
 import ExploitariumSummary from '@/components/right-column/ExploitariumSummary'
+import SkillsCard from '@/components/left-column/SkillsCard'
 
 // Adapters
 import {
@@ -55,33 +51,36 @@ function AppInner() {
   const contact = adaptContact()
   const metrics = getDefaultMetrics()
   const profile = adaptProfile(activeProfile.id)
+  const languages = adaptLanguages()
+  const skills = adaptSkills()
 
-  const linksProps = {
-    ...(contact.linkedin && { linkedin: contact.linkedin }),
-    ...(contact.github && { github: contact.github }),
-    ...(contact.portfolio && { portfolio: contact.portfolio }),
-  }
+  const aside = (
+    <IdentityColumn
+      profile={profile}
+      contact={contact}
+      metrics={metrics}
+      languages={languages}
+      skills={skills}
+    />
+  )
 
   return (
-    <>
-      <section id={SECTION.perfil} aria-label={t('perfil', 'profile')} className="scroll-mt-16">
-        <ProfileHeader
-          profile={profile}
-          contact={contact}
-          languagesSpoken={metrics.languagesSpoken}
-        />
-      </section>
+    <AppLayout aside={aside}>
+      {/* Document header */}
+      <header className="mb-8">
+        <h1 className="cv-document-name">{profile.name}</h1>
+        <p className="cv-document-role">{t(profile.role.es, profile.role.en)}</p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <a href={`mailto:${contact.email}`} className="chip chip-accent">
+            {contact.email}
+          </a>
+          <span className="chip chip-muted">{contact.location}</span>
+          <span className="chip chip-muted">{t('100% remoto', '100% remote')}</span>
+        </div>
+      </header>
 
       <section id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
         <ProfileCard profile={profile} metrics={metrics} headline={adaptHeadline()} />
-      </section>
-
-      <section id={SECTION.contacto} aria-label={t('contacto', 'contact')} className="scroll-mt-16">
-        <ContactCard contact={contact} />
-      </section>
-
-      <section id={SECTION.enlaces} aria-label={t('enlaces', 'links')} className="scroll-mt-16">
-        <LinksCard {...linksProps} />
       </section>
 
       <section
@@ -105,11 +104,7 @@ function AppInner() {
         aria-label={t('habilidades', 'skills')}
         className="scroll-mt-16"
       >
-        <SkillsCard skills={adaptSkills()} />
-      </section>
-
-      <section id={SECTION.idiomas} aria-label={t('idiomas', 'languages')} className="scroll-mt-16">
-        <LanguagesCard languages={adaptLanguages()} />
+        <SkillsCard skills={skills} />
       </section>
 
       <section id={SECTION.proyectos} aria-label={t('proyectos', 'projects')} className="scroll-mt-16">
@@ -144,7 +139,7 @@ function AppInner() {
         <ExploitariumSummary metrics={metrics} />
       </section>
 
-      <section id={SECTION.portes} aria-label={t('portes', 'ports')} className="scroll-mt-16">
+      <section id={SECTION.aportes} aria-label={t('aportes', 'contributions')} className="scroll-mt-16">
         <ContributionsPanel />
       </section>
 
@@ -152,15 +147,35 @@ function AppInner() {
         <PluginsPanel />
       </section>
 
-      <p className="sr-only">{t('Currículum de Diego Saavedra', 'Diego Saavedra curriculum')}</p>
-    </>
+      {/* Document footer */}
+      <footer className="cv-footer">
+        <span>
+          © {new Date().getFullYear()} {profile.name} · {t('Loja, Ecuador', 'Loja, Ecuador')}
+        </span>
+        <span className="flex items-center gap-3">
+          {contact.github ? (
+            <a href={contact.github} target="_blank" rel="noopener noreferrer">
+              github
+            </a>
+          ) : null}
+          {contact.linkedin ? (
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+              linkedin
+            </a>
+          ) : null}
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </span>
+      </footer>
+    </AppLayout>
   )
 }
 
 export default function App() {
   return (
-    <AppLayout>
-      <AppInner />
-    </AppLayout>
+    <AppProvider>
+      <ProfileProvider>
+        <AppInner />
+      </ProfileProvider>
+    </AppProvider>
   )
 }

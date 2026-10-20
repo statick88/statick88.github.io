@@ -1,13 +1,11 @@
 /**
- * src/config/navigation.ts — Single source of truth for the console navigation
+ * src/config/navigation.ts — Single source of truth for the document sections
  *
- * The CONSOLE shell groups every section of the CV the same way an OS settings
- * app groups its panes: a few labelled groups, each holding the sections that
- * belong to it. Sidebar, mobile drawer and scroll-spy all read from here, so
- * adding a section is a one-line change.
- *
- * Section ids are also the DOM ids of the panels rendered in the scene, so the
- * navigation can never point at a target that does not exist.
+ * The CV is one document: the identity column holds the profile, the contact
+ * details, the facts and the levels; everything else is a section of the
+ * document column. This config lists those document sections, and each id is
+ * also the DOM id of its section, so a link can never point at a missing
+ * anchor.
  */
 
 export interface NavLabel {
@@ -26,68 +24,36 @@ export interface NavGroupDef {
   items: NavItemDef[]
 }
 
-/** Canonical section ids — the DOM ids of the panels rendered in the scene. */
+/** Canonical section ids — the DOM ids of the document sections. */
 export const SECTION = {
-  perfil: 'perfil',
   resumen: 'resumen',
-  contacto: 'contacto',
-  enlaces: 'enlaces',
   experiencia: 'experiencia',
   educacion: 'educacion',
   habilidades: 'habilidades',
-  idiomas: 'idiomas',
   proyectos: 'proyectos',
   certificaciones: 'certificaciones',
   cursos: 'cursos',
   investigacion: 'investigacion',
   exploitarium: 'exploitarium',
-  portes: 'portes',
+  aportes: 'aportes',
   plugins: 'plugins',
 } as const
 
 export const NAV_GROUPS = [
   {
-    id: 'identidad',
-    title: { es: 'identidad', en: 'identity' },
+    id: 'curriculum',
+    title: { es: 'currículum', en: 'curriculum' },
     items: [
-      { id: SECTION.perfil, label: { es: 'perfil', en: 'profile' } },
       { id: SECTION.resumen, label: { es: 'resumen', en: 'summary' } },
-      { id: SECTION.contacto, label: { es: 'contacto', en: 'contact' } },
-      { id: SECTION.enlaces, label: { es: 'enlaces', en: 'links' } },
-    ],
-  },
-  {
-    id: 'trayectoria',
-    title: { es: 'trayectoria', en: 'career' },
-    items: [
       { id: SECTION.experiencia, label: { es: 'experiencia', en: 'experience' } },
       { id: SECTION.educacion, label: { es: 'educación', en: 'education' } },
-    ],
-  },
-  {
-    id: 'stack',
-    title: { es: 'stack', en: 'stack' },
-    items: [
       { id: SECTION.habilidades, label: { es: 'habilidades', en: 'skills' } },
-      { id: SECTION.idiomas, label: { es: 'idiomas', en: 'languages' } },
-    ],
-  },
-  {
-    id: 'portafolio',
-    title: { es: 'portafolio', en: 'portfolio' },
-    items: [
       { id: SECTION.proyectos, label: { es: 'proyectos', en: 'projects' } },
       { id: SECTION.certificaciones, label: { es: 'certificaciones', en: 'certifications' } },
       { id: SECTION.cursos, label: { es: 'cursos', en: 'courses' } },
       { id: SECTION.investigacion, label: { es: 'investigación', en: 'research' } },
       { id: SECTION.exploitarium, label: { es: 'exploitarium', en: 'exploitarium' } },
-    ],
-  },
-  {
-    id: 'contribuciones',
-    title: { es: 'contribuciones', en: 'contributions' },
-    items: [
-      { id: SECTION.portes, label: { es: 'portes', en: 'ports' } },
+      { id: SECTION.aportes, label: { es: 'aportes', en: 'contributions' } },
       { id: SECTION.plugins, label: { es: 'plugins', en: 'plugins' } },
     ],
   },
@@ -97,7 +63,7 @@ export type NavGroup = (typeof NAV_GROUPS)[number]
 export type NavItem = NavGroup['items'][number]
 export type SectionId = NavItem['id']
 
-/** Flat list of every section id, in navigation order. */
+/** Flat list of every section id, in document order. */
 export const SECTION_IDS: SectionId[] = NAV_GROUPS.flatMap((group) =>
   group.items.map((item) => item.id),
 )

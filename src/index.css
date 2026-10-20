@@ -3,277 +3,190 @@
 @tailwind utilities;
 
 /*
- * CONSOLE design tokens — "system settings" aesthetic, dark-blue primary.
+ * CONSOLE → CORPORATE design tokens.
  *
- * Every value below is a space-separated RGB channel triple so that both
- * plain CSS (`rgb(var(--ct-line) / 0.6)`) and Tailwind
- * (`rgb(var(--ct-line) / <alpha-value>)`) can consume the same token.
+ * The sheet is a corporate CV: a navy identity column on the left and a white
+ * document column on the right, with blue section titles, hairline rules and
+ * level bars — the language of a printed curriculum vitae, not an app.
  *
- * The theme is a pure token flip: `html.dark` carries the dark console
- * palette, `html:not(.dark)` carries the light "paper terminal" palette.
- * No component needs to know which theme is active.
+ * Every value is a space-separated RGB triple so plain CSS
+ * (`rgb(var(--ct-line) / 0.6)`) and Tailwind
+ * (`rgb(var(--ct-line) / <alpha-value>)`) consume the same source.
  *
- * The Tailwind colour families (cyan/green/blue/red/gray/purple/orange/amber)
- * are re-mapped onto these families in `tailwind.config.js`, so legacy class
- * names keep resolving to the new palette while new code uses the semantic
- * `ct-*` scale.
+ * The light theme is the default; `html.dark` carries the night variant.
  */
 
 /* ---------------------------------------------------------------------------
- * Dark console palette (default)
+ * Corporate palette (default)
  * ------------------------------------------------------------------------ */
-:root,
-html.dark {
+:root {
   /* Ground and surfaces */
-  --ct-base: 7 11 20; /* #070b14 — page ground */
-  --ct-panel: 11 18 32; /* #0b1220 — panel background */
-  --ct-surface-0: 15 23 40; /* #0f1728 — sidebar, chips */
-  --ct-surface-1: 22 32 52; /* #162034 — active nav item */
-  --ct-surface-2: 30 42 66; /* #1e2a42 — raised surface */
+  --ct-base: 233 236 243; /* #e9ecf3 — page background */
+  --ct-panel: 255 255 255; /* #ffffff — document column */
+  --ct-surface-0: 244 246 250; /* #f4f6fa — inset rows */
+  --ct-surface-1: 237 241 248; /* #edf1f8 */
+  --ct-surface-2: 227 233 244; /* #e3e9f4 */
 
   /* Hairlines */
-  --ct-line: 28 41 66; /* #1c2942 — 1px borders */
-  --ct-line-strong: 45 62 92; /* #2d3e5c — emphasised borders */
+  --ct-line: 221 227 237; /* #dde3ed */
+  --ct-line-strong: 198 208 224; /* #c6d0e0 */
 
   /* Text hierarchy */
-  --ct-text: 220 229 242; /* #dce5f2 — primary */
-  --ct-subtext-1: 147 163 186; /* #93a3ba — secondary */
-  --ct-subtext-0: 120 137 162; /* #7889a2 — muted labels */
+  --ct-text: 38 48 65; /* #263041 — ink */
+  --ct-subtext-1: 75 85 99; /* #4b5563 */
+  --ct-subtext-0: 104 116 138; /* #68748a */
 
-  /* Primary: dark blue */
-  --ct-accent: 53 117 234; /* #3575ea — brand / active surfaces */
-  --ct-accent-bright: 106 155 255; /* #6a9bff — text & icons on dark */
-  --ct-accent-dim: 20 38 74; /* #14264a — tinted backgrounds */
-  --ct-accent-contrast: 5 9 15; /* #05090f — text on accent */
+  /* Primary: corporate blue */
+  --ct-accent: 43 92 168; /* #2b5ca8 — section titles, rules */
+  --ct-accent-bright: 53 112 198; /* #3570c6 — links on white */
+  --ct-accent-dim: 234 240 250; /* #eaf0fa — tinted fills */
+  --ct-accent-contrast: 255 255 255; /* #ffffff */
+
+  /* Corporate navy — the identity column */
+  --ct-navy: 30 42 94; /* #1e2a5e */
+  --ct-navy-soft: 42 56 112; /* #2a3870 */
 
   /* Semantic states */
-  --ct-ok: 62 207 142; /* #3ecf8e */
-  --ct-warn: 227 179 65; /* #e3b341 */
-  --ct-danger: 242 85 90; /* #f2555a */
-  --ct-info: 127 156 245; /* #7f9cf5 */
+  --ct-ok: 30 142 90; /* #1e8e5a */
+  --ct-warn: 180 121 27; /* #b4791b */
+  --ct-danger: 192 57 43; /* #c0392b */
+  --ct-info: 43 92 168; /* #2b5ca8 */
 
   /* Primary blue ramp (Tailwind `cyan` family) */
-  --ct-blue-50: 235 243 255;
-  --ct-blue-100: 210 226 253;
-  --ct-blue-200: 178 203 250;
-  --ct-blue-300: 138 173 245;
-  --ct-blue-400: 92 137 240;
-  --ct-blue-500: 47 111 228;
-  --ct-blue-600: 32 85 190;
-  --ct-blue-700: 26 66 148;
-  --ct-blue-800: 21 52 116;
-  --ct-blue-900: 18 42 94;
+  --ct-blue-50: 242 246 253;
+  --ct-blue-100: 226 235 248;
+  --ct-blue-200: 200 216 240;
+  --ct-blue-300: 158 187 228;
+  --ct-blue-400: 100 148 208;
+  --ct-blue-500: 43 92 168;
+  --ct-blue-600: 33 74 141;
+  --ct-blue-700: 26 58 111;
+  --ct-blue-800: 21 47 89;
+  --ct-blue-900: 17 38 72;
 
   /* Steel ramp (Tailwind `blue` family) — informational */
-  --ct-steel-50: 240 244 250;
-  --ct-steel-100: 223 230 240;
-  --ct-steel-200: 199 210 227;
-  --ct-steel-300: 165 179 202;
-  --ct-steel-400: 125 145 178;
-  --ct-steel-500: 96 116 150;
-  --ct-steel-600: 74 92 122;
-  --ct-steel-700: 62 76 96;
-  --ct-steel-800: 41 53 70;
-  --ct-steel-900: 24 33 47;
+  --ct-steel-50: 248 250 252;
+  --ct-steel-100: 241 245 249;
+  --ct-steel-200: 226 232 240;
+  --ct-steel-300: 199 208 220;
+  --ct-steel-400: 148 161 178;
+  --ct-steel-500: 110 124 143;
+  --ct-steel-600: 82 94 110;
+  --ct-steel-700: 61 71 84;
+  --ct-steel-800: 43 51 61;
+  --ct-steel-900: 30 36 43;
 
   /* Jade ramp (Tailwind `green` family) — verified / success */
-  --ct-jade-50: 234 250 243;
-  --ct-jade-100: 209 244 230;
-  --ct-jade-200: 166 229 200;
-  --ct-jade-300: 121 210 162;
-  --ct-jade-400: 74 197 142;
-  --ct-jade-500: 38 167 116;
-  --ct-jade-600: 26 133 92;
-  --ct-jade-700: 22 104 74;
-  --ct-jade-800: 19 80 58;
-  --ct-jade-900: 16 61 44;
+  --ct-jade-50: 235 248 241;
+  --ct-jade-100: 209 240 226;
+  --ct-jade-200: 165 221 196;
+  --ct-jade-300: 118 196 158;
+  --ct-jade-400: 62 173 124;
+  --ct-jade-500: 30 142 90;
+  --ct-jade-600: 24 113 72;
+  --ct-jade-700: 19 85 54;
+  --ct-jade-800: 15 64 41;
+  --ct-jade-900: 12 48 31;
 
   /* Danger ramp (Tailwind `red` family) */
-  --ct-red-50: 253 240 240;
-  --ct-red-100: 250 222 222;
-  --ct-red-200: 244 188 188;
-  --ct-red-300: 233 148 148;
-  --ct-red-400: 242 105 100;
-  --ct-red-500: 220 63 63;
-  --ct-red-600: 186 47 47;
-  --ct-red-700: 148 38 38;
-  --ct-red-800: 116 32 32;
-  --ct-red-900: 88 26 26;
+  --ct-red-50: 253 240 239;
+  --ct-red-100: 250 221 219;
+  --ct-red-200: 244 186 182;
+  --ct-red-300: 231 143 137;
+  --ct-red-400: 216 97 91;
+  --ct-red-500: 192 57 43;
+  --ct-red-600: 160 45 34;
+  --ct-red-700: 128 36 27;
+  --ct-red-800: 99 30 24;
+  --ct-red-900: 76 24 20;
 
-  /* Neutral ramp (Tailwind `gray` family) — cool slate, matches the navy ground */
-  --ct-slate-50: 247 249 252;
-  --ct-slate-100: 238 242 248;
-  --ct-slate-200: 226 232 241;
-  --ct-slate-300: 203 212 225;
-  --ct-slate-400: 143 156 176;
-  --ct-slate-500: 111 128 153;
-  --ct-slate-600: 85 100 122;
-  --ct-slate-700: 62 76 96;
-  --ct-slate-800: 41 53 70;
-  --ct-slate-900: 24 33 47;
-  --ct-slate-950: 12 18 28;
+  /* Neutral ramp (Tailwind `gray` family) — cool slate */
+  --ct-slate-50: 248 250 252;
+  --ct-slate-100: 241 245 249;
+  --ct-slate-200: 226 232 240;
+  --ct-slate-300: 203 211 223;
+  --ct-slate-400: 148 161 178;
+  --ct-slate-500: 110 124 143;
+  --ct-slate-600: 82 94 110;
+  --ct-slate-700: 61 71 84;
+  --ct-slate-800: 43 51 61;
+  --ct-slate-900: 30 36 43;
+  --ct-slate-950: 20 24 29;
 
   /* Violet ramp (Tailwind `purple` family) — decorative tier accent */
-  --ct-violet-50: 244 241 253;
-  --ct-violet-100: 230 223 250;
-  --ct-violet-200: 205 193 245;
-  --ct-violet-300: 173 154 236;
-  --ct-violet-400: 138 113 224;
-  --ct-violet-500: 110 83 200;
-  --ct-violet-600: 88 64 166;
-  --ct-violet-700: 69 51 130;
-  --ct-violet-800: 54 41 103;
-  --ct-violet-900: 42 33 81;
+  --ct-violet-50: 246 244 252;
+  --ct-violet-100: 236 232 249;
+  --ct-violet-200: 216 208 242;
+  --ct-violet-300: 188 175 231;
+  --ct-violet-400: 150 132 210;
+  --ct-violet-500: 112 90 172;
+  --ct-violet-600: 90 72 138;
+  --ct-violet-700: 71 57 110;
+  --ct-violet-800: 56 45 87;
+  --ct-violet-900: 44 35 68;
 
   /* Amber ramp (Tailwind `orange` family) — decorative tier accent */
-  --ct-amber-50: 253 247 233;
-  --ct-amber-100: 249 237 205;
-  --ct-amber-200: 245 219 156;
-  --ct-amber-300: 238 193 108;
-  --ct-amber-400: 224 163 66;
-  --ct-amber-500: 196 134 38;
-  --ct-amber-600: 160 106 28;
-  --ct-amber-700: 124 83 24;
-  --ct-amber-800: 94 64 21;
-  --ct-amber-900: 71 49 18;
+  --ct-amber-50: 253 247 235;
+  --ct-amber-100: 249 239 219;
+  --ct-amber-200: 245 222 180;
+  --ct-amber-300: 238 197 133;
+  --ct-amber-400: 221 167 79;
+  --ct-amber-500: 184 134 42;
+  --ct-amber-600: 148 106 32;
+  --ct-amber-700: 115 82 25;
+  --ct-amber-800: 87 63 21;
+  --ct-amber-900: 66 48 18;
 
   /* Sand ramp (Tailwind `amber` family) — decorative tier accent */
-  --ct-sand-50: 252 248 236;
-  --ct-sand-100: 248 241 218;
-  --ct-sand-200: 242 226 175;
-  --ct-sand-300: 232 206 133;
-  --ct-sand-400: 214 179 82;
-  --ct-sand-500: 184 148 44;
-  --ct-sand-600: 149 116 32;
-  --ct-sand-700: 116 87 25;
-  --ct-sand-800: 88 66 20;
-  --ct-sand-900: 68 51 17;
+  --ct-sand-50: 253 249 238;
+  --ct-sand-100: 249 242 224;
+  --ct-sand-200: 244 230 193;
+  --ct-sand-300: 233 210 153;
+  --ct-sand-400: 214 183 105;
+  --ct-sand-500: 182 149 64;
+  --ct-sand-600: 145 116 45;
+  --ct-sand-700: 112 88 33;
+  --ct-sand-800: 85 67 26;
+  --ct-sand-900: 65 52 22;
 
   /* Chrome metrics */
-  --ct-sidebar-width: 280px;
-  --ct-tabbar-height: 40px;
-  --ct-statusbar-height: 40px;
-  --ct-radius: 6px;
-  --ct-radius-sm: 4px;
+  --ct-aside-width: 320px;
+  --ct-topbar-height: 48px;
+  --ct-radius: 3px;
+  --ct-radius-sm: 2px;
 
   scroll-behavior: smooth;
 }
 
 /* ---------------------------------------------------------------------------
- * Light "paper terminal" palette — a real theme, not a no-op toggle
+ * Night variant — the same document, read in the dark
  * ------------------------------------------------------------------------ */
-html:not(.dark) {
-  --ct-base: 238 241 246; /* #eef1f6 */
-  --ct-panel: 255 255 255; /* #ffffff */
-  --ct-surface-0: 244 246 250; /* #f4f6fa */
-  --ct-surface-1: 234 238 245; /* #eaeef5 */
-  --ct-surface-2: 224 230 240; /* #e0e6f0 */
+html.dark {
+  --ct-base: 17 21 29;
+  --ct-panel: 24 29 40;
+  --ct-surface-0: 29 35 47;
+  --ct-surface-1: 35 42 56;
+  --ct-surface-2: 44 52 68;
 
-  --ct-line: 213 220 232; /* #d5dce8 */
-  --ct-line-strong: 185 196 214; /* #b9c4d6 */
+  --ct-line: 44 52 68;
+  --ct-line-strong: 66 76 95;
 
-  --ct-text: 19 28 43; /* #131c2b */
-  --ct-subtext-1: 69 85 110; /* #45556e */
-  --ct-subtext-0: 98 114 138; /* #62728a */
+  --ct-text: 230 234 242;
+  --ct-subtext-1: 169 178 194;
+  --ct-subtext-0: 128 139 157;
 
-  --ct-accent: 31 95 208; /* #1f5fd0 */
-  --ct-accent-bright: 26 79 176; /* #1a4fb0 */
-  --ct-accent-dim: 220 231 251; /* #dce7fb */
-  --ct-accent-contrast: 255 255 255; /* #ffffff */
+  --ct-accent: 122 165 226;
+  --ct-accent-bright: 148 185 238;
+  --ct-accent-dim: 30 45 74;
+  --ct-accent-contrast: 12 16 24;
 
-  --ct-ok: 23 132 90; /* #17845a */
-  --ct-warn: 154 107 9; /* #9a6b09 */
-  --ct-danger: 192 50 47; /* #c0322f */
-  --ct-info: 58 95 176; /* #3a5fb0 */
+  --ct-navy: 14 19 34;
+  --ct-navy-soft: 22 29 50;
 
-  --ct-blue-50: 240 245 255;
-  --ct-blue-100: 219 230 254;
-  --ct-blue-200: 185 208 252;
-  --ct-blue-300: 143 180 249;
-  --ct-blue-400: 79 137 235;
-  --ct-blue-500: 31 95 208;
-  --ct-blue-600: 26 79 176;
-  --ct-blue-700: 23 64 145;
-  --ct-blue-800: 22 54 121;
-  --ct-blue-900: 21 46 101;
-
-  --ct-steel-50: 247 249 252;
-  --ct-steel-100: 238 242 248;
-  --ct-steel-200: 226 232 241;
-  --ct-steel-300: 203 212 225;
-  --ct-steel-400: 143 156 176;
-  --ct-steel-500: 111 128 153;
-  --ct-steel-600: 85 100 122;
-  --ct-steel-700: 62 76 96;
-  --ct-steel-800: 41 53 70;
-  --ct-steel-900: 24 33 47;
-
-  --ct-jade-50: 234 250 243;
-  --ct-jade-100: 209 244 230;
-  --ct-jade-200: 166 229 200;
-  --ct-jade-300: 121 210 162;
-  --ct-jade-400: 74 197 142;
-  --ct-jade-500: 38 167 116;
-  --ct-jade-600: 26 133 92;
-  --ct-jade-700: 22 104 74;
-  --ct-jade-800: 19 80 58;
-  --ct-jade-900: 16 61 44;
-
-  --ct-red-50: 253 240 240;
-  --ct-red-100: 250 222 222;
-  --ct-red-200: 244 188 188;
-  --ct-red-300: 233 148 148;
-  --ct-red-400: 242 105 100;
-  --ct-red-500: 220 63 63;
-  --ct-red-600: 186 47 47;
-  --ct-red-700: 148 38 38;
-  --ct-red-800: 116 32 32;
-  --ct-red-900: 88 26 26;
-
-  --ct-slate-50: 247 249 252;
-  --ct-slate-100: 238 242 248;
-  --ct-slate-200: 226 232 241;
-  --ct-slate-300: 203 212 225;
-  --ct-slate-400: 143 156 176;
-  --ct-slate-500: 111 128 153;
-  --ct-slate-600: 85 100 122;
-  --ct-slate-700: 62 76 96;
-  --ct-slate-800: 41 53 70;
-  --ct-slate-900: 24 33 47;
-  --ct-slate-950: 12 18 28;
-
-  --ct-violet-50: 244 241 253;
-  --ct-violet-100: 230 223 250;
-  --ct-violet-200: 205 193 245;
-  --ct-violet-300: 173 154 236;
-  --ct-violet-400: 138 113 224;
-  --ct-violet-500: 110 83 200;
-  --ct-violet-600: 88 64 166;
-  --ct-violet-700: 69 51 130;
-  --ct-violet-800: 54 41 103;
-  --ct-violet-900: 42 33 81;
-
-  --ct-amber-50: 253 247 233;
-  --ct-amber-100: 249 237 205;
-  --ct-amber-200: 245 219 156;
-  --ct-amber-300: 238 193 108;
-  --ct-amber-400: 224 163 66;
-  --ct-amber-500: 196 134 38;
-  --ct-amber-600: 160 106 28;
-  --ct-amber-700: 124 83 24;
-  --ct-amber-800: 94 64 21;
-  --ct-amber-900: 71 49 18;
-
-  --ct-sand-50: 252 248 236;
-  --ct-sand-100: 248 241 218;
-  --ct-sand-200: 242 226 175;
-  --ct-sand-300: 232 206 133;
-  --ct-sand-400: 214 179 82;
-  --ct-sand-500: 184 148 44;
-  --ct-sand-600: 149 116 32;
-  --ct-sand-700: 116 87 25;
-  --ct-sand-800: 88 66 20;
-  --ct-sand-900: 68 51 17;
+  --ct-ok: 74 190 128;
+  --ct-warn: 222 168 79;
+  --ct-danger: 226 106 90;
+  --ct-info: 122 165 226;
 }
 
 /* ---------------------------------------------------------------------------
@@ -292,24 +205,21 @@ html {
 }
 
 body {
-  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: rgb(var(--ct-base));
   color: rgb(var(--ct-text));
   min-height: 100vh;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
-/* Prose blocks opt back into the humanist sans (see `.prose-sans`). */
-.prose-sans {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgb(var(--ct-subtext-1));
+/* Micro data — dates, identifiers, counters — stays monospaced. */
+.mono {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 ::selection {
-  background: rgb(var(--ct-accent) / 0.32);
+  background: rgb(var(--ct-accent) / 0.18);
   color: rgb(var(--ct-text));
 }
 
@@ -321,7 +231,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid rgb(var(--ct-accent-bright));
+  outline: 2px solid rgb(var(--ct-accent));
   outline-offset: 2px;
   border-radius: var(--ct-radius-sm);
 }
@@ -331,135 +241,163 @@ a:focus-visible,
 input:focus-visible,
 summary:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid rgb(var(--ct-accent-bright));
+  outline: 2px solid rgb(var(--ct-accent));
   outline-offset: 2px;
 }
 
 /* ---------------------------------------------------------------------------
- * Shell — sidebar + main, like an OS settings app
+ * Page and sheet — the printed document, on a desk
  * ------------------------------------------------------------------------ */
-.console-shell {
-  display: grid;
-  grid-template-columns: var(--ct-sidebar-width) minmax(0, 1fr);
+.cv-page {
   min-height: 100vh;
+  padding: 0;
   background: rgb(var(--ct-base));
 }
 
-.console-sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  background: rgb(var(--ct-surface-0));
-  border-right: 1px solid rgb(var(--ct-line));
-  display: flex;
-  flex-direction: column;
+.cv-sheet {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  display: grid;
+  grid-template-columns: clamp(300px, 24vw, 420px) minmax(0, 1fr);
+  background: rgb(var(--ct-panel));
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
 }
 
-.console-main {
+.cv-aside {
+  background: rgb(var(--ct-navy));
+  color: rgb(255 255 255);
+  padding: 28px 24px 32px;
   display: flex;
   flex-direction: column;
+  gap: 22px;
+}
+
+.cv-main {
+  padding: 32px 36px 40px;
   min-width: 0;
+  background: rgb(var(--ct-panel));
 }
 
-.console-tabbar {
+/* Top bar and footer --------------------------------------------------- */
+.cv-topbar {
   position: sticky;
   top: 0;
   z-index: 40;
-  height: var(--ct-tabbar-height);
+  min-height: var(--ct-topbar-height);
   display: flex;
-  align-items: stretch;
-  gap: 2px;
-  padding: 0 12px;
-  background: rgb(var(--ct-base));
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  background: rgb(var(--ct-panel));
   border-bottom: 1px solid rgb(var(--ct-line));
 }
 
-.console-scene {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px 24px 32px;
-  max-width: 1080px;
-  width: 100%;
+.cv-topbar [data-testid='console-brand'] {
+  white-space: nowrap;
 }
 
-.console-statusbar {
+.cv-topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cv-topbar-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cv-topbar-link {
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(var(--ct-subtext-0));
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.cv-topbar-link:hover {
+  color: rgb(var(--ct-accent));
+}
+
+.cv-topbar-link[aria-current='true'] {
+  color: rgb(var(--ct-accent));
+  border-bottom-color: rgb(var(--ct-accent));
+}
+
+.cv-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: var(--ct-statusbar-height);
-  padding: 6px 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  padding-top: 14px;
   border-top: 1px solid rgb(var(--ct-line));
-  background: rgb(var(--ct-base));
   color: rgb(var(--ct-subtext-0));
   font-size: 12px;
 }
 
-/* Sidebar navigation ----------------------------------------------- */
-.nav-group-title {
-  color: rgb(var(--ct-subtext-0));
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  padding: 8px 16px 4px;
+/* Identity block -------------------------------------------------------- */
+.cv-identity-name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(255 255 255);
 }
 
-.nav-item {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 7px 16px;
-  border-left: 2px solid transparent;
-  color: rgb(var(--ct-text));
+.cv-identity-role {
   font-size: 12px;
-  background: transparent;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.nav-item:hover {
-  background: rgb(var(--ct-surface-0));
-}
-
-.nav-item[aria-current='true'] {
-  background: rgb(var(--ct-surface-1));
-  border-left-color: rgb(var(--ct-accent));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: rgb(var(--ct-accent-bright));
 }
 
-/* Tabbar ---------------------------------------------------------------- */
-.tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 14px;
-  font-size: 12px;
-  color: rgb(var(--ct-text));
-  border-bottom: 2px solid transparent;
-  background: transparent;
-  transition: background 0.15s ease, color 0.15s ease;
+.cv-photo-ring {
+  width: 116px;
+  height: 116px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 3px solid rgb(var(--ct-panel));
+  box-shadow: 0 0 0 1px rgb(var(--ct-navy-soft));
+  background: rgb(var(--ct-navy-soft));
 }
 
-.tab:hover {
-  background: rgb(var(--ct-surface-0));
-}
-
-.tab.is-active {
-  background: rgb(var(--ct-accent));
-  color: rgb(var(--ct-accent-contrast));
+.cv-document-name {
+  font-size: 30px;
   font-weight: 700;
+  line-height: 1.15;
+  color: rgb(var(--ct-navy));
+}
+
+html.dark .cv-document-name {
+  color: rgb(var(--ct-text));
+}
+
+.cv-document-role {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--ct-accent));
 }
 
 /* ---------------------------------------------------------------------------
- * Panels — the "settings" primitive
+ * Sections and panels — the printed idiom
  * ------------------------------------------------------------------------ */
 .panel {
   background: rgb(var(--ct-panel));
-  border: 1px solid rgb(var(--ct-line));
-  border-radius: var(--ct-radius);
-  overflow: hidden;
+  border: none;
+  border-radius: 0;
+}
+
+.panel + .panel {
+  margin-top: 26px;
 }
 
 .panel-header {
@@ -467,22 +405,24 @@ summary:focus-visible,
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 16px;
-  border-bottom: 1px solid rgb(var(--ct-line));
-  background: rgb(var(--ct-surface-0));
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgb(var(--ct-line-strong));
 }
 
 .panel-title {
-  color: rgb(var(--ct-accent-bright));
-  font-size: 11px;
+  color: rgb(var(--ct-accent));
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .panel-subtitle {
   color: rgb(var(--ct-subtext-0));
   font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .panel-body {
@@ -491,21 +431,20 @@ summary:focus-visible,
 
 .panel-row {
   display: grid;
-  grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
-  gap: 8px 20px;
+  grid-template-columns: minmax(130px, 200px) minmax(0, 1fr);
+  gap: 6px 20px;
   align-items: start;
-  padding: 10px 16px;
-  border-bottom: 1px solid rgb(var(--ct-line));
+  padding: 8px 0;
 }
 
-.panel-row:last-child {
-  border-bottom: none;
+.panel-row + .panel-row {
+  border-top: 1px solid rgb(var(--ct-line));
 }
 
 .panel-label {
   color: rgb(var(--ct-subtext-0));
   font-size: 11px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   padding-top: 2px;
 }
@@ -521,12 +460,61 @@ summary:focus-visible,
   color: rgb(var(--ct-subtext-1));
 }
 
-/* Chips / badges -------------------------------------------------------- */
+/* Identity column: same panels, inverted for the navy ground ------------- */
+.cv-aside .panel {
+  background: transparent;
+}
+
+.cv-aside .panel-header {
+  border-bottom-color: rgb(var(--ct-navy-soft));
+}
+
+.cv-aside .panel-title {
+  color: rgb(var(--ct-accent-bright));
+}
+
+.cv-aside .panel-subtitle {
+  color: rgb(255 255 255 / 0.6);
+}
+
+.cv-aside .panel-row {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 7px 0;
+}
+
+.cv-aside .panel-row + .panel-row {
+  border-top-color: rgb(var(--ct-navy-soft));
+}
+
+.cv-aside .panel-label {
+  color: rgb(255 255 255 / 0.55);
+}
+
+.cv-aside .panel-value {
+  color: rgb(255 255 255);
+  font-size: 13px;
+}
+
+/* Inside the navy column the text colours invert with the ground. */
+.cv-aside .text-ct-text {
+  color: rgb(255 255 255);
+}
+
+.cv-aside .text-ct-subtext-1 {
+  color: rgb(255 255 255 / 0.85);
+}
+
+.cv-aside .text-ct-subtext-0 {
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* Chips and badges -------------------------------------------------------- */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 10px;
+  padding: 3px 9px;
   border: 1px solid rgb(var(--ct-line-strong));
   border-radius: 999px;
   background: rgb(var(--ct-surface-0));
@@ -537,26 +525,26 @@ summary:focus-visible,
 }
 
 .chip-accent {
-  border-color: rgb(var(--ct-accent) / 0.55);
+  border-color: rgb(var(--ct-accent) / 0.35);
   background: rgb(var(--ct-accent-dim));
-  color: rgb(var(--ct-accent-bright));
+  color: rgb(var(--ct-accent));
 }
 
 .chip-ok {
-  border-color: rgb(var(--ct-ok) / 0.45);
-  background: rgb(var(--ct-ok) / 0.12);
+  border-color: rgb(var(--ct-ok) / 0.3);
+  background: rgb(var(--ct-ok) / 0.1);
   color: rgb(var(--ct-ok));
 }
 
 .chip-warn {
-  border-color: rgb(var(--ct-warn) / 0.45);
-  background: rgb(var(--ct-warn) / 0.12);
+  border-color: rgb(var(--ct-warn) / 0.3);
+  background: rgb(var(--ct-warn) / 0.1);
   color: rgb(var(--ct-warn));
 }
 
 .chip-danger {
-  border-color: rgb(var(--ct-danger) / 0.45);
-  background: rgb(var(--ct-danger) / 0.12);
+  border-color: rgb(var(--ct-danger) / 0.3);
+  background: rgb(var(--ct-danger) / 0.1);
   color: rgb(var(--ct-danger));
 }
 
@@ -566,18 +554,53 @@ summary:focus-visible,
   color: rgb(var(--ct-subtext-0));
 }
 
-/* Section title used by the scenes ------------------------------------- */
-.scene-title {
-  color: rgb(var(--ct-accent-bright));
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.3;
+.cv-aside .chip {
+  border-color: rgb(255 255 255 / 0.28);
+  background: rgb(255 255 255 / 0.08);
+  color: rgb(255 255 255 / 0.9);
 }
 
-.scene-tagline {
-  color: rgb(var(--ct-subtext-0));
-  font-size: 12px;
-  margin-top: 2px;
+/* Level bars — the signature of the printed CV --------------------------- */
+.cv-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: rgb(var(--ct-line));
+  overflow: hidden;
+}
+
+.cv-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(var(--ct-accent));
+}
+
+.cv-aside .cv-bar {
+  background: rgb(255 255 255 / 0.22);
+}
+
+.cv-aside .cv-bar > span {
+  background: rgb(var(--ct-accent-bright));
+}
+
+/* Contact list in the identity column ------------------------------------ */
+.cv-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12.5px;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.cv-contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.75;
 }
 
 /* ---------------------------------------------------------------------------
@@ -617,7 +640,7 @@ summary:focus-visible,
   border: 0;
 }
 
-/* Custom scrollbars — thin, console-like -------------------------------- */
+/* Custom scrollbars ------------------------------------------------------ */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -641,7 +664,7 @@ summary:focus-visible,
   scrollbar-color: rgb(var(--ct-line-strong)) rgb(var(--ct-base));
 }
 
-/* Links ----------------------------------------------------------------- */
+/* Links ------------------------------------------------------------------ */
 a {
   color: rgb(var(--ct-accent-bright));
   text-decoration: none;
@@ -651,6 +674,14 @@ a {
 a:hover {
   color: rgb(var(--ct-accent));
   text-decoration: underline;
+}
+
+.cv-aside a {
+  color: rgb(255 255 255 / 0.92);
+}
+
+.cv-aside a:hover {
+  color: rgb(var(--ct-accent-bright));
 }
 
 button {
@@ -676,28 +707,37 @@ img[loading='lazy'].loaded {
 }
 
 /* ---------------------------------------------------------------------------
- * Responsive — below 1024px the sidebar becomes a drawer
+ * Responsive — the sheet becomes one column on small screens
  * ------------------------------------------------------------------------ */
-@media (max-width: 1023px) {
-  .console-shell {
+@media (max-width: 900px) {
+  .cv-sheet {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .console-sidebar {
-    display: none;
+  .cv-aside {
+    padding: 24px 20px 28px;
   }
 
-  .console-scene {
-    padding: 16px 16px 28px;
+  .cv-main {
+    padding: 24px 20px 32px;
   }
 
-  .console-statusbar {
-    padding: 6px 16px;
-    flex-wrap: wrap;
+  .cv-document-name {
+    font-size: 24px;
   }
 }
 
 @media (max-width: 640px) {
+  /* The identity column already carries the name on small screens. */
+  .cv-topbar [data-testid='console-brand'] {
+    display: none;
+  }
+
+  .cv-topbar {
+    gap: 8px;
+    padding: 0 10px;
+  }
+
   .panel-row {
     grid-template-columns: minmax(0, 1fr);
     gap: 2px;
@@ -705,10 +745,6 @@ img[loading='lazy'].loaded {
 
   .panel-label {
     padding-top: 0;
-  }
-
-  .console-scene {
-    padding: 12px 12px 24px;
   }
 }
 
@@ -731,7 +767,7 @@ img[loading='lazy'].loaded {
 }
 
 /* ---------------------------------------------------------------------------
- * Print — the CV, not the console
+ * Print — the CV, without the page furniture
  * ------------------------------------------------------------------------ */
 @media print {
   .no-print {
@@ -741,56 +777,122 @@ img[loading='lazy'].loaded {
   body {
     background: white !important;
     color: black !important;
-    font-size: 11pt;
+    font-size: 10.5pt;
   }
 
-  .console-shell {
-    display: block !important;
-  }
-
-  .console-scene {
+  .cv-page {
     padding: 0 !important;
+    background: white !important;
+  }
+
+  .cv-sheet {
+    display: grid !important;
+    grid-template-columns: 200pt minmax(0, 1fr) !important;
     max-width: none !important;
-    gap: 8px !important;
-  }
-
-  .panel {
-    background: white !important;
-    border: 1px solid #ccc !important;
+    border: none !important;
     border-radius: 0 !important;
-    break-inside: avoid;
+    box-shadow: none !important;
+    border-radius: 0 !important;
   }
 
-  .panel-header {
+  .cv-aside {
+    padding: 0 14pt 0 0 !important;
     background: white !important;
+    color: black !important;
+    gap: 12pt !important;
   }
 
-  .panel-title {
+  .cv-aside .panel-title,
+  .cv-aside .panel-label,
+  .cv-aside .panel-value,
+  .cv-aside .cv-identity-name,
+  .cv-aside .cv-identity-role,
+  .cv-aside .cv-contact-item {
     color: black !important;
   }
 
+  .cv-aside .panel-header {
+    border-bottom-color: #999 !important;
+  }
+
+  .cv-aside .chip {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .cv-aside .cv-bar {
+    background: #e2e2e2 !important;
+  }
+
+  .cv-aside .cv-bar > span {
+    background: #666 !important;
+  }
+
+  .cv-main {
+    padding: 0 0 0 14pt !important;
+  }
+
+  .cv-document-name,
+  .cv-document-role,
+  .panel-title,
+  .panel-value {
+    color: black !important;
+  }
+
+  .panel-header {
+    border-bottom-color: #999 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
   .panel-row {
-    border-bottom: 1px solid #ddd !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-top-color: #e2e2e2 !important;
   }
 
   .panel-label {
     color: #444 !important;
   }
 
-  .panel-value,
-  .panel-value-muted {
-    color: black !important;
-  }
-
   .chip {
     border: 1px solid #999 !important;
     background: white !important;
     color: black !important;
+    font-size: 8.5pt !important;
+  }
+
+  .cv-photo-ring {
+    width: 72pt !important;
+    height: 72pt !important;
+    border-color: #999 !important;
+    box-shadow: none !important;
   }
 
   a[href]::after {
     content: ' (' attr(href) ')';
-    font-size: 9pt;
-    color: #666;
+    font-size: 8.5pt;
+    color: #555 !important;
+    word-break: break-all;
+  }
+
+  a[href^='#']::after {
+    content: '';
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+    transition: none !important;
+    animation: none !important;
   }
 }

@@ -1,7 +1,7 @@
 /**
  * src/components/panels/ContributionsPanel.tsx — Upstream contributions panel
  *
- * The "portes" section: pull requests opened against repositories the author
+ * The "aportes" section: pull requests opened against repositories the author
  * does not own. Each row is one upstream target; the value carries the
  * representative pull requests and their state.
  */
@@ -19,7 +19,7 @@ export function ContributionsPanel() {
 
   return (
     <Panel
-      title={t('portes', 'ports')}
+      title={t('aportes', 'contributions')}
       subtitle={`${CONTRIBUTION_STATS.upstreamPullRequests} PR · ${CONTRIBUTION_STATS.upstreamRepositories} repos`}
     >
       <PanelRow label={t('total', 'total')}>
