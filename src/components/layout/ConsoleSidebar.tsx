@@ -14,6 +14,7 @@
 import { useApp } from '@/context/AppContext'
 import { useNavGroups, scrollToSection } from '@/hooks/useNavItems'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
+import { useCVData } from '@/hooks/useCVData'
 import { SECTION_IDS } from '@/config/navigation'
 
 interface ConsoleSidebarProps {
@@ -25,6 +26,8 @@ export function ConsoleSidebar({ onNavigate }: ConsoleSidebarProps) {
   const { t } = useApp()
   const groups = useNavGroups()
   const { activeSection } = useScrollSpy({ sectionIds: [...SECTION_IDS] })
+  const name = useCVData((data) => data.basics.name)
+  const email = useCVData((data) => data.contact.email)
 
   const handleNavigate = (id: string) => {
     scrollToSection(id)
@@ -33,12 +36,18 @@ export function ConsoleSidebar({ onNavigate }: ConsoleSidebarProps) {
 
   return (
     <aside className="console-sidebar no-print">
-      {/* Brand block */}
+      {/* Identity block */}
       <div className="border-b border-ct-line px-4 py-4">
         <p className="text-[11px] uppercase tracking-[0.12em] text-ct-subtext-0">
           {t('currículum', 'curriculum')}
         </p>
-        <p className="text-sm font-bold text-ct-accent-bright">statick@cv</p>
+        <p className="text-sm font-bold text-ct-text">{name}</p>
+        <a
+          href={`mailto:${email}`}
+          className="text-[11px] text-ct-accent-bright hover:text-ct-accent"
+        >
+          {email}
+        </a>
       </div>
 
       {/* Navigation */}

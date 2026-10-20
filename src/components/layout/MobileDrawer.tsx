@@ -9,6 +9,7 @@ import { AnimatePresence, m } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
 import { useNavGroups, scrollToSection } from '@/hooks/useNavItems'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
+import { useCVData } from '@/hooks/useCVData'
 import { SECTION_IDS } from '@/config/navigation'
 
 interface MobileDrawerProps {
@@ -20,6 +21,8 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   const { t } = useApp()
   const groups = useNavGroups()
   const { activeSection } = useScrollSpy({ sectionIds: [...SECTION_IDS] })
+  const name = useCVData((data) => data.basics.name)
+  const email = useCVData((data) => data.contact.email)
 
   const handleNav = (id: string) => {
     scrollToSection(id)
@@ -48,10 +51,13 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="border-b border-ct-line px-4 py-4">
-              <p className="text-sm font-bold text-ct-accent-bright">statick@cv</p>
-              <p className="text-[11px] text-ct-subtext-0">
-                {t('Secciones', 'Sections')}
-              </p>
+              <p className="text-sm font-bold text-ct-text">{name}</p>
+              <a
+                href={`mailto:${email}`}
+                className="text-[11px] text-ct-accent-bright hover:text-ct-accent"
+              >
+                {email}
+              </a>
             </div>
 
             <nav aria-label={t('Navegación principal', 'Main navigation')} className="flex-1 overflow-y-auto py-2">

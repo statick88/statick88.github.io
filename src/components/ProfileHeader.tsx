@@ -34,6 +34,9 @@ export default function ProfileHeader({
         </p>
 
         <div className="mt-3 flex flex-wrap gap-2">
+          <a href={`mailto:${contact.email}`} className="chip chip-accent hover:border-ct-accent">
+            {contact.email}
+          </a>
           <span className="chip chip-muted">{contact.location}</span>
           <span className="chip chip-muted">{t('100% remoto', '100% remote')}</span>
           <span className="chip chip-muted">
