@@ -447,6 +447,9 @@ html.dark .cv-document-name {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding-top: 2px;
+  /* Long repository names must wrap inside the label column. */
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .panel-value {
