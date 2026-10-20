@@ -1,14 +1,17 @@
 /**
  * print.css — Print-only stylesheet for CV Diego
  *
- * A4 page, 20mm margins, grayscale high-contrast, two-column preserved.
+ * A4 page, 20mm margins, high-contrast monochrome. The console shell is
+ * stripped down to its content: the sidebar, the top bar and the status bar
+ * disappear, and what remains is a linear, ATS-friendly document.
+ *
  * Loaded via <link rel="stylesheet" href="/print.css" media="print">.
  */
 
 /* ── Page setup ────────────────────────────────────────────── */
 @page {
   size: A4;
-  margin: 20mm;
+  margin: 18mm 16mm;
   marks: none;
 }
 
@@ -24,108 +27,156 @@
   }
 
   html {
-    font-size: 11pt;
+    font-size: 10.5pt;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
   body {
     font-family:
+      'Inter',
       system-ui,
       -apple-system,
-      "Segoe UI",
+      'Segoe UI',
       Roboto,
       Helvetica,
       Arial,
       sans-serif;
-    line-height: 1.4;
+    line-height: 1.45;
     margin: 0;
     padding: 0;
+    background: white !important;
   }
 
   /* ── Typography ─────────────────────────────────────────── */
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 14pt !important;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 13pt !important;
     font-weight: 700;
     page-break-after: avoid;
   }
 
   h1 {
-    font-size: 18pt !important;
+    font-size: 17pt !important;
   }
 
-  h2 {
-    font-size: 15pt !important;
+  p,
+  li,
+  span,
+  td,
+  th {
+    font-size: 10.5pt;
   }
 
-  p, li, span, td, th {
-    font-size: 11pt;
+  /* The console identity survives in print: mono labels, mono section titles. */
+  .panel-title {
+    font-size: 10pt !important;
+    letter-spacing: 0.06em;
   }
 
-  /* ── Layout: preserve two-column grid ───────────────────── */
-  .cv-two-column {
-    display: grid !important;
-    grid-template-columns: 30% 70% !important;
-    gap: 16px !important;
+  .panel-label {
+    font-size: 8.5pt !important;
   }
 
-  .cv-two-column > * {
-    break-inside: avoid;
+  /* ── Shell: only the content prints ─────────────────────── */
+  .console-shell {
+    display: block !important;
   }
 
-  /* ── Page breaks ────────────────────────────────────────── */
-  section,
-  [id] {
-    page-break-inside: avoid;
-  }
-
-  h1, h2, h3 {
-    page-break-after: avoid;
-  }
-
-  /* Force break before major sections in the right column */
-  main > div + div,
-  main > section + section,
-  main > div + section {
-    page-break-before: auto;
-  }
-
-  /* ── Hide non-print elements ────────────────────────────── */
+  .console-sidebar,
+  .console-tabbar,
+  .console-statusbar,
   .no-print,
+  .skip-link,
   .particles,
   .particle,
   nav,
-  .fixed,
   button,
-  .skip-link,
-  .hover-glow,
-  .hover-skew,
-  .pulse-glow {
+  .fixed {
     display: none !important;
   }
 
-  /* ── Cards / glass panels ───────────────────────────────── */
-  .glass,
-  [class*="bg-white"],
-  [class*="border-white"] {
-    background: transparent !important;
+  .console-scene {
+    display: block !important;
+    padding: 0 !important;
+    max-width: none !important;
+    gap: 0 !important;
+  }
+
+  /* ── Panels ─────────────────────────────────────────────── */
+  .panel {
     border: 1px solid #ccc !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+    margin: 0 0 10px;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .panel-header {
+    background: white !important;
+    border-bottom: 1px solid #999 !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .panel-body {
+    padding: 0 !important;
+  }
+
+  /* Rows are the atomic unit: never split one across a page. */
+  .panel-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding: 6px 10px !important;
+    border-bottom: 1px solid #e2e2e2 !important;
+  }
+
+  .panel-label {
+    color: #444 !important;
+  }
+
+  .panel-value {
+    color: #000 !important;
+  }
+
+  .chip {
+    border: 1px solid #999 !important;
+    background: white !important;
+    color: #000 !important;
+    font-size: 8.5pt !important;
+  }
+
+  /* The identity block must not be orphaned from the first panel. */
+  #perfil {
+    break-after: avoid;
+    page-break-after: avoid;
+    margin-bottom: 10px;
+  }
+
+  /* ── Page breaks ────────────────────────────────────────── */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
   }
 
   /* ── Links: show URLs ───────────────────────────────────── */
   a[href]::after {
-    content: " (" attr(href) ")";
-    font-size: 9pt;
+    content: ' (' attr(href) ')';
+    font-size: 8.5pt;
     color: #555 !important;
     word-break: break-all;
   }
 
   /* Don't show URL for anchors or skip links */
-  a[href^="#"]::after,
+  a[href^='#']::after,
   a.skip-link::after {
-    content: "";
+    content: '';
   }
 
   /* ── Images ─────────────────────────────────────────────── */
@@ -138,27 +189,6 @@
   svg {
     fill: #000 !important;
     stroke: #000 !important;
-  }
-
-  /* ── Utility overrides ──────────────────────────────────── */
-  .gradient-text {
-    background: none !important;
-    -webkit-text-fill-color: #000 !important;
-    color: #000 !important;
-  }
-
-  .neon-border {
-    border: 1px solid #999 !important;
-  }
-
-  .neon-text {
-    text-shadow: none !important;
-  }
-
-  /* ── Footer ─────────────────────────────────────────────── */
-  footer {
-    border-top: 1px solid #ccc !important;
-    page-break-before: avoid;
   }
 
   /* ── Scrollbar: hide ────────────────────────────────────── */

@@ -18,7 +18,9 @@
     "analyze": "vite build --mode analyze",
     "generate:cvs": "node generate-cv-markdown.js && node generate-profile-cvs.js",
     "validate:cv": "tsx scripts/validate-cv.ts",
-    "export:cv": "tsx scripts/export-structured.ts"
+    "export:cv": "tsx scripts/export-structured.ts",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
@@ -28,6 +30,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "1.64.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
