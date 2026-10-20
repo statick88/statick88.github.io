@@ -1,15 +1,13 @@
 /**
- * src/hooks/useNavItems.ts — Navigation items with translations
+ * src/hooks/useNavItems.ts — Navigation items derived from the nav config
  *
- * Pure hook: accepts language from context, returns translated nav items.
- * Used by ScrollNavBar and MobileDrawer.
+ * Pure hook: reads the language from context and returns the grouped
+ * navigation used by the sidebar and the mobile drawer.
  */
 
 import { useMemo } from 'react'
 import { useApp } from '@/context/AppContext'
-import { type SectionId } from '@/config/navigation'
-
-export type { SectionId }
+import { NAV_GROUPS } from '@/config/navigation'
 
 export interface NavItem {
   id: string
@@ -17,23 +15,33 @@ export interface NavItem {
   aria: string
 }
 
-export function useNavItems(): NavItem[] {
+export interface NavGroup {
+  id: string
+  title: string
+  items: NavItem[]
+}
+
+export function useNavGroups(): NavGroup[] {
   const { t } = useApp()
 
   return useMemo(
-    () => [
-      { id: 'summary', label: t('Resumen', 'Summary'), aria: t('Ir a Resumen', 'Go to Summary') },
-      { id: 'experience', label: t('Experiencia', 'Experience'), aria: t('Ir a Experiencia', 'Go to Experience') },
-      { id: 'education', label: t('Educación', 'Education'), aria: t('Ir a Educación', 'Go to Education') },
-      { id: 'skills', label: t('Habilidades', 'Skills'), aria: t('Ir a Habilidades', 'Go to Skills') },
-      { id: 'projects', label: t('Proyectos', 'Projects'), aria: t('Ir a Proyectos', 'Go to Projects') },
-      { id: 'certifications', label: t('Certificaciones', 'Certifications'), aria: t('Ir a Certificaciones', 'Go to Certifications') },
-      { id: 'courses', label: t('Cursos', 'Courses'), aria: t('Ir a Cursos', 'Go to Courses') },
-      { id: 'research', label: t('Investigación', 'Research'), aria: t('Ir a Investigación', 'Go to Research') },
-      { id: 'hire', label: t('Contáctame', 'Contact Me'), aria: t('Ir a Servicios', 'Go to Services') },
-    ],
+    () =>
+      NAV_GROUPS.map((group) => ({
+        id: group.id,
+        title: t(group.title.es, group.title.en),
+        items: group.items.map((item) => ({
+          id: item.id,
+          label: t(item.label.es, item.label.en),
+          aria: t(`Ir a ${item.label.es}`, `Go to ${item.label.en}`),
+        })),
+      })),
     [t],
   )
+}
+
+export function useNavItems(): NavItem[] {
+  const groups = useNavGroups()
+  return useMemo(() => groups.flatMap((group) => group.items), [groups])
 }
 
 export function scrollToSection(sectionId: string): void {

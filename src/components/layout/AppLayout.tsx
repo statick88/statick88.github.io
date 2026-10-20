@@ -1,72 +1,69 @@
 /**
- * src/components/layout/AppLayout.tsx — Root layout wrapper
+ * src/components/layout/AppLayout.tsx — Root layout wrapper (console shell)
  *
  * Wraps the entire app with:
  *   - AppProvider (language, theme, loading)
+ *   - ProfileProvider (active CV profile)
  *   - LazyMotion (framer-motion)
  *   - Skip-to-content link (a11y)
- *   - Particles background
- *   - Theme toggle + Language toggle
- *   - Main content area with opacity transition
- *   - Footer
+ *   - The console shell: sidebar + main column (top bar, scene, status bar)
  */
 
-import { useEffect } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { LazyMotion, domAnimation } from 'framer-motion'
-import { AppProvider } from '@/context/AppContext'
-import { useApp } from '@/context/AppContext'
-import Particles from '@/components/Particles'
-import LanguageToggle from '@/components/LanguageToggle'
-import ThemeToggle from '@/components/ThemeToggle'
-import { Footer } from '@/components/layout/Footer'
-import { initPrefetching } from '@/lib/prefetch'
+import { AppProvider, useApp } from '@/context/AppContext'
+import { ProfileProvider } from '@/context/ProfileContext'
+import { ConsoleSidebar } from '@/components/layout/ConsoleSidebar'
+import { ConsoleTopBar } from '@/components/layout/ConsoleTopBar'
+import { StatusBar } from '@/components/layout/StatusBar'
+import { MobileDrawer } from '@/components/layout/MobileDrawer'
 import { initWebVitalsForProject } from '@/lib/web-vitals'
 
 interface AppLayoutProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 function AppLayoutInner({ children }: AppLayoutProps) {
-  const { language, setLanguage, theme, setTheme, isLoaded, t } = useApp()
+  const { t, isLoaded } = useApp()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const cleanupPrefetch = initPrefetching()
     const vitalsEndpoint = import.meta.env.VITE_VITALS_ENDPOINT
     if (vitalsEndpoint) {
       initWebVitalsForProject(vitalsEndpoint)
     } else {
       initWebVitalsForProject()
     }
-    return () => cleanupPrefetch()
   }, [])
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <div className="min-h-screen relative">
+      <div className="min-h-screen">
         {/* Skip to main content — a11y */}
         <a href="#main-content" className="skip-link">
           {t('Saltar al contenido principal', 'Skip to main content')}
         </a>
 
-        <Particles />
+        <div className="console-shell">
+          <ConsoleSidebar />
 
-        {/* Controls */}
-        <div className="fixed top-4 right-4 z-50 flex gap-2 no-print">
-          <LanguageToggle language={language} setLanguage={setLanguage} />
-          <ThemeToggle theme={theme} setTheme={setTheme} />
+          <div className="console-main">
+            <ConsoleTopBar isMenuOpen={menuOpen} onOpenMenu={() => setMenuOpen((open) => !open)} />
+
+            <main
+              id="main-content"
+              className={`console-scene transition-opacity duration-300 ${
+                isLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              {children}
+            </main>
+
+            <StatusBar />
+          </div>
         </div>
 
-        {/* Main Content */}
-        <main
-          id="main-content"
-          className={`relative z-10 max-w-4xl mx-auto px-4 py-8 transition-opacity duration-700 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          {children}
-        </main>
-
-        <Footer />
+        <MobileDrawer isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       </div>
     </LazyMotion>
   )
@@ -75,7 +72,9 @@ function AppLayoutInner({ children }: AppLayoutProps) {
 export function AppLayout({ children }: AppLayoutProps) {
   return (
     <AppProvider>
-      <AppLayoutInner>{children}</AppLayoutInner>
+      <ProfileProvider>
+        <AppLayoutInner>{children}</AppLayoutInner>
+      </ProfileProvider>
     </AppProvider>
   )
 }

@@ -1,15 +1,15 @@
 /**
  * src/components/layout/MobileDrawer.tsx — Mobile navigation drawer
  *
- * Slide-in drawer with section links. Uses useScrollSpy for active state.
+ * Below 1024px the sidebar becomes a drawer. It reuses the same navigation
+ * config and the same scroll spy as the desktop sidebar, so both stay in sync.
  */
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useScrollSpy } from '@/hooks/useScrollSpy'
-import { useNavItems, scrollToSection } from '@/hooks/useNavItems'
+import { AnimatePresence, m } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
+import { useNavGroups, scrollToSection } from '@/hooks/useNavItems'
+import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { SECTION_IDS } from '@/config/navigation'
-import { prefetchSection } from '@/lib/prefetch'
 
 interface MobileDrawerProps {
   isOpen: boolean
@@ -18,8 +18,8 @@ interface MobileDrawerProps {
 
 export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   const { t } = useApp()
+  const groups = useNavGroups()
   const { activeSection } = useScrollSpy({ sectionIds: [...SECTION_IDS] })
-  const navItems = useNavItems()
 
   const handleNav = (id: string) => {
     scrollToSection(id)
@@ -29,72 +29,56 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 lg:hidden bg-black/90 backdrop-blur-md"
+          className="fixed inset-0 z-50 bg-black/70 lg:hidden"
           onClick={onClose}
           role="dialog"
           aria-modal="true"
           aria-label={t('Menú de navegación', 'Navigation menu')}
         >
-          <motion.div
+          <m.div
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="absolute left-0 top-0 bottom-0 w-80 max-w-[85vw] bg-gradient-to-b from-gray-900 to-black border-r border-white/10"
+            transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+            className="absolute left-0 top-0 bottom-0 w-72 max-w-[85vw] bg-ct-surface-0 border-r border-ct-line flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
-            <div className="pt-20 pb-6 px-6 border-b border-white/10">
-              <h2 className="text-xl font-bold text-white">
-                {t('Navegación', 'Navigation')}
-              </h2>
-              <p className="text-gray-500 text-sm mt-1">
-                {t('Selecciona una sección', 'Select a section')}
+            <div className="border-b border-ct-line px-4 py-4">
+              <p className="text-sm font-bold text-ct-accent-bright">statick@cv</p>
+              <p className="text-[11px] text-ct-subtext-0">
+                {t('Secciones', 'Sections')}
               </p>
             </div>
 
-            {/* Menu Items */}
-            <nav className="p-4 space-y-2" role="navigation">
-              {navItems.map((item, index) => {
-                const isActive = activeSection === item.id
-                return (
-                  <motion.button
-                    key={item.id}
-                    onClick={() => handleNav(item.id)}
-                    onMouseEnter={() => prefetchSection(item.id)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    className={`w-full text-left px-5 py-4 rounded-xl transition-all flex items-center gap-4 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30'
-                        : 'text-gray-300 hover:bg-white/5 border border-transparent'
-                    }`}
-                  >
-                    <span className="font-medium">{item.label}</span>
-                    {isActive && (
-                      <motion.span
-                        layoutId="mobileActive"
-                        className="ml-auto w-2 h-2 rounded-full bg-cyan-400"
-                      />
-                    )}
-                  </motion.button>
-                )
-              })}
+            <nav aria-label={t('Navegación principal', 'Main navigation')} className="flex-1 overflow-y-auto py-2">
+              {groups.map((group) => (
+                <div key={group.id}>
+                  <p className="nav-group-title">{group.title}</p>
+                  {group.items.map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      className="nav-item"
+                      aria-current={activeSection === item.id ? 'true' : undefined}
+                      aria-label={item.aria}
+                      onClick={() => handleNav(item.id)}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              ))}
             </nav>
 
-            {/* Footer */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
-              <p className="text-gray-500 text-xs text-center">
-                {t('Navegación rápida', 'Quick navigation')} • CV Diego
-              </p>
+            <div className="border-t border-ct-line px-4 py-3 text-[11px] text-ct-subtext-0">
+              {t('100% remoto', '100% remote')} · {t('Loja, Ecuador', 'Loja, Ecuador')}
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

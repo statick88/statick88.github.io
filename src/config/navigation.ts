@@ -1,20 +1,93 @@
 /**
- * src/config/navigation.ts — Single source of truth for section IDs
+ * src/config/navigation.ts — Single source of truth for the console navigation
  *
- * All navigation components (SectionRenderer, ScrollNavBar, MobileDrawer, useNavItems)
- * import SECTION_IDS from here. Adding/removing a section requires changes in ONE place.
+ * The CONSOLE shell groups every section of the CV the same way an OS settings
+ * app groups its panes: a few labelled groups, each holding the sections that
+ * belong to it. Sidebar, mobile drawer and scroll-spy all read from here, so
+ * adding a section is a one-line change.
+ *
+ * Section ids are also the DOM ids of the panels rendered in the scene, so the
+ * navigation can never point at a target that does not exist.
  */
 
-export const SECTION_IDS = [
-  'summary',
-  'experience',
-  'education',
-  'skills',
-  'projects',
-  'certifications',
-  'courses',
-  'research',
-  'hire',
-] as const
+export interface NavLabel {
+  es: string
+  en: string
+}
 
-export type SectionId = (typeof SECTION_IDS)[number]
+export interface NavItemDef {
+  id: string
+  label: NavLabel
+}
+
+export interface NavGroupDef {
+  id: string
+  title: NavLabel
+  items: NavItemDef[]
+}
+
+/** Canonical section ids — the DOM ids of the panels rendered in the scene. */
+export const SECTION = {
+  perfil: 'perfil',
+  resumen: 'resumen',
+  contacto: 'contacto',
+  enlaces: 'enlaces',
+  experiencia: 'experiencia',
+  educacion: 'educacion',
+  habilidades: 'habilidades',
+  idiomas: 'idiomas',
+  proyectos: 'proyectos',
+  certificaciones: 'certificaciones',
+  cursos: 'cursos',
+  investigacion: 'investigacion',
+  exploitarium: 'exploitarium',
+} as const
+
+export const NAV_GROUPS = [
+  {
+    id: 'identidad',
+    title: { es: 'identidad', en: 'identity' },
+    items: [
+      { id: SECTION.perfil, label: { es: 'perfil', en: 'profile' } },
+      { id: SECTION.resumen, label: { es: 'resumen', en: 'summary' } },
+      { id: SECTION.contacto, label: { es: 'contacto', en: 'contact' } },
+      { id: SECTION.enlaces, label: { es: 'enlaces', en: 'links' } },
+    ],
+  },
+  {
+    id: 'trayectoria',
+    title: { es: 'trayectoria', en: 'career' },
+    items: [
+      { id: SECTION.experiencia, label: { es: 'experiencia', en: 'experience' } },
+      { id: SECTION.educacion, label: { es: 'educación', en: 'education' } },
+    ],
+  },
+  {
+    id: 'stack',
+    title: { es: 'stack', en: 'stack' },
+    items: [
+      { id: SECTION.habilidades, label: { es: 'habilidades', en: 'skills' } },
+      { id: SECTION.idiomas, label: { es: 'idiomas', en: 'languages' } },
+    ],
+  },
+  {
+    id: 'portafolio',
+    title: { es: 'portafolio', en: 'portfolio' },
+    items: [
+      { id: SECTION.proyectos, label: { es: 'proyectos', en: 'projects' } },
+      { id: SECTION.certificaciones, label: { es: 'certificaciones', en: 'certifications' } },
+      { id: SECTION.cursos, label: { es: 'cursos', en: 'courses' } },
+      { id: SECTION.investigacion, label: { es: 'investigación', en: 'research' } },
+      { id: SECTION.exploitarium, label: { es: 'exploitarium', en: 'exploitarium' } },
+    ],
+  },
+] as const satisfies readonly NavGroupDef[]
+
+export type NavGroup = (typeof NAV_GROUPS)[number]
+export type NavItem = NavGroup['items'][number]
+export type SectionId = NavItem['id']
+
+/** Flat list of every section id, in navigation order. */
+export const SECTION_IDS: SectionId[] = NAV_GROUPS.flatMap((group) =>
+  group.items.map((item) => item.id),
+)
