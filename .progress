@@ -92,7 +92,8 @@ Comparación de las tres capas, hecha sobre el código y los artefactos, no de m
 
 - [ ] **P9 — Panel de Servicios en la UI**: montar `services` (4 servicios con modalidades y tarifas) como panel propio, con el mismo lenguaje visual que el resto (tokens `ct-*`, `Panel`/`PanelRow`). Es el bloque más central del sitio de referencia y ya está en los datos.
 - [ ] **P10 — Panel de Referencias**: reutilizar `practice.referenceNames` (6 instituciones, ya en el CV) o datos verificados de clientes con permiso.
-- [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay charias, conferencias ni ponencias en las fuentes; un bloque vacío o inventado rompe la regla de integridad. Candidatos de evidencia a reunir: CTF de EvilSec – Ekoparty 2026, CTFs comoalkeeper,%}
+- [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay charias, conferencias ni ponencias en las fuentes; un bloque vacío o inventado rompe la regla de integridad. Candidatos de evidencia a reunir: CTF de EvilSec – Ekoparty 2026 (3.er puesto, verificable
+  en el repositorio `ctf-evilsec-2026`) y cualquier charla o ponencia documentada.
 - [ ] **P12 — Paneles sensibles al perfil activo**: `App.tsx` adapta titular y experiencia por perfil, pero los paneles (Courses, Contributions, Plugins, Research) son estáticos: al elegir "Consultor" el cuerpo de la web no cambia, sólo el PDF que se descarga.
 - [ ] **P13 — Encargos de seguridad en la web**: el bloque `practice.engagements` (3 pentests anonimizados) sólo vive en el PDF; decidir si se expone en el sitio.
 
@@ -102,7 +103,7 @@ Comparación de las tres capas, hecha sobre el código y los artefactos, no de m
 
 Orden acordado: **P9 → P12 → P2** (primero el bloque que falta y es de UI, luego la coherencia del selector, luego la integridad de datos).
 
-### P9 — Panel de Servicios en la UI  ⬜ *(empieza aquí)*
+### P9 — Panel de Servicios en la UI  ✅ *cerrado*
 
 - [x] 9.1 Creado `src/components/panels/ServicesPanel.tsx` con `Panel` + `PanelRow` — mismo idioma visual que `PluginsPanel` (plantilla: nombre a la izquierda, descripción y datos a la derecha).
 - [x] 9.2 Datos: importa `services` de `@/data/cv-data` (patrón de `PluginsPanel` con `@/data/contributions`). **No** tocar `src/lib/schemas` ni `src/lib/sanitize`: los paneles leen datos directamente, así que `services` no hace falta en el esquema.
@@ -133,5 +134,5 @@ Orden acordado: **P9 → P12 → P2** (primero el bloque que falta y es de UI, l
   `src/config/navigation.ts` (id = id del DOM, para que ningún enlace apunte a
   un ancla inexistente) y montada en la columna derecha tras el bloque de
   identidad. Test propio que renderiza los 4 servicios contra los datos reales.
-  Gates: `tsc --noEmit` limpio, **16 ficheros / 235 tests en verde** (3 nuevos),
+  Gates: `tsc --noEmit` limpio, **16 ficheros / 236 tests en verde** (3 nuevos),
   lint sin errores nuevos, build de producción y hooks de pre-commit en verde.
