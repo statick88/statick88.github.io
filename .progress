@@ -79,6 +79,17 @@ decisiones del usuario.
       puntuación ("15 / 22 retos", "3.er puesto", "410 repos"), sin tocar
       "93.4/100". → `feat/ctf-evidence`
 
+- [x] **Panel de Referencias en la web** (P10): el bloque de referencias del sitio de
+      referencia existia como dato (`practice.referenceNames`, la misma lista que
+      publica el CV) pero ninguna seccion de la web lo montaba. Ahora es un
+      panel con una fila por institucion y, dentro, el cargo real y el periodo
+      leidos de `work`: el panel no puede afirmar nada que los datos no digan.
+      Seccion `referencias` en la navegacion (id = id del DOM) y test propio con
+      conteo real de filas. → `89a9aac` (merge `c55997a`)
+- [x] **El panel de servicios (P9) ya estaba montado** en la columna derecha
+      (`930a80b`); verificado con su test, ahora con conteo exacto de filas en
+      lugar del '> 0' que la revision nativa senalo.
+
 ### Contrato ATS
 - [x] **10 criterios ejecutables** sobre el PDF publicado (`scripts/verify-cv-ats.mjs`):
       capa de texto real, contacto literal, encabezados estándar, orden de lectura
@@ -127,9 +138,7 @@ decisiones del usuario.
       verdad** — `Scrum` no se declara si no se ha practicado; `gestión
       académica` y `evaluación formativa` sí tienen respaldo en la docencia.
 
-- [ ] **P10 — Panel de Referencias** en la web: reutilizar `practice.referenceNames`
-      (6 instituciones, ya en el CV) como bloque propio, con el lenguaje visual
-      del sitio.
+
 - [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay
       charlas, conferencias ni ponencias en las fuentes; un bloque vacío o de
       relleno rompe la regla de integridad. Candidatos: el CTF de Ekoparty 2026.
