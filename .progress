@@ -68,6 +68,17 @@ decisiones del usuario.
       enlazar repos inexistentes. Las 10 URLs que quedan devuelven **200**
       (comprobado una a una). → `8c28cfa`
 
+- [x] **Evidencia del CTF de EvilSec (Ekoparty 2026)**: **3.er puesto**, con **15 de
+      22 retos resueltos y 3550 puntos** (README del repo, auditado contra el
+      scoreboard del evento) y writeups reproducibles con un script por reto. La
+      evidencia es doble: el correo de la organización (2026-10-19) y el repo
+      `statick88/ctf-evilsec-2026`. Entra como proyecto destacado y como dos
+      métricas verificadas en los tres espejos. → `feat/ctf-evidence`
+- [x] **La métrica de repositos pasa a 410** (dato real de la API de GitHub) y
+      el generador separa la unidad con espacio cuando no empieza por
+      puntuación ("15 / 22 retos", "3.er puesto", "410 repos"), sin tocar
+      "93.4/100". → `feat/ctf-evidence`
+
 ### Contrato ATS
 - [x] **10 criterios ejecutables** sobre el PDF publicado (`scripts/verify-cv-ats.mjs`):
       capa de texto real, contacto literal, encabezados estándar, orden de lectura
@@ -115,11 +126,7 @@ decisiones del usuario.
       `remediación`, `vulnerabilidad`. **Regla: una keyword entra sólo si es
       verdad** — `Scrum` no se declara si no se ha practicado; `gestión
       académica` y `evaluación formativa` sí tienen respaldo en la docencia.
-- [ ] **P5 — Evidencia del CTF**: el CV solo declara la skill `CTF: intermediate`.
-      Verificado en el correo (2026-10-21): **3.er puesto en el CTF de EvilSec –
-      Ekoparty 2026**, con repositorio de respaldo (`ctf-evilsec-2026`).
-      Incorporarlo como logro verificable en formato XYZ (qué, con qué métrica,
-      cómo) en el CV único.
+
 - [ ] **P10 — Panel de Referencias** en la web: reutilizar `practice.referenceNames`
       (6 instituciones, ya en el CV) como bloque propio, con el lenguaje visual
       del sitio.

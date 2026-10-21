@@ -182,6 +182,7 @@ Bachelor
 - **open-api-facturacion-sri** — REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Code](https://github.com/statick88/open-api-facturacion-sri)
 - **exploitarium** — Exploitation PoC collection for CVEs _Python, Exploit Development, CVE_ [Code](https://github.com/statick88/exploitarium)
 - **cybervault** — Security and audit repository _Python, Security_ [Code](https://github.com/statick88/cybervault)
+- **ctf-evilsec-2026** — Reproducible writeups from the EvilSec CTF (Ekoparty 2026): 15 of 22 challenges solved and 3,550 points, with a script per challenge that returns the flag and an audit against the event scoreboard. Third place in the event. _CTF, Writeups, 15/22 challenges, 3,550 points, 3rd place_ [Code](https://github.com/statick88/ctf-evilsec-2026)
 - **cv-diego** — Interactive digital CV _React, Vite, TypeScript, Tailwind CSS_ [Code](https://github.com/statick88/statick88.github.io)
 
 ## Certifications
@@ -247,6 +248,8 @@ Problem Solving · Teamwork · Communication · Adaptability · Time Management 
 ## Verified Metrics
 
 - **93.4/100** — Python 2026 cohort avg _(Source: Docente Cuantitativa Evaluation.pdf)_
-- **400+** — Public GitHub repos _(Source: github.com/statick88)_
+- **410** — Public GitHub repos _(Source: github.com/statick88)_
 - **55 / 898** — Notebooks / sources in NotebookLM _(Source: nlm --version (v0.6.8))_
+- **15 / 22 retos** — Challenges solved at the EvilSec CTF (Ekoparty 2026) _(Source: github.com/statick88/ctf-evilsec-2026 (auditado contra el scoreboard))_
+- **3.er puesto** — EvilSec CTF (Ekoparty 2026), 3,550 points _(Source: Correo de la organizacion del evento, 2026-10-19)_
 - **134+** — Categorized certifications _(Source: ~/Documents/Certificados/)_

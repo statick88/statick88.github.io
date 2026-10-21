@@ -251,7 +251,8 @@ function generateMarkdown(data, lang) {
   if (data.metrics) {
     markdown += `\n## ${t('Métricas Verificadas', 'Verified Metrics')}\n\n`;
     Object.values(data.metrics).forEach(m => {
-      markdown += `- **${m.value}${m.unit || ''}** — ${t(m.label_es, m.label_en)} _(${t('Fuente', 'Source')}: ${m.source})_\n`;
+      const unit = m.unit ? (/^[^\w\s]/.test(m.unit) ? m.unit : ` ${m.unit}`) : '';
+      markdown += `- **${m.value}${unit}** — ${t(m.label_es, m.label_en)} _(${t('Fuente', 'Source')}: ${m.source})_\n`;
     });
   }
 

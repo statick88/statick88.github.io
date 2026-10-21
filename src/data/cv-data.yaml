@@ -880,6 +880,16 @@ projects:
 # =============================================================================
 # Services (the offer the practice block publishes)
 # =============================================================================
+  - name: "ctf-evilsec-2026"
+    url: "https://github.com/statick88/ctf-evilsec-2026"
+    description:
+      es: "Writeups reproducibles del CTF de EvilSec (Ekoparty 2026): 15 de 22 retos resueltos y 3550 puntos, con un script por reto que devuelve la flag y una auditoria contra el scoreboard del evento. Tercer puesto."
+      en: "Reproducible writeups from the EvilSec CTF (Ekoparty 2026): 15 of 22 challenges solved and 3,550 points, with a script per challenge that returns the flag and an audit against the event scoreboard. Third place in the event."
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 0
+    technologies: ["CTF", "Writeups", "15/22 retos", "3550 puntos", "3.er puesto"]
 services:
   - id: "fullstack"
     title:
@@ -946,6 +956,10 @@ metrics:
 # =============================================================================
 # Metadata
 # =============================================================================
+  ctfChallengesSolved: 15
+  ctfTotalChallenges: 22
+  ctfPoints: 3550
+  ctfPodiumPlace: 3
 metadata:
   schemaVersion: "1.0.0"
   lastVerified: "2026-06-01"
