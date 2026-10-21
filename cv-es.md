@@ -1,10 +1,10 @@
 # Diego Medardo Saavedra García
 
+## Contacto
+
 ## Resumen Profesional
 
 Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). 10+ años en desarrollo full-stack y 6+ como docente universitario. Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP.
-
-### Información de Contacto
 
 - **Correo:** dsaavedra88@gmail.com
 - **Teléfono:** +593 980192790

@@ -111,11 +111,11 @@ function generateMarkdown(data, lang) {
   let markdown = `# ${data.basics.name}\n\n`;
 
   // Basics
+  markdown += `## ${t('Contacto', 'Contact')}\n\n`;
   markdown += `## ${t('Resumen Profesional', 'Professional Summary')}\n\n`;
   markdown += `${t(data.basics.label.es, data.basics.label.en)}\n\n`;
 
   // Contact info
-  markdown += `### ${t('Información de Contacto', 'Contact Information')}\n\n`;
   markdown += `- **${t('Correo', 'Email')}:** ${data.basics.email}\n`;
   markdown += `- **${t('Teléfono', 'Phone')}:** ${data.basics.phone}\n`;
   markdown += `- **${t('Ubicación', 'Location')}:** ${data.basics.location.city}, ${data.basics.location.region}, ${data.basics.location.countryCode}\n`;

@@ -1,10 +1,10 @@
 # Diego Medardo Saavedra García
 
+## Contact
+
 ## Professional Summary
 
 Master's in Computer Science (UTPL). MSc Cybersecurity in progress (UCM). 10+ years in full-stack development, 6+ as university instructor. Specialized in React, Node.js, Python, pentesting, reverse engineering, and PBL curriculum design.
-
-### Contact Information
 
 - **Email:** dsaavedra88@gmail.com
 - **Phone:** +593 980192790

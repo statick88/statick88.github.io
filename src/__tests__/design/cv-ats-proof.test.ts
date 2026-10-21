@@ -36,7 +36,7 @@ const LANGUAGES = ['es', 'en'] as const
  */
 const SECTIONS: Record<'es' | 'en', Record<string, string>> = {
   es: {
-    contact: '### Información de Contacto',
+    contact: '## Contacto',
     summary: '## Resumen Profesional',
     practice: '## Mi Práctica',
     experience: '## Experiencia Laboral',
@@ -45,7 +45,7 @@ const SECTIONS: Record<'es' | 'en', Record<string, string>> = {
     certifications: '## Certificaciones',
   },
   en: {
-    contact: '### Contact Information',
+    contact: '## Contact',
     summary: '## Professional Summary',
     practice: '## My Practice',
     experience: '## Work Experience',
