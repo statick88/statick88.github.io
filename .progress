@@ -1,0 +1,69 @@
+# .progress — Checklist del CV (sitio + PDFs)
+
+> Archivo de seguimiento del trabajo del CV en este repo. Formato alineado con el
+> de `~/Projects/plugin_career_ops_tracker/.progress`: **una casilla se marca sólo
+> con evidencia observada**.
+> Última actualización: 2026-10-21. Rama local actual: `feat/console-ui-redesign`
+> (`main` es ancestro de HEAD → la integración es una decisión del usuario).
+
+---
+
+## Hecho (con commit)
+
+- [x] **Variante `consultor`** (CV de práctica / organización, modelada sobre la referencia `michalsoltysik.com`): servicios con modalidades y tarifas, herramientas propias, formación propia, 3 encargos de seguridad autorizados y referencias. Bloque `practice` emitido desde una sola fuente hacia TS/JS/YAML, con test de deriva que compara los tres espejos. → `61e9c49`
+- [x] **Fix de los encabezados en los CV en español**: `t()` nunca recibía el idioma, así que *todos* los CV en español salían con encabezados en inglés ("PROFESSIONAL SUMMARY", "CONTACT") y solo el cuerpo en español. → `61e9c49`
+- [x] **Los CV por perfil son desplegables**: `render-cv-pdfs.ts` escribe ahora los 12 PDF en `public/` (antes vivían en la raíz del repo y no se desplegaban; en `public/` solo había `cv-es.pdf` y `cv-en.pdf`). Los campos `pdf` de `profileData` apuntan a rutas reales. → `b562ac7`
+- [x] **La web enlaza los CV**: `ProfileSelector` ofrece el perfil `consultor` y un enlace PDF por perfil, sensible al idioma activo. Antes no había ni una referencia a `.pdf` en `src/`. → `b562ac7`
+- [x] 232 tests verdes, `tsc --noEmit` limpio, gates de pre-commit (security audit, lint, typecheck, vitest) en verde tras cada commit.
+
+---
+
+## Pendiente
+
+### P1 — Pre-render / `noscript` para ATS  ⬜ *(el de mayor impacto)*
+- [ ] El sitio sirve **HTML vacío** (verificado: cero `noscript`/pre-render en `src/`). Un ATS que no ejecuta JavaScript no lee nada de la web; hoy el único artefacto es el PDF.
+- [ ] Opciones: (a) pre-render del HTML en build (resume + datos clave + enlaces a los PDF), (b) bloque `noscript` con el resumen, contacto literal y enlaces a los CV.
+- [ ] Criterio: `curl -s https://statick88.github.io | grep -o 'dsaavedra88@gmail.com'` devuelve el correo sin ejecutar JS.
+
+### P2 — Alineación de `projects` entre las tres fuentes  ⬜ *(brecha de integridad)*
+- [ ] Verificado 2026-10-21: las tres fuentes **divergen**:
+  - `cv-data.ts` → 6 (course-of-cybersecurity, cyber-guardians, desarrollo-software-seguro, Course_of_python, MindLedger, jarvis-os)
+  - `cvData.js` → 8+ (open-api-facturacion-sri, MindLedger, CyberGuardians, multi-agent-system, material-educativo-unl, UCM-Moodle-Pentest, OpenWrt-Hardware-Hacking, ms08-067-metasploit-demo)
+  - `cv-data.yaml` → 1 (exploitarium)
+- [ ] El test de deriva (`src/__tests__/design/cv-data-drift.test.ts`) **solo compara `work`** (roles, fechas, highlights): por eso nadie lo detectó.
+- [ ] Extender el test a `projects`, `services`, `skills` y `certifications` (mismo criterio: los tres espejos deben coincidir).
+- [ ] Decidir el conjunto canónico y propagarlo a los tres ficheros.
+
+### P3 — Sección "Herramientas Propias" incompleta  ⬜ *(consecuencia de P2)*
+- [ ] En `cv-consultor-es.pdf` sale **1 de 4** herramientas (solo MindLedger): los nombres no coinciden entre la fuente TS (`cyber-guardians`) y el espejo JS (`CyberGuardians`), y el generador resuelve por nombre exacto.
+- [ ] Se cierra al resolver P2 (nombres alineados) o haciendo la resolución insensible a mayúsculas.
+
+### P4 — Keywords del audit ATS que siguen ausentes  ⬜
+- [ ] Contadas en `cv-data.ts`: `Scrum` 0 · `ágil` 0 · `gestión académica` 0 · `evaluación formativa` 0.
+- [ ] Ya presentes: `rúbrica` (4) · `remediación` (3) · `vulnerabilidad` (1).
+- [ ] Regla: **una keyword entra sólo si es verdad**. `Scrum` no se declara si no la ha practicado; `evaluación formativa` y `gestión académica` sí tienen respaldo en la docencia (evaluación con rúbricas, coordinación de cátedra).
+
+### P5 — Evidencia del CTF sin incorporar  ⬜
+- [ ] Hoy el CV solo declara la skill `CTF: intermediate`.
+- [ ] Verificado en el correo (2026-10-21): **3er lugar en el CTF de EvilSec – Ekoparty 2026**; repositorio de respaldo `github.com/statick88/ctf-evilsec-2026`.
+- [ ] Incorporarlo como logro verificable en las variantes `hacker` y `consultor` (formato XYZ: qué, métrica, cómo) y en el bloque `practice` si procede.
+
+### P6 — Integración de la rama  ⬜ *(decisión del usuario)*
+- [ ] El trabajo del CV vive en la rama local `feat/console-ui-redesign`; `main` es ancestro del HEAD. Push, PR y merge son decisiones del usuario.
+- [ ] Pendiente de definir: ¿rama nueva desde `main` con cherry-pick, o PR directo de esta rama?
+
+### P7 — Decisiones de contenido del CV  ⬜ *(del usuario)*
+- [ ] ¿Entran los 13 PR de ejercicios de curso en la sección "aportes"?
+- [ ] ¿Se puede nombrar al cliente SolnusTec? Hoy va **anonimizado** ("nombre bajo acuerdo de confidencialidad"): no se verificó que la carta de autorización permita publicar el nombre, y un pentest con datos de cliente no se expone sin ese permiso.
+
+### P8 — Verificación de la variante `consultor`  ⬜
+- [ ] Confirmar que el PDF `public/cv-consultor-es.pdf` no supera las 2 páginas que aceptan los ATS (el bloque de práctica suma secciones).
+- [ ] Pasar `verify_cv_pdf.py` con `--ascii-dates --email --phone` (ya en verde tras la generación) y comprobar el conteo de palabras.
+
+---
+
+## Notas y evidencia
+
+- 2026-10-21 — Verificación de brechas **por código**, no por memoria: `grep` sobre `src/` (cero referencias a `.pdf`, cero `noscript`), conteo de keywords en `cv-data.ts`, comparación de los `projects` de las tres fuentes y comparación de `NEXT_ACTION` del bridge del plugin.
+- 2026-10-21 — La sección `practice` del modeloCv quedó definida en un solo script (`~/Documents/CareerOps/scripts/patch_practice_cv.py`) que emite TS, JS y YAML desde el mismo diccionario: por construcción los tres espejos no pueden divergir en ese bloque.
+- 2026-10-21 — Reglas de la casa que se aplicaron: sin PDF editados a mano (todo desde `pnpm generate:cvs`), sin afirmaciones nuevas sin respaldo en los datos, y sin nombrar a un cliente sin autorización verificada.
