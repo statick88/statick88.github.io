@@ -166,6 +166,7 @@ export interface Basics {
 // ── Profile (selector de perfiles) ───────────────────────────────
 
 export interface Profile {
+  /** Renders the practice/organization block in the CV markdown. */
   readonly id: string
   readonly label: BilingualText
   readonly color: string
@@ -174,6 +175,7 @@ export interface Profile {
   readonly skills: readonly Skill[]
   readonly certifications: readonly Certification[]
   readonly pdf: string
+  readonly practice?: boolean
 }
 
 // ── Category Colors ──────────────────────────────────────────────

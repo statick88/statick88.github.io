@@ -11,8 +11,8 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { load as loadYaml } from 'js-yaml'
-import { work } from '@/data/cv-data'
-import { cvData } from '@/data/cvData.js'
+import { work, practice, profileData } from '@/data/cv-data'
+import { cvData, profileData as jsProfileData } from '@/data/cvData.js'
 
 const ROOT = resolve(__dirname, '../../..')
 
@@ -26,6 +26,13 @@ function readYamlWork(): YamlWorkEntry[] {
   const raw = readFileSync(resolve(ROOT, 'src/data/cv-data.yaml'), 'utf8')
   const parsed = loadYaml(raw) as { experience?: YamlWorkEntry[] }
   return parsed.experience ?? []
+}
+
+
+function readYamlPractice(): unknown {
+  const raw = readFileSync(resolve(ROOT, 'src/data/cv-data.yaml'), 'utf8')
+  const parsed = loadYaml(raw) as { practice?: unknown }
+  return parsed.practice ?? {}
 }
 
 describe('CV data sources stay in sync', () => {
@@ -78,5 +85,26 @@ describe('CV data sources stay in sync', () => {
       expect(entry.summary.es, `summary of ${entry.name}`).not.toMatch(redFlag)
       expect(entry.summary.en, `summary of ${entry.name}`).not.toMatch(redFlag)
     }
+  })
+
+  it('carries the same practice block everywhere', () => {
+    const ts = JSON.parse(JSON.stringify(practice))
+    const js = JSON.parse(JSON.stringify((cvData as unknown as { practice?: unknown }).practice))
+    const yaml = JSON.parse(JSON.stringify(readYamlPractice()))
+    expect(js, 'practice in cvData.js').toEqual(ts)
+    expect(yaml, 'practice in cv-data.yaml').toEqual(ts)
+  })
+
+  it('carries the same consultant profile record everywhere', () => {
+    const ts = JSON.parse(JSON.stringify((profileData as Record<string, { id?: string; pdf?: string; label?: unknown }>).consultor))
+    const js = JSON.parse(
+      JSON.stringify(
+        (jsProfileData as Record<string, { id?: string; pdf?: string; label?: unknown }>).consultor,
+      ),
+    )
+    expect(ts.id, 'consultor id in cv-data.ts').toBe('consultor')
+    expect(js.id, 'consultor id in cvData.js').toBe(ts.id)
+    expect(js.pdf, 'consultor pdf in cvData.js').toBe(ts.pdf)
+    expect(js.label, 'consultor label in cvData.js').toEqual(ts.label)
   })
 })

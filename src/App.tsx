@@ -17,6 +17,7 @@ import { AppLayout } from '@/components/layout/AppLayout'
 import IdentityColumn from '@/components/IdentityColumn'
 
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
+import { ServicesPanel } from '@/components/panels/ServicesPanel'
 import { ResearchPanel } from '@/components/panels/ResearchPanel'
 import { ContributionsPanel } from '@/components/panels/ContributionsPanel'
 import { PluginsPanel } from '@/components/panels/PluginsPanel'
@@ -81,6 +82,14 @@ function AppInner() {
 
       <section id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
         <ProfileCard profile={profile} metrics={metrics} headline={adaptHeadline()} />
+      </section>
+
+      <section
+        id={SECTION.servicios}
+        aria-label={t('servicios', 'services')}
+        className="scroll-mt-16"
+      >
+        <ServicesPanel />
       </section>
 
       <section

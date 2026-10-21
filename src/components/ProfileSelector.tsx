@@ -29,10 +29,16 @@ export const PROFILES: ProfileOption[] = [
     color: '#3ecf8e',
     desc: 'ABP + ADDIE + cursos',
   },
+  {
+    id: 'consultor',
+    label: 'Consultor',
+    color: '#8b5cf6',
+    desc: 'Servicios, herramientas y encargos',
+  },
 ]
 
 export default function ProfileSelector() {
-  const { t } = useApp()
+  const { t, language } = useApp()
   const { activeProfile, setActiveProfile } = useProfileContext()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -128,6 +134,15 @@ export default function ProfileSelector() {
                       ✓
                     </span>
                   )}
+                  <a
+                    href={`/cv-${profile.id}-${language}.pdf`}
+                    download
+                    onClick={(event) => event.stopPropagation()}
+                    className="shrink-0 text-[11px] text-ct-subtext-0 hover:text-ct-accent-bright underline underline-offset-2"
+                    aria-label={t('Descargar el CV de este perfil', 'Download this profile CV')}
+                  >
+                    {t('PDF', 'PDF')}
+                  </a>
                 </button>
               )
             })}

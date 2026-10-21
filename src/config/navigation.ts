@@ -27,6 +27,7 @@ export interface NavGroupDef {
 /** Canonical section ids — the DOM ids of the document sections. */
 export const SECTION = {
   resumen: 'resumen',
+  servicios: 'servicios',
   experiencia: 'experiencia',
   educacion: 'educacion',
   habilidades: 'habilidades',
@@ -45,6 +46,7 @@ export const NAV_GROUPS = [
     title: { es: 'currículum', en: 'curriculum' },
     items: [
       { id: SECTION.resumen, label: { es: 'resumen', en: 'summary' } },
+      { id: SECTION.servicios, label: { es: 'servicios', en: 'services' } },
       { id: SECTION.experiencia, label: { es: 'experiencia', en: 'experience' } },
       { id: SECTION.educacion, label: { es: 'educación', en: 'education' } },
       { id: SECTION.habilidades, label: { es: 'habilidades', en: 'skills' } },

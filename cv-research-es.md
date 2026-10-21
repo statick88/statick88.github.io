@@ -1,16 +1,16 @@
 # Investigador | MSc Ciberseguridad UCM
 
-## Professional Summary
+## Resumen Profesional
 
 Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. más de 400 repos en GitHub. Interesado en threat modeling, pentesting y AI security.
 
-## Technical Skills
+## Habilidades Técnicas
 
 ### Backend
 
 - **Python**: Avanzado
 
-### Security
+### Seguridad
 
 - **Ethical Hacking**: Avanzado
 - **Penetration Testing**: Avanzado
@@ -18,7 +18,7 @@ Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en
 - **Threat Modeling**: Avanzado
 - **Vulnerability Assessment**: Avanzado
 
-### Tools
+### Herramientas
 
 - **LaTeX**: Avanzado
 - **Quarto**: Avanzado
@@ -26,23 +26,23 @@ Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en
 - **NotebookLM Power-User**: Experto
 - **Git**: Avanzado
 
-### AI
+### Inteligencia Artificial
 
 - **Machine Learning**: Intermedio
 - **Statistical Analysis**: Intermedio
 - **R Language**: Intermedio
 - **TensorFlow**: Intermedio
 
-### Research
+### Investigación
 
 - **Research Methodology**: Avanzado
 - **Scientific Writing**: Avanzado
 - **Academic Publishing**: Intermedio
 
-## Experience
+## Experiencia
 
 ### Diseñador y arquitecto de software (proyecto propio) — Meeting Planner AI System
-2026-01-01 Present
+2026-01-01 Presente
 
 - Arquitecté un sistema modular de transcripción y análisis con arquitectura limpia, integrando Whisper/MLX para speech-to-text, LLMs (Groq/xAI) para análisis y resumen, y Docker Compose para entornos reproducibles.
 - Reduje 80% el tiempo dedicado a la transcripción manual, procesando horas de contenido audiovisual cada semana sin intervención humana.
@@ -51,7 +51,7 @@ Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en
 **Stack:** Python, FastAPI, React 19, Zustand, Whisper/MLX, LLM (Groq, xAI), Docker Compose, SDD
 
 ### Docente, Facilitador y Curriculista — ABACOM
-2021-12-01 Present
+2021-12-01 Presente
 
 - Diseñé y dicté 8 cursos de Ethical Hacking, Python, Flutter, MicroPython, servidores Linux y software seguro, con 200+ horas docentes verificadas y 92+ estudiantes.
 - Logré un promedio de evaluación de 93.4/100 en la cohorte de Python 2026, publicando el material como 8 libros Quarto abiertos en GitHub Pages.
@@ -67,7 +67,7 @@ Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en
 
 **Stack:** Django, React, Python, JavaScript, Full Stack
 
-## Certifications
+## Certificaciones
 
-- **Magíster en Cs. y Tec. de la Computación** - UTPL (Active)
-- **MSc Ciberseguridad (en curso)** - Universidad Complutense de Madrid (In Progress)
+- **Magíster en Cs. y Tec. de la Computación** - UTPL (Activo)
+- **MSc Ciberseguridad (en curso)** - Universidad Complutense de Madrid (En Progreso)

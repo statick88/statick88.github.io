@@ -25,12 +25,12 @@ interface Target {
   pdf: string
 }
 
-const PROFILES = ['developer', 'hacker', 'research', 'docente-facilitador'] as const
+const PROFILES = ['developer', 'hacker', 'research', 'docente-facilitador', 'consultor'] as const
 const LANGUAGES = ['es', 'en'] as const
 
 const TARGETS: Target[] = [
   ...PROFILES.flatMap((profile) =>
-    LANGUAGES.map((lang) => ({ md: `cv-${profile}-${lang}.md`, pdf: `cv-${profile}-${lang}.pdf` })),
+    LANGUAGES.map((lang) => ({ md: `cv-${profile}-${lang}.md`, pdf: `public/cv-${profile}-${lang}.pdf` })),
   ),
   { md: 'cv-es.md', pdf: 'public/cv-es.pdf' },
   { md: 'cv-en.md', pdf: 'public/cv-en.pdf' },

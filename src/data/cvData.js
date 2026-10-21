@@ -50,7 +50,7 @@ export const profileData = {
       es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. más de 400 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
       en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. more than 400 public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
     },
-    pdf: "cv-developer.pdf"
+    pdf: "/cv-developer-es.pdf"
   },
 
   hacker: {
@@ -93,7 +93,7 @@ export const profileData = {
       es: "Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). Auditoría Moodle UCM: 5 hallazgos (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Ciberseguridad UCM en curso.",
       en: "Ethical Hacker and Security Researcher. Pentesting, IDOR/CVSS, RE/Exploitation (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). UCM Moodle audit: 5 findings (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Cybersecurity UCM in progress."
     },
-    pdf: "cv-hacker.pdf"
+    pdf: "/cv-hacker-es.pdf"
   },
 
   research: {
@@ -129,7 +129,7 @@ export const profileData = {
       es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. más de 400 repos en GitHub. Interesado en threat modeling, pentesting y AI security.",
       en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. more than 400 repos on GitHub. Interested in threat modeling, pentesting, and AI security."
     },
-    pdf: "cv-research.pdf"
+    pdf: "/cv-research-es.pdf"
   },
 
   "docente-facilitador": {
@@ -167,9 +167,19 @@ export const profileData = {
       es: "Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).",
       en: "Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.)."
     },
-    pdf: "cv-docente-facilitador.pdf"
+    pdf: "/cv-docente-facilitador-es.pdf"
   }
 }
+
+// ── Variante de práctica (organización) ──────────────────────────────
+profileData.consultor = {
+  ...profileData.hacker,
+  id: 'consultor',
+  label: {"es": "Consultor de Seguridad y Software | Security & Software Consultant", "en": "Security & Software Consultant | Consultor de Seguridad y Software"},
+  summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, 134+ certifications, and 3 documented pentest engagements."},
+  pdf: '/cv-consultor-es.pdf',
+  practice: true,
+};
 
 export const categoryColors = {
   "frontend-fundamentals": { bg: "bg-blue-500/20", border: "border-blue-500/50", text: "text-blue-400" },
@@ -716,5 +726,91 @@ export const cvData = {
       es: 'Agendar Llamada Gratuita',
       en: 'Schedule Free Call'
     }
-  }
+  },
+
+  // ── Práctica / organización (espejo de cv-data.ts) ─────────────────
+  practice: {
+  "title": {
+    "es": "Consultoría de Seguridad y Software",
+    "en": "Security & Software Consulting"
+  },
+  "positioning": {
+    "es": "Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, 134+ certificaciones activas y 400+ repositorios públicos.",
+    "en": "Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, 134+ active certifications, and 400+ public repositories."
+  },
+  "serviceIds": [
+    "fullstack",
+    "security",
+    "consulting",
+    "training"
+  ],
+  "toolNames": [
+    "MindLedger",
+    "course-of-cybersecurity",
+    "desarrollo-software-seguro",
+    "cyber-guardians"
+  ],
+  "training": {
+    "courses": 22,
+    "hours": 200,
+    "students": 92,
+    "averageScore": 93.4,
+    "institutions": 6
+  },
+  "engagements": [
+    {
+      "period": "Oct 2026",
+      "sector": {
+        "es": "E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)",
+        "en": "E-commerce with a 3D client (name withheld under a confidentiality agreement)"
+      },
+      "scope": {
+        "es": "Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días",
+        "en": "Authorized production pentest, with a signed authorization letter and a 2-day window"
+      },
+      "outcome": {
+        "es": "109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación",
+        "en": "109 subdomains inventoried, a matrix of 15 verified CVEs, 6 adversary chains, and a remediation plan"
+      }
+    },
+    {
+      "period": "Jul 2026",
+      "sector": {
+        "es": "Aplicación web con gestión de agendas",
+        "en": "Web application with scheduling management"
+      },
+      "scope": {
+        "es": "Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente",
+        "en": "Security test over functional findings, with the client's prior authorization"
+      },
+      "outcome": {
+        "es": "Hallazgos adjuntos y priorizados con severidad y remediación",
+        "en": "Findings attached and prioritized with severity and remediation"
+      }
+    },
+    {
+      "period": "Sep 2025",
+      "sector": {
+        "es": "Proyecto web (nombre bajo acuerdo de confidencialidad)",
+        "en": "Web project (name withheld under a confidentiality agreement)"
+      },
+      "scope": {
+        "es": "Carta de autorización previa, con alcance y ventana acordados antes de ejecutar",
+        "en": "Prior authorization letter, with scope and window agreed before execution"
+      },
+      "outcome": {
+        "es": "Ejecución dentro del alcance firmado, sin tocar activos de terceros",
+        "en": "Execution within the signed scope, without touching third-party assets"
+      }
+    }
+  ],
+  "referenceNames": [
+    "ESPE - Universidad de las Fuerzas Armadas",
+    "UIDE - Universidad Internacional del Ecuador (Ext. Loja)",
+    "ABACOM",
+    "Codings Academy",
+    "Instituto Superior Tecnológico Juan Montalvo",
+    "APC - Antonio Peña Celi"
+  ]
+},
 }

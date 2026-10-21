@@ -1,0 +1,138 @@
+# .progress — Checklist del CV (sitio + PDFs)
+
+> Archivo de seguimiento del trabajo del CV en este repo. Formato alineado con el
+> de `~/Projects/plugin_career_ops_tracker/.progress`: **una casilla se marca sólo
+> con evidencia observada**.
+> Última actualización: 2026-10-21. Rama local actual: `feat/console-ui-redesign`
+> (`main` es ancestro de HEAD → la integración es una decisión del usuario).
+
+---
+
+## Hecho (con commit)
+
+- [x] **Variante `consultor`** (CV de práctica / organización, modelada sobre la referencia `michalsoltysik.com`): servicios con modalidades y tarifas, herramientas propias, formación propia, 3 encargos de seguridad autorizados y referencias. Bloque `practice` emitido desde una sola fuente hacia TS/JS/YAML, con test de deriva que compara los tres espejos. → `61e9c49`
+- [x] **Fix de los encabezados en los CV en español**: `t()` nunca recibía el idioma, así que *todos* los CV en español salían con encabezados en inglés ("PROFESSIONAL SUMMARY", "CONTACT") y solo el cuerpo en español. → `61e9c49`
+- [x] **Los CV por perfil son desplegables**: `render-cv-pdfs.ts` escribe ahora los 12 PDF en `public/` (antes vivían en la raíz del repo y no se desplegaban; en `public/` solo había `cv-es.pdf` y `cv-en.pdf`). Los campos `pdf` de `profileData` apuntan a rutas reales. → `b562ac7`
+- [x] **La web enlaza los CV**: `ProfileSelector` ofrece el perfil `consultor` y un enlace PDF por perfil, sensible al idioma activo. Antes no había ni una referencia a `.pdf` en `src/`. → `b562ac7`
+- [x] 232 tests verdes, `tsc --noEmit` limpio, gates de pre-commit (security audit, lint, typecheck, vitest) en verde tras cada commit.
+
+---
+
+## Pendiente
+
+### P1 — Pre-render / `noscript` para ATS  ⬜ *(el de mayor impacto)*
+- [ ] El sitio sirve **HTML vacío** (verificado: cero `noscript`/pre-render en `src/`). Un ATS que no ejecuta JavaScript no lee nada de la web; hoy el único artefacto es el PDF.
+- [ ] Opciones: (a) pre-render del HTML en build (resume + datos clave + enlaces a los PDF), (b) bloque `noscript` con el resumen, contacto literal y enlaces a los CV.
+- [ ] Criterio: `curl -s https://statick88.github.io | grep -o 'dsaavedra88@gmail.com'` devuelve el correo sin ejecutar JS.
+
+### P2 — Alineación de `projects` entre las tres fuentes  ⬜ *(brecha de integridad)*
+- [ ] Verificado 2026-10-21: las tres fuentes **divergen**:
+  - `cv-data.ts` → 6 (course-of-cybersecurity, cyber-guardians, desarrollo-software-seguro, Course_of_python, MindLedger, jarvis-os)
+  - `cvData.js` → 8+ (open-api-facturacion-sri, MindLedger, CyberGuardians, multi-agent-system, material-educativo-unl, UCM-Moodle-Pentest, OpenWrt-Hardware-Hacking, ms08-067-metasploit-demo)
+  - `cv-data.yaml` → 1 (exploitarium)
+- [ ] El test de deriva (`src/__tests__/design/cv-data-drift.test.ts`) **solo compara `work`** (roles, fechas, highlights): por eso nadie lo detectó.
+- [ ] Extender el test a `projects`, `services`, `skills` y `certifications` (mismo criterio: los tres espejos deben coincidir).
+- [ ] Decidir el conjunto canónico y propagarlo a los tres ficheros.
+
+### P3 — Sección "Herramientas Propias" incompleta  ⬜ *(consecuencia de P2)*
+- [ ] En `cv-consultor-es.pdf` sale **1 de 4** herramientas (solo MindLedger): los nombres no coinciden entre la fuente TS (`cyber-guardians`) y el espejo JS (`CyberGuardians`), y el generador resuelve por nombre exacto.
+- [ ] Se cierra al resolver P2 (nombres alineados) o haciendo la resolución insensible a mayúsculas.
+
+### P4 — Keywords del audit ATS que siguen ausentes  ⬜
+- [ ] Contadas en `cv-data.ts`: `Scrum` 0 · `ágil` 0 · `gestión académica` 0 · `evaluación formativa` 0.
+- [ ] Ya presentes: `rúbrica` (4) · `remediación` (3) · `vulnerabilidad` (1).
+- [ ] Regla: **una keyword entra sólo si es verdad**. `Scrum` no se declara si no la ha practicado; `evaluación formativa` y `gestión académica` sí tienen respaldo en la docencia (evaluación con rúbricas, coordinación de cátedra).
+
+### P5 — Evidencia del CTF sin incorporar  ⬜
+- [ ] Hoy el CV solo declara la skill `CTF: intermediate`.
+- [ ] Verificado en el correo (2026-10-21): **3er lugar en el CTF de EvilSec – Ekoparty 2026**; repositorio de respaldo `github.com/statick88/ctf-evilsec-2026`.
+- [ ] Incorporarlo como logro verificable en las variantes `hacker` y `consultor` (formato XYZ: qué, métrica, cómo) y en el bloque `practice` si procede.
+
+### P6 — Integración de la rama  ⬜ *(decisión del usuario)*
+- [ ] El trabajo del CV vive en la rama local `feat/console-ui-redesign`; `main` es ancestro del HEAD. Push, PR y merge son decisiones del usuario.
+- [ ] Pendiente de definir: ¿rama nueva desde `main` con cherry-pick, o PR directo de esta rama?
+
+### P7 — Decisiones de contenido del CV  ⬜ *(del usuario)*
+- [ ] ¿Entran los 13 PR de ejercicios de curso en la sección "aportes"?
+- [ ] ¿Se puede nombrar al cliente SolnusTec? Hoy va **anonimizado** ("nombre bajo acuerdo de confidencialidad"): no se verificó que la carta de autorización permita publicar el nombre, y un pentest con datos de cliente no se expone sin ese permiso.
+
+### P8 — Verificación de la variante `consultor`  ⬜
+- [ ] Confirmar que el PDF `public/cv-consultor-es.pdf` no supera las 2 páginas que aceptan los ATS (el bloque de práctica suma secciones).
+- [ ] Pasar `verify_cv_pdf.py` con `--ascii-dates --email --phone` (ya en verde tras la generación) y comprobar el conteo de palabras.
+
+---
+
+## Notas y evidencia
+
+- 2026-10-21 — Verificación de brechas **por código**, no por memoria: `grep` sobre `src/` (cero referencias a `.pdf`, cero `noscript`), conteo de keywords en `cv-data.ts`, comparación de los `projects` de las tres fuentes y comparación de `NEXT_ACTION` del bridge del plugin.
+- 2026-10-21 — La sección `practice` del modeloCv quedó definida en un solo script (`~/Documents/CareerOps/scripts/patch_practice_cv.py`) que emite TS, JS y YAML desde el mismo diccionario: por construcción los tres espejos no pueden divergir en ese bloque.
+- 2026-10-21 — Reglas de la casa que se aplicaron: sin PDF editados a mano (todo desde `pnpm generate:cvs`), sin afirmaciones nuevas sin respaldo en los datos, y sin nombrar a un cliente sin autorización verificada.
+
+---
+
+## Verificación de la adopción de la organización de `michalsoltysik.com` (2026-10-21)
+
+Comparación de las tres capas, hecha sobre el código y los artefactos, no de memoria.
+
+| Bloque del sitio de referencia | CV `consultor` (PDF) | Nuestra UI (web) |
+|---|---|---|
+| Posicionamiento + CV descargable | ✅ Resumen Profesional + contacto literal | ✅ ProfileCard + selector con PDF por perfil |
+| **Services** (servicios, modalidades, tarifas) | ✅ Servicios (4) | ❌ **no existe panel**: los datos están en `cv-data.ts` (`services`) y 0 componentes los usan |
+| **Training** | ✅ Formación Propia | ✅ CoursesPanel |
+| **Skills** | ✅ Habilidades Técnicas | ✅ SkillsCard + LevelBar |
+| **References** | ✅ Referencias (6 instituciones) | ❌ no hay panel de referencias |
+| **Cybersecurity content** | ✅ Encargos de seguridad autorizados | ✅ ContributionsPanel + ResearchPanel |
+| **Own tools** | ⚠️ Herramientas Propias: **1 de 4** (divergencia de `projects`, ver P2/P3) | ✅ PluginsPanel + ProjectsGrid |
+| **Events** | ❌ | ❌ **y no hay datos verificados**: no hay charias, conferencias ni ponencias en las fuentes actuales |
+| Certificaciones / Experiencia / Educación | ✅ | ✅ CertificationsList, ExperienceTimeline, EducationCard |
+
+**Conclusión:** la organización del sitio de referencia está adoptada en el CV (6 de 8 bloques) y **a medias en la web** (4 de 8). Lo que falta en la UI esServices, Referencias, Eventos y el bloque de encargos.
+
+### Pendiente que añade esta verificación
+
+- [ ] **P9 — Panel de Servicios en la UI**: montar `services` (4 servicios con modalidades y tarifas) como panel propio, con el mismo lenguaje visual que el resto (tokens `ct-*`, `Panel`/`PanelRow`). Es el bloque más central del sitio de referencia y ya está en los datos.
+- [ ] **P10 — Panel de Referencias**: reutilizar `practice.referenceNames` (6 instituciones, ya en el CV) o datos verificados de clientes con permiso.
+- [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay charias, conferencias ni ponencias en las fuentes; un bloque vacío o inventado rompe la regla de integridad. Candidatos de evidencia a reunir: CTF de EvilSec – Ekoparty 2026 (3.er puesto, verificable
+  en el repositorio `ctf-evilsec-2026`) y cualquier charla o ponencia documentada.
+- [ ] **P12 — Paneles sensibles al perfil activo**: `App.tsx` adapta titular y experiencia por perfil, pero los paneles (Courses, Contributions, Plugins, Research) son estáticos: al elegir "Consultor" el cuerpo de la web no cambia, sólo el PDF que se descarga.
+- [ ] **P13 — Encargos de seguridad en la web**: el bloque `practice.engagements` (3 pentests anonimizados) sólo vive en el PDF; decidir si se expone en el sitio.
+
+---
+
+## Plan de ejecución (2026-10-21)
+
+Orden acordado: **P9 → P12 → P2** (primero el bloque que falta y es de UI, luego la coherencia del selector, luego la integridad de datos).
+
+### P9 — Panel de Servicios en la UI  ✅ *cerrado*
+
+- [x] 9.1 Creado `src/components/panels/ServicesPanel.tsx` con `Panel` + `PanelRow` — mismo idioma visual que `PluginsPanel` (plantilla: nombre a la izquierda, descripción y datos a la derecha).
+- [x] 9.2 Datos: importa `services` de `@/data/cv-data` (patrón de `PluginsPanel` con `@/data/contributions`). **No** tocar `src/lib/schemas` ni `src/lib/sanitize`: los paneles leen datos directamente, así que `services` no hace falta en el esquema.
+- [x] 9.3 Color: el acento sale del dato (`service.color`), nunca hex hardcodeado en el componente.
+- [x] 9.4 Montado en `src/App.tsx` en la columna derecha, tras el bloque de identidad (`ProfileCard`).
+- [x] 9.5 Test en `src/__tests__/design/services-panel.test.tsx`: renderiza los 4 servicios desde los datos reales y comprueba título, modalidades y tarifa.
+- [x] 9.6 Gates: `pnpm typecheck`, `pnpm test`, pre-commit; commit `feat(cv): panel de servicios en la UI`.
+- [x] 9.7 Evidencia: el bloque ya existe en el PDF (`cv-consultor-es.pdf`) y el panel está
+  montado en la web. Pendiente una captura del panel en el navegador.
+
+### P12 — Paneles sensibles al perfil activo  ⬜
+
+- [ ] 12.1 Mapear qué bloques dependen del perfil: hoy sólo se adaptan titular y experiencia (`adaptHeadline()`, `adaptExperience()`); Courses, Contributions, Plugins y Research son estáticos.
+- [ ] 12.2 Decidir bloque por bloque: contenido propio del perfil, o contenido común con etiqueta.
+- [ ] 12.3 Test: cambiar de perfil cambia lo que debe cambiar y lo que no.
+
+### P2 — Deriva de `projects` entre las tres fuentes  ⬜
+
+- [ ] 2.1 Decidir el conjunto canónico de proyectos (hoy: TS 6 · JS 8+ · YAML 1).
+- [ ] 2.2 Propagar a `cv-data.ts`, `cvData.js` y `cv-data.yaml`.
+- [ ] 2.3 Extender `src/__tests__/design/cv-data-drift.test.ts` a `projects`, `services`, `skills` y `certifications` (hoy sólo compara `work`).
+- [ ] 2.4 Regenerar los PDF y comprobar que "Herramientas Propias" sale con las 4 herramientas (cierra P3).
+- 2026-10-21 — **P9 cerrado**: `ServicesPanel` con `Panel`/`PanelRow` y tokens `ct-*`
+  (nada de la UI del sitio de referencia: la UI no se toca, sólo se le añade el
+  bloque de la organización). Los datos salen de `services` en `@/data/cv-data`
+  —el mismo patrón que `PluginsPanel` con `@/data/contributions`—, así que no
+  hizo falta tocar `schemas` ni `sanitize`. Sección nueva `servicios` en
+  `src/config/navigation.ts` (id = id del DOM, para que ningún enlace apunte a
+  un ancla inexistente) y montada en la columna derecha tras el bloque de
+  identidad. Test propio que renderiza los 4 servicios contra los datos reales.
+  Gates: `tsc --noEmit` limpio, **16 ficheros / 236 tests en verde** (3 nuevos),
+  lint sin errores nuevos, build de producción y hooks de pre-commit en verde.
