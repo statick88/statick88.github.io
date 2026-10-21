@@ -1,9 +1,35 @@
 import { writeFileSync } from 'fs';
-import { profileData } from './src/data/cvData.js';
+import { cvData, profileData } from './src/data/cvData.js';
 
 console.log('Successfully imported profileData');
 
 const t = (es, en, lang) => lang === 'es' ? es : en;
+
+// Skill levels live in the data in English; the CV must speak its own language.
+const LEVEL_LABELS = {
+  master: ['Experto', 'Master'],
+  advanced: ['Avanzado', 'Advanced'],
+  intermediate: ['Intermedio', 'Intermediate'],
+};
+const levelLabel = (level, lang) => {
+  const found = LEVEL_LABELS[String(level).toLowerCase()];
+  return found ? found[lang === 'es' ? 0 : 1] : level;
+};
+
+// Which experience belongs to which profile (company name → entries).
+const PROFILE_EXPERIENCE = {
+  developer: ['Meeting Planner AI System', 'Codings Academy', 'ABACOM'],
+  hacker: ['Meeting Planner AI System', 'ABACOM', 'Instituto Superior Tecnológico Juan Montalvo'],
+  research: ['Meeting Planner AI System', 'ABACOM', 'Codings Academy'],
+  'docente-facilitador': [
+    'ABACOM',
+    'Codings Academy',
+    'ESPE - Universidad de las Fuerzas Armadas',
+    'UIDE - Universidad Internacional del Ecuador (Ext. Loja)',
+    'Instituto Superior Tecnológico Juan Montalvo',
+    'APC - Antonio Peña Celi',
+  ],
+};
 
 function generateProfileMarkdown(profileKey, lang) {
   const profile = profileData[profileKey];
@@ -67,12 +93,32 @@ function generateProfileMarkdown(profileKey, lang) {
       
       markdown += `### ${categoryName}\n\n`;
       skillsByCategory[category].forEach(skill => {
-        markdown += `- **${skill.name}**: ${skill.level}\n`;
+        markdown += `- **${skill.name}**: ${levelLabel(skill.level, lang)}\n`;
       });
       markdown += `\n`;
     }
   });
   
+  // Experience: the entries that match this profile, in XYZ form.
+  const experience = (cvData.work || []).filter((job) =>
+    (PROFILE_EXPERIENCE[profileKey] || []).includes(job.name),
+  );
+  if (experience.length > 0) {
+    markdown += `## ${t('Experiencia', 'Experience')}\n\n`;
+    experience.forEach((job) => {
+      markdown += `### ${job.position[lang] || job.position.es} — ${job.name}\n`;
+      markdown += `${job.startDate} ${job.endDate ? `- ${job.endDate}` : t('Presente', 'Present')}\n\n`;
+      const highlights = (job.highlights && (job.highlights[lang] || job.highlights.es)) || [];
+      highlights.slice(0, 3).forEach((h) => {
+        markdown += `- ${h}\n`;
+      });
+      if (job.technologies && job.technologies.length > 0) {
+        markdown += `\n**${t('Stack', 'Stack')}:** ${job.technologies.slice(0, 8).join(', ')}\n`;
+      }
+      markdown += `\n`;
+    });
+  }
+
   // Certifications
   markdown += `## ${t('Certificaciones', 'Certifications')}\n\n`;
   if (profile.certifications && profile.certifications.length > 0) {

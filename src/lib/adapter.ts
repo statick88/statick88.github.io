@@ -84,8 +84,8 @@ export function adaptExperience(): ExperienceEntry[] {
     startDate: w.startDate,
     endDate: w.endDate || null,
     isCurrent: !w.endDate,
-    highlights: { es: [], en: [] },
-    technologies: [],
+    highlights: { es: [...(w.highlights?.es ?? [])], en: [...(w.highlights?.en ?? [])] },
+    technologies: [...(w.technologies ?? [])],
     hasCertificate: false,
   }))
 }

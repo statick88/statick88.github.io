@@ -10,53 +10,81 @@ Master's in Computer Science (UTPL). MSc Cybersecurity in progress (UCM). 10+ ye
 - **Phone:** +593 980192790
 - **Location:** Loja, Loja, ECU
 - **Profiles:**
-  - [LinkedIn](https://www.linkedin.com/in/diego-saavedra-developer/)
-  - [GitHub](https://github.com/statick88)
-  - [Portfolio](https://statick88.github.io)
+  - [LinkedIn — www.linkedin.com/in/diego-saavedra-developer/](https://www.linkedin.com/in/diego-saavedra-developer/)
+  - [GitHub — github.com/statick88](https://github.com/statick88)
+  - [Portfolio — statick88.github.io](https://statick88.github.io)
 
 ## Work Experience
+
+### Software Designer and Architect (own project) at Meeting Planner AI System
+2026-01-01 Present
+
+- Architected a modular transcription and analysis system with clean architecture, integrating Whisper/MLX for speech-to-text, LLMs (Groq/xAI) for contextual analysis and summarisation, and Docker Compose for reproducible environments.
+- Cut 80% of the time spent on manual transcription, processing hours of audiovisual content every week without human intervention.
+- Improved educational accessibility with precise, searchable transcripts, on an extensible design that added analysis services without restructuring the core.
+
+**Stack:** Python, FastAPI, React 19, Zustand, Whisper/MLX, LLM (Groq, xAI), Docker Compose, SDD
 
 ### Instructor, Facilitator and Curriculum Designer at ABACOM
 https://abacom.edu.ec/
 
 2021-12-01 Present
 
-Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals, and AI courses. 200+ verified teaching hours with 2026 cohort averaging 93.4/100. Ref: Kelbi Ramírez Macas, Eng.
+- Designed and taught 8 courses on Ethical Hacking, Python, Flutter, MicroPython, Linux servers and secure software, covering 200+ verified teaching hours and 92+ students.
+- Achieved a 93.4/100 average evaluation with the 2026 Python cohort, publishing the material as 8 open Quarto books on GitHub Pages.
+- Built the instructor pack for every course (teaching guide, student manual, assessment rubrics and accreditation plan) with ABP methodology.
 
-### Full-time Professor - Computer Science Dept. at ESPE - Universidad de las Fuerzas Armadas
-https://www.espe.edu.ec
-
-2023-04-01 - 2024-10-31
-
-Professor in the Computer Science Department. Courses: Programming, Databases, Software Engineering. (No PDF employment certificate available).
-
-### Computer Science Teacher at APC - Antonio Peña Celi
-https://apc.edu.ec/
-
-2013-09-01 - 2022-12-31
-
-Computer Science Teacher for 9 years (2013-2022). Training in programming, advanced office tools, and technical support. Ref: Rolando Marcelo Rojas Merchán, Eng.
+**Stack:** Ethical Hacking, Python, Flutter, R, Linux, Quarto, ABP, OWASP
 
 ### Bootcamp Facilitator (Django + React) at Codings Academy
 https://codingsacademy.com
 
 2024-02-01 - 2024-12-31
 
-Facilitator of Full-stack Web Development Bootcamps with Django and React. Ref: Jyron Isai Cedeño Chavez, MSc Eng.
+- Facilitated full-stack web development bootcamps with Django and React, using rubric-based assessment and individual progress tracking for every student.
+- Guided teams through the full development cycle (design, implementation, testing and deployment) of their final projects.
 
-### Associate Professor - Computer Assembly & Maintenance Career at Instituto Superior Tecnológico Juan Montalvo
-https://istjm.edu.ec/
+**Stack:** Django, React, Python, JavaScript, Full Stack
 
-2020-10-01 - 2022-03-31
+### Full-time Professor - Computer Science Dept. at ESPE - Universidad de las Fuerzas Armadas
+https://www.espe.edu.ec
 
-Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, ID 1103882955).
+2023-04-01 - 2024-10-31
+
+- Taught Programming, Databases and Software Engineering within the Computer Science Department.
+- Worked on software architecture, relational data modelling and engineering practices applied to real cases.
+
+**Stack:** Programación, Bases de Datos, Ingeniería de Software, SQL, Python
 
 ### Adjunct Professor - IT Career at UIDE - Universidad Internacional del Ecuador (Ext. Loja)
 https://www.uide.edu.ec/
 
 2022-10-01 - 2022-12-31
 
-Professor of Information Technologies career. (No PDF employment certificate available).
+- Professor for the Information Technologies career at the Loja campus during the 2022 academic term.
+- Planned sessions and course materials in coordination with the rest of the career's teaching staff.
+
+**Stack:** Tecnologías de la Información, Redes, Hardware
+
+### Associate Professor - Computer Assembly & Maintenance Career at Instituto Superior Tecnológico Juan Montalvo
+https://istjm.edu.ec/
+
+2020-10-01 - 2022-03-31
+
+- Taught Hardware, Networking and Operating Systems in the Computer Assembly & Maintenance technical career, connecting the course to hardware hacking on OpenWrt and firmware.
+- Set up practical labs in networking, OS installation and embedded device configuration with OpenWrt.
+
+**Stack:** Hardware, Redes, Sistemas Operativos, OpenWrt, Firmware, Kali
+
+### Computer Science Teacher at APC - Antonio Peña Celi
+https://apc.edu.ec/
+
+2013-09-01 - 2022-12-31
+
+- Taught programming, advanced office tooling and technical support to more than 400 students over 9 consecutive years (2013-2022).
+- Guided students through the shift from office tooling to structured programming and classroom hardware support.
+
+**Stack:** Programación, Ofimática avanzada, Soporte técnico, Hardware, Redes
 
 ## Education
 
@@ -77,139 +105,40 @@ Bachelor
 
 ## Technical Skills
 
-### Frontend Fundamentals
+**Frontend Fundamentals:** HTML (Master), CSS (Master), JavaScript (Master)
 
-- **HTML**: master
-- **CSS**: master
-- **JavaScript**: master
+**Frontend Frameworks:** TypeScript (Advanced), React (Advanced), Next.js (Advanced), Vue (Intermediate), Svelte (Intermediate), Angular (Intermediate)
 
-### Frontend Frameworks
+**Backend:** Node.js (Advanced), Python (Advanced), Django (Advanced), FastAPI (Advanced), NestJS (Advanced), SRI / XAdES (Advanced)
 
-- **TypeScript**: advanced
-- **React**: advanced
-- **Next.js**: advanced
-- **Vue**: intermediate
-- **Svelte**: intermediate
-- **Angular**: intermediate
+**Mobile:** Flutter (Advanced), React Native (Advanced), Expo SDK 53+ (Advanced)
 
-### Backend
+**Native Mobile:** Swift (iOS) (Intermediate), Kotlin (Android) (Intermediate)
 
-- **Node.js**: advanced
-- **Python**: advanced
-- **Django**: advanced
-- **FastAPI**: advanced
-- **NestJS**: advanced
-- **SRI / XAdES**: advanced
+**DevOps:** Docker (Advanced), Kubernetes (Intermediate), AWS (Intermediate), Azure (Intermediate), GitHub Actions (Intermediate)
 
-### Mobile
+**Databases:** MySQL (Advanced), MongoDB (Advanced), PostgreSQL (Advanced)
 
-- **Flutter**: advanced
-- **React Native**: advanced
-- **Expo SDK 53+**: advanced
+**Security:** Ethical Hacking (Advanced), Penetration Testing (Advanced), OWASP Top 10 (Advanced), Auditoría de Pentesting (Advanced), Ingeniería Inversa y Explotación (Advanced), Hardware Hacking (OpenWrt) (Advanced), Bash Scripting (Advanced), Linux (Master), Kali Linux (Advanced), Metasploit (Intermediate), Burp Suite (Intermediate), Nmap (Advanced), Wireshark (Intermediate)
 
-### Native Mobile
+**Architecture:** Clean Architecture (Advanced), SOLID (Advanced), TDD (Advanced)
 
-- **Swift (iOS)**: intermediate
-- **Kotlin (Android)**: intermediate
+**Teaching:** Diseño Curricular (ABP / ADDIE) (Master)
 
-### DevOps
+**Tools:** Git (Advanced), NotebookLM Power-User (Master), OpenCode + MCP (Advanced), Quarto (Advanced), Jupyter (Advanced), LaTeX (Advanced)
 
-- **Docker**: advanced
-- **Kubernetes**: intermediate
-- **AWS**: intermediate
-- **Azure**: intermediate
-- **GitHub Actions**: intermediate
-
-### Databases
-
-- **MySQL**: advanced
-- **MongoDB**: advanced
-- **PostgreSQL**: advanced
-
-### Security
-
-- **Ethical Hacking**: advanced
-- **Penetration Testing**: advanced
-- **OWASP Top 10**: advanced
-- **Auditoría de Pentesting**: advanced
-- **Ingeniería Inversa y Explotación**: advanced
-- **Hardware Hacking (OpenWrt)**: advanced
-- **Bash Scripting**: advanced
-- **Linux**: master
-- **Kali Linux**: advanced
-- **Metasploit**: intermediate
-- **Burp Suite**: intermediate
-- **Nmap**: advanced
-- **Wireshark**: intermediate
-
-### Architecture
-
-- **Clean Architecture**: advanced
-- **SOLID**: advanced
-- **TDD**: advanced
-
-### Teaching
-
-- **Diseño Curricular (ABP / ADDIE)**: master
-
-### Tools
-
-- **Git**: advanced
-- **NotebookLM Power-User**: master
-- **OpenCode + MCP**: advanced
-- **Quarto**: advanced
-- **Jupyter**: advanced
-- **LaTeX**: advanced
-
-### AI
-
-- **Machine Learning**: intermediate
-- **TensorFlow**: intermediate
-- **R Language**: intermediate
+**AI:** Machine Learning (Intermediate), TensorFlow (Intermediate), R Language (Intermediate)
 
 ## Featured Projects
 
-### open-api-facturacion-sri
-REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission.
-
-**Technologies:** Node.js, TypeScript, XAdES-BES, SRI Ecuador
-
-[Source Code](https://github.com/statick88/open-api-facturacion-sri)
-
-### multi-agent-system
-Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects.
-
-**Technologies:** Python, FastAPI, OpenCode, MCP, SDD
-
-[Source Code](https://github.com/statick88/multi-agent-system)
-
-### material-educativo-unl
-Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics.
-
-**Technologies:** Quarto, PBL, Open Educational Resources, UNL
-
-[Source Code](https://github.com/statick88/material-educativo-unl)
-
-### UCM-Moodle-Pentest
-Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl.
-
-**Technologies:** Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle
-
-[Source Code](https://github.com/statick88/ucm-moodle-pentest)
-
-### OpenWrt-Hardware-Hacking
-Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project.
-
-**Technologies:** OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware
-
-[Source Code](https://github.com/statick88/openwrt-hardware-hacking)
-
-### ms08-067-metasploit-demo
-Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation.
-
-**Technologies:** Metasploit, ms08_067, ms17_010, RE, Windows
-
-[Source Code](https://github.com/statick88/ms08-067-metasploit-demo)
+- **open-api-facturacion-sri** — REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Code](https://github.com/statick88/open-api-facturacion-sri)
+- **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. _Tauri v2, Rust, React, SQLCipher, Clean Architecture, Multi-Tenant_ [Code](https://github.com/statick88/MindLedger)
+- **CyberGuardians** — Cybersecurity education platform for Latin American youth (14-22). Teaches through gameplay, not lectures. Next.js 15, TypeScript, Tailwind CSS, colorful glasspunk design with glass panels and neon. XP system, achievements, and interactive modules. _Next.js 15, TypeScript, Tailwind CSS, Gamification, Glassmorphism, Education_ [Code](https://github.com/statick88/cyber-guardians)
+- **multi-agent-system** — Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects. _Python, FastAPI, OpenCode, MCP, SDD_ [Code](https://github.com/statick88/multi-agent-system)
+- **material-educativo-unl** — Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics. _Quarto, PBL, Open Educational Resources, UNL_ [Code](https://github.com/statick88/material-educativo-unl)
+- **UCM-Moodle-Pentest** — Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl. _Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle_ [Code](https://github.com/statick88/ucm-moodle-pentest)
+- **OpenWrt-Hardware-Hacking** — Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project. _OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware_ [Code](https://github.com/statick88/openwrt-hardware-hacking)
+- **ms08-067-metasploit-demo** — Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation. _Metasploit, ms08_067, ms17_010, RE, Windows_ [Code](https://github.com/statick88/ms08-067-metasploit-demo)
 
 ## Certifications
 
@@ -225,17 +154,31 @@ Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (W
 - **Imagen de Marca (Branding)** - ABACOM (Active)
 - **Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)** - ABACOM (Active)
 - **MSc Ciberseguridad (en curso, 2026-2027)** - Universidad Complutense de Madrid (In Progress)
+- **Introduction to Cybersecurity** - Cisco Networking Academy (Active)
+- **Introduction to IoT** - Cisco Networking Academy (Active)
+- **Hack The Box Certificate** - Hack The Box (Active)
+- **Course of Cybersecurity (NIST CSF 2.0)** - Self-published (Active)
+- **Ethical Hacking 2026 (Ebook + Labs)** - Self-published (Active)
+- **Dark Web Course** - Self-published (Active)
+- **Docker Fundamentals + Docker Course** - Platzi (Active)
+- **Flutter Course + Flutter Avanzado** - Platzi (Active)
+- **Python Course + Python Practico + Python CS** - Platzi (Active)
+- **Django Course** - Platzi (Active)
+- **AWS Fundamentals** - Platzi (Active)
+- **AI for Developers + AI Course** - Platzi (Active)
+- **Git & GitHub Course** - Platzi (Active)
+- **Linux Fundamentals + Linux Course** - Platzi (Active)
+- **Backend con Node.js** - Platzi (Active)
+- **React Native Course** - Codigo Facilito (Active)
+- **Curso Profesional de Python** - Codigo Facilito (Active)
+- **Curso de Machine Learning** - Codigo Facilito (Active)
+- **Curso de CSS** - Codigo Facilito (Active)
+- **Taller de Next.js** - Codigo Facilito (Active)
 
 ### Soft Skills and Languages
 
 #### Soft Skills
-- Problem Solving
-- Teamwork
-- Communication
-- Adaptability
-- Time Management
-- Leadership
-- Mentoring
+Problem Solving · Teamwork · Communication · Adaptability · Time Management · Leadership · Mentoring
 
 #### Languages
 - Español: Native
@@ -246,6 +189,6 @@ Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (W
 ## Verified Metrics
 
 - **93.4/100** — Python 2026 cohort avg _(Source: Docente Cuantitativa Evaluation.pdf)_
-- **100+** — Public GitHub repos _(Source: github.com/statick88)_
+- **400+** — Public GitHub repos _(Source: github.com/statick88)_
 - **55 / 898** — Notebooks / sources in NotebookLM _(Source: nlm --version (v0.6.8))_
 - **134+** — Categorized certifications _(Source: ~/Documents/Certificados/)_

@@ -51,4 +51,18 @@ export const publications: Publication[] = [
     description:
       'Sistema de monitoreo de atención estudiantil usando Redes Neuronales Convolucionales (RNC) y visión artificial. Aprendizaje >90%, precisión de detección de atención 99.64%. Metodología SCRUM, 3000+ secuencias de video.',
   },
+  {
+    id: 'linkedin-openclaw',
+    title: 'La delgada línea entre la automatización y la vulnerabilidad: el caso OpenClaw',
+    journal: 'LinkedIn (artículo técnico)',
+    year: '2026',
+    author: 'Diego Medardo Saavedra García',
+    pages: '',
+    citations: 0,
+    type: 'article',
+    url: 'https://www.linkedin.com/in/diego-saavedra-developer/',
+    tags: ['Automatización', 'Vulnerabilidades', 'IA', 'Agentes'],
+    description:
+      'Artículo sobre el límite entre automatización y vulnerabilidad a partir del caso OpenClaw, con la intersección entre agentes de IA, superficie de ataque y control humano.',
+  },
 ]

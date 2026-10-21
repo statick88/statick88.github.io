@@ -5,6 +5,11 @@
 // ── Primitives ───────────────────────────────────────────────────
 
 /** Texto bilingüe — toda cadena visible al usuario es bilingual */
+export interface BilingualTextList {
+  readonly es: readonly string[]
+  readonly en: readonly string[]
+}
+
 export interface BilingualText {
   readonly es: string
   readonly en: string
@@ -64,10 +69,14 @@ export interface Certification {
 export interface WorkExperience {
   readonly name: string
   readonly position: BilingualText
-  readonly url: string
+  readonly url?: string
   readonly startDate: string // ISO 8601: YYYY-MM-DD
   readonly endDate?: string  // Opcional = empleo actual
   readonly summary: BilingualText
+  /** Achievements written as X (achieved) / Y (measured) / Z (how). */
+  readonly highlights?: BilingualTextList
+  /** Stack used in the role, shown as chips. */
+  readonly technologies?: readonly string[]
 }
 
 export interface Education {

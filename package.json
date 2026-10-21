@@ -16,11 +16,12 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "analyze": "vite build --mode analyze",
-    "generate:cvs": "node generate-cv-markdown.js && node generate-profile-cvs.js",
+    "generate:cvs": "node generate-cv-markdown.js && node generate-profile-cvs.js && tsx scripts/render-cv-pdfs.ts",
     "validate:cv": "tsx scripts/validate-cv.ts",
     "export:cv": "tsx scripts/export-structured.ts",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "render:cvs": "tsx scripts/render-cv-pdfs.ts"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
