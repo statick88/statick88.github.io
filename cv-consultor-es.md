@@ -1,14 +1,5 @@
 # Consultor de Seguridad y Software | Security & Software Consultant
 
-**Contacto**
-
-- **Correo:** dsaavedra88@gmail.com
-- **Teléfono:** +593 980192790
-- **Ubicación:** Loja, Loja, ECU
-- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
-- **GitHub:** github.com/statick88
-- **Portfolio:** statick88.github.io
-
 ## Resumen Profesional
 
 Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.

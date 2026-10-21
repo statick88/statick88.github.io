@@ -1,14 +1,5 @@
 # Docente Facilitador | Generador de Currículos ABP
 
-**Contacto**
-
-- **Correo:** dsaavedra88@gmail.com
-- **Teléfono:** +593 980192790
-- **Ubicación:** Loja, Loja, ECU
-- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
-- **GitHub:** github.com/statick88
-- **Portfolio:** statick88.github.io
-
 ## Resumen Profesional
 
 Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).
