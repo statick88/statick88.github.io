@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "husky",
     "dev": "vite",
-    "build": "pnpm validate:cv && vite build && node scripts/generate-csp.mjs && pnpm export:cv",
+    "build": "pnpm validate:cv && vite build && tsx scripts/prerender-cv.ts && node scripts/generate-csp.mjs && pnpm export:cv",
     "build:quick": "vite build && node scripts/generate-csp.mjs",
     "build:analyze": "vite build --mode analyze && node scripts/generate-csp.mjs",
     "preview": "vite preview",

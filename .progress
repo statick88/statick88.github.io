@@ -90,6 +90,14 @@ decisiones del usuario.
       (`930a80b`); verificado con su test, ahora con conteo exacto de filas en
       lugar del '> 0' que la revision nativa senalo.
 
+- [x] **El HTML que ve un ATS deja de estar vacío** (P1, decisión revertida el
+      2026-10-21): el sitio es una SPA y sin JavaScript el documento no decía
+      quién es Diego. Ahora el build inyecta en `dist/index.html` un bloque
+      `<noscript>` con el CV legible — nombre, contacto literal, resumen,
+      experiencia, servicios, referencias, habilidades, certificaciones y los
+      enlaces a los PDF — **generado desde los datos**, no escrito a mano. Con
+      JS activo un humano no ve nada distinto.
+
 ### Contrato ATS
 - [x] **10 criterios ejecutables** sobre el PDF publicado (`scripts/verify-cv-ats.mjs`):
       capa de texto real, contacto literal, encabezados estándar, orden de lectura
