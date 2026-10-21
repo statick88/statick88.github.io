@@ -4,6 +4,10 @@
 
 echo "🔍 Running pre-commit quality checks..."
 
+# 0. Toolchain — el runtime local debe ser el runtime del proyecto
+echo "→ Checking toolchain..."
+node scripts/check-toolchain.mjs || exit 1
+
 # 1. Security audit (fast — scans staged files)
 echo "→ Security audit..."
 ./scripts/security-audit.sh --staged || exit 1
