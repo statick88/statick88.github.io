@@ -20,10 +20,15 @@
 
 ## Pendiente
 
-### P1 — Pre-render / `noscript` para ATS  ⬜ *(el de mayor impacto)*
-- [ ] El sitio sirve **HTML vacío** (verificado: cero `noscript`/pre-render en `src/`). Un ATS que no ejecuta JavaScript no lee nada de la web; hoy el único artefacto es el PDF.
-- [ ] Opciones: (a) pre-render del HTML en build (resume + datos clave + enlaces a los PDF), (b) bloque `noscript` con el resumen, contacto literal y enlaces a los CV.
-- [ ] Criterio: `curl -s https://statick88.github.io | grep -o 'dsaavedra88@gmail.com'` devuelve el correo sin ejecutar JS.
+### P1 — Pre-render / `noscript` para ATS  ❌ *descartado por decisión del usuario (2026-10-21)*
+
+> **No se implementa.** El artefacto para ATS es el PDF (los 12 perfiles se publican en
+> `public/` y el sitio los enlaza); el HTML de la SPA no se pre-renderiza ni lleva
+> `noscript` con el CV. Se cierra como descartado, no como pendiente: no se reopenará
+> sin una petición explícita del usuario.
+- [x] Constatado: el sitio sirve **HTML vacío** (cero `noscript`/pre-render en `src/`). Un ATS que no ejecuta JavaScript no lee el cuerpo de la web. **Decisión: se acepta; el artefacto es el PDF.**
+- [x] Opciones evaluadas: (a) pre-render del HTML en build, (b) bloque `noscript` con el resumen, el contacto literal y los enlaces a los CV. **Ninguna se implementa.**
+- [x] Criteriooriginal (cae con la decisión): `curl` del HTML sin JS devolvía el correo. **Sustituto: el correo y el teléfono van literales en el texto de cada PDF** (`verify_cv_pdf.py --email --phone` los comprueba en el PDF publicado).
 
 ### P2 — Alineación de `projects` entre las tres fuentes  ⬜ *(brecha de integridad)*
 - [ ] Verificado 2026-10-21: las tres fuentes **divergen**:
