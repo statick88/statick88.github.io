@@ -1,5 +1,14 @@
 # Ethical Hacker | Pentester & Security Researcher
 
+**Contact**
+
+- **Email:** dsaavedra88@gmail.com
+- **Phone:** +593 980192790
+- **Location:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
 ## Professional Summary
 
 Ethical Hacker and Security Researcher. Pentesting, IDOR/CVSS, RE/Exploitation (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). UCM Moodle audit: 5 findings (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Cybersecurity UCM in progress.

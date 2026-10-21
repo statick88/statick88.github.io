@@ -1,5 +1,14 @@
 # Researcher | MSc Cybersecurity UCM
 
+**Contact**
+
+- **Email:** dsaavedra88@gmail.com
+- **Phone:** +593 980192790
+- **Location:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
 ## Professional Summary
 
 Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. more than 400 repos on GitHub. Interested in threat modeling, pentesting, and AI security.

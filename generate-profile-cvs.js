@@ -41,6 +41,19 @@ function generateProfileMarkdown(profileKey, lang) {
   const label = profile.label[lang] || profile.label.es;
   
   let markdown = `# ${label}\n\n`;
+
+  // Contact block: without it the CV has no literal email/phone in the text
+  // layer — an ATS reads nothing and a recruiter has no way to reach him.
+  const basics = cvData.basics;
+  markdown += `**${t('Contacto', 'Contact')}**\n\n`;
+  markdown += `- **${t('Correo', 'Email')}:** ${basics.email}\n`;
+  markdown += `- **${t('Teléfono', 'Phone')}:** ${basics.phone}\n`;
+  markdown += `- **${t('Ubicación', 'Location')}:** ${basics.location.city}, ${basics.location.region}, ${basics.location.countryCode}\n`;
+  (basics.profiles || []).forEach((profile) => {
+    markdown += `- **${profile.network}:** ${profile.url.replace(/^https?:\/\//, '')}\n`;
+  });
+  markdown += `\n`;
+  
   
   // Summary
   markdown += `## ${t('Resumen Profesional', 'Professional Summary')}\n\n`;

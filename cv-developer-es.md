@@ -1,5 +1,14 @@
 # Desarrollador Full Stack | Full Stack Engineer
 
+**Contacto**
+
+- **Correo:** dsaavedra88@gmail.com
+- **Teléfono:** +593 980192790
+- **Ubicación:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
 ## Resumen Profesional
 
 Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. más de 400 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.
