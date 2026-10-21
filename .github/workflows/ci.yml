@@ -143,6 +143,18 @@ jobs:
           done
           echo "Both CV markdown files generated (cv-es.md, cv-en.md)."
 
+      - name: Verify the CV is ATS-proof
+        run: |
+          # The published PDF is what an applicant tracking system parses, so
+          # the contract is checked on the artifact that ships, not on the
+          # intent. Poppler is a system tool: when it is missing the script
+          # warns and skips the PDF criteria instead of breaking the pipeline;
+          # any other criterion that fails does break it.
+          if ! command -v pdftotext >/dev/null 2>&1; then
+            echo "::warning::poppler-utils is not installed: the ATS proof will skip the PDF criteria"
+          fi
+          node scripts/verify-cv-ats.mjs
+
       - name: Verify bundle size
         run: |
           MAIN_SIZE=$(stat -c%s dist/assets/index-*.js 2>/dev/null | sort -n | tail -1)

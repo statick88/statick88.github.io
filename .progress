@@ -14,6 +14,7 @@
 - [x] **Fix de los encabezados en los CV en español**: `t()` nunca recibía el idioma, así que *todos* los CV en español salían con encabezados en inglés ("PROFESSIONAL SUMMARY", "CONTACT") y solo el cuerpo en español. → `61e9c49`
 - [x] **Los CV por perfil son desplegables**: `render-cv-pdfs.ts` escribe ahora los 12 PDF en `public/` (antes vivían en la raíz del repo y no se desplegaban; en `public/` solo había `cv-es.pdf` y `cv-en.pdf`). Los campos `pdf` de `profileData` apuntan a rutas reales. → `b562ac7`
 - [x] **La web enlaza los CV**: `ProfileSelector` ofrece el perfil `consultor` y un enlace PDF por perfil, sensible al idioma activo. Antes no había ni una referencia a `.pdf` en `src/`. → `b562ac7`
+- [x] **CV a prueba de ATS, con comprobaciones ejecutables** (rama `feat/ats-proof`): `scripts/verify-cv-ats.mjs` verifica los 10 criterios sobre el PDF publicado (capa de texto, contacto literal, encabezados, orden de lectura, fechas, glifos, fuentes embebidas, geometría, duplicados y palabras clave) y sale con 1 si algo falla; test propio del contrato sobre el markdown y los ficheros publicados, sin poppler; y un paso de CI que hace fallar el pipeline si el CV deja de cumplir el contrato. → commit `feat(cv): verify the published CV is ATS-proof` (ver P14)
 - [x] 232 tests verdes, `tsc --noEmit` limpio, gates de pre-commit (security audit, lint, typecheck, vitest) en verde tras cada commit.
 
 ---
@@ -131,6 +132,24 @@ Orden acordado: **P9 → P12 → P2** (primero el bloque que falta y es de UI, l
 - [ ] 2.2 Propagar a `cv-data.ts`, `cvData.js` y `cv-data.yaml`.
 - [ ] 2.3 Extender `src/__tests__/design/cv-data-drift.test.ts` a `projects`, `services`, `skills` y `certifications` (hoy sólo compara `work`).
 - [ ] 2.4 Regenerar los PDF y comprobar que "Herramientas Propias" sale con las 4 herramientas (cierra P3).
+
+### P14 — CV a prueba de ATS con comprobaciones ejecutables  ✅ *cerrado (2026-10-21, rama `feat/ats-proof`)*
+
+> Lo que se publica es el PDF, así que el contrato se comprueba **sobre el artefacto**, no sobre la intención. Sin afirmaciones: cada criterio es una comprobación que falla.
+
+- [x] 14.1 `scripts/verify-cv-ats.mjs`: 10 criterios ejecutables sobre `public/cv-es.pdf` y `public/cv-en.pdf` — capa de texto real (≥250 palabras), contacto literal, encabezados estándar de ATS, orden de lectura lineal, fechas legibles por máquina, glifos corruptos, fuentes embebidas, geometría razonable (1..6 páginas y <2 MB), herramientas propias sin nombres repetidos y palabras clave presentes (≥20 skills del dato). Una línea por criterio (`PASS`/`FAIL`/`SKIP` con motivo) y código de salida 1 si algo falla.
+- [x] 14.2 Poppler es **herramienta del sistema**, no dependencia: si falta, los criterios del PDF salen `SKIP` con aviso explícito (nunca un aprobado silencioso) y el script sale 0 solo si nada que se haya podido comprobar ha fallado.
+- [x] 14.3 `src/__tests__/design/cv-ats-proof.test.ts`: el mismo contrato sobre el markdown generado y los ficheros publicados, **sin poppler** — contacto literal, encabezados estándar y en orden, guion ASCII en los rangos de fecha, ninguna herramienta repetida, exactamente `cv-es.pdf` y `cv-en.pdf` publicados y el PDF no más antiguo que el markdown del que sale.
+- [x] 14.4 `.github/workflows/ci.yml`: el job de diseño ejecuta `node scripts/verify-cv-ats.mjs` después de generar el CV; el pipeline falla si el CV deja de cumplir el contrato.
+- [x] 14.5 Evidencia: `tsc --noEmit` limpio, **18 ficheros / 248 tests en verde** (7 nuevos), build en verde, los 10 criterios en `PASS` y mutation testing (sin correo → criterio 2; orden invertido → criterio 4; guion `–` → criterio 5; herramienta duplicada → criterio 9; PDF extra → test del CV único).
+
+> **Desviación documentada (P15)**: el PDF publica el bloque *Resumen* **antes** del bloque *Contacto*. La cadena del contrato es `Contacto → Resumen/Práctica → Experiencia → Educación → Habilidades → Certificaciones`: el bloque *Práctica* sí va después del contacto, así que la cadena se cumple (el resumen no la invierte) y el verificador lo dice en su salida. Poner el contacto el primero exige mover el bloque en `generate-cv-markdown.js` y regenerar el CV — fuera de la superficie de este trabajo.
+
+### P15 — Contacto antes del Resumen en el PDF  ⬜ *(decisión del usuario)*
+
+- [ ] 15.1 Mover el bloque de contacto por encima del resumen en `generate-cv-markdown.js` y regenerar `cv-es.md`, `cv-en.md` y los PDF (`pnpm generate:cvs`).
+- [ ] 15.2 Con el bloque de contacto primero, la cadena `Contacto → Resumen/Práctica → …` se cumple con el resumen como ancla; el verificador puede entonces exigir el orden estricto.
+
 - 2026-10-21 — **P9 cerrado**: `ServicesPanel` con `Panel`/`PanelRow` y tokens `ct-*`
   (nada de la UI del sitio de referencia: la UI no se toca, sólo se le añade el
   bloque de la organización). Los datos salen de `services` en `@/data/cv-data`
