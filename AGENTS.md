@@ -63,3 +63,11 @@ pnpm audit
 - Tailwind CSS
 - Framer Motion
 - pnpm
+
+## Toolchain (pnpm + fnm) — MANDATORY
+
+- **fnm** gestiona la versión de Node: este proyecto fija **Node 22** (`.node-version`) y el CI usa `node-version: '22'` en todos sus jobs. Antes de ejecutar nada, el runtime local debe coincidir: `fnm use` (lee `.node-version`).
+- **pnpm** es el gestor de paquetes: `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm typecheck`, `pnpm build`. Nunca npm ni yarn, y nunca `pnpm install` sin `--frozen-lockfile` (el lockfile no se toca).
+- **El Node ambiental no es el runtime del proyecto.** Si `node -v` no coincide con `.node-version`, los gates que corres en local **no son** los que corre el CI: el resultado no es evidencia. Compruébalo con `fnm exec --using=22 node -v` antes de dar por buena una verificación.
+- Instalación del toolchain en una máquina nueva (usuario, sin sudo):
+  `curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/share/fnm" --skip-shell` y luego `eval "$(fnm env --use-on-cd --shell bash)"` en el rc del shell, más `fnm install 22`.
