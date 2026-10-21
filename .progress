@@ -95,3 +95,43 @@ Comparación de las tres capas, hecha sobre el código y los artefactos, no de m
 - [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay charias, conferencias ni ponencias en las fuentes; un bloque vacío o inventado rompe la regla de integridad. Candidatos de evidencia a reunir: CTF de EvilSec – Ekoparty 2026, CTFs comoalkeeper,%}
 - [ ] **P12 — Paneles sensibles al perfil activo**: `App.tsx` adapta titular y experiencia por perfil, pero los paneles (Courses, Contributions, Plugins, Research) son estáticos: al elegir "Consultor" el cuerpo de la web no cambia, sólo el PDF que se descarga.
 - [ ] **P13 — Encargos de seguridad en la web**: el bloque `practice.engagements` (3 pentests anonimizados) sólo vive en el PDF; decidir si se expone en el sitio.
+
+---
+
+## Plan de ejecución (2026-10-21)
+
+Orden acordado: **P9 → P12 → P2** (primero el bloque que falta y es de UI, luego la coherencia del selector, luego la integridad de datos).
+
+### P9 — Panel de Servicios en la UI  ⬜ *(empieza aquí)*
+
+- [x] 9.1 Creado `src/components/panels/ServicesPanel.tsx` con `Panel` + `PanelRow` — mismo idioma visual que `PluginsPanel` (plantilla: nombre a la izquierda, descripción y datos a la derecha).
+- [x] 9.2 Datos: importa `services` de `@/data/cv-data` (patrón de `PluginsPanel` con `@/data/contributions`). **No** tocar `src/lib/schemas` ni `src/lib/sanitize`: los paneles leen datos directamente, así que `services` no hace falta en el esquema.
+- [x] 9.3 Color: el acento sale del dato (`service.color`), nunca hex hardcodeado en el componente.
+- [x] 9.4 Montado en `src/App.tsx` en la columna derecha, tras el bloque de identidad (`ProfileCard`).
+- [x] 9.5 Test en `src/__tests__/design/services-panel.test.tsx`: renderiza los 4 servicios desde los datos reales y comprueba título, modalidades y tarifa.
+- [x] 9.6 Gates: `pnpm typecheck`, `pnpm test`, pre-commit; commit `feat(cv): panel de servicios en la UI`.
+- [x] 9.7 Evidencia: el bloque ya existe en el PDF (`cv-consultor-es.pdf`) y el panel está
+  montado en la web. Pendiente una captura del panel en el navegador.
+
+### P12 — Paneles sensibles al perfil activo  ⬜
+
+- [ ] 12.1 Mapear qué bloques dependen del perfil: hoy sólo se adaptan titular y experiencia (`adaptHeadline()`, `adaptExperience()`); Courses, Contributions, Plugins y Research son estáticos.
+- [ ] 12.2 Decidir bloque por bloque: contenido propio del perfil, o contenido común con etiqueta.
+- [ ] 12.3 Test: cambiar de perfil cambia lo que debe cambiar y lo que no.
+
+### P2 — Deriva de `projects` entre las tres fuentes  ⬜
+
+- [ ] 2.1 Decidir el conjunto canónico de proyectos (hoy: TS 6 · JS 8+ · YAML 1).
+- [ ] 2.2 Propagar a `cv-data.ts`, `cvData.js` y `cv-data.yaml`.
+- [ ] 2.3 Extender `src/__tests__/design/cv-data-drift.test.ts` a `projects`, `services`, `skills` y `certifications` (hoy sólo compara `work`).
+- [ ] 2.4 Regenerar los PDF y comprobar que "Herramientas Propias" sale con las 4 herramientas (cierra P3).
+- 2026-10-21 — **P9 cerrado**: `ServicesPanel` con `Panel`/`PanelRow` y tokens `ct-*`
+  (nada de la UI del sitio de referencia: la UI no se toca, sólo se le añade el
+  bloque de la organización). Los datos salen de `services` en `@/data/cv-data`
+  —el mismo patrón que `PluginsPanel` con `@/data/contributions`—, así que no
+  hizo falta tocar `schemas` ni `sanitize`. Sección nueva `servicios` en
+  `src/config/navigation.ts` (id = id del DOM, para que ningún enlace apunte a
+  un ancla inexistente) y montada en la columna derecha tras el bloque de
+  identidad. Test propio que renderiza los 4 servicios contra los datos reales.
+  Gates: `tsc --noEmit` limpio, **16 ficheros / 235 tests en verde** (3 nuevos),
+  lint sin errores nuevos, build de producción y hooks de pre-commit en verde.
