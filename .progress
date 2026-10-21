@@ -20,7 +20,7 @@
 todo el contenido (contacto → resumen → Mi Práctica → experiencia → educación →
 habilidades → proyectos → certificaciones → publicaciones → cursos → métricas),
 está **verificado a prueba de ATS con 10 criterios ejecutables** y **los tres
-espejos de datos declaran lo mismo**. Lo que queda son 4items de contenido y 6
+espejos de datos declaran lo mismo**. Lo que queda son 4 items de contenido y 6
 decisiones del usuario.
 
 ---
@@ -130,7 +130,7 @@ decisiones del usuario.
       (3 pentests anonimizados) solo vive en el PDF; decidir si se expone en el
       sitio y con qué nivel de detalle.
 
-### Pipeline de postulaciones (no es este repo, pero su estado affects al CV)
+### Pipeline de postulaciones (no es este repo, pero su estado afecta al CV)
 - [ ] **La 044 (Santillana) se envió con el CV sin bloque de contacto**: el CV
       corregido ya está re-subido al perfil de Multitrabajos y verificado por
       hash (idéntico al publicado), pero **no se ha reenviado por correo** a la
