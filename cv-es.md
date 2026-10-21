@@ -14,6 +14,48 @@ Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (
   - [GitHub — github.com/statick88](https://github.com/statick88)
   - [Portfolio — statick88.github.io](https://statick88.github.io)
 
+## Mi Práctica
+
+Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, 134+ certificaciones activas y 400+ repositorios públicos.
+
+### Servicios
+
+- **Desarrollo FullStack** — Aplicaciones web y móviles de producción con arquitectura sólida, pruebas y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL. Modalidades: Por proyecto, Por horas, Medio tiempo. Tarifa: $25-50/hora
+- **Auditoría de Seguridad** — Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring y recomendaciones de remediación. Modalidades: Por proyecto, Retainer mensual. Tarifa: $500-3000/proyecto
+- **Consultoría Técnica** — CTO Fractional: arquitectura de software, revisión de código, mentoría de equipos y toma de decisiones técnicas estratégicas. Modalidades: Medio tiempo, Por horas, Retainer. Tarifa: $20-40/hora
+- **Capacitación & Cursos** — Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM. Modalidades: Por hora, Por curso, Workshop. Tarifa: $30-60/hora
+
+### Herramientas Propias
+
+- **jarvis-os** — Capa de servicios en Python. — github.com/statick88/jarvis-os
+- **Course_of_python** — Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto. — github.com/statick88/Course_of_python
+- **desarrollo-software-seguro** — Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub. — github.com/statick88/desarrollo-software-seguro
+- **cyber-guardians** — Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición. — github.com/statick88/cyber-guardians
+- **course-of-cybersecurity** — Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker. — github.com/statick88/course-of-cybersecurity
+- **MindLedger** — Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro. — github.com/statick88/MindLedger
+
+### Formación Propia
+
+- 22 cursos publicados
+- 200+ horas docentes verificadas
+- 92+ estudiantes (promedio 93.4/100)
+- 6 instituciones donde he enseñado
+
+### Encargos de Seguridad Autorizados
+
+- **Oct 2026 — E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)**: Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días. 109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación
+- **Jul 2026 — Aplicación web con gestión de agendas**: Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente. Hallazgos adjuntos y priorizados con severidad y remediación
+- **Sep 2025 — Proyecto web (nombre bajo acuerdo de confidencialidad)**: Carta de autorización previa, con alcance y ventana acordados antes de ejecutar. Ejecución dentro del alcance firmado, sin tocar activos de terceros
+
+### Referencias
+
+- ESPE - Universidad de las Fuerzas Armadas
+- UIDE - Universidad Internacional del Ecuador (Ext. Loja)
+- ABACOM
+- Codings Academy
+- Instituto Superior Tecnológico Juan Montalvo
+- APC - Antonio Peña Celi
+
 ## Experiencia Laboral
 
 ### Diseñador y arquitecto de software (proyecto propio) at Meeting Planner AI System

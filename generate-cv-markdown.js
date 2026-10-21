@@ -20,6 +20,91 @@ console.log('Successfully imported cvData');
 generateMarkdown(cvData, 'es');
 generateMarkdown(cvData, 'en');
 
+/**
+ * The organization block ("Mi Práctica").
+ *
+ * It used to be rendered only by the consultant variant. The CV is one
+ * document now, so the block belongs to the general CV as well, with the same
+ * order and the same language rules it had in the variant.
+ *
+ * Everything comes from the data: the services from `cvData.services`, the own
+ * tools from the canonical projects, the training figures, the engagements and
+ * the references from the `practice` record. No sentence is written here.
+ */
+function renderPractice(data, lang, t) {
+  const practice = data.practice;
+  if (!practice) return '';
+
+  let markdown = `## ${t('Mi Práctica', 'My Practice')}\n\n`;
+  markdown += `${practice.positioning[lang] || practice.positioning.es}\n\n`;
+
+  const services = (data.services || []).filter((service) =>
+    (practice.serviceIds || []).includes(service.id),
+  );
+  if (services.length) {
+    markdown += `### ${t('Servicios', 'Services')}\n\n`;
+    for (const service of services) {
+      const title = (service.title && (service.title[lang] || service.title.es)) || service.id;
+      const description =
+        (service.description && (service.description[lang] || service.description.es)) || '';
+      const formats = ((service.formats && (service.formats[lang] || service.formats.es)) || []).join(', ');
+      markdown += `- **${title}** — ${description} ${t('Modalidades', 'Formats')}: ${formats}. ${t('Tarifa', 'Rate')}: ${service.priceRange}\n`;
+    }
+    markdown += `\n`;
+  }
+
+  // Resolve the declared own tools against the canonical projects: the two
+  // mirrors carry the same tools with different display names, so the match is
+  // case-insensitive and keeps the first occurrence (no duplicates).
+  const wantedTools = (practice.toolNames || []).map((name) => String(name).toLowerCase());
+  const seenTools = new Set();
+  const tools = (data.projects || []).filter((project) => {
+    const key = String(project.name || '').toLowerCase();
+    if (!key || !wantedTools.includes(key) || seenTools.has(key)) return false;
+    seenTools.add(key);
+    return true;
+  });
+  if (tools.length) {
+    markdown += `### ${t('Herramientas Propias', 'Own Tools')}\n\n`;
+    for (const tool of tools) {
+      const description = (tool.description && (tool.description[lang] || tool.description.es)) || '';
+      const link = tool.github ? ` — ${String(tool.github).replace(/^https?:\/\//, '')}` : '';
+      markdown += `- **${tool.name}** — ${description}${link}\n`;
+    }
+    markdown += `\n`;
+  }
+
+  const training = practice.training || {};
+  markdown += `### ${t('Formación Propia', 'Own Training')}\n\n`;
+  markdown += `- ${training.courses} ${t('cursos publicados', 'published courses')}\n`;
+  markdown += `- ${training.hours}+ ${t('horas docentes verificadas', 'verified teaching hours')}\n`;
+  markdown += `- ${training.students}+ ${t('estudiantes', 'students')} (${t('promedio', 'average')} ${training.averageScore}/100)\n`;
+  markdown += `- ${training.institutions} ${t('instituciones donde he enseñado', 'institutions taught at')}\n\n`;
+
+  const engagements = practice.engagements || [];
+  if (engagements.length) {
+    markdown += `### ${t('Encargos de Seguridad Autorizados', 'Authorized Security Engagements')}\n\n`;
+    for (const engagement of engagements) {
+      const sector =
+        (engagement.sector && (engagement.sector[lang] || engagement.sector.es)) || engagement.sector || '';
+      const scope =
+        (engagement.scope && (engagement.scope[lang] || engagement.scope.es)) || engagement.scope || '';
+      const outcome =
+        (engagement.outcome && (engagement.outcome[lang] || engagement.outcome.es)) || engagement.outcome || '';
+      markdown += `- **${engagement.period} — ${sector}**: ${scope}. ${outcome}\n`;
+    }
+    markdown += `\n`;
+  }
+
+  const references = practice.referenceNames || [];
+  if (references.length) {
+    markdown += `### ${t('Referencias', 'References')}\n\n`;
+    markdown += references.map((reference) => `- ${reference}`).join('\n') + `\n\n`;
+  }
+
+  return markdown;
+}
+
 function generateMarkdown(data, lang) {
   const t = (es, en) => lang === 'es' ? es : en;
 
@@ -39,6 +124,10 @@ function generateMarkdown(data, lang) {
     markdown += `  - [${profile.network} — ${profile.url.replace(/^https?:\/\//, '')}](${profile.url})\n`;
   });
   markdown += `\n`;
+
+  // The organization block: the practice, its services, its own tools, its
+  // training, its authorized engagements and its references.
+  markdown += renderPractice(data, lang, t);
 
   // Work Experience
   markdown += `## ${t('Experiencia Laboral', 'Work Experience')}\n\n`;

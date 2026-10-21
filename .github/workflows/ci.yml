@@ -132,19 +132,16 @@ jobs:
           test "$INLINE" -eq 0 || test "$HASHES" -ge 1 || { echo "::error::$INLINE inline executable script(s) present but script-src carries $HASHES hash(es)"; exit 1; }
           echo "✅ CSP verified: script-src hash-only; $INLINE inline executable script(s) with $HASHES hash(es); style-src keeps 'unsafe-inline' because the app renders inline style attributes"
 
-      - name: Generate CV variants (8 PDFs expected)
+      - name: Generate CV markdown (2 files expected)
         run: |
           node generate-cv-markdown.js
-          node generate-profile-cvs.js
-          for p in developer hacker research docente-facilitador; do
-            for l in es en; do
-              if [ ! -f cv-$p-$l.md ]; then
-                echo "::error::Missing cv-$p-$l.md"
-                exit 1
-              fi
-            done
+          for l in es en; do
+            if [ ! -f "cv-$l.md" ]; then
+              echo "::error::Missing cv-$l.md"
+              exit 1
+            fi
           done
-          echo "All 8 CV markdown variants generated."
+          echo "Both CV markdown files generated (cv-es.md, cv-en.md)."
 
       - name: Verify bundle size
         run: |
