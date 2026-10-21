@@ -221,3 +221,12 @@ decisiones del usuario.
   `pnpm generate:cvs`), sin afirmaciones sin respaldo en los datos, sin nombrar a
   un cliente sin autorización verificada, y sin datos inventados para rellenar
   un hueco (las fechas ausentes se omiten, no se ponen "s/f").
+
+- 2026-10-21 — **Aviso de trazabilidad**: el commit `3cf2b93` ("docs(cv): P1 cerrado…")
+  arrastra también el trabajo del fallback para ATS (`src/lib/ats-html-fallback.ts`,
+  `scripts/prerender-cv.ts`, su test y el paso en `package.json`), porque el commit
+  anterior se perdió cuando una cadena de shell se auto-mató (SIGTERM) a mitad.
+  El contenido está bien y verificado (sitio desplegado sirviéndolo, CI verde), pero
+  **el mensaje del commit no describe lo que lleva**. No se reescribe la historia
+  (nada de force-push): queda anotado aquí, y en adelante cada commit se verifica
+  con `git show --stat` antes de publicar la rama.
