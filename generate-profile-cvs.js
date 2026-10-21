@@ -1,5 +1,6 @@
 import { writeFileSync } from 'fs';
 import { cvData, profileData } from './src/data/cvData.js';
+import { projects as canonicalProjects } from './src/data/cv-data';
 
 console.log('Successfully imported profileData');
 
@@ -66,7 +67,16 @@ function generateProfileMarkdown(profileKey, lang) {
       markdown += `\n`;
     }
 
-    const tools = (cvData.projects || []).filter((p) => (practice.toolNames || []).includes(p.name));
+    // Resolve against the canonical projects and the JS mirror, case-insensitively:
+    // the two mirrors carry the same tools with different display names, and an
+    // exact match silently dropped three of the four declared own tools.
+    const wantedTools = (practice.toolNames || []).map((name) => String(name).toLowerCase());
+    const allProjects = [...(canonicalProjects || []), ...(cvData.projects || [])];
+    const tools = allProjects.filter(
+      (p, index) =>
+        wantedTools.includes(String(p.name).toLowerCase()) &&
+        allProjects.findIndex((other) => other.name === p.name) === index,
+    );
     if (tools.length) {
       markdown += `### ${t('Herramientas Propias', 'Own Tools')}\n\n`;
       for (const tool of tools) {
@@ -88,7 +98,10 @@ function generateProfileMarkdown(profileKey, lang) {
     if (eng.length) {
       markdown += `### ${t('Encargos de Seguridad Autorizados', 'Authorized Security Engagements')}\n\n`;
       for (const e of eng) {
-        markdown += `- **${e.period} — ${e.sector}**: ${e.scope}. ${e.outcome}\n`;
+        const sector = (e.sector && (e.sector[lang] || e.sector.es)) || e.sector || '';
+        const scope = (e.scope && (e.scope[lang] || e.scope.es)) || e.scope || '';
+        const outcome = (e.outcome && (e.outcome[lang] || e.outcome.es)) || e.outcome || '';
+        markdown += `- **${e.period} — ${sector}**: ${scope}. ${outcome}\n`;
       }
       markdown += `\n`;
     }

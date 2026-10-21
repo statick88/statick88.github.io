@@ -17,7 +17,10 @@ Independent security and software practice: authorized application auditing, pro
 
 ### Own Tools
 
-- **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. — github.com/statick88/MindLedger
+- **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. — github.com/statick88/course-of-cybersecurity
+- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. — github.com/statick88/cyber-guardians
+- **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. — github.com/statick88/desarrollo-software-seguro
+- **MindLedger** — Multi-tenant clinical and accounting system: clean architecture, multi-tenant isolation, local database encryption and typed input validation. — github.com/statick88/MindLedger
 
 ### Own Training
 
@@ -28,9 +31,9 @@ Independent security and software practice: authorized application auditing, pro
 
 ### Authorized Security Engagements
 
-- **Oct 2026 — E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)**: Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días. 109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación
-- **Jul 2026 — Aplicación web con gestión de agendas**: Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente. Hallazgos adjuntos y priorizados con severidad y remediación
-- **Sep 2025 — Proyecto web (nombre bajo acuerdo de confidencialidad)**: Carta de autorización previa, con alcance y ventana acordados antes de ejecutar. Ejecución dentro del alcance firmado, sin tocar activos de terceros
+- **Oct 2026 — E-commerce with a 3D client (name withheld under a confidentiality agreement)**: Authorized production pentest, with a signed authorization letter and a 2-day window. 109 subdomains inventoried, a matrix of 15 verified CVEs, 6 adversary chains, and a remediation plan
+- **Jul 2026 — Web application with scheduling management**: Security test over functional findings, with the client's prior authorization. Findings attached and prioritized with severity and remediation
+- **Sep 2025 — Web project (name withheld under a confidentiality agreement)**: Prior authorization letter, with scope and window agreed before execution. Execution within the signed scope, without touching third-party assets
 
 ### References
 

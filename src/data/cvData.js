@@ -173,9 +173,11 @@ export const profileData = {
 
 // ── Variante de práctica (organización) ──────────────────────────────
 profileData.consultor = {
+  id: 'consultor',
   ...profileData.hacker,
   label: {"es": "Consultor de Seguridad y Software | Security & Software Consultant", "en": "Security & Software Consultant | Consultor de Seguridad y Software"},
   summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, 134+ certifications, and 3 documented pentest engagements."},
+  pdf: '/cv-consultor-es.pdf',
   practice: true,
 };
 
@@ -758,21 +760,48 @@ export const cvData = {
   "engagements": [
     {
       "period": "Oct 2026",
-      "sector": "E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)",
-      "scope": "Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días",
-      "outcome": "109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación"
+      "sector": {
+        "es": "E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)",
+        "en": "E-commerce with a 3D client (name withheld under a confidentiality agreement)"
+      },
+      "scope": {
+        "es": "Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días",
+        "en": "Authorized production pentest, with a signed authorization letter and a 2-day window"
+      },
+      "outcome": {
+        "es": "109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación",
+        "en": "109 subdomains inventoried, a matrix of 15 verified CVEs, 6 adversary chains, and a remediation plan"
+      }
     },
     {
       "period": "Jul 2026",
-      "sector": "Aplicación web con gestión de agendas",
-      "scope": "Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente",
-      "outcome": "Hallazgos adjuntos y priorizados con severidad y remediación"
+      "sector": {
+        "es": "Aplicación web con gestión de agendas",
+        "en": "Web application with scheduling management"
+      },
+      "scope": {
+        "es": "Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente",
+        "en": "Security test over functional findings, with the client's prior authorization"
+      },
+      "outcome": {
+        "es": "Hallazgos adjuntos y priorizados con severidad y remediación",
+        "en": "Findings attached and prioritized with severity and remediation"
+      }
     },
     {
       "period": "Sep 2025",
-      "sector": "Proyecto web (nombre bajo acuerdo de confidencialidad)",
-      "scope": "Carta de autorización previa, con alcance y ventana acordados antes de ejecutar",
-      "outcome": "Ejecución dentro del alcance firmado, sin tocar activos de terceros"
+      "sector": {
+        "es": "Proyecto web (nombre bajo acuerdo de confidencialidad)",
+        "en": "Web project (name withheld under a confidentiality agreement)"
+      },
+      "scope": {
+        "es": "Carta de autorización previa, con alcance y ventana acordados antes de ejecutar",
+        "en": "Prior authorization letter, with scope and window agreed before execution"
+      },
+      "outcome": {
+        "es": "Ejecución dentro del alcance firmado, sin tocar activos de terceros",
+        "en": "Execution within the signed scope, without touching third-party assets"
+      }
     }
   ],
   "referenceNames": [

@@ -17,7 +17,10 @@ Práctica independiente de seguridad y software: auditoría autorizada de aplica
 
 ### Herramientas Propias
 
-- **MindLedger** — Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro. — github.com/statick88/MindLedger
+- **course-of-cybersecurity** — Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker. — github.com/statick88/course-of-cybersecurity
+- **cyber-guardians** — Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición. — github.com/statick88/cyber-guardians
+- **desarrollo-software-seguro** — Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub. — github.com/statick88/desarrollo-software-seguro
+- **MindLedger** — Sistema multi-tenant de gestión clínica y contable: arquitectura limpia, aislamiento multi-tenant, cifrado de base de datos local y validación de entrada tipada. — github.com/statick88/MindLedger
 
 ### Formación Propia
 
