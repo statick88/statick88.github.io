@@ -40,14 +40,15 @@ describe('ServicesPanel', () => {
     }
   })
 
-  it('renders the same number of rows as services declared', () => {
+  it('renders one row per service, no more and no less', () => {
     render(
       <AppProvider>
         <ServicesPanel />
       </AppProvider>,
     )
     for (const service of services) {
-      expect(screen.getAllByText(service.title.es).length).toBeGreaterThan(0)
+      expect(screen.getAllByText(service.title.es).length).toBe(1)
     }
+    expect(screen.getAllByText('servicios').length).toBe(1)
   })
 })
