@@ -68,6 +68,19 @@ const LEVEL_PERCENT: Record<string, number> = {
   c2: 95,
 }
 
+/** The level names live in the data in English; the interface speaks Spanish. */
+const LEVEL_LABELS: Record<string, { es: string; en: string }> = {
+  master: { es: 'Experto', en: 'Master' },
+  advanced: { es: 'Avanzado', en: 'Advanced' },
+  intermediate: { es: 'Intermedio', en: 'Intermediate' },
+}
+
+function levelLabel(level: string, lang: 'es' | 'en'): string {
+  const found = LEVEL_LABELS[level.trim().toLowerCase()]
+  if (!found) return level
+  return lang === 'es' ? found.es : found.en
+}
+
 function percentFor(level: string): number {
   return LEVEL_PERCENT[level.trim().toLowerCase()] ?? 60
 }
@@ -87,7 +100,7 @@ export default function IdentityColumn({
   languages,
   skills,
 }: IdentityColumnProps) {
-  const { t } = useApp()
+  const { t, language } = useApp()
 
   const keySkills = [...skills]
     .sort((a, b) => percentFor(b.level) - percentFor(a.level))
@@ -186,7 +199,7 @@ export default function IdentityColumn({
             <LevelBar
               key={skill.name}
               label={skill.name}
-              level={t(skill.level, skill.level)}
+              level={levelLabel(skill.level, language)}
               value={percentFor(skill.level)}
             />
           ))}

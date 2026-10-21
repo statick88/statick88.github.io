@@ -47,8 +47,8 @@ export const profileData = {
       { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
     ],
     summary: {
-      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. 379 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
-      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 379 public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
+      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. más de 400 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
+      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. more than 400 public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
     },
     pdf: "cv-developer.pdf"
   },
@@ -126,8 +126,8 @@ export const profileData = {
       { name: "MSc Ciberseguridad (en curso)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
     ],
     summary: {
-      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. 379 repos en GitHub. Interesado en threat modeling, pentesting y AI security.",
-      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. 379 repos on GitHub. Interested in threat modeling, pentesting, and AI security."
+      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. más de 400 repos en GitHub. Interesado en threat modeling, pentesting y AI security.",
+      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. more than 400 repos on GitHub. Interested in threat modeling, pentesting, and AI security."
     },
     pdf: "cv-research.pdf"
   },
@@ -211,14 +211,71 @@ export const cvData = {
 
   work: [
     {
+      name: "Meeting Planner AI System",
+      position: { es: "Diseñador y arquitecto de software (proyecto propio)", en: "Software Designer and Architect (own project)" },
+      startDate: "2026-01-01",
+      summary: {
+        es: "Sistema propio de transcripción y análisis de contenido audiovisual con IA generativa. Arquitectura limpia, SDD y despliegue reproducible con Docker Compose.",
+        en: "Own transcription and AI-assisted audiovisual content analysis system. Clean architecture, SDD and reproducible Docker Compose deployments.",
+      },
+      highlights: {
+        es: [
+          "Arquitecté un sistema modular de transcripción y análisis con arquitectura limpia, integrando Whisper/MLX para speech-to-text, LLMs (Groq/xAI) para análisis y resumen, y Docker Compose para entornos reproducibles.",
+          "Reduje 80% el tiempo dedicado a la transcripción manual, procesando horas de contenido audiovisual cada semana sin intervención humana.",
+          "Mejoré la accesibilidad educativa con transcripciones precisas y buscables, con un diseño extensible que permitió sumar servicios de análisis sin reestructurar el núcleo.",
+        ],
+        en: [
+          "Architected a modular transcription and analysis system with clean architecture, integrating Whisper/MLX for speech-to-text, LLMs (Groq/xAI) for contextual analysis and summarisation, and Docker Compose for reproducible environments.",
+          "Cut 80% of the time spent on manual transcription, processing hours of audiovisual content every week without human intervention.",
+          "Improved educational accessibility with precise, searchable transcripts, on an extensible design that added analysis services without restructuring the core.",
+        ],
+      },
+      technologies: ["Python", "FastAPI", "React 19", "Zustand", "Whisper/MLX", "LLM (Groq, xAI)", "Docker Compose", "SDD", "Clean Architecture"],
+    },
+    {
       name: "ABACOM",
       position: { es: "Docente, Facilitador y Curriculista", en: "Instructor, Facilitator and Curriculum Designer" },
       url: "https://abacom.edu.ec/",
       startDate: "2021-12-01",
       summary: {
-        es: "Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA. 200+ horas docentes verificadas con cohorte Python 2026 promedio 93.4/100. Ref: Ing. Kelbi Ramírez Macas.",
-        en: "Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals, and AI courses. 200+ verified teaching hours with 2026 cohort averaging 93.4/100. Ref: Kelbi Ramírez Macas, Eng."
-      }
+        es: "Diseño curricular y facilitación de cursos de Python, Flutter, R, Linux, Ethical Hacking, Fundamentos de Ciberseguridad e IA. 200+ horas docentes verificadas con la cohorte de Python 2026 (promedio 93.4/100). Ref: Ing. Kelbi Ramírez Macas.",
+        en: "Curriculum design and facilitation of Python, Flutter, R, Linux, Ethical Hacking, Cybersecurity Fundamentals, and AI courses. 200+ verified teaching hours with the 2026 Python cohort averaging 93.4/100. Ref: Kelbi Ramírez Macas, Eng.",
+      },
+      highlights: {
+        es: [
+          "Diseñé y dicté 8 cursos de Ethical Hacking, Python, Flutter, MicroPython, servidores Linux y software seguro, con 200+ horas docentes verificadas y 92+ estudiantes.",
+          "Logré un promedio de evaluación de 93.4/100 en la cohorte de Python 2026, publicando el material como 8 libros Quarto abiertos en GitHub Pages.",
+          "Construí el pack docente de cada curso (guía del instructor, manual del estudiante, rúbricas de evaluación y plan de acreditación) con metodología ABP.",
+        ],
+        en: [
+          "Designed and taught 8 courses on Ethical Hacking, Python, Flutter, MicroPython, Linux servers and secure software, covering 200+ verified teaching hours and 92+ students.",
+          "Achieved a 93.4/100 average evaluation with the 2026 Python cohort, publishing the material as 8 open Quarto books on GitHub Pages.",
+          "Built the instructor pack for every course (teaching guide, student manual, assessment rubrics and accreditation plan) with ABP methodology.",
+        ],
+      },
+      technologies: ["Ethical Hacking", "Python", "Flutter", "R", "Linux", "Quarto", "ABP", "OWASP", "Docker"],
+    },
+    {
+      name: "Codings Academy",
+      position: { es: "Facilitador de Bootcamps (Django + React)", en: "Bootcamp Facilitator (Django + React)" },
+      url: "https://codingsacademy.com",
+      startDate: "2024-02-01",
+      endDate: "2024-12-31",
+      summary: {
+        es: "Facilitación de bootcamps de desarrollo web full stack con Django y React, con evaluación por rúbricas y seguimiento individual del avance de cada estudiante.",
+        en: "Facilitated full-stack web development bootcamps with Django and React, using rubric-based assessment and individual progress tracking for every student.",
+      },
+      highlights: {
+        es: [
+          "Facilité bootcamps de desarrollo web full stack con Django y React, con evaluación por rúbricas y seguimiento individual del avance de cada estudiante.",
+          "Acompañé a los grupos en el ciclo completo de desarrollo (diseño, implementación, testing y despliegue) de sus proyectos finales.",
+        ],
+        en: [
+          "Facilitated full-stack web development bootcamps with Django and React, using rubric-based assessment and individual progress tracking for every student.",
+          "Guided teams through the full development cycle (design, implementation, testing and deployment) of their final projects.",
+        ],
+      },
+      technologies: ["Django", "React", "Python", "JavaScript", "Full Stack"],
     },
     {
       name: "ESPE - Universidad de las Fuerzas Armadas",
@@ -227,9 +284,64 @@ export const cvData = {
       startDate: "2023-04-01",
       endDate: "2024-10-31",
       summary: {
-        es: "Docente del Departamento de Ciencias de la Computación. Asignaturas: Programación, Bases de Datos, Ingeniería de Software. (Sin certificado laboral PDF disponible).",
-        en: "Professor in the Computer Science Department. Courses: Programming, Databases, Software Engineering. (No PDF employment certificate available)."
-      }
+        es: "Docente del Departamento de Ciencias de la Computación. Asignaturas: Programación, Bases de Datos, Ingeniería de Software. Certificación laboral disponible bajo solicitud.",
+        en: "Professor in the Computer Science Department. Courses: Programming, Databases, Software Engineering. Employment certificate available on request.",
+      },
+      highlights: {
+        es: [
+          "Dicté las asignaturas de Programación, Bases de Datos e Ingeniería de Software dentro del Departamento de Ciencias de la Computación.",
+          "Trabajo con foco en arquitectura de software, modelado de datos relacionales y prácticas de ingeniería aplicadas a casos reales.",
+        ],
+        en: [
+          "Taught Programming, Databases and Software Engineering within the Computer Science Department.",
+          "Worked on software architecture, relational data modelling and engineering practices applied to real cases.",
+        ],
+      },
+      technologies: ["Programación", "Bases de Datos", "Ingeniería de Software", "SQL", "Python"],
+    },
+    {
+      name: "UIDE - Universidad Internacional del Ecuador (Ext. Loja)",
+      position: { es: "Docente Ocasional - TTI", en: "Adjunct Professor - IT Career" },
+      url: "https://www.uide.edu.ec/",
+      startDate: "2022-10-01",
+      endDate: "2022-12-31",
+      summary: {
+        es: "Docente de la carrera de Tecnologías de la Información en la extensión de Loja. Certificación laboral disponible bajo solicitud.",
+        en: "Professor for the Information Technologies career at the Loja campus. Employment certificate available on request.",
+      },
+      highlights: {
+        es: [
+          "Docente de la carrera de Tecnologías de la Información en la extensión de Loja durante el período académico 2022.",
+          "Planifiqué las sesiones y los materiales de la asignatura en coordinación con el resto del claustro de la carrera.",
+        ],
+        en: [
+          "Professor for the Information Technologies career at the Loja campus during the 2022 academic term.",
+          "Planned sessions and course materials in coordination with the rest of the career's teaching staff.",
+        ],
+      },
+      technologies: ["Tecnologías de la Información", "Redes", "Hardware"],
+    },
+    {
+      name: "Instituto Superior Tecnológico Juan Montalvo",
+      position: { es: "Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo", en: "Associate Professor - Computer Assembly & Maintenance Career" },
+      url: "https://istjm.edu.ec/",
+      startDate: "2020-10-01",
+      endDate: "2022-03-31",
+      summary: {
+        es: "Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con la habilidad de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, MBA (Coord. Talento Humano, CI 1103882955).",
+        en: "Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to the Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, MBA Eng. (HR Coordinator, ID 1103882955).",
+      },
+      highlights: {
+        es: [
+          "Dicté Hardware, Redes y Sistemas Operativos en la carrera técnica de Ensamblaje y Mantenimiento, conectando la cátedra con hardware hacking sobre OpenWrt y firmware.",
+          "Monté laboratorios prácticos de redes, instalación de sistemas y configuración de dispositivos embebidos con OpenWrt.",
+        ],
+        en: [
+          "Taught Hardware, Networking and Operating Systems in the Computer Assembly & Maintenance technical career, connecting the course to hardware hacking on OpenWrt and firmware.",
+          "Set up practical labs in networking, OS installation and embedded device configuration with OpenWrt.",
+        ],
+      },
+      technologies: ["Hardware", "Redes", "Sistemas Operativos", "OpenWrt", "Firmware", "Kali"],
     },
     {
       name: "APC - Antonio Peña Celi",
@@ -239,42 +351,20 @@ export const cvData = {
       endDate: "2022-12-31",
       summary: {
         es: "Profesor de Computación durante 9 años (2013-2022). Formación en programación, ofimática avanzada y soporte técnico. Ref: Ing. Rolando Marcelo Rojas Merchán.",
-        en: "Computer Science Teacher for 9 years (2013-2022). Training in programming, advanced office tools, and technical support. Ref: Rolando Marcelo Rojas Merchán, Eng."
-      }
+        en: "Computer Science Teacher for 9 years (2013-2022). Training in programming, advanced office tools, and technical support. Ref: Rolando Marcelo Rojas Merchán, Eng.",
+      },
+      highlights: {
+        es: [
+          "Impartí programación, ofimática avanzada y soporte técnico a más de 400 alumnos durante 9 años consecutivos (2013-2022).",
+          "Acompañé a los estudiantes en la transición de la ofimática a la programación estructurada y al soporte de hardware en el aula.",
+        ],
+        en: [
+          "Taught programming, advanced office tooling and technical support to more than 400 students over 9 consecutive years (2013-2022).",
+          "Guided students through the shift from office tooling to structured programming and classroom hardware support.",
+        ],
+      },
+      technologies: ["Programación", "Ofimática avanzada", "Soporte técnico", "Hardware", "Redes"],
     },
-    {
-      name: "Codings Academy",
-      position: { es: "Facilitador de Bootcamps (Django + React)", en: "Bootcamp Facilitator (Django + React)" },
-      url: "https://codingsacademy.com",
-      startDate: "2024-02-01",
-      endDate: "2024-12-31",
-      summary: {
-        es: "Facilitador de Bootcamps de Desarrollo Web Full Stack con Django y React. Ref: Ing. Jyron Isai Cedeño Chavez, MSc.",
-        en: "Facilitator of Full-stack Web Development Bootcamps with Django and React. Ref: Jyron Isai Cedeño Chavez, MSc Eng."
-      }
-    },
-    {
-      name: "Instituto Superior Tecnológico Juan Montalvo",
-      position: { es: "Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo", en: "Associate Professor - Computer Assembly & Maintenance Career" },
-      url: "https://istjm.edu.ec/",
-      startDate: "2020-10-01",
-      endDate: "2022-03-31",
-      summary: {
-        es: "Docente Titular en la carrera técnica de Ensamblaje y Mantenimiento. Asignaturas: Hardware, Redes, Sistemas Operativos. Puente directo con skill de Hardware Hacking (OpenWrt, firmware). Ref: Ing. Ana Gabriela Montalván Salcedo, Mba (Coord. Talento Humano, CI 1103882955).",
-        en: "Associate Professor in the Computer Assembly & Maintenance technical career. Courses: Hardware, Networking, Operating Systems. Direct bridge to Hardware Hacking skill (OpenWrt, firmware). Ref: Ana Gabriela Montalván Salcedo, Mba Eng. (HR Coordinator, ID 1103882955)."
-      }
-    },
-    {
-      name: "UIDE - Universidad Internacional del Ecuador (Ext. Loja)",
-      position: { es: "Docente Ocasional - TTI", en: "Adjunct Professor - IT Career" },
-      url: "https://www.uide.edu.ec/",
-      startDate: "2022-10-01",
-      endDate: "2022-12-31",
-      summary: {
-        es: "Docente de la carrera de Tecnologías de la Información. (Sin certificado laboral PDF disponible).",
-        en: "Professor of Information Technologies career. (No PDF employment certificate available)."
-      }
-    }
   ],
 
   education: [
@@ -524,7 +614,7 @@ export const cvData = {
       source: "Docente Cuantitativa Evaluation.pdf"
     },
     githubRepos: {
-      value: "379",
+      value: "400+",
       unit: "",
       label_es: "Repositorios públicos en GitHub",
       label_en: "Public GitHub repos",

@@ -8,38 +8,66 @@ Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms0
 
 ### Backend
 
-- **Python**: advanced
+- **Python**: Avanzado
 
 ### DevOps
 
-- **Docker**: advanced
+- **Docker**: Avanzado
 
 ### Security
 
-- **Ethical Hacking**: advanced
-- **Penetration Testing**: advanced
-- **OWASP Top 10**: advanced
-- **Auditoría de Pentesting**: advanced
-- **Ingeniería Inversa y Explotación**: advanced
-- **Hardware Hacking (OpenWrt)**: advanced
-- **Nmap**: advanced
-- **Metasploit**: intermediate
-- **Burp Suite**: intermediate
-- **Wireshark**: intermediate
-- **SQL Injection**: advanced
-- **XSS/CSRF**: advanced
-- **Bash Scripting**: advanced
-- **Linux**: master
-- **Kali Linux**: advanced
-- **CTF**: intermediate
-- **Network Security**: advanced
-- **Web Security**: advanced
-- **Cloud Security**: intermediate
+- **Ethical Hacking**: Avanzado
+- **Penetration Testing**: Avanzado
+- **OWASP Top 10**: Avanzado
+- **Auditoría de Pentesting**: Avanzado
+- **Ingeniería Inversa y Explotación**: Avanzado
+- **Hardware Hacking (OpenWrt)**: Avanzado
+- **Nmap**: Avanzado
+- **Metasploit**: Intermedio
+- **Burp Suite**: Intermedio
+- **Wireshark**: Intermedio
+- **SQL Injection**: Avanzado
+- **XSS/CSRF**: Avanzado
+- **Bash Scripting**: Avanzado
+- **Linux**: Experto
+- **Kali Linux**: Avanzado
+- **CTF**: Intermedio
+- **Network Security**: Avanzado
+- **Web Security**: Avanzado
+- **Cloud Security**: Intermedio
 
 ### Tools
 
-- **Git**: advanced
-- **OpenCode + MCP**: advanced
+- **Git**: Avanzado
+- **OpenCode + MCP**: Avanzado
+
+## Experience
+
+### Diseñador y arquitecto de software (proyecto propio) — Meeting Planner AI System
+2026-01-01 Present
+
+- Arquitecté un sistema modular de transcripción y análisis con arquitectura limpia, integrando Whisper/MLX para speech-to-text, LLMs (Groq/xAI) para análisis y resumen, y Docker Compose para entornos reproducibles.
+- Reduje 80% el tiempo dedicado a la transcripción manual, procesando horas de contenido audiovisual cada semana sin intervención humana.
+- Mejoré la accesibilidad educativa con transcripciones precisas y buscables, con un diseño extensible que permitió sumar servicios de análisis sin reestructurar el núcleo.
+
+**Stack:** Python, FastAPI, React 19, Zustand, Whisper/MLX, LLM (Groq, xAI), Docker Compose, SDD
+
+### Docente, Facilitador y Curriculista — ABACOM
+2021-12-01 Present
+
+- Diseñé y dicté 8 cursos de Ethical Hacking, Python, Flutter, MicroPython, servidores Linux y software seguro, con 200+ horas docentes verificadas y 92+ estudiantes.
+- Logré un promedio de evaluación de 93.4/100 en la cohorte de Python 2026, publicando el material como 8 libros Quarto abiertos en GitHub Pages.
+- Construí el pack docente de cada curso (guía del instructor, manual del estudiante, rúbricas de evaluación y plan de acreditación) con metodología ABP.
+
+**Stack:** Ethical Hacking, Python, Flutter, R, Linux, Quarto, ABP, OWASP
+
+### Docente Titular Auxiliar - Carrera de Ensamblaje y Mantenimiento de Equipos de Cómputo — Instituto Superior Tecnológico Juan Montalvo
+2020-10-01 - 2022-03-31
+
+- Dicté Hardware, Redes y Sistemas Operativos en la carrera técnica de Ensamblaje y Mantenimiento, conectando la cátedra con hardware hacking sobre OpenWrt y firmware.
+- Monté laboratorios prácticos de redes, instalación de sistemas y configuración de dispositivos embebidos con OpenWrt.
+
+**Stack:** Hardware, Redes, Sistemas Operativos, OpenWrt, Firmware, Kali
 
 ## Certifications
 
