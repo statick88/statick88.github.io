@@ -1,5 +1,14 @@
 # Teaching Facilitator | ABP Curriculum Generator
 
+**Contact**
+
+- **Email:** dsaavedra88@gmail.com
+- **Phone:** +593 980192790
+- **Location:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
 ## Professional Summary
 
 Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.).
