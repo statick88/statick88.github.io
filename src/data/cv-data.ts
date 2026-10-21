@@ -664,7 +664,7 @@ export const profileData: Record<string, Profile> = {
       { name: 'Flutter Mobile Development', issuer: 'ABACOM', status: 'active' },
       { name: 'Linux Server Administration', issuer: 'ABACOM', status: 'active' },
     ],
-    pdf: 'cv-developer.pdf',
+    pdf: '/cv-developer-es.pdf',
   },
 
   hacker: {
@@ -707,7 +707,7 @@ export const profileData: Record<string, Profile> = {
       { name: 'Fundamentos de Ciberseguridad', issuer: 'ABACOM', status: 'active' },
       { name: 'MSc Ciberseguridad (en curso)', issuer: 'Universidad Complutense de Madrid', status: 'in-progress' },
     ],
-    pdf: 'cv-hacker.pdf',
+    pdf: '/cv-hacker-es.pdf',
   },
 
   research: {
@@ -743,7 +743,7 @@ export const profileData: Record<string, Profile> = {
       { name: 'Magíster en Cs. y Tec. de la Computación', issuer: 'UTPL', status: 'active' },
       { name: 'MSc Ciberseguridad (en curso)', issuer: 'Universidad Complutense de Madrid', status: 'in-progress' },
     ],
-    pdf: 'cv-research.pdf',
+    pdf: '/cv-research-es.pdf',
   },
 
   'docente-facilitador': {
@@ -781,7 +781,7 @@ export const profileData: Record<string, Profile> = {
       { name: 'Flutter Mobile Development (3 niveles)', issuer: 'ABACOM', status: 'active' },
       { name: 'Linux Server Administration', issuer: 'ABACOM', status: 'active' },
     ],
-    pdf: 'cv-docente-facilitador.pdf',
+    pdf: '/cv-docente-facilitador-es.pdf',
   },
 }
 
@@ -796,7 +796,7 @@ profileData.consultor = {
   id: 'consultor',
   label: {"es": "Consultor de Seguridad y Software | Security & Software Consultant", "en": "Security & Software Consultant | Consultor de Seguridad y Software"},
   summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, 134+ certifications, and 3 documented pentest engagements."},
-  pdf: 'cv-consultor-es.pdf',
+  pdf: '/cv-consultor-es.pdf',
   practice: true,
 } as Profile
 

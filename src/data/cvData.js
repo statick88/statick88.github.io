@@ -50,7 +50,7 @@ export const profileData = {
       es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. más de 400 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
       en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. more than 400 public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
     },
-    pdf: "cv-developer.pdf"
+    pdf: "/cv-developer-es.pdf"
   },
 
   hacker: {
@@ -93,7 +93,7 @@ export const profileData = {
       es: "Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). Auditoría Moodle UCM: 5 hallazgos (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Ciberseguridad UCM en curso.",
       en: "Ethical Hacker and Security Researcher. Pentesting, IDOR/CVSS, RE/Exploitation (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). UCM Moodle audit: 5 findings (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Cybersecurity UCM in progress."
     },
-    pdf: "cv-hacker.pdf"
+    pdf: "/cv-hacker-es.pdf"
   },
 
   research: {
@@ -129,7 +129,7 @@ export const profileData = {
       es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. más de 400 repos en GitHub. Interesado en threat modeling, pentesting y AI security.",
       en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. more than 400 repos on GitHub. Interested in threat modeling, pentesting, and AI security."
     },
-    pdf: "cv-research.pdf"
+    pdf: "/cv-research-es.pdf"
   },
 
   "docente-facilitador": {
@@ -167,7 +167,7 @@ export const profileData = {
       es: "Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).",
       en: "Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.)."
     },
-    pdf: "cv-docente-facilitador.pdf"
+    pdf: "/cv-docente-facilitador-es.pdf"
   }
 }
 
