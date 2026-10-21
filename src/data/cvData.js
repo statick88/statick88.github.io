@@ -173,8 +173,8 @@ export const profileData = {
 
 // ── Variante de práctica (organización) ──────────────────────────────
 profileData.consultor = {
-  id: 'consultor',
   ...profileData.hacker,
+  id: 'consultor',
   label: {"es": "Consultor de Seguridad y Software | Security & Software Consultant", "en": "Security & Software Consultant | Consultor de Seguridad y Software"},
   summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, 134+ certifications, and 3 documented pentest engagements."},
   pdf: '/cv-consultor-es.pdf',
