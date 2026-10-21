@@ -185,6 +185,16 @@ Resolución de Problemas · Trabajo en Equipo · Comunicación · Adaptabilidad 
 - Inglés: Avanzado
 - Italiano: Básico
 - Portugués: Básico
+## Publicaciones e Investigación
+
+- **Evaluación de Deep Learning para detectar TDAH y síndrome de Asperger en estudiantes universitarios** — Revista de Investigación Multidisiplinaria, Iberoamericana (2024) _1 cita_
+- **Modelo para detectar la atención de los estudiantes en un salón de clases basado en redes neuronales convolucionales** — Trabajo de Titulación — Magíster en Cs. y Tec. de la Computación, UTPL (2021)
+- **La delgada línea entre la automatización y la vulnerabilidad: el caso OpenClaw** — LinkedIn (artículo técnico) (2026)
+
+## Cursos Publicados (22)
+
+- Libros y cursos completos publicados en GitHub Pages: Dark Web: De 0 a Experto; Fundamentos de Ciberseguridad; Programación Python Fundamentos; Flutter - Desarrollo Móvil De Cero a Experto; Ethical Hacking 2026; MicroPython para el Aula; Administración de Servidores Linux; Desarrollo de Software Seguro; Iron Man Evolution; Bootcamp Fullstack; Bootcamp Desarrollo Móvil Flutter; Diplomado Inteligencia Artificial; Curso de NVim; Taller de IA para No Informáticos; Taller de IA — Presentación; Charla Dr. Doom — Bug Bounty; Showroom Digital Inmobiliario; Nürburgring 24h Predictor; ABACOM Gestión Educativa; Ethical Hacking Labs; Technical Challenges; Portafolio de Ebooks
+
 
 ## Métricas Verificadas
 

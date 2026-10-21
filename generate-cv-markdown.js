@@ -1,5 +1,7 @@
 import { writeFileSync } from 'fs';
 import { cvData } from './src/data/cvData.js';
+import { publications } from './src/data/publications.ts';
+import { courses } from './src/data/courses.js';
 
 // Skill levels live in the data in English; the CV must speak its own language.
 const LEVEL_LABELS = {
@@ -139,6 +141,22 @@ function generateMarkdown(data, lang) {
   data.languages.forEach(langObj => {
     markdown += `- ${langObj.language}: ${langObj.fluency[lang] || langObj.fluency.es}\n`;
   });
+
+  // Publicaciones: el diferencial para docencia e investigación.
+  markdown += `## ${t('Publicaciones e Investigación', 'Publications and Research')}\n\n`;
+  publications.forEach((pub) => {
+    markdown += `- **${pub.title}** — ${pub.journal} (${pub.year})`;
+    if (pub.citations > 0) markdown += ` _${pub.citations} ${t('cita', 'citation')}_`;
+    markdown += `\n`;
+  });
+  markdown += `\n`;
+
+  // Cursos publicados: material abierto, prueba de capacidad docente.
+  markdown += `## ${t('Cursos Publicados', 'Published Courses')} (${courses.length})\n\n`;
+  markdown += `- ${t(
+    'Libros y cursos completos publicados en GitHub Pages',
+    'Complete books and courses published on GitHub Pages',
+  )}: ${courses.map((c) => c.title).join('; ')}\n\n`;
 
   // Metrics
   if (data.metrics) {
