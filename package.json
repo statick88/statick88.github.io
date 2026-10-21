@@ -16,7 +16,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "analyze": "vite build --mode analyze",
-    "generate:cvs": "tsx generate-cv-markdown.js && tsx generate-profile-cvs.js && tsx scripts/render-cv-pdfs.ts",
+    "generate:cvs": "tsx generate-cv-markdown.js && tsx scripts/render-cv-pdfs.ts",
     "validate:cv": "tsx scripts/validate-cv.ts",
     "export:cv": "tsx scripts/export-structured.ts",
     "test:e2e": "playwright test",

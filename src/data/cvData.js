@@ -808,7 +808,9 @@ export const cvData = {
     "MindLedger",
     "course-of-cybersecurity",
     "desarrollo-software-seguro",
-    "cyber-guardians"
+    "cyber-guardians",
+    "Course_of_python",
+    "jarvis-os"
   ],
   "training": {
     "courses": 22,

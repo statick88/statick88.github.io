@@ -25,13 +25,11 @@ interface Target {
   pdf: string
 }
 
-const PROFILES = ['developer', 'hacker', 'research', 'docente-facilitador', 'consultor'] as const
-const LANGUAGES = ['es', 'en'] as const
-
+/**
+ * The published PDFs: one per language. The CV is a single document, so
+ * there is exactly one markdown source and one PDF per language.
+ */
 const TARGETS: Target[] = [
-  ...PROFILES.flatMap((profile) =>
-    LANGUAGES.map((lang) => ({ md: `cv-${profile}-${lang}.md`, pdf: `public/cv-${profile}-${lang}.pdf` })),
-  ),
   { md: 'cv-es.md', pdf: 'public/cv-es.pdf' },
   { md: 'cv-en.md', pdf: 'public/cv-en.pdf' },
 ]

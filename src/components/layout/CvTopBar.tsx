@@ -7,7 +7,6 @@
  */
 
 import { useApp } from '@/context/AppContext'
-import ProfileSelector from '@/components/ProfileSelector'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
 import { useNavGroups, scrollToSection } from '@/hooks/useNavItems'
@@ -52,7 +51,6 @@ export function CvTopBar() {
         >
           {email}
         </a>
-        <ProfileSelector />
         <LanguageToggle language={language} setLanguage={setLanguage} />
         <ThemeToggle theme={theme} setTheme={setTheme} />
       </div>

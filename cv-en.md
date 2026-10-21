@@ -14,6 +14,48 @@ Master's in Computer Science (UTPL). MSc Cybersecurity in progress (UCM). 10+ ye
   - [GitHub — github.com/statick88](https://github.com/statick88)
   - [Portfolio — statick88.github.io](https://statick88.github.io)
 
+## My Practice
+
+Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, 134+ active certifications, and 400+ public repositories.
+
+### Services
+
+- **FullStack Development** — Production-grade web and mobile applications with solid architecture, tests, and documentation. React, Next.js, Flutter, Node.js, Python, PostgreSQL. Formats: Per project, Hourly, Part-time. Rate: $25-50/hora
+- **Security Audit** — Web and mobile application pentesting. OWASP Top 10 vulnerability identification, CVSS-scored reports, and remediation recommendations. Formats: Per project, Monthly retainer. Rate: $500-3000/proyecto
+- **Technical Consulting** — Fractional CTO: software architecture, code review, team mentoring, and strategic technical decision-making. Formats: Part-time, Hourly, Retainer. Rate: $20-40/hora
+- **Training & Courses** — Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM. Formats: Hourly, Per course, Workshop. Rate: $30-60/hora
+
+### Own Tools
+
+- **jarvis-os** — Python service layer. — github.com/statick88/jarvis-os
+- **Course_of_python** — Own Python course of 11 modules with 70+ practical challenges, published as open material. — github.com/statick88/Course_of_python
+- **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. — github.com/statick88/desarrollo-software-seguro
+- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. — github.com/statick88/cyber-guardians
+- **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. — github.com/statick88/course-of-cybersecurity
+- **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. — github.com/statick88/MindLedger
+
+### Own Training
+
+- 22 published courses
+- 200+ verified teaching hours
+- 92+ students (average 93.4/100)
+- 6 institutions taught at
+
+### Authorized Security Engagements
+
+- **Oct 2026 — E-commerce with a 3D client (name withheld under a confidentiality agreement)**: Authorized production pentest, with a signed authorization letter and a 2-day window. 109 subdomains inventoried, a matrix of 15 verified CVEs, 6 adversary chains, and a remediation plan
+- **Jul 2026 — Web application with scheduling management**: Security test over functional findings, with the client's prior authorization. Findings attached and prioritized with severity and remediation
+- **Sep 2025 — Web project (name withheld under a confidentiality agreement)**: Prior authorization letter, with scope and window agreed before execution. Execution within the signed scope, without touching third-party assets
+
+### References
+
+- ESPE - Universidad de las Fuerzas Armadas
+- UIDE - Universidad Internacional del Ecuador (Ext. Loja)
+- ABACOM
+- Codings Academy
+- Instituto Superior Tecnológico Juan Montalvo
+- APC - Antonio Peña Celi
+
 ## Work Experience
 
 ### Software Designer and Architect (own project) at Meeting Planner AI System
