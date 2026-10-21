@@ -520,6 +520,66 @@ export const services: readonly Service[] = [
   },
 ]
 
+// ── Practice (organization) ────────────────────────────────────────────
+// Un bloque, tres espejos (TS/JS/YAML): lo emite patch_practice_cv.py.
+export const practice = {
+  "title": {
+    "es": "Consultoría de Seguridad y Software",
+    "en": "Security & Software Consulting"
+  },
+  "positioning": {
+    "es": "Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, 134+ certificaciones activas y 400+ repositorios públicos.",
+    "en": "Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, 134+ active certifications, and 400+ public repositories."
+  },
+  "serviceIds": [
+    "fullstack",
+    "security",
+    "consulting",
+    "training"
+  ],
+  "toolNames": [
+    "MindLedger",
+    "course-of-cybersecurity",
+    "desarrollo-software-seguro",
+    "cyber-guardians"
+  ],
+  "training": {
+    "courses": 22,
+    "hours": 200,
+    "students": 92,
+    "averageScore": 93.4,
+    "institutions": 6
+  },
+  "engagements": [
+    {
+      "period": "Oct 2026",
+      "sector": "E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)",
+      "scope": "Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días",
+      "outcome": "109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación"
+    },
+    {
+      "period": "Jul 2026",
+      "sector": "Aplicación web con gestión de agendas",
+      "scope": "Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente",
+      "outcome": "Hallazgos adjuntos y priorizados con severidad y remediación"
+    },
+    {
+      "period": "Sep 2025",
+      "sector": "Proyecto web (nombre bajo acuerdo de confidencialidad)",
+      "scope": "Carta de autorización previa, con alcance y ventana acordados antes de ejecutar",
+      "outcome": "Ejecución dentro del alcance firmado, sin tocar activos de terceros"
+    }
+  ],
+  "referenceNames": [
+    "ESPE - Universidad de las Fuerzas Armadas",
+    "UIDE - Universidad Internacional del Ecuador (Ext. Loja)",
+    "ABACOM",
+    "Codings Academy",
+    "Instituto Superior Tecnológico Juan Montalvo",
+    "APC - Antonio Peña Celi"
+  ]
+} as const
+
 // ── Contact ──────────────────────────────────────────────────────
 
 export const contact: Contact = {
@@ -728,6 +788,17 @@ export const profileData: Record<string, Profile> = {
 // ── Barrel Export (Backwards Compatibility) ──────────────────────
 // Permite: import { cvData } from '@/data/cv-data'
 // Temporal — se eliminará cuando todos los consumidores migren a named imports.
+
+// ── Variante de práctica (organización) ────────────────────────────────
+// Hereda de 'hacker' (perfil de seguridad) y añade el bloque de práctica.
+profileData.consultor = {
+  ...profileData.hacker,
+  id: 'consultor',
+  label: {"es": "Consultor de Seguridad y Software | Security & Software Consultant", "en": "Security & Software Consultant | Consultor de Seguridad y Software"},
+  summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, 134+ certifications, and 3 documented pentest engagements."},
+  pdf: 'cv-consultor-es.pdf',
+  practice: true,
+} as Profile
 
 export const cvData: CVData = {
   basics,

@@ -1,18 +1,27 @@
 # Desarrollador Full Stack | Full Stack Engineer
 
-## Professional Summary
+**Contacto**
+
+- **Correo:** dsaavedra88@gmail.com
+- **Teléfono:** +593 980192790
+- **Ubicación:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
+## Resumen Profesional
 
 Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. más de 400 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.
 
-## Technical Skills
+## Habilidades Técnicas
 
-### Frontend Fundamentals
+### Fundamentos de Frontend
 
 - **HTML**: Experto
 - **CSS**: Experto
 - **JavaScript**: Experto
 
-### Frontend Frameworks
+### Frameworks de Frontend
 
 - **TypeScript**: Avanzado
 - **React**: Avanzado
@@ -30,13 +39,13 @@ Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móvi
 - **NestJS**: Avanzado
 - **SRI / XAdES**: Avanzado
 
-### Mobile
+### Móvil
 
 - **Flutter**: Avanzado
 - **React Native**: Avanzado
 - **Expo SDK 53+**: Avanzado
 
-### Native Mobile
+### Móvil Nativo
 
 - **Swift (iOS)**: Intermedio
 - **Kotlin (Android)**: Intermedio
@@ -48,22 +57,22 @@ Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móvi
 - **AWS**: Intermedio
 - **Azure**: Intermedio
 
-### Databases
+### Bases de Datos
 
 - **MySQL**: Avanzado
 - **MongoDB**: Avanzado
 - **PostgreSQL**: Avanzado
 
-### Architecture
+### Arquitectura
 
 - **Clean Architecture**: Avanzado
 - **SOLID**: Avanzado
 - **TDD**: Avanzado
 
-## Experience
+## Experiencia
 
 ### Diseñador y arquitecto de software (proyecto propio) — Meeting Planner AI System
-2026-01-01 Present
+2026-01-01 Presente
 
 - Arquitecté un sistema modular de transcripción y análisis con arquitectura limpia, integrando Whisper/MLX para speech-to-text, LLMs (Groq/xAI) para análisis y resumen, y Docker Compose para entornos reproducibles.
 - Reduje 80% el tiempo dedicado a la transcripción manual, procesando horas de contenido audiovisual cada semana sin intervención humana.
@@ -72,7 +81,7 @@ Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móvi
 **Stack:** Python, FastAPI, React 19, Zustand, Whisper/MLX, LLM (Groq, xAI), Docker Compose, SDD
 
 ### Docente, Facilitador y Curriculista — ABACOM
-2021-12-01 Present
+2021-12-01 Presente
 
 - Diseñé y dicté 8 cursos de Ethical Hacking, Python, Flutter, MicroPython, servidores Linux y software seguro, con 200+ horas docentes verificadas y 92+ estudiantes.
 - Logré un promedio de evaluación de 93.4/100 en la cohorte de Python 2026, publicando el material como 8 libros Quarto abiertos en GitHub Pages.
@@ -88,9 +97,9 @@ Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móvi
 
 **Stack:** Django, React, Python, JavaScript, Full Stack
 
-## Certifications
+## Certificaciones
 
-- **Magíster en Cs. y Tec. de la Computación** - UTPL (Active)
-- **Python for Data Science** - ABACOM (Active)
-- **Flutter Mobile Development** - ABACOM (Active)
-- **Linux Server Administration** - ABACOM (Active)
+- **Magíster en Cs. y Tec. de la Computación** - UTPL (Activo)
+- **Python for Data Science** - ABACOM (Activo)
+- **Flutter Mobile Development** - ABACOM (Activo)
+- **Linux Server Administration** - ABACOM (Activo)

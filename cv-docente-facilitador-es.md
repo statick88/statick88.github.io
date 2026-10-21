@@ -1,30 +1,39 @@
 # Docente Facilitador | Generador de Currículos ABP
 
-## Professional Summary
+**Contacto**
+
+- **Correo:** dsaavedra88@gmail.com
+- **Teléfono:** +593 980192790
+- **Ubicación:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
+## Resumen Profesional
 
 Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).
 
-## Technical Skills
+## Habilidades Técnicas
 
 ### Backend
 
 - **Python**: Avanzado
 
-### Mobile
+### Móvil
 
 - **Flutter**: Avanzado
 
-### Security
+### Seguridad
 
 - **Linux**: Experto
 - **Ethical Hacking**: Avanzado
 - **Hardware Hacking (OpenWrt)**: Avanzado
 
-### Teaching
+### Enseñanza
 
 - **Diseño Curricular (ABP / ADDIE)**: Experto
 
-### Tools
+### Herramientas
 
 - **Quarto**: Avanzado
 - **LaTeX**: Avanzado
@@ -32,14 +41,14 @@ Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flut
 - **Jupyter**: Avanzado
 - **OpenCode + MCP**: Avanzado
 
-### AI
+### Inteligencia Artificial
 
 - **R Language**: Intermedio
 
-## Experience
+## Experiencia
 
 ### Docente, Facilitador y Curriculista — ABACOM
-2021-12-01 Present
+2021-12-01 Presente
 
 - Diseñé y dicté 8 cursos de Ethical Hacking, Python, Flutter, MicroPython, servidores Linux y software seguro, con 200+ horas docentes verificadas y 92+ estudiantes.
 - Logré un promedio de evaluación de 93.4/100 en la cohorte de Python 2026, publicando el material como 8 libros Quarto abiertos en GitHub Pages.
@@ -87,15 +96,15 @@ Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flut
 
 **Stack:** Programación, Ofimática avanzada, Soporte técnico, Hardware, Redes
 
-## Certifications
+## Certificaciones
 
-- **Magíster en Cs. y Tec. de la Computación** - UTPL (Active)
-- **Licenciado en Informática Educativa** - UNL (Active)
-- **Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)** - ABACOM (Active)
-- **Imagen de Marca (Branding)** - ABACOM (Active)
-- **Ethical Hacking & Penetration Testing** - ABACOM (Active)
-- **Fundamentos de Ciberseguridad** - ABACOM (Active)
-- **Python for Data Science** - ABACOM (Active)
-- **R para Análisis Estadístico** - ABACOM (Active)
-- **Flutter Mobile Development (3 niveles)** - ABACOM (Active)
-- **Linux Server Administration** - ABACOM (Active)
+- **Magíster en Cs. y Tec. de la Computación** - UTPL (Activo)
+- **Licenciado en Informática Educativa** - UNL (Activo)
+- **Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)** - ABACOM (Activo)
+- **Imagen de Marca (Branding)** - ABACOM (Activo)
+- **Ethical Hacking & Penetration Testing** - ABACOM (Activo)
+- **Fundamentos de Ciberseguridad** - ABACOM (Activo)
+- **Python for Data Science** - ABACOM (Activo)
+- **R para Análisis Estadístico** - ABACOM (Activo)
+- **Flutter Mobile Development (3 niveles)** - ABACOM (Activo)
+- **Linux Server Administration** - ABACOM (Activo)

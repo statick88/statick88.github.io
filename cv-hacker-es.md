@@ -1,10 +1,19 @@
 # Hacker Ético | Pentester & Security Researcher
 
-## Professional Summary
+**Contacto**
+
+- **Correo:** dsaavedra88@gmail.com
+- **Teléfono:** +593 980192790
+- **Ubicación:** Loja, Loja, ECU
+- **LinkedIn:** www.linkedin.com/in/diego-saavedra-developer/
+- **GitHub:** github.com/statick88
+- **Portfolio:** statick88.github.io
+
+## Resumen Profesional
 
 Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms08_067, ms17_010), Hardware Hacking (OpenWrt ramips-mt76x8). Auditoría Moodle UCM: 5 hallazgos (1 CRIT CVSS 9.1, 2 MED, 2 LOW). MSc Ciberseguridad UCM en curso.
 
-## Technical Skills
+## Habilidades Técnicas
 
 ### Backend
 
@@ -14,7 +23,7 @@ Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms0
 
 - **Docker**: Avanzado
 
-### Security
+### Seguridad
 
 - **Ethical Hacking**: Avanzado
 - **Penetration Testing**: Avanzado
@@ -36,15 +45,15 @@ Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms0
 - **Web Security**: Avanzado
 - **Cloud Security**: Intermedio
 
-### Tools
+### Herramientas
 
 - **Git**: Avanzado
 - **OpenCode + MCP**: Avanzado
 
-## Experience
+## Experiencia
 
 ### Diseñador y arquitecto de software (proyecto propio) — Meeting Planner AI System
-2026-01-01 Present
+2026-01-01 Presente
 
 - Arquitecté un sistema modular de transcripción y análisis con arquitectura limpia, integrando Whisper/MLX para speech-to-text, LLMs (Groq/xAI) para análisis y resumen, y Docker Compose para entornos reproducibles.
 - Reduje 80% el tiempo dedicado a la transcripción manual, procesando horas de contenido audiovisual cada semana sin intervención humana.
@@ -53,7 +62,7 @@ Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms0
 **Stack:** Python, FastAPI, React 19, Zustand, Whisper/MLX, LLM (Groq, xAI), Docker Compose, SDD
 
 ### Docente, Facilitador y Curriculista — ABACOM
-2021-12-01 Present
+2021-12-01 Presente
 
 - Diseñé y dicté 8 cursos de Ethical Hacking, Python, Flutter, MicroPython, servidores Linux y software seguro, con 200+ horas docentes verificadas y 92+ estudiantes.
 - Logré un promedio de evaluación de 93.4/100 en la cohorte de Python 2026, publicando el material como 8 libros Quarto abiertos en GitHub Pages.
@@ -69,9 +78,9 @@ Hacker Ético y Security Researcher. Pentesting, IDOR/CVSS, RE/Explotación (ms0
 
 **Stack:** Hardware, Redes, Sistemas Operativos, OpenWrt, Firmware, Kali
 
-## Certifications
+## Certificaciones
 
-- **Reverse Engineering & Exploit Development** - UCM (Active)
-- **Ethical Hacking & Penetration Testing** - ABACOM (Active)
-- **Fundamentos de Ciberseguridad** - ABACOM (Active)
-- **MSc Ciberseguridad (en curso)** - Universidad Complutense de Madrid (In Progress)
+- **Reverse Engineering & Exploit Development** - UCM (Activo)
+- **Ethical Hacking & Penetration Testing** - ABACOM (Activo)
+- **Fundamentos de Ciberseguridad** - ABACOM (Activo)
+- **MSc Ciberseguridad (en curso)** - Universidad Complutense de Madrid (En Progreso)

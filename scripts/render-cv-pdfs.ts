@@ -25,7 +25,7 @@ interface Target {
   pdf: string
 }
 
-const PROFILES = ['developer', 'hacker', 'research', 'docente-facilitador'] as const
+const PROFILES = ['developer', 'hacker', 'research', 'docente-facilitador', 'consultor'] as const
 const LANGUAGES = ['es', 'en'] as const
 
 const TARGETS: Target[] = [
