@@ -10,6 +10,7 @@
 
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import * as yaml from 'js-yaml'
 import { ATSSchema, type ATSData, extractKeywords } from '../src/lib/schemas/ats-schema'
 
@@ -62,7 +63,7 @@ interface EducationEntry {
 interface CertificationEntry {
   name: BilingualText
   issuer: string
-  date: string
+  date?: string | null
   expiryDate?: string
   credentialId?: string | null
   url?: string
@@ -94,7 +95,15 @@ interface LanguageEntry {
   code: string
 }
 
-interface RawCVData {
+interface ServiceEntry {
+  id: string
+  title: BilingualText
+  description: BilingualText
+  formats: { es: string[]; en: string[] }
+  priceRange: string
+}
+
+export interface RawCVData {
   profile: {
     name: string
     role: BilingualText
@@ -113,6 +122,7 @@ interface RawCVData {
   certifications: CertificationEntry[]
   skills: SkillEntry[]
   projects: ProjectEntry[]
+  services: ServiceEntry[]
   languages: LanguageEntry[]
   metrics: {
     yearsExperience: number
@@ -170,7 +180,20 @@ const CERT_STATUS_MAP: Record<string, 'active' | 'expired' | 'revoked'> = {
   'revoked': 'revoked',
 }
 
-function toATS(data: RawCVData): ATSData {
+/**
+ * The date of a credential, when it has one.
+ *
+ * A credential that carries no date says so; it does not carry a marker that
+ * would travel into the export as if it were a date. Only a value that names
+ * a year (or a full date) is a date, so anything else means "no date" and the
+ * field is omitted rather than printed.
+ */
+function credentialDate(date: string | null | undefined): string | undefined {
+  const value = date?.trim()
+  return value && /^\d{4}(-\d{2}(-\d{2})?)?$/.test(value) ? value : undefined
+}
+
+export function toATS(data: RawCVData): ATSData {
   return {
     personal: {
       name: data.profile.name,
@@ -203,7 +226,7 @@ function toATS(data: RawCVData): ATSData {
     certifications: data.certifications.map((cert) => ({
       name: typeof cert.name === 'object' ? cert.name.en : cert.name,
       issuer: cert.issuer,
-      date: cert.date,
+      date: credentialDate(cert.date),
       expiryDate: cert.expiryDate || undefined,
       status: CERT_STATUS_MAP[cert.status || 'active'] || 'active',
       credentialId: cert.credentialId || undefined,
@@ -222,6 +245,13 @@ function toATS(data: RawCVData): ATSData {
       url: proj.url,
       featured: proj.featured,
     })),
+    services: (data.services ?? []).map((service) => ({
+      id: service.id,
+      title: service.title.en,
+      description: service.description.en,
+      formats: service.formats.en,
+      price: service.priceRange,
+    })),
     languages: data.languages.map((lang) => ({
       language: lang.language,
       proficiency: LANGUAGE_LEVEL_MAP[lang.level] || 'conversational',
@@ -236,7 +266,7 @@ function toATS(data: RawCVData): ATSData {
 // Generate Markdown
 // ============================================================================
 
-function toMarkdown(ats: ATSData): string {
+export function toMarkdown(ats: ATSData): string {
   const lines: string[] = []
 
   lines.push(`# ${ats.personal.name} — CV`)
@@ -283,7 +313,10 @@ function toMarkdown(ats: ATSData): string {
     lines.push('## Certificaciones / Certifications')
     lines.push('')
     for (const cert of ats.certifications) {
-      lines.push(`- **${cert.name}** — ${cert.issuer} (${cert.date}) [${cert.status}]`)
+      // A credential without a date carries no date: the field is omitted
+      // instead of printed as a placeholder.
+      const date = cert.date ? ` (${cert.date})` : ''
+      lines.push(`- **${cert.name}** — ${cert.issuer}${date} [${cert.status}]`)
     }
     lines.push('')
   }
@@ -315,6 +348,18 @@ function toMarkdown(ats: ATSData): string {
     lines.push('')
   }
 
+  // Services
+  if (ats.services && ats.services.length > 0) {
+    lines.push('## Servicios / Services')
+    lines.push('')
+    for (const service of ats.services) {
+      lines.push(`- **${service.title}** — ${service.description}`)
+      lines.push(`  *Formats:* ${service.formats.join(', ')}`)
+      lines.push(`  *Price:* ${service.price}`)
+    }
+    lines.push('')
+  }
+
   // Languages
   if (ats.languages.length > 0) {
     lines.push('## Idiomas / Languages')
@@ -332,7 +377,7 @@ function toMarkdown(ats: ATSData): string {
 // Generate Career-Ops JSON
 // ============================================================================
 
-function toCareerOps(ats: ATSData): Record<string, unknown> {
+export function toCareerOps(ats: ATSData): Record<string, unknown> {
   return {
     version: '1.0',
     candidate: {
@@ -384,6 +429,13 @@ function toCareerOps(ats: ATSData): Record<string, unknown> {
       impact: p.impact,
       url: p.url,
     })),
+    services: (ats.services ?? []).map(s => ({
+      id: s.id,
+      title: s.title,
+      description: s.description,
+      formats: s.formats,
+      price: s.price,
+    })),
     languages: ats.languages.map(l => ({
       language: l.language,
       proficiency: l.proficiency,
@@ -396,7 +448,7 @@ function toCareerOps(ats: ATSData): Record<string, unknown> {
 // Generate AI-Job-Search YAML
 // ============================================================================
 
-function toAIJobSearch(ats: ATSData): Record<string, unknown> {
+export function toAIJobSearch(ats: ATSData): Record<string, unknown> {
   return {
     schema: 'ai-job-search/v1',
     generated_at: ats.generatedAt,
@@ -445,6 +497,13 @@ function toAIJobSearch(ats: ATSData): Record<string, unknown> {
       outcomes: p.impact,
       repository: p.url,
     })),
+    service_offer: (ats.services ?? []).map(s => ({
+      service_id: s.id,
+      service_name: s.title,
+      overview: s.description,
+      engagement_formats: s.formats,
+      price: s.price,
+    })),
     linguistic_competencies: ats.languages.map(l => ({
       language: l.language,
       capability: l.proficiency,
@@ -457,7 +516,7 @@ function toAIJobSearch(ats: ATSData): Record<string, unknown> {
 // Main
 // ============================================================================
 
-function main() {
+export function main() {
   console.log('📄 Loading CV data from YAML...')
   const raw = readFileSync(YAML_PATH, 'utf-8')
   const data = yaml.load(raw) as RawCVData
@@ -522,4 +581,9 @@ function main() {
   console.log('   - cv-ai-job-search.yaml')
 }
 
-main()
+// The exports are the contract the CV publishes, and the drift test reads
+// them, so the transforms are importable: the script only writes files when
+// it is the process being run, not when a test imports it.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main()
+}

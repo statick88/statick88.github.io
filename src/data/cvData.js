@@ -1,6 +1,12 @@
 // cvData.js — Diego Medardo Saavedra García
 // Source of truth: ~/Documents/job_applications/core/cv-consolidado.md
 // Last verified: 2026-06-01 (130+ PDF audit, NLM, GitHub, 3 directory audits)
+//
+// One of the three mirrors of the CV: this legacy file (the one the PDF
+// generator reads), the TypeScript source (src/data/cv-data.ts) and the YAML
+// the ATS exports read (src/data/cv-data.yaml). The three declare the same
+// projects, services, skills and certifications; the drift test
+// (src/__tests__/design/cv-data-drift.test.ts) keeps them together.
 
 export const profileData = {
   developer: {
@@ -452,6 +458,12 @@ export const cvData = {
     { name: "Burp Suite", level: "intermediate", category: "security" },
     { name: "Nmap", level: "advanced", category: "security" },
     { name: "Wireshark", level: "intermediate", category: "security" },
+    { name: "SQL Injection", level: "advanced", category: "security" },
+    { name: "XSS/CSRF", level: "advanced", category: "security" },
+    { name: "CTF", level: "intermediate", category: "security" },
+    { name: "Network Security", level: "advanced", category: "security" },
+    { name: "Web Security", level: "advanced", category: "security" },
+    { name: "Cloud Security", level: "intermediate", category: "security" },
     { name: "Machine Learning", level: "intermediate", category: "ai" },
     { name: "TensorFlow", level: "intermediate", category: "ai" },
     { name: "R Language", level: "intermediate", category: "ai" },
@@ -483,40 +495,16 @@ export const cvData = {
 
   projects: [
     {
-      name: "jarvis-os",
+      name: "course-of-cybersecurity",
       description: {
-        es: "Capa de servicios en Python.",
-        en: "Python service layer."
+        es: "Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker.",
+        en: "Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual."
       },
       highlights: {
-        es: ["Python"],
-        en: ["Python"]
+        es: ["Diseño Curricular", "42 horas", "Retos", "Laboratorios", "Docker"],
+        en: ["Curriculum Design", "42 hours", "Challenges", "Labs", "Docker"]
       },
-      github: "https://github.com/statick88/jarvis-os"
-    },
-    {
-      name: "Course_of_python",
-      description: {
-        es: "Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto.",
-        en: "Own Python course of 11 modules with 70+ practical challenges, published as open material."
-      },
-      highlights: {
-        es: ["JavaScript", "Python", "11 módulos", "70+ retos", "Material Abierto"],
-        en: ["JavaScript", "Python", "11 modules", "70+ challenges", "Open Material"]
-      },
-      github: "https://github.com/statick88/Course_of_python"
-    },
-    {
-      name: "desarrollo-software-seguro",
-      description: {
-        es: "Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub.",
-        en: "Secure software development material published as open material, and the only repository in this set with a star on GitHub."
-      },
-      highlights: {
-        es: ["JavaScript", "Desarrollo Seguro", "Open Educational Resources"],
-        en: ["JavaScript", "Secure Development", "Open Educational Resources"]
-      },
-      github: "https://github.com/statick88/desarrollo-software-seguro"
+      github: "https://github.com/statick88/course-of-cybersecurity"
     },
     {
       name: "cyber-guardians",
@@ -531,28 +519,28 @@ export const cvData = {
       github: "https://github.com/statick88/cyber-guardians"
     },
     {
-      name: "course-of-cybersecurity",
+      name: "desarrollo-software-seguro",
       description: {
-        es: "Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker.",
-        en: "Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual."
+        es: "Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub.",
+        en: "Secure software development material published as open material, and the only repository in this set with a star on GitHub."
       },
       highlights: {
-        es: ["Diseño Curricular", "42 horas", "Retos", "Laboratorios", "Docker"],
-        en: ["Curriculum Design", "42 hours", "Challenges", "Labs", "Docker"]
+        es: ["JavaScript", "Desarrollo Seguro", "Open Educational Resources"],
+        en: ["JavaScript", "Secure Development", "Open Educational Resources"]
       },
-      github: "https://github.com/statick88/course-of-cybersecurity"
+      github: "https://github.com/statick88/desarrollo-software-seguro"
     },
     {
-      name: "open-api-facturacion-sri",
+      name: "Course_of_python",
       description: {
-        es: "API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.",
-        en: "REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission."
+        es: "Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto.",
+        en: "Own Python course of 11 modules with 70+ practical challenges, published as open material."
       },
       highlights: {
-        es: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"],
-        en: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"]
+        es: ["JavaScript", "Python", "11 módulos", "70+ retos", "Material Abierto"],
+        en: ["JavaScript", "Python", "11 modules", "70+ challenges", "Open Material"]
       },
-      github: "https://github.com/statick88/open-api-facturacion-sri"
+      github: "https://github.com/statick88/Course_of_python"
     },
     {
       name: "MindLedger",
@@ -567,76 +555,64 @@ export const cvData = {
       github: "https://github.com/statick88/MindLedger"
     },
     {
-      name: "CyberGuardians",
+      name: "jarvis-os",
       description: {
-        es: "Plataforma de educación en ciberseguridad para jóvenes latinoamericanos (14-22). Enseña a través de gamificación, no de lectures. Next.js 15, TypeScript, Tailwind CSS, diseño glasspunk colorido con paneles de cristal y neón. Sistema de XP, logros y módulos interactivos.",
-        en: "Cybersecurity education platform for Latin American youth (14-22). Teaches through gameplay, not lectures. Next.js 15, TypeScript, Tailwind CSS, colorful glasspunk design with glass panels and neon. XP system, achievements, and interactive modules."
+        es: "Capa de servicios en Python.",
+        en: "Python service layer."
       },
       highlights: {
-        es: ["Next.js 15", "TypeScript", "Tailwind CSS", "Gamificación", "Glassmorphism", "Educación"],
-        en: ["Next.js 15", "TypeScript", "Tailwind CSS", "Gamification", "Glassmorphism", "Education"]
+        es: ["Python"],
+        en: ["Python"]
       },
-      github: "https://github.com/statick88/cyber-guardians"
+      github: "https://github.com/statick88/jarvis-os"
     },
     {
-      name: "multi-agent-system",
+      name: "open-api-facturacion-sri",
       description: {
-        es: "Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.",
-        en: "Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects."
+        es: "API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.",
+        en: "REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission."
       },
       highlights: {
-        es: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"],
-        en: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"]
+        es: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"],
+        en: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"]
       },
-      github: "https://github.com/statick88/multi-agent-system"
+      github: "https://github.com/statick88/open-api-facturacion-sri"
     },
     {
-      name: "material-educativo-unl",
+      name: "exploitarium",
       description: {
-        es: "Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica.",
-        en: "Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics."
+        es: "Colección de PoCs de explotación para CVEs",
+        en: "Exploitation PoC collection for CVEs"
       },
       highlights: {
-        es: ["Quarto", "ABP", "Open Educational Resources", "UNL"],
-        en: ["Quarto", "PBL", "Open Educational Resources", "UNL"]
+        es: ["Python", "Exploit Development", "CVE"],
+        en: ["Python", "Exploit Development", "CVE"]
       },
-      github: "https://github.com/statick88/material-educativo-unl"
+      github: "https://github.com/statick88/exploitarium"
     },
     {
-      name: "UCM-Moodle-Pentest",
+      name: "cybervault",
       description: {
-        es: "Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl.",
-        en: "Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl."
+        es: "Repositorio de seguridad y auditoría",
+        en: "Security and audit repository"
       },
       highlights: {
-        es: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"],
-        en: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"]
+        es: ["Python", "Security"],
+        en: ["Python", "Security"]
       },
-      github: "https://github.com/statick88/ucm-moodle-pentest"
+      github: "https://github.com/statick88/cybervault"
     },
     {
-      name: "OpenWrt-Hardware-Hacking",
+      name: "cv-diego",
       description: {
-        es: "Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM.",
-        en: "Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project."
+        es: "CV digital interactivo",
+        en: "Interactive digital CV"
       },
       highlights: {
-        es: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"],
-        en: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"]
+        es: ["React", "Vite", "TypeScript", "Tailwind CSS"],
+        en: ["React", "Vite", "TypeScript", "Tailwind CSS"]
       },
-      github: "https://github.com/statick88/openwrt-hardware-hacking"
-    },
-    {
-      name: "ms08-067-metasploit-demo",
-      description: {
-        es: "Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso.",
-        en: "Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation."
-      },
-      highlights: {
-        es: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"],
-        en: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"]
-      },
-      github: "https://github.com/statick88/ms08-067-metasploit-demo"
+      github: "https://github.com/statick88/statick88.github.io"
     }
   ],
 
@@ -672,7 +648,11 @@ export const cvData = {
     { name: "Curso Profesional de Python", issuer: "Codigo Facilito", status: "active" },
     { name: "Curso de Machine Learning", issuer: "Codigo Facilito", status: "active" },
     { name: "Curso de CSS", issuer: "Codigo Facilito", status: "active" },
-    { name: "Taller de Next.js", issuer: "Codigo Facilito", status: "active" }
+    { name: "Taller de Next.js", issuer: "Codigo Facilito", status: "active" },
+    { name: "Ciberseguridad Defensiva", issuer: "ABACOM", status: "active" },
+    { name: "Ingeniería Inversa", issuer: "ABACOM", status: "active" },
+    { name: "Redes y Servidores Linux", issuer: "ABACOM", status: "active" },
+    { name: "Desarrollo Web Full Stack (Django + React)", issuer: "Codings Academy", status: "active" }
   ],
 
   metrics: {
@@ -758,8 +738,8 @@ export const cvData = {
       icon: 'book',
       title: { es: 'Capacitación & Cursos', en: 'Training & Courses' },
       description: {
-        es: 'Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM.',
-        en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM.'
+        es: 'Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. Trece años de docencia continua desde 2013 en seis instituciones, entre ellas ESPE, UIDE y ABACOM.',
+        en: 'Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. Thirteen continuous years of teaching since 2013 across six institutions, including ESPE, UIDE and ABACOM.'
       },
       formats: {
         es: ['Por hora', 'Por curso', 'Workshop'],

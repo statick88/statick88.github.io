@@ -23,16 +23,16 @@ Independent security and software practice: authorized application auditing, pro
 - **FullStack Development** — Production-grade web and mobile applications with solid architecture, tests, and documentation. React, Next.js, Flutter, Node.js, Python, PostgreSQL. Formats: Per project, Hourly, Part-time. Rate: $25-50/hora
 - **Security Audit** — Web and mobile application pentesting. OWASP Top 10 vulnerability identification, CVSS-scored reports, and remediation recommendations. Formats: Per project, Monthly retainer. Rate: $500-3000/proyecto
 - **Technical Consulting** — Fractional CTO: software architecture, code review, team mentoring, and strategic technical decision-making. Formats: Part-time, Hourly, Retainer. Rate: $20-40/hora
-- **Training & Courses** — Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. 500+ students trained at ESPE, UIDE, ABACOM. Formats: Hourly, Per course, Workshop. Rate: $30-60/hora
+- **Training & Courses** — Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. Thirteen continuous years of teaching since 2013 across six institutions, including ESPE, UIDE and ABACOM. Formats: Hourly, Per course, Workshop. Rate: $30-60/hora
 
 ### Own Tools
 
-- **jarvis-os** — Python service layer. — github.com/statick88/jarvis-os
-- **Course_of_python** — Own Python course of 11 modules with 70+ practical challenges, published as open material. — github.com/statick88/Course_of_python
-- **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. — github.com/statick88/desarrollo-software-seguro
-- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. — github.com/statick88/cyber-guardians
 - **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. — github.com/statick88/course-of-cybersecurity
+- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. — github.com/statick88/cyber-guardians
+- **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. — github.com/statick88/desarrollo-software-seguro
+- **Course_of_python** — Own Python course of 11 modules with 70+ practical challenges, published as open material. — github.com/statick88/Course_of_python
 - **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. — github.com/statick88/MindLedger
+- **jarvis-os** — Python service layer. — github.com/statick88/jarvis-os
 
 ### Own Training
 
@@ -161,7 +161,7 @@ Bachelor
 
 **Databases:** MySQL (Advanced), MongoDB (Advanced), PostgreSQL (Advanced)
 
-**Security:** Ethical Hacking (Advanced), Penetration Testing (Advanced), OWASP Top 10 (Advanced), Auditoría de Pentesting (Advanced), Ingeniería Inversa y Explotación (Advanced), Hardware Hacking (OpenWrt) (Advanced), Bash Scripting (Advanced), Linux (Master), Kali Linux (Advanced), Metasploit (Intermediate), Burp Suite (Intermediate), Nmap (Advanced), Wireshark (Intermediate)
+**Security:** Ethical Hacking (Advanced), Penetration Testing (Advanced), OWASP Top 10 (Advanced), Auditoría de Pentesting (Advanced), Ingeniería Inversa y Explotación (Advanced), Hardware Hacking (OpenWrt) (Advanced), Bash Scripting (Advanced), Linux (Master), Kali Linux (Advanced), Metasploit (Intermediate), Burp Suite (Intermediate), Nmap (Advanced), Wireshark (Intermediate), SQL Injection (Advanced), XSS/CSRF (Advanced), CTF (Intermediate), Network Security (Advanced), Web Security (Advanced), Cloud Security (Intermediate)
 
 **Architecture:** Clean Architecture (Advanced), SOLID (Advanced), TDD (Advanced)
 
@@ -173,19 +173,16 @@ Bachelor
 
 ## Featured Projects
 
-- **jarvis-os** — Python service layer. _Python_ [Code](https://github.com/statick88/jarvis-os)
-- **Course_of_python** — Own Python course of 11 modules with 70+ practical challenges, published as open material. _JavaScript, Python, 11 modules, 70+ challenges, Open Material_ [Code](https://github.com/statick88/Course_of_python)
-- **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. _JavaScript, Secure Development, Open Educational Resources_ [Code](https://github.com/statick88/desarrollo-software-seguro)
-- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. _TypeScript, Socratic Method, Scaffolding, Vygotsky, Metacognition_ [Code](https://github.com/statick88/cyber-guardians)
 - **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. _Curriculum Design, 42 hours, Challenges, Labs, Docker_ [Code](https://github.com/statick88/course-of-cybersecurity)
-- **open-api-facturacion-sri** — REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Code](https://github.com/statick88/open-api-facturacion-sri)
+- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. _TypeScript, Socratic Method, Scaffolding, Vygotsky, Metacognition_ [Code](https://github.com/statick88/cyber-guardians)
+- **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. _JavaScript, Secure Development, Open Educational Resources_ [Code](https://github.com/statick88/desarrollo-software-seguro)
+- **Course_of_python** — Own Python course of 11 modules with 70+ practical challenges, published as open material. _JavaScript, Python, 11 modules, 70+ challenges, Open Material_ [Code](https://github.com/statick88/Course_of_python)
 - **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. _Tauri v2, Rust, React, SQLCipher, Clean Architecture, Multi-Tenant_ [Code](https://github.com/statick88/MindLedger)
-- **CyberGuardians** — Cybersecurity education platform for Latin American youth (14-22). Teaches through gameplay, not lectures. Next.js 15, TypeScript, Tailwind CSS, colorful glasspunk design with glass panels and neon. XP system, achievements, and interactive modules. _Next.js 15, TypeScript, Tailwind CSS, Gamification, Glassmorphism, Education_ [Code](https://github.com/statick88/cyber-guardians)
-- **multi-agent-system** — Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects. _Python, FastAPI, OpenCode, MCP, SDD_ [Code](https://github.com/statick88/multi-agent-system)
-- **material-educativo-unl** — Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics. _Quarto, PBL, Open Educational Resources, UNL_ [Code](https://github.com/statick88/material-educativo-unl)
-- **UCM-Moodle-Pentest** — Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl. _Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle_ [Code](https://github.com/statick88/ucm-moodle-pentest)
-- **OpenWrt-Hardware-Hacking** — Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project. _OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware_ [Code](https://github.com/statick88/openwrt-hardware-hacking)
-- **ms08-067-metasploit-demo** — Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation. _Metasploit, ms08_067, ms17_010, RE, Windows_ [Code](https://github.com/statick88/ms08-067-metasploit-demo)
+- **jarvis-os** — Python service layer. _Python_ [Code](https://github.com/statick88/jarvis-os)
+- **open-api-facturacion-sri** — REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Code](https://github.com/statick88/open-api-facturacion-sri)
+- **exploitarium** — Exploitation PoC collection for CVEs _Python, Exploit Development, CVE_ [Code](https://github.com/statick88/exploitarium)
+- **cybervault** — Security and audit repository _Python, Security_ [Code](https://github.com/statick88/cybervault)
+- **cv-diego** — Interactive digital CV _React, Vite, TypeScript, Tailwind CSS_ [Code](https://github.com/statick88/statick88.github.io)
 
 ## Certifications
 
@@ -221,6 +218,10 @@ Bachelor
 - **Curso de Machine Learning** - Codigo Facilito (Active)
 - **Curso de CSS** - Codigo Facilito (Active)
 - **Taller de Next.js** - Codigo Facilito (Active)
+- **Ciberseguridad Defensiva** - ABACOM (Active)
+- **Ingeniería Inversa** - ABACOM (Active)
+- **Redes y Servidores Linux** - ABACOM (Active)
+- **Desarrollo Web Full Stack (Django + React)** - Codings Academy (Active)
 
 ### Soft Skills and Languages
 

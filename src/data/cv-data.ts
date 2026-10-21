@@ -7,6 +7,12 @@
 //   import type { CVData } from '@/types/cv'
 //
 // NO importar desde cvData.js — será eliminado en Fase 7.
+//
+// El CV vive en tres espejos: este fichero, el espejo legacy en
+// src/data/cvData.js (el que genera los PDF) y el YAML src/data/cv-data.yaml
+// (el que alimenta el export ATS). Los tres declaran el mismo conjunto de
+// proyectos, servicios, habilidades y certificaciones; el test de deriva
+// (src/__tests__/design/cv-data-drift.test.ts) los mantiene juntos.
 
 import type {
   Basics,
@@ -307,6 +313,12 @@ export const skills: readonly Skill[] = [
   { name: 'Burp Suite', level: 'intermediate', category: 'security' },
   { name: 'Nmap', level: 'advanced', category: 'security' },
   { name: 'Wireshark', level: 'intermediate', category: 'security' },
+  { name: 'SQL Injection', level: 'advanced', category: 'security' },
+  { name: 'XSS/CSRF', level: 'advanced', category: 'security' },
+  { name: 'CTF', level: 'intermediate', category: 'security' },
+  { name: 'Network Security', level: 'advanced', category: 'security' },
+  { name: 'Web Security', level: 'advanced', category: 'security' },
+  { name: 'Cloud Security', level: 'intermediate', category: 'security' },
   { name: 'Machine Learning', level: 'intermediate', category: 'ai' },
   { name: 'TensorFlow', level: 'intermediate', category: 'ai' },
   { name: 'R Language', level: 'intermediate', category: 'ai' },
@@ -394,12 +406,12 @@ export const projects: readonly Project[] = [
   {
     name: 'MindLedger',
     description: {
-      es: 'Sistema multi-tenant de gestión clínica y contable: arquitectura limpia, aislamiento multi-tenant, cifrado de base de datos local y validación de entrada tipada.',
-      en: 'Multi-tenant clinical and accounting system: clean architecture, multi-tenant isolation, local database encryption and typed input validation.',
+      es: 'Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro.',
+      en: 'Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme.',
     },
     highlights: {
-      es: ['Rust', 'Clean Architecture', 'Multi-Tenant', 'Cifrado', 'Validación Tipada'],
-      en: ['Rust', 'Clean Architecture', 'Multi-Tenant', 'Encryption', 'Typed Validation'],
+      es: ['Tauri v2', 'Rust', 'React', 'SQLCipher', 'Clean Architecture', 'Multi-Tenant'],
+      en: ['Tauri v2', 'Rust', 'React', 'SQLCipher', 'Clean Architecture', 'Multi-Tenant'],
     },
     github: 'https://github.com/statick88/MindLedger',
   },
@@ -414,6 +426,54 @@ export const projects: readonly Project[] = [
       en: ['Python'],
     },
     github: 'https://github.com/statick88/jarvis-os',
+  },
+  {
+    name: 'open-api-facturacion-sri',
+    description: {
+      es: 'API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.',
+      en: 'REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission.',
+    },
+    highlights: {
+      es: ['Node.js', 'TypeScript', 'XAdES-BES', 'SRI Ecuador'],
+      en: ['Node.js', 'TypeScript', 'XAdES-BES', 'SRI Ecuador'],
+    },
+    github: 'https://github.com/statick88/open-api-facturacion-sri',
+  },
+  {
+    name: 'exploitarium',
+    description: {
+      es: 'Colección de PoCs de explotación para CVEs',
+      en: 'Exploitation PoC collection for CVEs',
+    },
+    highlights: {
+      es: ['Python', 'Exploit Development', 'CVE'],
+      en: ['Python', 'Exploit Development', 'CVE'],
+    },
+    github: 'https://github.com/statick88/exploitarium',
+  },
+  {
+    name: 'cybervault',
+    description: {
+      es: 'Repositorio de seguridad y auditoría',
+      en: 'Security and audit repository',
+    },
+    highlights: {
+      es: ['Python', 'Security'],
+      en: ['Python', 'Security'],
+    },
+    github: 'https://github.com/statick88/cybervault',
+  },
+  {
+    name: 'cv-diego',
+    description: {
+      es: 'CV digital interactivo',
+      en: 'Interactive digital CV',
+    },
+    highlights: {
+      es: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
+      en: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
+    },
+    github: 'https://github.com/statick88/statick88.github.io',
   },
 ]
 
@@ -432,6 +492,30 @@ export const certifications: readonly Certification[] = [
   { name: 'Imagen de Marca (Branding)', issuer: 'ABACOM', status: 'active' },
   { name: 'Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)', issuer: 'ABACOM', status: 'active' },
   { name: 'MSc Ciberseguridad (en curso, 2026-2027)', issuer: 'Universidad Complutense de Madrid', status: 'in-progress' },
+  { name: 'Introduction to Cybersecurity', issuer: 'Cisco Networking Academy', status: 'active' },
+  { name: 'Introduction to IoT', issuer: 'Cisco Networking Academy', status: 'active' },
+  { name: 'Hack The Box Certificate', issuer: 'Hack The Box', status: 'active' },
+  { name: 'Course of Cybersecurity (NIST CSF 2.0)', issuer: 'Self-published', status: 'active' },
+  { name: 'Ethical Hacking 2026 (Ebook + Labs)', issuer: 'Self-published', status: 'active' },
+  { name: 'Dark Web Course', issuer: 'Self-published', status: 'active' },
+  { name: 'Docker Fundamentals + Docker Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Flutter Course + Flutter Avanzado', issuer: 'Platzi', status: 'active' },
+  { name: 'Python Course + Python Practico + Python CS', issuer: 'Platzi', status: 'active' },
+  { name: 'Django Course', issuer: 'Platzi', status: 'active' },
+  { name: 'AWS Fundamentals', issuer: 'Platzi', status: 'active' },
+  { name: 'AI for Developers + AI Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Git & GitHub Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Linux Fundamentals + Linux Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Backend con Node.js', issuer: 'Platzi', status: 'active' },
+  { name: 'React Native Course', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Curso Profesional de Python', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Curso de Machine Learning', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Curso de CSS', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Taller de Next.js', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Ciberseguridad Defensiva', issuer: 'ABACOM', status: 'active' },
+  { name: 'Ingeniería Inversa', issuer: 'ABACOM', status: 'active' },
+  { name: 'Redes y Servidores Linux', issuer: 'ABACOM', status: 'active' },
+  { name: 'Desarrollo Web Full Stack (Django + React)', issuer: 'Codings Academy', status: 'active' },
 ]
 
 // ── Metrics ──────────────────────────────────────────────────────
