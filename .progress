@@ -67,3 +67,31 @@
 - 2026-10-21 — Verificación de brechas **por código**, no por memoria: `grep` sobre `src/` (cero referencias a `.pdf`, cero `noscript`), conteo de keywords en `cv-data.ts`, comparación de los `projects` de las tres fuentes y comparación de `NEXT_ACTION` del bridge del plugin.
 - 2026-10-21 — La sección `practice` del modeloCv quedó definida en un solo script (`~/Documents/CareerOps/scripts/patch_practice_cv.py`) que emite TS, JS y YAML desde el mismo diccionario: por construcción los tres espejos no pueden divergir en ese bloque.
 - 2026-10-21 — Reglas de la casa que se aplicaron: sin PDF editados a mano (todo desde `pnpm generate:cvs`), sin afirmaciones nuevas sin respaldo en los datos, y sin nombrar a un cliente sin autorización verificada.
+
+---
+
+## Verificación de la adopción de la organización de `michalsoltysik.com` (2026-10-21)
+
+Comparación de las tres capas, hecha sobre el código y los artefactos, no de memoria.
+
+| Bloque del sitio de referencia | CV `consultor` (PDF) | Nuestra UI (web) |
+|---|---|---|
+| Posicionamiento + CV descargable | ✅ Resumen Profesional + contacto literal | ✅ ProfileCard + selector con PDF por perfil |
+| **Services** (servicios, modalidades, tarifas) | ✅ Servicios (4) | ❌ **no existe panel**: los datos están en `cv-data.ts` (`services`) y 0 componentes los usan |
+| **Training** | ✅ Formación Propia | ✅ CoursesPanel |
+| **Skills** | ✅ Habilidades Técnicas | ✅ SkillsCard + LevelBar |
+| **References** | ✅ Referencias (6 instituciones) | ❌ no hay panel de referencias |
+| **Cybersecurity content** | ✅ Encargos de seguridad autorizados | ✅ ContributionsPanel + ResearchPanel |
+| **Own tools** | ⚠️ Herramientas Propias: **1 de 4** (divergencia de `projects`, ver P2/P3) | ✅ PluginsPanel + ProjectsGrid |
+| **Events** | ❌ | ❌ **y no hay datos verificados**: no hay charias, conferencias ni ponencias en las fuentes actuales |
+| Certificaciones / Experiencia / Educación | ✅ | ✅ CertificationsList, ExperienceTimeline, EducationCard |
+
+**Conclusión:** la organización del sitio de referencia está adoptada en el CV (6 de 8 bloques) y **a medias en la web** (4 de 8). Lo que falta en la UI esServices, Referencias, Eventos y el bloque de encargos.
+
+### Pendiente que añade esta verificación
+
+- [ ] **P9 — Panel de Servicios en la UI**: montar `services` (4 servicios con modalidades y tarifas) como panel propio, con el mismo lenguaje visual que el resto (tokens `ct-*`, `Panel`/`PanelRow`). Es el bloque más central del sitio de referencia y ya está en los datos.
+- [ ] **P10 — Panel de Referencias**: reutilizar `practice.referenceNames` (6 instituciones, ya en el CV) o datos verificados de clientes con permiso.
+- [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay charias, conferencias ni ponencias en las fuentes; un bloque vacío o inventado rompe la regla de integridad. Candidatos de evidencia a reunir: CTF de EvilSec – Ekoparty 2026, CTFs comoalkeeper,%}
+- [ ] **P12 — Paneles sensibles al perfil activo**: `App.tsx` adapta titular y experiencia por perfil, pero los paneles (Courses, Contributions, Plugins, Research) son estáticos: al elegir "Consultor" el cuerpo de la web no cambia, sólo el PDF que se descarga.
+- [ ] **P13 — Encargos de seguridad en la web**: el bloque `practice.engagements` (3 pentests anonimizados) sólo vive en el PDF; decidir si se expone en el sitio.
