@@ -109,4 +109,22 @@ describe('cv sheet', () => {
 
     expect(document.documentElement.classList.contains('dark')).toBe(false)
   })
+
+  it('offers one CV download link that follows the interface language', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    // One document per language: there is no profile variant to choose from.
+    expect(screen.queryAllByRole('option')).toHaveLength(0)
+
+    const cvLink = screen.getByRole('link', { name: /descargar el cv|download the cv/i })
+    expect(cvLink).toHaveAttribute('href', '/cv-es.pdf')
+
+    await user.click(screen.getByTestId('language-toggle'))
+
+    expect(screen.getByRole('link', { name: /descargar el cv|download the cv/i })).toHaveAttribute(
+      'href',
+      '/cv-en.pdf',
+    )
+  })
 })

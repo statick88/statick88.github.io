@@ -6,8 +6,8 @@ import { NAV_GROUPS } from '../src/config/navigation'
  *
  * These checks run in a real browser against the production build: the
  * document, the section navigation, the language and theme switches and the
- * profile switcher are the controls that make the CV usable, so they are the
- * ones worth guarding end to end.
+ * single CV download are the controls that make the CV usable, so they are
+ * the ones worth guarding end to end.
  */
 
 /** Sections the document renders — derived from the navigation config. */
@@ -89,12 +89,17 @@ test('switches the theme and keeps it after a reload', async ({ page }) => {
   await expect(page.locator('html')).not.toHaveClass(/dark/)
 })
 
-test('changes the professional profile from the top bar', async ({ page }) => {
-  const role = page.locator('#main-content')
-  await expect(role).toContainText('Full Stack')
+test('offers one CV download link from the top bar', async ({ page }) => {
+  // The CV is a single document per language: no profile variant to choose from.
+  await expect(page.getByRole('option', { name: /Hacker Ético/i })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: /perfil activo|active profile/i })).toHaveCount(0)
 
-  await page.getByRole('button', { name: /perfil activo|active profile/i }).click()
-  await page.getByRole('option', { name: /Hacker Ético/i }).click()
+  const cvLink = page.getByRole('link', { name: /descargar el cv|download the cv/i })
 
-  await expect(role).toContainText('Hacker Ético')
+  await expect(cvLink).toBeVisible()
+  await expect(cvLink).toHaveAttribute('href', '/cv-es.pdf')
+
+  await page.getByTestId('language-toggle').click()
+
+  await expect(cvLink).toHaveAttribute('href', '/cv-en.pdf')
 })
