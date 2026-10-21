@@ -48,7 +48,7 @@ export const ATSEducationSchema = z.object({
 export const ATSCertificationSchema = z.object({
   name: z.string(),
   issuer: z.string(),
-  date: z.string(), // ISO date
+  date: z.string().optional(), // ISO date; absent when the credential has none
   expiryDate: z.string().optional(),
   status: z.enum(['active', 'expired', 'revoked']),
   credentialId: z.string().optional(),
@@ -83,6 +83,21 @@ export const ATSLanguageSchema = z.object({
   proficiency: z.enum(['basic', 'conversational', 'professional', 'native']),
 })
 
+/**
+ * A service the candidate offers.
+ *
+ * The offer is part of the candidate's profile, not part of the employment
+ * history, so it travels in its own flat block: what it is, what it costs
+ * and how it is engaged.
+ */
+export const ATSServiceSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  formats: z.array(z.string()),
+  price: z.string(),
+})
+
 // ============================================================================
 // Root ATS Schema
 // ============================================================================
@@ -95,6 +110,7 @@ export const ATSSchema = z.object({
   certifications: z.array(ATSCertificationSchema),
   skills: z.array(ATSSkillSchema),
   projects: z.array(ATSProjectSchema),
+  services: z.array(ATSServiceSchema).optional(),
   languages: z.array(ATSLanguageSchema),
   keywords: z.array(z.string()), // extracted from all fields for matching
   generatedAt: z.string(), // ISO datetime
@@ -107,6 +123,7 @@ export type ATSEducation = z.infer<typeof ATSEducationSchema>
 export type ATSCertification = z.infer<typeof ATSCertificationSchema>
 export type ATSSkill = z.infer<typeof ATSSkillSchema>
 export type ATSProject = z.infer<typeof ATSProjectSchema>
+export type ATSService = z.infer<typeof ATSServiceSchema>
 export type ATSLanguage = z.infer<typeof ATSLanguageSchema>
 export type ATSData = z.infer<typeof ATSSchema>
 
@@ -166,6 +183,12 @@ export function extractKeywords(ats: ATSData): string[] {
     words.add(proj.name.toLowerCase())
     extractWordsFromText(proj.description).forEach(w => words.add(w))
     proj.technologies.forEach(t => words.add(t.toLowerCase()))
+  }
+
+  // Services
+  for (const service of ats.services ?? []) {
+    words.add(service.title.toLowerCase())
+    service.formats.forEach(f => words.add(f.toLowerCase()))
   }
 
   // Languages

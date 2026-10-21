@@ -579,66 +579,6 @@ export const cvData = {
       github: "https://github.com/statick88/open-api-facturacion-sri"
     },
     {
-      name: "multi-agent-system",
-      description: {
-        es: "Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.",
-        en: "Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects."
-      },
-      highlights: {
-        es: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"],
-        en: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"]
-      },
-      github: "https://github.com/statick88/multi-agent-system"
-    },
-    {
-      name: "material-educativo-unl",
-      description: {
-        es: "Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica.",
-        en: "Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics."
-      },
-      highlights: {
-        es: ["Quarto", "ABP", "Open Educational Resources", "UNL"],
-        en: ["Quarto", "PBL", "Open Educational Resources", "UNL"]
-      },
-      github: "https://github.com/statick88/material-educativo-unl"
-    },
-    {
-      name: "UCM-Moodle-Pentest",
-      description: {
-        es: "Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl.",
-        en: "Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl."
-      },
-      highlights: {
-        es: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"],
-        en: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"]
-      },
-      github: "https://github.com/statick88/ucm-moodle-pentest"
-    },
-    {
-      name: "OpenWrt-Hardware-Hacking",
-      description: {
-        es: "Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM.",
-        en: "Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project."
-      },
-      highlights: {
-        es: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"],
-        en: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"]
-      },
-      github: "https://github.com/statick88/openwrt-hardware-hacking"
-    },
-    {
-      name: "ms08-067-metasploit-demo",
-      description: {
-        es: "Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso.",
-        en: "Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation."
-      },
-      highlights: {
-        es: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"],
-        en: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"]
-      },
-      github: "https://github.com/statick88/ms08-067-metasploit-demo"
-    },
-    {
       name: "exploitarium",
       description: {
         es: "Colección de PoCs de explotación para CVEs",
@@ -663,30 +603,6 @@ export const cvData = {
       github: "https://github.com/statick88/cybervault"
     },
     {
-      name: "go-snake",
-      description: {
-        es: "Juego de Snake implementado en Go",
-        en: "Snake game implemented in Go"
-      },
-      highlights: {
-        es: ["Go"],
-        en: ["Go"]
-      },
-      github: "https://github.com/statick88/go-snake"
-    },
-    {
-      name: "sdd-docker",
-      description: {
-        es: "Docker environment for Spec-Driven Development",
-        en: "Docker environment for Spec-Driven Development"
-      },
-      highlights: {
-        es: ["Docker", "SDD"],
-        en: ["Docker", "SDD"]
-      },
-      github: "https://github.com/statick88/sdd-docker"
-    },
-    {
       name: "cv-diego",
       description: {
         es: "CV digital interactivo",
@@ -696,7 +612,7 @@ export const cvData = {
         es: ["React", "Vite", "TypeScript", "Tailwind CSS"],
         en: ["React", "Vite", "TypeScript", "Tailwind CSS"]
       },
-      github: "https://github.com/statick88/cv-diego"
+      github: "https://github.com/statick88/statick88.github.io"
     }
   ],
 

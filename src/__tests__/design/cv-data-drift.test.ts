@@ -34,9 +34,17 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { load as loadYaml } from 'js-yaml'
+import { load as loadYaml, dump as dumpYaml } from 'js-yaml'
 import { work, practice, profileData, projects, skills, certifications, services } from '@/data/cv-data'
 import { cvData, profileData as jsProfileData } from '@/data/cvData.js'
+import { ATSSchema } from '@/lib/schemas/ats-schema'
+import {
+  toATS,
+  toCareerOps,
+  toAIJobSearch,
+  toMarkdown,
+  type RawCVData,
+} from '../../../scripts/export-structured'
 
 const ROOT = resolve(__dirname, '../../..')
 
@@ -100,6 +108,16 @@ function readYamlWork(): YamlWorkEntry[] {
 
 function readYamlPractice(): unknown {
   return readYaml().practice ?? {}
+}
+
+/**
+ * The whole YAML mirror, parsed the way the export parses it: the ATS
+ * export reads this same document, so the export contract is checked
+ * against the document the mirrors publish.
+ */
+function readYamlDocument(): RawCVData {
+  const raw = readFileSync(resolve(ROOT, 'src/data/cv-data.yaml'), 'utf8')
+  return loadYaml(raw) as RawCVData
 }
 
 /** A collection keyed by name, so the comparison does not depend on the order. */
@@ -318,6 +336,112 @@ describe('the projects, services, skills and certifications match in the three m
     for (const [name, issuer] of ts) {
       expect(js.get(name), `the issuer of ${name} in cvData.js`).toBe(issuer)
       expect(yml.get(name), `the issuer of ${name} in cv-data.yaml`).toBe(issuer)
+    }
+  })
+})
+
+describe('the ATS export publishes the offer and no date markers', () => {
+  const document = readYamlDocument()
+  const ats = toATS(document)
+
+  it('carries every service through the ATS schema', () => {
+    const published = ATSSchema.parse(ats)
+
+    expect(published.services?.map((service) => service.id)).toEqual(
+      services.map((service) => service.id),
+    )
+
+    for (const service of services) {
+      const exported = published.services?.find((entry) => entry.id === service.id)
+
+      expect(exported?.title, `the title of ${service.id} in the ATS export`).toBe(
+        service.title.en,
+      )
+      expect(exported?.description, `the description of ${service.id} in the ATS export`).toBe(
+        service.description.en,
+      )
+      expect(exported?.formats, `the formats of ${service.id} in the ATS export`).toEqual(
+        service.formats.en,
+      )
+      expect(exported?.price, `the price of ${service.id} in the ATS export`).toBe(
+        service.priceRange,
+      )
+    }
+  })
+
+  it('carries every service in the career-ops and AI-job-search exports', () => {
+    const careerOps = toCareerOps(ats) as unknown as { services: Array<{ id: string }> }
+    const jobSearch = toAIJobSearch(ats) as unknown as {
+      service_offer: Array<{ service_id: string }>
+    }
+
+    expect(careerOps.services.map((service) => service.id)).toEqual(
+      services.map((service) => service.id),
+    )
+    expect(jobSearch.service_offer.map((service) => service.service_id)).toEqual(
+      services.map((service) => service.id),
+    )
+  })
+
+  it('publishes every service in the structured markdown', () => {
+    const markdown = toMarkdown(ats)
+
+    expect(markdown).toContain('## Servicios / Services')
+    for (const service of services) {
+      expect(markdown).toContain(`**${service.title.en}**`)
+      expect(markdown).toContain(service.priceRange)
+    }
+  })
+
+  it('never publishes a date marker', () => {
+    const artifacts = [
+      JSON.stringify(ats),
+      JSON.stringify(toCareerOps(ats)),
+      dumpYaml(toAIJobSearch(ats)),
+      toMarkdown(ats),
+    ]
+
+    for (const artifact of artifacts) {
+      expect(artifact).not.toMatch(/s\/f/i)
+    }
+  })
+
+  it('omits the date of the credentials that have none', () => {
+    const undated = document.certifications.filter(
+      (cert) => !/^\d{4}/.test(cert.date ?? ''),
+    )
+    expect(undated.length).toBeGreaterThan(0)
+
+    const careerOps = JSON.parse(JSON.stringify(toCareerOps(ats))) as {
+      certifications: Array<{ name: string }>
+    }
+    const jobSearch = loadYaml(dumpYaml(toAIJobSearch(ats))) as {
+      professional_development: Array<{ credential: string }>
+    }
+    const markdown = toMarkdown(ats)
+    const section =
+      markdown.split('## Certificaciones / Certifications')[1]?.split('\n## ')[0] ?? ''
+
+    for (const cert of undated) {
+      const name = cert.name.en
+
+      expect(
+        ats.certifications.find((entry) => entry.name === name)?.date,
+        `the date of ${name} in the ATS export`,
+      ).toBeUndefined()
+      expect(
+        careerOps.certifications.find((entry) => entry.name === name),
+        `the issue_date of ${name} in the career-ops export`,
+      ).not.toHaveProperty('issue_date')
+      expect(
+        jobSearch.professional_development.find((entry) => entry.credential === name),
+        `the obtained of ${name} in the AI-job-search export`,
+      ).not.toHaveProperty('obtained')
+
+      const line = section.split('\n').find((entry) => entry.startsWith(`- **${name}**`))
+      expect(line, `the markdown line of ${name}`).toBeDefined()
+      // A dated credential reads "(2021)"; one without a date reads nothing.
+      expect(line, `the markdown line of ${name}`).not.toMatch(/\(\d{4}/)
     }
   })
 })

@@ -180,16 +180,9 @@ Bachelor
 - **MindLedger** — Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro. _Tauri v2, Rust, React, SQLCipher, Clean Architecture, Multi-Tenant_ [Código](https://github.com/statick88/MindLedger)
 - **jarvis-os** — Capa de servicios en Python. _Python_ [Código](https://github.com/statick88/jarvis-os)
 - **open-api-facturacion-sri** — API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Código](https://github.com/statick88/open-api-facturacion-sri)
-- **multi-agent-system** — Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad. _Python, FastAPI, OpenCode, MCP, SDD_ [Código](https://github.com/statick88/multi-agent-system)
-- **material-educativo-unl** — Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica. _Quarto, ABP, Open Educational Resources, UNL_ [Código](https://github.com/statick88/material-educativo-unl)
-- **UCM-Moodle-Pentest** — Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl. _Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle_ [Código](https://github.com/statick88/ucm-moodle-pentest)
-- **OpenWrt-Hardware-Hacking** — Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM. _OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware_ [Código](https://github.com/statick88/openwrt-hardware-hacking)
-- **ms08-067-metasploit-demo** — Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso. _Metasploit, ms08_067, ms17_010, RE, Windows_ [Código](https://github.com/statick88/ms08-067-metasploit-demo)
 - **exploitarium** — Colección de PoCs de explotación para CVEs _Python, Exploit Development, CVE_ [Código](https://github.com/statick88/exploitarium)
 - **cybervault** — Repositorio de seguridad y auditoría _Python, Security_ [Código](https://github.com/statick88/cybervault)
-- **go-snake** — Juego de Snake implementado en Go _Go_ [Código](https://github.com/statick88/go-snake)
-- **sdd-docker** — Docker environment for Spec-Driven Development _Docker, SDD_ [Código](https://github.com/statick88/sdd-docker)
-- **cv-diego** — CV digital interactivo _React, Vite, TypeScript, Tailwind CSS_ [Código](https://github.com/statick88/cv-diego)
+- **cv-diego** — CV digital interactivo _React, Vite, TypeScript, Tailwind CSS_ [Código](https://github.com/statick88/statick88.github.io)
 
 ## Certificaciones
 

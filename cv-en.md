@@ -180,16 +180,9 @@ Bachelor
 - **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. _Tauri v2, Rust, React, SQLCipher, Clean Architecture, Multi-Tenant_ [Code](https://github.com/statick88/MindLedger)
 - **jarvis-os** — Python service layer. _Python_ [Code](https://github.com/statick88/jarvis-os)
 - **open-api-facturacion-sri** — REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Code](https://github.com/statick88/open-api-facturacion-sri)
-- **multi-agent-system** — Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects. _Python, FastAPI, OpenCode, MCP, SDD_ [Code](https://github.com/statick88/multi-agent-system)
-- **material-educativo-unl** — Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics. _Quarto, PBL, Open Educational Resources, UNL_ [Code](https://github.com/statick88/material-educativo-unl)
-- **UCM-Moodle-Pentest** — Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl. _Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle_ [Code](https://github.com/statick88/ucm-moodle-pentest)
-- **OpenWrt-Hardware-Hacking** — Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project. _OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware_ [Code](https://github.com/statick88/openwrt-hardware-hacking)
-- **ms08-067-metasploit-demo** — Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation. _Metasploit, ms08_067, ms17_010, RE, Windows_ [Code](https://github.com/statick88/ms08-067-metasploit-demo)
 - **exploitarium** — Exploitation PoC collection for CVEs _Python, Exploit Development, CVE_ [Code](https://github.com/statick88/exploitarium)
 - **cybervault** — Security and audit repository _Python, Security_ [Code](https://github.com/statick88/cybervault)
-- **go-snake** — Snake game implemented in Go _Go_ [Code](https://github.com/statick88/go-snake)
-- **sdd-docker** — Docker environment for Spec-Driven Development _Docker, SDD_ [Code](https://github.com/statick88/sdd-docker)
-- **cv-diego** — Interactive digital CV _React, Vite, TypeScript, Tailwind CSS_ [Code](https://github.com/statick88/cv-diego)
+- **cv-diego** — Interactive digital CV _React, Vite, TypeScript, Tailwind CSS_ [Code](https://github.com/statick88/statick88.github.io)
 
 ## Certifications
 

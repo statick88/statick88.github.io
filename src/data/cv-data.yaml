@@ -466,7 +466,8 @@ languages:
 # mirrors: `name.es` is the display name those mirrors carry, `name.en` its
 # translation. `date` belongs to this form only — the TS/JS mirrors carry no
 # date — so the credentials that no mirror dates are marked "s/f" (sin fecha)
-# instead of carrying an invented year.
+# instead of carrying an invented year. The ATS export reads that marker as
+# "no date" and omits the field instead of publishing the marker.
 certifications:
   - name:
       es: "Magíster en Cs. y Tec. de la Computación"
@@ -842,41 +843,6 @@ projects:
       issues: 0
     technologies: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"]
 
-  - name: "multi-agent-system"
-    url: "https://github.com/statick88/multi-agent-system"
-    description:
-      es: "Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad."
-      en: "Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects."
-    technologies: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"]
-
-  - name: "material-educativo-unl"
-    url: "https://github.com/statick88/material-educativo-unl"
-    description:
-      es: "Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica."
-      en: "Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics."
-    technologies: ["Quarto", "PBL", "Open Educational Resources", "UNL"]
-
-  - name: "UCM-Moodle-Pentest"
-    url: "https://github.com/statick88/ucm-moodle-pentest"
-    description:
-      es: "Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl."
-      en: "Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl."
-    technologies: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"]
-
-  - name: "OpenWrt-Hardware-Hacking"
-    url: "https://github.com/statick88/openwrt-hardware-hacking"
-    description:
-      es: "Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM."
-      en: "Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project."
-    technologies: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"]
-
-  - name: "ms08-067-metasploit-demo"
-    url: "https://github.com/statick88/ms08-067-metasploit-demo"
-    description:
-      es: "Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso."
-      en: "Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation."
-    technologies: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"]
-
   - name: "exploitarium"
     url: "https://github.com/statick88/exploitarium"
     description:
@@ -903,24 +869,8 @@ projects:
     securityRelevant: true
     featured: true
 
-  - name: "go-snake"
-    url: "https://github.com/statick88/go-snake"
-    description:
-      es: "Juego de Snake implementado en Go"
-      en: "Snake game implemented in Go"
-    technologies: ["Go"]
-    featured: false
-
-  - name: "sdd-docker"
-    url: "https://github.com/statick88/sdd-docker"
-    description:
-      es: "Docker environment for Spec-Driven Development"
-      en: "Docker environment for Spec-Driven Development"
-    technologies: ["Docker", "SDD"]
-    featured: false
-
   - name: "cv-diego"
-    url: "https://github.com/statick88/cv-diego"
+    url: "https://github.com/statick88/statick88.github.io"
     description:
       es: "CV digital interactivo"
       en: "Interactive digital CV"
