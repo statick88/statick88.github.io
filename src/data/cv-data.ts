@@ -7,6 +7,12 @@
 //   import type { CVData } from '@/types/cv'
 //
 // NO importar desde cvData.js — será eliminado en Fase 7.
+//
+// El CV vive en tres espejos: este fichero, el espejo legacy en
+// src/data/cvData.js (el que genera los PDF) y el YAML src/data/cv-data.yaml
+// (el que alimenta el export ATS). Los tres declaran el mismo conjunto de
+// proyectos, servicios, habilidades y certificaciones; el test de deriva
+// (src/__tests__/design/cv-data-drift.test.ts) los mantiene juntos.
 
 import type {
   Basics,
@@ -307,6 +313,12 @@ export const skills: readonly Skill[] = [
   { name: 'Burp Suite', level: 'intermediate', category: 'security' },
   { name: 'Nmap', level: 'advanced', category: 'security' },
   { name: 'Wireshark', level: 'intermediate', category: 'security' },
+  { name: 'SQL Injection', level: 'advanced', category: 'security' },
+  { name: 'XSS/CSRF', level: 'advanced', category: 'security' },
+  { name: 'CTF', level: 'intermediate', category: 'security' },
+  { name: 'Network Security', level: 'advanced', category: 'security' },
+  { name: 'Web Security', level: 'advanced', category: 'security' },
+  { name: 'Cloud Security', level: 'intermediate', category: 'security' },
   { name: 'Machine Learning', level: 'intermediate', category: 'ai' },
   { name: 'TensorFlow', level: 'intermediate', category: 'ai' },
   { name: 'R Language', level: 'intermediate', category: 'ai' },
@@ -394,12 +406,12 @@ export const projects: readonly Project[] = [
   {
     name: 'MindLedger',
     description: {
-      es: 'Sistema multi-tenant de gestión clínica y contable: arquitectura limpia, aislamiento multi-tenant, cifrado de base de datos local y validación de entrada tipada.',
-      en: 'Multi-tenant clinical and accounting system: clean architecture, multi-tenant isolation, local database encryption and typed input validation.',
+      es: 'Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro.',
+      en: 'Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme.',
     },
     highlights: {
-      es: ['Rust', 'Clean Architecture', 'Multi-Tenant', 'Cifrado', 'Validación Tipada'],
-      en: ['Rust', 'Clean Architecture', 'Multi-Tenant', 'Encryption', 'Typed Validation'],
+      es: ['Tauri v2', 'Rust', 'React', 'SQLCipher', 'Clean Architecture', 'Multi-Tenant'],
+      en: ['Tauri v2', 'Rust', 'React', 'SQLCipher', 'Clean Architecture', 'Multi-Tenant'],
     },
     github: 'https://github.com/statick88/MindLedger',
   },
@@ -414,6 +426,138 @@ export const projects: readonly Project[] = [
       en: ['Python'],
     },
     github: 'https://github.com/statick88/jarvis-os',
+  },
+  {
+    name: 'open-api-facturacion-sri',
+    description: {
+      es: 'API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.',
+      en: 'REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission.',
+    },
+    highlights: {
+      es: ['Node.js', 'TypeScript', 'XAdES-BES', 'SRI Ecuador'],
+      en: ['Node.js', 'TypeScript', 'XAdES-BES', 'SRI Ecuador'],
+    },
+    github: 'https://github.com/statick88/open-api-facturacion-sri',
+  },
+  {
+    name: 'multi-agent-system',
+    description: {
+      es: 'Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad.',
+      en: 'Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects.',
+    },
+    highlights: {
+      es: ['Python', 'FastAPI', 'OpenCode', 'MCP', 'SDD'],
+      en: ['Python', 'FastAPI', 'OpenCode', 'MCP', 'SDD'],
+    },
+    github: 'https://github.com/statick88/multi-agent-system',
+  },
+  {
+    name: 'material-educativo-unl',
+    description: {
+      es: 'Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica.',
+      en: 'Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics.',
+    },
+    highlights: {
+      es: ['Quarto', 'ABP', 'Open Educational Resources', 'UNL'],
+      en: ['Quarto', 'PBL', 'Open Educational Resources', 'UNL'],
+    },
+    github: 'https://github.com/statick88/material-educativo-unl',
+  },
+  {
+    name: 'UCM-Moodle-Pentest',
+    description: {
+      es: 'Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl.',
+      en: 'Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl.',
+    },
+    highlights: {
+      es: ['Pentest', 'OWASP WSTG', 'CVSS 3.1', 'IDOR', 'Moodle'],
+      en: ['Pentest', 'OWASP WSTG', 'CVSS 3.1', 'IDOR', 'Moodle'],
+    },
+    github: 'https://github.com/statick88/ucm-moodle-pentest',
+  },
+  {
+    name: 'OpenWrt-Hardware-Hacking',
+    description: {
+      es: 'Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM.',
+      en: 'Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project.',
+    },
+    highlights: {
+      es: ['OpenWrt', 'ramips-mt76x8', 'imagebuilder', 'TFTP', 'firmware'],
+      en: ['OpenWrt', 'ramips-mt76x8', 'imagebuilder', 'TFTP', 'firmware'],
+    },
+    github: 'https://github.com/statick88/openwrt-hardware-hacking',
+  },
+  {
+    name: 'ms08-067-metasploit-demo',
+    description: {
+      es: 'Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso.',
+      en: 'Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation.',
+    },
+    highlights: {
+      es: ['Metasploit', 'ms08_067', 'ms17_010', 'RE', 'Windows'],
+      en: ['Metasploit', 'ms08_067', 'ms17_010', 'RE', 'Windows'],
+    },
+    github: 'https://github.com/statick88/ms08-067-metasploit-demo',
+  },
+  {
+    name: 'exploitarium',
+    description: {
+      es: 'Colección de PoCs de explotación para CVEs',
+      en: 'Exploitation PoC collection for CVEs',
+    },
+    highlights: {
+      es: ['Python', 'Exploit Development', 'CVE'],
+      en: ['Python', 'Exploit Development', 'CVE'],
+    },
+    github: 'https://github.com/statick88/exploitarium',
+  },
+  {
+    name: 'cybervault',
+    description: {
+      es: 'Repositorio de seguridad y auditoría',
+      en: 'Security and audit repository',
+    },
+    highlights: {
+      es: ['Python', 'Security'],
+      en: ['Python', 'Security'],
+    },
+    github: 'https://github.com/statick88/cybervault',
+  },
+  {
+    name: 'go-snake',
+    description: {
+      es: 'Juego de Snake implementado en Go',
+      en: 'Snake game implemented in Go',
+    },
+    highlights: {
+      es: ['Go'],
+      en: ['Go'],
+    },
+    github: 'https://github.com/statick88/go-snake',
+  },
+  {
+    name: 'sdd-docker',
+    description: {
+      es: 'Docker environment for Spec-Driven Development',
+      en: 'Docker environment for Spec-Driven Development',
+    },
+    highlights: {
+      es: ['Docker', 'SDD'],
+      en: ['Docker', 'SDD'],
+    },
+    github: 'https://github.com/statick88/sdd-docker',
+  },
+  {
+    name: 'cv-diego',
+    description: {
+      es: 'CV digital interactivo',
+      en: 'Interactive digital CV',
+    },
+    highlights: {
+      es: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
+      en: ['React', 'Vite', 'TypeScript', 'Tailwind CSS'],
+    },
+    github: 'https://github.com/statick88/cv-diego',
   },
 ]
 
@@ -432,6 +576,30 @@ export const certifications: readonly Certification[] = [
   { name: 'Imagen de Marca (Branding)', issuer: 'ABACOM', status: 'active' },
   { name: 'Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)', issuer: 'ABACOM', status: 'active' },
   { name: 'MSc Ciberseguridad (en curso, 2026-2027)', issuer: 'Universidad Complutense de Madrid', status: 'in-progress' },
+  { name: 'Introduction to Cybersecurity', issuer: 'Cisco Networking Academy', status: 'active' },
+  { name: 'Introduction to IoT', issuer: 'Cisco Networking Academy', status: 'active' },
+  { name: 'Hack The Box Certificate', issuer: 'Hack The Box', status: 'active' },
+  { name: 'Course of Cybersecurity (NIST CSF 2.0)', issuer: 'Self-published', status: 'active' },
+  { name: 'Ethical Hacking 2026 (Ebook + Labs)', issuer: 'Self-published', status: 'active' },
+  { name: 'Dark Web Course', issuer: 'Self-published', status: 'active' },
+  { name: 'Docker Fundamentals + Docker Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Flutter Course + Flutter Avanzado', issuer: 'Platzi', status: 'active' },
+  { name: 'Python Course + Python Practico + Python CS', issuer: 'Platzi', status: 'active' },
+  { name: 'Django Course', issuer: 'Platzi', status: 'active' },
+  { name: 'AWS Fundamentals', issuer: 'Platzi', status: 'active' },
+  { name: 'AI for Developers + AI Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Git & GitHub Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Linux Fundamentals + Linux Course', issuer: 'Platzi', status: 'active' },
+  { name: 'Backend con Node.js', issuer: 'Platzi', status: 'active' },
+  { name: 'React Native Course', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Curso Profesional de Python', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Curso de Machine Learning', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Curso de CSS', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Taller de Next.js', issuer: 'Codigo Facilito', status: 'active' },
+  { name: 'Ciberseguridad Defensiva', issuer: 'ABACOM', status: 'active' },
+  { name: 'Ingeniería Inversa', issuer: 'ABACOM', status: 'active' },
+  { name: 'Redes y Servidores Linux', issuer: 'ABACOM', status: 'active' },
+  { name: 'Desarrollo Web Full Stack (Django + React)', issuer: 'Codings Academy', status: 'active' },
 ]
 
 // ── Metrics ──────────────────────────────────────────────────────

@@ -23,16 +23,16 @@ Práctica independiente de seguridad y software: auditoría autorizada de aplica
 - **Desarrollo FullStack** — Aplicaciones web y móviles de producción con arquitectura sólida, pruebas y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL. Modalidades: Por proyecto, Por horas, Medio tiempo. Tarifa: $25-50/hora
 - **Auditoría de Seguridad** — Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring y recomendaciones de remediación. Modalidades: Por proyecto, Retainer mensual. Tarifa: $500-3000/proyecto
 - **Consultoría Técnica** — CTO Fractional: arquitectura de software, revisión de código, mentoría de equipos y toma de decisiones técnicas estratégicas. Modalidades: Medio tiempo, Por horas, Retainer. Tarifa: $20-40/hora
-- **Capacitación & Cursos** — Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. 500+ estudiantes formados en ESPE, UIDE, ABACOM. Modalidades: Por hora, Por curso, Workshop. Tarifa: $30-60/hora
+- **Capacitación & Cursos** — Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. Trece años de docencia continua desde 2013 en seis instituciones, entre ellas ESPE, UIDE y ABACOM. Modalidades: Por hora, Por curso, Workshop. Tarifa: $30-60/hora
 
 ### Herramientas Propias
 
-- **jarvis-os** — Capa de servicios en Python. — github.com/statick88/jarvis-os
-- **Course_of_python** — Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto. — github.com/statick88/Course_of_python
-- **desarrollo-software-seguro** — Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub. — github.com/statick88/desarrollo-software-seguro
-- **cyber-guardians** — Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición. — github.com/statick88/cyber-guardians
 - **course-of-cybersecurity** — Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker. — github.com/statick88/course-of-cybersecurity
+- **cyber-guardians** — Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición. — github.com/statick88/cyber-guardians
+- **desarrollo-software-seguro** — Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub. — github.com/statick88/desarrollo-software-seguro
+- **Course_of_python** — Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto. — github.com/statick88/Course_of_python
 - **MindLedger** — Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro. — github.com/statick88/MindLedger
+- **jarvis-os** — Capa de servicios en Python. — github.com/statick88/jarvis-os
 
 ### Formación Propia
 
@@ -161,7 +161,7 @@ Bachelor
 
 **Bases de Datos:** MySQL (Avanzado), MongoDB (Avanzado), PostgreSQL (Avanzado)
 
-**Seguridad:** Ethical Hacking (Avanzado), Penetration Testing (Avanzado), OWASP Top 10 (Avanzado), Auditoría de Pentesting (Avanzado), Ingeniería Inversa y Explotación (Avanzado), Hardware Hacking (OpenWrt) (Avanzado), Bash Scripting (Avanzado), Linux (Experto), Kali Linux (Avanzado), Metasploit (Intermedio), Burp Suite (Intermedio), Nmap (Avanzado), Wireshark (Intermedio)
+**Seguridad:** Ethical Hacking (Avanzado), Penetration Testing (Avanzado), OWASP Top 10 (Avanzado), Auditoría de Pentesting (Avanzado), Ingeniería Inversa y Explotación (Avanzado), Hardware Hacking (OpenWrt) (Avanzado), Bash Scripting (Avanzado), Linux (Experto), Kali Linux (Avanzado), Metasploit (Intermedio), Burp Suite (Intermedio), Nmap (Avanzado), Wireshark (Intermedio), SQL Injection (Avanzado), XSS/CSRF (Avanzado), CTF (Intermedio), Network Security (Avanzado), Web Security (Avanzado), Cloud Security (Intermedio)
 
 **Arquitectura:** Clean Architecture (Avanzado), SOLID (Avanzado), TDD (Avanzado)
 
@@ -173,19 +173,23 @@ Bachelor
 
 ## Proyectos Destacados
 
-- **jarvis-os** — Capa de servicios en Python. _Python_ [Código](https://github.com/statick88/jarvis-os)
-- **Course_of_python** — Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto. _JavaScript, Python, 11 módulos, 70+ retos, Material Abierto_ [Código](https://github.com/statick88/Course_of_python)
-- **desarrollo-software-seguro** — Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub. _JavaScript, Desarrollo Seguro, Open Educational Resources_ [Código](https://github.com/statick88/desarrollo-software-seguro)
-- **cyber-guardians** — Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición. _TypeScript, Método Socrático, Andamiaje, Vygotsky, Metacognición_ [Código](https://github.com/statick88/cyber-guardians)
 - **course-of-cybersecurity** — Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker. _Diseño Curricular, 42 horas, Retos, Laboratorios, Docker_ [Código](https://github.com/statick88/course-of-cybersecurity)
-- **open-api-facturacion-sri** — API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Código](https://github.com/statick88/open-api-facturacion-sri)
+- **cyber-guardians** — Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición. _TypeScript, Método Socrático, Andamiaje, Vygotsky, Metacognición_ [Código](https://github.com/statick88/cyber-guardians)
+- **desarrollo-software-seguro** — Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub. _JavaScript, Desarrollo Seguro, Open Educational Resources_ [Código](https://github.com/statick88/desarrollo-software-seguro)
+- **Course_of_python** — Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto. _JavaScript, Python, 11 módulos, 70+ retos, Material Abierto_ [Código](https://github.com/statick88/Course_of_python)
 - **MindLedger** — Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro. _Tauri v2, Rust, React, SQLCipher, Clean Architecture, Multi-Tenant_ [Código](https://github.com/statick88/MindLedger)
-- **CyberGuardians** — Plataforma de educación en ciberseguridad para jóvenes latinoamericanos (14-22). Enseña a través de gamificación, no de lectures. Next.js 15, TypeScript, Tailwind CSS, diseño glasspunk colorido con paneles de cristal y neón. Sistema de XP, logros y módulos interactivos. _Next.js 15, TypeScript, Tailwind CSS, Gamificación, Glassmorphism, Educación_ [Código](https://github.com/statick88/cyber-guardians)
+- **jarvis-os** — Capa de servicios en Python. _Python_ [Código](https://github.com/statick88/jarvis-os)
+- **open-api-facturacion-sri** — API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos. _Node.js, TypeScript, XAdES-BES, SRI Ecuador_ [Código](https://github.com/statick88/open-api-facturacion-sri)
 - **multi-agent-system** — Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad. _Python, FastAPI, OpenCode, MCP, SDD_ [Código](https://github.com/statick88/multi-agent-system)
 - **material-educativo-unl** — Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica. _Quarto, ABP, Open Educational Resources, UNL_ [Código](https://github.com/statick88/material-educativo-unl)
 - **UCM-Moodle-Pentest** — Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl. _Pentest, OWASP WSTG, CVSS 3.1, IDOR, Moodle_ [Código](https://github.com/statick88/ucm-moodle-pentest)
 - **OpenWrt-Hardware-Hacking** — Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM. _OpenWrt, ramips-mt76x8, imagebuilder, TFTP, firmware_ [Código](https://github.com/statick88/openwrt-hardware-hacking)
 - **ms08-067-metasploit-demo** — Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso. _Metasploit, ms08_067, ms17_010, RE, Windows_ [Código](https://github.com/statick88/ms08-067-metasploit-demo)
+- **exploitarium** — Colección de PoCs de explotación para CVEs _Python, Exploit Development, CVE_ [Código](https://github.com/statick88/exploitarium)
+- **cybervault** — Repositorio de seguridad y auditoría _Python, Security_ [Código](https://github.com/statick88/cybervault)
+- **go-snake** — Juego de Snake implementado en Go _Go_ [Código](https://github.com/statick88/go-snake)
+- **sdd-docker** — Docker environment for Spec-Driven Development _Docker, SDD_ [Código](https://github.com/statick88/sdd-docker)
+- **cv-diego** — CV digital interactivo _React, Vite, TypeScript, Tailwind CSS_ [Código](https://github.com/statick88/cv-diego)
 
 ## Certificaciones
 
@@ -221,6 +225,10 @@ Bachelor
 - **Curso de Machine Learning** - Codigo Facilito (Activo)
 - **Curso de CSS** - Codigo Facilito (Activo)
 - **Taller de Next.js** - Codigo Facilito (Activo)
+- **Ciberseguridad Defensiva** - ABACOM (Activo)
+- **Ingeniería Inversa** - ABACOM (Activo)
+- **Redes y Servidores Linux** - ABACOM (Activo)
+- **Desarrollo Web Full Stack (Django + React)** - Codings Academy (Activo)
 
 ### Habilidades Blandas y Idiomas
 

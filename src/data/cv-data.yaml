@@ -3,6 +3,13 @@
 # Source of Truth: ~/Documents/job_applications/core/cv-consolidado.md
 # Last verified: 2026-06-01 (130+ PDF audit, NLM, GitHub, 3 directory audits)
 # Schema: cv-data-v1 (src/lib/schemas/cv-data.ts)
+#
+# This file is one of the three mirrors of the CV: this YAML, the TypeScript
+# source (src/data/cv-data.ts) and the legacy JavaScript source
+# (src/data/cvData.js). They carry the same projects, services, skills and
+# certifications; src/__tests__/design/cv-data-drift.test.ts keeps them
+# together. Where a form differs, the difference is documented in the
+# section it affects.
 # =============================================================================
 
 profile:
@@ -204,147 +211,242 @@ skills:
   - name: "HTML"
     level: "master"
     category: "frontend-fundamentals"
+
   - name: "CSS"
     level: "master"
     category: "frontend-fundamentals"
+
   - name: "JavaScript"
     level: "master"
     category: "frontend-fundamentals"
+
   - name: "TypeScript"
     level: "advanced"
     category: "frontend-frameworks"
+
   - name: "React"
     level: "advanced"
     category: "frontend-frameworks"
+
   - name: "Next.js"
     level: "advanced"
     category: "frontend-frameworks"
+
   - name: "Vue"
     level: "intermediate"
     category: "frontend-frameworks"
+
   - name: "Svelte"
     level: "intermediate"
     category: "frontend-frameworks"
+
   - name: "Angular"
     level: "intermediate"
     category: "frontend-frameworks"
+
   - name: "Node.js"
     level: "advanced"
     category: "backend"
+
   - name: "Python"
     level: "advanced"
     category: "backend"
+
   - name: "Django"
     level: "advanced"
     category: "backend"
+
   - name: "FastAPI"
     level: "advanced"
     category: "backend"
+
   - name: "NestJS"
     level: "advanced"
     category: "backend"
+
   - name: "SRI / XAdES"
     level: "advanced"
     category: "backend"
+
   - name: "Flutter"
     level: "advanced"
     category: "mobile"
+
   - name: "React Native"
     level: "advanced"
     category: "mobile"
+
   - name: "Expo SDK 53+"
     level: "advanced"
     category: "mobile"
+
   - name: "Swift (iOS)"
     level: "intermediate"
     category: "mobile-native"
+
   - name: "Kotlin (Android)"
     level: "intermediate"
     category: "mobile-native"
+
   - name: "Docker"
     level: "advanced"
     category: "devops"
+
   - name: "Kubernetes"
     level: "intermediate"
     category: "devops"
-  - name: "MySQL"
-    level: "advanced"
-    category: "databases"
-  - name: "MongoDB"
-    level: "advanced"
-    category: "databases"
-  - name: "PostgreSQL"
-    level: "advanced"
-    category: "databases"
+
   - name: "AWS"
     level: "intermediate"
     category: "devops"
+
   - name: "Azure"
     level: "intermediate"
     category: "devops"
+
+  - name: "GitHub Actions"
+    level: "intermediate"
+    category: "devops"
+
+  - name: "MySQL"
+    level: "advanced"
+    category: "databases"
+
+  - name: "MongoDB"
+    level: "advanced"
+    category: "databases"
+
+  - name: "PostgreSQL"
+    level: "advanced"
+    category: "databases"
+
   - name: "Clean Architecture"
     level: "advanced"
     category: "architecture"
+
   - name: "SOLID"
     level: "advanced"
     category: "architecture"
+
   - name: "TDD"
     level: "advanced"
     category: "architecture"
+
   - name: "Ethical Hacking"
     level: "advanced"
     category: "security"
+
   - name: "Penetration Testing"
     level: "advanced"
     category: "security"
+
   - name: "OWASP Top 10"
     level: "advanced"
     category: "security"
+
+  - name: "Auditoría de Pentesting"
+    level: "advanced"
+    category: "security"
+
   - name: "Ingeniería Inversa y Explotación"
     level: "advanced"
     category: "security"
+
   - name: "Hardware Hacking (OpenWrt)"
     level: "advanced"
     category: "security"
-  - name: "Nmap"
-    level: "advanced"
-    category: "security"
-  - name: "Metasploit"
-    level: "intermediate"
-    category: "security"
-  - name: "Burp Suite"
-    level: "intermediate"
-    category: "security"
-  - name: "Wireshark"
-    level: "intermediate"
-    category: "security"
-  - name: "SQL Injection"
-    level: "advanced"
-    category: "security"
-  - name: "XSS/CSRF"
-    level: "advanced"
-    category: "security"
+
   - name: "Bash Scripting"
     level: "advanced"
     category: "security"
+
   - name: "Linux"
     level: "master"
     category: "security"
+
   - name: "Kali Linux"
     level: "advanced"
     category: "security"
+
+  - name: "Metasploit"
+    level: "intermediate"
+    category: "security"
+
+  - name: "Burp Suite"
+    level: "intermediate"
+    category: "security"
+
+  - name: "Nmap"
+    level: "advanced"
+    category: "security"
+
+  - name: "Wireshark"
+    level: "intermediate"
+    category: "security"
+
+  - name: "SQL Injection"
+    level: "advanced"
+    category: "security"
+
+  - name: "XSS/CSRF"
+    level: "advanced"
+    category: "security"
+
   - name: "CTF"
     level: "intermediate"
     category: "security"
+
   - name: "Network Security"
     level: "advanced"
     category: "security"
+
   - name: "Web Security"
     level: "advanced"
     category: "security"
+
   - name: "Cloud Security"
     level: "intermediate"
     category: "security"
+
+  - name: "Machine Learning"
+    level: "intermediate"
+    category: "ai"
+
+  - name: "TensorFlow"
+    level: "intermediate"
+    category: "ai"
+
+  - name: "R Language"
+    level: "intermediate"
+    category: "ai"
+
+  - name: "Git"
+    level: "advanced"
+    category: "tools"
+
+  - name: "NotebookLM Power-User"
+    level: "master"
+    category: "tools"
+
+  - name: "OpenCode + MCP"
+    level: "advanced"
+    category: "tools"
+
+  - name: "Quarto"
+    level: "advanced"
+    category: "tools"
+
+  - name: "Jupyter"
+    level: "advanced"
+    category: "tools"
+
+  - name: "LaTeX"
+    level: "advanced"
+    category: "tools"
+
+  - name: "Diseño Curricular (ABP / ADDIE)"
+    level: "master"
+    category: "teaching"
 
 # =============================================================================
 # Languages
@@ -360,20 +462,41 @@ languages:
 # =============================================================================
 # Certifications
 # =============================================================================
+# The name is a bilingual object here and a single string in the TS/JS
+# mirrors: `name.es` is the display name those mirrors carry, `name.en` its
+# translation. `date` belongs to this form only — the TS/JS mirrors carry no
+# date — so the credentials that no mirror dates are marked "s/f" (sin fecha)
+# instead of carrying an invented year.
 certifications:
   - name:
-      es: "Python for Data Science"
-      en: "Python for Data Science"
-    issuer: "ABACOM"
+      es: "Magíster en Cs. y Tec. de la Computación"
+      en: "Master of Science and Technology in Computer Science"
+    issuer: "UTPL"
     date: "2021"
     status: "active"
     credentialId: null
 
   - name:
-      es: "Flutter Mobile Development"
-      en: "Flutter Mobile Development"
+      es: "Licenciado en Informática Educativa"
+      en: "Licenciado en Informática Educativa"
+    issuer: "UNL"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Reverse Engineering & Exploit Development"
+      en: "Reverse Engineering & Exploit Development"
+    issuer: "UCM"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Ethical Hacking & Penetration Testing"
+      en: "Pentesting and Ethical Hacking"
     issuer: "ABACOM"
-    date: "2021"
+    date: "2022"
     status: "active"
     credentialId: null
 
@@ -386,10 +509,218 @@ certifications:
     credentialId: null
 
   - name:
-      es: "Pentesting y Ethical Hacking"
-      en: "Pentesting and Ethical Hacking"
+      es: "Python for Data Science"
+      en: "Python for Data Science"
     issuer: "ABACOM"
-    date: "2022"
+    date: "2021"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "R para Análisis Estadístico"
+      en: "R para Análisis Estadístico"
+    issuer: "ABACOM"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Flutter Mobile Development (3 niveles)"
+      en: "Flutter Mobile Development"
+    issuer: "ABACOM"
+    date: "2021"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Fundamentos de Ciberseguridad"
+      en: "Fundamentos de Ciberseguridad"
+    issuer: "ABACOM"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Imagen de Marca (Branding)"
+      en: "Imagen de Marca (Branding)"
+    issuer: "ABACOM"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)"
+      en: "Estrategia de Transformación Digital en Marketing Educativo (Fases I, II, III)"
+    issuer: "ABACOM"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "MSc Ciberseguridad (en curso, 2026-2027)"
+      en: "Master in Defensive and Offensive Cybersecurity"
+    issuer: "Universidad Complutense de Madrid"
+    date: "2026"
+    status: "in-progress"
+    credentialId: null
+
+  - name:
+      es: "Introduction to Cybersecurity"
+      en: "Introduction to Cybersecurity"
+    issuer: "Cisco Networking Academy"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Introduction to IoT"
+      en: "Introduction to IoT"
+    issuer: "Cisco Networking Academy"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Hack The Box Certificate"
+      en: "Hack The Box Certificate"
+    issuer: "Hack The Box"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Course of Cybersecurity (NIST CSF 2.0)"
+      en: "Course of Cybersecurity (NIST CSF 2.0)"
+    issuer: "Self-published"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Ethical Hacking 2026 (Ebook + Labs)"
+      en: "Ethical Hacking 2026 (Ebook + Labs)"
+    issuer: "Self-published"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Dark Web Course"
+      en: "Dark Web Course"
+    issuer: "Self-published"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Docker Fundamentals + Docker Course"
+      en: "Docker Fundamentals + Docker Course"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Flutter Course + Flutter Avanzado"
+      en: "Flutter Course + Flutter Avanzado"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Python Course + Python Practico + Python CS"
+      en: "Python Course + Python Practico + Python CS"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Django Course"
+      en: "Django Course"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "AWS Fundamentals"
+      en: "AWS Fundamentals"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "AI for Developers + AI Course"
+      en: "AI for Developers + AI Course"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Git & GitHub Course"
+      en: "Git & GitHub Course"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Linux Fundamentals + Linux Course"
+      en: "Linux Fundamentals + Linux Course"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Backend con Node.js"
+      en: "Backend con Node.js"
+    issuer: "Platzi"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "React Native Course"
+      en: "React Native Course"
+    issuer: "Codigo Facilito"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Curso Profesional de Python"
+      en: "Curso Profesional de Python"
+    issuer: "Codigo Facilito"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Curso de Machine Learning"
+      en: "Curso de Machine Learning"
+    issuer: "Codigo Facilito"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Curso de CSS"
+      en: "Curso de CSS"
+    issuer: "Codigo Facilito"
+    date: "s/f"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Taller de Next.js"
+      en: "Taller de Next.js"
+    issuer: "Codigo Facilito"
+    date: "s/f"
     status: "active"
     credentialId: null
 
@@ -425,45 +756,138 @@ certifications:
     status: "active"
     credentialId: null
 
-  - name:
-      es: "Magíster en Cs. y Tec. de la Computación"
-      en: "Master of Science and Technology in Computer Science"
-    issuer: "UTPL"
-    date: "2021"
-    status: "active"
-    credentialId: null
-
-  - name:
-      es: "Máster en Ciberseguridad Defensiva y Ofensiva"
-      en: "Master in Defensive and Offensive Cybersecurity"
-    issuer: "Universidad Complutense de Madrid"
-    date: "2026"
-    status: "in-progress"
-    credentialId: null
-
 # =============================================================================
 # Projects (GitHub collaboration evidence)
 # =============================================================================
+# `metrics` (stars/forks/issues) belongs to this form only: the TS/JS mirrors
+# carry no repository metrics. The numbers below were verified with the
+# GitHub API on 2026-10-21; the repositories that no longer exist carry no
+# metrics because there is nothing left to verify.
 projects:
+  - name: "course-of-cybersecurity"
+    url: "https://github.com/statick88/course-of-cybersecurity"
+    description:
+      es: "Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker."
+      en: "Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual."
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 0
+    technologies: ["Curriculum Design", "42 hours", "Challenges", "Labs", "Docker"]
+
+  - name: "cyber-guardians"
+    url: "https://github.com/statick88/cyber-guardians"
+    description:
+      es: "Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición."
+      en: "AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel."
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 0
+    technologies: ["TypeScript", "Socratic Method", "Scaffolding", "Vygotsky", "Metacognition"]
+
+  - name: "desarrollo-software-seguro"
+    url: "https://github.com/statick88/desarrollo-software-seguro"
+    description:
+      es: "Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub."
+      en: "Secure software development material published as open material, and the only repository in this set with a star on GitHub."
+    metrics:
+      stars: 1
+      forks: 0
+      issues: 0
+    technologies: ["JavaScript", "Secure Development", "Open Educational Resources"]
+
+  - name: "Course_of_python"
+    url: "https://github.com/statick88/Course_of_python"
+    description:
+      es: "Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto."
+      en: "Own Python course of 11 modules with 70+ practical challenges, published as open material."
+    metrics:
+      stars: 0
+      forks: 1
+      issues: 0
+    technologies: ["JavaScript", "Python", "11 modules", "70+ challenges", "Open Material"]
+
+  - name: "MindLedger"
+    url: "https://github.com/statick88/MindLedger"
+    description:
+      es: "Sistema de gestión clínica y contable multi-tenant con encriptación de grado médico. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, patrón Repository, migraciones SQLCipher, datos de prueba interactivos, tema oscuro."
+      en: "Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme."
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 1
+    technologies: ["Tauri v2", "Rust", "React", "SQLCipher", "Clean Architecture", "Multi-Tenant"]
+    featured: true
+
+  - name: "jarvis-os"
+    url: "https://github.com/statick88/jarvis-os"
+    description:
+      es: "Capa de servicios en Python."
+      en: "Python service layer."
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 0
+    technologies: ["Python"]
+
+  - name: "open-api-facturacion-sri"
+    url: "https://github.com/statick88/open-api-facturacion-sri"
+    description:
+      es: "API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos."
+      en: "REST API for SRI Ecuador electronic invoicing with XAdES-BES signing, XSD schema validation, and electronic receipt emission."
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 0
+    technologies: ["Node.js", "TypeScript", "XAdES-BES", "SRI Ecuador"]
+
+  - name: "multi-agent-system"
+    url: "https://github.com/statick88/multi-agent-system"
+    description:
+      es: "Sistema multi-agente para SDD (Spec-Driven Development) con orquestación de agentes via OpenCode + MCP. Usado en producción para CV portfolio, MiroFish y proyectos de ciberseguridad."
+      en: "Multi-agent system for SDD (Spec-Driven Development) with OpenCode + MCP agent orchestration. Used in production for CV portfolio, MiroFish, and cybersecurity projects."
+    technologies: ["Python", "FastAPI", "OpenCode", "MCP", "SDD"]
+
+  - name: "material-educativo-unl"
+    url: "https://github.com/statick88/material-educativo-unl"
+    description:
+      es: "Material educativo abierto para la UNL usando Quarto + metodología ABP (Aprendizaje Basado en Proyectos). Cubre Informática Educativa, programación y didáctica."
+      en: "Open educational material for UNL using Quarto + PBL (Project-Based Learning) methodology. Covers Educational Computing, programming, and didactics."
+    technologies: ["Quarto", "PBL", "Open Educational Resources", "UNL"]
+
+  - name: "UCM-Moodle-Pentest"
+    url: "https://github.com/statick88/ucm-moodle-pentest"
+    description:
+      es: "Auditoría de seguridad del campus virtual Moodle de la UCM. 5 hallazgos: 1 CRÍTICO (CVSS 9.1 IDOR), 2 MEDIOS (CVSS 5.3-6.8), 2 BAJOS. Metodología OWASP WSTG + IDOR enumeration con Playwright + curl."
+      en: "Security audit of UCM Moodle campus. 5 findings: 1 CRITICAL (CVSS 9.1 IDOR), 2 MEDIUM (CVSS 5.3-6.8), 2 LOW. OWASP WSTG + IDOR enumeration with Playwright + curl."
+    technologies: ["Pentest", "OWASP WSTG", "CVSS 3.1", "IDOR", "Moodle"]
+
+  - name: "OpenWrt-Hardware-Hacking"
+    url: "https://github.com/statick88/openwrt-hardware-hacking"
+    description:
+      es: "Tutorial de hardware hacking con OpenWrt para router ramips-mt76x8. Cubre compilación con imagebuilder, flasheo de firmware y recuperación TFTP. Originado en proyecto docente ISTJM."
+      en: "Hardware hacking tutorial with OpenWrt for ramips-mt76x8 router. Covers imagebuilder compilation, firmware flashing, and TFTP recovery. Originated in ISTJM teaching project."
+    technologies: ["OpenWrt", "ramips-mt76x8", "imagebuilder", "TFTP", "firmware"]
+
+  - name: "ms08-067-metasploit-demo"
+    url: "https://github.com/statick88/ms08-067-metasploit-demo"
+    description:
+      es: "Demo de ingeniería inversa y explotación con Metasploit Framework: ms08_067 (Windows XP/2003) y ms17_010 (EternalBlue). Virtual lab con Win2K8. Documentación paso a paso."
+      en: "Reverse engineering and exploitation demo with Metasploit Framework: ms08_067 (Windows XP/2003) and ms17_010 (EternalBlue). Win2K8 virtual lab. Step-by-step documentation."
+    technologies: ["Metasploit", "ms08_067", "ms17_010", "RE", "Windows"]
+
   - name: "exploitarium"
     url: "https://github.com/statick88/exploitarium"
     description:
       es: "Colección de PoCs de explotación para CVEs"
       en: "Exploitation PoC collection for CVEs"
     metrics:
-      stars: 12
-      forks: 3
-      issues: 5
+      stars: 0
+      forks: 0
+      issues: 0
     technologies: ["Python", "Exploit Development", "CVE"]
     securityRelevant: true
-    featured: true
-
-  - name: "MindLedger"
-    url: "https://github.com/statick88/MindLedger"
-    description:
-      es: "Aplicación de gestión de conocimiento personal"
-      en: "Personal knowledge management application"
-    technologies: ["TypeScript", "React", "Node.js"]
     featured: true
 
   - name: "cybervault"
@@ -471,6 +895,10 @@ projects:
     description:
       es: "Repositorio de seguridad y auditoría"
       en: "Security and audit repository"
+    metrics:
+      stars: 0
+      forks: 0
+      issues: 0
     technologies: ["Python", "Security"]
     securityRelevant: true
     featured: true
@@ -498,6 +926,58 @@ projects:
       en: "Interactive digital CV"
     technologies: ["React", "Vite", "TypeScript", "Tailwind CSS"]
     featured: true
+
+# =============================================================================
+# Services (the offer the practice block publishes)
+# =============================================================================
+services:
+  - id: "fullstack"
+    title:
+      es: "Desarrollo FullStack"
+      en: "FullStack Development"
+    description:
+      es: "Aplicaciones web y móviles de producción con arquitectura sólida, pruebas y documentación. React, Next.js, Flutter, Node.js, Python, PostgreSQL."
+      en: "Production-grade web and mobile applications with solid architecture, tests, and documentation. React, Next.js, Flutter, Node.js, Python, PostgreSQL."
+    formats:
+      es: ["Por proyecto", "Por horas", "Medio tiempo"]
+      en: ["Per project", "Hourly", "Part-time"]
+    priceRange: "$25-50/hora"
+
+  - id: "security"
+    title:
+      es: "Auditoría de Seguridad"
+      en: "Security Audit"
+    description:
+      es: "Pentesting de aplicaciones web y móviles. Identificación de vulnerabilidades OWASP Top 10, reportes con CVSS scoring y recomendaciones de remediación."
+      en: "Web and mobile application pentesting. OWASP Top 10 vulnerability identification, CVSS-scored reports, and remediation recommendations."
+    formats:
+      es: ["Por proyecto", "Retainer mensual"]
+      en: ["Per project", "Monthly retainer"]
+    priceRange: "$500-3000/proyecto"
+
+  - id: "consulting"
+    title:
+      es: "Consultoría Técnica"
+      en: "Technical Consulting"
+    description:
+      es: "CTO Fractional: arquitectura de software, revisión de código, mentoría de equipos y toma de decisiones técnicas estratégicas."
+      en: "Fractional CTO: software architecture, code review, team mentoring, and strategic technical decision-making."
+    formats:
+      es: ["Medio tiempo", "Por horas", "Retainer"]
+      en: ["Part-time", "Hourly", "Retainer"]
+    priceRange: "$20-40/hora"
+
+  - id: "training"
+    title:
+      es: "Capacitación & Cursos"
+      en: "Training & Courses"
+    description:
+      es: "Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software. Trece años de docencia continua desde 2013 en seis instituciones, entre ellas ESPE, UIDE y ABACOM."
+      en: "Custom courses in Python, Ethical Hacking, Cybersecurity, and software development. Thirteen continuous years of teaching since 2013 across six institutions, including ESPE, UIDE and ABACOM."
+    formats:
+      es: ["Por hora", "Por curso", "Workshop"]
+      en: ["Hourly", "Per course", "Workshop"]
+    priceRange: "$30-60/hora"
 
 # =============================================================================
 # Metrics (quantified impact)
