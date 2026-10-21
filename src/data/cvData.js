@@ -603,6 +603,18 @@ export const cvData = {
       github: "https://github.com/statick88/cybervault"
     },
     {
+      name: "ctf-evilsec-2026",
+      description: {
+        es: "Writeups reproducibles del CTF de EvilSec (Ekoparty 2026): 15 de 22 retos resueltos y 3550 puntos, con un script por reto que devuelve la flag y una auditoria contra el scoreboard del evento. Tercer puesto.",
+        en: "Reproducible writeups from the EvilSec CTF (Ekoparty 2026): 15 of 22 challenges solved and 3,550 points, with a script per challenge that returns the flag and an audit against the event scoreboard. Third place in the event."
+      },
+      highlights: {
+        es: ["CTF", "Writeups", "15/22 retos", "3550 puntos", "3.er puesto"],
+        en: ["CTF", "Writeups", "15/22 challenges", "3,550 points", "3rd place"]
+      },
+      github: "https://github.com/statick88/ctf-evilsec-2026"
+    },
+    {
       name: "cv-diego",
       description: {
         es: "CV digital interactivo",
@@ -664,7 +676,7 @@ export const cvData = {
       source: "Docente Cuantitativa Evaluation.pdf"
     },
     githubRepos: {
-      value: "400+",
+      value: "410",
       unit: "",
       label_es: "Repositorios públicos en GitHub",
       label_en: "Public GitHub repos",
@@ -676,6 +688,20 @@ export const cvData = {
       label_es: "Notebooks / sources en NotebookLM",
       label_en: "Notebooks / sources in NotebookLM",
       source: "nlm --version (v0.6.8)"
+    },
+    ctfEvilsecRetos: {
+      value: "15 / 22",
+      unit: "retos",
+      label_es: "Retos resueltos en el CTF de EvilSec (Ekoparty 2026)",
+      label_en: "Challenges solved at the EvilSec CTF (Ekoparty 2026)",
+      source: "github.com/statick88/ctf-evilsec-2026 (auditado contra el scoreboard)"
+    },
+    ctfEvilsecPuesto: {
+      value: "3.er",
+      unit: "puesto",
+      label_es: "CTF de EvilSec (Ekoparty 2026), 3550 puntos",
+      label_en: "EvilSec CTF (Ekoparty 2026), 3,550 points",
+      source: "Correo de la organizacion del evento, 2026-10-19"
     },
     certificationsCount: {
       value: "134+",
