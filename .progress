@@ -1,162 +1,199 @@
-# .progress — Checklist del CV (sitio + PDFs)
+# .progress — Checklist del CV (sitio + PDF)
 
-> Archivo de seguimiento del trabajo del CV en este repo. Formato alineado con el
-> de `~/Projects/plugin_career_ops_tracker/.progress`: **una casilla se marca sólo
-> con evidencia observada**.
-> Última actualización: 2026-10-21. Rama local actual: `feat/console-ui-redesign`
-> (`main` es ancestro de HEAD → la integración es una decisión del usuario).
+> Seguimiento del trabajo del CV en este repo. Formato alineado con el de
+> `~/Projects/plugin_career_ops_tracker/.progress`: **una casilla se marca sólo
+> con evidencia observada**; lo que no se ha hecho, no se marca.
+>
+> **Última actualización:** 2026-10-21 (reconciliado con el estado real)
+> **Repo:** una sola rama, `main` (local y remoto). Cero PRs abiertos, cero stashes,
+> cero worktrees extra. Working tree limpio.
+> **Toolchain:** `pnpm` + `fnm` con **Node 22** (`.node-version`); los gates locales
+> sólo valen si `fnm exec --using=22 node -v` coincide con el del CI.
+> **Comandos:** `pnpm install --frozen-lockfile` · `pnpm test` · `pnpm typecheck` ·
+> `pnpm build` · `node scripts/verify-cv-ats.mjs`
+
+---
+
+## Estado en una línea
+
+**El CV es uno solo por idioma** (`public/cv-es.pdf`, `public/cv-en.pdf`), reúne
+todo el contenido (contacto → resumen → Mi Práctica → experiencia → educación →
+habilidades → proyectos → certificaciones → publicaciones → cursos → métricas),
+está **verificado a prueba de ATS con 10 criterios ejecutables** y **los tres
+espejos de datos declaran lo mismo**. Lo que queda son 4items de contenido y 6
+decisiones del usuario.
 
 ---
 
 ## Hecho (con commit)
 
-- [x] **Variante `consultor`** (CV de práctica / organización, modelada sobre la referencia `michalsoltysik.com`): servicios con modalidades y tarifas, herramientas propias, formación propia, 3 encargos de seguridad autorizados y referencias. Bloque `practice` emitido desde una sola fuente hacia TS/JS/YAML, con test de deriva que compara los tres espejos. → `61e9c49`
-- [x] **Fix de los encabezados en los CV en español**: `t()` nunca recibía el idioma, así que *todos* los CV en español salían con encabezados en inglés ("PROFESSIONAL SUMMARY", "CONTACT") y solo el cuerpo en español. → `61e9c49`
-- [x] **Los CV por perfil son desplegables**: `render-cv-pdfs.ts` escribe ahora los 12 PDF en `public/` (antes vivían en la raíz del repo y no se desplegaban; en `public/` solo había `cv-es.pdf` y `cv-en.pdf`). Los campos `pdf` de `profileData` apuntan a rutas reales. → `b562ac7`
-- [x] **La web enlaza los CV**: `ProfileSelector` ofrece el perfil `consultor` y un enlace PDF por perfil, sensible al idioma activo. Antes no había ni una referencia a `.pdf` en `src/`. → `b562ac7`
-- [x] **CV a prueba de ATS, con comprobaciones ejecutables** (rama `feat/ats-proof`): `scripts/verify-cv-ats.mjs` verifica los 10 criterios sobre el PDF publicado (capa de texto, contacto literal, encabezados, orden de lectura, fechas, glifos, fuentes embebidas, geometría, duplicados y palabras clave) y sale con 1 si algo falla; test propio del contrato sobre el markdown y los ficheros publicados, sin poppler; y un paso de CI que hace fallar el pipeline si el CV deja de cumplir el contrato. → commit `feat(cv): verify the published CV is ATS-proof` (ver P14)
-- [x] 232 tests verdes, `tsc --noEmit` limpio, gates de pre-commit (security audit, lint, typecheck, vitest) en verde tras cada commit.
+### El CV único y sin modos
+- [x] **Un solo CV por idioma**: se eliminaron las 5 variantes por perfil y su
+      selector. `generate-cv-markdown.js` genera `cv-es.md` / `cv-en.md` y sus PDF
+      en `public/`; se borraron los 10 markdown y los 10 PDF por perfil. → `d62e260` (merge `665fda1`)
+- [x] **El bloque de la organización** (`practice`: servicios con modalidades y
+      tarifas, herramientas propias, formación propia, 3 encargos de seguridad
+      autorizados y referencias) entra en el CV general, emitido desde una sola
+      fuente hacia los tres espejos. → `d62e260`
+- [x] **El sitio vuelve a ofrecer su CV**: la barra superior lleva un chip de
+      descarga con ruta según el idioma (`/cv-es.pdf` | `/cv-en.pdf`), `download`
+      y etiqueta traducida. El E2E del selector se sustituyó por el del CV único.
+      → `8a07229` (merge `d51938f`)
+
+### Correcciones de defectos reales
+- [x] **El bloque de contacto había desaparecido de los PDF**: el commit que lo
+      añadió nunca llegó a `main` y el cherry-pick de la rama lo excluyó
+      (rango exclusivo). Los doce PDF publicados iban **sin correo ni teléfono**.
+      → `ad30c86` (merge `3a366c5`) + test de regresión `cv-contact-block.test.ts`
+- [x] **Encabezados en inglés en los CV en español**: `t()` nunca recibía el
+      idioma, así que el helper devolvía siempre el texto inglés. → `d62e260`
+- [x] **El contacto va primero en el PDF**: un ATS lee la primera línea, y era el
+      resumen. Ahora: `Contacto → Resumen → Mi Práctica → Experiencia → …`. → `953f54e`
+- [x] **"Herramientas Propias" salía 1 de 4**: el cruce de nombres resolvía
+      contra un espejo distinto del que leía el generador. Resuelto con la
+      unificación de `projects`. → `b9c3585`
+
+### Datos coherentes entre los tres espejos
+- [x] **Los tres espejos declaran lo mismo**: `cv-data.ts` (web), `cvData.js`
+      (PDF) y `cv-data.yaml` (export ATS) tienen **10 proyectos · 4 servicios ·
+      60 habilidades · 36 certificaciones**. Antes: 6/0/54/12, 9/4/54/32 y
+      1/0/48/10 — la web y el PDF mostraban proyectos distintos. → `b9c3585` (merge `ef78206`)
+- [x] **El test de deriva compara todo eso**, no solo `work`: proyectos
+      (nombres, descripciones, repositorio), servicios, habilidades y
+      certificaciones, con el documento de qué campos no son comparables entre
+      formas. +8 tests, todos cazados por mutación. → `b9c3585`
+- [x] **El export ATS lleva los servicios** y **omite las fechas ausentes** en
+      lugar de imprimir un marcador ("s/f"). → `8c28cfa`
+- [x] **7 proyectos retirados por repositorio muerto** (404): un CV no puede
+      enlazar repos inexistentes. Las 10 URLs que quedan devuelven **200**
+      (comprobado una a una). → `8c28cfa`
+
+### Contrato ATS
+- [x] **10 criterios ejecutables** sobre el PDF publicado (`scripts/verify-cv-ats.mjs`):
+      capa de texto real, contacto literal, encabezados estándar, orden de lectura
+      lineal, fechas ASCII, sin glifos corruptos, fuentes embebidas, geometría
+      (1..6 págs, <2 MB), herramientas sin repetir y keywords presentes. Poppler es
+      herramienta del sistema: si falta, el criterio sale `SKIP` con aviso, nunca
+      aprobado en silencio. → `0a0db6a` (merge `f3134be`)
+- [x] **Test del contrato en el repo** (`cv-ats-proof.test.ts`), sin poppler: el
+      mismo contrato sobre el markdown y los ficheros publicados. → `0a0db6a`
+- [x] **Paso de CI**: el job de diseño falla el pipeline si el CV deja de cumplir
+      el contrato. → `0a0db6a`
+- [x] **Verificación por mutación**: correo fuera → criterio 2; orden invertido →
+      criterio 4; guion `–` → criterio 5; herramienta duplicada → criterio 9;
+      proyecto renombrado en un espejo → el test de deriva.
+
+### Toolchain, higiene y proceso
+- [x] **Toolchain fijado en el contrato del proyecto** (`AGENTS.md`): pnpm +
+      fnm con Node 22; el node ambiental no es el runtime del proyecto y sus
+      gates no son evidencia. → `477df54` (merge `50125f5`)
+- [x] **La caché del registro de skills sale del índice**: `.atl/` ya estaba en
+      `.gitignore`, pero sus ficheros estaban versionados y un hook los
+      modificaba en cada sesión → el working tree nunca quedaba limpio. → `9dbf7ec` (merge `31d66ad`)
+- [x] **Restos de un solo uso eliminados**: el script de CV superado, la
+      variante vieja "curriculista" y el generador con la imagen embebida. → `7feb698` (merge `29206c3`)
+- [x] **PR #10 de dependabot cerrado** (su `qa-gate` estaba en rojo) y su rama
+      borrada: un PR con comprobaciones en rojo se cierra, no se mergea.
+- [x] Un commit por cambio, cada rama fusionada a `main` y cerrada en la misma
+      entrega; repos con una sola rama y cero worktrees.
+
+### Estado verificado a 2026-10-21
+- [x] `main` = `31d66ad` · CI verde (qa, security, design, **e2e**, deploy,
+      verify-csp, csp-monitor) · deploy success.
+- [x] `public/cv-es.pdf` y `public/cv-en.pdf` → **HTTP 200** en producción y
+      **ATS PASS 10/10** sobre el PDF descargado del sitio.
+- [x] 18 ficheros / **266 tests** en verde (Node 22, pnpm 12.14.0).
+- [x] 10/10 URLs de proyecto vivas · 17 → 10 proyectos tras retirar los 404.
 
 ---
 
 ## Pendiente
 
-### P1 — Pre-render / `noscript` para ATS  ❌ *descartado por decisión del usuario (2026-10-21)*
+### Contenido del CV (mío, sin decisiones pendientes)
+- [ ] **P4 — Keywords del audit ATS ausentes**: `Scrum` 0 · `ágil` 0 ·
+      `gestión académica` 0 · `evaluación formativa` 0. Ya presentes: `rúbrica`,
+      `remediación`, `vulnerabilidad`. **Regla: una keyword entra sólo si es
+      verdad** — `Scrum` no se declara si no se ha practicado; `gestión
+      académica` y `evaluación formativa` sí tienen respaldo en la docencia.
+- [ ] **P5 — Evidencia del CTF**: el CV solo declara la skill `CTF: intermediate`.
+      Verificado en el correo (2026-10-21): **3.er puesto en el CTF de EvilSec –
+      Ekoparty 2026**, con repositorio de respaldo (`ctf-evilsec-2026`).
+      Incorporarlo como logro verificable en formato XYZ (qué, con qué métrica,
+      cómo) en el CV único.
+- [ ] **P10 — Panel de Referencias** en la web: reutilizar `practice.referenceNames`
+      (6 instituciones, ya en el CV) como bloque propio, con el lenguaje visual
+      del sitio.
+- [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay
+      charlas, conferencias ni ponencias en las fuentes; un bloque vacío o de
+      relleno rompe la regla de integridad. Candidatos: el CTF de Ekoparty 2026.
+- [ ] **P13 — Encargos de seguridad en la web**: el bloque `practice.engagements`
+      (3 pentests anonimizados) solo vive en el PDF; decidir si se expone en el
+      sitio y con qué nivel de detalle.
 
-> **No se implementa.** El artefacto para ATS es el PDF (los 12 perfiles se publican en
-> `public/` y el sitio los enlaza); el HTML de la SPA no se pre-renderiza ni lleva
-> `noscript` con el CV. Se cierra como descartado, no como pendiente: no se reopenará
-> sin una petición explícita del usuario.
-- [x] Constatado: el sitio sirve **HTML vacío** (cero `noscript`/pre-render en `src/`). Un ATS que no ejecuta JavaScript no lee el cuerpo de la web. **Decisión: se acepta; el artefacto es el PDF.**
-- [x] Opciones evaluadas: (a) pre-render del HTML en build, (b) bloque `noscript` con el resumen, el contacto literal y los enlaces a los CV. **Ninguna se implementa.**
-- [x] Criteriooriginal (cae con la decisión): `curl` del HTML sin JS devolvía el correo. **Sustituto: el correo y el teléfono van literales en el texto de cada PDF** (`verify_cv_pdf.py --email --phone` los comprueba en el PDF publicado).
-
-### P2 — Alineación de `projects` entre las tres fuentes  ⬜ *(brecha de integridad)*
-- [ ] Verificado 2026-10-21: las tres fuentes **divergen**:
-  - `cv-data.ts` → 6 (course-of-cybersecurity, cyber-guardians, desarrollo-software-seguro, Course_of_python, MindLedger, jarvis-os)
-  - `cvData.js` → 8+ (open-api-facturacion-sri, MindLedger, CyberGuardians, multi-agent-system, material-educativo-unl, UCM-Moodle-Pentest, OpenWrt-Hardware-Hacking, ms08-067-metasploit-demo)
-  - `cv-data.yaml` → 1 (exploitarium)
-- [ ] El test de deriva (`src/__tests__/design/cv-data-drift.test.ts`) **solo compara `work`** (roles, fechas, highlights): por eso nadie lo detectó.
-- [ ] Extender el test a `projects`, `services`, `skills` y `certifications` (mismo criterio: los tres espejos deben coincidir).
-- [ ] Decidir el conjunto canónico y propagarlo a los tres ficheros.
-
-### P3 — Sección "Herramientas Propias" incompleta  ⬜ *(consecuencia de P2)*
-- [ ] En `cv-consultor-es.pdf` sale **1 de 4** herramientas (solo MindLedger): los nombres no coinciden entre la fuente TS (`cyber-guardians`) y el espejo JS (`CyberGuardians`), y el generador resuelve por nombre exacto.
-- [ ] Se cierra al resolver P2 (nombres alineados) o haciendo la resolución insensible a mayúsculas.
-
-### P4 — Keywords del audit ATS que siguen ausentes  ⬜
-- [ ] Contadas en `cv-data.ts`: `Scrum` 0 · `ágil` 0 · `gestión académica` 0 · `evaluación formativa` 0.
-- [ ] Ya presentes: `rúbrica` (4) · `remediación` (3) · `vulnerabilidad` (1).
-- [ ] Regla: **una keyword entra sólo si es verdad**. `Scrum` no se declara si no la ha practicado; `evaluación formativa` y `gestión académica` sí tienen respaldo en la docencia (evaluación con rúbricas, coordinación de cátedra).
-
-### P5 — Evidencia del CTF sin incorporar  ⬜
-- [ ] Hoy el CV solo declara la skill `CTF: intermediate`.
-- [ ] Verificado en el correo (2026-10-21): **3er lugar en el CTF de EvilSec – Ekoparty 2026**; repositorio de respaldo `github.com/statick88/ctf-evilsec-2026`.
-- [ ] Incorporarlo como logro verificable en las variantes `hacker` y `consultor` (formato XYZ: qué, métrica, cómo) y en el bloque `practice` si procede.
-
-### P6 — Integración de la rama  ⬜ *(decisión del usuario)*
-- [ ] El trabajo del CV vive en la rama local `feat/console-ui-redesign`; `main` es ancestro del HEAD. Push, PR y merge son decisiones del usuario.
-- [ ] Pendiente de definir: ¿rama nueva desde `main` con cherry-pick, o PR directo de esta rama?
-
-### P7 — Decisiones de contenido del CV  ⬜ *(del usuario)*
-- [ ] ¿Entran los 13 PR de ejercicios de curso en la sección "aportes"?
-- [ ] ¿Se puede nombrar al cliente SolnusTec? Hoy va **anonimizado** ("nombre bajo acuerdo de confidencialidad"): no se verificó que la carta de autorización permita publicar el nombre, y un pentest con datos de cliente no se expone sin ese permiso.
-
-### P8 — Verificación de la variante `consultor`  ⬜
-- [ ] Confirmar que el PDF `public/cv-consultor-es.pdf` no supera las 2 páginas que aceptan los ATS (el bloque de práctica suma secciones).
-- [ ] Pasar `verify_cv_pdf.py` con `--ascii-dates --email --phone` (ya en verde tras la generación) y comprobar el conteo de palabras.
+### Pipeline de postulaciones (no es este repo, pero su estado affects al CV)
+- [ ] **La 044 (Santillana) se envió con el CV sin bloque de contacto**: el CV
+      corregido ya está re-subido al perfil de Multitrabajos y verificado por
+      hash (idéntico al publicado), pero **no se ha reenviado por correo** a la
+      empresa. Decisión del usuario.
+- [ ] **Discovery de vacantes junior de seguridad** y paquete listo (carta + CV
+      único) para la ventana del 27 (la cuota de 2/semana está agotada).
 
 ---
 
-## Notas y evidencia
+## Cerrados por cambio de diseño (no se harán tal como estaban escritos)
 
-- 2026-10-21 — Verificación de brechas **por código**, no por memoria: `grep` sobre `src/` (cero referencias a `.pdf`, cero `noscript`), conteo de keywords en `cv-data.ts`, comparación de los `projects` de las tres fuentes y comparación de `NEXT_ACTION` del bridge del plugin.
-- 2026-10-21 — La sección `practice` del modeloCv quedó definida en un solo script (`~/Documents/CareerOps/scripts/patch_practice_cv.py`) que emite TS, JS y YAML desde el mismo diccionario: por construcción los tres espejos no pueden divergir en ese bloque.
-- 2026-10-21 — Reglas de la casa que se aplicaron: sin PDF editados a mano (todo desde `pnpm generate:cvs`), sin afirmaciones nuevas sin respaldo en los datos, y sin nombrar a un cliente sin autorización verificada.
-
----
-
-## Verificación de la adopción de la organización de `michalsoltysik.com` (2026-10-21)
-
-Comparación de las tres capas, hecha sobre el código y los artefactos, no de memoria.
-
-| Bloque del sitio de referencia | CV `consultor` (PDF) | Nuestra UI (web) |
+| Item | Estado | Por qué |
 |---|---|---|
-| Posicionamiento + CV descargable | ✅ Resumen Profesional + contacto literal | ✅ ProfileCard + selector con PDF por perfil |
-| **Services** (servicios, modalidades, tarifas) | ✅ Servicios (4) | ❌ **no existe panel**: los datos están en `cv-data.ts` (`services`) y 0 componentes los usan |
-| **Training** | ✅ Formación Propia | ✅ CoursesPanel |
-| **Skills** | ✅ Habilidades Técnicas | ✅ SkillsCard + LevelBar |
-| **References** | ✅ Referencias (6 instituciones) | ❌ no hay panel de referencias |
-| **Cybersecurity content** | ✅ Encargos de seguridad autorizados | ✅ ContributionsPanel + ResearchPanel |
-| **Own tools** | ⚠️ Herramientas Propias: **1 de 4** (divergencia de `projects`, ver P2/P3) | ✅ PluginsPanel + ProjectsGrid |
-| **Events** | ❌ | ❌ **y no hay datos verificados**: no hay charias, conferencias ni ponencias en las fuentes actuales |
-| Certificaciones / Experiencia / Educación | ✅ | ✅ CertificationsList, ExperienceTimeline, EducationCard |
-
-**Conclusión:** la organización del sitio de referencia está adoptada en el CV (6 de 8 bloques) y **a medias en la web** (4 de 8). Lo que falta en la UI esServices, Referencias, Eventos y el bloque de encargos.
-
-### Pendiente que añade esta verificación
-
-- [ ] **P9 — Panel de Servicios en la UI**: montar `services` (4 servicios con modalidades y tarifas) como panel propio, con el mismo lenguaje visual que el resto (tokens `ct-*`, `Panel`/`PanelRow`). Es el bloque más central del sitio de referencia y ya está en los datos.
-- [ ] **P10 — Panel de Referencias**: reutilizar `practice.referenceNames` (6 instituciones, ya en el CV) o datos verificados de clientes con permiso.
-- [ ] **P11 — Bloque de Eventos**: **no crear hasta tener evidencia**. Hoy no hay charias, conferencias ni ponencias en las fuentes; un bloque vacío o inventado rompe la regla de integridad. Candidatos de evidencia a reunir: CTF de EvilSec – Ekoparty 2026 (3.er puesto, verificable
-  en el repositorio `ctf-evilsec-2026`) y cualquier charla o ponencia documentada.
-- [ ] **P12 — Paneles sensibles al perfil activo**: `App.tsx` adapta titular y experiencia por perfil, pero los paneles (Courses, Contributions, Plugins, Research) son estáticos: al elegir "Consultor" el cuerpo de la web no cambia, sólo el PDF que se descarga.
-- [ ] **P13 — Encargos de seguridad en la web**: el bloque `practice.engagements` (3 pentests anonimizados) sólo vive en el PDF; decidir si se expone en el sitio.
+| **P1** — pre-render / `noscript` para ATS | ❌ descartado | Decisión del usuario: el artefacto es el PDF. El contrato ATS cubre lo que importa. |
+| **P3** — "Herramientas Propias" 1 de 4 | ✅ cerrado | Resuelto con la unificación de `projects`; el verificador ATS reporta 6 herramientas únicas. |
+| **P6** — integración de la rama | ✅ resuelto | La regla es una sola rama: `main` local y remoto, todo fusionado y cerrado. |
+| **P8** — verificar la variante `consultor` (≤2 págs) | ↺ reescrito | La variante ya no existe: el CV único tiene 6 páginas (dentro del límite ATS) y su contrato está en P14. |
+| **P12** — paneles sensibles al perfil activo | ↺ obsoleto | No hay modos: se eliminó el selector de perfiles. |
+| **P15** — contacto antes del resumen | ✅ cerrado | Hecho en `953f54e`; el PDF abre con "Contacto". |
 
 ---
 
-## Plan de ejecución (2026-10-21)
+## Decisiones del usuario
 
-Orden acordado: **P9 → P12 → P2** (primero el bloque que falta y es de UI, luego la coherencia del selector, luego la integridad de datos).
+1. **Los 12 commits archivados** (`archive/webmcp-cv-tools-2026-10-21`): incluyen el
+   fix de atribución del exploitarium y la cobertura con SonarQube. ¿Se integran
+   o se archivan para siempre?
+2. **¿Se nombra a SolnusTec** en el CV? Hoy va **anonimizado** ("nombre bajo
+   acuerdo de confidencialidad"): no se verificó que la carta autorice publicar
+   el nombre.
+3. **¿Los 13 PR de ejercicios de curso** entran en la sección de aportes?
+4. **¿`Scrum` / `ágil`** entran en las keywords? Solo si son verdad (ver P4).
+5. **Dependabot**: el PR del grupo de actualizaciones se cerró porque rompía el
+   `qa-gate`. ¿Se revalida y se mergea?
+6. **¿Se reenvía por correo el CV corregido** a la empresa de la 044?
 
-### P9 — Panel de Servicios en la UI  ✅ *cerrado*
+---
 
-- [x] 9.1 Creado `src/components/panels/ServicesPanel.tsx` con `Panel` + `PanelRow` — mismo idioma visual que `PluginsPanel` (plantilla: nombre a la izquierda, descripción y datos a la derecha).
-- [x] 9.2 Datos: importa `services` de `@/data/cv-data` (patrón de `PluginsPanel` con `@/data/contributions`). **No** tocar `src/lib/schemas` ni `src/lib/sanitize`: los paneles leen datos directamente, así que `services` no hace falta en el esquema.
-- [x] 9.3 Color: el acento sale del dato (`service.color`), nunca hex hardcodeado en el componente.
-- [x] 9.4 Montado en `src/App.tsx` en la columna derecha, tras el bloque de identidad (`ProfileCard`).
-- [x] 9.5 Test en `src/__tests__/design/services-panel.test.tsx`: renderiza los 4 servicios desde los datos reales y comprueba título, modalidades y tarifa.
-- [x] 9.6 Gates: `pnpm typecheck`, `pnpm test`, pre-commit; commit `feat(cv): panel de servicios en la UI`.
-- [x] 9.7 Evidencia: el bloque ya existe en el PDF (`cv-consultor-es.pdf`) y el panel está
-  montado en la web. Pendiente una captura del panel en el navegador.
+## Notas y evidencia (lecciones durables)
 
-### P12 — Paneles sensibles al perfil activo  ⬜
-
-- [ ] 12.1 Mapear qué bloques dependen del perfil: hoy sólo se adaptan titular y experiencia (`adaptHeadline()`, `adaptExperience()`); Courses, Contributions, Plugins y Research son estáticos.
-- [ ] 12.2 Decidir bloque por bloque: contenido propio del perfil, o contenido común con etiqueta.
-- [ ] 12.3 Test: cambiar de perfil cambia lo que debe cambiar y lo que no.
-
-### P2 — Deriva de `projects` entre las tres fuentes  ⬜
-
-- [ ] 2.1 Decidir el conjunto canónico de proyectos (hoy: TS 6 · JS 8+ · YAML 1).
-- [ ] 2.2 Propagar a `cv-data.ts`, `cvData.js` y `cv-data.yaml`.
-- [ ] 2.3 Extender `src/__tests__/design/cv-data-drift.test.ts` a `projects`, `services`, `skills` y `certifications` (hoy sólo compara `work`).
-- [ ] 2.4 Regenerar los PDF y comprobar que "Herramientas Propias" sale con las 4 herramientas (cierra P3).
-
-### P14 — CV a prueba de ATS con comprobaciones ejecutables  ✅ *cerrado (2026-10-21, rama `feat/ats-proof`)*
-
-> Lo que se publica es el PDF, así que el contrato se comprueba **sobre el artefacto**, no sobre la intención. Sin afirmaciones: cada criterio es una comprobación que falla.
-
-- [x] 14.1 `scripts/verify-cv-ats.mjs`: 10 criterios ejecutables sobre `public/cv-es.pdf` y `public/cv-en.pdf` — capa de texto real (≥250 palabras), contacto literal, encabezados estándar de ATS, orden de lectura lineal, fechas legibles por máquina, glifos corruptos, fuentes embebidas, geometría razonable (1..6 páginas y <2 MB), herramientas propias sin nombres repetidos y palabras clave presentes (≥20 skills del dato). Una línea por criterio (`PASS`/`FAIL`/`SKIP` con motivo) y código de salida 1 si algo falla.
-- [x] 14.2 Poppler es **herramienta del sistema**, no dependencia: si falta, los criterios del PDF salen `SKIP` con aviso explícito (nunca un aprobado silencioso) y el script sale 0 solo si nada que se haya podido comprobar ha fallado.
-- [x] 14.3 `src/__tests__/design/cv-ats-proof.test.ts`: el mismo contrato sobre el markdown generado y los ficheros publicados, **sin poppler** — contacto literal, encabezados estándar y en orden, guion ASCII en los rangos de fecha, ninguna herramienta repetida, exactamente `cv-es.pdf` y `cv-en.pdf` publicados y el PDF no más antiguo que el markdown del que sale.
-- [x] 14.4 `.github/workflows/ci.yml`: el job de diseño ejecuta `node scripts/verify-cv-ats.mjs` después de generar el CV; el pipeline falla si el CV deja de cumplir el contrato.
-- [x] 14.5 Evidencia: `tsc --noEmit` limpio, **18 ficheros / 248 tests en verde** (7 nuevos), build en verde, los 10 criterios en `PASS` y mutation testing (sin correo → criterio 2; orden invertido → criterio 4; guion `–` → criterio 5; herramienta duplicada → criterio 9; PDF extra → test del CV único).
-
-> **Desviación documentada (P15)**: el PDF publica el bloque *Resumen* **antes** del bloque *Contacto*. La cadena del contrato es `Contacto → Resumen/Práctica → Experiencia → Educación → Habilidades → Certificaciones`: el bloque *Práctica* sí va después del contacto, así que la cadena se cumple (el resumen no la invierte) y el verificador lo dice en su salida. Poner el contacto el primero exige mover el bloque en `generate-cv-markdown.js` y regenerar el CV — fuera de la superficie de este trabajo.
-
-### P15 — Contacto antes del Resumen en el PDF  ⬜ *(decisión del usuario)*
-
-- [ ] 15.1 Mover el bloque de contacto por encima del resumen en `generate-cv-markdown.js` y regenerar `cv-es.md`, `cv-en.md` y los PDF (`pnpm generate:cvs`).
-- [ ] 15.2 Con el bloque de contacto primero, la cadena `Contacto → Resumen/Práctica → …` se cumple con el resumen como ancla; el verificador puede entonces exigir el orden estricto.
-
-- 2026-10-21 — **P9 cerrado**: `ServicesPanel` con `Panel`/`PanelRow` y tokens `ct-*`
-  (nada de la UI del sitio de referencia: la UI no se toca, sólo se le añade el
-  bloque de la organización). Los datos salen de `services` en `@/data/cv-data`
-  —el mismo patrón que `PluginsPanel` con `@/data/contributions`—, así que no
-  hizo falta tocar `schemas` ni `sanitize`. Sección nueva `servicios` en
-  `src/config/navigation.ts` (id = id del DOM, para que ningún enlace apunte a
-  un ancla inexistente) y montada en la columna derecha tras el bloque de
-  identidad. Test propio que renderiza los 4 servicios contra los datos reales.
-  Gates: `tsc --noEmit` limpio, **16 ficheros / 236 tests en verde** (3 nuevos),
-  lint sin errores nuevos, build de producción y hooks de pre-commit en verde.
+- 2026-10-21 — **Un rango de cherry-pick `A..B` excluye A.** Al reconstruir la
+  rama sobre `origin/main` con `git cherry-pick eaffd0a..rama`, el commit que
+  añadía el bloque de contacto se quedó fuera y **los doce PDF publicados
+  quedaron sin correo ni teléfono**. Antes de fiarte de un cherry-pick: comprueba
+  `git merge-base --is-ancestor <sha> origin/main` para cada commit que creas
+  haber trasladado.
+- 2026-10-21 — **Verifica el artefacto publicado, no la fuente.** El defecto del
+  bloque de contacto solo apareció al pasar `verify_cv_pdf.py --email --phone`
+  sobre el **PDF descargado del sitio**: el markdown y los tests unitarios
+  estaban verdes.
+- 2026-10-21 — **Un dato puede vivir en una forma y ser leído desde otra**: el
+  generador resolvía las herramientas propias contra `cvData.js` mientras la
+  web leía `cv-data.ts`. Los tres espejos tienen que declarar lo mismo, y el test
+  de deriva tiene que compararlo.
+- 2026-10-21 — **Criterios que parecían razonables y resultaron falsos
+  positivos**: buscar encabezados por `startswith` encuentra prosa
+  ("certificaciones activas y 400+ repositorios" no es un encabezado) y buscar
+  guiones tipográficos en todo el documento marca títulos sin relación con
+  fechas (solo cuentan dentro de un rango AAAA-AAAA).
+- 2026-10-21 — **La UI antigua de Gmail no es parseable**; el modo clásico
+  `?ui=2` sí: celda 4 = remitente, 5 = asunto, 9 = fecha, y la búsqueda por
+  hash solo corre en la primera carga de la página.
+- 2026-10-21 — Reglas de la casa aplicadas: sin PDF editados a mano (todo desde
+  `pnpm generate:cvs`), sin afirmaciones sin respaldo en los datos, sin nombrar a
+  un cliente sin autorización verificada, y sin datos inventados para rellenar
+  un hueco (las fechas ausentes se omiten, no se ponen "s/f").
