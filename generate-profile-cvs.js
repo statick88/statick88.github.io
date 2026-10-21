@@ -1,6 +1,5 @@
 import { writeFileSync } from 'fs';
 import { cvData, profileData } from './src/data/cvData.js';
-import { projects as canonicalProjects } from './src/data/cv-data';
 
 console.log('Successfully imported profileData');
 
@@ -70,13 +69,16 @@ function generateProfileMarkdown(profileKey, lang) {
     // Resolve against the canonical projects and the JS mirror, case-insensitively:
     // the two mirrors carry the same tools with different display names, and an
     // exact match silently dropped three of the four declared own tools.
+    // The generator runs under plain node in CI, so it can only read the JS
+    // mirror: resolve by name, case-insensitively, keeping the first match.
     const wantedTools = (practice.toolNames || []).map((name) => String(name).toLowerCase());
-    const allProjects = [...(canonicalProjects || []), ...(cvData.projects || [])];
-    const tools = allProjects.filter(
-      (p, index) =>
-        wantedTools.includes(String(p.name).toLowerCase()) &&
-        allProjects.findIndex((other) => other.name === p.name) === index,
-    );
+    const seenTools = new Set();
+    const tools = (cvData.projects || []).filter((project) => {
+      const key = String(project.name || '').toLowerCase();
+      if (!key || !wantedTools.includes(key) || seenTools.has(key)) return false;
+      seenTools.add(key);
+      return true;
+    });
     if (tools.length) {
       markdown += `### ${t('Herramientas Propias', 'Own Tools')}\n\n`;
       for (const tool of tools) {

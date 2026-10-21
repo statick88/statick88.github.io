@@ -17,10 +17,10 @@ Independent security and software practice: authorized application auditing, pro
 
 ### Own Tools
 
-- **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. — github.com/statick88/course-of-cybersecurity
-- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. — github.com/statick88/cyber-guardians
 - **desarrollo-software-seguro** — Secure software development material published as open material, and the only repository in this set with a star on GitHub. — github.com/statick88/desarrollo-software-seguro
-- **MindLedger** — Multi-tenant clinical and accounting system: clean architecture, multi-tenant isolation, local database encryption and typed input validation. — github.com/statick88/MindLedger
+- **cyber-guardians** — AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel. — github.com/statick88/cyber-guardians
+- **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. — github.com/statick88/course-of-cybersecurity
+- **MindLedger** — Multi-tenant clinic and accounting management system with medical-grade encryption. Tauri v2 (Rust) + React + SQLCipher. Clean Architecture, Repository pattern, SQLCipher migrations, interactive sample data, dark theme. — github.com/statick88/MindLedger
 
 ### Own Training
 

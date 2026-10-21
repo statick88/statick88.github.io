@@ -483,6 +483,66 @@ export const cvData = {
 
   projects: [
     {
+      name: "jarvis-os",
+      description: {
+        es: "Capa de servicios en Python.",
+        en: "Python service layer."
+      },
+      highlights: {
+        es: ["Python"],
+        en: ["Python"]
+      },
+      github: "https://github.com/statick88/jarvis-os"
+    },
+    {
+      name: "Course_of_python",
+      description: {
+        es: "Curso propio de Python de 11 módulos con más de 70 retos prácticos, publicado como material abierto.",
+        en: "Own Python course of 11 modules with 70+ practical challenges, published as open material."
+      },
+      highlights: {
+        es: ["JavaScript", "Python", "11 módulos", "70+ retos", "Material Abierto"],
+        en: ["JavaScript", "Python", "11 modules", "70+ challenges", "Open Material"]
+      },
+      github: "https://github.com/statick88/Course_of_python"
+    },
+    {
+      name: "desarrollo-software-seguro",
+      description: {
+        es: "Material de desarrollo de software seguro publicado como material abierto, con el único repositorio del conjunto que cuenta con una estrella en GitHub.",
+        en: "Secure software development material published as open material, and the only repository in this set with a star on GitHub."
+      },
+      highlights: {
+        es: ["JavaScript", "Desarrollo Seguro", "Open Educational Resources"],
+        en: ["JavaScript", "Secure Development", "Open Educational Resources"]
+      },
+      github: "https://github.com/statick88/desarrollo-software-seguro"
+    },
+    {
+      name: "cyber-guardians",
+      description: {
+        es: "Plataforma de mediador pedagógico con IA que aplica el método socrático sin revelar la respuesta. Ofrece andamiaje en cuatro niveles (explícito, guiado, implícito, retirado) fundamentado en la Zona de Desarrollo Próximo de Vygotsky, además de un panel de metacognición.",
+        en: "AI pedagogical mediator platform that applies the Socratic method without ever revealing the answer. Offers four-level scaffolding (explicit, guided, implicit, withdrawn) grounded in Vygotsky’s Zone of Proximal Development, plus a metacognition panel."
+      },
+      highlights: {
+        es: ["TypeScript", "Método Socrático", "Andamiaje", "Vygotsky", "Metacognición"],
+        en: ["TypeScript", "Socratic Method", "Scaffolding", "Vygotsky", "Metacognition"]
+      },
+      github: "https://github.com/statick88/cyber-guardians"
+    },
+    {
+      name: "course-of-cybersecurity",
+      description: {
+        es: "Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker.",
+        en: "Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual."
+      },
+      highlights: {
+        es: ["Diseño Curricular", "42 horas", "Retos", "Laboratorios", "Docker"],
+        en: ["Curriculum Design", "42 hours", "Challenges", "Labs", "Docker"]
+      },
+      github: "https://github.com/statick88/course-of-cybersecurity"
+    },
+    {
       name: "open-api-facturacion-sri",
       description: {
         es: "API REST para facturación electrónica SRI Ecuador con firma XAdES-BES, validación contra esquemas XSD del SRI y emisión de comprobantes electrónicos.",
