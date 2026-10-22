@@ -53,11 +53,17 @@ MEDIUM_PATTERNS=(
   '\+[0-9]{1,3}\s*[0-9]{4,14}'
   # IP addresses
   '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
-  # Hardcoded URLs with credentials
-  'https?://[^:]+:[^@]+@'
+  # Hardcoded URLs with credentials (user:pass@host, sin ruta antes del @)
+  'https?://[^:/@[:space:]]+:[^/@[:space:]]+@'
   # Base64 encoded strings (potential secrets)
   '(secret|key|token|password)\s*[:=]\s*[A-Za-z0-9+/]{40,}={0,2}'
 )
+
+# Valores publicos y permitidos.
+# Este repo es un CV: publica su contacto por definicion, y los fixtures de
+# test usan los dominios reservados de RFC 2606. Marcarlos como secreto es
+# ruido, y ese ruido ahoga la senal real de un hook que corre en cada commit.
+ALLOWED_PATTERN='dsaavedra88@gmail\.com|\+593[ ]?(980192790|9{6,})|@example\.com'
 
 # ── Functions ─────────────────────────────────────────────────────
 
@@ -77,11 +83,15 @@ scan_file() {
       done
       ((ERRORS++)) || true
     else
-      echo -e "${YELLOW}⚠ MEDIUM: $file${NC}"
-      echo "$matches" | head -2 | while read -r line; do
-        echo "  $line"
-      done
-      ((WARNINGS++)) || true
+      local filtered
+      filtered=$(printf '%s\n' "$matches" | grep -vE "$ALLOWED_PATTERN" || true)
+      if [[ -n "$filtered" ]]; then
+        echo -e "${YELLOW}⚠ MEDIUM: $file${NC}"
+        echo "$filtered" | head -2 | while read -r line; do
+          echo "  $line"
+        done
+        ((WARNINGS++)) || true
+      fi
     fi
   fi
 }
@@ -96,15 +106,15 @@ scan_directory() {
   
   if [[ "$pattern_type" == "high" ]]; then
     for pattern in "${HIGH_PATTERNS[@]}"; do
-      find "$dir" -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.json" -o -name "*.yml" -o -name "*.yaml" -o -name "*.toml" \) ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/.git/*" -print0 | while IFS= read -r -d '' file; do
+      while IFS= read -r -d '' file; do
         scan_file "$file" "high" "$pattern"
-      done
+      done < <(find "$dir" -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.json" -o -name "*.yml" -o -name "*.yaml" -o -name "*.toml" \) ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/.git/*" -print0)
     done
   else
     for pattern in "${MEDIUM_PATTERNS[@]}"; do
-      find "$dir" -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.json" -o -name "*.yml" -o -name "*.yaml" -o -name "*.toml" \) ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/.git/*" -print0 | while IFS= read -r -d '' file; do
+      while IFS= read -r -d '' file; do
         scan_file "$file" "medium" "$pattern"
-      done
+      done < <(find "$dir" -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.json" -o -name "*.yml" -o -name "*.yaml" -o -name "*.toml" \) ! -path "*/node_modules/*" ! -path "*/dist/*" ! -path "*/.git/*" -print0)
     done
   fi
 }
@@ -159,10 +169,10 @@ if [[ "${1:-}" == "--full" ]]; then
   echo "Scanning git history..."
   if command -v git &>/dev/null; then
     # Check for secrets in recent commits
-    git log --oneline -10 --diff-filter=A -- "*.env*" "*.key" "*.pem" 2>/dev/null | while read -r line; do
+    while read -r line; do
       echo -e "${YELLOW}⚠ Sensitive file in history: $line${NC}"
       ((WARNINGS++)) || true
-    done
+    done < <(git log --oneline -10 --diff-filter=A -- "*.env*" "*.key" "*.pem" 2>/dev/null)
   fi
 fi
 
@@ -170,13 +180,13 @@ fi
 if [[ "${1:-}" == "--staged" ]]; then
   echo ""
   echo "Scanning staged files..."
-  git diff --cached --name-only --diff-filter=ACM 2>/dev/null | while read -r file; do
+  while read -r file; do
     if [[ -f "$file" ]]; then
       for pattern in "${HIGH_PATTERNS[@]}"; do
         scan_file "$file" "high" "$pattern"
       done
     fi
-  done
+  done < <(git diff --cached --name-only --diff-filter=ACM 2>/dev/null)
 fi
 
 # Summary
