@@ -331,7 +331,7 @@ export const skills: readonly Skill[] = [
   { name: 'Evaluación Formativa', level: 'advanced', category: 'teaching' },
   { name: 'Gestión Académica', level: 'advanced', category: 'teaching' },
   { name: 'Scrum', level: 'intermediate', category: 'project-management' },
-  { name: 'Metodologías ágiles', level: 'intermediate', category: 'project-management' },
+  { name: 'Metodologías ágiles (Agile Methodologies)', level: 'intermediate', category: 'project-management' },
   { name: 'Diseño Curricular (ABP / ADDIE)', level: 'master', category: 'teaching' },
 ]
 

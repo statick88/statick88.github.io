@@ -171,6 +171,8 @@ Bachelor
 
 **AI:** Machine Learning (Intermediate), TensorFlow (Intermediate), R Language (Intermediate)
 
+**Project management:** Scrum (Intermediate), Metodologías ágiles (Agile Methodologies) (Intermediate)
+
 ## Featured Projects
 
 - **course-of-cybersecurity** — Complete published cybersecurity course book: 42 hours, 5 units, 40+ challenges, 10+ labs and 7 quizzes. Ships with a full instructor resource pack: teacher guide, student manual, evaluation rubrics, accreditation plan and Docker deployment manual. _Curriculum Design, 42 hours, Challenges, Labs, Docker_ [Code](https://github.com/statick88/course-of-cybersecurity)

@@ -155,6 +155,7 @@ const SKILL_CATEGORY_MAP: Record<string, ATSData['skills'][number]['category']> 
   'architecture': 'methodology',
   'security': 'tool',
   'databases': 'tool',
+  'project-management': 'methodology',
 }
 
 const SKILL_LEVEL_MAP: Record<string, ATSData['skills'][number]['proficiency']> = {

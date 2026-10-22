@@ -398,7 +398,7 @@ const SUPPORTED_KEYWORDS = [
  */
 const CERTIFIED_KEYWORDS = [
   { skill: 'Scrum', keyword: 'scrum' },
-  { skill: 'Metodologías ágiles', keyword: 'ágil' },
+  { skill: 'Metodologías ágiles (Agile Methodologies)', keyword: 'ágil' },
 ] as const
 
 /** The certificate that backs the certified keywords. */

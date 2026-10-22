@@ -21,7 +21,7 @@ import { skills } from '@/data/cv-data'
 const PROJECT_MANAGEMENT = 'project-management'
 
 /** The skills that category carries. */
-const PROJECT_MANAGEMENT_SKILLS = ['Scrum', 'Metodologías ágiles']
+const PROJECT_MANAGEMENT_SKILLS = ['Scrum', 'Metodologías ágiles (Agile Methodologies)']
 
 describe('SkillsCard', () => {
   afterEach(() => cleanup())
