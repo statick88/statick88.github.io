@@ -18,6 +18,7 @@ import IdentityColumn from '@/components/IdentityColumn'
 
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ServicesPanel } from '@/components/panels/ServicesPanel'
+import { EngagementsPanel } from '@/components/panels/EngagementsPanel'
 import { ReferencesPanel } from '@/components/panels/ReferencesPanel'
 import { ResearchPanel } from '@/components/panels/ResearchPanel'
 import { ContributionsPanel } from '@/components/panels/ContributionsPanel'
@@ -91,6 +92,14 @@ function AppInner() {
         className="scroll-mt-16"
       >
         <ServicesPanel />
+      </section>
+
+      <section
+        id={SECTION.encargos}
+        aria-label={t('encargos', 'engagements')}
+        className="scroll-mt-16"
+      >
+        <EngagementsPanel />
       </section>
 
       <section
