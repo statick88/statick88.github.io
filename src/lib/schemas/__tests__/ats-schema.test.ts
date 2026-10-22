@@ -119,10 +119,8 @@ describe('ATS Schema', () => {
   it('handles null endDate (current position)', () => {
     const result = ATSSchema.safeParse(sampleATS)
     expect(result.success).toBe(true)
-    if (result.success) {
-      const exp = result.data.experience[0]
-      expect(exp?.endDate).toBeNull()
-    }
+    const exp = result.success ? result.data.experience[0] : undefined
+    expect(exp?.endDate).toBeNull()
   })
 
   it('handles optional fields', () => {

@@ -592,11 +592,11 @@ describe('validateCVDataSafe', () => {
 describe('formatValidationErrors', () => {
   it('formats ZodError issues into readable strings', () => {
     const result = CVDataSchema.safeParse({});
-    if (!result.success) {
-      const formatted = formatValidationErrors(result.error);
-      expect(Array.isArray(formatted)).toBe(true);
-      expect(formatted.length).toBeGreaterThan(0);
-      expect(typeof formatted[0]).toBe('string');
-    }
+    // An empty object never satisfies the CV schema, so the error branch is
+    // the one that runs. The value is computed there and asserted outside it.
+    const formatted = result.success ? [] : formatValidationErrors(result.error);
+    expect(Array.isArray(formatted)).toBe(true);
+    expect(formatted.length).toBeGreaterThan(0);
+    expect(typeof formatted[0]).toBe('string');
   });
 });

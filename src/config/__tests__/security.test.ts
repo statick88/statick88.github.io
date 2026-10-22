@@ -36,7 +36,7 @@ describe('Security Module — CSP Policy', () => {
     })
 
     it('does not have unsafe-eval anywhere', () => {
-      for (const [directive, value] of Object.entries(CSP_DIRECTIVES)) {
+      for (const value of Object.values(CSP_DIRECTIVES)) {
         expect(value).not.toContain('unsafe-eval')
       }
     })
