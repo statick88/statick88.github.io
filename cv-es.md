@@ -222,6 +222,7 @@ Bachelor
 - **Ciberseguridad Defensiva** - ABACOM (Activo)
 - **Ingeniería Inversa** - ABACOM (Activo)
 - **Redes y Servidores Linux** - ABACOM (Activo)
+- **Curso de Historias de Usuario en Scrum** - Platzi (Activo)
 - **Desarrollo Web Full Stack (Django + React)** - Codings Academy (Activo)
 
 ### Habilidades Blandas y Idiomas

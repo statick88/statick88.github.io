@@ -56,7 +56,7 @@ const VALID_SKILL_LEVELS = ['beginner', 'intermediate', 'advanced', 'master']
 const VALID_SKILL_CATEGORIES = [
   'frontend-fundamentals', 'frontend-frameworks', 'backend', 'mobile',
   'mobile-native', 'devops', 'databases', 'architecture', 'security',
-  'ai', 'research', 'teaching', 'tools',
+  'ai', 'research', 'teaching', 'tools', 'project-management',
 ]
 const VALID_CERT_STATUSES = ['active', 'expired', 'in-progress']
 const VALID_STUDY_TYPES = ['Master', 'Bachelor', 'PhD', 'Diploma', 'Certificate']

@@ -40,6 +40,7 @@ export const SKILL_CATEGORIES = [
   'research',
   'teaching',
   'tools',
+  'project-management',
 ] as const
 export type SkillCategory = (typeof SKILL_CATEGORIES)[number]
 

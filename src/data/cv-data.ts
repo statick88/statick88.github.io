@@ -330,6 +330,8 @@ export const skills: readonly Skill[] = [
   { name: 'LaTeX', level: 'advanced', category: 'tools' },
   { name: 'Evaluación Formativa', level: 'advanced', category: 'teaching' },
   { name: 'Gestión Académica', level: 'advanced', category: 'teaching' },
+  { name: 'Scrum', level: 'intermediate', category: 'project-management' },
+  { name: 'Metodologías ágiles', level: 'intermediate', category: 'project-management' },
   { name: 'Diseño Curricular (ABP / ADDIE)', level: 'master', category: 'teaching' },
 ]
 
@@ -530,6 +532,7 @@ export const certifications: readonly Certification[] = [
   { name: 'Ciberseguridad Defensiva', issuer: 'ABACOM', status: 'active' },
   { name: 'Ingeniería Inversa', issuer: 'ABACOM', status: 'active' },
   { name: 'Redes y Servidores Linux', issuer: 'ABACOM', status: 'active' },
+  { name: 'Curso de Historias de Usuario en Scrum', issuer: 'Platzi', status: 'active' },
   { name: 'Desarrollo Web Full Stack (Django + React)', issuer: 'Codings Academy', status: 'active' },
 ]
 
@@ -770,6 +773,7 @@ export const categoryColors: Record<SkillCategory, CategoryColor> = {
   teaching: { bg: 'bg-emerald-500/20', border: 'border-emerald-500/50', text: 'text-emerald-400' },
   tools: { bg: 'bg-slate-500/20', border: 'border-slate-500/50', text: 'text-slate-400' },
   ai: { bg: 'bg-indigo-500/20', border: 'border-indigo-500/50', text: 'text-indigo-400' },
+  'project-management': { bg: 'bg-teal-500/20', border: 'border-teal-500/50', text: 'text-teal-400' },
   research: { bg: 'bg-amber-500/20', border: 'border-amber-500/50', text: 'text-amber-400' },
 }
 
