@@ -29,13 +29,16 @@
  *                  have, so the comparison reads the YAML `name.es` — the
  *                  display name the other two mirrors carry — and leaves the
  *                  translation and the date out of the comparison.
+ * - events         the same participations, with the same period, role, result
+ *                  and repository URL, in both languages. The block is never
+ *                  empty: an empty block would be a claim with no evidence.
  */
 
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { load as loadYaml, dump as dumpYaml } from 'js-yaml'
-import { work, practice, profileData, projects, skills, certifications, services } from '@/data/cv-data'
+import { work, practice, profileData, projects, skills, certifications, services, events } from '@/data/cv-data'
 import { cvData, profileData as jsProfileData } from '@/data/cvData.js'
 import { ATSSchema } from '@/lib/schemas/ats-schema'
 import {
@@ -86,6 +89,14 @@ interface YamlServiceEntry {
   priceRange: string
 }
 
+interface YamlEventEntry {
+  name: string
+  period: string
+  role: { es: string; en: string }
+  result: { es: string; en: string }
+  url: string
+}
+
 interface YamlDocument {
   experience?: YamlWorkEntry[]
   practice?: unknown
@@ -93,6 +104,7 @@ interface YamlDocument {
   skills?: YamlSkillEntry[]
   certifications?: YamlCertificationEntry[]
   services?: YamlServiceEntry[]
+  events?: YamlEventEntry[]
 }
 
 /** The YAML mirror, read once. */
@@ -199,6 +211,29 @@ describe('CV data sources stay in sync', () => {
     const yaml = JSON.parse(JSON.stringify(readYamlPractice()))
     expect(js, 'practice in cvData.js').toEqual(ts)
     expect(yaml, 'practice in cv-data.yaml').toEqual(ts)
+  })
+
+  it('carries the same events everywhere', () => {
+    const ts = JSON.parse(JSON.stringify(events))
+    const js = JSON.parse(JSON.stringify((cvData as unknown as { events?: unknown }).events))
+    const yaml = JSON.parse(JSON.stringify(readYaml().events ?? []))
+
+    expect(js, 'events in cvData.js').toEqual(ts)
+    expect(yaml, 'events in cv-data.yaml').toEqual(ts)
+    // The block is never empty: an empty block would be a claim with no evidence.
+    expect(ts.length, 'the events must not be an empty block').toBeGreaterThan(0)
+  })
+
+  it('declares every event with its period, role, result and repository', () => {
+    for (const event of JSON.parse(JSON.stringify(events))) {
+      expect(event.name, 'the event name').toBeTruthy()
+      expect(event.period, `the period of ${event.name}`).toBeTruthy()
+      expect(event.role?.es, `the role of ${event.name} in Spanish`).toBeTruthy()
+      expect(event.role?.en, `the role of ${event.name} in English`).toBeTruthy()
+      expect(event.result?.es, `the result of ${event.name} in Spanish`).toBeTruthy()
+      expect(event.result?.en, `the result of ${event.name} in English`).toBeTruthy()
+      expect(event.url, `the repository of ${event.name}`).toMatch(/^https:\/\//)
+    }
   })
 
   it('carries the same consultant profile record everywhere', () => {

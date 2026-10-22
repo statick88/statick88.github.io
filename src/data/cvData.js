@@ -796,6 +796,22 @@ export const cvData = {
     }
   },
 
+  // ── Eventos (participaciones con evidencia) ─────────────────────────────
+  // Solo entra lo que tiene evidencia: el CTF de EvilSec (Ekoparty 2026),
+  // con las cifras que ya declara el proyecto `ctf-evilsec-2026`.
+  events: [
+    {
+      name: "CTF de EvilSec (Ekoparty 2026)",
+      period: "Oct 2026",
+      role: { es: "Participante", en: "Participant" },
+      result: {
+        es: "Tercer puesto: 15 de 22 retos resueltos y 3550 puntos",
+        en: "Third place: 15 of 22 challenges solved and 3,550 points"
+      },
+      url: "https://github.com/statick88/ctf-evilsec-2026"
+    }
+  ],
+
   // ── Práctica / organización (espejo de cv-data.ts) ─────────────────
   practice: {
   "title": {

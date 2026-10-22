@@ -4,9 +4,9 @@
  * El sitio es una SPA: sin JavaScript, el HTML servido no dice quién es Diego.
  * Un ATS (o cualquier lector sin JS) lee un documento vacío. Este módulo
  * construye un bloque `<noscript>` con el CV legible — nombre, contacto
- * literal, resumen, experiencia, servicios, referencias, habilidades,
- * certificaciones y los enlaces a los PDF — **desde los datos**, de modo que
- * el bloque no puede afirmar nada que los datos no digan.
+ * literal, resumen, experiencia, servicios, referencias, eventos,
+ * habilidades, certificaciones y los enlaces a los PDF — **desde los datos**,
+ * de modo que el bloque no puede afirmar nada que los datos no digan.
  *
  * Va dentro de `<noscript>`: con JavaScript activo, un humano no lo ve nunca;
  * sin JavaScript, es la hoja completa.
@@ -44,6 +44,13 @@ export interface AtsFallbackData {
   certifications?: Array<{
     name?: { es?: string; en?: string } | string
     issuer?: string
+  }>
+  events?: Array<{
+    name?: string
+    period?: string
+    role?: { es?: string; en?: string } | string
+    result?: { es?: string; en?: string } | string
+    url?: string
   }>
   practice?: { referenceNames?: string[] }
 }
@@ -124,6 +131,22 @@ export function buildFallbackHtml(data: AtsFallbackData, lang: 'es' | 'en' = 'es
     lines.push('<h2>Referencias</h2>')
     lines.push('<ul>')
     for (const name of references) lines.push(`<li>${escapeHtml(name)}</li>`)
+    lines.push('</ul>')
+  }
+
+  const events = data.events ?? []
+  if (events.length) {
+    lines.push('<h2>Eventos</h2>')
+    lines.push('<ul>')
+    for (const event of events) {
+      const link = event.url
+        ? ` — <a href="${escapeHtml(event.url)}">${escapeHtml(event.url)}</a>`
+        : ''
+      lines.push(
+        `<li><strong>${escapeHtml(event.name)}</strong> — ${escapeHtml(event.period)} — ` +
+          `${escapeHtml(text(event.role, lang))} — ${escapeHtml(text(event.result, lang))}${link}</li>`,
+      )
+    }
     lines.push('</ul>')
   }
 
