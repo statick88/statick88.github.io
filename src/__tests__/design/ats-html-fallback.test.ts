@@ -39,6 +39,24 @@ describe('el HTML que ve un ATS', () => {
     }
   })
 
+  it('lleva los eventos, para que la sección no exista solo en la SPA', () => {
+    const html = buildFallbackHtml(data, 'es')
+    expect(html).toContain('Eventos')
+    for (const event of data.events ?? []) {
+      expect(html).toContain(event.name)
+      expect(html).toContain(event.period)
+      expect(html).toContain(event.url)
+    }
+  })
+
+  it('lleva los eventos en inglés cuando el documento se pide en inglés', () => {
+    const html = buildFallbackHtml(data, 'en')
+    for (const event of data.events ?? []) {
+      const result = typeof event.result === 'string' ? event.result : (event.result?.en ?? '')
+      expect(html).toContain(result)
+    }
+  })
+
   it('va dentro de noscript y antes de </body>', () => {
     const doc = injectFallback(
       '<html><body><div id="root"></div></body></html>',

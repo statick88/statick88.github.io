@@ -722,6 +722,23 @@ export const practice = {
   ]
 } as const
 
+// ── Events (participaciones con evidencia) ────────────────────────────────
+// Un bloque, tres espejos (TS/JS/YAML). Solo entra lo que tiene evidencia:
+// la participación en el CTF de EvilSec (Ekoparty 2026), con las cifras que
+// ya declara `projects` (ctf-evilsec-2026).
+export const events = [
+  {
+    name: 'CTF de EvilSec (Ekoparty 2026)',
+    period: 'Oct 2026',
+    role: { es: 'Participante', en: 'Participant' },
+    result: {
+      es: 'Tercer puesto: 15 de 22 retos resueltos y 3550 puntos',
+      en: 'Third place: 15 of 22 challenges solved and 3,550 points',
+    },
+    url: 'https://github.com/statick88/ctf-evilsec-2026',
+  },
+] as const
+
 // ── Contact ──────────────────────────────────────────────────────
 
 export const contact: Contact = {

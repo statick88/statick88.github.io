@@ -20,6 +20,7 @@ import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ServicesPanel } from '@/components/panels/ServicesPanel'
 import { EngagementsPanel } from '@/components/panels/EngagementsPanel'
 import { ReferencesPanel } from '@/components/panels/ReferencesPanel'
+import { EventsPanel } from '@/components/panels/EventsPanel'
 import { ResearchPanel } from '@/components/panels/ResearchPanel'
 import { ContributionsPanel } from '@/components/panels/ContributionsPanel'
 import { PluginsPanel } from '@/components/panels/PluginsPanel'
@@ -108,6 +109,14 @@ function AppInner() {
         className="scroll-mt-16"
       >
         <ReferencesPanel />
+      </section>
+
+      <section
+        id={SECTION.eventos}
+        aria-label={t('eventos', 'events')}
+        className="scroll-mt-16"
+      >
+        <EventsPanel />
       </section>
 
       <section
