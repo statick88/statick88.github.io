@@ -5,7 +5,7 @@
  * without errors and within reasonable memory bounds.
  */
 
-import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
+import { describe, it, expect, afterEach, beforeEach } from 'vitest'
 import type { ForensicReport, WorkerOutMessage, AnalysisStage } from '@/types/forensic'
 import { TaskQueue } from '@/services/TaskQueue'
 
@@ -211,10 +211,11 @@ describe('TaskQueue stress tests', () => {
 
     const memAfter = perf.memory?.usedJSHeapSize ?? 0
 
-    if (memBefore > 0 && memAfter > 0) {
-      const memIncreaseMB = (memAfter - memBefore) / (1024 * 1024)
-      expect(memIncreaseMB).toBeLessThan(100)
-    }
+    // Without a readable heap there is no increase to measure; the value is
+    // computed inside the condition and asserted outside it.
+    const memIncreaseMB =
+      memBefore > 0 && memAfter > 0 ? (memAfter - memBefore) / (1024 * 1024) : 0
+    expect(memIncreaseMB).toBeLessThan(100)
   })
 
   it('handles pause and resume correctly', async () => {

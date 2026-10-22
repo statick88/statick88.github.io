@@ -10,7 +10,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, cleanup } from '@testing-library/react'
+import { render, screen, cleanup } from '@testing-library/react'
 import { AppProvider } from '@/context/AppContext'
 import { ProfileProvider } from '@/context/ProfileContext'
 
@@ -59,7 +59,7 @@ describe('AppLayout', () => {
   })
 
   it('renders children inside the layout', () => {
-    const { getByText } = render(
+    render(
       <AppProvider>
         <ProfileProvider>
         <AppLayout aside={<div>identity column</div>}>
@@ -69,11 +69,11 @@ describe('AppLayout', () => {
       </AppProvider>
     )
 
-    expect(getByText('My child content')).toBeInTheDocument()
+    expect(screen.getByText('My child content')).toBeInTheDocument()
   })
 
   it('renders the console shell zones', () => {
-    const { getByTestId, getByRole } = render(
+    render(
       <AppProvider>
         <ProfileProvider>
         <AppLayout aside={<div>identity column</div>}>
@@ -83,14 +83,14 @@ describe('AppLayout', () => {
       </AppProvider>
     )
 
-    expect(getByTestId('console-tabbar')).toBeInTheDocument()
-    expect(getByRole('navigation')).toBeInTheDocument()
-    expect(getByRole('complementary')).toBeInTheDocument()
-    expect(getByRole('main')).toBeInTheDocument()
+    expect(screen.getByTestId('console-tabbar')).toBeInTheDocument()
+    expect(screen.getByRole('navigation')).toBeInTheDocument()
+    expect(screen.getByRole('complementary')).toBeInTheDocument()
+    expect(screen.getByRole('main')).toBeInTheDocument()
   })
 
   it('exposes a skip link to the main content', () => {
-    const { getByRole } = render(
+    render(
       <AppProvider>
         <ProfileProvider>
         <AppLayout aside={<div>identity column</div>}>
@@ -100,7 +100,7 @@ describe('AppLayout', () => {
       </AppProvider>
     )
 
-    const skipLink = getByRole('link', { name: /saltar al contenido|skip to main content/i })
+    const skipLink = screen.getByRole('link', { name: /saltar al contenido|skip to main content/i })
     expect(skipLink).toHaveAttribute('href', '#main-content')
   })
 })

@@ -14,6 +14,11 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  # La version de pnpm vive aqui y en ningun otro sitio (ver AGENTS.md).
+  # El CI y la maquina usan el mismo pnpm: 12.14.0.
+  PNPM_VERSION: '12.14.0'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,13 +29,16 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11.0.8
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version-file: '.node-version'
           cache: 'pnpm'
+
+      - name: Verify toolchain
+        run: node scripts/check-toolchain.mjs
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -39,7 +47,7 @@ jobs:
         run: pnpm typecheck
 
       - name: Lint (advisory)
-        run: pnpm lint || true
+        run: pnpm lint
 
       - name: Build (validate + bundle + export)
         run: pnpm build

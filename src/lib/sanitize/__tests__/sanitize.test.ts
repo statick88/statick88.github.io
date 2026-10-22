@@ -9,7 +9,6 @@
 import { describe, it, expect } from 'vitest'
 import type {
   CVData,
-  ProjectEntry,
   ExperienceEntry,
   EducationEntry,
   SkillEntry,
@@ -27,8 +26,6 @@ import {
 import type {
   SensitivedProjectEntry,
   PublicProjectEntry,
-  PublicExploitariumEntry,
-  PublicCVData,
   RawExploitariumEntry,
 } from '@/lib/sanitize'
 

@@ -505,7 +505,7 @@ describe('validateCVData', () => {
         role: { es: 'R', en: 'R' },
         summary: { es: 'S', en: 'S' },
       },
-      contact: { email: 'a@b.com', location: 'City' },
+      contact: { email: 'a@example.com', location: 'City' },
       experience: [
         {
           company: 'Co',
@@ -566,7 +566,7 @@ describe('validateCVDataSafe', () => {
   it('returns success: true on valid input', () => {
     const result = validateCVDataSafe({
       profile: { name: 'T', role: { es: 'R', en: 'R' }, summary: { es: 'S', en: 'S' } },
-      contact: { email: 'a@b.com', location: 'C' },
+      contact: { email: 'a@example.com', location: 'C' },
       experience: [{ company: 'Co', position: { es: 'P', en: 'P' }, startDate: '2020', endDate: null, isCurrent: true, highlights: { es: ['H'], en: ['H'] }, technologies: ['T'] }],
       education: [{ institution: 'I', program: { es: 'P', en: 'P' }, degree: 'D', startDate: '2020', endDate: null, isCurrent: false }],
       skills: [{ name: 'S', level: 'L', category: 'C' }],
@@ -592,11 +592,11 @@ describe('validateCVDataSafe', () => {
 describe('formatValidationErrors', () => {
   it('formats ZodError issues into readable strings', () => {
     const result = CVDataSchema.safeParse({});
-    if (!result.success) {
-      const formatted = formatValidationErrors(result.error);
-      expect(Array.isArray(formatted)).toBe(true);
-      expect(formatted.length).toBeGreaterThan(0);
-      expect(typeof formatted[0]).toBe('string');
-    }
+    // An empty object never satisfies the CV schema, so the error branch is
+    // the one that runs. The value is computed there and asserted outside it.
+    const formatted = result.success ? [] : formatValidationErrors(result.error);
+    expect(Array.isArray(formatted)).toBe(true);
+    expect(formatted.length).toBeGreaterThan(0);
+    expect(typeof formatted[0]).toBe('string');
   });
 });

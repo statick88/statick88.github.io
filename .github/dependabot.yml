@@ -1,0 +1,26 @@
+# .github/dependabot.yml
+# El proyecto usa pnpm (ver AGENTS.md); sin este archivo, Dependabot detecta el
+# package-lock.json huerfano y abre PRs contra npm, que el CI no ejecuta.
+version: 2
+updates:
+  - package-ecosystem: "pnpm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "America/Guayaquil"
+    open-pull-requests-limit: 5
+    versioning-strategy: "increase-if-necessary"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+        patterns:
+          - "*"
+      development-dependencies:
+        dependency-type: "development"
+        patterns:
+          - "*"
+    labels:
+      - "dependencies"
+      - "pnpm"

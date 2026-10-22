@@ -15,7 +15,6 @@ import type {
   SkillEntry,
   LanguageEntry,
   BilingualString,
-  ExperienceMetric,
   MetricsSummary,
   ExecutiveProfile,
   ContactInfo,
