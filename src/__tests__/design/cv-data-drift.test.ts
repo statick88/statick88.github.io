@@ -340,6 +340,83 @@ describe('the projects, services, skills and certifications match in the three m
   })
 })
 
+/**
+ * The keywords the ATS audit asks for, in the wording each language uses.
+ *
+ * A keyword enters the CV only when the teaching experience backs it: the
+ * instructor pack (rubrics plus accreditation plan) IS formative assessment
+ * and academic management, so both belong to the teaching roles.
+ */
+const SUPPORTED_KEYWORDS = [
+  { es: 'evaluación formativa', en: 'formative assessment' },
+  { es: 'gestión académica', en: 'academic management' },
+] as const
+
+/**
+ * The keywords the audit asks for that the teaching experience cannot back.
+ * They stay out until the CV makes them true.
+ */
+const UNSUPPORTED_KEYWORDS = ['scrum', 'agil'] as const
+
+describe('the ATS keywords enter the CV only where they are true', () => {
+  /** The highlights of every role, per language, of one mirror. */
+  function highlights(
+    entries: readonly { highlights?: { es?: readonly string[]; en?: readonly string[] } }[],
+  ): { es: string; en: string } {
+    return {
+      es: entries.flatMap((entry) => entry.highlights?.es ?? []).join(' '),
+      en: entries.flatMap((entry) => entry.highlights?.en ?? []).join(' '),
+    }
+  }
+
+  it('declares the supported keywords in the three mirrors', () => {
+    const mirrors = [highlights(work), highlights(cvData.work), highlights(readYamlWork())]
+
+    for (const mirror of mirrors) {
+      for (const keyword of SUPPORTED_KEYWORDS) {
+        expect(mirror.es, `the Spanish highlights must declare "${keyword.es}"`).toContain(
+          keyword.es,
+        )
+        expect(mirror.en, `the English highlights must declare "${keyword.en}"`).toContain(
+          keyword.en,
+        )
+      }
+    }
+  })
+
+  it('declares the supported keywords as teaching skills', () => {
+    const mirrors = [
+      skills.map((skill) => skill.name),
+      cvData.skills.map((skill) => skill.name),
+      (readYaml().skills ?? []).map((skill) => skill.name),
+    ].map((names) => names.map((name) => name.toLowerCase()))
+
+    for (const mirror of mirrors) {
+      for (const keyword of SUPPORTED_KEYWORDS) {
+        expect(mirror, `the skills must declare "${keyword.es}"`).toContain(keyword.es)
+      }
+    }
+  })
+
+  it('never declares a keyword the teaching experience cannot back', () => {
+    const files = ['src/data/cv-data.ts', 'src/data/cvData.js', 'src/data/cv-data.yaml']
+
+    for (const file of files) {
+      const text = readFileSync(resolve(ROOT, file), 'utf8')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+
+      for (const keyword of UNSUPPORTED_KEYWORDS) {
+        expect(
+          new RegExp(`\\b${keyword}\\b`).test(text),
+          `${file} must not declare "${keyword}"`,
+        ).toBe(false)
+      }
+    }
+  })
+})
+
 describe('the ATS export publishes the offer and no date markers', () => {
   const document = readYamlDocument()
   const ats = toATS(document)

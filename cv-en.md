@@ -74,7 +74,7 @@ https://abacom.edu.ec/
 
 - Designed and taught 8 courses on Ethical Hacking, Python, Flutter, MicroPython, Linux servers and secure software, covering 200+ verified teaching hours and 92+ students.
 - Achieved a 93.4/100 average evaluation with the 2026 Python cohort, publishing the material as 8 open Quarto books on GitHub Pages.
-- Built the instructor pack for every course (teaching guide, student manual, assessment rubrics and accreditation plan) with ABP methodology.
+- Built the instructor pack for every course (teaching guide, student manual, assessment rubrics and accreditation plan) with ABP methodology, formative assessment and academic management.
 
 **Stack:** Ethical Hacking, Python, Flutter, R, Linux, Quarto, ABP, OWASP
 
@@ -165,7 +165,7 @@ Bachelor
 
 **Architecture:** Clean Architecture (Advanced), SOLID (Advanced), TDD (Advanced)
 
-**Teaching:** Diseño Curricular (ABP / ADDIE) (Master)
+**Teaching:** Evaluación Formativa (Advanced), Gestión Académica (Advanced), Diseño Curricular (ABP / ADDIE) (Master)
 
 **Tools:** Git (Advanced), NotebookLM Power-User (Master), OpenCode + MCP (Advanced), Quarto (Advanced), Jupyter (Advanced), LaTeX (Advanced)
 
