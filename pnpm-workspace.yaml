@@ -1,6 +1,11 @@
 allowBuilds:
   esbuild: true
 
+# Las dos excepciones de audit (el servidor UI de vitest y el manejo de .map
+# de vite: solo herramientas de desarrollo) viven aqui porque pnpm 12 escribe
+# esta clave. OJO: pnpm 12.14 la escribe pero todavia no la lee, asi que hoy el
+# audit local y el del CI se comportan igual solo por los flags --ignore del
+# comando del CI. Cuando pnpm la lea, el flag podra dejar de ser necesario.
 auditConfig:
   ignoreGhsas:
     - GHSA-5xrq-8626-4rwp
