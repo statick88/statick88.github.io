@@ -452,6 +452,14 @@ skills:
     level: "advanced"
     category: "teaching"
 
+  - name: "Scrum"
+    level: "intermediate"
+    category: "project-management"
+
+  - name: "Metodologías ágiles (Agile Methodologies)"
+    level: "intermediate"
+    category: "project-management"
+
   - name: "Diseño Curricular (ABP / ADDIE)"
     level: "master"
     category: "teaching"
@@ -756,6 +764,14 @@ certifications:
     date: "2022"
     status: "active"
     credentialId: null
+
+  - name:
+      es: "Curso de Historias de Usuario en Scrum"
+      en: "User Stories in Scrum Course"
+    issuer: "Platzi"
+    date: "2023"
+    status: "active"
+    credentialId: "fc5d32c1-e935-4eb1-85e5-3e667e3aa12e"
 
   - name:
       es: "Desarrollo Web Full Stack (Django + React)"

@@ -177,7 +177,8 @@ function generateMarkdown(data, lang) {
 
   const categoryOrder = [
     "frontend-fundamentals", "frontend-frameworks", "backend", "mobile", "mobile-native",
-    "devops", "databases", "security", "architecture", "teaching", "tools", "ai", "research"
+    "devops", "databases", "security", "architecture", "teaching", "tools", "ai", "research",
+    "project-management"
   ];
 
   const categoryNames = {
@@ -193,7 +194,8 @@ function generateMarkdown(data, lang) {
     "teaching": t('Enseñanza', 'Teaching'),
     "tools": t('Herramientas', 'Tools'),
     "ai": t('Inteligencia Artificial', 'AI'),
-    "research": t('Investigación', 'Research')
+    "research": t('Investigación', 'Research'),
+    "project-management": t('Gestión de proyectos', 'Project management')
   };
 
   categoryOrder.forEach(category => {

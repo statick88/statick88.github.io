@@ -171,6 +171,8 @@ Bachelor
 
 **Inteligencia Artificial:** Machine Learning (Intermedio), TensorFlow (Intermedio), R Language (Intermedio)
 
+**Gestión de proyectos:** Scrum (Intermedio), Metodologías ágiles (Agile Methodologies) (Intermedio)
+
 ## Proyectos Destacados
 
 - **course-of-cybersecurity** — Libro de curso completo de ciberseguridad: 42 horas, 5 unidades, más de 40 retos, más de 10 laboratorios y 7 cuestionarios. Incluye el pack docente completo: guía del instructor, manual del estudiante, rúbricas de evaluación, plan de acreditación y manual de despliegue con Docker. _Diseño Curricular, 42 horas, Retos, Laboratorios, Docker_ [Código](https://github.com/statick88/course-of-cybersecurity)
@@ -222,6 +224,7 @@ Bachelor
 - **Ciberseguridad Defensiva** - ABACOM (Activo)
 - **Ingeniería Inversa** - ABACOM (Activo)
 - **Redes y Servidores Linux** - ABACOM (Activo)
+- **Curso de Historias de Usuario en Scrum** - Platzi (Activo)
 - **Desarrollo Web Full Stack (Django + React)** - Codings Academy (Activo)
 
 ### Habilidades Blandas y Idiomas

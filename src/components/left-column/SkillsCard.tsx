@@ -56,6 +56,7 @@ const CATEGORY_LABELS: Record<string, { es: string; en: string }> = {
   'research': { es: 'Investigación', en: 'Research' },
   'ai': { es: 'IA / ML', en: 'AI / ML' },
   'teaching': { es: 'Docencia', en: 'Teaching' },
+  'project-management': { es: 'Gestión de proyectos', en: 'Project management' },
 }
 
 /**

@@ -388,10 +388,26 @@ const SUPPORTED_KEYWORDS = [
 ] as const
 
 /**
- * The keywords the audit asks for that the teaching experience cannot back.
- * They stay out until the CV makes them true.
+ * The keywords the audit asks for that a verified certificate backs.
+ *
+ * The Platzi certificate "Curso de Historias de Usuario en Scrum" (approved
+ * on 24 March 2023, 9 hours of theory and practice) is the evidence: it names
+ * Scrum and it teaches the agile way of working. Both keywords therefore
+ * enter the CV as project-management skills, and the credential id that
+ * travels with the certification makes the claim checkable.
  */
-const UNSUPPORTED_KEYWORDS = ['scrum', 'agil'] as const
+const CERTIFIED_KEYWORDS = [
+  { skill: 'Scrum', keyword: 'scrum' },
+  { skill: 'Metodologías ágiles (Agile Methodologies)', keyword: 'ágil' },
+] as const
+
+/** The certificate that backs the certified keywords. */
+const CERTIFYING_CREDENTIAL = {
+  name: 'Curso de Historias de Usuario en Scrum',
+  issuer: 'Platzi',
+  date: '2023',
+  credentialId: 'fc5d32c1-e935-4eb1-85e5-3e667e3aa12e',
+} as const
 
 describe('the ATS keywords enter the CV only where they are true', () => {
   /** The highlights of every role, per language, of one mirror. */
@@ -433,20 +449,75 @@ describe('the ATS keywords enter the CV only where they are true', () => {
     }
   })
 
-  it('never declares a keyword the teaching experience cannot back', () => {
-    const files = ['src/data/cv-data.ts', 'src/data/cvData.js', 'src/data/cv-data.yaml']
+  it('declares the certified keywords as skills in the three mirrors', () => {
+    const mirrors = [
+      skills.map((skill) => skill.name),
+      cvData.skills.map((skill) => skill.name),
+      (readYaml().skills ?? []).map((skill) => skill.name),
+    ]
 
-    for (const file of files) {
-      const text = readFileSync(resolve(ROOT, file), 'utf8')
+    for (const mirror of mirrors) {
+      for (const keyword of CERTIFIED_KEYWORDS) {
+        expect(mirror, `the skills must declare "${keyword.skill}"`).toContain(keyword.skill)
+      }
+    }
+  })
+
+  it('backs the certified keywords with the certificate in the three mirrors', () => {
+    const ts = certifications.find((cert) => cert.name === CERTIFYING_CREDENTIAL.name)
+    const js = cvData.certifications.find((cert) => cert.name === CERTIFYING_CREDENTIAL.name)
+    const yaml = (readYaml().certifications ?? []).find(
+      (cert) => cert.name.es === CERTIFYING_CREDENTIAL.name,
+    )
+
+    expect(ts, 'cv-data.ts must declare the certificate').toBeDefined()
+    expect(ts?.issuer, 'the issuer of the certificate in cv-data.ts').toBe(
+      CERTIFYING_CREDENTIAL.issuer,
+    )
+    expect(js, 'cvData.js must declare the certificate').toBeDefined()
+    expect(js?.issuer, 'the issuer of the certificate in cvData.js').toBe(
+      CERTIFYING_CREDENTIAL.issuer,
+    )
+    expect(yaml, 'cv-data.yaml must declare the certificate').toBeDefined()
+    expect(yaml?.issuer, 'the issuer of the certificate in cv-data.yaml').toBe(
+      CERTIFYING_CREDENTIAL.issuer,
+    )
+    expect(yaml?.date, 'the date of the certificate in cv-data.yaml').toBe(
+      CERTIFYING_CREDENTIAL.date,
+    )
+    expect(yaml?.credentialId, 'the credential id of the certificate in cv-data.yaml').toBe(
+      CERTIFYING_CREDENTIAL.credentialId,
+    )
+  })
+
+  it('never claims a certified keyword where no certificate backs it', () => {
+    // The certificate and the skills carry the keywords; a teaching role did
+    // not teach a Platzi course, so the work entries may not claim them.
+    const entries = [
+      ...work.map((entry) => ({ name: entry.name, text: JSON.stringify(entry) })),
+      ...cvData.work.map((entry) => ({ name: entry.name, text: JSON.stringify(entry) })),
+      ...readYamlWork().map((entry) => ({
+        name: entry.company,
+        text: JSON.stringify(entry),
+      })),
+    ]
+
+    for (const entry of entries) {
+      const text = entry.text
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
 
-      for (const keyword of UNSUPPORTED_KEYWORDS) {
+      for (const keyword of CERTIFIED_KEYWORDS) {
         expect(
-          new RegExp(`\\b${keyword}\\b`).test(text),
-          `${file} must not declare "${keyword}"`,
-        ).toBe(false)
+          text,
+          `the work entry "${entry.name}" must not claim "${keyword.skill}"`,
+        ).not.toContain(
+          keyword.keyword
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase(),
+        )
       }
     }
   })
