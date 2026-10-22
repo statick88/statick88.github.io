@@ -53,8 +53,8 @@ export const profileData = {
       { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
     ],
     summary: {
-      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. más de 400 repos públicos en GitHub, código en producción. Apasionado por Clean Architecture, SOLID y TDD.",
-      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. more than 400 public repos on GitHub, production-grade code. Passionate about Clean Architecture, SOLID, and TDD."
+      es: "Desarrollador Full Stack con 10+ años de experiencia en aplicaciones web, móviles y APIs. Dominio de React, Next.js, Python/Django, Node.js, Flutter. Más de 400 repos públicos en GitHub. Apasionado por Clean Architecture, SOLID y TDD.",
+      en: "Full Stack Developer with 10+ years building web, mobile, and API applications. Mastery of React, Next.js, Python/Django, Node.js, Flutter. 400 public repos on GitHub. Passionate about Clean Architecture, SOLID, and TDD."
     },
     pdf: "/cv-developer-es.pdf"
   },
@@ -132,8 +132,8 @@ export const profileData = {
       { name: "MSc Ciberseguridad (en curso)", issuer: "Universidad Complutense de Madrid", status: "in-progress" }
     ],
     summary: {
-      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 sources en NotebookLM. más de 400 repos en GitHub. Interesado en threat modeling, pentesting y AI security.",
-      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. more than 400 repos on GitHub. Interested in threat modeling, pentesting, and AI security."
+      es: "Investigador en ciberseguridad y machine learning. MSc en Ciberseguridad UCM (en curso, 2026-2027). Magíster en Cs. y Tec. de la Computación (UTPL 2021). 55 notebooks y 898 fuentes en NotebookLM. Interesado en threat modeling, pentesting y AI security.",
+      en: "Researcher in cybersecurity and machine learning. MSc in Cybersecurity UCM (in progress, 2026-2027). Master's in Computer Science (UTPL 2021). 55 notebooks and 898 sources in NotebookLM. Interested in threat modeling, pentesting, and AI security."
     },
     pdf: "/cv-research-es.pdf"
   },
@@ -170,8 +170,8 @@ export const profileData = {
       { name: "Linux Server Administration", issuer: "ABACOM", status: "active" }
     ],
     summary: {
-      es: "Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, cohorte Python 2026 promedio 93.4/100. Refs verificadas: ABACOM (Ing. Kelbi Ramírez Macas), APC (Ing. Rolando Marcelo Rojas Merchán), ISTJM (Ing. Ana Gabriela Montalván Salcedo, Mba).",
-      en: "Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, Python 2026 cohort averaging 93.4/100. Verified refs: ABACOM (Kelbi Ramírez Macas, Eng.), APC (Rolando Marcelo Rojas Merchán, Eng.), ISTJM (Ana Gabriela Montalván Salcedo, Mba Eng.)."
+      es: "Docente Facilitador que genera currículos ABP/ADDIE para cursos de Python, Flutter, R, Linux, Ethical Hacking e IA. 6+ años de experiencia continua en educación superior (9 años como Profesor de Computación en APC). 200+ horas docentes en ABACOM, con la cohorte de Python 2026 (promedio 93.4/100).",
+      en: "Teaching Facilitator generating ABP/ADDIE curricula for Python, Flutter, R, Linux, Ethical Hacking, and AI courses. 6+ years continuous experience in higher education (9 years as Computer Science Teacher at APC). 200+ teaching hours at ABACOM, with the 2026 Python cohort averaging 93.4/100."
     },
     pdf: "/cv-docente-facilitador-es.pdf"
   }
@@ -787,7 +787,7 @@ export const cvData = {
     email: 'dsaavedra88@gmail.com',
     phone: '+593 98 019 2790',
     whatsapp: 'https://wa.me/593980192790',
-    linkedin: 'https://linkedin.com/in/dsaavedra88',
+    linkedin: 'https://www.linkedin.com/in/diego-saavedra-developer/',
     github: 'https://github.com/statick88',
     calendar: '', // Add Calendly or similar if available
     tagline: {

@@ -38,7 +38,17 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { load as loadYaml, dump as dumpYaml } from 'js-yaml'
-import { work, practice, profileData, projects, skills, certifications, services, events } from '@/data/cv-data'
+import {
+  work,
+  practice,
+  profileData,
+  projects,
+  skills,
+  certifications,
+  services,
+  events,
+  contact,
+} from '@/data/cv-data'
 import { cvData, profileData as jsProfileData } from '@/data/cvData.js'
 import { ATSSchema } from '@/lib/schemas/ats-schema'
 import {
@@ -54,7 +64,21 @@ const ROOT = resolve(__dirname, '../../..')
 interface YamlWorkEntry {
   company: string
   startDate: string
+  position?: { es?: string; en?: string }
+  summary?: { es?: string; en?: string }
   highlights?: { es?: string[]; en?: string[] }
+}
+
+interface ProfileRecord {
+  label?: unknown
+  summary?: unknown
+}
+
+interface YamlContact {
+  email?: string
+  phone?: string
+  linkedin?: string
+  github?: string
 }
 
 interface YamlProjectEntry {
@@ -99,6 +123,7 @@ interface YamlEventEntry {
 
 interface YamlDocument {
   experience?: YamlWorkEntry[]
+  contact?: YamlContact
   practice?: unknown
   projects?: YamlProjectEntry[]
   skills?: YamlSkillEntry[]
@@ -194,6 +219,91 @@ describe('CV data sources stay in sync', () => {
       )
       expect(entry.highlights?.es?.length ?? 0).toBeGreaterThan(0)
     })
+  })
+
+
+  it('carries the same achievements in English everywhere', () => {
+    tsEntries.forEach((entry, index) => {
+      const jsHighlights = jsEntries[index]?.highlights?.en ?? []
+      const yamlHighlights = yamlEntries[index]?.highlights?.en ?? []
+
+      expect(jsHighlights, `English highlights of ${entry.name} in cvData.js`).toEqual(
+        entry.highlights?.en ?? [],
+      )
+      expect(yamlHighlights, `English highlights of ${entry.name} in cv-data.yaml`).toEqual(
+        entry.highlights?.en ?? [],
+      )
+      expect(entry.highlights?.en?.length ?? 0).toBeGreaterThan(0)
+    })
+  })
+
+  it('carries the same role and summary everywhere', () => {
+    tsEntries.forEach((entry, index) => {
+      expect(jsEntries[index]?.position, `position of ${entry.name} in cvData.js`).toEqual(
+        entry.position,
+      )
+      expect(yamlEntries[index]?.position, `position of ${entry.name} in cv-data.yaml`).toEqual(
+        entry.position,
+      )
+      expect(jsEntries[index]?.summary, `summary of ${entry.name} in cvData.js`).toEqual(
+        entry.summary,
+      )
+      expect(yamlEntries[index]?.summary, `summary of ${entry.name} in cv-data.yaml`).toEqual(
+        entry.summary,
+      )
+    })
+  })
+
+  it('carries the same contact everywhere', () => {
+    const js = cvData.contact
+    const yaml = readYaml().contact ?? {}
+    const digits = (value: string | undefined) => (value ?? '').replace(/\D/g, '')
+
+    expect(js.email, 'the email in cvData.js').toBe(contact.email)
+    expect(yaml.email, 'the email in cv-data.yaml').toBe(contact.email)
+    expect(digits(js.phone), 'the phone in cvData.js').toBe(digits(contact.phone))
+    expect(digits(yaml.phone), 'the phone in cv-data.yaml').toBe(digits(contact.phone))
+    expect(js.linkedin, 'the LinkedIn in cvData.js').toBe(contact.linkedin)
+    expect(yaml.linkedin, 'the LinkedIn in cv-data.yaml').toBe(contact.linkedin)
+    expect(js.github, 'the GitHub in cvData.js').toBe(contact.github)
+    expect(yaml.github, 'the GitHub in cv-data.yaml').toBe(contact.github)
+  })
+
+  it('carries the same profile records in both mirrors', () => {
+    const jsRecords = Object.entries(jsProfileData as Record<string, ProfileRecord>)
+    const tsRecords = Object.entries(profileData)
+
+    const labels = tsRecords.map(([id, record]) => [id, record.label])
+    const jsLabels = jsRecords.map(([id, record]) => [id, record.label])
+    expect(jsLabels, 'the profile labels in cvData.js').toEqual(labels)
+
+    const summaries = tsRecords
+      .filter(([, record]) => record.summary)
+      .map(([id, record]) => [id, record.summary])
+    const jsSummaries = jsRecords
+      .filter(([, record]) => record.summary)
+      .map(([id, record]) => [id, record.summary])
+    expect(jsSummaries, 'the profile summaries in cvData.js').toEqual(summaries)
+  })
+
+  it('never leaves a bilingual text half empty', () => {
+    const yaml = readYaml()
+
+    for (const cert of yaml.certifications ?? []) {
+      expect(cert.name.en, `the English name of ${cert.name.es}`).toBeTruthy()
+    }
+    for (const service of yaml.services ?? []) {
+      expect(service.title.en, `the English title of ${service.title.es}`).toBeTruthy()
+      expect(service.description.en, `the English description of ${service.title.es}`).toBeTruthy()
+      expect(service.formats.en.length, `the English formats of ${service.title.es}`).toBeGreaterThan(0)
+    }
+    for (const project of yaml.projects ?? []) {
+      expect(project.description.en, `the English description of ${project.name}`).toBeTruthy()
+    }
+    for (const event of yaml.events ?? []) {
+      expect(event.role.en, `the English role of ${event.name}`).toBeTruthy()
+      expect(event.result.en, `the English result of ${event.name}`).toBeTruthy()
+    }
   })
 
   it('never advertises a certificate it cannot show', () => {
