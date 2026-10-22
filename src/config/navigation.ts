@@ -28,6 +28,7 @@ export interface NavGroupDef {
 export const SECTION = {
   resumen: 'resumen',
   servicios: 'servicios',
+  encargos: 'encargos',
   referencias: 'referencias',
   experiencia: 'experiencia',
   educacion: 'educacion',
@@ -48,6 +49,7 @@ export const NAV_GROUPS = [
     items: [
       { id: SECTION.resumen, label: { es: 'resumen', en: 'summary' } },
       { id: SECTION.servicios, label: { es: 'servicios', en: 'services' } },
+      { id: SECTION.encargos, label: { es: 'encargos', en: 'engagements' } },
       { id: SECTION.referencias, label: { es: 'referencias', en: 'references' } },
       { id: SECTION.experiencia, label: { es: 'experiencia', en: 'experience' } },
       { id: SECTION.educacion, label: { es: 'educación', en: 'education' } },
