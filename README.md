@@ -41,6 +41,8 @@ The build emits two CSP forms from the same policy:
 
 GitHub Pages enforces the CSP meta and referrer meta, but it does **not** apply the repository's `_headers` artifact. Therefore clickjacking response-header protection, `nosniff`, `Permissions-Policy`, and a repository-controlled Referrer-Policy HTTP header are not enforced on the current GitHub Pages deployment. CI reports those capabilities as platform limitations rather than claiming they passed. Moving those controls to HTTP responses would require an explicitly approved host or proxy migration.
 
+GitHub Actions jobs use `ubuntu-24.04` and actions with an internal Node 24 runtime. Project commands still use Node 22 from `.node-version` and pnpm 12.14.0; updating action runtimes does not migrate the application toolchain.
+
 ## Compact portfolio
 
 The homepage uses a full-width editorial hero and rounded cyan/midnight catalog. It keeps the target role, `mailto:` contact, CV download, core stack and three evidence-based public project previews visible before any dialog. Each of the 15 sections then starts with a brief, factual preview; **+ More** opens its complete content in one native modal dialog. On small screens the trigger displays **+**, while accessible labels remain descriptive. Close with the **−** button, Escape, or a click outside the dialog. Focus cycles inside the dialog and returns to its opener on close. Navigation and the hero service action open the same section dialogs instead of expanding the page. Email links retain `mailto:` and the configured default mail handler.
