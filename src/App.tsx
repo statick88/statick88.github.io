@@ -16,7 +16,7 @@ import { SECTION } from '@/config/navigation'
 import { AppLayout } from '@/components/layout/AppLayout'
 import IdentityColumn from '@/components/IdentityColumn'
 import { CompactSection } from '@/components/CompactSection'
-import { scrollToSection } from '@/hooks/useNavItems'
+import { useSectionModal } from '@/context/SectionModalContext'
 
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ServicesPanel } from '@/components/panels/ServicesPanel'
@@ -49,6 +49,17 @@ import {
   adaptHeadline,
   getDefaultMetrics,
 } from '@/lib/adapter'
+
+function ServiceExplorer() {
+  const { t } = useApp()
+  const { openSection } = useSectionModal()
+
+  return (
+    <button type="button" className="cv-primary-action" onClick={(event) => openSection(SECTION.servicios, event.currentTarget)}>
+      {t('Explorar servicios', 'Explore services')} <span aria-hidden="true">↗</span>
+    </button>
+  )
+}
 
 function AppInner() {
   const { t } = useApp()
@@ -88,9 +99,7 @@ function AppInner() {
           <span className="chip chip-muted">{t('100% remoto', '100% remote')}</span>
         </div>
         <div className="cv-hero-actions no-print">
-          <button type="button" className="cv-primary-action" onClick={() => scrollToSection(SECTION.servicios)}>
-            {t('Explorar servicios', 'Explore services')} <span aria-hidden="true">↗</span>
-          </button>
+          <ServiceExplorer />
           <a href="https://hub.docker.com/r/statick/my_site" target="_blank" rel="noopener noreferrer" className="cv-legacy-link">
             {t('Archivo · mi sitio en 2023', 'Archive · my site in 2023')} <span aria-hidden="true">↗</span>
           </a>

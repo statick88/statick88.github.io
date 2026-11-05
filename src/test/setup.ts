@@ -91,3 +91,13 @@ if (typeof globalThis.IntersectionObserver === 'undefined') {
     writable: true,
   })
 }
+
+// jsdom lacks native dialog methods. Browser E2E tests cover real focus trapping,
+// Escape, backdrop/inert behavior; this shim only exposes the open/close state.
+if (typeof HTMLDialogElement.prototype.showModal !== 'function') {
+  HTMLDialogElement.prototype.showModal = function () { this.open = true }
+  HTMLDialogElement.prototype.close = function () {
+    this.open = false
+    this.dispatchEvent(new Event('close'))
+  }
+}

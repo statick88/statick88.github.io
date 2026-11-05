@@ -1,5 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { cleanup, render, screen, within, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from '@/App'
 import { SECTION_IDS } from '@/config/navigation'
@@ -7,72 +7,77 @@ import { SECTION_IDS } from '@/config/navigation'
 beforeEach(() => localStorage.clear())
 afterEach(cleanup)
 
-const fullSection = (name: string) => screen.getByRole('group', { name: `Contenido completo de ${name}` })
-
-describe('compact portfolio sections', () => {
-  it('keeps every section in order with a short visible preview and closed full content', () => {
+describe('modal portfolio sections', () => {
+  it('keeps every section in order, showing previews but no dialog by default', () => {
     render(<App />)
     const sections = screen.getAllByRole('region')
     expect(sections.map((section) => section.id)).toEqual(SECTION_IDS)
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     for (const section of sections) {
       const label = section.getAttribute('aria-label')!
-      const disclosure = fullSection(label)
       expect(within(section).getByText(/./, { selector: '.cv-section-preview' })).toBeVisible()
-      expect(disclosure).not.toHaveAttribute('open')
-      expect(within(disclosure).getByText(label, { selector: 'h2' })).not.toBeVisible()
-      expect(within(section).getByLabelText(`Ver contenido completo de ${label}`)).toBeVisible()
+      expect(within(section).getByRole('button', { name: `Abrir ${label}` })).toBeVisible()
     }
   })
 
-  it('reveals and closes full content independently', async () => {
+  it.each(SECTION_IDS)('opens and closes the complete %s section as one named modal', async (id) => {
     const user = userEvent.setup()
     render(<App />)
-    const control = screen.getByLabelText('Ver contenido completo de experiencia')
-    await user.click(control)
-    expect(fullSection('experiencia')).toHaveAttribute('open')
-    expect(within(fullSection('experiencia')).getByText('experiencia', { selector: 'h2' })).toBeVisible()
-    expect(fullSection('proyectos')).not.toHaveAttribute('open')
-    await user.click(control)
-    expect(fullSection('experiencia')).not.toHaveAttribute('open')
+    const section = screen.getAllByRole('region').find((region) => region.id === id)!
+    const label = section.getAttribute('aria-label')!
+    const trigger = within(section).getByRole('button', { name: `Abrir ${label}` })
+
+    await user.click(trigger)
+    const modal = screen.getByRole('dialog', { name: label })
+    expect(modal).toHaveAttribute('open')
+    expect(screen.getAllByRole('dialog')).toHaveLength(1)
+    await user.click(within(modal).getByRole('button', { name: `Cerrar ${label}` }))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(trigger).toHaveFocus()
   })
 
-  it('opens a destination from navigation while preserving the existing scroll behavior', async () => {
-    const user = userEvent.setup()
-    const original = Element.prototype.scrollIntoView
-    const scroll = vi.fn()
-    Element.prototype.scrollIntoView = scroll
-    try {
-      render(<App />)
-      await user.click(within(screen.getByRole('navigation')).getByRole('button', { name: /ir a proyectos/i }))
-      expect(fullSection('proyectos')).toHaveAttribute('open')
-      expect(scroll).toHaveBeenCalled()
-    } finally {
-      Element.prototype.scrollIntoView = original
-    }
-  })
-
-  it('prints all details then restores the reader’s expanded sections', async () => {
+  it('opens navigation and the hero CTA in modals without expanding the page', async () => {
     const user = userEvent.setup()
     render(<App />)
-    await user.click(screen.getByLabelText('Ver contenido completo de experiencia'))
+    await user.click(within(screen.getByRole('navigation')).getByRole('button', { name: /ir a proyectos/i }))
+    expect(screen.getByRole('dialog', { name: 'proyectos' })).toBeVisible()
+    expect(within(screen.getByRole('navigation')).getByRole('button', { name: /ir a proyectos/i })).toHaveAttribute('aria-current', 'true')
+    await user.click(screen.getByRole('button', { name: 'Cerrar proyectos' }))
+    await user.click(screen.getByRole('button', { name: /Explorar servicios/i }))
+    expect(screen.getByRole('dialog', { name: 'servicios' })).toBeVisible()
+  })
+
+  it('handles native cancellation and restores the opener', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const trigger = screen.getByRole('button', { name: 'Abrir experiencia' })
+    await user.click(trigger)
+    fireEvent(screen.getByRole('dialog', { name: 'experiencia' }), new Event('cancel', { cancelable: true }))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+    expect(trigger).toHaveFocus()
+  })
+
+  it('temporarily closes the active modal for print, then restores it exactly once', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await user.click(screen.getByRole('button', { name: 'Abrir experiencia' }))
     window.dispatchEvent(new Event('beforeprint'))
-    const disclosures = screen.getAllByRole('group', { name: /^Contenido completo de / })
-    expect(disclosures).toHaveLength(SECTION_IDS.length)
-    disclosures.forEach((disclosure) => expect(disclosure).toHaveAttribute('open'))
-    // Repeated print notifications must not overwrite the original state.
     window.dispatchEvent(new Event('beforeprint'))
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     window.dispatchEvent(new Event('afterprint'))
-    expect(disclosures.filter((disclosure) => disclosure.hasAttribute('open'))).toHaveLength(1)
-    expect(fullSection('experiencia')).toHaveAttribute('open')
+    expect(screen.getAllByRole('dialog')).toHaveLength(1)
+    expect(screen.getByRole('dialog', { name: 'experiencia' })).toBeVisible()
+    expect(within(screen.getByRole('dialog')).getByText('Uteam')).toBeVisible()
   })
 
-  it('translates previews and disclosure labels without discarding full content', async () => {
+  it('translates previews, dialog labels and full content using the existing language control', async () => {
     const user = userEvent.setup()
     render(<App />)
-    expect(within(fullSection('experiencia')).getByText('experiencia', { selector: 'h2' })).toBeInTheDocument()
     await user.click(screen.getByTestId('language-toggle'))
-    expect(screen.getByLabelText('Read full experience')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Open experience' }))
+    const modal = screen.getByRole('dialog', { name: 'experience' })
+    expect(within(modal).getByText('Software Engineer')).toBeVisible()
+    expect(within(modal).getByRole('button', { name: 'Close experience' })).toBeVisible()
     expect(within(screen.getByRole('region', { name: 'experience' })).getByText(/^Roles, organizations/)).toBeVisible()
-    expect(within(screen.getByRole('group', { name: 'Full experience' })).getByText('experience', { selector: 'h2' })).toBeInTheDocument()
   })
 })

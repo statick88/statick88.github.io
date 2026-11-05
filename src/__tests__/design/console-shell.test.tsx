@@ -17,6 +17,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { render, screen, cleanup, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from '@/App'
+import { scrollToSection } from '@/hooks/useNavItems'
 import { NAV_GROUPS, type NavItemDef } from '@/config/navigation'
 
 const NAV_ITEMS: NavItemDef[] = NAV_GROUPS.flatMap((group) => [...group.items])
@@ -59,19 +60,21 @@ describe('cv sheet', () => {
     }
   })
 
-  it('scrolls to the section when a navigation link is clicked', async () => {
+  it('opens a named modal when a navigation item is clicked', async () => {
     const user = userEvent.setup()
+    render(<App />)
+    await user.click(within(screen.getByRole('navigation')).getByRole('button', { name: /proyectos/i }))
+    expect(screen.getByRole('dialog', { name: 'proyectos' })).toBeVisible()
+  })
+
+  it('preserves the scroll helper for non-modal consumers', () => {
     const scrollIntoView = vi.fn()
     const original = Element.prototype.scrollIntoView
     Element.prototype.scrollIntoView = scrollIntoView
-
     try {
-      render(<App />)
-
-      const nav = screen.getByRole('navigation')
-      await user.click(within(nav).getByRole('button', { name: /proyectos/i }))
-
-      expect(scrollIntoView).toHaveBeenCalled()
+      render(<section id="legacy-scroll" aria-label="legacy">Legacy content</section>)
+      scrollToSection('legacy-scroll')
+      expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' })
     } finally {
       Element.prototype.scrollIntoView = original
     }

@@ -48,12 +48,12 @@ test('renders the CV sheet with every section reachable', async ({ page }) => {
   await expect(page.getByRole('region')).toHaveCount(SECTION_COUNT)
 })
 
-test('navigates from the top bar to a section', async ({ page }) => {
+test('opens a section modal from the top bar', async ({ page }) => {
   const nav = page.getByRole('navigation')
 
   await nav.getByRole('button', { name: /proyectos/i }).click()
 
-  await expect(page.locator('#proyectos')).toBeInViewport()
+  await expect(page.getByRole('dialog', { name: 'proyectos', exact: true })).toBeVisible()
 })
 
 test('marks the active section in the navigation', async ({ page }) => {
@@ -61,7 +61,7 @@ test('marks the active section in the navigation', async ({ page }) => {
 
   await nav.getByRole('button', { name: /proyectos/i }).click()
 
-  await expect(nav.getByRole('button', { name: /proyectos/i })).toHaveAttribute(
+  await expect(page.locator('nav button').filter({ hasText: 'proyectos' })).toHaveAttribute(
     'aria-current',
     'true',
   )

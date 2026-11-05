@@ -19,6 +19,7 @@ import { LazyMotion, domAnimation } from 'framer-motion'
 import { useApp } from '@/context/AppContext'
 import { CvTopBar } from '@/components/layout/CvTopBar'
 import { initWebVitalsForProject } from '@/lib/web-vitals'
+import { SectionModalProvider, useSectionModal } from '@/context/SectionModalContext'
 
 interface AppLayoutProps {
   /** Identity column content (photo, contact, facts, languages). */
@@ -29,18 +30,26 @@ interface AppLayoutProps {
 
 function AppLayoutInner({ aside, children }: AppLayoutProps) {
   const { t } = useApp()
+  const { printing } = useSectionModal()
 
   useEffect(() => {
-    // Print the complete CV, then restore only the disclosures we opened.
+    // Native top-layer dialogs must close for the complete document to print.
+    let openDialogs: HTMLDialogElement[] = []
     let closedBeforePrint: HTMLDetailsElement[] | null = null
     const expandForPrint = () => {
       if (closedBeforePrint) return
+      printing.current = true
+      openDialogs = [...document.querySelectorAll<HTMLDialogElement>('.cv-section-modal[open]')]
       closedBeforePrint = [...document.querySelectorAll<HTMLDetailsElement>('.cv-main details:not([open])')]
+      openDialogs.forEach((dialog) => dialog.close())
       closedBeforePrint.forEach((details) => { details.open = true })
     }
     const restoreAfterPrint = () => {
       closedBeforePrint?.forEach((details) => { details.open = false })
       closedBeforePrint = null
+      openDialogs.forEach((dialog) => { if (dialog.isConnected && !dialog.open) dialog.showModal() })
+      openDialogs = []
+      printing.current = false
     }
     window.addEventListener('beforeprint', expandForPrint)
     window.addEventListener('afterprint', restoreAfterPrint)
@@ -49,7 +58,7 @@ function AppLayoutInner({ aside, children }: AppLayoutProps) {
       window.removeEventListener('afterprint', restoreAfterPrint)
       restoreAfterPrint()
     }
-  }, [])
+  }, [printing])
 
   useEffect(() => {
     const vitalsEndpoint = import.meta.env.VITE_VITALS_ENDPOINT
@@ -84,6 +93,14 @@ function AppLayoutInner({ aside, children }: AppLayoutProps) {
   )
 }
 
+/**
+ * Keeps the layout usable by existing standalone consumers while ensuring all
+ * navigation and section controls share one modal state.
+ */
 export function AppLayout({ aside, children }: AppLayoutProps) {
-  return <AppLayoutInner aside={aside}>{children}</AppLayoutInner>
+  return (
+    <SectionModalProvider>
+      <AppLayoutInner aside={aside}>{children}</AppLayoutInner>
+    </SectionModalProvider>
+  )
 }

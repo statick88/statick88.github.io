@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
+import { useSectionModal } from '@/context/SectionModalContext'
 import { useApp } from '@/context/AppContext'
 import { SECTION_IDS, type SectionId } from '@/config/navigation'
 
@@ -28,10 +29,21 @@ interface CompactSectionProps {
   children: ReactNode
 }
 
-/** Native disclosure supports keyboard, find-in-page and independent sections. */
+/** Native dialogs supply top-layer inertness and keyboard focus containment. */
 export function CompactSection({ id, 'aria-label': label, className = '', children }: CompactSectionProps) {
   const { t } = useApp()
   const preview = PREVIEWS[id]
+  const { activeSectionId, openSection, closeSection, printing } = useSectionModal()
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    if (activeSectionId === id && !dialog.open) {
+      dialog.showModal()
+      closeRef.current?.focus()
+    } else if (activeSectionId !== id && dialog.open) dialog.close()
+  }, [activeSectionId, id])
   return (
     <section id={id} aria-label={label} className={`cv-section-card ${className}`}>
       <header className="cv-section-heading">
@@ -41,13 +53,33 @@ export function CompactSection({ id, 'aria-label': label, className = '', childr
         <h2>{label}</h2>
       </header>
       <p className="cv-section-preview">{t(preview.es, preview.en)}</p>
-      <details className="cv-section-disclosure" aria-label={t(`Contenido completo de ${label}`, `Full ${label}`)}>
-        <summary aria-label={t(`Ver contenido completo de ${label}`, `Read full ${label}`)}>
-          <span className="cv-disclosure-closed"><span aria-hidden="true">+</span>{' '}<span className="cv-disclosure-label">{t('Más', 'More')}</span></span>
-          <span className="cv-disclosure-open"><span aria-hidden="true">−</span>{' '}<span className="cv-disclosure-label">{t('Menos', 'Less')}</span></span>
-        </summary>
-        <div className="cv-section-content">{children}</div>
-      </details>
+      <button type="button" className="cv-section-trigger" aria-label={t(`Abrir ${label}`, `Open ${label}`)} aria-haspopup="dialog" aria-controls={`modal-${id}`} onClick={(event) => openSection(id, event.currentTarget)}>
+        <span aria-hidden="true">+</span> <span className="cv-disclosure-label">{t('Más', 'More')}</span>
+      </button>
+      <dialog id={`modal-${id}`} className="cv-section-modal" ref={dialogRef} aria-labelledby={`modal-title-${id}`}
+        onKeyDown={(event) => {
+          if (event.key !== 'Tab') return
+          const controls = [...event.currentTarget.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+            .filter((element) => element.getClientRects().length > 0)
+          const first = controls[0]
+          const last = controls[controls.length - 1]
+          if (first && last && ((event.shiftKey && document.activeElement === first) || (!event.shiftKey && document.activeElement === last))) {
+            event.preventDefault()
+            ;(event.shiftKey ? last : first).focus()
+          }
+        }}
+        onCancel={(event) => { event.preventDefault(); closeSection() }}
+        onClose={() => { if (!printing.current && !dialogRef.current?.open && activeSectionId === id) closeSection() }}
+        onClick={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect()
+          if (event.target === event.currentTarget && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) closeSection()
+        }}>
+        <header className="cv-modal-header">
+          <div><span className="cv-modal-eyebrow">{t('Perfil profesional', 'Professional profile')}</span><h2 id={`modal-title-${id}`}>{label}</h2></div>
+          <button ref={closeRef} type="button" className="cv-modal-close" aria-label={t(`Cerrar ${label}`, `Close ${label}`)} onClick={closeSection}><span aria-hidden="true">−</span></button>
+        </header>
+        <div className="cv-modal-body cv-section-content">{children}</div>
+      </dialog>
     </section>
   )
 }

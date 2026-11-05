@@ -10,14 +10,16 @@
 import { useApp } from '@/context/AppContext'
 import LanguageToggle from '@/components/LanguageToggle'
 import ThemeToggle from '@/components/ThemeToggle'
-import { useNavGroups, scrollToSection } from '@/hooks/useNavItems'
+import { useNavGroups } from '@/hooks/useNavItems'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useCVData } from '@/hooks/useCVData'
-import { SECTION_IDS } from '@/config/navigation'
+import { useSectionModal } from '@/context/SectionModalContext'
+import { SECTION_IDS, type SectionId } from '@/config/navigation'
 
 export function CvTopBar() {
   const { t, language, setLanguage, theme, setTheme } = useApp()
   const groups = useNavGroups()
+  const { activeSectionId, openSection } = useSectionModal()
   const { activeSection } = useScrollSpy({ sectionIds: [...SECTION_IDS] })
   const name = useCVData((data) => data.basics.name)
   const email = useCVData((data) => data.contact.email)
@@ -40,9 +42,9 @@ export function CvTopBar() {
             key={item.id}
             type="button"
             className="cv-topbar-link"
-            aria-current={activeSection === item.id ? 'true' : undefined}
+            aria-current={(activeSectionId ?? activeSection) === item.id ? 'true' : undefined}
             aria-label={item.aria}
-            onClick={() => scrollToSection(item.id)}
+            onClick={(event) => openSection(item.id as SectionId, event.currentTarget)}
           >
             {item.label}
           </button>

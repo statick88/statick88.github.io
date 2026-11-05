@@ -919,6 +919,25 @@ html.dark .cv-main > header {
   .cv-section-disclosure > summary span[aria-hidden] { margin-right: 0; }
 }
 
+/* Native section dialogs: one active top-layer surface, inert background. */
+html:has(.cv-section-modal[open]) { overflow: hidden; }
+.cv-section-trigger { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: rgb(var(--ct-accent-bright)); font-size: 13px; font-weight: 650; }
+.cv-section-trigger > span[aria-hidden] { font-size: 20px; }
+.cv-section-modal { width: min(1100px, calc(100% - 48px)); max-width: none; max-height: calc(100dvh - 48px); margin: auto; padding: 0; border: 1px solid rgb(var(--ct-line-strong)); border-radius: var(--ct-radius-dialog); background: rgb(var(--ct-panel)); color: rgb(var(--ct-text)); box-shadow: 0 24px 120px rgb(var(--ct-base) / 0.7); }
+.cv-section-modal[open] { display: flex; flex-direction: column; }
+.cv-section-modal::backdrop { background: rgb(var(--ct-base) / 0.8); backdrop-filter: blur(12px); }
+.cv-modal-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 32px; border-bottom: 1px solid rgb(var(--ct-line)); flex-shrink: 0; }
+.cv-modal-header h2 { font-size: 30px; text-transform: capitalize; letter-spacing: -0.04em; }
+.cv-modal-eyebrow { color: rgb(var(--ct-subtext-0)); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; }
+.cv-modal-close { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgb(var(--ct-line-strong)); border-radius: 50%; color: rgb(var(--ct-accent-bright)); font-size: 26px; }
+.cv-modal-body.cv-section-content { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 32px; margin: 0; border: 0; }
+@media (max-width: 640px) {
+  .cv-section-modal { width: calc(100% - 16px); max-height: calc(100dvh - 16px); }
+  .cv-modal-header { padding: 20px; }
+  .cv-modal-body.cv-section-content { padding: 20px; }
+  .cv-section-trigger { justify-content: center; width: 44px; border: 1px solid rgb(var(--ct-line-strong)); border-radius: 50%; }
+}
+
 /* ---------------------------------------------------------------------------
  * Responsive — the sheet becomes one column on small screens
  * ------------------------------------------------------------------------ */
@@ -989,9 +1008,15 @@ html.dark .cv-main > header {
   .cv-section-heading,
   .cv-section-preview,
   .cv-section-disclosure > summary,
+  .cv-section-trigger,
+  .cv-modal-header,
   .cv-hero-eyebrow,
   .cv-hero-intro { display: none !important; }
   .cv-section-content { border: none; padding: 0; margin: 0; }
+  html:has(.cv-section-modal[open]) { overflow: visible; }
+  .cv-section-modal, .cv-section-modal[open] { display: block !important; position: static !important; width: 100%; max-width: none; max-height: none; padding: 0; margin: 0; overflow: visible; border: 0; border-radius: 0; box-shadow: none; background: white !important; color: black !important; }
+  .cv-section-modal::backdrop { display: none; }
+  .cv-modal-body.cv-section-content { overflow: visible; padding: 0; }
   .cv-section-disclosure::details-content { content-visibility: visible; }
   .cv-section-disclosure > .cv-section-content { display: block !important; }
 
