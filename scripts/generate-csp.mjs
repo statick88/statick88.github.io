@@ -78,23 +78,31 @@ function getInlineHashes(html, tag) {
 // It must match src/config/security.ts exactly.
 // If you change one, change the other.
 
-function buildCsp(scriptHashes, styleHashes = []) {
+const META_UNSUPPORTED_DIRECTIVES = new Set([
+  'frame-ancestors',
+  'report-uri',
+])
+
+function buildCsp(scriptHashes, styleHashes = [], delivery = 'http-header') {
   const directives = [
-    "default-src 'self'",
-    `script-src 'self' ${scriptHashes.join(' ')}`,
-    `style-src 'self' 'unsafe-inline' ${styleHashes.join(' ')} https://fonts.googleapis.com`,
-    "font-src 'self' https://fonts.gstatic.com data:",
-    "img-src 'self' data: https:",
-    "connect-src 'self'",
-    "frame-src 'none'",
-    "frame-ancestors 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "object-src 'none'",
-    "upgrade-insecure-requests",
+    ['default-src', "'self'"],
+    ['script-src', `'self' ${scriptHashes.join(' ')}`],
+    ['style-src', `'self' 'unsafe-inline' ${styleHashes.join(' ')} https://fonts.googleapis.com`],
+    ['font-src', "'self' https://fonts.gstatic.com data:"],
+    ['img-src', "'self' data: https:"],
+    ['connect-src', "'self'"],
+    ['frame-src', "'none'"],
+    ['frame-ancestors', "'none'"],
+    ['base-uri', "'self'"],
+    ['form-action', "'self'"],
+    ['object-src', "'none'"],
+    ['upgrade-insecure-requests', ''],
   ]
 
-  return directives.join('; ')
+  return directives
+    .filter(([name]) => delivery !== 'meta' || !META_UNSUPPORTED_DIRECTIVES.has(name))
+    .map(([name, value]) => value ? `${name} ${value}` : name)
+    .join('; ')
 }
 
 // ── Main ─────────────────────────────────────────────────────────
@@ -126,15 +134,23 @@ function main() {
   const styleHashes = getInlineHashes(html, 'style')
   console.log(`[CSP] Hashed ${styleHashes.length} inline style block(s)`)
 
-  // Build CSP string
-  const csp = buildCsp(scriptHashes, styleHashes)
-  console.log(`\n[CSP] Final CSP:\n${csp}\n`)
+  // Build each delivery policy from the same directive list. GitHub Pages
+  // enforces the meta policy; hosts that honour _headers get the HTTP policy.
+  const headerCsp = buildCsp(scriptHashes, styleHashes)
+  const metaCsp = buildCsp(scriptHashes, styleHashes, 'meta')
+  console.log(`\n[CSP] Meta policy:\n${metaCsp}\n`)
+  console.log(`[CSP] HTTP header policy:\n${headerCsp}\n`)
 
-  // Validate CSP
-  const violations = validateCsp(csp)
-  if (violations.length > 0) {
+  const validationResults = [
+    ['meta', validateCsp(metaCsp, 'meta')],
+    ['HTTP header', validateCsp(headerCsp, 'http-header')],
+  ]
+  const failedValidations = validationResults.filter(([, violations]) => violations.length > 0)
+  if (failedValidations.length > 0) {
     console.error('[CSP] VALIDATION FAILED:')
-    violations.forEach((v) => console.error(`  ✗ ${v}`))
+    for (const [delivery, violations] of failedValidations) {
+      violations.forEach((violation) => console.error(`  ✗ ${delivery}: ${violation}`))
+    }
     process.exit(1)
   }
   console.log('[CSP] Validation passed ✓')
@@ -152,7 +168,7 @@ function main() {
   )
 
   // Inject fresh CSP meta tag
-  const metaTag = `<meta http-equiv="Content-Security-Policy" content="${csp}" />`
+  const metaTag = `<meta http-equiv="Content-Security-Policy" content="${metaCsp}" />`
   html = html.replace('<head>', `<head>\n    ${metaTag}`)
 
   writeFileSync(INDEX_PATH, html)
@@ -166,7 +182,7 @@ function main() {
   const HEADERS_PATH = join(DIST_DIR, '_headers')
   const headersBody = [
     '/*',
-    `  Content-Security-Policy: ${csp}`,
+    `  Content-Security-Policy: ${headerCsp}`,
     '  X-Frame-Options: DENY',
     '  X-Content-Type-Options: nosniff',
     '  Referrer-Policy: strict-origin-when-cross-origin',
@@ -197,7 +213,7 @@ function parseCsp(cspString) {
   return map
 }
 
-function validateCsp(cspString) {
+function validateCsp(cspString, delivery = 'http-header') {
   const violations = []
 
   // Globally forbidden patterns
@@ -214,7 +230,8 @@ function validateCsp(cspString) {
   }
 
   // Check required directives
-  const required = ['default-src', 'script-src', 'style-src', 'img-src', 'frame-ancestors', 'base-uri', 'form-action', 'object-src']
+  const required = ['default-src', 'script-src', 'style-src', 'img-src', 'base-uri', 'form-action', 'object-src']
+  if (delivery === 'http-header') required.push('frame-ancestors')
   for (const dir of required) {
     if (!cspString.includes(dir)) {
       violations.push(`Missing required directive: ${dir}`)
@@ -229,6 +246,19 @@ function validateCsp(cspString) {
   }
   if (scriptSrc.includes("'unsafe-eval'")) {
     violations.push("script-src contains 'unsafe-eval'")
+  }
+
+  if (delivery === 'meta') {
+    for (const directive of META_UNSUPPORTED_DIRECTIVES) {
+      if (parsed.has(directive)) {
+        violations.push(`Meta CSP contains unsupported directive: ${directive}`)
+      }
+    }
+  } else {
+    const frameAncestors = parsed.get('frame-ancestors') || []
+    if (!frameAncestors.includes("'none'")) {
+      violations.push("frame-ancestors should be 'none'")
+    }
   }
 
   return violations

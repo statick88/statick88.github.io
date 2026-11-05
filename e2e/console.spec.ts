@@ -15,19 +15,6 @@ const SECTION_COUNT = NAV_GROUPS.flatMap((group) => group.items).length
 
 const consoleErrors: string[] = []
 
-/**
- * Chromium logs one unavoidable notice for the deployment policy: `frame-ancestors`
- * is ignored when a CSP is delivered through a <meta> element. The real header
- * carries it (see dist/_headers); the notice is informational, not a failure.
- */
-const ALLOWED_CONSOLE_NOTICES = [
-  /frame-ancestors' is ignored when delivered via a <meta> element/i,
-]
-
-function unexpectedConsoleErrors(errors: string[]): string[] {
-  return errors.filter((error) => !ALLOWED_CONSOLE_NOTICES.some((pattern) => pattern.test(error)))
-}
-
 test.beforeEach(async ({ page }) => {
   consoleErrors.length = 0
   page.on('console', (message) => {
@@ -37,7 +24,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.afterEach(async () => {
-  expect(unexpectedConsoleErrors(consoleErrors), 'the page logged console errors').toEqual([])
+  expect(consoleErrors, 'the page logged console errors').toEqual([])
 })
 
 test('renders the editorial hero and every CV section without a permanent sidebar', async ({ page }) => {

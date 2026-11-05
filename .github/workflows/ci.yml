@@ -120,12 +120,14 @@ jobs:
           ls -la dist/
           ls -la dist/assets/
 
-      - name: Verify _headers in dist
+      - name: Verify portable HTTP security policy artifact
         run: |
           test -f dist/_headers || (echo "::error::dist/_headers missing" && exit 1)
+          grep -q "Content-Security-Policy:.*frame-ancestors 'none'" dist/_headers || (echo "::error::HTTP CSP must deny framing" && exit 1)
           grep -q "X-Frame-Options: DENY" dist/_headers || (echo "::error::X-Frame-Options missing" && exit 1)
+          grep -q "X-Content-Type-Options: nosniff" dist/_headers || (echo "::error::X-Content-Type-Options missing" && exit 1)
           ! grep -q "strict-dynamic" dist/_headers || (echo "::error::strict-dynamic found in _headers" && exit 1)
-          echo "✅ dist/_headers validation passed"
+          echo "✅ dist/_headers is ready for hosts that support this artifact"
 
       - name: Verify CSP on the policy the browser actually enforces
         run: |
@@ -136,6 +138,11 @@ jobs:
           META=$(grep -o 'http-equiv="Content-Security-Policy" content="[^"]*"' dist/index.html) || (echo "::error::CSP meta tag missing from dist/index.html" && exit 1)
           echo "$META" | grep -q "script-src[^;]*unsafe-inline" && { echo "::error::unsafe-inline in script-src"; exit 1; }
           echo "$META" | grep -q "unsafe-eval" && { echo "::error::unsafe-eval in CSP"; exit 1; }
+          echo "$META" | grep -q "frame-ancestors" && { echo "::error::frame-ancestors is unsupported in CSP meta delivery"; exit 1; }
+          for DIRECTIVE in "object-src 'none'" "base-uri 'self'" "form-action 'self'"; do
+            echo "$META" | grep -q "$DIRECTIVE" || { echo "::error::CSP meta missing strict directive: $DIRECTIVE"; exit 1; }
+          done
+          grep -q '<meta name="referrer" content="strict-origin-when-cross-origin"' dist/index.html || { echo "::error::enforceable referrer meta policy missing"; exit 1; }
           HASHES=$(echo "$META" | grep -o 'sha256-[A-Za-z0-9+/]\{43\}=' | wc -l | tr -d ' ')
           # Count only inline scripts that CSP actually governs. A data block such
           # as <script type="application/ld+json"> has no src but is not executed,
@@ -296,38 +303,44 @@ jobs:
       - name: Wait for CDN propagation
         run: sleep 45
 
-      - name: Verify CSP in production HTML
+      - name: Verify enforceable production meta policies
         run: |
-          HTML=$(curl -s "https://statick88.github.io/?t=$(date +%s)")
-          echo "$HTML" | grep -q 'http-equiv="Content-Security-Policy"' || { echo "::error::CSP meta tag missing"; exit 1; }
-          # Assert what actually protects the site. Requiring "sha256-" to be
-          # present was unsatisfiable by design: hash-sources only govern inline
-          # scripts and this app ships none, so script-src is exactly "'self'".
-          echo "$HTML" | grep -q "script-src[^;]*'unsafe-inline'" && { echo "::error::unsafe-inline in script-src"; exit 1; } || echo "✅ script-src has no unsafe-inline"
-          echo "$HTML" | grep -q "unsafe-eval" && { echo "::error::unsafe-eval in CSP"; exit 1; } || echo "✅ No unsafe-eval in CSP"
-          echo "$HTML" | grep -q "strict-dynamic" && { echo "::error::strict-dynamic found in CSP"; exit 1; } || echo "✅ No strict-dynamic in CSP"
-          echo "$HTML" | grep -q "frame-ancestors 'none'" && echo "✅ frame-ancestors 'none' present in CSP meta" || echo "⚠️ frame-ancestors in meta (ignored by browsers, X-Frame-Options used)"
-          echo "✅ CSP meta tag validation passed"
+          HTML=$(curl -fsS "https://statick88.github.io/?t=$(date +%s)")
+          META=$(echo "$HTML" | grep -o 'http-equiv="Content-Security-Policy" content="[^"]*"') || { echo "::error::CSP meta tag missing"; exit 1; }
+          echo "$META" | grep -q "script-src[^;]*'unsafe-inline'" && { echo "::error::unsafe-inline in script-src"; exit 1; }
+          echo "$META" | grep -q "unsafe-eval" && { echo "::error::unsafe-eval in CSP"; exit 1; }
+          echo "$META" | grep -q "strict-dynamic" && { echo "::error::strict-dynamic found in CSP"; exit 1; }
+          echo "$META" | grep -q "frame-ancestors" && { echo "::error::frame-ancestors is unsupported in CSP meta delivery"; exit 1; }
+          for DIRECTIVE in "object-src 'none'" "base-uri 'self'" "form-action 'self'"; do
+            echo "$META" | grep -q "$DIRECTIVE" || { echo "::error::CSP meta missing strict directive: $DIRECTIVE"; exit 1; }
+          done
+          echo "$HTML" | grep -q '<meta name="referrer" content="strict-origin-when-cross-origin"' || { echo "::error::referrer meta policy missing"; exit 1; }
+          echo "✅ Enforceable CSP and referrer meta policies validated"
 
-      - name: Verify X-Frame-Options in production
+      - name: Classify GitHub Pages response-header capabilities
         run: |
-          XFO=$(curl -sI "https://statick88.github.io/?t=$(date +%s)" | grep -i "x-frame-options" | head -1)
-          echo "X-Frame-Options: $XFO"
-          echo "$XFO" | grep -qi "deny" || { echo "::warning::X-Frame-Options not DENY (Not supported by GH Pages)"; }
-          echo "✅ Checked X-Frame-Options"
-
-      - name: Verify Cache-Control for HTML
-        run: |
-          CC=$(curl -sI "https://statick88.github.io/?t=$(date +%s)" | grep -i "cache-control" | head -1)
-          echo "Cache-Control: $CC"
-          echo "$CC" | grep -qi "no-cache\|must-revalidate" || { echo "::warning::Cache-Control could be stricter for HTML"; }
-
-      - name: Verify security headers
-        run: |
-          HEADERS=$(curl -sI "https://statick88.github.io/?t=$(date +%s)")
-          echo "$HEADERS" | grep -qi "x-content-type-options: nosniff" && echo "✅ X-Content-Type-Options: nosniff" || echo "::warning::X-Content-Type-Options missing"
-          echo "$HEADERS" | grep -qi "referrer-policy:" && echo "✅ Referrer-Policy present" || echo "::warning::Referrer-Policy missing"
-          echo "$HEADERS" | grep -qi "permissions-policy:" && echo "✅ Permissions-Policy present" || echo "::warning::Permissions-Policy missing"
+          HEADERS=$(curl -fsSI "https://statick88.github.io/?t=$(date +%s)")
+          classify_header() {
+            NAME="$1"
+            if echo "$HEADERS" | grep -qi "^${NAME}:"; then
+              VALUE=$(echo "$HEADERS" | grep -i "^${NAME}:" | head -1 | tr -d '\r')
+              echo "::notice::OBSERVED platform response header (not controlled by repository _headers): $VALUE"
+              echo "- OBSERVED platform-managed ${NAME}; repository _headers is not the enforcement source." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "::notice::NOT ENFORCED on GitHub Pages: ${NAME}; this host does not apply repository _headers"
+              echo "- NOT ENFORCED on GitHub Pages: ${NAME}." >> "$GITHUB_STEP_SUMMARY"
+            fi
+          }
+          echo "### GitHub Pages security capability classification" >> "$GITHUB_STEP_SUMMARY"
+          echo "The deployed meta CSP and referrer meta are enforceable. The portable dist/_headers artifact is not applied by GitHub Pages." >> "$GITHUB_STEP_SUMMARY"
+          classify_header "X-Frame-Options"
+          classify_header "X-Content-Type-Options"
+          classify_header "Referrer-Policy"
+          classify_header "Permissions-Policy"
+          CACHE=$(echo "$HEADERS" | grep -i '^cache-control:' | head -1 | tr -d '\r' || true)
+          echo "::notice::NOT APPLICABLE as a repository control on GitHub Pages: ${CACHE:-Cache-Control is platform-managed}"
+          echo "- NOT APPLICABLE as a repository control: ${CACHE:-Cache-Control is platform-managed}." >> "$GITHUB_STEP_SUMMARY"
+          echo "- NOT ENFORCED on GitHub Pages: clickjacking response-header protection (frame-ancestors/X-Frame-Options)." >> "$GITHUB_STEP_SUMMARY"
 
   # === CSP VIOLATION REPORT ENDPOINT (simulated) ===
   csp-monitor:

@@ -110,12 +110,24 @@ export const BLOCKED_DOMAINS = [
  *
  * @param scriptHashes - SHA-256 hashes of JS files (e.g., ['sha256-abc123...'])
  * @param styleHashes - SHA-256 hashes of CSS files (optional)
- * @returns The complete CSP string for use in <meta> or HTTP header
+ * @returns The complete CSP string for use in an HTTP header
  */
 export function buildCspString(
   scriptHashes: string[],
   styleHashes: string[] = [],
 ): string {
+  return serializeCsp(buildCspDirectives(scriptHashes, styleHashes))
+}
+
+const META_UNSUPPORTED_DIRECTIVES = new Set<CspDirectiveName>([
+  'frame-ancestors',
+  'report-uri',
+])
+
+function buildCspDirectives(
+  scriptHashes: string[],
+  styleHashes: string[],
+): CspDirectives {
   const directives = { ...CSP_DIRECTIVES }
 
   // Replace script-src placeholder with actual hashes
@@ -126,10 +138,28 @@ export function buildCspString(
   const styleSources = ["'self'", "'unsafe-inline'", ...styleHashes, 'https://fonts.googleapis.com']
   directives['style-src'] = styleSources.join(' ')
 
-  // Build the final CSP string
+  return directives
+}
+
+function serializeCsp(directives: CspDirectives): string {
   return Object.entries(directives)
     .map(([key, value]) => (value ? `${key} ${value}` : key))
     .join('; ')
+}
+
+/** Get a policy containing only directives supported by CSP meta delivery. */
+export function getCspMetaContent(
+  scriptHashes: string[],
+  styleHashes: string[] = [],
+): string {
+  const directives = buildCspDirectives(scriptHashes, styleHashes)
+  const metaDirectives = Object.fromEntries(
+    Object.entries(directives).filter(
+      ([name]) => !META_UNSUPPORTED_DIRECTIVES.has(name as CspDirectiveName),
+    ),
+  ) as CspDirectives
+
+  return serializeCsp(metaDirectives)
 }
 
 /**
@@ -140,7 +170,7 @@ export function getCspMetaTag(
   scriptHashes: string[],
   styleHashes: string[] = [],
 ): string {
-  const csp = buildCspString(scriptHashes, styleHashes)
+  const csp = getCspMetaContent(scriptHashes, styleHashes)
   return `<meta http-equiv="Content-Security-Policy" content="${csp}" />`
 }
 
@@ -209,6 +239,18 @@ function parseCsp(cspString: string): Map<string, string[]> {
  * Returns an array of violations (empty = valid).
  */
 export function validateCsp(cspString: string): string[] {
+  return validateCspForDelivery(cspString, 'http-header')
+}
+
+/** Validate a policy intended for a CSP <meta> element. */
+export function validateCspMeta(cspString: string): string[] {
+  return validateCspForDelivery(cspString, 'meta')
+}
+
+function validateCspForDelivery(
+  cspString: string,
+  delivery: 'http-header' | 'meta',
+): string[] {
   const violations: string[] = []
 
   // Check globally forbidden patterns
@@ -218,17 +260,17 @@ export function validateCsp(cspString: string): string[] {
     }
   }
 
-  // Check required directives exist
-  const requiredDirectives = [
+  // Meta delivery cannot enforce response-header-only directives.
+  const requiredDirectives: CspDirectiveName[] = [
     'default-src',
     'script-src',
     'style-src',
     'img-src',
-    'frame-ancestors',
     'base-uri',
     'form-action',
     'object-src',
-  ] as const
+  ]
+  if (delivery === 'http-header') requiredDirectives.push('frame-ancestors')
 
   for (const directive of requiredDirectives) {
     if (!cspString.includes(directive)) {
@@ -247,10 +289,17 @@ export function validateCsp(cspString: string): string[] {
     }
   }
 
-  // Check frame-ancestors is 'none'
-  const frameAncestors = parsed.get('frame-ancestors')
-  if (frameAncestors && !frameAncestors.includes("'none'")) {
-    violations.push("frame-ancestors should be 'none'")
+  if (delivery === 'meta') {
+    for (const directive of META_UNSUPPORTED_DIRECTIVES) {
+      if (parsed.has(directive)) {
+        violations.push(`Meta CSP contains unsupported directive: ${directive}`)
+      }
+    }
+  } else {
+    const frameAncestors = parsed.get('frame-ancestors')
+    if (frameAncestors && !frameAncestors.includes("'none'")) {
+      violations.push("frame-ancestors should be 'none'")
+    }
   }
 
   return violations

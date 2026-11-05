@@ -32,6 +32,15 @@ pnpm audit          # Unsuppressed dependency advisory check
 
 Use Node 22 (`fnm use`) and pnpm 12.14.0, then `pnpm install --frozen-lockfile`. The November 2026 remediation upgrades dependencies within their existing majors and records patched transitive minimums in `pnpm-workspace.yaml`. Local and CI audits no longer suppress the previous Vite/Vitest advisories. Keep the lockfile and these floors together; lowering a floor requires confirming that every parent resolves to a secure release.
 
+## Security policy delivery
+
+The build emits two CSP forms from the same policy:
+
+- `dist/index.html` contains the CSP that browsers can enforce from a `<meta http-equiv>` element. Header-only directives such as `frame-ancestors` and `report-uri` are intentionally omitted.
+- `dist/_headers` keeps the complete HTTP policy, including `frame-ancestors 'none'`, `X-Frame-Options: DENY`, and `X-Content-Type-Options: nosniff`, for hosting platforms that support the `_headers` convention.
+
+GitHub Pages enforces the CSP meta and referrer meta, but it does **not** apply the repository's `_headers` artifact. Therefore clickjacking response-header protection, `nosniff`, `Permissions-Policy`, and a repository-controlled Referrer-Policy HTTP header are not enforced on the current GitHub Pages deployment. CI reports those capabilities as platform limitations rather than claiming they passed. Moving those controls to HTTP responses would require an explicitly approved host or proxy migration.
+
 ## Compact portfolio
 
 The homepage uses a full-width editorial hero and rounded cyan/midnight catalog. It keeps the target role, `mailto:` contact, CV download, core stack and three evidence-based public project previews visible before any dialog. Each of the 15 sections then starts with a brief, factual preview; **+ More** opens its complete content in one native modal dialog. On small screens the trigger displays **+**, while accessible labels remain descriptive. Close with the **−** button, Escape, or a click outside the dialog. Focus cycles inside the dialog and returns to its opener on close. Navigation and the hero service action open the same section dialogs instead of expanding the page. Email links retain `mailto:` and the configured default mail handler.

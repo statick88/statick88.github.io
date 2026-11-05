@@ -12,8 +12,11 @@ import { describe, it, expect } from 'vitest'
 import {
   CSP_DIRECTIVES,
   buildCspString,
+  getCspHeaderValue,
+  getCspMetaContent,
   getCspMetaTag,
   validateCsp,
+  validateCspMeta,
   SECURITY_HEADERS,
   BLOCKED_DOMAINS,
   FORBIDDEN_PATTERNS,
@@ -119,6 +122,34 @@ describe('Security Module — CSP Policy', () => {
 
       expect(parts.length).toBeGreaterThanOrEqual(10)
     })
+
+    it('preserves the HTTP policy contract including frame-ancestors', () => {
+      const csp = buildCspString(['sha256-abc'], ['sha256-style'])
+
+      expect(getCspHeaderValue(['sha256-abc'], ['sha256-style'])).toBe(csp)
+      expect(csp).toContain("frame-ancestors 'none'")
+      expect(validateCsp(csp)).toEqual([])
+    })
+  })
+
+  describe('getCspMetaContent', () => {
+    it('omits directives that browsers do not support in CSP meta delivery', () => {
+      const csp = getCspMetaContent(['sha256-abc'])
+
+      expect(csp).not.toContain('frame-ancestors')
+      expect(csp).not.toContain('report-uri')
+      expect(validateCspMeta(csp)).toEqual([])
+    })
+
+    it('keeps the strict resource, navigation, and document restrictions', () => {
+      const csp = getCspMetaContent(['sha256-abc'])
+
+      expect(csp).toContain("script-src 'self' sha256-abc")
+      expect(csp).toContain("style-src 'self' 'unsafe-inline'")
+      expect(csp).toContain("object-src 'none'")
+      expect(csp).toContain("base-uri 'self'")
+      expect(csp).toContain("form-action 'self'")
+    })
   })
 
   describe('getCspMetaTag', () => {
@@ -130,12 +161,13 @@ describe('Security Module — CSP Policy', () => {
       expect(tag).toContain('" />')
     })
 
-    it('contains the correct CSP in the content attribute', () => {
+    it('contains the correct meta-delivered CSP in the content attribute', () => {
       const tag = getCspMetaTag(['sha256-abc'])
       const contentMatch = tag.match(/content="([^"]+)"/)
 
       expect(contentMatch).not.toBeNull()
       expect(contentMatch?.[1]).toContain("script-src 'self' sha256-abc")
+      expect(contentMatch?.[1]).not.toContain('frame-ancestors')
     })
   })
 
@@ -160,6 +192,12 @@ describe('Security Module — CSP Policy', () => {
       const violations = validateCsp(badCsp)
 
       expect(violations.some((v) => v.includes('frame-ancestors'))).toBe(true)
+    })
+
+    it('rejects header-only directives in a meta-delivered policy', () => {
+      const violations = validateCspMeta(buildCspString(['sha256-abc']))
+
+      expect(violations).toContain('Meta CSP contains unsupported directive: frame-ancestors')
     })
   })
 
@@ -198,14 +236,14 @@ describe('Security Module — CSP Policy', () => {
       expect(violations).toEqual([])
     })
 
-    it('getCspMetaTag content passes validateCsp', () => {
+    it('getCspMetaTag content passes meta-delivery validation', () => {
       const tag = getCspMetaTag(['sha256-test123'])
       const contentMatch = tag.match(/content="([^"]+)"/)
       expect(contentMatch).not.toBeNull()
       expect(contentMatch).toBeDefined()
       if (!contentMatch?.[1]) return // type guard
 
-      const violations = validateCsp(contentMatch[1])
+      const violations = validateCspMeta(contentMatch[1])
       expect(violations).toEqual([])
     })
   })
