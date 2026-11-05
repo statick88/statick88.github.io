@@ -1,0 +1,18 @@
+# Allow only the verified public build and container configuration.
+**
+!dist/
+!dist/**
+!docker/
+!docker/Dockerfile
+!docker/nginx.conf
+
+# Defense in depth if unexpected files ever enter dist/.
+**/.git
+**/.git/**
+**/.env*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/secrets/**
+**/*.map
