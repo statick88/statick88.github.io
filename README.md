@@ -27,6 +27,14 @@ pnpm validate:cv    # Validate cv-data.yaml against Zod schemas
 pnpm export:cv      # Export ATS-optimized JSON/YAML/MD
 ```
 
+## Compact portfolio
+
+The homepage blends the card-based presentation of the archived `statick/my_site:2.0` site with the current cyan/midnight palette. Each section starts with a brief preview; **+ More** opens its complete content, and **− Less** closes it. On small screens, only the **+ / −** symbols are displayed; accessible labels remain descriptive. Sections expand independently and fill the full available viewport width with readable gutters. Email links use `mailto:` and open the configured default mail handler (including a browser-based handler when registered). Navigation opens its destination before scrolling.
+
+The interface supports Spanish and English, native keyboard-operable disclosures, and mobile layouts. Printing expands every disclosure and restores the previous state afterward. The PDF downloads and full ATS exports remain independent of these previews; no CV records are removed.
+
+Legacy reference: [statick/my_site on Docker Hub](https://hub.docker.com/r/statick/my_site), public tag `2.0`, pushed December 8, 2023, digest `sha256:d908c1a67ead951f5e2013028cd44c844e0c373c337251270c382a5ad4d023c3`. Only its static HTML/CSS was inspected; old dependencies and biographical claims were not imported.
+
 ## Data Architecture
 
 All CV data lives in **`src/data/cv-data.yaml`** — the single source of truth.

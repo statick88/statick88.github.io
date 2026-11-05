@@ -1,5 +1,5 @@
 /**
- * CONSOLE palette — "system settings" aesthetic with a dark-blue primary.
+ * CONSOLE palette — cyan terminal aesthetic with midnight-blue surfaces.
  *
  * Two colour surfaces live here:
  *
@@ -9,10 +9,10 @@
  *    a colour *means* instead of which hue it happens to be.
  *
  * 2. The classic Tailwind families (cyan/green/blue/red/gray/purple/orange/amber)
- *    are re-mapped onto the console ramps so the existing component tree keeps
+ *    are re-mapped onto the terminal ramps so the existing component tree keeps
  *    resolving without rewriting every class name:
  *
- *      cyan   -> primary blue ramp   (accent, focus, active states)
+ *      cyan   -> cyan ramp   (accent, focus, active states)
  *      green  -> jade                (verified / success)
  *      blue   -> steel               (informational / secondary)
  *      red    -> danger              (errors, destructive states)
@@ -67,7 +67,7 @@ const config = {
           info: token('info'),
         },
 
-        // Legacy families re-mapped onto the console ramps.
+        // Legacy families re-mapped onto the terminal ramps.
         cyan: scale('blue', STEPS),
         green: scale('jade', STEPS),
         blue: scale('steel', STEPS),

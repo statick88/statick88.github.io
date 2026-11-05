@@ -31,6 +31,27 @@ function AppLayoutInner({ aside, children }: AppLayoutProps) {
   const { t } = useApp()
 
   useEffect(() => {
+    // Print the complete CV, then restore only the disclosures we opened.
+    let closedBeforePrint: HTMLDetailsElement[] | null = null
+    const expandForPrint = () => {
+      if (closedBeforePrint) return
+      closedBeforePrint = [...document.querySelectorAll<HTMLDetailsElement>('.cv-main details:not([open])')]
+      closedBeforePrint.forEach((details) => { details.open = true })
+    }
+    const restoreAfterPrint = () => {
+      closedBeforePrint?.forEach((details) => { details.open = false })
+      closedBeforePrint = null
+    }
+    window.addEventListener('beforeprint', expandForPrint)
+    window.addEventListener('afterprint', restoreAfterPrint)
+    return () => {
+      window.removeEventListener('beforeprint', expandForPrint)
+      window.removeEventListener('afterprint', restoreAfterPrint)
+      restoreAfterPrint()
+    }
+  }, [])
+
+  useEffect(() => {
     const vitalsEndpoint = import.meta.env.VITE_VITALS_ENDPOINT
     if (vitalsEndpoint) {
       initWebVitalsForProject(vitalsEndpoint)

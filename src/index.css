@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 /*
- * CONSOLE → CORPORATE design tokens.
+ * CYAN TERMINAL design tokens.
  *
- * The sheet is a corporate CV: a navy identity column on the left and a white
- * document column on the right, with blue section titles, hairline rules and
- * level bars — the language of a printed curriculum vitae, not an app.
+ * A cyan-on-midnight identity inspired by aprendejavascript.dev: luminous
+ * accents, quiet navy surfaces and terminal typography. The existing CV
+ * columns, section order, light mode and print layout remain unchanged.
  *
  * Every value is a space-separated RGB triple so plain CSS
  * (`rgb(var(--ct-line) / 0.6)`) and Tailwind
@@ -17,52 +17,52 @@
  */
 
 /* ---------------------------------------------------------------------------
- * Corporate palette (default)
+ * Paper terminal palette (light)
  * ------------------------------------------------------------------------ */
 :root {
   /* Ground and surfaces */
-  --ct-base: 233 236 243; /* #e9ecf3 — page background */
-  --ct-panel: 255 255 255; /* #ffffff — document column */
-  --ct-surface-0: 244 246 250; /* #f4f6fa — inset rows */
-  --ct-surface-1: 237 241 248; /* #edf1f8 */
-  --ct-surface-2: 227 233 244; /* #e3e9f4 */
+  --ct-base: 233 242 248;
+  --ct-panel: 250 253 255;
+  --ct-surface-0: 237 246 250;
+  --ct-surface-1: 226 239 247;
+  --ct-surface-2: 210 229 240;
 
   /* Hairlines */
-  --ct-line: 221 227 237; /* #dde3ed */
-  --ct-line-strong: 198 208 224; /* #c6d0e0 */
+  --ct-line: 202 222 234;
+  --ct-line-strong: 159 192 210;
 
   /* Text hierarchy */
-  --ct-text: 38 48 65; /* #263041 — ink */
-  --ct-subtext-1: 75 85 99; /* #4b5563 */
-  --ct-subtext-0: 104 116 138; /* #68748a */
+  --ct-text: 15 35 52;
+  --ct-subtext-1: 49 74 92;
+  --ct-subtext-0: 76 103 122;
 
-  /* Primary: corporate blue */
-  --ct-accent: 43 92 168; /* #2b5ca8 — section titles, rules */
-  --ct-accent-bright: 53 112 198; /* #3570c6 — links on white */
-  --ct-accent-dim: 234 240 250; /* #eaf0fa — tinted fills */
-  --ct-accent-contrast: 255 255 255; /* #ffffff */
+  /* Primary: accessible deep cyan */
+  --ct-accent: 0 102 130;
+  --ct-accent-bright: 0 105 136;
+  --ct-accent-dim: 222 243 250;
+  --ct-accent-contrast: 255 255 255;
 
-  /* Corporate navy — the identity column */
-  --ct-navy: 30 42 94; /* #1e2a5e */
-  --ct-navy-soft: 42 56 112; /* #2a3870 */
+  /* Midnight navy — the identity column */
+  --ct-navy: 5 19 37;
+  --ct-navy-soft: 17 46 67;
 
   /* Semantic states */
   --ct-ok: 30 142 90; /* #1e8e5a */
   --ct-warn: 180 121 27; /* #b4791b */
   --ct-danger: 192 57 43; /* #c0392b */
-  --ct-info: 43 92 168; /* #2b5ca8 */
+  --ct-info: 0 102 130;
 
   /* Primary blue ramp (Tailwind `cyan` family) */
-  --ct-blue-50: 242 246 253;
-  --ct-blue-100: 226 235 248;
-  --ct-blue-200: 200 216 240;
-  --ct-blue-300: 158 187 228;
-  --ct-blue-400: 100 148 208;
-  --ct-blue-500: 43 92 168;
-  --ct-blue-600: 33 74 141;
-  --ct-blue-700: 26 58 111;
-  --ct-blue-800: 21 47 89;
-  --ct-blue-900: 17 38 72;
+  --ct-blue-50: 236 254 255;
+  --ct-blue-100: 207 250 254;
+  --ct-blue-200: 165 243 252;
+  --ct-blue-300: 103 232 249;
+  --ct-blue-400: 34 211 238;
+  --ct-blue-500: 6 182 212;
+  --ct-blue-600: 8 145 178;
+  --ct-blue-700: 14 116 144;
+  --ct-blue-800: 21 94 117;
+  --ct-blue-900: 22 78 99;
 
   /* Steel ramp (Tailwind `blue` family) — informational */
   --ct-steel-50: 248 250 252;
@@ -155,6 +155,7 @@
   --ct-radius: 3px;
   --ct-radius-sm: 2px;
 
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
@@ -162,31 +163,32 @@
  * Night variant — the same document, read in the dark
  * ------------------------------------------------------------------------ */
 html.dark {
-  --ct-base: 8 13 26; /* #080d1a — navy ground */
-  --ct-panel: 13 20 36; /* #0d1424 — document column */
-  --ct-surface-0: 18 26 44; /* #121a2c */
-  --ct-surface-1: 23 33 55; /* #172137 */
-  --ct-surface-2: 31 44 71; /* #1f2c47 */
+  --ct-base: 3 10 23;
+  --ct-panel: 7 18 35;
+  --ct-surface-0: 10 25 44;
+  --ct-surface-1: 14 33 54;
+  --ct-surface-2: 19 44 65;
 
-  --ct-line: 30 43 70; /* #1e2b46 */
-  --ct-line-strong: 48 65 99; /* #304163 */
+  --ct-line: 23 51 72;
+  --ct-line-strong: 39 80 103;
 
-  --ct-text: 226 234 246; /* #e2eaf6 */
-  --ct-subtext-1: 158 172 196;
-  --ct-subtext-0: 116 132 160;
+  --ct-text: 225 242 250;
+  --ct-subtext-1: 166 196 213;
+  --ct-subtext-0: 126 161 182;
 
-  --ct-accent: 96 150 240; /* #6096f0 */
-  --ct-accent-bright: 133 176 245; /* #85b0f5 */
-  --ct-accent-dim: 22 38 68; /* #162644 */
-  --ct-accent-contrast: 8 13 26;
+  --ct-accent: 34 211 238;
+  --ct-accent-bright: 103 232 249;
+  --ct-accent-dim: 9 46 64;
+  --ct-accent-contrast: 3 10 23;
 
-  --ct-navy: 12 19 38; /* #0c1326 — identity column */
-  --ct-navy-soft: 21 31 58; /* #151f3a */
+  --ct-navy: 4 14 29;
+  --ct-navy-soft: 14 37 57;
 
   --ct-ok: 74 197 134;
   --ct-warn: 226 172 82;
   --ct-danger: 230 108 96;
-  --ct-info: 96 150 240;
+  --ct-info: 56 189 248;
+  color-scheme: dark;
 }
 
 /* ---------------------------------------------------------------------------
@@ -260,7 +262,7 @@ summary:focus-visible,
   max-width: none;
   margin: 0;
   display: grid;
-  grid-template-columns: clamp(300px, 24vw, 420px) minmax(0, 1fr);
+  grid-template-columns: clamp(260px, 20vw, 360px) minmax(0, 1fr);
   background: rgb(var(--ct-panel));
   border: none;
   border-radius: 0;
@@ -270,6 +272,7 @@ summary:focus-visible,
 .cv-aside {
   position: relative;
   background: rgb(var(--ct-navy));
+  border-right: 1px solid rgb(var(--ct-line));
   color: rgb(255 255 255);
   padding: 34px 26px 34px;
   display: flex;
@@ -295,7 +298,10 @@ summary:focus-visible,
 }
 
 .cv-main {
-  padding: 32px 36px 40px;
+  width: 100%;
+  max-width: none;
+  min-height: calc(100dvh - var(--ct-topbar-height));
+  padding: 24px clamp(16px, 2vw, 32px) 32px;
   min-width: 0;
   background: rgb(var(--ct-panel));
 }
@@ -375,7 +381,7 @@ summary:focus-visible,
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgb(var(--ct-accent-bright));
+  color: rgb(var(--ct-blue-300));
 }
 
 .cv-photo-ring {
@@ -392,7 +398,8 @@ summary:focus-visible,
   font-size: 30px;
   font-weight: 700;
   line-height: 1.15;
-  color: rgb(var(--ct-navy));
+  color: rgb(var(--ct-text));
+  letter-spacing: -0.035em;
 }
 
 html.dark .cv-document-name {
@@ -412,7 +419,7 @@ html.dark .cv-document-name {
 .panel {
   background: rgb(var(--ct-panel));
   border: none;
-  border-radius: 0;
+  border-radius: var(--ct-radius);
 }
 
 .panel + .panel {
@@ -622,7 +629,7 @@ html.dark .cv-document-name {
   gap: 6px;
   padding: 3px 9px;
   border: 1px solid rgb(var(--ct-line-strong));
-  border-radius: 999px;
+  border-radius: var(--ct-radius);
   background: rgb(var(--ct-surface-0));
   color: rgb(var(--ct-text));
   font-size: 11px;
@@ -812,6 +819,104 @@ img[loading='lazy'].loaded {
   opacity: 1;
 }
 
+/* Terminal chrome: no scanlines, flicker or animated glow over CV text. */
+.cv-topbar,
+.panel-title,
+.cv-document-role,
+.cv-identity-role,
+.chip {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.cv-aside .panel-title {
+  color: rgb(var(--ct-blue-300));
+}
+
+.cv-main > header {
+  border-bottom: 1px solid rgb(var(--ct-line));
+  padding-bottom: 24px;
+}
+
+html.dark .cv-main > header {
+  background: radial-gradient(ellipse at top right, rgb(var(--ct-accent) / 0.07), transparent 70%);
+}
+
+.cv-photo-ring {
+  border-color: rgb(var(--ct-blue-300) / 0.65);
+  box-shadow: 0 0 24px rgb(var(--ct-blue-400) / 0.12);
+}
+
+/* Hybrid portfolio: legacy editorial cards, current cyan terminal tokens. */
+.cv-portfolio-hero {
+  padding: 32px;
+  border: 1px solid rgb(var(--ct-line-strong));
+  border-top: 3px solid rgb(var(--ct-accent));
+  border-radius: var(--ct-radius);
+  background: linear-gradient(135deg, rgb(var(--ct-accent) / 0.08), transparent 70%);
+}
+
+.cv-hero-eyebrow,
+.cv-section-number {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgb(var(--ct-subtext-0));
+}
+
+.cv-hero-eyebrow { margin-bottom: 24px; text-transform: uppercase; }
+.cv-hero-eyebrow span { color: rgb(var(--ct-accent)); padding: 0 8px; }
+.cv-hero-intro { max-width: 48ch; margin-top: 16px; font-size: 18px; color: rgb(var(--ct-subtext-1)); }
+.cv-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 24px; }
+.cv-primary-action { padding: 12px 16px; border-radius: var(--ct-radius); background: rgb(var(--ct-accent)); color: rgb(var(--ct-accent-contrast)); font-weight: 700; }
+.cv-primary-action:hover { box-shadow: 0 0 0 4px rgb(var(--ct-accent) / 0.12); }
+.cv-legacy-link { font-size: 12px; }
+
+.cv-section-card {
+  min-width: 0;
+  padding: 24px;
+  margin-bottom: 16px;
+  align-self: start;
+  border: 1px solid rgb(var(--ct-line));
+  border-radius: var(--ct-radius);
+  background: rgb(var(--ct-surface-0) / 0.6);
+  transition: border-color 0.15s ease;
+}
+
+.cv-section-card:hover,
+.cv-section-card:focus-within { border-color: rgb(var(--ct-accent) / 0.55); }
+.cv-section-heading { display: flex; align-items: baseline; gap: 12px; }
+.cv-section-heading h2 { font-size: 18px; font-weight: 650; text-transform: capitalize; letter-spacing: -0.02em; }
+.cv-section-number { color: rgb(var(--ct-accent)); }
+.cv-section-preview { color: rgb(var(--ct-subtext-1)); margin: 12px 0 16px; max-width: 60ch; }
+.cv-section-disclosure > summary { display: flex; align-items: center; min-height: 44px; width: fit-content; cursor: pointer; list-style: none; color: rgb(var(--ct-accent-bright)); font-size: 12px; font-weight: 600; }
+.cv-section-disclosure > summary::-webkit-details-marker { display: none; }
+.cv-section-disclosure > summary:hover { text-decoration: underline; }
+.cv-section-disclosure > summary span[aria-hidden] { font-size: 18px; margin-right: 8px; }
+.cv-disclosure-label { font-size: 12px; }
+.cv-disclosure-open { display: none; }
+.cv-section-disclosure[open] > summary .cv-disclosure-closed { display: none; }
+.cv-section-disclosure[open] > summary .cv-disclosure-open { display: inline; }
+.cv-section-content { padding-top: 24px; border-top: 1px solid rgb(var(--ct-line)); margin-top: 8px; }
+.cv-section-content > .panel { background: transparent; }
+
+@media (min-width: 1200px) {
+  .cv-main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-content: start; }
+  .cv-main > header,
+  .cv-main > footer,
+  .cv-section-card:has(> .cv-section-disclosure[open]) { grid-column: 1 / -1; }
+  .cv-section-card { margin-bottom: 0; }
+  .cv-portfolio-hero { margin-bottom: 8px; }
+}
+
+@media (max-width: 640px) {
+  .cv-portfolio-hero,
+  .cv-section-card { padding: 20px; }
+  .cv-hero-intro { font-size: 16px; }
+  .cv-disclosure-label { display: none; }
+  .cv-section-disclosure > summary { min-width: 44px; justify-content: center; border: 1px solid rgb(var(--ct-line-strong)); border-radius: var(--ct-radius); }
+  .cv-section-disclosure > summary span[aria-hidden] { margin-right: 0; }
+}
+
 /* ---------------------------------------------------------------------------
  * Responsive — the sheet becomes one column on small screens
  * ------------------------------------------------------------------------ */
@@ -876,6 +981,18 @@ img[loading='lazy'].loaded {
  * Print — the CV, without the page furniture
  * ------------------------------------------------------------------------ */
 @media print {
+  .cv-main { display: block; }
+  .cv-portfolio-hero,
+  .cv-section-card { border: none; background: white !important; padding: 0; margin-bottom: 16px; }
+  .cv-section-heading,
+  .cv-section-preview,
+  .cv-section-disclosure > summary,
+  .cv-hero-eyebrow,
+  .cv-hero-intro { display: none !important; }
+  .cv-section-content { border: none; padding: 0; margin: 0; }
+  .cv-section-disclosure::details-content { content-visibility: visible; }
+  .cv-section-disclosure > .cv-section-content { display: block !important; }
+
   .no-print {
     display: none !important;
   }

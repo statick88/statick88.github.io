@@ -152,7 +152,7 @@ describe('design tokens', () => {
     })
   })
 
-  it('keeps the accent inside the dark-blue family (hue between 205 and 235 degrees)', () => {
+  it('uses a hacker cyan accent (hue between 185 and 200 degrees) on navy surfaces', () => {
     const [r, g, b] = read(dark, 'accent')
     const max = Math.max(r, g, b)
     const min = Math.min(r, g, b)
@@ -164,7 +164,11 @@ describe('design tokens', () => {
       else hue = 60 * ((r - g) / delta + 4)
     }
     if (hue < 0) hue += 360
-    expect(hue).toBeGreaterThanOrEqual(205)
-    expect(hue).toBeLessThanOrEqual(235)
+    expect(hue).toBeGreaterThanOrEqual(185)
+    expect(hue).toBeLessThanOrEqual(200)
+    const [br, bg, bb] = read(dark, 'base')
+    expect(bb).toBeGreaterThan(bg)
+    expect(bg).toBeGreaterThan(br)
+    expect(bb).toBeLessThan(32)
   })
 })

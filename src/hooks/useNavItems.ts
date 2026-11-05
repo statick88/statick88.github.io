@@ -47,6 +47,8 @@ export function useNavItems(): NavItem[] {
 export function scrollToSection(sectionId: string): void {
   const el = document.getElementById(sectionId)
   if (el) {
+    const disclosure = el.querySelector<HTMLDetailsElement>('.cv-section-disclosure')
+    if (disclosure) disclosure.open = true
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }

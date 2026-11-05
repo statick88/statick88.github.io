@@ -15,6 +15,8 @@ import { ProfileProvider, useProfileContext } from '@/context/ProfileContext'
 import { SECTION } from '@/config/navigation'
 import { AppLayout } from '@/components/layout/AppLayout'
 import IdentityColumn from '@/components/IdentityColumn'
+import { CompactSection } from '@/components/CompactSection'
+import { scrollToSection } from '@/hooks/useNavItems'
 
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ServicesPanel } from '@/components/panels/ServicesPanel'
@@ -71,9 +73,13 @@ function AppInner() {
   return (
     <AppLayout aside={aside}>
       {/* Document header */}
-      <header className="mb-8">
+      <header className="cv-portfolio-hero mb-8">
+        <p className="cv-hero-eyebrow">Statick <span>/</span> Developer</p>
         <h1 className="cv-document-name">{profile.name}</h1>
         <p className="cv-document-role">{t(profile.role.es, profile.role.en)}</p>
+        <p className="cv-hero-intro">
+          {t('Construyo software. Investigo seguridad. Comparto conocimiento.', 'I build software. Research security. Share knowledge.')}
+        </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <a href={`mailto:${contact.email}`} className="chip chip-accent">
             {contact.email}
@@ -81,107 +87,115 @@ function AppInner() {
           <span className="chip chip-muted">{contact.location}</span>
           <span className="chip chip-muted">{t('100% remoto', '100% remote')}</span>
         </div>
+        <div className="cv-hero-actions no-print">
+          <button type="button" className="cv-primary-action" onClick={() => scrollToSection(SECTION.servicios)}>
+            {t('Explorar servicios', 'Explore services')} <span aria-hidden="true">↗</span>
+          </button>
+          <a href="https://hub.docker.com/r/statick/my_site" target="_blank" rel="noopener noreferrer" className="cv-legacy-link">
+            {t('Archivo · mi sitio en 2023', 'Archive · my site in 2023')} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </header>
 
-      <section id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
+      <CompactSection id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
         <ProfileCard profile={profile} metrics={metrics} headline={adaptHeadline()} />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.servicios}
         aria-label={t('servicios', 'services')}
         className="scroll-mt-16"
       >
         <ServicesPanel />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.encargos}
         aria-label={t('encargos', 'engagements')}
         className="scroll-mt-16"
       >
         <EngagementsPanel />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.referencias}
         aria-label={t('referencias', 'references')}
         className="scroll-mt-16"
       >
         <ReferencesPanel />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.eventos}
         aria-label={t('eventos', 'events')}
         className="scroll-mt-16"
       >
         <EventsPanel />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.experiencia}
         aria-label={t('experiencia', 'experience')}
         className="scroll-mt-16"
       >
         <ExperienceTimeline experience={adaptExperience()} />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.educacion}
         aria-label={t('educación', 'education')}
         className="scroll-mt-16"
       >
         <EducationCard education={adaptEducation()} />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.habilidades}
         aria-label={t('habilidades', 'skills')}
         className="scroll-mt-16"
       >
         <SkillsCard skills={skills} />
-      </section>
+      </CompactSection>
 
-      <section id={SECTION.proyectos} aria-label={t('proyectos', 'projects')} className="scroll-mt-16">
+      <CompactSection id={SECTION.proyectos} aria-label={t('proyectos', 'projects')} className="scroll-mt-16">
         <ProjectsGrid projects={adaptProjects()} />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.certificaciones}
         aria-label={t('certificaciones', 'certifications')}
         className="scroll-mt-16"
       >
         <CertificationsList certifications={adaptCertifications()} />
-      </section>
+      </CompactSection>
 
-      <section id={SECTION.cursos} aria-label={t('cursos', 'courses')} className="scroll-mt-16">
+      <CompactSection id={SECTION.cursos} aria-label={t('cursos', 'courses')} className="scroll-mt-16">
         <CoursesPanel />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.investigacion}
         aria-label={t('investigación', 'research')}
         className="scroll-mt-16"
       >
         <ResearchPanel />
-      </section>
+      </CompactSection>
 
-      <section
+      <CompactSection
         id={SECTION.exploitarium}
         aria-label={t('exploitarium', 'exploitarium')}
         className="scroll-mt-16"
       >
         <ExploitariumSummary metrics={metrics} />
-      </section>
+      </CompactSection>
 
-      <section id={SECTION.aportes} aria-label={t('aportes', 'contributions')} className="scroll-mt-16">
+      <CompactSection id={SECTION.aportes} aria-label={t('aportes', 'contributions')} className="scroll-mt-16">
         <ContributionsPanel />
-      </section>
+      </CompactSection>
 
-      <section id={SECTION.plugins} aria-label={t('plugins', 'plugins')} className="scroll-mt-16">
+      <CompactSection id={SECTION.plugins} aria-label={t('plugins', 'plugins')} className="scroll-mt-16">
         <PluginsPanel />
-      </section>
+      </CompactSection>
 
       {/* Document footer */}
       <footer className="cv-footer">
