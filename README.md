@@ -25,7 +25,12 @@ pnpm lint           # ESLint
 pnpm test           # Vitest
 pnpm validate:cv    # Validate cv-data.yaml against Zod schemas
 pnpm export:cv      # Export ATS-optimized JSON/YAML/MD
+pnpm audit          # Unsuppressed dependency advisory check
 ```
+
+## Dependency security
+
+Use Node 22 (`fnm use`) and pnpm 12.14.0, then `pnpm install --frozen-lockfile`. The November 2026 remediation upgrades dependencies within their existing majors and records patched transitive minimums in `pnpm-workspace.yaml`. Local and CI audits no longer suppress the previous Vite/Vitest advisories. Keep the lockfile and these floors together; lowering a floor requires confirming that every parent resolves to a secure release.
 
 ## Compact portfolio
 

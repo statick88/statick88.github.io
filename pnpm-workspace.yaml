@@ -1,12 +1,15 @@
 allowBuilds:
   esbuild: true
 
-# Las dos excepciones de audit (el servidor UI de vitest y el manejo de .map
-# de vite: solo herramientas de desarrollo) viven aqui porque pnpm 12 escribe
-# esta clave. OJO: pnpm 12.14 la escribe pero todavia no la lee, asi que hoy el
-# audit local y el del CI se comportan igual solo por los flags --ignore del
-# comando del CI. Cuando pnpm la lea, el flag podra dejar de ser necesario.
-auditConfig:
-  ignoreGhsas:
-    - GHSA-5xrq-8626-4rwp
-    - GHSA-4w7w-66w2-5vf9
+# Same-major security floors for transitive dependencies retained by upstream
+# lockfile resolutions. Keep local and CI audits unsuppressed; remove a floor
+# only when every parent resolves to an equally safe release without it.
+overrides:
+  brace-expansion@1: ^1.1.21
+  postcss@8: ^8.5.23
+  undici@7: ^7.30.1
+  nanoid@3: ^3.3.18
+  browserslist@4: ^4.28.7
+  baseline-browser-mapping@2: ^2.11.0
+  source-map-js@1: ^1.2.2
+  postcss-selector-parser@6: ^6.1.5
