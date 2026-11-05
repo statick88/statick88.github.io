@@ -33,6 +33,29 @@ contact:
 # Experience
 # =============================================================================
 experience:
+  - company: "Uteam"
+    position:
+      es: "Ingeniero de Software"
+      en: "Software Engineer"
+    startDate: "2026-08-01"
+    endDate: "2026-09-30"
+    isCurrent: false
+    summary:
+      es: "Ingeniería de software en modalidad remota: automatización, testing, ciberseguridad, AWS y DevSecOps."
+      en: "Remote software engineering: automation, testing, cybersecurity, AWS and DevSecOps."
+    highlights:
+      es:
+        - "Participé en actividades de ingeniería de software, automatización y testing, junto con prácticas de seguridad informática, pentesting, Red Team, AWS y DevSecOps."
+      en:
+        - "Participated in software engineering, automation and testing activities, alongside cybersecurity, pentesting, Red Team, AWS and DevSecOps practices."
+    technologies:
+      - "Testing"
+      - "Automatización"
+      - "AWS"
+      - "DevSecOps"
+      - "Pentesting"
+    hasCertificate: true
+
   - company: "Meeting Planner AI System"
     position:
       es: "Diseñador y arquitecto de software (proyecto propio)"
@@ -98,7 +121,7 @@ experience:
     position:
       es: "Docente Ocasional Tiempo Completo - DCC"
       en: "Full-time Professor - Computer Science Dept."
-    startDate: "2023-04-01"
+    startDate: "2023-04-26"
     endDate: "2024-10-31"
     isCurrent: false
     summary:
@@ -171,6 +194,26 @@ experience:
     technologies: ["Programación", "Ofimática avanzada", "Soporte técnico", "Hardware", "Redes"]
 
 education:
+  - institution: "Universidad Regional Autónoma de los Andes (UNIANDES)"
+    program:
+      es: "Ingeniería de Software"
+      en: "Software Engineering"
+    degree: "Bachelor"
+    startDate: "2026-10-01"
+    endDate: null
+    isCurrent: true
+    gpa: null
+    status:
+      es: "En curso · graduación estimada en 2028"
+      en: "In progress · expected graduation in 2028"
+    details:
+      - es: "Inicio: octubre de 2026. Plan previsto: 3 semestres más tesis; graduación sujeta a aprobación."
+        en: "Started October 2026. Planned path: 3 semesters plus a thesis; graduation subject to completion."
+      - es: "Asignaturas documentadas: Aplicaciones Web; Diseño y Arquitectura de Software."
+        en: "Documented coursework: Web Applications; Software Design and Architecture."
+      - es: "Trabajo académico: prácticas PHP/.NET y CRUD de clientes; Taller 1.1 de dominios de software enviado; Taller 1.2 de modelos de proceso elaborado, sin entrega confirmada."
+        en: "Academic work: PHP/.NET practice and customer CRUD; Workshop 1.1 on software domains submitted; Workshop 1.2 on process models prepared, submission not confirmed."
+
   - institution: "Universidad Complutense de Madrid"
     program:
       es: "Máster en Ciberseguridad Defensiva y Ofensiva"
@@ -196,8 +239,8 @@ education:
 
   - institution: "Universidad Nacional de Loja"
     program:
-      es: "Licenciatura en Informática Educativa"
-      en: "Bachelor's in Educational Informatics"
+      es: "Licenciatura en Ciencias de la Educación, mención Informática Educativa"
+      en: "Bachelor's in Education Sciences, Educational Informatics"
     degree: "Bachelor"
     startDate: "2007-09-01"
     endDate: "2011-02-28"
@@ -485,6 +528,70 @@ languages:
 # instead of carrying an invented year. The ATS export reads that marker as
 # "no date" and omits the field instead of publishing the marker.
 certifications:
+  - name:
+      es: "Formación del Profesor Tutor en Educación en Línea"
+      en: "Formación del Profesor Tutor en Educación en Línea"
+    issuer: "Universidad Internacional de La Rioja"
+    date: "2020-07-19"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Databases in the Cloud with AWS RDS"
+      en: "Databases in the Cloud with AWS RDS"
+    issuer: "ESPE"
+    date: "2023-10-04"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Visión por Computador"
+      en: "Visión por Computador"
+    issuer: "ESPE"
+    date: "2024-05-09"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Docker – Level 1"
+      en: "Docker – Level 1"
+    issuer: "KodeKloud"
+    date: "2026-02-18"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Fundamentos de Ingeniería de Software"
+      en: "Fundamentos de Ingeniería de Software"
+    issuer: "Platzi"
+    date: "2023-01-17"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Introducción a los Patrones de Diseño de Software"
+      en: "Introducción a los Patrones de Diseño de Software"
+    issuer: "Platzi"
+    date: "2023-03-16"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Fundamentos de Ingeniería de Datos"
+      en: "Fundamentos de Ingeniería de Datos"
+    issuer: "Platzi"
+    date: "2023-12-08"
+    status: "active"
+    credentialId: null
+
+  - name:
+      es: "Introducción al Technical Writing y Documentación de Código"
+      en: "Introducción al Technical Writing y Documentación de Código"
+    issuer: "Platzi"
+    date: "2023-03-24"
+    status: "active"
+    credentialId: null
+
   - name:
       es: "Magíster en Cs. y Tec. de la Computación"
       en: "Master of Science and Technology in Computer Science"
@@ -1020,4 +1127,4 @@ events:
 
 # Bloque de práctica (organización). JSON = YAML válido (1.2).
 practice:
-  {"title": {"es": "Consultoría de Seguridad y Software", "en": "Security & Software Consulting"}, "positioning": {"es": "Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, 134+ certificaciones activas y 400+ repositorios públicos.", "en": "Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, 134+ active certifications, and 400+ public repositories."}, "serviceIds": ["fullstack", "security", "consulting", "training"], "toolNames": ["MindLedger", "course-of-cybersecurity", "desarrollo-software-seguro", "cyber-guardians", "Course_of_python", "jarvis-os"], "training": {"courses": 22, "hours": 200, "students": 92, "averageScore": 93.4, "institutions": 6}, "engagements": [{"period": "Oct 2026", "sector": {"es": "E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)", "en": "E-commerce with a 3D client (name withheld under a confidentiality agreement)"}, "scope": {"es": "Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días", "en": "Authorized production pentest, with a signed authorization letter and a 2-day window"}, "outcome": {"es": "109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación", "en": "109 subdomains inventoried, a matrix of 15 verified CVEs, 6 adversary chains, and a remediation plan"}}, {"period": "Jul 2026", "sector": {"es": "Aplicación web con gestión de agendas", "en": "Web application with scheduling management"}, "scope": {"es": "Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente", "en": "Security test over functional findings, with the client's prior authorization"}, "outcome": {"es": "Hallazgos adjuntos y priorizados con severidad y remediación", "en": "Findings attached and prioritized with severity and remediation"}}, {"period": "Sep 2025", "sector": {"es": "Proyecto web (nombre bajo acuerdo de confidencialidad)", "en": "Web project (name withheld under a confidentiality agreement)"}, "scope": {"es": "Carta de autorización previa, con alcance y ventana acordados antes de ejecutar", "en": "Prior authorization letter, with scope and window agreed before execution"}, "outcome": {"es": "Ejecución dentro del alcance firmado, sin tocar activos de terceros", "en": "Execution within the signed scope, without touching third-party assets"}}], "referenceNames": ["ESPE - Universidad de las Fuerzas Armadas", "UIDE - Universidad Internacional del Ecuador (Ext. Loja)", "ABACOM", "Codings Academy", "Instituto Superior Tecnológico Juan Montalvo", "APC - Antonio Peña Celi"]}
+  {"title": {"es": "Consultoría de Seguridad y Software", "en": "Security & Software Consulting"}, "positioning": {"es": "Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, formación continua documentada y 400+ repositorios públicos.", "en": "Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, documented continuing education, and 400+ public repositories."}, "serviceIds": ["fullstack", "security", "consulting", "training"], "toolNames": ["MindLedger", "course-of-cybersecurity", "desarrollo-software-seguro", "cyber-guardians", "Course_of_python", "jarvis-os"], "training": {"courses": 22, "hours": 200, "students": 92, "averageScore": 93.4, "institutions": 6}, "engagements": [{"period": "Oct 2026", "sector": {"es": "E-commerce con cliente 3D (nombre bajo acuerdo de confidencialidad)", "en": "E-commerce with a 3D client (name withheld under a confidentiality agreement)"}, "scope": {"es": "Pentest autorizado en producción, con carta de autorización firmada y ventana de 2 días", "en": "Authorized production pentest, with a signed authorization letter and a 2-day window"}, "outcome": {"es": "109 subdominios inventariados, matriz de 15 CVE verificadas, 6 cadenas de adversario y plan de remediación", "en": "109 subdomains inventoried, a matrix of 15 verified CVEs, 6 adversary chains, and a remediation plan"}}, {"period": "Jul 2026", "sector": {"es": "Aplicación web con gestión de agendas", "en": "Web application with scheduling management"}, "scope": {"es": "Prueba de seguridad sobre hallazgos funcionales, previa autorización del cliente", "en": "Security test over functional findings, with the client's prior authorization"}, "outcome": {"es": "Hallazgos adjuntos y priorizados con severidad y remediación", "en": "Findings attached and prioritized with severity and remediation"}}, {"period": "Sep 2025", "sector": {"es": "Proyecto web (nombre bajo acuerdo de confidencialidad)", "en": "Web project (name withheld under a confidentiality agreement)"}, "scope": {"es": "Carta de autorización previa, con alcance y ventana acordados antes de ejecutar", "en": "Prior authorization letter, with scope and window agreed before execution"}, "outcome": {"es": "Ejecución dentro del alcance firmado, sin tocar activos de terceros", "en": "Execution within the signed scope, without touching third-party assets"}}], "referenceNames": ["ESPE - Universidad de las Fuerzas Armadas", "UIDE - Universidad Internacional del Ecuador (Ext. Loja)", "ABACOM", "Codings Academy", "Instituto Superior Tecnológico Juan Montalvo", "APC - Antonio Peña Celi"]}

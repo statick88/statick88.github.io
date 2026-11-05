@@ -35,6 +35,12 @@ The interface supports Spanish and English, native keyboard-operable disclosures
 
 Legacy reference: [statick/my_site on Docker Hub](https://hub.docker.com/r/statick/my_site), public tag `2.0`, pushed December 8, 2023, digest `sha256:d908c1a67ead951f5e2013028cd44c844e0c373c337251270c382a5ad4d023c3`. Only its static HTML/CSS was inspected; old dependencies and biographical claims were not imported.
 
+## CV evidence and ongoing studies
+
+The November 2026 refresh adds UNIANDES Software Engineering **in progress** (October 2026 start; **estimated** graduation in 2028, three semesters plus thesis), documented academic work, Uteam employment and eight verified continuing-education courses. Ongoing studies may have an unknown end date; this is not an awarded qualification. The UI, PDF, no-JavaScript fallback and structured exports retain that status. Education `status` is included alongside the program in structured export fields so downstream consumers do not mistake an estimate for completion.
+
+See [the evidence map](docs/cv-evidence-2026.md) for source filenames and limits. Private certificates and OCR output are not published. The former unsupported “134+ active certifications” claim has been replaced with a count of curated formation entries.
+
 ## Data Architecture
 
 All CV data lives in **`src/data/cv-data.yaml`** — the single source of truth.

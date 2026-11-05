@@ -33,6 +33,13 @@ export interface AtsFallbackData {
     endDate?: string | null
     isCurrent?: boolean
   }>
+  education?: Array<{
+    institution?: string
+    program?: { es?: string; en?: string } | string
+    startDate?: string
+    endDate?: string | null
+    status?: { es?: string; en?: string } | string
+  }>
   services?: Array<{
     id?: string
     title?: { es?: string; en?: string } | string
@@ -107,6 +114,16 @@ export function buildFallbackHtml(data: AtsFallbackData, lang: 'es' | 'en' = 'es
       lines.push(
         `<li><strong>${escapeHtml(text(job.position, lang))}</strong> — ${escapeHtml(job.company)} (${escapeHtml(period)})</li>`,
       )
+    }
+    lines.push('</ul>')
+  }
+
+  const education = data.education ?? []
+  if (education.length) {
+    lines.push(`<h2>${lang === 'es' ? 'Educación' : 'Education'}</h2><ul>`)
+    for (const entry of education) {
+      const period = [entry.startDate, entry.endDate || (lang === 'es' ? 'Presente' : 'Present')].filter(Boolean).join(' - ')
+      lines.push(`<li><strong>${escapeHtml(text(entry.program, lang))}</strong> — ${escapeHtml(entry.institution)} (${escapeHtml(period)}) ${escapeHtml(text(entry.status, lang))}</li>`)
     }
     lines.push('</ul>')
   }

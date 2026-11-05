@@ -16,7 +16,7 @@ Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (
 
 ## Mi Práctica
 
-Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, 134+ certificaciones activas y 400+ repositorios públicos.
+Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, formación continua documentada y 400+ repositorios públicos.
 
 ### Servicios
 
@@ -58,6 +58,13 @@ Práctica independiente de seguridad y software: auditoría autorizada de aplica
 
 ## Experiencia Laboral
 
+### Ingeniero de Software at Uteam
+2026-08-01 - 2026-09-30
+
+- Participé en actividades de ingeniería de software, automatización y testing, junto con prácticas de seguridad informática, pentesting, Red Team, AWS y DevSecOps.
+
+**Stack:** Testing, Automatización, AWS, DevSecOps, Pentesting
+
 ### Diseñador y arquitecto de software (proyecto propio) at Meeting Planner AI System
 2026-01-01 Presente
 
@@ -91,7 +98,7 @@ https://codingsacademy.com
 ### Docente Ocasional Tiempo Completo - DCC at ESPE - Universidad de las Fuerzas Armadas
 https://www.espe.edu.ec
 
-2023-04-01 - 2024-10-31
+2023-04-26 - 2024-10-31
 
 - Dicté las asignaturas de Programación, Bases de Datos e Ingeniería de Software dentro del Departamento de Ciencias de la Computación.
 - Trabajo con foco en arquitectura de software, modelado de datos relacionales y prácticas de ingeniería aplicadas a casos reales.
@@ -130,17 +137,25 @@ https://apc.edu.ec/
 
 ## Educación
 
+### Ingeniería de Software - Universidad Regional Autónoma de los Andes (UNIANDES)
+Bachelor
+2026-10-01 Presente
+En curso · graduación estimada en 2028
+Inicio: octubre de 2026. Plan previsto: 3 semestres más tesis; graduación sujeta a aprobación.
+Asignaturas documentadas: Aplicaciones Web; Diseño y Arquitectura de Software.
+Trabajo académico: prácticas PHP/.NET y CRUD de clientes; Taller 1.1 de dominios de software enviado; Taller 1.2 de modelos de proceso elaborado, sin entrega confirmada.
+
 ### Máster en Ciberseguridad Defensiva y Ofensiva - Universidad Complutense de Madrid
 Master
 2026-02-01 - 2027-12-31
-**Puntuación:** En curso
+En curso
 
 ### Maestría en Ciencias y Tecnologías de la Computación - Universidad Técnica Particular de Loja
 Master
 2018-09-01 - 2021-02-28
 **Puntuación:** 4.0
 
-### Licenciatura en Informática Educativa - Universidad Nacional de Loja
+### Licenciatura en Ciencias de la Educación, mención Informática Educativa - Universidad Nacional de Loja
 Bachelor
 2007-09-01 - 2011-02-28
 **Puntuación:** 4.0
@@ -189,6 +204,14 @@ Bachelor
 
 ## Certificaciones
 
+- **Formación del Profesor Tutor en Educación en Línea** - Universidad Internacional de La Rioja (Activo)
+- **Databases in the Cloud with AWS RDS** - ESPE (Activo)
+- **Visión por Computador** - ESPE (Activo)
+- **Docker – Level 1** - KodeKloud (Activo)
+- **Fundamentos de Ingeniería de Software** - Platzi (Activo)
+- **Introducción a los Patrones de Diseño de Software** - Platzi (Activo)
+- **Fundamentos de Ingeniería de Datos** - Platzi (Activo)
+- **Introducción al Technical Writing y Documentación de Código** - Platzi (Activo)
 - **Magíster en Cs. y Tec. de la Computación** - UTPL (Activo)
 - **Licenciado en Informática Educativa** - UNL (Activo)
 - **Reverse Engineering & Exploit Development** - UCM (Activo)
@@ -234,7 +257,7 @@ Resolución de Problemas · Trabajo en Equipo · Comunicación · Adaptabilidad 
 
 #### Idiomas
 - Español: Nativo
-- Inglés: Avanzado
+- Inglés: Intermedio (B1+)
 - Italiano: Básico
 - Portugués: Básico
 ## Publicaciones e Investigación
@@ -255,4 +278,4 @@ Resolución de Problemas · Trabajo en Equipo · Comunicación · Adaptabilidad 
 - **55 / 898** — Notebooks / sources en NotebookLM _(Fuente: nlm --version (v0.6.8))_
 - **15 / 22 retos** — Retos resueltos en el CTF de EvilSec (Ekoparty 2026) _(Fuente: github.com/statick88/ctf-evilsec-2026 (auditado contra el scoreboard))_
 - **3.er puesto** — CTF de EvilSec (Ekoparty 2026), 3550 puntos _(Fuente: Correo de la organizacion del evento, 2026-10-19)_
-- **134+** — Certificaciones categorizadas _(Fuente: ~/Documents/Certificados/)_
+- **45** — Entradas de formación listadas _(Fuente: ~/Documents/Certificados/)_

@@ -65,6 +65,7 @@ export interface Certification {
   readonly name: string
   readonly issuer: string
   readonly status: CertificationStatus
+  readonly date?: string
 }
 
 export interface WorkExperience {
@@ -85,9 +86,12 @@ export interface Education {
   readonly area: BilingualText
   readonly url: string
   readonly startDate: string // ISO 8601: YYYY-MM-DD
-  readonly endDate: string   // ISO 8601: YYYY-MM-DD
+  readonly endDate: string   // ISO date, or empty for current studies without a known end date
   readonly studyType: StudyType
   readonly score: string
+  readonly isCurrent?: boolean
+  readonly status?: BilingualText
+  readonly details?: readonly BilingualText[]
 }
 
 export interface SoftSkill {

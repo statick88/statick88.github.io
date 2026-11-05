@@ -16,7 +16,7 @@ Master's in Computer Science (UTPL). MSc Cybersecurity in progress (UCM). 10+ ye
 
 ## My Practice
 
-Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, 134+ active certifications, and 400+ public repositories.
+Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, documented continuing education, and 400+ public repositories.
 
 ### Services
 
@@ -58,6 +58,13 @@ Independent security and software practice: authorized application auditing, pro
 
 ## Work Experience
 
+### Software Engineer at Uteam
+2026-08-01 - 2026-09-30
+
+- Participated in software engineering, automation and testing activities, alongside cybersecurity, pentesting, Red Team, AWS and DevSecOps practices.
+
+**Stack:** Testing, Automatización, AWS, DevSecOps, Pentesting
+
 ### Software Designer and Architect (own project) at Meeting Planner AI System
 2026-01-01 Present
 
@@ -91,7 +98,7 @@ https://codingsacademy.com
 ### Full-time Professor - Computer Science Dept. at ESPE - Universidad de las Fuerzas Armadas
 https://www.espe.edu.ec
 
-2023-04-01 - 2024-10-31
+2023-04-26 - 2024-10-31
 
 - Taught Programming, Databases and Software Engineering within the Computer Science Department.
 - Worked on software architecture, relational data modelling and engineering practices applied to real cases.
@@ -130,17 +137,25 @@ https://apc.edu.ec/
 
 ## Education
 
+### Software Engineering - Universidad Regional Autónoma de los Andes (UNIANDES)
+Bachelor
+2026-10-01 Present
+In progress · expected graduation in 2028
+Started October 2026. Planned path: 3 semesters plus a thesis; graduation subject to completion.
+Documented coursework: Web Applications; Software Design and Architecture.
+Academic work: PHP/.NET practice and customer CRUD; Workshop 1.1 on software domains submitted; Workshop 1.2 on process models prepared, submission not confirmed.
+
 ### Master's in Defensive and Offensive Cybersecurity - Universidad Complutense de Madrid
 Master
 2026-02-01 - 2027-12-31
-**Score:** En curso
+In progress
 
 ### Master's in Computer Science and Technologies - Universidad Técnica Particular de Loja
 Master
 2018-09-01 - 2021-02-28
 **Score:** 4.0
 
-### Bachelor's in Educational Computing - Universidad Nacional de Loja
+### Bachelor's in Education Sciences, Educational Informatics - Universidad Nacional de Loja
 Bachelor
 2007-09-01 - 2011-02-28
 **Score:** 4.0
@@ -189,6 +204,14 @@ Bachelor
 
 ## Certifications
 
+- **Formación del Profesor Tutor en Educación en Línea** - Universidad Internacional de La Rioja (Active)
+- **Databases in the Cloud with AWS RDS** - ESPE (Active)
+- **Visión por Computador** - ESPE (Active)
+- **Docker – Level 1** - KodeKloud (Active)
+- **Fundamentos de Ingeniería de Software** - Platzi (Active)
+- **Introducción a los Patrones de Diseño de Software** - Platzi (Active)
+- **Fundamentos de Ingeniería de Datos** - Platzi (Active)
+- **Introducción al Technical Writing y Documentación de Código** - Platzi (Active)
 - **Magíster en Cs. y Tec. de la Computación** - UTPL (Active)
 - **Licenciado en Informática Educativa** - UNL (Active)
 - **Reverse Engineering & Exploit Development** - UCM (Active)
@@ -234,7 +257,7 @@ Problem Solving · Teamwork · Communication · Adaptability · Time Management 
 
 #### Languages
 - Español: Native
-- Inglés: Advanced
+- Inglés: Intermediate (B1+)
 - Italiano: Basic
 - Portugués: Basic
 ## Publications and Research
@@ -255,4 +278,4 @@ Problem Solving · Teamwork · Communication · Adaptability · Time Management 
 - **55 / 898** — Notebooks / sources in NotebookLM _(Source: nlm --version (v0.6.8))_
 - **15 / 22 retos** — Challenges solved at the EvilSec CTF (Ekoparty 2026) _(Source: github.com/statick88/ctf-evilsec-2026 (auditado contra el scoreboard))_
 - **3.er puesto** — EvilSec CTF (Ekoparty 2026), 3,550 points _(Source: Correo de la organizacion del evento, 2026-10-19)_
-- **134+** — Categorized certifications _(Source: ~/Documents/Certificados/)_
+- **45** — Listed formation entries _(Source: ~/Documents/Certificados/)_

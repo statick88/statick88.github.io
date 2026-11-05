@@ -99,8 +99,10 @@ export function adaptEducation(): EducationEntry[] {
     degree: e.studyType,
     startDate: e.startDate,
     endDate: e.endDate || null,
-    isCurrent: false,
-    gpa: e.score || null,
+    isCurrent: e.isCurrent ?? false,
+    gpa: e.isCurrent ? null : e.score || null,
+    status: e.status,
+    details: e.details ? [...e.details] : undefined,
   }))
 }
 
@@ -110,7 +112,7 @@ export function adaptCertifications(): CertificationEntry[] {
   return certifications.map((c) => ({
     name: { es: c.name, en: c.name },
     issuer: c.issuer,
-    date: '',
+    date: c.date ?? '',
     status: c.status,
     credentialId: null,
   }))

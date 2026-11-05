@@ -57,7 +57,7 @@ interface EducationEntry {
   thesis?: BilingualText
   honors?: string[]
   gpa?: string
-  status?: string
+  status?: BilingualText | string
 }
 
 interface CertificationEntry {
@@ -218,7 +218,7 @@ export function toATS(data: RawCVData): ATSData {
     education: data.education.map((edu) => ({
       institution: edu.institution,
       degree: edu.degree,
-      field: edu.field?.en || edu.program?.en,
+      field: [edu.field?.en || edu.program?.en, typeof edu.status === 'string' ? edu.status : edu.status?.en].filter(Boolean).join(' — '),
       startDate: edu.startDate,
       endDate: edu.endDate || null,
       honors: edu.honors,
@@ -302,6 +302,7 @@ export function toMarkdown(ats: ATSData): string {
   lines.push('')
   for (const edu of ats.education) {
     lines.push(`### ${edu.degree}`)
+    if (edu.field) lines.push(edu.field)
     lines.push(`*${edu.institution}* — ${edu.startDate} – ${edu.endDate || 'Present'}`)
     if (edu.honors && edu.honors.length > 0) {
       lines.push(`**Honores:** ${edu.honors.join(', ')}`)

@@ -78,6 +78,34 @@ export const basics: Basics = {
 
 export const work: readonly WorkExperience[] = [
   {
+    "name": "Uteam",
+    "position": {
+      "es": "Ingeniero de Software",
+      "en": "Software Engineer"
+    },
+    "startDate": "2026-08-01",
+    "endDate": "2026-09-30",
+    "summary": {
+      "es": "Ingeniería de software en modalidad remota: automatización, testing, ciberseguridad, AWS y DevSecOps.",
+      "en": "Remote software engineering: automation, testing, cybersecurity, AWS and DevSecOps."
+    },
+    "highlights": {
+      "es": [
+        "Participé en actividades de ingeniería de software, automatización y testing, junto con prácticas de seguridad informática, pentesting, Red Team, AWS y DevSecOps."
+      ],
+      "en": [
+        "Participated in software engineering, automation and testing activities, alongside cybersecurity, pentesting, Red Team, AWS and DevSecOps practices."
+      ]
+    },
+    "technologies": [
+      "Testing",
+      "Automatización",
+      "AWS",
+      "DevSecOps",
+      "Pentesting"
+    ]
+  },
+  {
     name: "Meeting Planner AI System",
     position: { es: "Diseñador y arquitecto de software (proyecto propio)", en: "Software Designer and Architect (own project)" },
     startDate: "2026-01-01",
@@ -148,7 +176,7 @@ export const work: readonly WorkExperience[] = [
     name: "ESPE - Universidad de las Fuerzas Armadas",
     position: { es: "Docente Ocasional Tiempo Completo - DCC", en: "Full-time Professor - Computer Science Dept." },
     url: "https://www.espe.edu.ec",
-    startDate: "2023-04-01",
+    startDate: "2023-04-26",
     endDate: "2024-10-31",
     summary: {
       es: "Docente del Departamento de Ciencias de la Computación. Asignaturas: Programación, Bases de Datos, Ingeniería de Software. Certificación laboral disponible bajo solicitud.",
@@ -238,6 +266,37 @@ export const work: readonly WorkExperience[] = [
 
 export const education: readonly Education[] = [
   {
+    "institution": "Universidad Regional Autónoma de los Andes (UNIANDES)",
+    "area": {
+      "es": "Ingeniería de Software",
+      "en": "Software Engineering"
+    },
+    "url": "https://www.uniandes.edu.ec/",
+    "startDate": "2026-10-01",
+    "endDate": "",
+    "studyType": "Bachelor",
+    "score": "",
+    "isCurrent": true,
+    "status": {
+      "es": "En curso · graduación estimada en 2028",
+      "en": "In progress · expected graduation in 2028"
+    },
+    "details": [
+      {
+        "es": "Inicio: octubre de 2026. Plan previsto: 3 semestres más tesis; graduación sujeta a aprobación.",
+        "en": "Started October 2026. Planned path: 3 semesters plus a thesis; graduation subject to completion."
+      },
+      {
+        "es": "Asignaturas documentadas: Aplicaciones Web; Diseño y Arquitectura de Software.",
+        "en": "Documented coursework: Web Applications; Software Design and Architecture."
+      },
+      {
+        "es": "Trabajo académico: prácticas PHP/.NET y CRUD de clientes; Taller 1.1 de dominios de software enviado; Taller 1.2 de modelos de proceso elaborado, sin entrega confirmada.",
+        "en": "Academic work: PHP/.NET practice and customer CRUD; Workshop 1.1 on software domains submitted; Workshop 1.2 on process models prepared, submission not confirmed."
+      }
+    ]
+  },
+  {
     institution: 'Universidad Complutense de Madrid',
     area: { es: 'Máster en Ciberseguridad Defensiva y Ofensiva', en: "Master's in Defensive and Offensive Cybersecurity" },
     url: 'https://www.ucm.es/',
@@ -245,6 +304,8 @@ export const education: readonly Education[] = [
     endDate: '2027-12-31',
     studyType: 'Master',
     score: 'En curso',
+    isCurrent: true,
+    status: { es: "En curso", en: "In progress" },
   },
   {
     institution: 'Universidad Técnica Particular de Loja',
@@ -257,7 +318,7 @@ export const education: readonly Education[] = [
   },
   {
     institution: 'Universidad Nacional de Loja',
-    area: { es: 'Licenciatura en Informática Educativa', en: "Bachelor's in Educational Computing" },
+    area: { es: 'Licenciatura en Ciencias de la Educación, mención Informática Educativa', en: "Bachelor's in Education Sciences, Educational Informatics" },
     url: 'https://unl.edu.ec/',
     startDate: '2007-09-01',
     endDate: '2011-02-28',
@@ -351,7 +412,7 @@ export const softSkills: readonly SoftSkill[] = [
 
 export const languages: readonly Language[] = [
   { language: 'Español', fluency: { es: 'Nativo', en: 'Native' } },
-  { language: 'Inglés', fluency: { es: 'Avanzado', en: 'Advanced' } },
+  { language: 'Inglés', fluency: { es: 'Intermedio (B1+)', en: 'Intermediate (B1+)' } },
   { language: 'Italiano', fluency: { es: 'Básico', en: 'Basic' } },
   { language: 'Portugués', fluency: { es: 'Básico', en: 'Basic' } },
 ]
@@ -497,6 +558,54 @@ export const projects: readonly Project[] = [
 // ── Certifications ───────────────────────────────────────────────
 
 export const certifications: readonly Certification[] = [
+  {
+    "name": "Formación del Profesor Tutor en Educación en Línea",
+    "issuer": "Universidad Internacional de La Rioja",
+    "status": "active",
+    "date": "2020-07-19"
+  },
+  {
+    "name": "Databases in the Cloud with AWS RDS",
+    "issuer": "ESPE",
+    "status": "active",
+    "date": "2023-10-04"
+  },
+  {
+    "name": "Visión por Computador",
+    "issuer": "ESPE",
+    "status": "active",
+    "date": "2024-05-09"
+  },
+  {
+    "name": "Docker – Level 1",
+    "issuer": "KodeKloud",
+    "status": "active",
+    "date": "2026-02-18"
+  },
+  {
+    "name": "Fundamentos de Ingeniería de Software",
+    "issuer": "Platzi",
+    "status": "active",
+    "date": "2023-01-17"
+  },
+  {
+    "name": "Introducción a los Patrones de Diseño de Software",
+    "issuer": "Platzi",
+    "status": "active",
+    "date": "2023-03-16"
+  },
+  {
+    "name": "Fundamentos de Ingeniería de Datos",
+    "issuer": "Platzi",
+    "status": "active",
+    "date": "2023-12-08"
+  },
+  {
+    "name": "Introducción al Technical Writing y Documentación de Código",
+    "issuer": "Platzi",
+    "status": "active",
+    "date": "2023-03-24"
+  },
   { name: 'Magíster en Cs. y Tec. de la Computación', issuer: 'UTPL', status: 'active' },
   { name: 'Licenciado en Informática Educativa', issuer: 'UNL', status: 'active' },
   { name: 'Reverse Engineering & Exploit Development', issuer: 'UCM', status: 'active' },
@@ -561,10 +670,10 @@ export const metrics: Record<string, Metric> = {
     source: 'nlm --version (v0.6.8)',
   },
   certificationsCount: {
-    value: '134+',
+    value: '45',
     unit: 'certs',
-    label_es: 'Certificaciones categorizadas',
-    label_en: 'Categorized certifications',
+    label_es: 'Entradas de formación listadas',
+    label_en: 'Listed formation entries',
     source: '~/Documents/Certificados/',
   },
   ctfEvilsecRetos: {
@@ -644,8 +753,8 @@ export const practice = {
     "en": "Security & Software Consulting"
   },
   "positioning": {
-    "es": "Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, 134+ certificaciones activas y 400+ repositorios públicos.",
-    "en": "Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, 134+ active certifications, and 400+ public repositories."
+    "es": "Práctica independiente de seguridad y software: auditoría autorizada de aplicaciones, desarrollo de productos y formación técnica. 13 años de docencia continua en seis instituciones, 22 cursos propios publicados, formación continua documentada y 400+ repositorios públicos.",
+    "en": "Independent security and software practice: authorized application auditing, product development, and technical training. 13 continuous years of teaching across six institutions, 22 published own courses, documented continuing education, and 400+ public repositories."
   },
   "serviceIds": [
     "fullstack",
@@ -958,7 +1067,7 @@ profileData.consultor = {
   ...profileData.hacker,
   id: 'consultor',
   label: {"es": "Consultor de Seguridad y Software | Security & Software Consultant", "en": "Security & Software Consultant | Consultor de Seguridad y Software"},
-  summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, 134+ certificaciones y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, 134+ certifications, and 3 documented pentest engagements."},
+  summary: {"es": "Consultor independiente de seguridad y software. Auditorías autorizadas con carta firmada, productos propios de software y formación técnica en ciberseguridad. 22 cursos publicados, formación continua documentada y 3 encargos de pentest documentados.", "en": "Independent security and software consultant. Authorized audits with a signed letter, own software products, and technical training in cybersecurity. 22 published courses, documented continuing education, and 3 documented pentest engagements."},
   pdf: '/cv-consultor-es.pdf',
   practice: true,
 } as Profile
@@ -999,7 +1108,7 @@ function validate(): void {
   // Education
   for (const [i, entry] of education.entries()) {
     assertIsoDate(entry.startDate, `education[${i}].startDate`)
-    assertIsoDate(entry.endDate, `education[${i}].endDate`)
+    if (entry.endDate || !entry.isCurrent) assertIsoDate(entry.endDate, `education[${i}].endDate`)
     assertNonEmpty(entry.institution, `education[${i}].institution`)
     assertBilingual(entry.area, `education[${i}].area`)
   }

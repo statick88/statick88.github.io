@@ -112,6 +112,7 @@ export const EducationEntrySchema = z.object({
   isCurrent: z.boolean(),
   gpa: z.string().nullable().optional(),
   status: BilingualStringSchema.optional(),
+  details: z.array(BilingualStringSchema).optional(),
 });
 
 export type EducationEntry = z.infer<typeof EducationEntrySchema>;

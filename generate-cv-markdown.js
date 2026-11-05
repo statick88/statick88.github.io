@@ -157,7 +157,9 @@ function generateMarkdown(data, lang) {
     markdown += `### ${edu.area[lang] || edu.area.es} - ${edu.institution}\n`;
     markdown += `${edu.studyType}\n`;
     markdown += `${edu.startDate} ${edu.endDate ? `- ${edu.endDate}` : t('Presente', 'Present')}\n`;
-    if (edu.score) {
+    if (edu.status) markdown += `${edu.status[lang] || edu.status.es}\n`;
+    if (edu.details) edu.details.forEach(detail => { markdown += `${detail[lang] || detail.es}\n`; });
+    if (edu.score && !edu.isCurrent) {
       markdown += `**${t('Puntuación', 'Score')}:** ${edu.score}\n`;
     }
     markdown += `\n`;

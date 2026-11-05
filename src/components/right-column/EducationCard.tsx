@@ -65,6 +65,11 @@ export default function EducationCard({ education }: EducationCardProps) {
               {entry.institution}
             </p>
 
+            {entry.status && <p className="text-xs text-ct-accent-bright">{t(entry.status.es, entry.status.en)}</p>}
+            {entry.details?.map((detail, detailIndex) => (
+              <p key={detailIndex} className="text-xs text-ct-subtext-1 max-w-[70ch]">{t(detail.es, detail.en)}</p>
+            ))}
+
             {/* Period + GPA */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-[11px] text-ct-subtext-0 print:text-gray-600">

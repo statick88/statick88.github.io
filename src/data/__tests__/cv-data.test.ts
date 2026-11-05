@@ -140,7 +140,10 @@ describe('education entries', () => {
   it.each<Education>(education)('$institution has valid dates and bilingual fields', (entry) => {
     expectNonEmptyString(entry.institution, `education[${entry.institution}].institution`)
     expectIsoDate(entry.startDate, `education[${entry.institution}].startDate`)
-    expectIsoDate(entry.endDate, `education[${entry.institution}].endDate`)
+    expect(
+      ISO_DATE_RE.test(entry.endDate) || (entry.endDate === '' && entry.isCurrent === true),
+      `education[${entry.institution}].endDate must be ISO, or unknown for current studies`,
+    ).toBe(true)
     expectBilingual(entry.area, `education[${entry.institution}].area`)
   })
 
