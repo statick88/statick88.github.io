@@ -36,6 +36,10 @@ Use Node 22 (`fnm use`) and pnpm 12.14.0, then `pnpm install --frozen-lockfile`.
 
 The homepage uses a full-width editorial hero and rounded cyan/midnight catalog. It keeps the target role, `mailto:` contact, CV download, core stack and three evidence-based public project previews visible before any dialog. Each of the 15 sections then starts with a brief, factual preview; **+ More** opens its complete content in one native modal dialog. On small screens the trigger displays **+**, while accessible labels remain descriptive. Close with the **−** button, Escape, or a click outside the dialog. Focus cycles inside the dialog and returns to its opener on close. Navigation and the hero service action open the same section dialogs instead of expanding the page. Email links retain `mailto:` and the configured default mail handler.
 
+- Portrait: the existing photo appears in a circular cyan frame in the hero; its extra screen-only instance is hidden when printing.
+- Skills: text chips replace proficiency bars; language indicators remain unchanged.
+- Courses: **View course** opens the published GitHub Pages site first, with **Code** as the secondary repository link. Non-course project links are unchanged.
+
 The interface supports Spanish and English and mobile layouts. Printing temporarily closes the top-layer dialog, exposes every full section and nested disclosure without modal controls in a full-width A4 document, then restores the previously active dialog and disclosure state. The modern layout does not reserve the legacy sidebar's print column; the default standalone two-column layout is unchanged. PDF downloads and full ATS exports remain independent of the previews; no CV records are removed.
 
 Legacy reference: [statick/my_site on Docker Hub](https://hub.docker.com/r/statick/my_site), public tag `2.0`, pushed December 8, 2023, digest `sha256:d908c1a67ead951f5e2013028cd44c844e0c373c337251270c382a5ad4d023c3`. Only its static HTML/CSS was inspected; old dependencies and biographical claims were not imported.

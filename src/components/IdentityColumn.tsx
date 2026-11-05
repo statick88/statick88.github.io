@@ -194,16 +194,14 @@ export default function IdentityColumn({
 
       {/* Key skills */}
       <Panel title={t('habilidades clave', 'key skills')}>
-        <div className="space-y-3">
+        <ul className="flex flex-wrap gap-2" aria-label={t('habilidades clave', 'key skills')}>
           {keySkills.map((skill) => (
-            <LevelBar
-              key={skill.name}
-              label={skill.name}
-              level={levelLabel(skill.level, language)}
-              value={percentFor(skill.level)}
-            />
+            <li key={skill.name} className="chip chip-accent">
+              {skill.name}
+              <span className="text-[10px]">{levelLabel(skill.level, language)}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </Panel>
 
       {/* Availability */}

@@ -1,3 +1,4 @@
+import PhotoCard from '@/components/left-column/PhotoCard'
 import { useApp } from '@/context/AppContext'
 import { useSectionModal } from '@/context/SectionModalContext'
 import type { ContactInfo, ExecutiveProfile, SkillEntry } from '@/lib/schemas/cv-data'
@@ -19,6 +20,9 @@ export function PortfolioHero({ profile, contact, skills }: PortfolioHeroProps) 
   return (
     <header className="cv-portfolio-hero" data-testid="portfolio-hero">
       <p className="cv-hero-eyebrow">Statick <span>/</span> Developer</p>
+      <div className="cv-photo-ring mx-auto mb-6 no-print">
+        <PhotoCard photoUrl="/statick.png" name={profile.name} />
+      </div>
       <h1 className="cv-document-name">{profile.name}</h1>
       <p className="cv-document-role">{t(profile.role.es, profile.role.en)}</p>
       <p className="cv-hero-intro">{t('Construyo software, investigo seguridad y comparto conocimiento.', 'I build software, research security and share knowledge.')}</p>

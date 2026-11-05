@@ -2,7 +2,7 @@
  * src/components/panels/CoursesPanel.tsx — Authored courses panel
  *
  * Each course is a row: what it is on the left, what it covers on the right.
- * The console idiom keeps the list scannable — no cards, no gradients.
+ * The published course site is primary; its repository remains a secondary link.
  */
 
 import { useApp } from '@/context/AppContext'
@@ -33,7 +33,10 @@ export function CoursesPanel() {
                 rel="noopener noreferrer"
                 className="chip chip-accent hover:border-ct-accent"
               >
-                {t('abrir →', 'open →')}
+                {t('Ver curso →', 'View course →')}
+              </a>
+              <a href={course.repo} target="_blank" rel="noopener noreferrer" className="chip hover:border-ct-accent">
+                {t('Código →', 'Code →')}
               </a>
             </div>
           </div>

@@ -87,6 +87,8 @@ test('printing exposes all section content without modal chrome and restores the
     await expect(page.locator(`#modal-${id} .cv-section-content`)).toBeVisible()
     await expect(page.locator(`#modal-${id} .cv-modal-header`)).toBeHidden()
   }
+  await expect(page.getByTestId('portfolio-hero').locator('img')).toBeHidden()
+  await expect(page.locator('.cv-photo-ring img:visible')).toHaveCount(1)
   const sheetWidth = (await page.locator('.cv-sheet').boundingBox())!.width
   const mainWidth = (await page.getByRole('main').boundingBox())!.width
   expect(mainWidth / sheetWidth).toBeGreaterThan(0.95)

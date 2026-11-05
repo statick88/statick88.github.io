@@ -45,8 +45,29 @@ test('renders the editorial hero and every CV section without a permanent sideba
   await expect(page.getByRole('navigation')).toBeVisible()
   await expect(page.getByRole('main')).toBeVisible()
   await expect(page.getByTestId('portfolio-hero')).toContainText('Desarrollador Full Stack')
+  const portrait = page.getByTestId('portfolio-hero').getByRole('img')
+  await expect(portrait).toBeVisible()
+  await expect(portrait).toHaveJSProperty('complete', true)
+  expect(await portrait.evaluate((image) => image instanceof HTMLImageElement ? image.naturalWidth : 0)).toBeGreaterThan(0)
+  const frame = await page.getByTestId('portfolio-hero').locator('.cv-photo-ring').evaluate((element) => {
+    const rect = element.getBoundingClientRect()
+    const style = getComputedStyle(element)
+    return { width: rect.width, height: rect.height, radius: parseFloat(style.borderRadius), border: parseFloat(style.borderTopWidth) }
+  })
+  expect(frame.width).toBe(frame.height)
+  expect(frame.radius).toBeGreaterThanOrEqual(frame.width / 2)
+  expect(frame.border).toBeGreaterThan(0)
   await expect(page.getByTestId('portfolio-hero').getByRole('link', { name: 'dsaavedra88@gmail.com' })).toHaveAttribute('href', 'mailto:dsaavedra88@gmail.com')
   await expect(page.getByTestId('featured-projects').getByRole('article')).toHaveCount(3)
+  const courseCards = page.getByTestId('featured-projects').getByRole('article').filter({ has: page.getByRole('link', { name: 'Ver curso', exact: true }) })
+  await expect(courseCards).toHaveCount(2)
+  for (const card of await courseCards.all()) {
+    const links = card.getByRole('link')
+    await expect(links.nth(0)).toHaveAttribute('href', /^https:\/\/statick88\.github\.io\//)
+    await expect(links.nth(0)).toHaveClass(/cv-primary-action/)
+    await expect(links.nth(1)).toHaveAccessibleName('Código')
+    await expect(links.nth(1)).toHaveAttribute('href', /^https:\/\/github\.com\/statick88\//)
+  }
   await expect(page.getByRole('complementary')).toHaveCount(0)
   await expect(page.getByRole('region')).toHaveCount(SECTION_COUNT)
   for (const selector of ['.cv-project-preview', '.cv-section-card']) {
