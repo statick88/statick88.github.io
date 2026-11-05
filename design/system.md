@@ -113,6 +113,8 @@ Source: `src/index.css`. First occurrence is light, second is dark. RGB values a
 | `ct-topbar-height` | `48px` |
 | `ct-radius` | `3px` |
 | `ct-radius-sm` | `2px` |
+| `ct-radius-card` | `20px` |
+| `ct-radius-dialog` | `24px` |
 | `ct-base` | `3 10 23` |
 | `ct-panel` | `7 18 35` |
 | `ct-surface-0` | `10 25 44` |
@@ -152,6 +154,10 @@ Sources: `src/components/CompactSection.tsx`, `src/App.tsx`, `src/components/lay
 - Full content stays mounted. Navigation opens the destination before scrolling. Native keyboard interaction remains unchanged.
 - Print expands every disclosure, removes preview chrome, then restores the reader's previous state. ATS exports and PDF download links are unchanged.
 - Hero uses the archived “Statick Developer” identity, a 3px accent top rule, 32px padding and a short introduction. No legacy scripts, dependencies, CV claims or metrics are imported.
+
+## Modern modal direction
+
+Source: `src/index.css` introduces `--ct-radius-card: 20px` and `--ct-radius-dialog: 24px` for the authorized modern direction. Existing cyan/navy colors and Inter/system sans stay unchanged; mono is reserved for small labels. Large headline, visual section tiles, soft outlines and generous spacing replace the permanent printed-CV sidebar onscreen. Native dialogs will host complete section content; full print and ATS data remain unchanged.
 
 ## Visual direction
 

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "chosen": "01-editorial-orbit.html",
+  "handoffs": {
+    "01-editorial-orbit.html": {
+      "status": "sent",
+      "queued": false,
+      "sentAt": "2026-11-05T12:19:32.231Z",
+      "startedAt": null,
+      "implementedAt": null,
+      "feature": "odd/tasks/modern-modal-cv.md"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Modern modal CV",
+  "brief": "Modernize the existing CV using midu.dev as reference; open each complete section in a modal. Retain cyan/navy and full width.",
+  "feature": "odd/tasks/modern-modal-cv.md",
+  "artboards": [
+    {
+      "file": "01-editorial-orbit.html",
+      "title": "Editorial Orbit",
+      "tradeoff": "Large editorial hero and visual bento cards; strongest identity, fewer cards above the fold.",
+      "width": 1440,
+      "height": 1100
+    },
+    {
+      "file": "02-focus-canvas.html",
+      "title": "Focus Canvas",
+      "tradeoff": "Split hero and paired modules; calmer reading, less visual density.",
+      "width": 1440,
+      "height": 1100
+    },
+    {
+      "file": "03-studio-stack.html",
+      "title": "Studio Stack",
+      "tradeoff": "Compact studio dashboard with four-column catalog; fastest scanning, less personal emphasis.",
+      "width": 1440,
+      "height": 1100
+    }
+  ]
+}

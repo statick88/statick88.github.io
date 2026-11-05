@@ -154,6 +154,8 @@
   --ct-topbar-height: 48px;
   --ct-radius: 3px;
   --ct-radius-sm: 2px;
+  --ct-radius-card: 20px;
+  --ct-radius-dialog: 24px;
 
   color-scheme: light;
   scroll-behavior: smooth;
