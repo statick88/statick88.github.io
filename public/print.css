@@ -95,6 +95,20 @@
     background: white !important;
   }
 
+  /* The editorial app has no permanent aside: do not reserve its grid track. */
+  .cv-sheet.cv-sheet-modern {
+    display: block !important;
+  }
+
+  .cv-sheet-modern .cv-main {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .cv-sheet-modern .cv-section-card {
+    padding: 0 !important;
+  }
+
   .cv-aside {
     padding: 0 14pt 0 6pt !important;
     background: #1e2a5e !important;

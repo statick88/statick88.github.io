@@ -5,16 +5,16 @@ import { SECTION_IDS, type SectionId } from '@/config/navigation'
 
 /** Editorial previews, not replacement CV data. Full panels remain in the DOM. */
 const PREVIEWS: Record<SectionId, { es: string; en: string }> = {
-  resumen: { es: 'Desarrollo de software, ciberseguridad y docencia. Conocé mi enfoque.', en: 'Software development, cybersecurity and teaching. Discover my approach.' },
+  resumen: { es: 'Desarrollo de software, ciberseguridad y docencia; datos de contacto y perfil completo.', en: 'Software development, cybersecurity and teaching; contact details and full profile.' },
   servicios: { es: 'Consultoría, desarrollo y formación. Encontrá cómo podemos trabajar juntos.', en: 'Consulting, development and training. Find out how we can work together.' },
   encargos: { es: 'Proyectos y colaboraciones: contexto, alcance y resultados.', en: 'Projects and collaborations: context, scope and outcomes.' },
   referencias: { es: 'La experiencia de quienes han trabajado conmigo.', en: 'The experience of people who have worked with me.' },
   eventos: { es: 'Charlas, talleres y encuentros con la comunidad.', en: 'Talks, workshops and community events.' },
-  experiencia: { es: 'Roles, organizaciones y logros de mi recorrido profesional.', en: 'Roles, organizations and achievements throughout my career.' },
+  experiencia: { es: 'Experiencia en Uteam, ESPE, ABACOM y formación técnica.', en: 'Experience across Uteam, ESPE, ABACOM and technical education.' },
   educacion: { es: 'Formación académica y especialización.', en: 'Academic background and specialization.' },
-  habilidades: { es: 'Tecnologías y competencias, organizadas por área.', en: 'Technologies and skills, organized by field.' },
-  proyectos: { es: 'Una mirada al trabajo construido: repositorios, tecnologías y detalles.', en: 'A look at what I have built: repositories, technologies and details.' },
-  certificaciones: { es: 'Credenciales y formación continua, con sus enlaces de verificación.', en: 'Credentials and continuing education, with verification links.' },
+  habilidades: { es: 'TypeScript, React, Python, Docker y seguridad, organizados por área.', en: 'TypeScript, React, Python, Docker and security, organized by field.' },
+  proyectos: { es: 'Cursos abiertos de Python y ciberseguridad, más aplicaciones publicadas.', en: 'Open Python and cybersecurity courses, plus published applications.' },
+  certificaciones: { es: 'Formación de UNIR, ESPE, KodeKloud y Platzi con enlaces de verificación.', en: 'UNIR, ESPE, KodeKloud and Platzi education with verification links.' },
   cursos: { es: 'Recursos y cursos para aprender haciendo.', en: 'Resources and courses for hands-on learning.' },
   investigacion: { es: 'Publicaciones y líneas de investigación.', en: 'Publications and research interests.' },
   exploitarium: { es: 'Investigación de seguridad y documentación técnica.', en: 'Security research and technical documentation.' },

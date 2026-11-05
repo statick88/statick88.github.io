@@ -138,22 +138,22 @@ Source: `src/index.css`. First occurrence is light, second is dark. RGB values a
 
 ## Typography
 
-Source: `tailwind.config.js` and `src/index.css`. Inter/system sans for prose; Fira Code/JetBrains Mono/ui-monospace for labels and data. Body: 14px, line-height 1.6. Name: 30px (24px mobile). Section titles: 12px uppercase.
+Source: `tailwind.config.js` and `src/index.css`. Inter/system sans for prose; Fira Code/JetBrains Mono/ui-monospace for labels and data. Body: 14px, line-height 1.6. Modern hero name: clamp(44px, 7vw, 84px), line-height .98; role: 13px; introduction: clamp(18px, 2vw, 22px). Catalog heading: clamp(28px, 4vw, 46px). Dialog heading: 30px. Modern section card heading: 22px.
 
 ## Components and layout
 
-Source: `src/index.css`. Two columns, identity first; collapses at 900px. Main padding 24px / clamp(16px, 2vw, 32px) / 32px, full-width with no max-width. Row gap 6px 20px. Radius 3px, small 2px. Timeline dots, thin section separators, semantic status chips. Focus: 2px accent outline, 2px offset. Reduced motion and dedicated print overrides retained.
+Sources: `src/index.css`, `src/components/layout/AppLayout.tsx`, `src/App.tsx`. The modern app has no permanent sidebar and retains full viewport width with clamp(20px, 5vw, 72px) readable gutters. The default standalone layout still accepts an identity aside and collapses at 900px. Modern cards use the 20px radius, dialogs 24px; existing inner document panels retain 3px/2px. IdentityColumn is rendered once inside the summary dialog and remains part of complete printing. Modal identity uses semantic ct-text, ct-subtext-1 and ct-accent-bright instead of legacy dark-sidebar whites; printing forces identity/contact/role to black. Timeline dots, separators and status chips remain. Focus: 2px accent outline, 2px offset. Reduced motion and dedicated print overrides retained.
 
 ## Compact section cards
 
 Sources: `src/components/CompactSection.tsx`, `src/App.tsx`, `src/components/layout/AppLayout.tsx`, `src/hooks/useNavItems.ts`, `src/index.css`.
 
-- Preserve the existing 15 section IDs and reading order. Each section displays its number, title, one short editorial preview and a native disclosure.
-- Cards use surface-0 at 60%, a line border, the existing 3px radius, 24px padding and 16px separation. At 1200px and above, cards form two columns; an open card spans both. Mobile padding is 20px.
-- Section titles: 18px. Disclosure labels: 12px, minimum 44px target, visible focus. Labels switch between “+ Más” / “− Menos” and “+ More” / “− Less”. Below 640px only the symbols remain visible, in a 44px target; accessible labels remain descriptive.
-- Full content stays mounted. Navigation opens the destination before scrolling. Native keyboard interaction remains unchanged.
-- Print expands every disclosure, removes preview chrome, then restores the reader's previous state. ATS exports and PDF download links are unchanged.
-- Hero uses the archived “Statick Developer” identity, a 3px accent top rule, 32px padding and a short introduction. No legacy scripts, dependencies, CV claims or metrics are imported.
+- Preserve all 15 section IDs and reading order. Each displays a number, title, short factual preview and + More trigger opening one native modal, never an inline expansion.
+- Modern cards use surface-0 at 78%, a line border, 20px radius, 28px padding and 20px gaps. At 1200px and above they form three columns; below 1200px two, below 760px one. The three project previews form one balanced desktop row. Mobile retains 44px controls.
+- Modern section titles: 22px. Triggers show + Más / + More; below 640px only + remains visible with a descriptive accessible label. The modal's 44px circular − control, Escape or backdrop closes it; visible Tab/Shift+Tab boundaries wrap inside and focus returns to the opener.
+- Complete content stays mounted. Navigation and hero/catalog actions share AppLayout's single modal state. No independent active-dialog stores or modal framework.
+- Print temporarily closes the top-layer dialog, exposes every full section and nested disclosure without preview/modal chrome, then restores prior state. `public/print.css` gives `.cv-sheet-modern` one full-width document column with no card padding; default standalone sheets retain the legacy two-column print layout. ATS exports and PDF download paths are unchanged.
+- The editorial hero shows existing identity, target role, contact, download and curated core stack. Three public project previews use existing adapter data; no credentials, skills or project impacts are invented.
 
 ## Modern modal direction
 

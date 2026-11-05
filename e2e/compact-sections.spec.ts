@@ -59,6 +59,22 @@ test('navigation and hero CTA open modals; bilingual labels and themes remain us
   await page.getByTestId('theme-toggle').click()
   await page.getByRole('button', { name: 'Open experience', exact: true }).click()
   await expect(page.getByRole('dialog', { name: 'experience', exact: true })).toBeVisible()
+  await page.keyboard.press('Escape')
+  await page.getByRole('button', { name: 'Open summary', exact: true }).click()
+  const summary = page.getByRole('dialog', { name: 'summary', exact: true })
+  for (let state = 0; state < 2; state++) {
+    const colors = await summary.evaluate((element) => {
+      const style = getComputedStyle(element)
+      const rgb = (name: string) => `rgb(${style.getPropertyValue(name).trim().split(/\s+/).join(', ')})`
+      return { text: rgb('--ct-text'), contact: rgb('--ct-subtext-1'), role: rgb('--ct-accent-bright') }
+    })
+    await expect(summary.locator('.cv-identity-name')).toHaveCSS('color', colors.text)
+    await expect(summary.locator('.cv-contact-item').first()).toHaveCSS('color', colors.contact)
+    await expect(summary.locator('.cv-identity-role')).toHaveCSS('color', colors.role)
+    await page.keyboard.press('Escape')
+    await page.getByTestId('theme-toggle').click()
+    await page.getByRole('button', { name: 'Open summary', exact: true }).click()
+  }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
 
@@ -71,6 +87,16 @@ test('printing exposes all section content without modal chrome and restores the
     await expect(page.locator(`#modal-${id} .cv-section-content`)).toBeVisible()
     await expect(page.locator(`#modal-${id} .cv-modal-header`)).toBeHidden()
   }
+  const sheetWidth = (await page.locator('.cv-sheet').boundingBox())!.width
+  const mainWidth = (await page.getByRole('main').boundingBox())!.width
+  expect(mainWidth / sheetWidth).toBeGreaterThan(0.95)
+  const pdf = await page.pdf({ format: 'A4' })
+  const pageCount = pdf.toString('latin1').match(/\/Type\s*\/Page\b/g)?.length ?? 0
+  expect(pageCount).toBeGreaterThan(0)
+  expect(pageCount).toBeLessThan(40)
+  await expect(page.locator('.cv-identity-name')).toHaveCount(1)
+  await expect(page.locator('.cv-identity-name')).toHaveCSS('color', 'rgb(0, 0, 0)')
+  await expect(page.locator('.cv-contact-item').first()).toHaveCSS('color', 'rgb(0, 0, 0)')
   await page.emulateMedia({ media: 'screen' })
   await page.evaluate(() => window.dispatchEvent(new Event('afterprint')))
   await expect(page.getByRole('dialog')).toHaveCount(1)

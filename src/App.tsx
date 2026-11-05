@@ -15,8 +15,9 @@ import { ProfileProvider, useProfileContext } from '@/context/ProfileContext'
 import { SECTION } from '@/config/navigation'
 import { AppLayout } from '@/components/layout/AppLayout'
 import IdentityColumn from '@/components/IdentityColumn'
+import { PortfolioHero } from '@/components/PortfolioHero'
+import { FeaturedProjects } from '@/components/FeaturedProjects'
 import { CompactSection } from '@/components/CompactSection'
-import { useSectionModal } from '@/context/SectionModalContext'
 
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ServicesPanel } from '@/components/panels/ServicesPanel'
@@ -50,17 +51,6 @@ import {
   getDefaultMetrics,
 } from '@/lib/adapter'
 
-function ServiceExplorer() {
-  const { t } = useApp()
-  const { openSection } = useSectionModal()
-
-  return (
-    <button type="button" className="cv-primary-action" onClick={(event) => openSection(SECTION.servicios, event.currentTarget)}>
-      {t('Explorar servicios', 'Explore services')} <span aria-hidden="true">↗</span>
-    </button>
-  )
-}
-
 function AppInner() {
   const { t } = useApp()
   const { activeProfile } = useProfileContext()
@@ -82,31 +72,12 @@ function AppInner() {
   )
 
   return (
-    <AppLayout aside={aside}>
-      {/* Document header */}
-      <header className="cv-portfolio-hero mb-8">
-        <p className="cv-hero-eyebrow">Statick <span>/</span> Developer</p>
-        <h1 className="cv-document-name">{profile.name}</h1>
-        <p className="cv-document-role">{t(profile.role.es, profile.role.en)}</p>
-        <p className="cv-hero-intro">
-          {t('Construyo software. Investigo seguridad. Comparto conocimiento.', 'I build software. Research security. Share knowledge.')}
-        </p>
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <a href={`mailto:${contact.email}`} className="chip chip-accent">
-            {contact.email}
-          </a>
-          <span className="chip chip-muted">{contact.location}</span>
-          <span className="chip chip-muted">{t('100% remoto', '100% remote')}</span>
-        </div>
-        <div className="cv-hero-actions no-print">
-          <ServiceExplorer />
-          <a href="https://hub.docker.com/r/statick/my_site" target="_blank" rel="noopener noreferrer" className="cv-legacy-link">
-            {t('Archivo · mi sitio en 2023', 'Archive · my site in 2023')} <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </header>
+    <AppLayout modern>
+      <PortfolioHero profile={profile} contact={contact} skills={skills} />
+      <FeaturedProjects projects={adaptProjects()} />
 
       <CompactSection id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
+        {aside}
         <ProfileCard profile={profile} metrics={metrics} headline={adaptHeadline()} />
       </CompactSection>
 

@@ -45,7 +45,6 @@ describe('cv sheet', () => {
     expect(screen.getByTestId('console-tabbar')).toBeInTheDocument()
     expect(screen.getByTestId('console-brand')).toBeInTheDocument()
     expect(screen.getByRole('navigation')).toBeInTheDocument()
-    expect(screen.getByRole('complementary', { name: /perfil|profile/i })).toBeInTheDocument()
     expect(screen.getByRole('main')).toBeInTheDocument()
   })
 
@@ -120,14 +119,11 @@ describe('cv sheet', () => {
     // One document per language: there is no profile variant to choose from.
     expect(screen.queryAllByRole('option')).toHaveLength(0)
 
-    const cvLink = screen.getByRole('link', { name: /descargar el cv|download the cv/i })
+    const cvLink = screen.getByTestId('cv-download-link')
     expect(cvLink).toHaveAttribute('href', '/cv-es.pdf')
 
     await user.click(screen.getByTestId('language-toggle'))
 
-    expect(screen.getByRole('link', { name: /descargar el cv|download the cv/i })).toHaveAttribute(
-      'href',
-      '/cv-en.pdf',
-    )
+    expect(screen.getByTestId('cv-download-link')).toHaveAttribute('href', '/cv-en.pdf')
   })
 })

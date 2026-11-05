@@ -3,12 +3,14 @@
   "chosen": "01-editorial-orbit.html",
   "handoffs": {
     "01-editorial-orbit.html": {
-      "status": "sent",
+      "status": "implemented",
       "queued": false,
       "sentAt": "2026-11-05T12:19:32.231Z",
-      "startedAt": null,
-      "implementedAt": null,
-      "feature": "odd/tasks/modern-modal-cv.md"
+      "startedAt": "2026-11-05T12:21:10.893Z",
+      "implementedAt": "2026-11-05T13:13:31.532Z",
+      "feature": "odd/tasks/modern-modal-cv.md",
+      "note": "Editorial hero, factual project previews and responsive 3/2/1 section catalog implemented. Native modals, focus, bilingual themes and full print verified; actual A4 document is now 12 pages with complete education/contact content. Independent final verification/publication still pending.",
+      "previewUrl": "http://127.0.0.1:4175/"
     }
   }
 }

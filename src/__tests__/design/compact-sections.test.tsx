@@ -78,6 +78,6 @@ describe('modal portfolio sections', () => {
     const modal = screen.getByRole('dialog', { name: 'experience' })
     expect(within(modal).getByText('Software Engineer')).toBeVisible()
     expect(within(modal).getByRole('button', { name: 'Close experience' })).toBeVisible()
-    expect(within(screen.getByRole('region', { name: 'experience' })).getByText(/^Roles, organizations/)).toBeVisible()
+    expect(within(screen.getByRole('region', { name: 'experience' })).getByText(/^Experience across Uteam/)).toBeVisible()
   })
 })

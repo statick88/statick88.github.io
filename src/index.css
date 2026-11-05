@@ -919,6 +919,42 @@ html.dark .cv-main > header {
   .cv-section-disclosure > summary span[aria-hidden] { margin-right: 0; }
 }
 
+/* Modern editorial catalog: hierarchy and whitespace replace the permanent sheet. */
+.cv-sheet-modern { display: block; overflow: visible; background: rgb(var(--ct-base)); }
+.cv-sheet-modern .cv-main { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; min-height: 0; padding: 0 clamp(20px, 5vw, 72px) 64px; background: transparent; }
+.cv-sheet-modern .cv-main > header, .cv-sheet-modern .cv-main > footer, .cv-featured-projects { grid-column: 1 / -1; }
+.cv-sheet-modern .cv-portfolio-hero { position: relative; max-width: 1080px; margin: 0 auto; padding: clamp(56px, 9vw, 128px) 0 56px; border: 0; border-radius: 0; background: radial-gradient(ellipse at 50% 0%, rgb(var(--ct-accent) / .12), transparent 62%); text-align: center; }
+.cv-sheet-modern .cv-hero-eyebrow { margin-bottom: 28px; color: rgb(var(--ct-accent-bright)); }
+.cv-sheet-modern .cv-document-name { max-width: 14ch; margin: 0 auto; font-size: clamp(44px, 7vw, 84px); line-height: .98; }
+.cv-sheet-modern .cv-document-role { margin-top: 16px; font-size: 13px; }
+.cv-sheet-modern .cv-hero-intro { max-width: 56ch; margin: 24px auto 0; font-size: clamp(18px, 2vw, 22px); }
+.cv-hero-contact, .cv-core-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; margin-top: 20px; color: rgb(var(--ct-subtext-0)); font-size: 13px; }
+.cv-hero-contact a { color: rgb(var(--ct-accent-bright)); }
+.cv-core-stack { margin-top: 32px; }
+.cv-core-stack span, .cv-project-tags span { border: 1px solid rgb(var(--ct-line)); border-radius: 999px; padding: 5px 10px; background: rgb(var(--ct-surface-0)); color: rgb(var(--ct-subtext-1)); font: 11px/1.2 'Fira Code', ui-monospace, monospace; }
+.cv-sheet-modern .cv-hero-actions { justify-content: center; margin-top: 28px; }
+.cv-primary-action, .cv-secondary-action { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border-radius: 12px; font-weight: 700; }
+.cv-secondary-action { border: 1px solid rgb(var(--ct-line-strong)); color: rgb(var(--ct-text)); }
+.cv-featured-projects { max-width: 1280px; margin: 0 auto 56px; }
+.cv-catalog-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 0 0 24px; }
+.cv-catalog-heading p, .cv-project-kicker { color: rgb(var(--ct-accent)); font: 11px/1.2 'Fira Code', ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; }
+.cv-catalog-heading h2 { font-size: clamp(28px, 4vw, 46px); letter-spacing: -.05em; line-height: 1; }
+.cv-project-catalog { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.cv-project-preview { display: flex; flex-direction: column; min-height: 300px; padding: 28px; border: 1px solid rgb(var(--ct-line)); border-radius: var(--ct-radius-card); background: rgb(var(--ct-panel)); }
+.cv-project-preview:first-child { grid-column: auto; background: radial-gradient(ellipse at right top, rgb(var(--ct-accent) / .12), transparent 66%), rgb(var(--ct-panel)); }
+.cv-project-preview h3 { margin: 24px 0 12px; font-size: 25px; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.cv-project-preview > p:not(.cv-project-kicker) { color: rgb(var(--ct-subtext-1)); }
+.cv-project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 24px; }
+.cv-project-preview > a, .cv-catalog-more { margin-top: 20px; color: rgb(var(--ct-accent-bright)); font-weight: 700; }
+.cv-catalog-more { min-height: 44px; }
+.cv-sheet-modern .cv-section-card { display: flex; flex-direction: column; align-self: stretch; min-height: 200px; margin: 0; padding: 28px; border-radius: var(--ct-radius-card); background: rgb(var(--ct-surface-0) / .78); }
+.cv-sheet-modern .cv-section-heading h2 { font-size: 22px; letter-spacing: -.04em; }
+.cv-sheet-modern .cv-section-trigger { align-self: flex-start; margin-top: auto; }
+@media (max-width: 1199px) { .cv-sheet-modern .cv-main { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .cv-sheet-modern .cv-main { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .cv-project-catalog { grid-template-columns: 1fr; } .cv-project-preview:first-child { grid-column: auto; } .cv-catalog-heading { display: block; } .cv-catalog-heading p { margin-bottom: 10px; } .cv-sheet-modern .cv-portfolio-hero { padding-top: 64px; } }
+@media print { .cv-sheet-modern .cv-main { display: block; padding: 0; } .cv-sheet-modern .cv-section-card { display: block; min-height: 0; } .cv-sheet-modern .cv-portfolio-hero { padding: 0; text-align: left; background: white !important; } .cv-sheet-modern .cv-document-name { margin: 0; font-size: 30px; } .cv-hero-contact, .cv-core-stack { justify-content: flex-start; } }
+
 /* Native section dialogs: one active top-layer surface, inert background. */
 html:has(.cv-section-modal[open]) { overflow: hidden; }
 .cv-section-trigger { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: rgb(var(--ct-accent-bright)); font-size: 13px; font-weight: 650; }
@@ -930,6 +966,9 @@ html:has(.cv-section-modal[open]) { overflow: hidden; }
 .cv-modal-header h2 { font-size: 30px; text-transform: capitalize; letter-spacing: -0.04em; }
 .cv-modal-eyebrow { color: rgb(var(--ct-subtext-0)); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; }
 .cv-modal-close { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid rgb(var(--ct-line-strong)); border-radius: 50%; color: rgb(var(--ct-accent-bright)); font-size: 26px; }
+.cv-section-modal .cv-identity-name { color: rgb(var(--ct-text)); }
+.cv-section-modal .cv-contact-item { color: rgb(var(--ct-subtext-1)); }
+.cv-section-modal .cv-identity-role { color: rgb(var(--ct-accent-bright)); }
 .cv-modal-body.cv-section-content { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 32px; margin: 0; border: 0; }
 @media (max-width: 640px) {
   .cv-section-modal { width: calc(100% - 16px); max-height: calc(100dvh - 16px); }
@@ -1016,6 +1055,7 @@ html:has(.cv-section-modal[open]) { overflow: hidden; }
   html:has(.cv-section-modal[open]) { overflow: visible; }
   .cv-section-modal, .cv-section-modal[open] { display: block !important; position: static !important; width: 100%; max-width: none; max-height: none; padding: 0; margin: 0; overflow: visible; border: 0; border-radius: 0; box-shadow: none; background: white !important; color: black !important; }
   .cv-section-modal::backdrop { display: none; }
+  .cv-section-modal .cv-identity-name, .cv-section-modal .cv-contact-item, .cv-section-modal .cv-identity-role { color: black !important; }
   .cv-modal-body.cv-section-content { overflow: visible; padding: 0; }
   .cv-section-disclosure::details-content { content-visibility: visible; }
   .cv-section-disclosure > .cv-section-content { display: block !important; }

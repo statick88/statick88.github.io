@@ -23,12 +23,14 @@ import { SectionModalProvider, useSectionModal } from '@/context/SectionModalCon
 
 interface AppLayoutProps {
   /** Identity column content (photo, contact, facts, languages). */
-  aside: ReactNode
+  aside?: ReactNode
+  /** Use the editorial catalog instead of the permanent document sidebar. */
+  modern?: boolean | undefined
   /** Document column content. */
   children: ReactNode
 }
 
-function AppLayoutInner({ aside, children }: AppLayoutProps) {
+function AppLayoutInner({ aside, children, modern = false }: AppLayoutProps) {
   const { t } = useApp()
   const { printing } = useSectionModal()
 
@@ -79,10 +81,10 @@ function AppLayoutInner({ aside, children }: AppLayoutProps) {
       <CvTopBar />
 
       <div className="cv-page">
-        <div className="cv-sheet">
-          <aside className="cv-aside" aria-label={t('Perfil', 'Profile')}>
+        <div className={`cv-sheet${modern ? ' cv-sheet-modern' : ''}`}>
+          {aside ? <aside className="cv-aside" aria-label={t('Perfil', 'Profile')}>
             {aside}
-          </aside>
+          </aside> : null}
 
           <main id="main-content" className="cv-main">
             {children}
@@ -97,10 +99,10 @@ function AppLayoutInner({ aside, children }: AppLayoutProps) {
  * Keeps the layout usable by existing standalone consumers while ensuring all
  * navigation and section controls share one modal state.
  */
-export function AppLayout({ aside, children }: AppLayoutProps) {
+export function AppLayout({ aside, children, modern }: AppLayoutProps) {
   return (
     <SectionModalProvider>
-      <AppLayoutInner aside={aside}>{children}</AppLayoutInner>
+      <AppLayoutInner aside={aside} modern={modern}>{children}</AppLayoutInner>
     </SectionModalProvider>
   )
 }

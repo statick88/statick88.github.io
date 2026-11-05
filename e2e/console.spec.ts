@@ -40,12 +40,21 @@ test.afterEach(async () => {
   expect(unexpectedConsoleErrors(consoleErrors), 'the page logged console errors').toEqual([])
 })
 
-test('renders the CV sheet with every section reachable', async ({ page }) => {
+test('renders the editorial hero and every CV section without a permanent sidebar', async ({ page }) => {
   await expect(page.getByTestId('console-brand')).toHaveText('Diego Medardo Saavedra García')
   await expect(page.getByRole('navigation')).toBeVisible()
-  await expect(page.getByRole('complementary')).toBeVisible()
   await expect(page.getByRole('main')).toBeVisible()
+  await expect(page.getByTestId('portfolio-hero')).toContainText('Desarrollador Full Stack')
+  await expect(page.getByTestId('portfolio-hero').getByRole('link', { name: 'dsaavedra88@gmail.com' })).toHaveAttribute('href', 'mailto:dsaavedra88@gmail.com')
+  await expect(page.getByTestId('featured-projects').getByRole('article')).toHaveCount(3)
+  await expect(page.getByRole('complementary')).toHaveCount(0)
   await expect(page.getByRole('region')).toHaveCount(SECTION_COUNT)
+  for (const selector of ['.cv-project-preview', '.cv-section-card']) {
+    const boxes = await page.locator(selector).evaluateAll((elements) => elements.slice(0, 3).map((element) => element.getBoundingClientRect().y))
+    const breakpoint = selector === '.cv-project-preview' ? 761 : 1200
+    const expectedSameRow = page.viewportSize()!.width >= breakpoint
+    expect(Math.max(...boxes) - Math.min(...boxes) < 1, `${selector} should follow its responsive catalog grid`).toBe(expectedSameRow)
+  }
 })
 
 test('opens a section modal from the top bar', async ({ page }) => {
@@ -94,7 +103,7 @@ test('offers one CV download link from the top bar', async ({ page }) => {
   await expect(page.getByRole('option', { name: /Hacker Ético/i })).toHaveCount(0)
   await expect(page.getByRole('button', { name: /perfil activo|active profile/i })).toHaveCount(0)
 
-  const cvLink = page.getByRole('link', { name: /descargar el cv|download the cv/i })
+  const cvLink = page.getByTestId('cv-download-link')
 
   await expect(cvLink).toBeVisible()
   await expect(cvLink).toHaveAttribute('href', '/cv-es.pdf')
