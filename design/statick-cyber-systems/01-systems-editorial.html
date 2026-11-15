@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STATICK Cyber Systems — Systems Editorial</title>
+  <style>
+    :root {
+      --base: #030a17; --panel: #071223; --surface: #0a192c; --line: #173348;
+      --text: #e1f2fa; --muted: #a6c4d5; --cyan: #22d3ee; --bright: #67e8f9; --green: #4ac586;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--base); color: var(--text); font: 16px/1.6 var(--sans); }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--bright); outline-offset: 4px; }
+    header, main { max-width: 1400px; margin: auto; padding-inline: clamp(20px, 5vw, 72px); }
+    header { padding-block: 22px; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .brand, .eyebrow, .number { color: var(--bright); font: 700 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    nav a { padding: 8px 10px; border-radius: 3px; color: var(--muted); text-decoration: none; }
+    nav a:hover { background: var(--surface); color: var(--text); }
+    .hero { min-height: 570px; display: grid; grid-template-columns: 1.5fr .7fr; gap: 48px; align-items: end; padding: 80px 0 64px; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 75% 18%, #0e2539 0, transparent 32%); }
+    h1 { max-width: 900px; margin: 18px 0 24px; font-size: clamp(44px, 7vw, 84px); line-height: .98; letter-spacing: -.055em; }
+    h2 { margin: 0; font-size: clamp(28px, 4vw, 46px); line-height: 1.1; }
+    .lede { max-width: 680px; color: var(--muted); font-size: clamp(18px, 2vw, 22px); }
+    .rail { padding: 18px 0 18px 24px; border-left: 1px solid var(--line); }
+    .rail p { margin: .45rem 0; }
+    .availability { color: var(--green); font: 700 12px var(--mono); text-transform: uppercase; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { padding: 12px 16px; border: 1px solid var(--cyan); border-radius: 3px; font-weight: 700; text-decoration: none; }
+    .button.primary { background: var(--cyan); color: var(--base); }
+    section:not(.hero) { padding: 72px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 12px; }
+    .heading { display: flex; gap: 16px; align-items: baseline; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+    .card h3 { margin: 0 0 8px; }
+    .tag { color: var(--bright); font: 12px var(--mono); }
+    .evidence { color: var(--muted); }
+    .pager { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-top: 28px; }
+    .pager-controls { display: flex; gap: 8px; }
+    .pager button { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--text); font: 700 18px var(--sans); cursor: pointer; }
+    .pager button:hover:not(:disabled) { border-color: var(--cyan); }
+    .pager button:disabled { color: var(--muted); cursor: not-allowed; opacity: .55; }
+    footer { padding: 32px 0; color: var(--muted); }
+    @media (max-width: 760px) { .hero { grid-template-columns: 1fr; min-height: auto; padding: 52px 0; } .rail { padding: 20px 0; border-top: 1px solid var(--line); border-left: 0; } .grid { grid-template-columns: 1fr; } section:not(.hero) { padding: 48px 0; } header { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#inicio">STATICK / CYBER SYSTEMS</a>
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a><a href="#trayectoria">Trayectoria</a><a href="#proyectos">Proyectos</a>
+      <a href="#exploitarium">Exploitarium</a><a href="#academia">Academia</a><a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="inicio">
+      <div>
+        <p class="eyebrow">Software · Seguridad · Educación</p>
+        <h1>Diego Medardo<br>Saavedra García</h1>
+        <p class="lede">Magíster en Cs. y Tec. de la Computación (UTPL). MSc Ciberseguridad en curso (UCM). Especializado en React, Node.js, Python, pentesting, ingeniería inversa y diseño curricular ABP.</p>
+        <div class="actions"><a class="button primary" href="#proyectos">Ver proyectos</a><a class="button" href="#contacto">Contactar</a></div>
+      </div>
+      <aside class="rail" aria-label="Resumen profesional">
+        <p class="availability">Consultoría de Seguridad y Software</p>
+        <p class="evidence">Práctica independiente de seguridad y software.</p>
+      </aside>
+      <div class="pager"><span>Inicio</span><span class="pager-controls"><button type="button" disabled aria-label="Sección anterior no disponible">↑</button><button type="button" data-target="trayectoria" aria-label="Ir a Trayectoria">↓</button></span></div>
+    </section>
+    <section id="trayectoria">
+      <div class="heading"><span class="number">01</span><h2>Trayectoria</h2></div>
+      <div class="grid">
+        <article class="card"><p class="tag">INGENIERÍA</p><h3>Uteam</h3><p class="evidence">Ingeniería de software en modalidad remota: automatización, testing, ciberseguridad, AWS y DevSecOps.</p></article>
+        <article class="card"><p class="tag">PROYECTO PROPIO</p><h3>Meeting Planner AI System</h3><p class="evidence">Sistema propio de transcripción y análisis de contenido audiovisual con IA generativa.</p></article>
+        <article class="card"><p class="tag">PRÁCTICA</p><h3>Consultoría de Seguridad y Software</h3><p class="evidence">Práctica independiente de seguridad y software.</p></article>
+      </div>
+      <div class="pager"><span>Trayectoria</span><span class="pager-controls"><button type="button" data-target="inicio" aria-label="Ir a Inicio">↑</button><button type="button" data-target="proyectos" aria-label="Ir a Proyectos">↓</button></span></div>
+    </section>
+    <section id="proyectos">
+      <div class="heading"><span class="number">02</span><h2>Proyectos seleccionados</h2></div>
+      <div class="grid">
+        <article class="card"><p class="tag">REPOSITORIO PÚBLICO</p><h3>course-of-cybersecurity</h3><p class="evidence">Libro de curso completo de ciberseguridad con guía del instructor, manual del estudiante, rúbricas y manual de despliegue con Docker.</p></article>
+        <article class="card"><p class="tag">REPOSITORIO PÚBLICO</p><h3>MindLedger</h3><p class="evidence">Sistema de gestión clínica y contable multi-tenant. Tauri v2 (Rust), React y SQLCipher.</p></article>
+        <article class="card"><p class="tag">REPOSITORIO PÚBLICO</p><h3>open-api-facturacion-sri</h3><p class="evidence">API REST para facturación electrónica SRI Ecuador con firma XAdES-BES y validación contra esquemas XSD.</p></article>
+      </div>
+      <div class="pager"><span>Proyectos</span><span class="pager-controls"><button type="button" data-target="trayectoria" aria-label="Ir a Trayectoria">↑</button><button type="button" data-target="exploitarium" aria-label="Ir a Exploitarium">↓</button></span></div>
+    </section>
+    <section id="exploitarium">
+      <div class="heading"><span class="number">03</span><h2>Exploitarium</h2></div>
+      <div class="grid">
+        <article class="card"><p class="tag">INVESTIGACIÓN</p><h3>exploitarium</h3><p class="evidence">Colección de PoCs de explotación para CVEs.</p></article>
+        <article class="card"><p class="tag">EVENTO CON EVIDENCIA</p><h3>CTF de EvilSec (Ekoparty 2026)</h3><p class="evidence">Tercer puesto: 15 de 22 retos resueltos y 3550 puntos.</p></article>
+        <article class="card"><p class="tag">REPOSITORIO PÚBLICO</p><h3>cybervault</h3><p class="evidence">Repositorio de seguridad y auditoría.</p></article>
+      </div>
+      <div class="pager"><span>Exploitarium</span><span class="pager-controls"><button type="button" data-target="proyectos" aria-label="Ir a Proyectos">↑</button><button type="button" data-target="academia" aria-label="Ir a Academia">↓</button></span></div>
+    </section>
+    <section id="academia">
+      <div class="heading"><span class="number">04</span><h2>Academia</h2></div>
+      <div class="grid">
+        <article class="card"><p class="tag">EN CURSO</p><h3>MSc Ciberseguridad</h3><p class="evidence">Universidad Complutense de Madrid · 2026–2027.</p></article>
+        <article class="card"><p class="tag">FORMACIÓN</p><h3>Course of Cybersecurity</h3><p class="evidence">NIST CSF 2.0 · publicación propia.</p></article>
+        <article class="card"><p class="tag">CAPACITACIÓN</p><h3>Formación técnica</h3><p class="evidence">Cursos personalizados de Python, Hacking Ético, Ciberseguridad y desarrollo de software.</p></article>
+      </div>
+      <div class="pager"><span>Academia</span><span class="pager-controls"><button type="button" data-target="exploitarium" aria-label="Ir a Exploitarium">↑</button><button type="button" data-target="contacto" aria-label="Ir a Contacto">↓</button></span></div>
+    </section>
+    <section id="contacto">
+      <div class="heading"><span class="number">05</span><h2>Contacto</h2></div>
+      <p class="lede">¿Listo para llevar tu proyecto al siguiente nivel? Hablemos.</p>
+      <div class="actions"><a class="button primary" href="mailto:dsaavedra88@gmail.com">dsaavedra88@gmail.com</a><a class="button" href="#inicio">Volver al inicio</a></div>
+      <div class="pager"><span>Contacto</span><span class="pager-controls"><button type="button" data-target="academia" aria-label="Ir a Academia">↑</button><button type="button" disabled aria-label="Sección siguiente no disponible">↓</button></span></div>
+    </section>
+    <footer>Dirección: Systems Editorial — asimétrica, recruiter-first y con evidencia seleccionada.</footer>
+  </main>
+  <script>
+    document.querySelectorAll('[data-target]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const section = document.getElementById(button.dataset.target);
+        const heading = section.querySelector('h1, h2');
+        section.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        heading.tabIndex = -1;
+        heading.focus({ preventScroll: true });
+      });
+    });
+  </script>
+</body>
+</html>

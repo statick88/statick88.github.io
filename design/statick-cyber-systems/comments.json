@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "comments": [
+    {
+      "id": "w7bcd1d1",
+      "file": "03-human-signal.html",
+      "selector": "#inicio > aside",
+      "excerpt": "DS LOJA, ECUADOR Diego Medardo Saavedra García El retrato se resolvería con la imagen local existente; este artboard no carga activos.",
+      "comment": "aqui mi fotografia",
+      "createdAt": "2026-11-15T06:20:24.046Z",
+      "status": "resolved",
+      "sentAt": "2026-11-15T06:20:24.102Z",
+      "resolvedAt": "2026-11-15T06:21:52.992Z"
+    },
+    {
+      "id": "bzlkuk8k",
+      "file": "02-research-index.html",
+      "selector": "body > div",
+      "excerpt": "STATICK / RESEARCH INDEX Inicio Trayectoria Proyectos Exploitarium Academia Contacto ÍNDICE 01–06 CONTENIDO EXISTENTE Software, seguridad y educación. Un índice para revisar descripciones y tecnologías existentes sin presentar resultados no verificados. Inicio ↑ ↓ PRINCIPIO Primero evidencia. Este p",
+      "comment": "un estilo mas hacking con mejores acabados, transiciones y efectos",
+      "createdAt": "2026-11-15T06:21:43.905Z",
+      "status": "resolved",
+      "sentAt": "2026-11-15T06:21:43.930Z",
+      "resolvedAt": "2026-11-15T06:21:54.091Z"
+    }
+  ]
+}

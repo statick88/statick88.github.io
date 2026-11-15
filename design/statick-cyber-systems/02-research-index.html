@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>STATICK Cyber Systems — Research Index</title>
+    <style>
+      :root { --base:#030a17;
+      --panel:#071223;
+      --surface:#0a192c;
+      --line:#173348;
+      --text:#e1f2fa;
+      --muted:#a6c4d5;
+      --cyan:#22d3ee;
+      --bright:#67e8f9;
+      --green:#4ac586;
+      --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      --mono:"JetBrains Mono","Fira Code",ui-monospace,monospace;
+      }
+    * { box-sizing:border-box;
+    }
+  html { scroll-behavior:smooth;
+  }
+body { margin:0;
+background:var(--base);
+color:var(--text);
+font:15px/1.55 var(--sans);
+}
+a { color:inherit;
+}
+a:focus-visible, button:focus-visible { outline:2px solid var(--bright);
+outline-offset:3px;
+}
+.shell { max-width:1320px;
+margin:auto;
+padding:20px clamp(20px,4vw,56px);
+}
+header,.intro,.index { display:grid;
+grid-template-columns:260px 1fr;
+gap:24px;
+}
+header { padding-bottom:18px;
+border-bottom:1px solid var(--line);
+}
+.mark,.code { color:var(--bright);
+font:700 12px var(--mono);
+letter-spacing:.1em;
+text-transform:uppercase;
+}
+nav { display:flex;
+flex-wrap:wrap;
+gap:5px;
+}
+nav a { padding:7px 9px;
+border:1px solid transparent;
+border-radius:3px;
+color:var(--muted);
+text-decoration:none;
+}
+nav a:hover { border-color:var(--line);
+color:var(--text);
+}
+.intro { padding:42px 0;
+border-bottom:1px solid var(--line);
+}
+h1 { margin:8px 0;
+font-size:clamp(38px,5vw,64px);
+line-height:1;
+letter-spacing:-.04em;
+}
+h2 { margin:0;
+font-size:24px;
+}
+.summary,.record p { color:var(--muted);
+}
+.summary { max-width:760px;
+font-size:19px;
+}
+.side { padding:28px 0;
+color:var(--muted);
+}
+.side p { margin:.5rem 0;
+}
+.record { padding:28px 0;
+border-bottom:1px solid var(--line);
+scroll-margin-top:10px;
+}
+.record-head { display:grid;
+grid-template-columns:90px minmax(150px,1fr) 2fr;
+gap:16px;
+align-items:baseline;
+}
+.evidence { display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:16px;
+}
+.evidence div { padding:6px 10px;
+border-left:2px solid var(--cyan);
+background:var(--panel);
+font-size:13px;
+}
+.evidence b { display:block;
+color:var(--text);
+}
+.pager { display:flex;
+justify-content:space-between;
+gap:12px;
+margin-top:16px;
+}
+.pager-controls { display:flex;
+gap:8px;
+}
+.pager button { width:44px;
+height:44px;
+border:1px solid var(--line);
+border-radius:3px;
+background:transparent;
+color:var(--text);
+font-size:19px;
+cursor:pointer;
+}
+.pager button:hover:not(:disabled) { border-color:var(--cyan);
+}
+.pager button:disabled { color:var(--muted);
+cursor:not-allowed;
+opacity:.55;
+}
+footer { padding:28px 0;
+color:var(--muted);
+}
+@media(max-width:760px) { header,.intro,.index { grid-template-columns:1fr;
+}
+.side { display:flex;
+flex-wrap:wrap;
+gap:12px;
+padding:18px 0;
+}
+.record-head { grid-template-columns:64px 1fr;
+}
+.record-head p { grid-column:1/-1;
+}
+.evidence { grid-template-columns:1fr;
+}
+h1 { font-size:44px;
+}
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto;
+}
+*,*::before,*::after { animation:none!important;
+transition:none!important;
+}
+}
+</style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="mark">
+        STATICK / Research Index
+      </div>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">
+          Inicio
+        </a>
+        <a href="#trayectoria">
+          Trayectoria
+        </a>
+        <a href="#proyectos">
+          Proyectos
+        </a>
+        <a href="#exploitarium">
+          Exploitarium
+        </a>
+        <a href="#academia">
+          Academia
+        </a>
+        <a href="#contacto">
+          Contacto
+        </a>
+      </nav>
+    </header>
+    <main>
+      <section class="intro" id="inicio">
+        <p class="code">
+          Índice 01–06
+          <br>
+          Contenido existente
+        </p>
+        <div>
+          <h1>
+            Software, seguridad y educación.
+          </h1>
+          <p class="summary">
+            Un índice para revisar descripciones y tecnologías existentes sin presentar resultados no verificados.
+          </p>
+        </div>
+        <div class="pager">
+          <span>
+            Inicio
+          </span>
+          <span class="pager-controls">
+            <button type="button" disabled aria-label="Sección anterior no disponible">
+              ↑
+            </button>
+            <button type="button" data-target="trayectoria" aria-label="Ir a Trayectoria">
+              ↓
+            </button>
+          </span>
+        </div>
+      </section>
+      <div class="index">
+        <aside class="side" aria-label="Criterio editorial">
+          <p class="code">
+            Principio
+          </p>
+          <p>
+            Primero evidencia.
+          </p>
+          <p>
+            Este prototipo no carga recursos externos.
+          </p>
+        </aside>
+        <div class="records">
+          <section class="record" id="trayectoria">
+            <div class="record-head">
+              <span class="code">
+                02 / TRAY
+              </span>
+              <h2>
+                Trayectoria
+              </h2>
+              <p>
+                Ingeniería de software, automatización, testing, ciberseguridad, AWS y DevSecOps;
+                práctica independiente de seguridad y software.
+              </p>
+            </div>
+            <div class="evidence">
+              <div>
+                <b>
+                  Uteam
+                </b>
+                Ingeniero de Software
+              </div>
+              <div>
+                <b>
+                  Meeting Planner AI System
+                </b>
+                Proyecto propio
+              </div>
+              <div>
+                <b>
+                  Práctica
+                </b>
+                Consultoría de Seguridad y Software
+              </div>
+            </div>
+            <div class="pager">
+              <span>
+                Trayectoria
+              </span>
+              <span class="pager-controls">
+                <button type="button" data-target="inicio" aria-label="Ir a Inicio">
+                  ↑
+                </button>
+                <button type="button" data-target="proyectos" aria-label="Ir a Proyectos">
+                  ↓
+                </button>
+              </span>
+            </div>
+          </section>
+          <section class="record" id="proyectos">
+            <div class="record-head">
+              <span class="code">
+                03 / PROY
+              </span>
+              <h2>
+                Proyectos
+              </h2>
+              <p>
+                Registros de proyecto con sus descripciones y tecnologías existentes.
+              </p>
+            </div>
+            <div class="evidence">
+              <div>
+                <b>
+                  MindLedger
+                </b>
+                Tauri v2 · Rust · React · SQLCipher
+              </div>
+              <div>
+                <b>
+                  cyber-guardians
+                </b>
+                TypeScript · método socrático · metacognición
+              </div>
+              <div>
+                <b>
+                  open-api-facturacion-sri
+                </b>
+                Node.js · TypeScript · XAdES-BES
+              </div>
+            </div>
+            <div class="pager">
+              <span>
+                Proyectos
+              </span>
+              <span class="pager-controls">
+                <button type="button" data-target="trayectoria" aria-label="Ir a Trayectoria">
+                  ↑
+                </button>
+                <button type="button" data-target="exploitarium" aria-label="Ir a Exploitarium">
+                  ↓
+                </button>
+              </span>
+            </div>
+          </section>
+          <section class="record" id="exploitarium">
+            <div class="record-head">
+              <span class="code">
+                04 / XPLT
+              </span>
+              <h2>
+                Exploitarium
+              </h2>
+              <p>
+                Investigación y práctica expresadas con el alcance de las descripciones existentes.
+              </p>
+            </div>
+            <div class="evidence">
+              <div>
+                <b>
+                  exploitarium
+                </b>
+                Colección de PoCs de explotación para CVEs
+              </div>
+              <div>
+                <b>
+                  cybervault
+                </b>
+                Seguridad y auditoría
+              </div>
+              <div>
+                <b>
+                  CTF de EvilSec
+                </b>
+                15/22 retos · 3550 puntos · 3.er puesto
+              </div>
+            </div>
+            <div class="pager">
+              <span>
+                Exploitarium
+              </span>
+              <span class="pager-controls">
+                <button type="button" data-target="proyectos" aria-label="Ir a Proyectos">
+                  ↑
+                </button>
+                <button type="button" data-target="academia" aria-label="Ir a Academia">
+                  ↓
+                </button>
+              </span>
+            </div>
+          </section>
+          <section class="record" id="academia">
+            <div class="record-head">
+              <span class="code">
+                05 / ACAD
+              </span>
+              <h2>
+                Academia
+              </h2>
+              <p>
+                Estudios y formación, preservando el estado en curso.
+              </p>
+            </div>
+            <div class="evidence">
+              <div>
+                <b>
+                  MSc Ciberseguridad
+                </b>
+                UCM · en curso · 2026–2027
+              </div>
+              <div>
+                <b>
+                  course-of-cybersecurity
+                </b>
+                Guía docente, rúbricas y Docker
+              </div>
+              <div>
+                <b>
+                  Capacitación
+                </b>
+                Python, Hacking Ético, Ciberseguridad y software
+              </div>
+            </div>
+            <div class="pager">
+              <span>
+                Academia
+              </span>
+              <span class="pager-controls">
+                <button type="button" data-target="exploitarium" aria-label="Ir a Exploitarium">
+                  ↑
+                </button>
+                <button type="button" data-target="contacto" aria-label="Ir a Contacto">
+                  ↓
+                </button>
+              </span>
+            </div>
+          </section>
+          <section class="record" id="contacto">
+            <div class="record-head">
+              <span class="code">
+                06 / CONT
+              </span>
+              <h2>
+                Contacto
+              </h2>
+              <p>
+                Canal directo y perfiles existentes.
+              </p>
+            </div>
+            <p>
+              <a href="mailto:dsaavedra88@gmail.com">
+                dsaavedra88@gmail.com
+              </a>
+              ·
+              <a href="#inicio">
+                Volver al inicio
+              </a>
+            </p>
+            <div class="pager">
+              <span>
+                Contacto
+              </span>
+              <span class="pager-controls">
+                <button type="button" data-target="academia" aria-label="Ir a Academia">
+                  ↑
+                </button>
+                <button type="button" disabled aria-label="Sección siguiente no disponible">
+                  ↓
+                </button>
+              </span>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer>
+      Dirección: Research Index — evidencia primero y alta densidad;
+                                menor énfasis editorial.
+    </footer>
+  </div>
+<script>
+                                document.querySelectorAll('[data-target]').forEach((button) => button.addEventListener('click', () => {
+                                  const section = document.getElementById(button.dataset.target);
+                                  const heading = section.querySelector('h1, h2');
+                                  section.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }
+                                  );
+                                  heading.tabIndex = -1;
+                                  heading.focus({ preventScroll: true }
+                                  );
+                                  }
+                                ));
+                              </script>
+                            </body>
+                          </html>

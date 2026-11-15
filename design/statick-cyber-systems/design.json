@@ -1,0 +1,28 @@
+{
+  "title": "STATICK Cyber Systems",
+  "brief": "Three self-contained, Spanish-language portfolio artboard alternatives for a software, cybersecurity, and education profile. Uses existing source-backed content only; no external assets or network requests.",
+  "feature": "odd/tasks/statick-cyber-systems.md",
+  "artboards": [
+    {
+      "file": "01-systems-editorial.html",
+      "title": "Systems Editorial",
+      "tradeoff": "Recommended: asymmetric, recruiter-first cinematic hierarchy with selected evidence; less dense than an index.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "02-research-index.html",
+      "title": "Research Index",
+      "tradeoff": "Evidence-first, compact record layout for comparison; reduced emotional pull and visual drama.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "03-human-signal.html",
+      "title": "Human Signal",
+      "tradeoff": "Identity and contact-led approach; less immediate capacity for broad evidence comparison.",
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}
