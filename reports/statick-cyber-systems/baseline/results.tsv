@@ -1,0 +1,9 @@
+run check:toolchain	0
+typecheck	0
+lint	0
+test	0
+build	1
+test:e2e	1
+build	0
+test:e2e	0
+audit	0
