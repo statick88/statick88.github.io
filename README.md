@@ -43,9 +43,9 @@ GitHub Pages enforces the CSP meta and referrer meta, but it does **not** apply 
 
 ## Compact portfolio
 
-The homepage uses a full-width editorial hero and rounded cyan/midnight catalog. It keeps the target role, `mailto:` contact, CV download, core stack and three evidence-based public project previews visible before any dialog. Each of the 15 sections then starts with a brief, factual preview; **+ More** opens its complete content in one native modal dialog. On small screens the trigger displays **+**, while accessible labels remain descriptive. Close with the **−** button, Escape, or a click outside the dialog. Focus cycles inside the dialog and returns to its opener on close. Navigation and the hero service action open the same section dialogs instead of expanding the page. Email links retain `mailto:` and the configured default mail handler.
+The homepage uses a full-width editorial hero and rounded paper/charcoal catalog inspired by [Troko](https://trokotec.com/troko/), retaining Diego / STATICK branding. Olive (light) and lime (dark) accents keep actions readable. It keeps the target role, `mailto:` contact, CV download, core stack and three evidence-based public project previews visible before any dialog. Each of the 15 sections then starts with a brief, factual preview; **+ More** opens its complete content in one native modal dialog. On small screens the trigger displays **+**, while accessible labels remain descriptive. Close with the **−** button, Escape, or a click outside the dialog. Focus cycles inside the dialog and returns to its opener on close. Navigation and the hero service action open the same section dialogs instead of expanding the page. Email links retain `mailto:` and the configured default mail handler.
 
-- Portrait: the existing photo appears in a circular cyan frame in the hero; its extra screen-only instance is hidden when printing.
+- Portrait: the existing photo appears in a circular olive/lime frame in the hero; its extra screen-only instance is hidden when printing.
 - Skills: text chips replace proficiency bars; language indicators remain unchanged.
 - Courses: **View course** opens the published GitHub Pages site first, with **Code** as the secondary repository link. Non-course project links are unchanged.
 

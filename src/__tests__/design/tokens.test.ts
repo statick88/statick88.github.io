@@ -152,23 +152,10 @@ describe('design tokens', () => {
     })
   })
 
-  it('uses a hacker cyan accent (hue between 185 and 200 degrees) on navy surfaces', () => {
-    const [r, g, b] = read(dark, 'accent')
-    const max = Math.max(r, g, b)
-    const min = Math.min(r, g, b)
-    const delta = max - min
-    let hue = 0
-    if (delta !== 0) {
-      if (max === r) hue = 60 * (((g - b) / delta) % 6)
-      else if (max === g) hue = 60 * ((b - r) / delta + 2)
-      else hue = 60 * ((r - g) / delta + 4)
-    }
-    if (hue < 0) hue += 360
-    expect(hue).toBeGreaterThanOrEqual(185)
-    expect(hue).toBeLessThanOrEqual(200)
-    const [br, bg, bb] = read(dark, 'base')
-    expect(bb).toBeGreaterThan(bg)
-    expect(bg).toBeGreaterThan(br)
-    expect(bb).toBeLessThan(32)
+  it('uses Troko-inspired paper, charcoal and lime without replacing semantic tokens', () => {
+    expect(read(light, 'base')).toEqual([245, 241, 233])
+    expect(read(light, 'accent')).toEqual([63, 79, 42])
+    expect(read(dark, 'base')).toEqual([15, 15, 15])
+    expect(read(dark, 'accent')).toEqual([163, 255, 106])
   })
 })
