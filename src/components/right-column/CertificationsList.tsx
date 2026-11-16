@@ -119,7 +119,7 @@ export default function CertificationsList({ certifications }: CertificationsLis
         </div>
       </PanelRow>
 
-      <LearningManual title={t('certificaciones', 'certifications')} pages={sorted.map((cert, index) => {
+      <LearningManual pageTurn title={t('certificaciones', 'certifications')} pages={sorted.map((cert, index) => {
         const status = STATUS_CONFIG[resolveStatus(cert.status)]
         return {
           id: `${cert.name.en}-${index}`,

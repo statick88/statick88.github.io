@@ -1,0 +1,60 @@
+/* Equal paper leaves, a bound spine and page edges; complete view remains plain. */
+@media screen {
+  .learning-manual-book { overflow: clip; }
+  .learning-manual-book:not(.learning-manual-all) .manual-spread {
+    position: relative;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    perspective: 1800px;
+    box-shadow: 3px 3px 0 rgb(var(--ct-panel)), 4px 4px 0 rgb(var(--ct-line)), 7px 7px 0 rgb(var(--ct-panel)), 8px 8px 0 rgb(var(--ct-line));
+  }
+  .learning-manual-book:not(.learning-manual-all) .manual-contents {
+    color: rgb(var(--ct-text));
+    background: rgb(var(--ct-panel));
+  }
+  .learning-manual-book:not(.learning-manual-all) .manual-spread::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 28px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgb(var(--ct-text) / .12), transparent);
+    pointer-events: none;
+    z-index: 10;
+  }
+  .learning-manual-book .manual-pages { position: relative; z-index: 2; transform-style: preserve-3d; }
+  .book-turn-layer { position: absolute; inset: 0; z-index: 5; pointer-events: none; user-select: none; transform-style: preserve-3d; }
+  .book-turn-sheet { position: absolute; inset: 0; transform-origin: left center; transform-style: preserve-3d; animation-duration: .65s; animation-timing-function: cubic-bezier(.22, .65, .3, 1); animation-fill-mode: both; }
+  .book-turn-forward { animation-name: book-page-forward; }
+  .book-turn-backward { animation-name: book-page-backward; }
+  .book-turn-underlay, .book-turn-face { position: absolute; inset: 0; overflow: hidden; }
+  .book-turn-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .book-turn-front { transform: rotateY(0deg); }
+  .book-turn-sheet .book-turn-back { display: block; padding: clamp(20px, 3vw, 40px); color: rgb(var(--ct-text)); background: rgb(var(--ct-panel)); transform: rotateY(180deg); }
+  .book-turn-back h3 { margin: 32px 0 16px; font: 800 32px/1.15 system-ui, sans-serif; text-transform: capitalize; }
+  .book-turn-face::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(var(--ct-text) / .12), transparent 18%);
+    pointer-events: none;
+  }
+  @keyframes book-page-forward {
+    from { transform: rotateY(0deg) skewY(0deg); }
+    50% { transform: rotateY(-90deg) skewY(-3deg); }
+    to { transform: rotateY(-180deg) skewY(0deg); }
+  }
+  @keyframes book-page-backward {
+    from { transform: rotateY(-180deg) skewY(0deg); }
+    50% { transform: rotateY(-90deg) skewY(3deg); }
+    to { transform: rotateY(0deg) skewY(0deg); }
+  }
+  @media (max-width: 820px) {
+    .learning-manual-book:not(.learning-manual-all) .manual-spread { grid-template-columns: minmax(0, 1fr); }
+    .learning-manual-book:not(.learning-manual-all) .manual-spread::after { left: 0; }
+  }
+}
+@media (prefers-reduced-motion: reduce), print {
+  .book-turn-layer { display: none !important; }
+}

@@ -15,7 +15,7 @@ export function CoursesPanel() {
 
   return (
     <Panel title={t('cursos', 'courses')} subtitle={`${courses.length}`}>
-      <LearningManual title={t('cursos', 'courses')} pages={courses.map((course) => ({
+      <LearningManual pageTurn title={t('cursos', 'courses')} pages={courses.map((course) => ({
         id: course.id,
         title: course.title,
         content: (

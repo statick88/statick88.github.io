@@ -1041,6 +1041,10 @@ html:has(.cv-section-modal[open]) { overflow: hidden; }
   .cv-sheet-modern .cv-hero-intro { margin: 24px 0 0; max-width: 45ch; }
   .cv-sheet-modern .cv-hero-actions,
   .cv-hero-contact, .cv-core-stack { justify-content: flex-start; }
+  .cv-sheet-modern .cv-portfolio-hero .cv-photo-ring {
+    width: clamp(160px, 18vw, 224px);
+    height: clamp(160px, 18vw, 224px);
+  }
   .cv-sheet-modern .cv-photo-ring {
     float: right;
     margin: 16px 0 32px 40px;

@@ -34,7 +34,7 @@ The unchanged compatibility color ramps remain in `src/index.css`; new component
 Sources: `src/index.css`, `tailwind.config.js`. Body: Inter/system sans, 14px/1.6. Hero: Arial Black/Inter/system sans, clamp(44px, 6.5vw, 92px), 900 weight, 1.02 line-height. Section headings: Inter/system sans, 800 weight. Labels: Fira Code/ui-monospace; no new remote fonts. Artboards use system-only sans/monospace fallbacks.
 
 ## Spacing, radius and shadows
-Source: `src/index.css`. 8px rhythm; hero 80px/64px vertical padding (48px top on mobile); cards 28px padding, 20px gap and radius; dialogs 24px radius. Actions have 999px radius and minimum 48px height. Focus outline: 2px accent with 2px offset. Portrait shadow: 12px 12px accent-dim. Cards have no shadows.
+Source: `src/index.css`. 8px rhythm; hero 80px/64px vertical padding (48px top on mobile); cards 28px padding, 20px gap and radius; dialogs 24px radius. Actions have 999px radius and minimum 48px height. Focus outline: 2px accent with 2px offset. Hero portrait: clamp(160px, 18vw, 224px) square with the existing circular crop; summary/print dimensions unchanged. Portrait shadow: 12px 12px accent-dim. Cards have no shadows.
 
 ## Components and layout
 Sources: `src/index.css`, `src/components/CompactSection.tsx`, `src/components/layout/AppLayout.tsx`.
@@ -46,3 +46,5 @@ Sources: `src/index.css`, `src/components/CompactSection.tsx`, `src/components/l
 
 ## Learning manual
 Source: `src/components/LearningManual.css` and `src/components/LearningManual.tsx`. The reader locally reuses the light palette in both surrounding themes, with a 20px frame radius, 24px inset, 48px index/actions and a contents leaf plus a record leaf on desktop; mobile prioritizes the record and a labeled index selector. Explicit previous/next controls, keyboard interaction inside the manual only, list mode and full-document printing preserve access to long catalogs.
+
+Sources: `src/components/BookPageTurn.tsx` and `BookPageTurn.css`. Certifications and courses opt into equal paper leaves with a central bound-spine gradient and layered page-edge shadows using the existing panel/line/text tokens. A two-sided sheet rotates around its left edge over 650ms, with reversed rotation for Previous and separate front/back faces. Its inert, aria-hidden, non-printing snapshot never replaces the actual current record or duplicate its accessible links. A 750ms fallback removes canceled sheets. Generic manual consumers remain static by default; reduced motion bypasses the sheet and complete-list/print modes remain unanimated.

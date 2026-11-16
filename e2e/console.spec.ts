@@ -41,7 +41,11 @@ test('renders the editorial hero and every CV section without a permanent sideba
     const style = getComputedStyle(element)
     return { width: rect.width, height: rect.height, radius: parseFloat(style.borderRadius), border: parseFloat(style.borderTopWidth) }
   })
+  expect(frame.width).toBe(page.viewportSize()!.width >= 761 ? 224 : 160)
   expect(frame.width).toBe(frame.height)
+  const imageBounds = await portrait.boundingBox()
+  expect(imageBounds!.width).toBeGreaterThanOrEqual(frame.width - 8)
+  expect(imageBounds!.height).toBeGreaterThanOrEqual(frame.height - 8)
   expect(frame.radius).toBeGreaterThanOrEqual(frame.width / 2)
   expect(frame.border).toBeGreaterThan(0)
   await expect(page.getByTestId('portfolio-hero').getByRole('link', { name: 'dsaavedra88@gmail.com' })).toHaveAttribute('href', 'mailto:dsaavedra88@gmail.com')
