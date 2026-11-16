@@ -1,0 +1,14 @@
+{
+  "title": "STATICK Editorial / Troko-inspired",
+  "brief": "Global visual language inspired by Troko, with book-like certificates and courses while retaining Diego / STATICK.",
+  "feature": "odd/tasks/troko-editorial.md",
+  "artboards": [
+    {
+      "file": "01-editorial-manual.html",
+      "title": "Editorial manual",
+      "tradeoff": "Recommended: strongest link to the reference; one record at a time favors focused reading.",
+      "width": 1440,
+      "height": 1100
+    }
+  ]
+}
