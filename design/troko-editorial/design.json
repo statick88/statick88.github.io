@@ -9,6 +9,20 @@
       "tradeoff": "Recommended: strongest link to the reference; one record at a time favors focused reading.",
       "width": 1440,
       "height": 1100
+    },
+    {
+      "file": "02-learning-library.html",
+      "title": "Learning library",
+      "tradeoff": "Scanning-first contents with a compact hero; less emphasis on personal storytelling.",
+      "width": 1440,
+      "height": 1100
+    },
+    {
+      "file": "03-field-notes.html",
+      "title": "Field notes",
+      "tradeoff": "Record-first editorial notebook; stronger document character and less promotional hierarchy.",
+      "width": 1440,
+      "height": 1100
     }
   ]
 }
