@@ -14,7 +14,7 @@ const PREVIEWS: Record<SectionId, { es: string; en: string }> = {
   educacion: { es: 'Formación académica y especialización.', en: 'Academic background and specialization.' },
   habilidades: { es: 'TypeScript, React, Python, Docker y seguridad, organizados por área.', en: 'TypeScript, React, Python, Docker and security, organized by field.' },
   proyectos: { es: 'Cursos abiertos de Python y ciberseguridad, más aplicaciones publicadas.', en: 'Open Python and cybersecurity courses, plus published applications.' },
-  certificaciones: { es: 'Formación de UNIR, ESPE, KodeKloud y Platzi con enlaces de verificación.', en: 'UNIR, ESPE, KodeKloud and Platzi education with verification links.' },
+  certificaciones: { es: 'Formación de UNIR, ESPE, KodeKloud y Platzi: emisor, fecha y estado.', en: 'UNIR, ESPE, KodeKloud and Platzi education: issuer, date and status.' },
   cursos: { es: 'Recursos y cursos para aprender haciendo.', en: 'Resources and courses for hands-on learning.' },
   investigacion: { es: 'Publicaciones y líneas de investigación.', en: 'Publications and research interests.' },
   exploitarium: { es: 'Investigación de seguridad y documentación técnica.', en: 'Security research and technical documentation.' },

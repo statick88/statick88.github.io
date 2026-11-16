@@ -8,13 +8,17 @@
 import { useApp } from '@/context/AppContext'
 import { Panel, PanelRow } from '@/components/panels/Panel'
 import { courses } from '@/data/courses'
+import { LearningManual } from '@/components/LearningManual'
 
 export function CoursesPanel() {
   const { t } = useApp()
 
   return (
     <Panel title={t('cursos', 'courses')} subtitle={`${courses.length}`}>
-      {courses.map((course) => (
+      <LearningManual title={t('cursos', 'courses')} pages={courses.map((course) => ({
+        id: course.id,
+        title: course.title,
+        content: (
         <PanelRow key={course.id} label={course.title}>
           <div className="space-y-2">
             <p className="text-ct-subtext-1 text-xs">{course.subtitle}</p>
@@ -41,7 +45,8 @@ export function CoursesPanel() {
             </div>
           </div>
         </PanelRow>
-      ))}
+        ),
+      }))} />
     </Panel>
   )
 }

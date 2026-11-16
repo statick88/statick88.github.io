@@ -47,7 +47,8 @@ The homepage uses a full-width editorial hero and rounded paper/charcoal catalog
 
 - Portrait: the existing photo appears in a circular olive/lime frame in the hero; its extra screen-only instance is hidden when printing.
 - Skills: text chips replace proficiency bars; language indicators remain unchanged.
-- Courses: **View course** opens the published GitHub Pages site first, with **Code** as the secondary repository link. Non-course project links are unchanged.
+- Learning manual: certificates and courses use a paper-like two-leaf reader inspired by [Troko's manual](https://trokotec.com/manual/). Desktop shows an editorial contents leaf beside the current record; mobile prioritizes a single record. Use the labeled index or **Previous / Next**; with focus on the book itself, Left/Right and Home/End navigate without capturing keys elsewhere. **View all / Book view** switches between the complete catalog and focused reading. Printing always includes every record, even when only one is visible onscreen.
+- Courses: **View course** opens the published GitHub Pages site first, with **Code** as the secondary repository link. Non-course project links are unchanged. Certificates retain their issuer, date, status and existing IDs; the manual does not invent credential proofs or download links.
 
 The interface supports Spanish and English and mobile layouts. Printing temporarily closes the top-layer dialog, exposes every full section and nested disclosure without modal controls in a full-width A4 document, then restores the previously active dialog and disclosure state. The modern layout does not reserve the legacy sidebar's print column; the default standalone two-column layout is unchanged. PDF downloads and full ATS exports remain independent of the previews; no CV records are removed.
 
