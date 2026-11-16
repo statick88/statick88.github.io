@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STATICK — Learning library</title>
+  <style>
+    :root {
+      --base: rgb(245 241 233);
+      --panel: rgb(252 250 245);
+      --surface-0: rgb(236 231 220);
+      --surface-1: rgb(228 223 211);
+      --surface-2: rgb(216 212 202);
+      --line: rgb(204 199 187);
+      --line-strong: rgb(148 144 131);
+      --text: rgb(15 15 15);
+      --subtext-1: rgb(63 65 57);
+      --subtext-0: rgb(89 91 80);
+      --accent: rgb(63 79 42);
+      --accent-bright: rgb(54 70 35);
+      --accent-dim: rgb(229 239 215);
+      --accent-contrast: rgb(245 241 233);
+      --navy: rgb(15 15 15);
+      --navy-soft: rgb(40 46 32);
+      --ok: rgb(48 104 40);
+      --warn: rgb(125 83 17);
+      --danger: rgb(161 47 43);
+      --info: rgb(63 79 42);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--base); color: var(--text); font: 16px/1.6 system-ui, sans-serif; }
+    main { max-width: 1280px; padding: 48px 24px; margin: auto; }
+    header, footer { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .eyebrow, small, label { font: 12px/1.6 ui-monospace, monospace; letter-spacing: .08em; }
+    h1 { font-size: clamp(44px, 7vw, 92px); line-height: 1.02; letter-spacing: -.065em; max-width: 13ch; }
+    h2 { font-size: 32px; line-height: 1.15; }
+    h3 { font-size: 24px; line-height: 1.25; }
+    p { max-width: 56ch; }
+    .hero { padding: 64px 0; }
+    .book { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-strong); border-radius: 20px; overflow: hidden; margin: 32px 0; }
+    .leaf { padding: 32px; min-width: 0; background: var(--panel); }
+    .leaf + .leaf { border-left: 1px solid var(--line-strong); }
+    .contents { background: var(--surface-0); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+    a, button { display: inline-flex; min-height: 48px; align-items: center; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--accent); background: transparent; font: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .primary { background: var(--accent); color: var(--accent-contrast); }
+    .row { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    @media (max-width: 820px) { .book { grid-template-columns: 1fr; } .leaf + .leaf { border-left: 0; border-top: 1px solid var(--line-strong); } .leaf { padding: 24px; } }
+    .hero { padding: 32px 0; } h1 { font-size: 52px; max-width: 22ch; } @media (min-width: 821px) { .book { grid-template-columns: 1fr 2fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><strong>STATICK / Diego Saavedra</strong><span class="eyebrow">SOFTWARE · SEGURIDAD · DOCENCIA</span></header>
+    <section class="hero">
+      <p class="eyebrow">PORTAFOLIO PROFESIONAL</p>
+      <h1>Una biblioteca para aprender haciendo.</h1>
+      <p>Diego Medardo Saavedra García. Desarrollo de software, investigación de seguridad y formación técnica.</p>
+      <div class="actions"><a class="primary" href="#manual">Explorar cursos</a><a href="#certificates">Certificaciones</a></div>
+    </section>
+    <section id="manual" aria-labelledby="manual-title">
+      <header><h2 id="manual-title">Manual de aprendizaje</h2><p class="eyebrow">CURSOS / EDICIÓN ABIERTA</p></header>
+      <div class="book">
+        <aside class="leaf contents" aria-label="Índice de cursos">
+          <p class="eyebrow">STATICK / ÍNDICE</p>
+          <h3>Aprender haciendo.</h3>
+          <p>Un curso por página. Enlaces al material publicado y a su código.</p>
+          <div class="row">01 / Fundamentos de Ciberseguridad</div>
+          <div class="row">02 / Programación Python Fundamentos</div>
+          <div class="row">03 / MicroPython para el Aula</div>
+        </aside>
+        <article class="leaf">
+          <p class="eyebrow">01 / CURSO · 2026 · QUARTO</p>
+          <h3>Fundamentos de Ciberseguridad</h3>
+          <p>Protege tu vida digital — Aprende ciberseguridad desde cero.</p>
+          <p>Curso profesional con NIST CSF 2.0, VPN, ZTNA, MFA y CVSS. Enfocado en profesionales de TI.</p>
+          <div class="actions"><a class="primary" href="#manual">Ver curso ↗</a><a href="#manual">Código ↗</a></div>
+          <small>Maqueta de dirección visual; los enlaces de producción se conservan en el sitio.</small>
+        </article>
+      </div>
+    </section>
+    <section id="certificates">
+      <h2>Certificaciones, sin inventar evidencia.</h2>
+      <p>La versión funcional conserva emisor, fecha y estado de cada registro. Los estudios en curso no se presentan como títulos obtenidos.</p>
+    </section>
+    <footer><p>Diego / STATICK</p><p class="eyebrow">LEARNING LIBRARY</p></footer>
+  </main>
+</body>
+</html>

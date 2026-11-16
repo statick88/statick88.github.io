@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "chosen": "01-editorial-manual.html",
+  "handoffs": {
+    "01-editorial-manual.html": {
+      "status": "implemented",
+      "queued": false,
+      "sentAt": "2026-11-16T13:27:28.663Z",
+      "startedAt": "2026-11-16T13:27:28.702Z",
+      "implementedAt": "2026-11-16T14:22:51.846Z",
+      "feature": "odd/tasks/troko-editorial.md",
+      "note": "Implemented and locally checked: 356 unit tests, 32 desktop/mobile browser checks, lint, typecheck, full build and audit pass. Independent verification remains explicitly accepted incomplete after setup failure; no retry or approval claimed. Local feature commits only; nothing published.",
+      "previewUrl": "http://127.0.0.1:4186/"
+    }
+  }
+}
