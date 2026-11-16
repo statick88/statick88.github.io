@@ -71,7 +71,7 @@ export type NavGroup = (typeof NAV_GROUPS)[number]
 export type NavItem = NavGroup['items'][number]
 export type SectionId = NavItem['id']
 
-/** Flat list of every section id, in document order. */
+/** Flat list of every section id, in legacy shortcut order. Primary reading groups live in system-navigation.ts. */
 export const SECTION_IDS: SectionId[] = NAV_GROUPS.flatMap((group) =>
   group.items.map((item) => item.id),
 )

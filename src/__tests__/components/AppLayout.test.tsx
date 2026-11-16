@@ -10,7 +10,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen, cleanup, within } from '@testing-library/react'
 import { AppProvider } from '@/context/AppContext'
 import { ProfileProvider } from '@/context/ProfileContext'
 
@@ -87,6 +87,17 @@ describe('AppLayout', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument()
     expect(screen.getByRole('complementary')).toBeInTheDocument()
     expect(screen.getByRole('main')).toBeInTheDocument()
+  })
+
+  it('preserves standalone modal navigation without links to missing primary groups', () => {
+    render(
+      <AppProvider><ProfileProvider>
+        <AppLayout><p>Standalone document</p></AppLayout>
+      </ProfileProvider></AppProvider>
+    )
+    const nav = screen.getByRole('navigation')
+    expect(within(nav).queryAllByRole('link')).toHaveLength(0)
+    expect(within(nav).getAllByRole('button')).toHaveLength(15)
   })
 
   it('exposes a skip link to the main content', () => {

@@ -18,6 +18,7 @@ import IdentityColumn from '@/components/IdentityColumn'
 import { PortfolioHero } from '@/components/PortfolioHero'
 import { FeaturedProjects } from '@/components/FeaturedProjects'
 import { CompactSection } from '@/components/CompactSection'
+import { SystemSection } from '@/components/SectionPager'
 
 import { CoursesPanel } from '@/components/panels/CoursesPanel'
 import { ServicesPanel } from '@/components/panels/ServicesPanel'
@@ -73,129 +74,141 @@ function AppInner() {
 
   return (
     <AppLayout modern>
-      <PortfolioHero profile={profile} contact={contact} skills={skills} />
-      <FeaturedProjects projects={adaptProjects()} />
+      <SystemSection current={0}>
+        <PortfolioHero profile={profile} contact={contact} skills={skills} />
+        <FeaturedProjects projects={adaptProjects()} />
 
-      <CompactSection id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
-        {aside}
-        <ProfileCard profile={profile} metrics={metrics} headline={adaptHeadline()} />
-      </CompactSection>
+        <CompactSection id={SECTION.resumen} aria-label={t('resumen', 'summary')} className="scroll-mt-16">
+          {aside}
+          <ProfileCard profile={profile} metrics={metrics} headline={adaptHeadline()} />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.servicios}
-        aria-label={t('servicios', 'services')}
-        className="scroll-mt-16"
-      >
-        <ServicesPanel />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.servicios}
+          aria-label={t('servicios', 'services')}
+          className="scroll-mt-16"
+        >
+          <ServicesPanel />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.encargos}
-        aria-label={t('encargos', 'engagements')}
-        className="scroll-mt-16"
-      >
-        <EngagementsPanel />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.encargos}
+          aria-label={t('encargos', 'engagements')}
+          className="scroll-mt-16"
+        >
+          <EngagementsPanel />
+        </CompactSection>
+      </SystemSection>
 
-      <CompactSection
-        id={SECTION.referencias}
-        aria-label={t('referencias', 'references')}
-        className="scroll-mt-16"
-      >
-        <ReferencesPanel />
-      </CompactSection>
+      <SystemSection current={1}>
+        <CompactSection
+          id={SECTION.experiencia}
+          aria-label={t('experiencia', 'experience')}
+          className="scroll-mt-16"
+        >
+          <ExperienceTimeline experience={adaptExperience()} />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.eventos}
-        aria-label={t('eventos', 'events')}
-        className="scroll-mt-16"
-      >
-        <EventsPanel />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.referencias}
+          aria-label={t('referencias', 'references')}
+          className="scroll-mt-16"
+        >
+          <ReferencesPanel />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.experiencia}
-        aria-label={t('experiencia', 'experience')}
-        className="scroll-mt-16"
-      >
-        <ExperienceTimeline experience={adaptExperience()} />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.eventos}
+          aria-label={t('eventos', 'events')}
+          className="scroll-mt-16"
+        >
+          <EventsPanel />
+        </CompactSection>
+      </SystemSection>
 
-      <CompactSection
-        id={SECTION.educacion}
-        aria-label={t('educación', 'education')}
-        className="scroll-mt-16"
-      >
-        <EducationCard education={adaptEducation()} />
-      </CompactSection>
+      <SystemSection current={2}>
+        <CompactSection id={SECTION.proyectos} aria-label={t('proyectos', 'projects')} className="scroll-mt-16">
+          <ProjectsGrid projects={adaptProjects()} />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.habilidades}
-        aria-label={t('habilidades', 'skills')}
-        className="scroll-mt-16"
-      >
-        <SkillsCard skills={skills} />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.habilidades}
+          aria-label={t('habilidades', 'skills')}
+          className="scroll-mt-16"
+        >
+          <SkillsCard skills={skills} />
+        </CompactSection>
 
-      <CompactSection id={SECTION.proyectos} aria-label={t('proyectos', 'projects')} className="scroll-mt-16">
-        <ProjectsGrid projects={adaptProjects()} />
-      </CompactSection>
+        <CompactSection id={SECTION.aportes} aria-label={t('aportes', 'contributions')} className="scroll-mt-16">
+          <ContributionsPanel />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.certificaciones}
-        aria-label={t('certificaciones', 'certifications')}
-        className="scroll-mt-16"
-      >
-        <CertificationsList certifications={adaptCertifications()} />
-      </CompactSection>
+        <CompactSection id={SECTION.plugins} aria-label={t('plugins', 'plugins')} className="scroll-mt-16">
+          <PluginsPanel />
+        </CompactSection>
+      </SystemSection>
 
-      <CompactSection id={SECTION.cursos} aria-label={t('cursos', 'courses')} className="scroll-mt-16">
-        <CoursesPanel />
-      </CompactSection>
+      <SystemSection current={3}>
+        <CompactSection
+          id={SECTION.exploitarium}
+          aria-label={t('exploitarium', 'exploitarium')}
+          className="scroll-mt-16"
+        >
+          <ExploitariumSummary metrics={metrics} />
+        </CompactSection>
+      </SystemSection>
 
-      <CompactSection
-        id={SECTION.investigacion}
-        aria-label={t('investigación', 'research')}
-        className="scroll-mt-16"
-      >
-        <ResearchPanel />
-      </CompactSection>
+      <SystemSection current={4}>
+        <CompactSection
+          id={SECTION.educacion}
+          aria-label={t('educación', 'education')}
+          className="scroll-mt-16"
+        >
+          <EducationCard education={adaptEducation()} />
+        </CompactSection>
 
-      <CompactSection
-        id={SECTION.exploitarium}
-        aria-label={t('exploitarium', 'exploitarium')}
-        className="scroll-mt-16"
-      >
-        <ExploitariumSummary metrics={metrics} />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.certificaciones}
+          aria-label={t('certificaciones', 'certifications')}
+          className="scroll-mt-16"
+        >
+          <CertificationsList certifications={adaptCertifications()} />
+        </CompactSection>
 
-      <CompactSection id={SECTION.aportes} aria-label={t('aportes', 'contributions')} className="scroll-mt-16">
-        <ContributionsPanel />
-      </CompactSection>
+        <CompactSection id={SECTION.cursos} aria-label={t('cursos', 'courses')} className="scroll-mt-16">
+          <CoursesPanel />
+        </CompactSection>
 
-      <CompactSection id={SECTION.plugins} aria-label={t('plugins', 'plugins')} className="scroll-mt-16">
-        <PluginsPanel />
-      </CompactSection>
+        <CompactSection
+          id={SECTION.investigacion}
+          aria-label={t('investigación', 'research')}
+          className="scroll-mt-16"
+        >
+          <ResearchPanel />
+        </CompactSection>
+      </SystemSection>
 
-      {/* Document footer */}
-      <footer className="cv-footer">
-        <span>
-          © {new Date().getFullYear()} {profile.name} · {t('Loja, Ecuador', 'Loja, Ecuador')}
-        </span>
-        <span className="flex items-center gap-3">
-          {contact.github ? (
-            <a href={contact.github} target="_blank" rel="noopener noreferrer">
-              github
-            </a>
-          ) : null}
-          {contact.linkedin ? (
-            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
-              linkedin
-            </a>
-          ) : null}
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        </span>
-      </footer>
+      <SystemSection current={5}>
+        {/* Document footer */}
+        <footer className="cv-footer">
+          <span>
+            © {new Date().getFullYear()} {profile.name} · {t('Loja, Ecuador', 'Loja, Ecuador')}
+          </span>
+          <span className="flex items-center gap-3">
+            {contact.github ? (
+              <a href={contact.github} target="_blank" rel="noopener noreferrer">
+                github
+              </a>
+            ) : null}
+            {contact.linkedin ? (
+              <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+                linkedin
+              </a>
+            ) : null}
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </span>
+        </footer>
+      </SystemSection>
     </AppLayout>
   )
 }

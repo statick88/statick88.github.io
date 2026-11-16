@@ -78,7 +78,7 @@ function AppLayoutInner({ aside, children, modern = false }: AppLayoutProps) {
         {t('Saltar al contenido principal', 'Skip to main content')}
       </a>
 
-      <CvTopBar />
+      <CvTopBar primaryNavigation={modern} />
 
       <div className="cv-page">
         <div className={`cv-sheet${modern ? ' cv-sheet-modern' : ''}`}>
