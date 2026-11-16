@@ -3,6 +3,7 @@ import { cleanup, render, screen, within, fireEvent } from '@testing-library/rea
 import userEvent from '@testing-library/user-event'
 import App from '@/App'
 import { SECTION_IDS } from '@/config/navigation'
+import { SYSTEM_SECTIONS } from '@/config/system-navigation'
 
 beforeEach(() => localStorage.clear())
 afterEach(cleanup)
@@ -11,7 +12,8 @@ describe('modal portfolio sections', () => {
   it('keeps every section in order, showing previews but no dialog by default', () => {
     render(<App />)
     const sections = screen.getAllByRole('region')
-    expect(sections.map((section) => section.id)).toEqual(SECTION_IDS)
+    expect(sections.map((section) => section.id)).toEqual(SYSTEM_SECTIONS.flatMap((group) => [...group.items]))
+    expect(sections.map((section) => section.id).sort()).toEqual([...SECTION_IDS].sort())
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     for (const section of sections) {
       const label = section.getAttribute('aria-label')!

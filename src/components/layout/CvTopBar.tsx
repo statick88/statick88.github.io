@@ -15,12 +15,14 @@ import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useCVData } from '@/hooks/useCVData'
 import { useSectionModal } from '@/context/SectionModalContext'
 import { SECTION_IDS, type SectionId } from '@/config/navigation'
+import { SYSTEM_SECTIONS } from '@/config/system-navigation'
 
-export function CvTopBar() {
+export function CvTopBar({ primaryNavigation = false }: { primaryNavigation?: boolean }) {
   const { t, language, setLanguage, theme, setTheme } = useApp()
   const groups = useNavGroups()
   const { activeSectionId, openSection } = useSectionModal()
   const { activeSection } = useScrollSpy({ sectionIds: [...SECTION_IDS] })
+  const { activeSection: primarySection } = useScrollSpy({ sectionIds: SYSTEM_SECTIONS.map((section) => section.id), enabled: primaryNavigation })
   const name = useCVData((data) => data.basics.name)
   const email = useCVData((data) => data.contact.email)
 
@@ -37,6 +39,14 @@ export function CvTopBar() {
       </span>
 
       <nav aria-label={t('Navegación principal', 'Main navigation')} className="cv-topbar-nav">
+        {primaryNavigation ? <div className="cv-topbar-primary">
+          {SYSTEM_SECTIONS.map((section) => (
+            <a key={section.id} href={`#${section.id}`} className="cv-topbar-link" aria-current={primarySection === section.id ? 'location' : undefined}>
+              {t(section.label.es, section.label.en)}
+            </a>
+          ))}
+        </div> : null}
+        <div className="cv-topbar-shortcuts" aria-label={t('Accesos a los paneles completos', 'Full panel shortcuts')}>
         {items.map((item) => (
           <button
             key={item.id}
@@ -49,6 +59,7 @@ export function CvTopBar() {
             {item.label}
           </button>
         ))}
+        </div>
       </nav>
 
       <div className="ml-auto flex items-center gap-2">
