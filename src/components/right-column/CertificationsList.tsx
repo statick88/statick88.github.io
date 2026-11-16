@@ -17,6 +17,7 @@
 import { useMemo } from 'react'
 import { useApp } from '@/context/AppContext'
 import { Panel, PanelRow } from '@/components/panels/Panel'
+import { LearningManual } from '@/components/LearningManual'
 import type { CertificationEntry } from '@/lib/schemas/cv-data'
 
 interface CertificationsListProps {
@@ -118,9 +119,12 @@ export default function CertificationsList({ certifications }: CertificationsLis
         </div>
       </PanelRow>
 
-      {sorted.map((cert, index) => {
+      <LearningManual title={t('certificaciones', 'certifications')} pages={sorted.map((cert, index) => {
         const status = STATUS_CONFIG[resolveStatus(cert.status)]
-        return (
+        return {
+          id: `${cert.name.en}-${index}`,
+          title: t(cert.name.es, cert.name.en),
+          content: (
           <PanelRow key={`${cert.name.en}-${index}`} label={t(cert.name.es, cert.name.en)}>
             <div className="space-y-1.5">
               {/* Status + issuer + date */}
@@ -146,8 +150,9 @@ export default function CertificationsList({ certifications }: CertificationsLis
               )}
             </div>
           </PanelRow>
-        )
-      })}
+          ),
+        }
+      })} />
     </Panel>
   )
 }
