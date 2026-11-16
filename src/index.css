@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 /*
- * CYAN TERMINAL design tokens.
+ * STATICK EDITORIAL design tokens.
  *
- * A cyan-on-midnight identity inspired by aprendejavascript.dev: luminous
- * accents, quiet navy surfaces and terminal typography. The existing CV
+ * A Troko-inspired paper/charcoal identity: olive in daylight, lime at
+ * night, editorial headings and restrained monospaced labels. The existing CV
  * columns, section order, light mode and print layout remain unchanged.
  *
  * Every value is a space-separated RGB triple so plain CSS
@@ -17,40 +17,40 @@
  */
 
 /* ---------------------------------------------------------------------------
- * Paper terminal palette (light)
+ * Editorial paper palette (light)
  * ------------------------------------------------------------------------ */
 :root {
   /* Ground and surfaces */
-  --ct-base: 233 242 248;
-  --ct-panel: 250 253 255;
-  --ct-surface-0: 237 246 250;
-  --ct-surface-1: 226 239 247;
-  --ct-surface-2: 210 229 240;
+  --ct-base: 245 241 233;
+  --ct-panel: 252 250 245;
+  --ct-surface-0: 236 231 220;
+  --ct-surface-1: 228 223 211;
+  --ct-surface-2: 216 212 202;
 
   /* Hairlines */
-  --ct-line: 202 222 234;
-  --ct-line-strong: 159 192 210;
+  --ct-line: 204 199 187;
+  --ct-line-strong: 148 144 131;
 
   /* Text hierarchy */
-  --ct-text: 15 35 52;
-  --ct-subtext-1: 49 74 92;
-  --ct-subtext-0: 76 103 122;
+  --ct-text: 15 15 15;
+  --ct-subtext-1: 63 65 57;
+  --ct-subtext-0: 89 91 80;
 
-  /* Primary: accessible deep cyan */
-  --ct-accent: 0 102 130;
-  --ct-accent-bright: 0 105 136;
-  --ct-accent-dim: 222 243 250;
-  --ct-accent-contrast: 255 255 255;
+  /* Primary: accessible olive */
+  --ct-accent: 63 79 42;
+  --ct-accent-bright: 54 70 35;
+  --ct-accent-dim: 229 239 215;
+  --ct-accent-contrast: 245 241 233;
 
-  /* Midnight navy — the identity column */
-  --ct-navy: 5 19 37;
-  --ct-navy-soft: 17 46 67;
+  /* Charcoal — the identity column */
+  --ct-navy: 15 15 15;
+  --ct-navy-soft: 40 46 32;
 
   /* Semantic states */
-  --ct-ok: 30 142 90; /* #1e8e5a */
-  --ct-warn: 180 121 27; /* #b4791b */
-  --ct-danger: 192 57 43; /* #c0392b */
-  --ct-info: 0 102 130;
+  --ct-ok: 48 104 40; /* #1e8e5a */
+  --ct-warn: 125 83 17; /* #b4791b */
+  --ct-danger: 161 47 43; /* #c0392b */
+  --ct-info: 63 79 42;
 
   /* Primary blue ramp (Tailwind `cyan` family) */
   --ct-blue-50: 236 254 255;
@@ -165,31 +165,31 @@
  * Night variant — the same document, read in the dark
  * ------------------------------------------------------------------------ */
 html.dark {
-  --ct-base: 3 10 23;
-  --ct-panel: 7 18 35;
-  --ct-surface-0: 10 25 44;
-  --ct-surface-1: 14 33 54;
-  --ct-surface-2: 19 44 65;
+  --ct-base: 15 15 15;
+  --ct-panel: 25 27 23;
+  --ct-surface-0: 33 36 29;
+  --ct-surface-1: 42 46 36;
+  --ct-surface-2: 54 60 46;
 
-  --ct-line: 23 51 72;
-  --ct-line-strong: 39 80 103;
+  --ct-line: 63 69 54;
+  --ct-line-strong: 106 115 91;
 
-  --ct-text: 225 242 250;
-  --ct-subtext-1: 166 196 213;
-  --ct-subtext-0: 126 161 182;
+  --ct-text: 245 241 233;
+  --ct-subtext-1: 212 211 198;
+  --ct-subtext-0: 176 180 160;
 
-  --ct-accent: 34 211 238;
-  --ct-accent-bright: 103 232 249;
-  --ct-accent-dim: 9 46 64;
-  --ct-accent-contrast: 3 10 23;
+  --ct-accent: 163 255 106;
+  --ct-accent-bright: 187 255 146;
+  --ct-accent-dim: 41 57 31;
+  --ct-accent-contrast: 15 15 15;
 
-  --ct-navy: 4 14 29;
-  --ct-navy-soft: 14 37 57;
+  --ct-navy: 15 15 15;
+  --ct-navy-soft: 40 46 32;
 
-  --ct-ok: 74 197 134;
-  --ct-warn: 226 172 82;
-  --ct-danger: 230 108 96;
-  --ct-info: 56 189 248;
+  --ct-ok: 163 255 106;
+  --ct-warn: 238 197 133;
+  --ct-danger: 244 143 137;
+  --ct-info: 188 175 231;
   color-scheme: dark;
 }
 
@@ -1016,6 +1016,55 @@ html:has(.cv-section-modal[open]) { overflow: hidden; }
 
   .panel-label {
     padding-top: 0;
+  }
+}
+
+/* Troko-inspired editorial direction; semantic tokens preserve theme controls. */
+@media screen {
+  .cv-sheet-modern .cv-portfolio-hero {
+    width: 100%;
+    max-width: 1280px;
+    padding: 80px 0 64px;
+    text-align: left;
+    background: none;
+  }
+  html.dark .cv-main > .cv-portfolio-hero { background: none; }
+  .cv-sheet-modern .cv-document-name {
+    margin: 0;
+    max-width: 13ch;
+    font-family: 'Arial Black', 'Inter', system-ui, sans-serif;
+    font-size: clamp(44px, 6.5vw, 92px);
+    font-weight: 900;
+    letter-spacing: -.065em;
+    line-height: 1.02;
+  }
+  .cv-sheet-modern .cv-hero-intro { margin: 24px 0 0; max-width: 45ch; }
+  .cv-sheet-modern .cv-hero-actions,
+  .cv-hero-contact, .cv-core-stack { justify-content: flex-start; }
+  .cv-sheet-modern .cv-photo-ring {
+    float: right;
+    margin: 16px 0 32px 40px;
+    border-color: rgb(var(--ct-accent));
+    box-shadow: 12px 12px 0 rgb(var(--ct-accent-dim));
+  }
+  .cv-sheet-modern .cv-hero-eyebrow { color: rgb(var(--ct-subtext-1)); }
+  .cv-primary-action, .cv-secondary-action { border-radius: 999px; }
+  .cv-primary-action { background: rgb(var(--ct-accent)); }
+  .cv-project-preview, .cv-sheet-modern .cv-section-card { box-shadow: none; }
+  .cv-project-preview:first-child {
+    background: linear-gradient(135deg, rgb(var(--ct-accent-dim)), rgb(var(--ct-panel)));
+  }
+  .cv-sheet-modern .cv-section-card { background: rgb(var(--ct-panel)); }
+  .cv-section-heading h2, .cv-catalog-heading h2, .cv-modal-header h2 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+  }
+  .cv-sheet-modern .cv-section-number { color: rgb(var(--ct-subtext-0)); }
+  .cv-sheet-modern .cv-section-trigger { border-bottom: 1px solid currentColor; }
+  .cv-topbar { background: rgb(var(--ct-base) / .96); }
+  @media (max-width: 760px) {
+    .cv-sheet-modern .cv-portfolio-hero { padding-top: 48px; }
+    .cv-sheet-modern .cv-photo-ring { float: none; margin: 0 0 32px; }
   }
 }
 
